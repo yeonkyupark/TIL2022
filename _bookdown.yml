@@ -1,6 +1,10 @@
 delete_merged_file: true
 language:
+  label:
+    fig: "FIGURE "
+    tab: "TABLE "
   ui:
-    chapter_name: "Chapter "
+    edit: "Edit"
+    chapter_name: ""
 
-output_dir: docs
+output_dir: TIL
