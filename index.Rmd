@@ -15,6 +15,9 @@ link-citations: yes
 github-repo: yeonkyupark/TIL2022
 ---
 
-# TIL 2022
+# 시작하며  
 
-그날 그날 배운 것을 기록하자.  
+1/01 github에 매일매일 잔디 심고 있었다.  
+2/18 github를 청소해 보겠다고 repo를 전체 삭제했다.  
+     잔디도 깔끔하게 같이 사라졌다.
+     다시 시작하는걸로...  
