@@ -1,5 +1,5 @@
 --- 
-title: "TIL 2022"
+title: "Today I Learned in 2022"
 author: "PARK Yeonkyu"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -15,6 +15,6 @@ link-citations: yes
 github-repo: yeonkyupark/TIL2022
 ---
 
-# TIL 2022 {-}
+# TIL 2022
 
-그날 그날 배운 것을 기록하자.
+그날 그날 배운 것을 기록하자.  
