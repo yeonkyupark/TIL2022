@@ -1,6 +1,6 @@
 on:
   push:
-    branches: master
+    branches: main
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
           R -e 'install.packages("renv")'
           R -e 'renv::restore()'
       - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        run: Rscript -e 'bookdown::render_book()'
 
       - name: Install npm
         uses: actions/setup-node@v1
