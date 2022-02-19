@@ -23,8 +23,16 @@ https://bookdown.org/yihui/blogdown/netlify.html
 
 ## TIL20220220
 
-rendering 안해도 netlify에 deploy되나 ('' ?)
-우선 rendering된 docs 폴더를 netlify에 연결하는 걸로 하자.
+### netlify 자동 배포 1
+
+rendering 안해도 netlify에 deploy되나 ('' ?)  
+우선 rendering된 docs 폴더를 netlify에 연결하는 걸로 하자.  
+
+### netlify 자동 배포 2
+
+https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/  
+
+
 
 
 
