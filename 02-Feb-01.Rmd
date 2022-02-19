@@ -15,7 +15,7 @@ repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알�
 jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
 RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.
 
-## TIL2022019
+## TIL20220219
 
 ### netlify와 bookdown 연동
 
