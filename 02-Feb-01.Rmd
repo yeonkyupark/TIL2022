@@ -32,6 +32,9 @@ rendering 안해도 netlify에 deploy되나 ('' ?)
 
 https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/  
 
+* 1차 실패
+* 2차 진행 중 ...
+
 
 
 
