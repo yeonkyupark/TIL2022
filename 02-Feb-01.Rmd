@@ -21,5 +21,9 @@ RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 �
 
 https://bookdown.org/yihui/blogdown/netlify.html
 
+## TIL20220220
+
+rendering 안해도 netlify에 deploy되나 ('' ?)
+
 
 
