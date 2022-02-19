@@ -17,4 +17,7 @@ RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 �
 
 ## TIL2022019
 
+### netlify와 github 연동
+
+
 
