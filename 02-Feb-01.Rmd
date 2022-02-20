@@ -34,6 +34,7 @@ https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/
 
 * 1차 실패
 * 2차 진행 중 ...
+* 3차, 편한 방법을 찾자.
 
 
 
