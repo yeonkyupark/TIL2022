@@ -18,7 +18,8 @@
 3. 둘이 연결한다.
 
 4. GitHub Actions를 위한 workflows를 생성한다.
-> usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
+> usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")  
+
 ![image](https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png)
 
 5. 배포할 브랜치를 변경해 준다
