@@ -83,6 +83,7 @@ set in the _output.yml file.</p>" />
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html"><i class="fa fa-check"></i>2022년 2월</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220221"><i class="fa fa-check"></i>TIL20220221</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#github-actions를-이용한-자동-배포"><i class="fa fa-check"></i>Github Actions를 이용한 자동 배포</a></li>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#실습"><i class="fa fa-check"></i>실습</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220220"><i class="fa fa-check"></i>TIL20220220</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#netlify-자동-배포-1"><i class="fa fa-check"></i>netlify 자동 배포 1</a></li>
@@ -126,6 +127,26 @@ set in the _output.yml file.</p>" />
 <h3>Github Actions를 이용한 자동 배포</h3>
 <p>세상은 넓고 똑똑한 사람은 참 많은 것 같다.<br />
 <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e">How to publish bookdown projects with GitHub Actions on GitHub Pages</a></p>
+</div>
+<div id="실습" class="section level3">
+<h3>실습</h3>
+<ol style="list-style-type: decimal">
+<li><p>RStudio에서 bookdown project를 하나 만든다.
+<img src="https://user-images.githubusercontent.com/72383349/154965280-0f32d064-ede3-4fff-91fc-19841ff22141.png" alt="image" /></p></li>
+<li><p>GitHub에서 Repository를 하나 만든다.
+<img src="https://user-images.githubusercontent.com/72383349/154965633-4b3137d4-4daa-4535-a023-eccde1ad5eb8.png" alt="image" /></p></li>
+<li><p>둘이 연결한다.</p></li>
+<li><p>GitHub Actions를 위한 workflows를 생성한다.
+&gt; usethis::use_github_action(url = “<a href="https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml" class="uri">https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml</a>”)
+<img src="https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png" alt="image" /></p></li>
+<li><p>배포할 브랜치를 변경해 준다
+<img src="https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png" alt="image" /></p></li>
+<li><p>코드 업데이트 후 정상 동작 확인한다.</p></li>
+</ol>
+<p><strong><em>주의</em></strong>
+* deploy_bookdown.yml의 branch 이름 확인할 것, 최근에 master에서 main으로 변경됨
+* bookdown의 _bookdown.yml의 output_dir과 deploy_bookdown.yml의 build_dir 일치시킬 것
+* repository에 build_dir(_book)가 없으면 만들어 둘 것</p>
 </div>
 </div>
 <div id="til20220220" class="section level2">
