@@ -1,25 +1,11 @@
 # 2022년 2월
 
-## TIL20220218 
+## TIL20220221
 
-### github repo 삭제하면 잔디도 죽는다
+### Github Actions를 이용한 자동 배포
 
-사용하던 github repo를 모두 삭제했다.  
-repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알게 되었다.  
-덕분에 깨끗한 마음으로 새로 시작할 수 있을 것 같다 '^'  
-
-![](https://user-images.githubusercontent.com/72383349/154695072-8480a46d-4174-4a4a-829f-e97f361dbf29.png)
-
-### bookdown으로 블로그 전환
-
-jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
-RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.
-
-## TIL20220219
-
-### netlify와 bookdown 연동
-
-https://bookdown.org/yihui/blogdown/netlify.html
+세상은 넓고 똑똑한 사람은 참 많은 것 같다.  
+[How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
 
 ## TIL20220220
 
@@ -36,13 +22,24 @@ https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/
 * 2차 진행 중 ...
 * 3차, 편한 방법을 찾자.
 
-## TIL20220221
 
-### Github Actions를 이용한 자동 배포
+## TIL20220219
 
-세상은 넓고 똑똑한 사람은 참 많은 것 같다.  
-[How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
+### netlify와 bookdown 연동
 
+https://bookdown.org/yihui/blogdown/netlify.html
 
+## TIL20220218 
 
+### github repo 삭제하면 잔디도 죽는다
 
+사용하던 github repo를 모두 삭제했다.  
+repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알게 되었다.  
+덕분에 깨끗한 마음으로 새로 시작할 수 있을 것 같다 '^'  
+
+![](https://user-images.githubusercontent.com/72383349/154695072-8480a46d-4174-4a4a-829f-e97f361dbf29.png)
+
+### bookdown으로 블로그 전환
+
+jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
+RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.
