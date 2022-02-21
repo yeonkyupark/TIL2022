@@ -5,7 +5,7 @@
 ### Github Actions를 이용한 자동 배포
 
 세상은 넓고 똑똑한 사람은 참 많은 것 같다.  
-[How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
+ref to: [How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
 
 ### 실습
 
@@ -17,10 +17,15 @@
   
 3. 둘이 연결한다.  
   
-4. GitHub Actions를 위한 workflows를 생성한다.   
-usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")  
-
+4. GitHub Actions를 위한 workflows를 생성한다.  
 ![image](https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png)  
+
+```{r echo=T, eval=FALSE}
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
+```
+
+
+ 
 
 5. 배포할 브랜치를 변경해 준다.  
 ![image](https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png)  
