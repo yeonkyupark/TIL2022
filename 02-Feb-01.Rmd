@@ -36,6 +36,12 @@ https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/
 * 2차 진행 중 ...
 * 3차, 편한 방법을 찾자.
 
+## TIL20220221
+
+### Github Actions를 이용한 자동 배포
+
+세상은 넓고 똑똑한 사람은 참 많은 것 같다.  
+[How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
 
 
 
