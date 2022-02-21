@@ -4,8 +4,18 @@
 
 자동 배포 확인 중...  
 
-2022-02-21 touched for workflow  
+## r 코드 연습
 
-2022-02-21 touched for workflow doublechecking...  
+```{r}
+head(iris)
+```
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
+  geom_point() +
+  labs(x="꽃잎 길이", y="꽃잎 넓이") + theme_bw()
+```
+
 
 
