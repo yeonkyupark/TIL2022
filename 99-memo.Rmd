@@ -7,10 +7,15 @@
 ## r 코드 연습
 
 ```{r echo=T, eval=T}
-install.packages("ggplot2")
 library(ggplot2)
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
   geom_point() +
   labs(x="꽃잎 길이", y="꽃잎 넓이") + theme_bw()
 ```
+
+```{r}
+library(dplyr)
+iris %>% head()
+```
+
 
