@@ -8,7 +8,8 @@ RStudio에서 snippet 설정을 한다.
 
 * Tools → Global Options → Code → Editing → Snippets
 
-![image](https://user-images.githubusercontent.com/72383349/155127581-26736a1c-3576-44f4-b190-bd83a90a7ee5.png)
+![image](https://user-images.githubusercontent.com/72383349/155138784-e1994a7c-86e0-4476-9472-e116c77841b3.png)
+
 
 ```{r echo=T, eval=FALSE}
 # snippet 등록
@@ -21,7 +22,7 @@ snippet myggplot
 	p
 ```
 
-![image](https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png)
+![](https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png)
 
 
 
