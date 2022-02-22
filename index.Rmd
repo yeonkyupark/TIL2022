@@ -15,6 +15,11 @@ link-citations: yes
 github-repo: yeonkyupark/TIL2022
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,	warning = FALSE)
+```
+
+
 # 시작하며  
 
 1/01 github에 매일매일 잔디 심고 있었다.  
