@@ -194,10 +194,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>자동 배포 확인 중…</p>
 <div id="r-코드-연습" class="section level2">
 <h2>r 코드 연습</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="연습장.html#cb3-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb3-2"><a href="연습장.html#cb3-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
-<span id="cb3-3"><a href="연습장.html#cb3-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb3-4"><a href="연습장.html#cb3-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="연습장.html#cb3-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<pre><code>## Installing package into &#39;/Users/runner/work/_temp/Library&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## also installing the dependencies &#39;colorspace&#39;, &#39;cli&#39;, &#39;crayon&#39;, &#39;utf8&#39;, &#39;farver&#39;, &#39;labeling&#39;, &#39;lifecycle&#39;, &#39;munsell&#39;, &#39;R6&#39;, &#39;RColorBrewer&#39;, &#39;viridisLite&#39;, &#39;ellipsis&#39;, &#39;fansi&#39;, &#39;pillar&#39;, &#39;pkgconfig&#39;, &#39;vctrs&#39;, &#39;gtable&#39;, &#39;isoband&#39;, &#39;scales&#39;, &#39;tibble&#39;, &#39;withr&#39;</code></pre>
+<pre><code>## 
+##   There is a binary version available but the source version is later:
+##            binary source needs_compilation
+## colorspace  2.0-2  2.0-3              TRUE
+## 
+## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpFgu6OU/downloaded_packages</code></pre>
+<pre><code>## installing the source package &#39;colorspace&#39;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="연습장.html#cb8-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="연습장.html#cb8-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
+<span id="cb8-3"><a href="연습장.html#cb8-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb8-4"><a href="연습장.html#cb8-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
 </div>
 </div>
