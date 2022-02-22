@@ -1,5 +1,16 @@
 # 2022년 2월
 
+## TIL20220222
+
+### code snippet in R
+
+RStudio에서 snippet 설정을 한다.
+
+* Tools → Global Options → Code → Editing → Snippets
+
+
+
+
 ## TIL20220221
 
 ### Github Actions를 이용한 자동 배포
