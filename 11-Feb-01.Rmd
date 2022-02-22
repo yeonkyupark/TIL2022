@@ -8,6 +8,20 @@ RStudio에서 snippet 설정을 한다.
 
 * Tools → Global Options → Code → Editing → Snippets
 
+![image](https://user-images.githubusercontent.com/72383349/155127581-26736a1c-3576-44f4-b190-bd83a90a7ee5.png)
+
+```{r echo=T, eval=FALSE}
+# snippet 등록
+snippet myggplot
+  # 코드 작성 시 반드시 tab으로 띄워쓰기 할 것
+	p <- ggplot(data = ${1:데이터}, aes(x=${2:변수1}, y=${3:변수2}, col=${4:범주1}, fill=${5:범주2})) +
+	  geom_${6:그래프종류}() +
+	  labs(title="${7:그래프제목}", x="${8:x축}", y="${9:y축}") +
+	  theme_bw()
+	p
+```
+
+![image](https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png)
 
 
 
