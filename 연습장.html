@@ -30,7 +30,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-02-21" />
+<meta name="date" content="2022-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>시작하며</a></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html"><i class="fa fa-check"></i>2022년 2월</a><ul>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220222"><i class="fa fa-check"></i>TIL20220222</a><ul>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#code-snippet-in-r"><i class="fa fa-check"></i>code snippet in R</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220221"><i class="fa fa-check"></i>TIL20220221</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#github-actions를-이용한-자동-배포"><i class="fa fa-check"></i>Github Actions를 이용한 자동 배포</a></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#실습"><i class="fa fa-check"></i>실습</a></li>
@@ -162,7 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="년-1월.html"><a href="년-1월.html"><i class="fa fa-check"></i>2022년 1월</a></li>
-<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html"><i class="fa fa-check"></i>연습장</a></li>
+<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html"><i class="fa fa-check"></i>연습장</a><ul>
+<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html#r-코드-연습"><i class="fa fa-check"></i>r 코드 연습</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -187,9 +192,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>연습장</h1>
 <p>공부하기 싫을 때, 잠시 메모 남겨 놓는 용도로 사용한다.</p>
 <p>자동 배포 확인 중…</p>
-<p>2022-02-21 touched for workflow</p>
-<p>2022-02-21 touched for workflow doublechecking…</p>
+<div id="r-코드-연습" class="section level2">
+<h2>r 코드 연습</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="연습장.html#cb3-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="연습장.html#cb3-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
+<span id="cb3-3"><a href="연습장.html#cb3-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb3-4"><a href="연습장.html#cb3-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
 
+</div>
 </div>
             </section>
 

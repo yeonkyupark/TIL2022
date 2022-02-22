@@ -30,7 +30,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-02-21" />
+<meta name="date" content="2022-02-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>시작하며</a></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html"><i class="fa fa-check"></i>2022년 2월</a><ul>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220222"><i class="fa fa-check"></i>TIL20220222</a><ul>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#code-snippet-in-r"><i class="fa fa-check"></i>code snippet in R</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220221"><i class="fa fa-check"></i>TIL20220221</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#github-actions를-이용한-자동-배포"><i class="fa fa-check"></i>Github Actions를 이용한 자동 배포</a></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#실습"><i class="fa fa-check"></i>실습</a></li>
@@ -162,7 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="년-1월.html"><a href="년-1월.html"><i class="fa fa-check"></i>2022년 1월</a></li>
-<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html"><i class="fa fa-check"></i>연습장</a></li>
+<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html"><i class="fa fa-check"></i>연습장</a><ul>
+<li class="chapter" data-level="" data-path="연습장.html"><a href="연습장.html#r-코드-연습"><i class="fa fa-check"></i>r 코드 연습</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -185,6 +190,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-2월" class="section level1">
 <h1>2022년 2월</h1>
+<div id="til20220222" class="section level2">
+<h2>TIL20220222</h2>
+<div id="code-snippet-in-r" class="section level3">
+<h3>code snippet in R</h3>
+<p>RStudio에서 snippet 설정을 한다.</p>
+<ul>
+<li>Tools → Global Options → Code → Editing → Snippets</li>
+</ul>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/72383349/155127581-26736a1c-3576-44f4-b190-bd83a90a7ee5.png" alt="" />
+<p class="caption">image</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="년-2월.html#cb1-1"></a><span class="co"># snippet 등록</span></span>
+<span id="cb1-2"><a href="년-2월.html#cb1-2"></a>snippet myggplot</span>
+<span id="cb1-3"><a href="년-2월.html#cb1-3"></a>  <span class="co"># 코드 작성 시 반드시 tab으로 띄워쓰기 할 것</span></span>
+<span id="cb1-4"><a href="년-2월.html#cb1-4"></a>    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">$</span>{<span class="dv">1</span><span class="op">:</span>데이터}, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">$</span>{<span class="dv">2</span><span class="op">:</span>변수1}, <span class="dt">y=</span><span class="op">$</span>{<span class="dv">3</span><span class="op">:</span>변수2}, <span class="dt">col=</span><span class="op">$</span>{<span class="dv">4</span><span class="op">:</span>범주1}, <span class="dt">fill=</span><span class="op">$</span>{<span class="dv">5</span><span class="op">:</span>범주2})) <span class="op">+</span></span>
+<span id="cb1-5"><a href="년-2월.html#cb1-5"></a><span class="st">      </span>geom_<span class="op">$</span>{<span class="dv">6</span><span class="op">:</span>그래프종류}() <span class="op">+</span></span>
+<span id="cb1-6"><a href="년-2월.html#cb1-6"></a><span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;${7:그래프제목}&quot;</span>, <span class="dt">x=</span><span class="st">&quot;${8:x축}&quot;</span>, <span class="dt">y=</span><span class="st">&quot;${9:y축}&quot;</span>) <span class="op">+</span></span>
+<span id="cb1-7"><a href="년-2월.html#cb1-7"></a><span class="st">      </span><span class="kw">theme_bw</span>()</span>
+<span id="cb1-8"><a href="년-2월.html#cb1-8"></a>    p</span></code></pre></div>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png" alt="" />
+<p class="caption">image</p>
+</div>
+</div>
+</div>
 <div id="til20220221" class="section level2">
 <h2>TIL20220221</h2>
 <div id="github-actions를-이용한-자동-배포" class="section level3">
@@ -203,16 +234,18 @@ ref to: <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-w
 <li><p>GitHub Actions를 위한 workflows를 생성한다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png" alt="image" /></p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="년-2월.html#cb1-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-2월.html#cb2-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>배포할 브랜치를 변경해 준다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png" alt="image" /></p></li>
 <li><p>코드 업데이트 후 정상 동작 확인한다.</p></li>
 </ol>
-<p><strong><em>주의</em></strong><br />
-* deploy_bookdown.yml의 branch 이름 확인할 것, 최근에 master에서 main으로 변경됨
-* bookdown의 _bookdown.yml의 output_dir과 deploy_bookdown.yml의 build_dir 일치시킬 것
-* repository에 build_dir(_book)가 없으면 만들어 둘 것</p>
+<p><strong><em>! 주의</em></strong></p>
+<ul>
+<li>deploy_bookdown.yml의 branch 이름 확인할 것, 최근에 master에서 main으로 변경됨</li>
+<li>bookdown의 _bookdown.yml의 output_dir과 deploy_bookdown.yml의 build_dir 일치시킬 것</li>
+<li>repository에 build_dir(_book)가 없으면 만들어 둘 것</li>
+</ul>
 <hr />
 </div>
 </div>
@@ -231,6 +264,7 @@ ref to: <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-w
 <li>2차 진행 중 …</li>
 <li>3차, 편한 방법을 찾자.</li>
 </ul>
+<hr />
 </div>
 </div>
 <div id="til20220219" class="section level2">
