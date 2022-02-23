@@ -10,6 +10,8 @@ https://stackoverflow.com/questions/66065099/how-to-update-github-authentificati
 credentials::set_gethub_pat()
 ```
 
+![image](https://user-images.githubusercontent.com/72383349/155330329-ed50990b-e823-4158-9d6b-b523aa1cb581.png)
+
 위 코드로 해결함.
 
 ### 파비콘 만들기
