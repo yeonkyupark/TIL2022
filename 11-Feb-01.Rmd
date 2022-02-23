@@ -2,6 +2,18 @@
 
 ## TIL20220222
 
+### rstudio.cloud PAT 업데이트
+
+https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy
+
+```{r echo=T, eval=FALSE}
+credentials::set_gethub_pat()
+```
+
+위 코드로 해결함.
+
+## TIL20220222
+
 ### code snippet in R
 
 RStudio에서 snippet 설정을 한다.
