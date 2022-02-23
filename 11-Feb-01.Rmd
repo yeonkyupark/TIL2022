@@ -12,6 +12,12 @@ credentials::set_gethub_pat()
 
 위 코드로 해결함.
 
+### 파비콘 만들기
+
+www.favicon-generator.org
+
+----
+
 ## TIL20220222
 
 ### code snippet in R
@@ -36,7 +42,7 @@ snippet myggplot
 
 ![](https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png)
 
-
+----
 
 ## TIL20220221
 
