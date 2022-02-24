@@ -2,8 +2,53 @@
 
 ## TIL20220224
 
-### bookdown + github 배포하기
+### RStudio + bookdown + github 배포하기
 
+1. GitHub Repository 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155529400-0b7bb6ea-c5bb-4bb1-a495-707e4cec87d8.png)  
+![](https://user-images.githubusercontent.com/72383349/155529668-ed28438b-6f60-4049-ba00-14ac64e6f3cb.png)  
+
+2. 생성된 Git Repo로 RStudio 빈 Project 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155530017-c4434193-0fa4-43f6-beff-f2dda105c652.png)  
+![](https://user-images.githubusercontent.com/72383349/155530102-4c6e014e-896b-45ef-8fcc-1fec200fc508.png)  
+![](https://user-images.githubusercontent.com/72383349/155530335-3862cffe-c925-4b26-a9b5-2b3e96a78516.png)  
+
+3. Bookdown Project 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155531484-c96d8348-be98-42a5-9238-8a6ebad8d661.png)  
+![](https://user-images.githubusercontent.com/72383349/155531685-8e24b9ac-69f8-45d3-9891-fd769bedc641.png)
+![](https://user-images.githubusercontent.com/72383349/155531792-c1ee35db-65f7-4424-befd-1e579d6df3f7.png)  
+
+4. 생성된 Project GitHub에 올리기
+```{r echo=T, eval=FALSE}
+git checkout main
+git add .
+git commit -m '1st commit on main'
+git push origin main
+```
+
+5. GitHub Action workflow 생성하기  
+gh-pages 브랜치를 생성한다.  
+```{r echo=T, eval=FALSE}
+git checkout --orphan gh-pages
+git rm -rf .
+git commit --allow-empty -m '1st commit on gh-pages'
+git push origin gh-pages
+git checkout main
+```
+
+RStudio Console에서 Workflow를 생성한다.  
+```{r echo=T, eval=FALSE}
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
+```
+
+6. 수정된 파일 GitHub에 올리기  
+![](https://user-images.githubusercontent.com/72383349/155535920-b59330f1-dfb3-4e10-bb81-f0d9b6de18d9.png)
+
+
+
+
+
+----
 
 ## TIL20220223
 
@@ -61,15 +106,15 @@ ref to: [How to publish bookdown projects with GitHub Actions on GitHub Pages](h
 ### 실습
 
 1. RStudio에서 bookdown project를 하나 만든다.  
-![image](https://user-images.githubusercontent.com/72383349/154965280-0f32d064-ede3-4fff-91fc-19841ff22141.png)  
+![](https://user-images.githubusercontent.com/72383349/154965280-0f32d064-ede3-4fff-91fc-19841ff22141.png)  
   
 2. GitHub에서 Repository를 하나 만든다.  
-![image](https://user-images.githubusercontent.com/72383349/154965633-4b3137d4-4daa-4535-a023-eccde1ad5eb8.png)  
+![](https://user-images.githubusercontent.com/72383349/154965633-4b3137d4-4daa-4535-a023-eccde1ad5eb8.png)  
   
 3. 둘이 연결한다.  
   
 4. GitHub Actions를 위한 workflows를 생성한다.  
-![image](https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png)  
+![](https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png)  
 
 ```{r echo=T, eval=FALSE}
 usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
@@ -77,7 +122,7 @@ usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs
 
 
 5. 배포할 브랜치를 변경해 준다.  
-![image](https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png)  
+![](https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png)  
   
 6. 코드 업데이트 후 정상 동작 확인한다.  
   
