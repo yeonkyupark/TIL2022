@@ -1,5 +1,10 @@
 # 2022년 2월 
 
+## TIL20220224
+
+### bookdown + github 배포하기
+
+
 ## TIL20220223
 
 ### rstudio.cloud PAT 업데이트
