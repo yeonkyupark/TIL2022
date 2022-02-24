@@ -44,9 +44,13 @@ usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs
 6. 수정된 파일 GitHub에 올리기  
 ![](https://user-images.githubusercontent.com/72383349/155535920-b59330f1-dfb3-4e10-bb81-f0d9b6de18d9.png)
 
+7. Workflow 및 배포된 페이지 확인하기
+![](https://user-images.githubusercontent.com/72383349/155536392-9a01a6f8-2f9a-41ea-8e78-edadbac748cd.png)
+![](https://user-images.githubusercontent.com/72383349/155536602-0cd067a6-c228-42d8-bb5b-648d35f44eab.png)
+![](https://user-images.githubusercontent.com/72383349/155537012-7c94fc40-8f13-4539-937a-3ea1ce4798c2.png)
 
-
-
+8. page 생성/수정 후 정상동작 확인하기  
+[https://yeonkyupark.github.io/Rdataanalysis/](https://yeonkyupark.github.io/Rdataanalysis/)  
 
 ----
 
