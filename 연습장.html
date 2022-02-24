@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>시작하며</a></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html"><i class="fa fa-check"></i>2022년 2월</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220224"><i class="fa fa-check"></i>TIL20220224</a><ul>
-<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#bookdown-github-배포하기"><i class="fa fa-check"></i>bookdown + github 배포하기</a></li>
+<li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#rstudio-bookdown-github-배포하기"><i class="fa fa-check"></i>RStudio + bookdown + github 배포하기</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#til20220223"><i class="fa fa-check"></i>TIL20220223</a><ul>
 <li class="chapter" data-level="" data-path="년-2월.html"><a href="년-2월.html#rstudio.cloud-pat-업데이트"><i class="fa fa-check"></i>rstudio.cloud PAT 업데이트</a></li>
@@ -201,13 +201,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>자동 배포 확인 중…</p>
 <div id="r-코드-연습" class="section level2">
 <h2>r 코드 연습</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="연습장.html#cb4-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="연습장.html#cb4-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
-<span id="cb4-3"><a href="연습장.html#cb4-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb4-4"><a href="연습장.html#cb4-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="연습장.html#cb5-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb5-2"><a href="연습장.html#cb5-2"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="연습장.html#cb7-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="연습장.html#cb7-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
+<span id="cb7-3"><a href="연습장.html#cb7-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb7-4"><a href="연습장.html#cb7-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="연습장.html#cb8-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb8-2"><a href="연습장.html#cb8-2"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
