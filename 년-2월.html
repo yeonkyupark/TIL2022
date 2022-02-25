@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2022년 2월 | Today I Learned in 2022</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2022년 2월 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2022년 2월 | Today I Learned in 2022" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
 
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-02-24" />
+<meta name="date" content="2022-02-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,21 +209,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="https://user-images.githubusercontent.com/72383349/155531792-c1ee35db-65f7-4424-befd-1e579d6df3f7.png" /></p></li>
 <li><p>생성된 Project GitHub에 올리기</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="년-2월.html#cb1-1"></a>git checkout main</span>
-<span id="cb1-2"><a href="년-2월.html#cb1-2"></a>git add .</span>
-<span id="cb1-3"><a href="년-2월.html#cb1-3"></a>git commit <span class="op">-</span>m <span class="st">&#39;1st commit on main&#39;</span></span>
-<span id="cb1-4"><a href="년-2월.html#cb1-4"></a>git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-2월.html#cb2-1"></a>git checkout main</span>
+<span id="cb2-2"><a href="년-2월.html#cb2-2"></a>git add .</span>
+<span id="cb2-3"><a href="년-2월.html#cb2-3"></a>git commit <span class="op">-</span>m <span class="st">&#39;1st commit on main&#39;</span></span>
+<span id="cb2-4"><a href="년-2월.html#cb2-4"></a>git push origin main</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>GitHub Action workflow 생성하기<br />
 gh-pages 브랜치를 생성한다.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-2월.html#cb2-1"></a>git checkout <span class="op">--</span>orphan gh<span class="op">-</span>pages</span>
-<span id="cb2-2"><a href="년-2월.html#cb2-2"></a>git rm <span class="op">-</span>rf .</span>
-<span id="cb2-3"><a href="년-2월.html#cb2-3"></a>git commit <span class="op">--</span>allow<span class="op">-</span>empty <span class="op">-</span>m <span class="st">&#39;1st commit on gh-pages&#39;</span></span>
-<span id="cb2-4"><a href="년-2월.html#cb2-4"></a>git push origin gh<span class="op">-</span>pages</span>
-<span id="cb2-5"><a href="년-2월.html#cb2-5"></a>git checkout main</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="년-2월.html#cb3-1"></a>git checkout <span class="op">--</span>orphan gh<span class="op">-</span>pages</span>
+<span id="cb3-2"><a href="년-2월.html#cb3-2"></a>git rm <span class="op">-</span>rf .</span>
+<span id="cb3-3"><a href="년-2월.html#cb3-3"></a>git commit <span class="op">--</span>allow<span class="op">-</span>empty <span class="op">-</span>m <span class="st">&#39;1st commit on gh-pages&#39;</span></span>
+<span id="cb3-4"><a href="년-2월.html#cb3-4"></a>git push origin gh<span class="op">-</span>pages</span>
+<span id="cb3-5"><a href="년-2월.html#cb3-5"></a>git checkout main</span></code></pre></div>
 <p>RStudio Console에서 Workflow를 생성한다.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="년-2월.html#cb3-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-2월.html#cb4-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li><p>수정된 파일 GitHub에 올리기<br />
 <img src="https://user-images.githubusercontent.com/72383349/155535920-b59330f1-dfb3-4e10-bb81-f0d9b6de18d9.png" /></p></li>
@@ -248,7 +242,7 @@ gh-pages 브랜치를 생성한다.</li>
 <div id="rstudio.cloud-pat-업데이트" class="section level3">
 <h3>rstudio.cloud PAT 업데이트</h3>
 <p><a href="https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy" class="uri">https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy</a></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-2월.html#cb4-1"></a>credentials<span class="op">::</span><span class="kw">set_gethub_pat</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="년-2월.html#cb5-1"></a>credentials<span class="op">::</span><span class="kw">set_gethub_pat</span>()</span></code></pre></div>
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/72383349/155330329-ed50990b-e823-4158-9d6b-b523aa1cb581.png" alt="" />
 <p class="caption">image</p>
@@ -273,14 +267,14 @@ gh-pages 브랜치를 생성한다.</li>
 <img src="https://user-images.githubusercontent.com/72383349/155138784-e1994a7c-86e0-4476-9472-e116c77841b3.png" alt="" />
 <p class="caption">image</p>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="년-2월.html#cb5-1"></a><span class="co"># snippet 등록</span></span>
-<span id="cb5-2"><a href="년-2월.html#cb5-2"></a>snippet myggplot</span>
-<span id="cb5-3"><a href="년-2월.html#cb5-3"></a>  <span class="co"># 코드 작성 시 반드시 tab으로 띄워쓰기 할 것</span></span>
-<span id="cb5-4"><a href="년-2월.html#cb5-4"></a>    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">$</span>{<span class="dv">1</span><span class="op">:</span>데이터}, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">$</span>{<span class="dv">2</span><span class="op">:</span>변수1}, <span class="dt">y=</span><span class="op">$</span>{<span class="dv">3</span><span class="op">:</span>변수2}, <span class="dt">col=</span><span class="op">$</span>{<span class="dv">4</span><span class="op">:</span>범주1}, <span class="dt">fill=</span><span class="op">$</span>{<span class="dv">5</span><span class="op">:</span>범주2})) <span class="op">+</span></span>
-<span id="cb5-5"><a href="년-2월.html#cb5-5"></a><span class="st">      </span>geom_<span class="op">$</span>{<span class="dv">6</span><span class="op">:</span>그래프종류}() <span class="op">+</span></span>
-<span id="cb5-6"><a href="년-2월.html#cb5-6"></a><span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;${7:그래프제목}&quot;</span>, <span class="dt">x=</span><span class="st">&quot;${8:x축}&quot;</span>, <span class="dt">y=</span><span class="st">&quot;${9:y축}&quot;</span>) <span class="op">+</span></span>
-<span id="cb5-7"><a href="년-2월.html#cb5-7"></a><span class="st">      </span><span class="kw">theme_bw</span>()</span>
-<span id="cb5-8"><a href="년-2월.html#cb5-8"></a>    p</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="년-2월.html#cb6-1"></a><span class="co"># snippet 등록</span></span>
+<span id="cb6-2"><a href="년-2월.html#cb6-2"></a>snippet myggplot</span>
+<span id="cb6-3"><a href="년-2월.html#cb6-3"></a>  <span class="co"># 코드 작성 시 반드시 tab으로 띄워쓰기 할 것</span></span>
+<span id="cb6-4"><a href="년-2월.html#cb6-4"></a>    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">$</span>{<span class="dv">1</span><span class="op">:</span>데이터}, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">$</span>{<span class="dv">2</span><span class="op">:</span>변수1}, <span class="dt">y=</span><span class="op">$</span>{<span class="dv">3</span><span class="op">:</span>변수2}, <span class="dt">col=</span><span class="op">$</span>{<span class="dv">4</span><span class="op">:</span>범주1}, <span class="dt">fill=</span><span class="op">$</span>{<span class="dv">5</span><span class="op">:</span>범주2})) <span class="op">+</span></span>
+<span id="cb6-5"><a href="년-2월.html#cb6-5"></a><span class="st">      </span>geom_<span class="op">$</span>{<span class="dv">6</span><span class="op">:</span>그래프종류}() <span class="op">+</span></span>
+<span id="cb6-6"><a href="년-2월.html#cb6-6"></a><span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;${7:그래프제목}&quot;</span>, <span class="dt">x=</span><span class="st">&quot;${8:x축}&quot;</span>, <span class="dt">y=</span><span class="st">&quot;${9:y축}&quot;</span>) <span class="op">+</span></span>
+<span id="cb6-7"><a href="년-2월.html#cb6-7"></a><span class="st">      </span><span class="kw">theme_bw</span>()</span>
+<span id="cb6-8"><a href="년-2월.html#cb6-8"></a>    p</span></code></pre></div>
 <p><img src="https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png" /></p>
 <hr />
 </div>
@@ -303,7 +297,7 @@ ref to: <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-w
 <li><p>GitHub Actions를 위한 workflows를 생성한다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png" /></p></li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="년-2월.html#cb6-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="년-2월.html#cb7-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>배포할 브랜치를 변경해 준다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png" /></p></li>
