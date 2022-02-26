@@ -17,6 +17,7 @@ if(!require(skimr)){ install.packages("skimr"); library(skimr) }
 ```
 
 ```{r echo=T, eval=T}
+install.packages("palmerpenguins")
 library(palmerpenguins)
 skimr::skim(penguins)
 ```
