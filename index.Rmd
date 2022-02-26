@@ -21,6 +21,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE,	warning = FALSE)
 ```{r install_packages, message=FALSE, warning=FALSE, include=FALSE}
 install.packages("dplyr")
 install.packages("ggplot2")
+install.packages("skimr")
+install.packages("palmerpenguins")
+
 ```
 
 

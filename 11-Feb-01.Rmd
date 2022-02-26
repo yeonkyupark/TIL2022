@@ -6,12 +6,9 @@
 
 일반적으로 `summary()`를 통해 데이터의 전체적인 모습을 살펴볼 수 있다.
 
-```{r echo=F, eval=T}
-install.packages("skimr"); library(skimr)
-install.packages("palmerpenguins"); library(palmerpenguins)
-```
-
 ```{r echo=T, eval=T}
+library(palmerpenguins)
+
 # base package
 summary(penguins)
 ```
@@ -19,6 +16,7 @@ summary(penguins)
 skimr 패키지의 `skim()`을 통해 유사한 수치연산 결과를 보다 가독성이 좋은 형태로 출력해 준다.  
 
 ```{r echo=T, eval=T}
+library(skimr)
 skim(penguins)
 ```
 
