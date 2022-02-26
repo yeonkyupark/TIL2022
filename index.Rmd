@@ -32,3 +32,6 @@ if(!require(ggplot2)) install.packages("ggplot2")
      잔디도 깔끔하게 같이 사라졌다.
      다시 시작하는걸로...  
 ```
+
+![](https://user-images.githubusercontent.com/72383349/155848684-460dbb41-426d-4d5a-9f85-99528427c89d.png)
+
