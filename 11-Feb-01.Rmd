@@ -16,7 +16,7 @@ skimr 패키지의 `skim()`을 통해 유사한 수치연산 결과를 보다 �
 if(!require(skimr)){ install.packages("skimr"); library(skimr) }
 ```
 
-```{r echo=T, eval=FALSE}
+```{r echo=T, eval=T}
 library(palmerpenguins)
 skimr::skim(penguins)
 ```
