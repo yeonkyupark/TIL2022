@@ -2,9 +2,28 @@
 
 ## TIL20220226
 
-### 일단 스킵
+### 데이터 훑어보기
 
-내용 정리 후 업데이트
+일반적으로 `summary()`를 통해 데이터의 전체적인 모습을 살펴볼 수 있다.
+
+```{r echo=T, eval=FALSE}
+summary(x)
+```
+
+skimr 패키지의 `skim()`을 통해 유사한 수치연산 결과를 보다 가독성이 좋은 형태로 출력해 준다.  
+
+```{r echo=F, eval=FALSE}
+if(!require(skimr)){ install.packages("skimr"); library(skimr) }
+```
+
+```{r echo=T, eval=FALSE}
+library(palmerpenguins)
+skimr::skim(penguins)
+```
+
+
+
+
 
 ## TIL20220225
 
