@@ -9,6 +9,14 @@
 * [Sample_w_Header.csv](https://github.com/yeonkyupark/TIL2022/files/8148798/Sample_w_Header.csv)
 * [Sample_wo_Header.csv](https://github.com/yeonkyupark/TIL2022/files/8148797/Sample_wo_Header.csv)
 
+```{r}
+sample <- read.csv("https://github.com/yeonkyupark/TIL2022/files/8148798/Sample_w_Header.csv", fileEncoding="UTF-8-BOM")
+colnames(sample)
+```
+
+일어들인 첫번째 데이터가 깨지는 경우 인코딩을 확인해 본다.
+
+* [R을 이용하여 CSV 파일을 읽을 때 첫번째 문자가 깨지는 오류 해결 방법](https://118k.tistory.com/863)
 
 ## TIL20220226
 
