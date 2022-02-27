@@ -1,14 +1,23 @@
 # 2022년 2월 
 
+## TIL20220227
+
+### GitHub에 파일 올리기
+
+
 ## TIL20220226
 
 ### 데이터 훑어보기
 
-일반적으로 `summary()`를 통해 데이터의 전체적인 모습을 살펴볼 수 있다.
+```{r echo=T, eval=T}
+library(palmerpenguins) # 사용할 데이터 셋
+```
+
+우선 데이터 구조는 `str()`
+
+일반적으로 `summary()`를 통해 수치 연산 결과를 전체적인 모습을 살펴볼 수 있다.
 
 ```{r echo=T, eval=T}
-library(palmerpenguins)
-
 # base package
 summary(penguins)
 ```
