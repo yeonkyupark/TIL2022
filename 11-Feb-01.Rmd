@@ -4,7 +4,7 @@
 
 ### 데이터 수집
 
-통계데이터분석 - 데이터 수집^(https://www.youtube.com/watch?v=Z4Hn4LoNuE8&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_)  
+통계데이터분석 - 데이터 수집^[https://www.youtube.com/watch?v=Z4Hn4LoNuE8&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_]  
 
 데이터 수집 원천  
 * 출판물(publication), 실험(experiment), 관찰(observation), 서베이(servey)  
