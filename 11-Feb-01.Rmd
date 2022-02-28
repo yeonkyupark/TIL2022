@@ -7,7 +7,29 @@
 통계데이터분석 - 데이터 수집^[https://www.youtube.com/watch?v=Z4Hn4LoNuE8&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_]  
 
 데이터 수집 원천  
-* 출판물(publication), 실험(experiment), 관찰(observation), 서베이(servey)  
+* 출판물(publication)
+* 실험(experiment)
+* 관찰(observation)
+* 서베이(servey)  
+
+표본과 모집단  
+* `표본`, 데이터 수집에 포한된 참여자의 집단, 기술통계(descriptive statistics)
+* `모집단`, 우리가 궁극적으로 결론을 도출하고자 하는 대상이 되는 전체 집단, 추론통계(inferential statistics)  
+
+표본의 선정  
+* 판단표본(judgment sample)
+* 편의표본(convenience sample)
+* 무작위표본(random sample)
+
+측정척도  
+* 측정(measurement), 데이터 항목의 속성에 숫자를 부여하는 과정
+* 척도(scale), 측정을 위하여 사용되는 도구
+
+척도의 종류  
+* 명목척도(nominal scale)
+* 서열척도(ordinal scale)
+* 간격척도(interval scale)
+* 비율척도(ratio scale)
 
 
 
