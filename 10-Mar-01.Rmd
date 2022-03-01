@@ -8,3 +8,72 @@
 
 기술통계와 추론통계, 대부분은 모집단을 설명하는 추론통계이지만 모집단을 잘 설명하기 위해서는 표본집단을 잘 이해사고 적절한 통계기법을 선택하는 것이 중요하다.  
 
+##### 빈도표
+
+```{r}
+library(MASS)
+str(survey)
+```
+
+```{r}
+levels(survey$Smoke)
+```
+
+```{r}
+frqtab <- table(survey$Smoke)
+frqtab
+```
+
+```{r}
+class(frqtab)
+```
+
+```{r}
+frqtab[2]
+```
+
+```{r}
+frqtab["Never"]
+```
+
+##### 최빈값
+
+```{r}
+frqtab == max(frqtab)
+```
+
+```{r}
+frqtab[frqtab == max(frqtab)]
+```
+
+```{r}
+names(frqtab[frqtab == max(frqtab)])
+```
+
+```{r}
+which.max(frqtab)
+```
+
+```{r}
+frqtab[which.max(frqtab)]
+```
+
+```{r}
+names(frqtab[which.max(frqtab)])
+```
+
+##### 비율도표
+
+```{r}
+frqtab.prop <- prop.table(frqtab)
+frqtab.prop
+```
+
+```{r}
+frqtab.prop["Never"]
+```
+
+```{r}
+frqtab.prop * 100
+```
+
