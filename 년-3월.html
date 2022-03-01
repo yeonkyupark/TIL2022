@@ -216,7 +216,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="범주형-변수-요약" class="section level4">
 <h4>범주형 변수 요약</h4>
 <p>기술통계와 추론통계, 대부분은 모집단을 설명하는 추론통계이지만 모집단을 잘 설명하기 위해서는 표본집단을 잘 이해사고 적절한 통계기법을 선택하는 것이 중요하다.</p>
+<div id="빈도표" class="section level5">
+<h5>빈도표</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-3월.html#cb2-1"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb2-2"><a href="년-3월.html#cb2-2"></a><span class="kw">str</span>(survey)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    237 obs. of  12 variables:
+##  $ Sex   : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 2 1 2 1 2 2 ...
+##  $ Wr.Hnd: num  18.5 19.5 18 18.8 20 18 17.7 17 20 18.5 ...
+##  $ NW.Hnd: num  18 20.5 13.3 18.9 20 17.7 17.7 17.3 19.5 18.5 ...
+##  $ W.Hnd : Factor w/ 2 levels &quot;Left&quot;,&quot;Right&quot;: 2 1 2 2 2 2 2 2 2 2 ...
+##  $ Fold  : Factor w/ 3 levels &quot;L on R&quot;,&quot;Neither&quot;,..: 3 3 1 3 2 1 1 3 3 3 ...
+##  $ Pulse : int  92 104 87 NA 35 64 83 74 72 90 ...
+##  $ Clap  : Factor w/ 3 levels &quot;Left&quot;,&quot;Neither&quot;,..: 1 1 2 2 3 3 3 3 3 3 ...
+##  $ Exer  : Factor w/ 3 levels &quot;Freq&quot;,&quot;None&quot;,..: 3 2 2 2 3 3 1 1 3 3 ...
+##  $ Smoke : Factor w/ 4 levels &quot;Heavy&quot;,&quot;Never&quot;,..: 2 4 3 2 2 2 2 2 2 2 ...
+##  $ Height: num  173 178 NA 160 165 ...
+##  $ M.I   : Factor w/ 2 levels &quot;Imperial&quot;,&quot;Metric&quot;: 2 1 NA 2 2 1 1 2 2 2 ...
+##  $ Age   : num  18.2 17.6 16.9 20.3 23.7 ...</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-3월.html#cb4-1"></a><span class="kw">levels</span>(survey<span class="op">$</span>Smoke)</span></code></pre></div>
+<pre><code>## [1] &quot;Heavy&quot; &quot;Never&quot; &quot;Occas&quot; &quot;Regul&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="년-3월.html#cb6-1"></a>frqtab &lt;-<span class="st"> </span><span class="kw">table</span>(survey<span class="op">$</span>Smoke)</span>
+<span id="cb6-2"><a href="년-3월.html#cb6-2"></a>frqtab</span></code></pre></div>
+<pre><code>## 
+## Heavy Never Occas Regul 
+##    11   189    19    17</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="년-3월.html#cb8-1"></a><span class="kw">class</span>(frqtab)</span></code></pre></div>
+<pre><code>## [1] &quot;table&quot;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="년-3월.html#cb10-1"></a>frqtab[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## Never 
+##   189</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="년-3월.html#cb12-1"></a>frqtab[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
+<pre><code>## Never 
+##   189</code></pre>
+</div>
+<div id="최빈값" class="section level5">
+<h5>최빈값</h5>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="년-3월.html#cb14-1"></a>frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)</span></code></pre></div>
+<pre><code>## 
+## Heavy Never Occas Regul 
+## FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="년-3월.html#cb16-1"></a>frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)]</span></code></pre></div>
+<pre><code>## Never 
+##   189</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="년-3월.html#cb18-1"></a><span class="kw">names</span>(frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)])</span></code></pre></div>
+<pre><code>## [1] &quot;Never&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="년-3월.html#cb20-1"></a><span class="kw">which.max</span>(frqtab)</span></code></pre></div>
+<pre><code>## Never 
+##     2</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="년-3월.html#cb22-1"></a>frqtab[<span class="kw">which.max</span>(frqtab)]</span></code></pre></div>
+<pre><code>## Never 
+##   189</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="년-3월.html#cb24-1"></a><span class="kw">names</span>(frqtab[<span class="kw">which.max</span>(frqtab)])</span></code></pre></div>
+<pre><code>## [1] &quot;Never&quot;</code></pre>
+</div>
+<div id="비율도표" class="section level5">
+<h5>비율도표</h5>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="년-3월.html#cb26-1"></a>frqtab.prop &lt;-<span class="st"> </span><span class="kw">prop.table</span>(frqtab)</span>
+<span id="cb26-2"><a href="년-3월.html#cb26-2"></a>frqtab.prop</span></code></pre></div>
+<pre><code>## 
+##      Heavy      Never      Occas      Regul 
+## 0.04661017 0.80084746 0.08050847 0.07203390</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="년-3월.html#cb28-1"></a>frqtab.prop[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
+<pre><code>##     Never 
+## 0.8008475</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="년-3월.html#cb30-1"></a>frqtab.prop <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##     Heavy     Never     Occas     Regul 
+##  4.661017 80.084746  8.050847  7.203390</code></pre>
 
+</div>
 </div>
 </div>
 </div>
