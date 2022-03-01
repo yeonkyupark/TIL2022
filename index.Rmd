@@ -23,7 +23,7 @@ install.packages("dplyr")
 install.packages("ggplot2")
 install.packages("skimr")
 install.packages("palmerpenguins")
-
+install.packages("MASS")
 ```
 
 
