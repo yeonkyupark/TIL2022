@@ -9,6 +9,7 @@
 ##### 비율 계산
 
 ```{r}
+if(require(MASS)) install.packages("MASS")
 library(MASS)
 
 survey$Smoke=="Never" # 비흡연자에 대한 논리연산
@@ -36,7 +37,9 @@ mean(anorexia$Postwt > anorexia$Prewt)
 ##### 빈도표
 
 ```{r}
+if(require(MASS)) install.packages("MASS")
 library(MASS)
+
 str(survey)
 ```
 
