@@ -1,5 +1,30 @@
 # 2022년 3월 
 
+## TIL20220302
+
+### 데이터 요약
+
+#### 범주형 변수 요약
+
+##### 비율 계산
+
+```{r}
+library(MASS)
+
+survey$Smoke=="Never" # 비흡연자에 대한 논리연산
+mean(survey$Smoke=="Never", na.rm = T) # 비흡연자에 대한 비율
+```
+
+```{r}
+head(anorexia)
+```
+
+```{r}
+anorexia$Postwt > anorexia$Prewt # 치료 후의 몸무게가 치료 전의 몸무게보다 큰가?
+mean(anorexia$Postwt > anorexia$Prewt)
+```
+
+
 ## TIL20220301
 
 ### 데이터 요약
