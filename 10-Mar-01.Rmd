@@ -132,6 +132,33 @@ multtab <- xtabs(~ Improved + Sex + Treatment, data = Arthritis)
 multtab
 ```
 
+```{r}
+ftable(multtab)
+```
+
+```{r}
+ftable(multtab, row.vars = c(2,3))
+```
+
+```{r}
+ftable(Arthritis[c("Improved", "Sex", "Treatment")], row.vars = c(2,3))
+```
+
+```{r}
+margin.table(multtab, 1)
+margin.table(multtab, 2)
+margin.table(multtab, 3)
+```
+
+
+```{r}
+ftable(prop.table(multtab, c(2,3)))
+```
+
+```{r}
+ftable(addmargins(prop.table(multtab, c(2,3))))
+```
+
 ## TIL20220301
 
 ### 데이터 요약
