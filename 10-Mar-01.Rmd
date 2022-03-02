@@ -25,6 +25,39 @@ anorexia$Postwt > anorexia$Prewt # 치료 후의 몸무게가 치료 전의 몸�
 mean(anorexia$Postwt > anorexia$Prewt)
 ```
 
+```{r}
+head(mammals)
+```
+
+```{r}
+# 두뇌의 무게가 2개의 표준편차보다 큰 논리연산식
+abs(mammals$brain - mean(mammals$brain)) > 2*sd(mammals$brain)
+```
+
+```{r}
+mean(abs(mammals$brain - mean(mammals$brain)) > 2*sd(mammals$brain))
+```
+
+```{r}
+head(SP500)
+```
+
+```{r}
+# 수익률이 전일보다 증가한 일자 논리식
+head(diff(SP500) > 0, 10)
+```
+
+```{r}
+mean(diff(SP500) > 0)
+```
+
+```{r}
+if(require(vcd)) install.packages("vcd")
+library(vcd)
+
+str(Arthritis)
+```
+
 
 ## TIL20220301
 
