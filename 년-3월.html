@@ -223,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-3월.html#cb2-1"></a><span class="cf">if</span>(<span class="kw">require</span>(MASS)) <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpB68pv5/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphfRxmj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-3월.html#cb4-1"></a><span class="kw">library</span>(MASS)</span>
 <span id="cb4-2"><a href="년-3월.html#cb4-2"></a></span>
 <span id="cb4-3"><a href="년-3월.html#cb4-3"></a>survey<span class="op">$</span>Smoke<span class="op">==</span><span class="st">&quot;Never&quot;</span> <span class="co"># 비흡연자에 대한 논리연산</span></span></code></pre></div>
@@ -294,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="년-3월.html#cb26-1"></a><span class="cf">if</span>(<span class="kw">require</span>(vcd)) <span class="kw">install.packages</span>(<span class="st">&quot;vcd&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpB68pv5/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphfRxmj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="년-3월.html#cb28-1"></a><span class="kw">library</span>(vcd)</span>
 <span id="cb28-2"><a href="년-3월.html#cb28-2"></a></span>
 <span id="cb28-3"><a href="년-3월.html#cb28-3"></a><span class="kw">str</span>(Arthritis) <span class="co"># 류마티스 관절염 치료 효과</span></span></code></pre></div>
@@ -381,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="년-3월.html#cb58-1"></a><span class="cf">if</span>(<span class="kw">require</span>(gmodels)) <span class="kw">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpB68pv5/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphfRxmj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="년-3월.html#cb60-1"></a><span class="kw">library</span>(gmodels)</span>
 <span id="cb60-2"><a href="년-3월.html#cb60-2"></a><span class="kw">CrossTable</span>(Arthritis<span class="op">$</span>Improved, Arthritis<span class="op">$</span>Treatment,</span>
 <span id="cb60-3"><a href="년-3월.html#cb60-3"></a>           <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Improved&quot;</span>, <span class="st">&quot;Treatment&quot;</span>))</span></code></pre></div>
@@ -460,6 +460,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   None        6    7
 ##   Some        5    2
 ##   Marked     16    5</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="년-3월.html#cb66-1"></a><span class="kw">ftable</span>(multtab)</span></code></pre></div>
+<pre><code>##                 Treatment Placebo Treated
+## Improved Sex                             
+## None     Female                19       6
+##          Male                  10       7
+## Some     Female                 7       5
+##          Male                   0       2
+## Marked   Female                 6      16
+##          Male                   1       5</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="년-3월.html#cb68-1"></a><span class="kw">ftable</span>(multtab, <span class="dt">row.vars =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>##                  Improved None Some Marked
+## Sex    Treatment                          
+## Female Placebo              19    7      6
+##        Treated               6    5     16
+## Male   Placebo              10    0      1
+##        Treated               7    2      5</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="년-3월.html#cb70-1"></a><span class="kw">ftable</span>(Arthritis[<span class="kw">c</span>(<span class="st">&quot;Improved&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Treatment&quot;</span>)], <span class="dt">row.vars =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>##                  Improved None Some Marked
+## Sex    Treatment                          
+## Female Placebo              19    7      6
+##        Treated               6    5     16
+## Male   Placebo              10    0      1
+##        Treated               7    2      5</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="년-3월.html#cb72-1"></a><span class="kw">margin.table</span>(multtab, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Improved
+##   None   Some Marked 
+##     42     14     28</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="년-3월.html#cb74-1"></a><span class="kw">margin.table</span>(multtab, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Sex
+## Female   Male 
+##     59     25</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="년-3월.html#cb76-1"></a><span class="kw">margin.table</span>(multtab, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Treatment
+## Placebo Treated 
+##      43      41</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="년-3월.html#cb78-1"></a><span class="kw">ftable</span>(<span class="kw">prop.table</span>(multtab, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code></pre></div>
+<pre><code>##                 Treatment    Placebo    Treated
+## Improved Sex                                   
+## None     Female           0.59375000 0.22222222
+##          Male             0.90909091 0.50000000
+## Some     Female           0.21875000 0.18518519
+##          Male             0.00000000 0.14285714
+## Marked   Female           0.18750000 0.59259259
+##          Male             0.09090909 0.35714286</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="년-3월.html#cb80-1"></a><span class="kw">ftable</span>(<span class="kw">addmargins</span>(<span class="kw">prop.table</span>(multtab, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))))</span></code></pre></div>
+<pre><code>##                 Treatment    Placebo    Treated        Sum
+## Improved Sex                                              
+## None     Female           0.59375000 0.22222222 0.81597222
+##          Male             0.90909091 0.50000000 1.40909091
+##          Sum              1.50284091 0.72222222 2.22506313
+## Some     Female           0.21875000 0.18518519 0.40393519
+##          Male             0.00000000 0.14285714 0.14285714
+##          Sum              0.21875000 0.32804233 0.54679233
+## Marked   Female           0.18750000 0.59259259 0.78009259
+##          Male             0.09090909 0.35714286 0.44805195
+##          Sum              0.27840909 0.94973545 1.22814454
+## Sum      Female           1.00000000 1.00000000 2.00000000
+##          Male             1.00000000 1.00000000 2.00000000
+##          Sum              2.00000000 2.00000000 4.00000000</code></pre>
 </div>
 </div>
 </div>
@@ -473,13 +532,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>기술통계와 추론통계, 대부분은 모집단을 설명하는 추론통계이지만 모집단을 잘 설명하기 위해서는 표본집단을 잘 이해사고 적절한 통계기법을 선택하는 것이 중요하다.</p>
 <div id="빈도표" class="section level5">
 <h5>빈도표</h5>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="년-3월.html#cb66-1"></a><span class="cf">if</span>(<span class="kw">require</span>(MASS)) <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="년-3월.html#cb82-1"></a><span class="cf">if</span>(<span class="kw">require</span>(MASS)) <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpB68pv5/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="년-3월.html#cb68-1"></a><span class="kw">library</span>(MASS)</span>
-<span id="cb68-2"><a href="년-3월.html#cb68-2"></a></span>
-<span id="cb68-3"><a href="년-3월.html#cb68-3"></a><span class="kw">str</span>(survey)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphfRxmj/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="년-3월.html#cb84-1"></a><span class="kw">library</span>(MASS)</span>
+<span id="cb84-2"><a href="년-3월.html#cb84-2"></a></span>
+<span id="cb84-3"><a href="년-3월.html#cb84-3"></a><span class="kw">str</span>(survey)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    237 obs. of  12 variables:
 ##  $ Sex   : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 2 1 2 1 2 2 ...
 ##  $ Wr.Hnd: num  18.5 19.5 18 18.8 20 18 17.7 17 20 18.5 ...
@@ -493,53 +552,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Height: num  173 178 NA 160 165 ...
 ##  $ M.I   : Factor w/ 2 levels &quot;Imperial&quot;,&quot;Metric&quot;: 2 1 NA 2 2 1 1 2 2 2 ...
 ##  $ Age   : num  18.2 17.6 16.9 20.3 23.7 ...</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="년-3월.html#cb70-1"></a><span class="kw">levels</span>(survey<span class="op">$</span>Smoke)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="년-3월.html#cb86-1"></a><span class="kw">levels</span>(survey<span class="op">$</span>Smoke)</span></code></pre></div>
 <pre><code>## [1] &quot;Heavy&quot; &quot;Never&quot; &quot;Occas&quot; &quot;Regul&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="년-3월.html#cb72-1"></a>frqtab &lt;-<span class="st"> </span><span class="kw">table</span>(survey<span class="op">$</span>Smoke)</span>
-<span id="cb72-2"><a href="년-3월.html#cb72-2"></a>frqtab</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="년-3월.html#cb88-1"></a>frqtab &lt;-<span class="st"> </span><span class="kw">table</span>(survey<span class="op">$</span>Smoke)</span>
+<span id="cb88-2"><a href="년-3월.html#cb88-2"></a>frqtab</span></code></pre></div>
 <pre><code>## 
 ## Heavy Never Occas Regul 
 ##    11   189    19    17</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="년-3월.html#cb74-1"></a><span class="kw">class</span>(frqtab)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="년-3월.html#cb90-1"></a><span class="kw">class</span>(frqtab)</span></code></pre></div>
 <pre><code>## [1] &quot;table&quot;</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="년-3월.html#cb76-1"></a>frqtab[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="년-3월.html#cb92-1"></a>frqtab[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## Never 
 ##   189</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="년-3월.html#cb78-1"></a>frqtab[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="년-3월.html#cb94-1"></a>frqtab[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
 <pre><code>## Never 
 ##   189</code></pre>
 </div>
 <div id="최빈값" class="section level5">
 <h5>최빈값</h5>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="년-3월.html#cb80-1"></a>frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="년-3월.html#cb96-1"></a>frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)</span></code></pre></div>
 <pre><code>## 
 ## Heavy Never Occas Regul 
 ## FALSE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="년-3월.html#cb82-1"></a>frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)]</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="년-3월.html#cb98-1"></a>frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)]</span></code></pre></div>
 <pre><code>## Never 
 ##   189</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="년-3월.html#cb84-1"></a><span class="kw">names</span>(frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)])</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="년-3월.html#cb100-1"></a><span class="kw">names</span>(frqtab[frqtab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(frqtab)])</span></code></pre></div>
 <pre><code>## [1] &quot;Never&quot;</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="년-3월.html#cb86-1"></a><span class="kw">which.max</span>(frqtab)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="년-3월.html#cb102-1"></a><span class="kw">which.max</span>(frqtab)</span></code></pre></div>
 <pre><code>## Never 
 ##     2</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="년-3월.html#cb88-1"></a>frqtab[<span class="kw">which.max</span>(frqtab)]</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="년-3월.html#cb104-1"></a>frqtab[<span class="kw">which.max</span>(frqtab)]</span></code></pre></div>
 <pre><code>## Never 
 ##   189</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="년-3월.html#cb90-1"></a><span class="kw">names</span>(frqtab[<span class="kw">which.max</span>(frqtab)])</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="년-3월.html#cb106-1"></a><span class="kw">names</span>(frqtab[<span class="kw">which.max</span>(frqtab)])</span></code></pre></div>
 <pre><code>## [1] &quot;Never&quot;</code></pre>
 </div>
 <div id="비율도표" class="section level5">
 <h5>비율도표</h5>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="년-3월.html#cb92-1"></a>frqtab.prop &lt;-<span class="st"> </span><span class="kw">prop.table</span>(frqtab)</span>
-<span id="cb92-2"><a href="년-3월.html#cb92-2"></a>frqtab.prop</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="년-3월.html#cb108-1"></a>frqtab.prop &lt;-<span class="st"> </span><span class="kw">prop.table</span>(frqtab)</span>
+<span id="cb108-2"><a href="년-3월.html#cb108-2"></a>frqtab.prop</span></code></pre></div>
 <pre><code>## 
 ##      Heavy      Never      Occas      Regul 
 ## 0.04661017 0.80084746 0.08050847 0.07203390</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="년-3월.html#cb94-1"></a>frqtab.prop[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="년-3월.html#cb110-1"></a>frqtab.prop[<span class="st">&quot;Never&quot;</span>]</span></code></pre></div>
 <pre><code>##     Never 
 ## 0.8008475</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="년-3월.html#cb96-1"></a>frqtab.prop <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="년-3월.html#cb112-1"></a>frqtab.prop <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span></code></pre></div>
 <pre><code>## 
 ##     Heavy     Never     Occas     Regul 
 ##  4.661017 80.084746  8.050847  7.203390</code></pre>
