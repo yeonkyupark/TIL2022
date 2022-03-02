@@ -55,9 +55,82 @@ mean(diff(SP500) > 0)
 if(require(vcd)) install.packages("vcd")
 library(vcd)
 
-str(Arthritis)
+str(Arthritis) # 류마티스 관절염 치료 효과
 ```
 
+```{r}
+levels(Arthritis$Treatment)
+levels(Arthritis$Improved)
+```
+
+```{r}
+crosstab <- table(Arthritis$Improved, Arthritis$Treatment,
+                  dnn=c("Improved", "Treatment"))
+crosstab
+```
+
+```{r}
+crosstab["Marked", "Treated"]
+```
+
+```{r}
+crosstab <- xtabs(~ Improved + Treatment, data = Arthritis)
+crosstab
+```
+
+```{r}
+margin.table(crosstab, margin = 1) # 행
+```
+
+```{r}
+margin.table(crosstab, margin = 2) # 열
+```
+
+```{r}
+prop.table(crosstab, margin = 1) # 행의 합이 1
+```
+
+
+```{r}
+prop.table(crosstab, margin = 2) # 열의 합이 1
+```
+
+```{r}
+prop.table(crosstab)
+```
+
+```{r}
+addmargins(crosstab, margin = 1) # 합의 행을 생성
+```
+
+```{r}
+addmargins(crosstab, margin = 2) # 합의 열을 생성
+```
+
+```{r}
+addmargins(crosstab)
+```
+
+```{r}
+addmargins(prop.table(crosstab, margin = 2), 1)
+```
+
+```{r}
+if(require(gmodels)) install.packages("gmodels")
+library(gmodels)
+CrossTable(Arthritis$Improved, Arthritis$Treatment,
+           dnn=c("Improved", "Treatment"))
+```
+
+```{r}
+multtab <- table(Arthritis$Improved, Arthritis$Sex, Arthritis$Treatment)
+multtab
+```
+
+```{r}
+multtab <- xtabs(~ Improved + Sex + Treatment, data = Arthritis)
+multtab
+```
 
 ## TIL20220301
 

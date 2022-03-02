@@ -25,6 +25,7 @@ install.packages("skimr")
 install.packages("palmerpenguins")
 install.packages("MASS")
 install.packages("vcd")
+install.packages("gmodels")
 ```
 
 
