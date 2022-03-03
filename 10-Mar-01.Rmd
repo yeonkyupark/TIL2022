@@ -93,6 +93,24 @@ lapply(penguins.list, summary)
 * 분산(variance)
 * 표준편차(standard deviation)
 
+```{r}
+range(survey$Pulse, na.rm = T)
+```
+
+```{r}
+var(survey$Pulse, na.rm = T)
+```
+
+```{r}
+sd(survey$Pulse, na.rm = T)
+```
+
+```{r}
+if(require(pastecs)) install.packages("pastecs")
+library(pastecs)
+stat.desc(mtcars[c("mpg", "hp", "wt")])
+```
+
 ## TIL20220302
 
 ### 데이터 요약
