@@ -222,11 +222,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>데이터 요약<a href="년-3월.html#데이터-요약" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="연속형-변수-요약" class="section level4 hasAnchor">
 <h4>연속형 변수 요약<a href="년-3월.html#연속형-변수-요약" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div id="중심경향-지표-measures-of-centeral-tendency" class="section level5 hasAnchor">
-<h5>중심경향 지표 (measures of centeral tendency)<a href="년-3월.html#중심경향-지표-measures-of-centeral-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="중심경향-지표" class="section level5 hasAnchor">
+<h5>중심경향 지표<a href="년-3월.html#중심경향-지표" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>중심경향 지표(measures of central tendency)는 데이터가 특정 값을 중심으로 집중되어 있는 정도를 뜻한다.</p>
+<ul>
+<li>중위수(median)</li>
+<li>백분위수(quantile, percentile)</li>
+<li>사분위수(quartile)</li>
+<li>평균(mean)</li>
+</ul>
 </div>
-<div id="변동성-지표-measures-of-variability" class="section level5 hasAnchor">
-<h5>변동성 지표 (measures of variability)<a href="년-3월.html#변동성-지표-measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="변동성-지표" class="section level5 hasAnchor">
+<h5>변동성 지표<a href="년-3월.html#변동성-지표" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>변동성 지표(measures of variability)는 데이터의 산포 정도를 뜻한다.</p>
+<ul>
+<li>범위(range)</li>
+<li>사분위 범위(interquartile range)</li>
+<li>분산(variance)</li>
+<li>표준편차(standard deviation)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -242,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="년-3월.html#cb2-1"></a><span class="cf">if</span>(<span class="kw">require</span>(MASS)) <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp1QGHi6/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprTyeff/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-3월.html#cb4-1"></a><span class="kw">library</span>(MASS)</span>
 <span id="cb4-2"><a href="년-3월.html#cb4-2"></a></span>
 <span id="cb4-3"><a href="년-3월.html#cb4-3"></a>survey<span class="op">$</span>Smoke<span class="op">==</span><span class="st">&quot;Never&quot;</span> <span class="co"># 비흡연자에 대한 논리연산</span></span></code></pre></div>
@@ -313,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="년-3월.html#cb26-1"></a><span class="cf">if</span>(<span class="kw">require</span>(vcd)) <span class="kw">install.packages</span>(<span class="st">&quot;vcd&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp1QGHi6/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprTyeff/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="년-3월.html#cb28-1"></a><span class="kw">library</span>(vcd)</span>
 <span id="cb28-2"><a href="년-3월.html#cb28-2"></a></span>
 <span id="cb28-3"><a href="년-3월.html#cb28-3"></a><span class="kw">str</span>(Arthritis) <span class="co"># 류마티스 관절염 치료 효과</span></span></code></pre></div>
@@ -400,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="년-3월.html#cb58-1"></a><span class="cf">if</span>(<span class="kw">require</span>(gmodels)) <span class="kw">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp1QGHi6/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprTyeff/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="년-3월.html#cb60-1"></a><span class="kw">library</span>(gmodels)</span>
 <span id="cb60-2"><a href="년-3월.html#cb60-2"></a><span class="kw">CrossTable</span>(Arthritis<span class="op">$</span>Improved, Arthritis<span class="op">$</span>Treatment,</span>
 <span id="cb60-3"><a href="년-3월.html#cb60-3"></a>           <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Improved&quot;</span>, <span class="st">&quot;Treatment&quot;</span>))</span></code></pre></div>
@@ -554,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="년-3월.html#cb82-1"></a><span class="cf">if</span>(<span class="kw">require</span>(MASS)) <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp1QGHi6/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprTyeff/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="년-3월.html#cb84-1"></a><span class="kw">library</span>(MASS)</span>
 <span id="cb84-2"><a href="년-3월.html#cb84-2"></a></span>
 <span id="cb84-3"><a href="년-3월.html#cb84-3"></a><span class="kw">str</span>(survey)</span></code></pre></div>
