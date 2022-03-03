@@ -1,5 +1,15 @@
 # 2022년 3월 
 
+## TIL20220303
+
+### 데이터 요약
+
+#### 연속형 변수 요약
+
+##### 중심경향 지표 (measures of centeral tendency)
+
+##### 변동성 지표 (measures of variability)
+
 ## TIL20220302
 
 ### 데이터 요약
