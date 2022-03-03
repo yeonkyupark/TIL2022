@@ -119,8 +119,45 @@ library(psych)
 describe(mtcars[c("mpg", "hp", "wt")])
 ```
 
-```{r}
+집단별 기술 통계량을 계산한다.
 
+```{r}
+levels(survey$Exer)
+```
+
+```{r}
+tapply(survey$Pulse, survey$Exer, mean, na.rm = T)
+```
+
+```{r}
+tapply(survey$Pulse, list(survey$Exer, survey$Sex), mean, na.rm = T)
+```
+
+```{r}
+aggregate(survey$Pulse, list(Exercise=survey$Exer, Sex=survey$Sex), mean, na.rm = T)
+```
+```{r}
+aggregate(survey[c("Pulse", "Age")],
+          list(Exercise=survey$Exer, Sex=survey$Sex), 
+          mean, na.rm = T)
+```
+
+aggregate()는 FUN 인수에 사용자 정의 함수를 사용할 수 있다.
+
+```{r}
+myStats <- function(x, na.rm = F) {
+  if(na.rm) x <- x[!is.na(x)]
+  n <- length(x)
+  mean <- mean(x)
+  sd <- sd(x)
+  skew <- sum((x-mean)^3/sd^3)/n
+  kurt <- sum((x-mean)^4/sd^4)/n - 3
+  return(c(n=n, mean=mean, sd=sd, skewness=skew, kurtosis=kurt))
+}
+```
+
+```{r}
+aggregate(survey$Pulse, list(Exercise=survey$Exer, Sex=survey$Sex), myStats, na.rm = T)
 ```
 
 
