@@ -15,7 +15,7 @@
 * 사분위수(quartile)
 * 평균(mean)
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(MASS)) install.packages("MASS")
 library(MASS) # for survey dataset
 ```
@@ -55,9 +55,13 @@ mean(survey$Pulse <= 80, na.rm = T)
 mean(survey$Pulse, na.rm = T)
 ```
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(palmerpenguins)) install.packages("palmerpenguins")
 library(palmerpenguins)
+```
+
+
+```{r message=TRUE, warning=TRUE}
 summary(penguins$body_mass_g)
 ```
 
@@ -107,15 +111,23 @@ sd(survey$Pulse, na.rm = T)
 
 R에서는 다양한 기술 통계량을 계산하는 함수들을 제공한다.
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(pastecs)) install.packages("pastecs")
 library(pastecs)
+```
+
+
+```{r}
 stat.desc(mtcars[c("mpg", "hp", "wt")])
 ```
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(psych)) install.packages("psych")
 library(psych)
+```
+
+
+```{r}
 describe(mtcars[c("mpg", "hp", "wt")])
 ```
 
@@ -190,10 +202,13 @@ describeBy(survey[c("Pulse", "Age")], group = list(Exercise=survey$Exer))
 
 ##### 비율 계산
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(MASS)) install.packages("MASS")
 library(MASS)
+```
 
+
+```{r}
 survey$Smoke=="Never" # 비흡연자에 대한 논리연산
 mean(survey$Smoke=="Never", na.rm = T) # 비흡연자에 대한 비율
 ```
@@ -233,10 +248,13 @@ head(diff(SP500) > 0, 10)
 mean(diff(SP500) > 0)
 ```
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(vcd)) install.packages("vcd")
 library(vcd)
+```
 
+
+```{r}
 str(Arthritis) # 류마티스 관절염 치료 효과
 ```
 
@@ -297,9 +315,13 @@ addmargins(crosstab)
 addmargins(prop.table(crosstab, margin = 2), 1)
 ```
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(gmodels)) install.packages("gmodels")
 library(gmodels)
+```
+
+
+```{r}
 CrossTable(Arthritis$Improved, Arthritis$Treatment,
            dnn=c("Improved", "Treatment"))
 ```
@@ -351,10 +373,13 @@ ftable(addmargins(prop.table(multtab, c(2,3))))
 
 ##### 빈도표
 
-```{r}
+```{r message=TRUE, warning=TRUE}
 if(require(MASS)) install.packages("MASS")
 library(MASS)
+```
 
+
+```{r}
 str(survey)
 ```
 
