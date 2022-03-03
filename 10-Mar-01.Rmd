@@ -15,7 +15,76 @@
 * 사분위수(quartile)
 * 평균(mean)
 
-##### 변동성 지표 
+```{r}
+if(require(MASS)) install.packages("MASS")
+library(MASS) # for survey dataset
+```
+
+```{r}
+median(survey$Pulse) # 결측, 즉 NA 값에 따른 결과
+```
+
+```{r}
+median(survey$Pulse, na.rm=T) # 결측값 제거 후 계산산
+```
+
+```{r}
+quantile(survey$Pulse, probs = 0.5, na.rm = T) # 중위수
+```
+
+```{r}
+quantile(survey$Pulse, probs = c(0.05, 0.95), na.rm = T)
+```
+
+```{r}
+# Q1, ... Q4
+quantile(survey$Pulse, na.rm = T)
+```
+
+```{r}
+quantile(survey$Pulse, seq(0,1,0.25), na.rm = T)
+```
+
+```{r}
+# 주어진 값으로 백분위수 계산
+survey$Pulse <=80 # 80보다 작거나 같은 맥박수수
+mean(survey$Pulse <= 80, na.rm = T)
+```
+
+```{r}
+mean(survey$Pulse, na.rm = T)
+```
+
+```{r}
+if(require(palmerpenguins)) install.packages("palmerpenguins")
+library(palmerpenguins)
+summary(penguins$body_mass_g)
+```
+
+```{r}
+summary(penguins$species)
+```
+
+```{r}
+summary(as.character(penguins$species))
+```
+
+```{r}
+summary(penguins)
+```
+
+```{r}
+# list 형태를 인자로 입력하는 경우
+penguins.list <- as.list(penguins)
+summary(penguins.list)
+```
+
+```{r}
+# lapply()를 통해 요약통계량 계산
+lapply(penguins.list, summary)
+```
+
+### 변동성 지표 
 
 변동성 지표(measures of variability)는 데이터의 산포 정도를 뜻한다.
 
