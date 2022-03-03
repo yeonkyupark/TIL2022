@@ -6,9 +6,23 @@
 
 #### 연속형 변수 요약
 
-##### 중심경향 지표 (measures of centeral tendency)
+##### 중심경향 지표 
 
-##### 변동성 지표 (measures of variability)
+중심경향 지표(measures of central tendency)는 데이터가 특정 값을 중심으로 집중되어 있는 정도를 뜻한다.
+
+* 중위수(median)
+* 백분위수(quantile, percentile)
+* 사분위수(quartile)
+* 평균(mean)
+
+##### 변동성 지표 
+
+변동성 지표(measures of variability)는 데이터의 산포 정도를 뜻한다.
+
+* 범위(range)
+* 사분위 범위(interquartile range)
+* 분산(variance)
+* 표준편차(standard deviation)
 
 ## TIL20220302
 
