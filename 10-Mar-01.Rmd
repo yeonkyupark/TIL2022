@@ -160,6 +160,27 @@ myStats <- function(x, na.rm = F) {
 aggregate(survey$Pulse, list(Exercise=survey$Exer, Sex=survey$Sex), myStats, na.rm = T)
 ```
 
+```{r}
+by(survey[c("Pulse", "Age")], 
+   list(Exercise=survey$Exer, Sex=survey$Sex), 
+   summary)
+```
+
+```{r}
+aggregate(survey[c("Pulse", "Age")], 
+   list(Exercise=survey$Exer, Sex=survey$Sex), 
+   summary)
+```
+
+```{r}
+by(survey[c("Pulse", "Age")], 
+   list(Exercise=survey$Exer, Sex=survey$Sex), 
+   function(x) sapply(x, myStats, na.rm=T))
+```
+
+```{r}
+describeBy(survey[c("Pulse", "Age")], group = list(Exercise=survey$Exer))
+```
 
 ## TIL20220302
 
