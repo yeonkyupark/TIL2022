@@ -105,11 +105,24 @@ var(survey$Pulse, na.rm = T)
 sd(survey$Pulse, na.rm = T)
 ```
 
+R에서는 다양한 기술 통계량을 계산하는 함수들을 제공한다.
+
 ```{r}
 if(require(pastecs)) install.packages("pastecs")
 library(pastecs)
 stat.desc(mtcars[c("mpg", "hp", "wt")])
 ```
+
+```{r}
+if(require(psych)) install.packages("psych")
+library(psych)
+describe(mtcars[c("mpg", "hp", "wt")])
+```
+
+```{r}
+
+```
+
 
 ## TIL20220302
 

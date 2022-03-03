@@ -26,7 +26,8 @@ install.packages("palmerpenguins")
 install.packages("MASS")
 install.packages("vcd")
 install.packages("gmodels")
-install.packages("pastesc")
+install.packages("pastecs")
+install.packages("psych")
 ```
 
 
