@@ -1,15 +1,13 @@
-# 2022년 3월 
+# 2022년 3월
 
 ## TIL20220304
 
 ### 가설검정
 
-## TIL20220303
+**가설의 종류**
 
-**가설의 종류  **
-
-* 대립가설(alternative hypothesis), 모집단에 대한 새로운 주장
-* 귀무가설(null hypothesis), 기존의 주장
+- 대립가설(alternative hypothesis), 모집단에 대한 새로운 주장
+- 귀무가설(null hypothesis), 기존의 주장
 
 통계적 검정(statistical test) 또는 가설검정(hypothesis test)이란 표본 데이터를 기반으로 모집단에 대한 새로운 주장의 옮고 그름을 추론하는 과정을 말한다.
 
@@ -18,27 +16,31 @@
 귀무가설이 사실이라는 전제하에서 수행되며 일반적으로 다음과 같은 절차를 따른다.
 
 1. 표본으로부터 검정하고자 하는 **검정통계량(test statistic)** 계산
-1. 검정통계량과 그 **확률분포**로부터 p-값(p-value) 계산
-  * 귀무가설이 사실이라는 가정하에서 관ㅊㄱ한 통계량과 같거나 그보다 더 극단적인 값이 발생할 확률을 의미
-  * 유의확률(significance probability)이라고도 함
-1. p-값이 매우 작으면 귀무가설 기각
-  * 판단의 기준으로 사용하는 5% 또는 1%의 확률을 유의수준(significance level)이라고 함
-  * 표본으로부터 관측된 결과(즉 계산된 통계량)가 나타날 가능성이 5% 미만 또는 1% 미만이 되는 귀무가설을 기각하면 이를 통계적으로 유의하다(statistically significant)라고 표현함 
-  
-  
+2. 검정통계량과 그 **확률분포**로부터 p-값(p-value) 계산
+  - 귀무가설이 사실이라는 가정하에서 관측한 통계량과 같거나 그보다 더 극단적인 값이 발생할 확률을 의미
+  - 유의확률(significance probability)이라고도 함
+3. p-값이 매우 작으면 귀무가설 기각
+  - 판단의 기준으로 사용하는 5% 또는 1%의 확률을 유의수준(significance level)이라고 함
+  - 표본으로부터 관측된 결과(즉 계산된 통계량)가 나타날 가능성이 5% 미만 또는 1% 미만이 되는 귀무가설을 기각하면 이를 통계적으로 유의하다(statistically significant)라고 표현함
+
+**가설검정과 검정력**
+
+[](!http://www.ktword.co.kr/img_data/5094_2.JPG)출처^[<http://www.ktword.co.kr/img_data/5094_2.JPG>]
+
+## TIL20220303
 
 ### 데이터 요약
 
 #### 연속형 변수 요약
 
-##### 중심경향 지표 
+##### 중심경향 지표
 
 중심경향 지표(measures of central tendency)는 데이터가 특정 값을 중심으로 집중되어 있는 정도를 뜻한다.
 
-* 중위수(median)
-* 백분위수(quantile, percentile)
-* 사분위수(quartile)
-* 평균(mean)
+-   중위수(median)
+-   백분위수(quantile, percentile)
+-   사분위수(quartile)
+-   평균(mean)
 
 ```{r message=TRUE, warning=TRUE}
 if(!require(MASS)) install.packages("MASS")
@@ -85,7 +87,6 @@ if(!require(palmerpenguins)) install.packages("palmerpenguins")
 library(palmerpenguins)
 ```
 
-
 ```{r message=TRUE, warning=TRUE}
 summary(penguins$body_mass_g)
 ```
@@ -113,14 +114,14 @@ summary(penguins.list)
 lapply(penguins.list, summary)
 ```
 
-### 변동성 지표 
+### 변동성 지표
 
 변동성 지표(measures of variability)는 데이터의 산포 정도를 뜻한다.
 
-* 범위(range)
-* 사분위 범위(interquartile range)
-* 분산(variance)
-* 표준편차(standard deviation)
+-   범위(range)
+-   사분위 범위(interquartile range)
+-   분산(variance)
+-   표준편차(standard deviation)
 
 ```{r}
 range(survey$Pulse, na.rm = T)
@@ -141,7 +142,6 @@ if(!require(pastecs)) install.packages("pastecs")
 library(pastecs)
 ```
 
-
 ```{r}
 stat.desc(mtcars[c("mpg", "hp", "wt")])
 ```
@@ -150,7 +150,6 @@ stat.desc(mtcars[c("mpg", "hp", "wt")])
 if(!require(psych)) install.packages("psych")
 library(psych)
 ```
-
 
 ```{r}
 describe(mtcars[c("mpg", "hp", "wt")])
@@ -173,6 +172,7 @@ tapply(survey$Pulse, list(survey$Exer, survey$Sex), mean, na.rm = T)
 ```{r}
 aggregate(survey$Pulse, list(Exercise=survey$Exer, Sex=survey$Sex), mean, na.rm = T)
 ```
+
 ```{r}
 aggregate(survey[c("Pulse", "Age")],
           list(Exercise=survey$Exer, Sex=survey$Sex), 
@@ -232,7 +232,6 @@ if(!require(MASS)) install.packages("MASS")
 library(MASS)
 ```
 
-
 ```{r}
 survey$Smoke=="Never" # 비흡연자에 대한 논리연산
 mean(survey$Smoke=="Never", na.rm = T) # 비흡연자에 대한 비율
@@ -278,7 +277,6 @@ if(!require(vcd)) install.packages("vcd")
 library(vcd)
 ```
 
-
 ```{r}
 str(Arthritis) # 류마티스 관절염 치료 효과
 ```
@@ -315,7 +313,6 @@ margin.table(crosstab, margin = 2) # 열
 prop.table(crosstab, margin = 1) # 행의 합이 1
 ```
 
-
 ```{r}
 prop.table(crosstab, margin = 2) # 열의 합이 1
 ```
@@ -344,7 +341,6 @@ addmargins(prop.table(crosstab, margin = 2), 1)
 if(!require(gmodels)) install.packages("gmodels")
 library(gmodels)
 ```
-
 
 ```{r}
 CrossTable(Arthritis$Improved, Arthritis$Treatment,
@@ -379,7 +375,6 @@ margin.table(multtab, 2)
 margin.table(multtab, 3)
 ```
 
-
 ```{r}
 ftable(prop.table(multtab, c(2,3)))
 ```
@@ -394,7 +389,7 @@ ftable(addmargins(prop.table(multtab, c(2,3))))
 
 #### 범주형 변수 요약
 
-기술통계와 추론통계, 대부분은 모집단을 설명하는 추론통계이지만 모집단을 잘 설명하기 위해서는 표본집단을 잘 이해사고 적절한 통계기법을 선택하는 것이 중요하다.  
+기술통계와 추론통계, 대부분은 모집단을 설명하는 추론통계이지만 모집단을 잘 설명하기 위해서는 표본집단을 잘 이해사고 적절한 통계기법을 선택하는 것이 중요하다.
 
 ##### 빈도표
 
@@ -402,7 +397,6 @@ ftable(addmargins(prop.table(multtab, c(2,3))))
 if(!require(MASS)) install.packages("MASS")
 library(MASS)
 ```
-
 
 ```{r}
 str(survey)
@@ -469,4 +463,3 @@ frqtab.prop["Never"]
 ```{r}
 frqtab.prop * 100
 ```
-
