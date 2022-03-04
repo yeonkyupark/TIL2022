@@ -31,6 +31,27 @@
 
 ![](https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png)출처^[https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png]  
 
+**이항분포(binomial distribution)**
+
+대표적인 이산확률분포(discrete probability distribution)로서 매회 어떤 사건이 일어날 확률이 동일한 독립 시행의 경우에 있어서 이 사건이 일어나는 횟수가 만들어 내는 분포이다. 예를 들면 동전 던지기로 동전을 일정 횟수 반복하여 던지는 실험에서 매 시행시마다 숫자면이 나타날 확률이 1/2이라고 할 때 숫자면이 나타나는 횟수는 이항분포를 따른다고 할 수 있다.  
+
+```{r}
+dbinom(7, 10, 0.5)  # 10번 던져 숫자면이 7번 나타날 확률
+```
+
+```{r}
+pbinom(7, 10, 0.5)  # 10번 던져 숫자면이 7번 이하가 나타날 확률
+```
+
+누적확률은 밀도함수의 합으로 계산이 가능하다.
+
+```{r}
+sum(dbinom(c(0:7), 10, 0.5)) # 0번, 1번, ..., 7번 나타날 확률의 합
+```
+
+```{r}
+pbinom(7, 10, 0.5, lower.tail = F) # 1 - pbinom(7, 10, 0.5)
+```
 
 
 ## TIL20220303
