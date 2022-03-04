@@ -41,7 +41,7 @@
 * 평균(mean)
 
 ```{r message=TRUE, warning=TRUE}
-if(require(MASS)) install.packages("MASS")
+if(!require(MASS)) install.packages("MASS")
 library(MASS) # for survey dataset
 ```
 
@@ -81,7 +81,7 @@ mean(survey$Pulse, na.rm = T)
 ```
 
 ```{r message=TRUE, warning=TRUE}
-if(require(palmerpenguins)) install.packages("palmerpenguins")
+if(!require(palmerpenguins)) install.packages("palmerpenguins")
 library(palmerpenguins)
 ```
 
@@ -137,7 +137,7 @@ sd(survey$Pulse, na.rm = T)
 R에서는 다양한 기술 통계량을 계산하는 함수들을 제공한다.
 
 ```{r message=TRUE, warning=TRUE}
-if(require(pastecs)) install.packages("pastecs")
+if(!require(pastecs)) install.packages("pastecs")
 library(pastecs)
 ```
 
@@ -147,7 +147,7 @@ stat.desc(mtcars[c("mpg", "hp", "wt")])
 ```
 
 ```{r message=TRUE, warning=TRUE}
-if(require(psych)) install.packages("psych")
+if(!require(psych)) install.packages("psych")
 library(psych)
 ```
 
@@ -228,7 +228,7 @@ describeBy(survey[c("Pulse", "Age")], group = list(Exercise=survey$Exer))
 ##### 비율 계산
 
 ```{r message=TRUE, warning=TRUE}
-if(require(MASS)) install.packages("MASS")
+if(!require(MASS)) install.packages("MASS")
 library(MASS)
 ```
 
@@ -274,7 +274,7 @@ mean(diff(SP500) > 0)
 ```
 
 ```{r message=TRUE, warning=TRUE}
-if(require(vcd)) install.packages("vcd")
+if(!require(vcd)) install.packages("vcd")
 library(vcd)
 ```
 
@@ -341,7 +341,7 @@ addmargins(prop.table(crosstab, margin = 2), 1)
 ```
 
 ```{r message=TRUE, warning=TRUE}
-if(require(gmodels)) install.packages("gmodels")
+if(!require(gmodels)) install.packages("gmodels")
 library(gmodels)
 ```
 
@@ -399,7 +399,7 @@ ftable(addmargins(prop.table(multtab, c(2,3))))
 ##### 빈도표
 
 ```{r message=TRUE, warning=TRUE}
-if(require(MASS)) install.packages("MASS")
+if(!require(MASS)) install.packages("MASS")
 library(MASS)
 ```
 
