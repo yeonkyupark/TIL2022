@@ -237,8 +237,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>가설검정 절차</strong></p>
 <p>귀무가설이 사실이라는 전제하에서 수행되며 일반적으로 다음과 같은 절차를 따른다.</p>
 <ol style="list-style-type: decimal">
-<li>표본으로부터 검정하고자 하는 검정통계량(test statistic) 계산</li>
-<li>검정통계량과 그 확률분포로부터 p-값(p-value) 계산</li>
+<li>표본으로부터 검정하고자 하는 <strong>검정통계량(test statistic)</strong> 계산</li>
+<li>검정통계량과 그 <strong>확률분포</strong>로부터 p-값(p-value) 계산</li>
 </ol>
 <ul>
 <li>귀무가설이 사실이라는 가정하에서 관ㅊㄱ한 통계량과 같거나 그보다 더 극단적인 값이 발생할 확률을 의미</li>
@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="년-3월.html#cb6-1"></a><span class="kw">library</span>(MASS) <span class="co"># for survey dataset</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="년-3월.html#cb7-1"></a><span class="kw">median</span>(survey<span class="op">$</span>Pulse) <span class="co"># 결측, 즉 NA 값에 따른 결과</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="년-3월.html#cb29-1"></a><span class="kw">library</span>(palmerpenguins)</span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="년-3월.html#cb30-1"></a><span class="kw">summary</span>(penguins<span class="op">$</span>body_mass_g)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
@@ -419,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="년-3월.html#cb52-1"></a><span class="kw">library</span>(pastecs)</span></code></pre></div>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="년-3월.html#cb53-1"></a><span class="kw">stat.desc</span>(mtcars[<span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>, <span class="st">&quot;wt&quot;</span>)])</span></code></pre></div>
 <pre><code>##                      mpg           hp          wt
@@ -443,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="년-3월.html#cb59-1"></a><span class="kw">library</span>(psych)</span></code></pre></div>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="년-3월.html#cb60-1"></a><span class="kw">describe</span>(mtcars[<span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>, <span class="st">&quot;wt&quot;</span>)])</span></code></pre></div>
 <pre><code>##     vars  n   mean    sd median trimmed   mad   min    max  range skew kurtosis
@@ -697,7 +697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="년-3월.html#cb86-1"></a><span class="kw">library</span>(MASS)</span></code></pre></div>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="년-3월.html#cb87-1"></a>survey<span class="op">$</span>Smoke<span class="op">==</span><span class="st">&quot;Never&quot;</span> <span class="co"># 비흡연자에 대한 논리연산</span></span></code></pre></div>
 <pre><code>##   [1]  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
@@ -771,7 +771,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="년-3월.html#cb114-1"></a><span class="kw">library</span>(vcd)</span></code></pre></div>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="년-3월.html#cb115-1"></a><span class="kw">str</span>(Arthritis) <span class="co"># 류마티스 관절염 치료 효과</span></span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    84 obs. of  5 variables:
@@ -860,7 +860,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="년-3월.html#cb149-1"></a><span class="kw">library</span>(gmodels)</span></code></pre></div>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="년-3월.html#cb150-1"></a><span class="kw">CrossTable</span>(Arthritis<span class="op">$</span>Improved, Arthritis<span class="op">$</span>Treatment,</span>
 <span id="cb150-2"><a href="년-3월.html#cb150-2"></a>           <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Improved&quot;</span>, <span class="st">&quot;Treatment&quot;</span>))</span></code></pre></div>
@@ -1016,7 +1016,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpra8vC3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpUSvSWj/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="년-3월.html#cb175-1"></a><span class="kw">library</span>(MASS)</span></code></pre></div>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="년-3월.html#cb176-1"></a><span class="kw">str</span>(survey)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    237 obs. of  12 variables:
