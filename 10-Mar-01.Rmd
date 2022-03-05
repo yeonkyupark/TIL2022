@@ -29,7 +29,7 @@
 
 **가설검정과 검정력**
 
-![](http://www.ktword.co.kr/img_data/5094_2.JPG)출처^[<http://www.ktword.co.kr/img_data/5094_2.JPG>]
+![](http://www.ktword.co.kr/img_data/5094_2.JPG)출처^[http://www.ktword.co.kr/img_data/5094_2.JPG]
 
 ### 확률분포
 
