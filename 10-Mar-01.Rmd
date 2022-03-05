@@ -2,6 +2,31 @@
 
 ## TIL20220305
 
+### 정규분포
+
+정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.
+
+```{r}
+if(require(ggplot2)) install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+x <- seq(-4, 4, length=100)
+y <- dnorm(x)
+df <- data.frame(x=x, y=y)
+ggplot(df, aes(x,y)) +
+  geom_line() + theme_bw()
+```
+
+```{r}
+p <- ggplot(data = data.frame(x=c(-4,4)), aes(x)) +
+  stat_function(fun=dnorm, n=101, args=list(mean=0, sd=1)) +
+  labs(title="Normal Distribution", x="x", y="") +
+  scale_y_continuous(breaks = NULL) +
+  theme_bw()
+p
+```
 
 
 ## TIL20220304
@@ -57,6 +82,20 @@ sum(dbinom(c(0:7), 10, 0.5)) # 0번, 1번, ..., 7번 나타날 확률의 합
 pbinom(7, 10, 0.5, lower.tail = F) # 1 - pbinom(7, 10, 0.5)
 ```
 
+```{r}
+# 4번 이상 7번 이하 발생할 누적확률, 7번에서 4번의 누적확률을 빼서 계산
+pbinom(7, 10, 0.5) - pbinom(3, 10, 0.5)
+```
+
+```{r}
+diff(pbinom(c(3,7), 10, 0.5))
+```
+
+```{r}
+set.seed(1)
+rbinom(1, size=10, prob = 0.5)
+rbinom(5, size=10, prob = 0.5)
+```
 
 ## TIL20220303
 
