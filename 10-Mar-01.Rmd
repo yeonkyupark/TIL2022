@@ -10,6 +10,11 @@ if(!require(MASS)) {
   install.packages("MASS")
   library(MASS)
 }
+
+if(!require(tidyr)) {
+  install.packages("tidyr")
+  library(tidyr)
+}
 ```
 
 ## TIL20220306
@@ -25,6 +30,24 @@ if(!require(MASS)) {
 |각 실험 대상자에 대해 하나씩의 IQ 테스트 점수를 얻게 됨|한번은 아침칫가를 하고 테스트에 응하고 다른 한번은 아침식사를 하지 않은 상태로 테스트에 참가하도록 함|
 ||각 식험 대상자에 대해 두 개의 IQ 테스트 점수를 얻게 됨|
 
+```{r}
+str(sleep)
+```
+
+```{r}
+t.test(extra ~ group, data = sleep, paired = T)
+```
+
+주어진 표본이 wide format일 경우 벡터를 직접 지정하여 수행한다.
+
+```{r}
+sleep.wide <- spread(sleep, key = group, value = extra)
+sleep.wide
+```
+
+```{r}
+t.test(sleep.wide$`1`, sleep.wide$`2`, paired = T)
+```
 
 
 
