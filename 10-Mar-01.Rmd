@@ -1,5 +1,12 @@
 # 2022년 3월
 
+```{r echo=FALSE, include=FALSE}
+if(!require(ggplot2)) {
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+```
+
 ## TIL20220306
 
 ### 평균검정
@@ -12,18 +19,63 @@ $$
 t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 $$
 
+**예제**
+
+* 귀무가설: 벤처기업 경영자의 혈압은 일반일과 같다
+* 대립가설; 벤터기업 경영자의 혈압은 일반일과 다르다
+* 표본: 20명의 벤처기업 경영자 평균 135, 표준편차 25
+* 모집단: 일반인 혈압 평균 115
+
+$$
+검정통계량 \ \ t = \frac{135-115}{\frac{25}{\sqrt{20}}} = 3.58
+$$
+
+```{r}
+t <- 3.58; n <- 20;
+pt(t, df=n-1) # t값에 해당하는 누적확률 계산
+
+# 특정 t값 이상의 누적확률에 관심이 있으므로 lower.tail을 F로 설정
+# 반대편도 고려해야 함으로 두배 함
+pt(t, df=n-1, lower.tail = F)*2
+```
+
+모집단 평균 115라는 가정하에서 135라는 평균은 0.002의 유의확률을 가지므로 5% 유의수준 하에서 귀무가설을 기각하고 대립가설을 채택한다.
+
+유사한 방식으로 유의수준 0.05에 해당하는 t값을 계산하고 관측된 t값을 비교하여 검정한다.
+
+```{r}
+p95 <- qt(0.025, df=n-1, lower.tail = F); p95
+```
+
+주어진 t 값은 유의수준 5%에 해당하는 t값의 오른쪽에 위치함으로 귀무가설을 기각하고 대립가설을 채택한다.
+
+
+
+```{r}
+dt_range <- function(x) {
+  y <- dt(x, df=19)
+  y[x < 2.09] <- NA
+  return(y)
+}
+
+ggplot(data = data.frame(x=c(-4,4)), aes(x)) +
+  stat_function(fun=dt, args = list(df=19)) +
+  stat_function(fun=dt_range, geom="area", fill="salmon", alpha=.5) +
+  labs(title="t Distribution", x="x", y="") +
+  scale_y_continuous(breaks = NULL) +
+  geom_vline(xintercept=t, color="blue", linetype = "dashed", size=1) +
+  geom_text(x=t+0.3, y=0.02, aes(label=t), col="blue") +
+  geom_vline(xintercept=p95, color="red", linetype = "dashed", size=1) +
+  geom_text(x=p95+0.3, y=0.06, aes(label=round(p95,2)), col="red") +
+  theme_bw()
+```
+
+
 ## TIL20220305
 
 ### 정규분포
 
 정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.
-
-```{r echo=FALSE, include=FALSE}
-if(!require(ggplot2)) {
-  install.packages("ggplot2")
-  library(ggplot2)
-}
-```
 
 ```{r}
 x <- seq(-4, 4, length=100)
