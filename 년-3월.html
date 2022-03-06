@@ -24,7 +24,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-05" />
+<meta name="date" content="2022-03-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220306">TIL20220306<span></span></a><ul>
+<li><a href="년-3월.html#평균검정">평균검정<span></span></a></li>
+</ul></li>
 <li><a href="년-3월.html#til20220305">TIL20220305<span></span></a><ul>
 <li><a href="년-3월.html#정규분포">정규분포<span></span></a></li>
 <li><a href="년-3월.html#데이터의-정규성-검정">데이터의 정규성 검정<span></span></a></li>
@@ -225,6 +228,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220306" class="section level2 hasAnchor">
+<h2>TIL20220306<a href="년-3월.html#til20220306" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="평균검정" class="section level3 hasAnchor">
+<h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>평균검정</code>은 평균에 대한 가설검정을 의미한다. 선정한 표본이 특정 평균값을 갖는 모집단에 속하는지(즉 표본의 평균과 모집단의 평균이 동일한지) 또는 두 표본 집단의 평균값 간에 차이가 존재하는지(즉 두 표본집단이 동일한 모집단에 속하는지) 검정한다. 일표본 평균검정, 독립표본 평균검정, 대응표본 평균 검정이 있다.</p>
+<p>평균에 대한 가설검정은 t검정(t test)을 통해 수행할 수 있다. 표본평균이 모집단 평균과 동일한지 여부는 t값을 검정 통계량으로 사용하여 검정한다.</p>
+<p><span class="math display">\[
+t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
+\]</span></p>
+</div>
+</div>
 <div id="til20220305" class="section level2 hasAnchor">
 <h2>TIL20220305<a href="년-3월.html#til20220305" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="정규분포" class="section level3 hasAnchor">
@@ -267,13 +281,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="년-3월.html#cb22-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="년-3월.html#cb24-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 97.38133</code></pre>
+<pre><code>## [1] 117.7709</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="년-3월.html#cb26-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1]  80.37917  85.64472  94.71415 115.74826 105.58192</code></pre>
+<pre><code>## [1]  96.56762 108.47034  95.31454  89.89285 123.25569</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="년-3월.html#cb28-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 0.9089244</code></pre>
+<pre><code>## [1] 1.62853</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="년-3월.html#cb30-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] -1.70393048  0.65422808 -1.74938137 -0.09255658 -0.26256298</code></pre>
+<pre><code>## [1] -1.18437710  1.11356577 -1.84688800 -0.15461162 -0.02734597</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1228,6 +1242,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
