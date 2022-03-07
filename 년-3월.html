@@ -24,7 +24,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-06" />
+<meta name="date" content="2022-03-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220307">TIL20220307<span></span></a><ul>
+<li><a href="년-3월.html#결측치-처리">결측치 처리<span></span></a></li>
+</ul></li>
 <li><a href="년-3월.html#til20220306">TIL20220306<span></span></a><ul>
 <li><a href="년-3월.html#대응표본-평균검정">대응표본 평균검정<span></span></a></li>
 <li><a href="년-3월.html#독립표본-비율검정">독립표본 비율검정<span></span></a></li>
@@ -233,6 +236,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220307" class="section level2 hasAnchor">
+<h2>TIL20220307<a href="년-3월.html#til20220307" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="결측치-처리" class="section level3 hasAnchor">
+<h3>결측치 처리<a href="년-3월.html#결측치-처리" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="결측치-종류" class="section level4 hasAnchor">
+<h4>결측치 종류<a href="년-3월.html#결측치-종류" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="figure">
+<img src="https://miro.medium.com/max/1400/1*cPNnAnoOYArYyTDPNjJg3A.gif" alt="" />
+<p class="caption">결측치 종류</p>
+</div>
+</div>
+<div id="제거" class="section level4 hasAnchor">
+<h4>제거<a href="년-3월.html#제거" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="대체" class="section level4 hasAnchor">
+<h4>대체<a href="년-3월.html#대체" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+</div>
 <div id="til20220306" class="section level2 hasAnchor">
 <h2>TIL20220306<a href="년-3월.html#til20220306" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="대응표본-평균검정" class="section level3 hasAnchor">
@@ -557,13 +579,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="년-3월.html#cb58-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="년-3월.html#cb60-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 78.90929</code></pre>
+<pre><code>## [1] 88.24245</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="년-3월.html#cb62-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 103.62606  89.66672  89.21359 109.77092  94.08335</code></pre>
+<pre><code>## [1] 103.49155 112.36762  99.70905 105.66681  93.18555</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="년-3월.html#cb64-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 0.2092007</code></pre>
+<pre><code>## [1] 0.5929207</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="년-3월.html#cb66-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] -1.0356014 -0.7587057  3.0970330  0.2684292 -1.4257698</code></pre>
+<pre><code>## [1]  0.1486942  0.8353916 -0.4819382 -0.6212245  0.6609928</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
