@@ -15,6 +15,12 @@ if(!require(tidyr)) {
   install.packages("tidyr")
   library(tidyr)
 }
+
+if(!require(palmerpenguins)) {
+  install.packages("palmerpenguins")
+  library(palmerpenguins)
+}
+
 ```
 
 ## TIL20220307
@@ -25,7 +31,28 @@ if(!require(tidyr)) {
 
 ![결측치 종류](https://miro.medium.com/max/1400/1*cPNnAnoOYArYyTDPNjJg3A.gif)
 
+#### 확인
+
+```{r}
+## summary()
+summary(penguins)
+```
+
+```{r}
+colSums(is.na(penguins)); nrow(penguins)
+```
+
+등등등
+
 #### 제거
+
+```{r}
+penguins.naomit <- na.omit(penguins)
+colSums(is.na(penguins.naomit)); nrow(penguins.naomit)
+```
+
+제거 후 11개 행이 감소된 것을 볼 수 있다.
+
 
 #### 대체
 
