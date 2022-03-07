@@ -21,6 +21,12 @@ if(!require(palmerpenguins)) {
   library(palmerpenguins)
 }
 
+if(!require(dplyr)) {
+  install.packages("dplyr")
+  library(dplyr)
+}
+
+
 ```
 
 ## TIL20220307
@@ -51,10 +57,27 @@ penguins.naomit <- na.omit(penguins)
 colSums(is.na(penguins.naomit)); nrow(penguins.naomit)
 ```
 
+```{r}
+penguins.naomit <- penguins[complete.cases(penguins), ]
+colSums(is.na(penguins.naomit)); nrow(penguins.naomit)
+```
+
+
 제거 후 11개 행이 감소된 것을 볼 수 있다.
 
 
 #### 대체
+
+#### 0으로 대체
+
+```{r}
+# 연속형 변수에 대해서만 적용
+penguins.0 <- penguins[c(3:6)] %>%
+  select_if(function(x) any(is.na(x))) %>% 
+  replace(is.na(.), 0)
+colSums(is.na(penguins.0))
+```
+
 
 
 ## TIL20220306
