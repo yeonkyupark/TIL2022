@@ -78,6 +78,34 @@ penguins.0 <- penguins[c(3:6)] %>%
 colSums(is.na(penguins.0))
 ```
 
+#### 평균으로 대체
+
+```{r}
+penguins.mean <- penguins[c(3:6)] %>% 
+  select_if(function(x) any(is.na(x))) %>% 
+  mutate(bill_length_mm = ifelse(is.na(bill_length_mm), mean(bill_length_mm, na.rm=T), bill_length_mm),
+         bill_depth_mm = ifelse(is.na(bill_depth_mm), mean(bill_depth_mm, na.rm=T), bill_depth_mm),
+         flipper_length_mm = ifelse(is.na(flipper_length_mm), mean(flipper_length_mm, na.rm=T), flipper_length_mm),
+         body_mass_g = ifelse(is.na(body_mass_g), mean(body_mass_g, na.rm=T), body_mass_g))
+colSums(is.na(penguins.mean))
+```
+
+```{r}
+# 0으로 대체한 경우와 평균값으로 대체한 경우의 차이
+colMeans(penguins[c(3:6)], na.rm = T); colMeans(penguins.0); colMeans(round(penguins.mean,1));
+```
+
+```{r}
+all_column_median <- apply(penguins[c(3:6)], 2, median, na.rm=T); all_column_median
+```
+
+```{r}
+penguins.median <- penguins[c(3:6)]
+for(i in colnames(penguins.median)) { 
+  penguins.median[is.na(penguins.median[,i]), i] <- all_column_median[i]
+}
+colMeans(round(penguins.median))
+```
 
 
 ## TIL20220306
