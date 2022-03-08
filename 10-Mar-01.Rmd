@@ -35,6 +35,26 @@ if(!require(mice)) {
 
 ## TIL20220308
 
+### R 에러 수정
+
+```
+> library(dplyr)
+
+Error: package or namespace load failed for ‘dplyr’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+
+ ‘rlang’이라고 불리는 패키지가 없습니다
+
+In addition: Warning message:
+
+패키지 ‘dplyr’는 R 버전 3.4.4에서 작성되었습니다 
+```
+
+이런 식으로 에러가 발생하면 깔끔하게 R을 재설치 하자. libpath나 패키지 재설치 등의 방법이 언급되지만 안되는 경우가 있다. 한시간 반 소비하고 내린 결론이다.
+
+4.0.3에서 문제가 일어났고 4.1.2로 버전 업해서 문제 해결되었다.  
+
+
+
 ### 결측치 시각화
 
 ```{r}
