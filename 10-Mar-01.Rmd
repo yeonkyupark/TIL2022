@@ -26,8 +26,21 @@ if(!require(dplyr)) {
   library(dplyr)
 }
 
+if(!require(mice)) {
+  install.packages("mice")
+  library(mice)
+}
 
 ```
+
+## TIL20220308
+
+### 결측치 시각화
+
+```{r}
+md.pattern(penguins, plot=T, rotate.names = T)
+```
+
 
 ## TIL20220307
 
