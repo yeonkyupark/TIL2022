@@ -53,7 +53,18 @@ In addition: Warning message:
 
 4.0.3에서 문제가 일어났고 4.1.2로 버전 업해서 문제 해결되었다.  
 
+```
+Error:
+! Assigned data `all_column_mean[i]` must be compatible with existing data.
+i Error occurred for column `flipper_length_mm`.
+x Can't convert from <double> to <integer> due to loss of precision.
+* Locations: 1.
+Backtrace:
+  1. base::`[<-`(`*tmp*`, is.na(p.mean[, i]), i, value = `<dbl>`)
+ 19. tibble `<fn>`(`<vctrs___>`)
+```
 
+`p.mean <- as.data.frame(penguins[c(3:6)])`와 같이 데이터 형태를 명시적으로 지정해 준다.  
 
 ### 결측치 시각화
 
