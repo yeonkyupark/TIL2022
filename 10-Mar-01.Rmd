@@ -31,6 +31,20 @@ if(!require(mice)) {
   library(mice)
 }
 
+if(!require(tidyverse)) {
+  install.packages("tidyverse")
+  library(tidyverse)
+}
+
+if(!require(caret)) {
+  install.packages("caret")
+  library(caret)
+}
+
+if(!require(mlbench)) {
+  install.packages("mlbench")
+  library(mlbench)
+}
 ```
 
 ## TIL20220309
@@ -49,6 +63,10 @@ if(!require(mice)) {
 
 from: Methods for dealing with imbalanced data^[https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/]
 
+
+```{r}
+
+```
 
 
 ## TIL20220308
