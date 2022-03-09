@@ -43,9 +43,11 @@ if(!require(mice)) {
 
 !(SMOTE^[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png])[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png]
 
-* up sampling
-* down sampling
-* SMOTE
+* Upsampling: this method increases the size of the minority class by sampling with replacement so that the classes will have the same size.
+* Downsampling: in contrast to the above method, this one decreases the size of the majority class to be the same or closer to the minority class size by just taking out a random sample.  
+* Hybrid methods : The well known hybrid methods are ROSE (Random oversampling examples), and SMOTE (Synthetic minority oversampling technique), they downsample the majority class, and creat new artificial points in the minority class. For more detail about SMOTE method click here, and for ROSE click here.
+
+from: Methods for dealing with imbalanced data^[https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/]
 
 
 
