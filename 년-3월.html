@@ -24,7 +24,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-08" />
+<meta name="date" content="2022-03-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220309">TIL20220309<span></span></a><ul>
+<li><a href="년-3월.html#클래스-불균형과-샘플링">클래스 불균형과 샘플링<span></span></a></li>
+</ul></li>
 <li><a href="년-3월.html#til20220308">TIL20220308<span></span></a><ul>
 <li><a href="년-3월.html#r-에러-수정">R 에러 수정<span></span></a></li>
 <li><a href="년-3월.html#결측치-시각화">결측치 시각화<span></span></a></li>
@@ -240,6 +243,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220309" class="section level2 hasAnchor">
+<h2>TIL20220309<a href="년-3월.html#til20220309" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="클래스-불균형과-샘플링" class="section level3 hasAnchor">
+<h3>클래스 불균형과 샘플링<a href="년-3월.html#클래스-불균형과-샘플링" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>분류 분석의 경우 관찰된 표본 범주 비율이 큰 쪽으로 편향되는 경향이 있다. 이를 해결하기 위해 범주의 비율을 조절하여 정제한다.</p>
+<p>!(Downsampling &amp; Upsampling<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>)[<a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png</a>]</p>
+<p>!(SMOTE<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>)[<a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png</a>]</p>
+<ul>
+<li>up sampling</li>
+<li>down sampling</li>
+<li>SMOTE</li>
+</ul>
+</div>
+</div>
 <div id="til20220308" class="section level2 hasAnchor">
 <h2>TIL20220308<a href="년-3월.html#til20220308" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="r-에러-수정" class="section level3 hasAnchor">
@@ -707,13 +724,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="년-3월.html#cb85-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="년-3월.html#cb87-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 110.1766</code></pre>
+<pre><code>## [1] 98.06544</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="년-3월.html#cb89-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 105.74833  89.68408  86.69392  97.22034  89.37354</code></pre>
+<pre><code>## [1]  79.70742  92.28656  82.10905 101.86151 100.05407</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="년-3월.html#cb91-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] -1.820411</code></pre>
+<pre><code>## [1] -0.08745601</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="년-3월.html#cb93-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  0.076501725 -0.591161666 -0.002602922 -0.601564848 -0.401342518</code></pre>
+<pre><code>## [1] -0.8732828 -1.0879218  0.7750197  1.5195573  0.6504691</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -769,11 +786,11 @@ x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 
 <li>표본으로부터 관측된 결과(즉 계산된 통계량)가 나타날 가능성이 5% 미만 또는 1% 미만이 되는 귀무가설을 기각하면 이를 통계적으로 유의하다(statistically significant)라고 표현함</li>
 </ul>
 <p><strong>가설검정과 검정력</strong></p>
-<p><img src="http://www.ktword.co.kr/img_data/5094_2.JPG" />출처<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p><img src="http://www.ktword.co.kr/img_data/5094_2.JPG" />출처<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 </div>
 <div id="확률분포" class="section level3 hasAnchor">
 <h3>확률분포<a href="년-3월.html#확률분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p><strong>이항분포(binomial distribution)</strong></p>
 <p>대표적인 이산확률분포(discrete probability distribution)로서 매회 어떤 사건이 일어날 확률이 동일한 독립 시행의 경우에 있어서 이 사건이 일어나는 횟수가 만들어 내는 분포이다. 예를 들면 동전 던지기로 동전을 일정 횟수 반복하여 던지는 실험에서 매 시행시마다 숫자면이 나타날 확률이 1/2이라고 할 때 숫자면이 나타나는 횟수는 이항분포를 따른다고 할 수 있다.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="년-3월.html#cb101-1"></a><span class="kw">dbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 나타날 확률</span></span></code></pre></div>
@@ -1610,8 +1627,10 @@ x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p><a href="http://www.ktword.co.kr/img_data/5094_2.JPG" class="uri">http://www.ktword.co.kr/img_data/5094_2.JPG</a><a href="년-3월.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" class="uri">https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png</a><a href="년-3월.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png</a><a href="년-3월.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png</a><a href="년-3월.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://www.ktword.co.kr/img_data/5094_2.JPG" class="uri">http://www.ktword.co.kr/img_data/5094_2.JPG</a><a href="년-3월.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" class="uri">https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png</a><a href="년-3월.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
