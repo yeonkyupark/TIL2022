@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220310">TIL20220310<span></span></a><ul>
+<li><a href="년-3월.html#smote-데이터-형식-오류">SMOTE 데이터 형식 오류<span></span></a></li>
+</ul></li>
 <li><a href="년-3월.html#til20220309">TIL20220309<span></span></a><ul>
 <li><a href="년-3월.html#클래스-불균형과-샘플링">클래스 불균형과 샘플링<span></span></a></li>
 </ul></li>
@@ -243,6 +246,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220310" class="section level2 hasAnchor">
+<h2>TIL20220310<a href="년-3월.html#til20220310" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="smote-데이터-형식-오류" class="section level3 hasAnchor">
+<h3>SMOTE 데이터 형식 오류<a href="년-3월.html#smote-데이터-형식-오류" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
 <div id="til20220309" class="section level2 hasAnchor">
 <h2>TIL20220309<a href="년-3월.html#til20220309" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="클래스-불균형과-샘플링" class="section level3 hasAnchor">
@@ -732,13 +741,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="년-3월.html#cb85-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="년-3월.html#cb87-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 98.91259</code></pre>
+<pre><code>## [1] 90.73922</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="년-3월.html#cb89-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 115.21792  86.10945  87.41054  90.75771 108.46748</code></pre>
+<pre><code>## [1] 90.94569 95.40372 95.29984 96.82768 74.60021</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="년-3월.html#cb91-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 1.301668</code></pre>
+<pre><code>## [1] 1.66907</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="년-3월.html#cb93-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 1.0148386 2.5244910 0.1631965 0.3757491 0.7770977</code></pre>
+<pre><code>## [1]  0.04538610  0.05406094 -0.61117507 -0.30415035  0.67554573</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
