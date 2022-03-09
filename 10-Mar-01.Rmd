@@ -33,6 +33,22 @@ if(!require(mice)) {
 
 ```
 
+## TIL20220309
+
+### 클래스 불균형과 샘플링
+
+분류 분석의 경우 관찰된 표본 범주 비율이 큰 쪽으로 편향되는 경향이 있다. 이를 해결하기 위해 범주의 비율을 조절하여 정제한다.
+
+!(Downsampling & Upsampling^[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png])[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png]  
+
+!(SMOTE^[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png])[https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png]
+
+* up sampling
+* down sampling
+* SMOTE
+
+
+
 ## TIL20220308
 
 ### R 에러 수정
