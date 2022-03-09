@@ -250,6 +250,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>TIL20220310<a href="년-3월.html#til20220310" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="smote-데이터-형식-오류" class="section level3 hasAnchor">
 <h3>SMOTE 데이터 형식 오류<a href="년-3월.html#smote-데이터-형식-오류" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://stackoverflow.com/questions/62750638/why-do-i-get-error-in-t-col-data-col-when-i-use-smote-in-r" class="uri">https://stackoverflow.com/questions/62750638/why-do-i-get-error-in-t-col-data-col-when-i-use-smote-in-r</a></p>
+<p>변수는 facter형이고, tibble 형식을 지원하지 않는다.</p>
 </div>
 </div>
 <div id="til20220309" class="section level2 hasAnchor">
@@ -741,13 +743,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="년-3월.html#cb85-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="년-3월.html#cb87-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 90.73922</code></pre>
+<pre><code>## [1] 98.97042</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="년-3월.html#cb89-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 90.94569 95.40372 95.29984 96.82768 74.60021</code></pre>
+<pre><code>## [1]  88.92777  91.61920  89.16436 107.81707  90.49127</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="년-3월.html#cb91-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 1.66907</code></pre>
+<pre><code>## [1] 0.683347</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="년-3월.html#cb93-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  0.04538610  0.05406094 -0.61117507 -0.30415035  0.67554573</code></pre>
+<pre><code>## [1]  0.2391410  1.1129040 -0.5687881 -0.3106973  0.1085354</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
