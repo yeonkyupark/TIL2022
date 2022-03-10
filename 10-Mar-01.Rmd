@@ -46,6 +46,14 @@ if(!require(mlbench)) {
   library(mlbench)
 }
 ```
+## TIL20220310
+
+### SMOTE 데이터 형식 오류
+
+https://stackoverflow.com/questions/62750638/why-do-i-get-error-in-t-col-data-col-when-i-use-smote-in-r
+
+
+변수는 facter형이고, tibble 형식을 지원하지 않는다.  
 
 ## TIL20220309
 
