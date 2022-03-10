@@ -45,8 +45,37 @@ if(!require(mlbench)) {
   install.packages("mlbench")
   library(mlbench)
 }
+
+if(!require(DMwR)) {
+  remotes::install_github("cran/DMwR")
+  library(DMwR)
+}
+
 ```
 ## TIL20220310
+
+```{r}
+data("BreastCancer")
+bc <- BreastCancer[, -1] # Id 열 제외
+str(bc)
+```
+
+```{r}
+train.index <- createDataPartition(bc$Class, p=0.75, list=F)
+bc.train <- bc[train.index, ]; bc.test <- bc[-train.index, ];
+rbind(TrainData = table(bc.train$Class), TestData = table(bc.test$Class))
+```
+
+```{r warning=FALSE}
+# upsampling / downsample / SMOTE
+bc.train.up <- upSample(subset(bc.train, select = -Class), bc.train$Class)
+bc.train.down <- downSample(subset(bc.train, select = -Class), bc.train$Class)
+bc.train.smote <- SMOTE(Class ~ ., bc.train, prec.over = 900, perc.under=150)
+rbind(Upsampling = table(bc.train.up$Class),
+      Downsampling = table(bc.train.down$Class),
+      SMOTE = table(bc.train.smote$Class))
+```
+
 
 ### SMOTE 데이터 형식 오류
 
