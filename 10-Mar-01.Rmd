@@ -52,7 +52,7 @@ if(!require(remotes)) {
 }
 
 if(!require(DMwR)) {
-  remotes::install_github("cran/DMwR")
+  devtools::install_github("cran/DMwR")
   library(DMwR)
 }
 
