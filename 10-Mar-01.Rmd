@@ -56,6 +56,11 @@ if(!require(DMwR)) {
   library(DMwR)
 }
 
+if(!require(rpart)) {
+  remotes::install_github("rpart")
+  library(rpart)
+}
+
 ```
 ## TIL20220310
 
@@ -81,6 +86,38 @@ rbind(Upsampling = table(bc.train.up$Class),
       SMOTE = table(bc.train.smote$Class))
 ```
 
+```{r}
+p.dt <- rpart(Class ~ ., bc.train)
+p.dt.pred <- predict(p.dt, bc.test, type = "class")
+orig.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
+```
+
+```{r}
+p.dt <- rpart(Class ~ ., bc.train.up)
+p.dt.pred <- predict(p.dt, bc.test, type = "class")
+up.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
+```
+
+```{r}
+p.dt <- rpart(Class ~ ., bc.train.down)
+p.dt.pred <- predict(p.dt, bc.test, type = "class")
+down.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
+```
+
+```{r}
+p.dt <- rpart(Class ~ ., bc.train.smote)
+p.dt.pred <- predict(p.dt, bc.test, type = "class")
+smote.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
+```
+
+```{r}
+rbind(Orig = orig.cm,
+      Upsampling = up.cm,
+      Downsampling = down.cm,
+      SMOTE = smote.cm)
+```
+
+상황에 따라 결과가 다르게 나오지만 대체적으로 SMOTE에서 높은 정확도를 보인다.
 
 ### SMOTE 데이터 형식 오류
 
