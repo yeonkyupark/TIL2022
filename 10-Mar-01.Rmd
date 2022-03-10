@@ -46,6 +46,11 @@ if(!require(mlbench)) {
   library(mlbench)
 }
 
+if(!require(remotes)) {
+  install.packages("remotes")
+  library(remotes)
+}
+
 if(!require(DMwR)) {
   remotes::install_github("cran/DMwR")
   library(DMwR)
