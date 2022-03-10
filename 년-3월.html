@@ -24,7 +24,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-09" />
+<meta name="date" content="2022-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -304,7 +304,7 @@ Backtrace:
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3>결측치 시각화<a href="년-3월.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="년-3월.html#cb4-1"></a><span class="kw">md.pattern</span>(penguins, <span class="dt">plot=</span>T, <span class="dt">rotate.names =</span> T)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
 ## 9         1      1    1              1             1                 1
@@ -623,7 +623,7 @@ Backtrace:
 <span id="cb54-9"><a href="년-3월.html#cb54-9"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>p95, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></span>
 <span id="cb54-10"><a href="년-3월.html#cb54-10"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">x=</span>p95<span class="fl">+0.3</span>, <span class="dt">y=</span><span class="fl">0.06</span>, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(p95,<span class="dv">2</span>)), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
 <span id="cb54-11"><a href="년-3월.html#cb54-11"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <ul>
 <li>귀무가설: 고양이의 몸무게가 2.7kg이다.</li>
 <li>대립가설: 고양이의 몸무게가 2.7kg이 아니다.</li>
@@ -651,7 +651,7 @@ Backtrace:
 <span id="cb57-9"><a href="년-3월.html#cb57-9"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>p95, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></span>
 <span id="cb57-10"><a href="년-3월.html#cb57-10"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">x=</span>p95<span class="fl">+0.3</span>, <span class="dt">y=</span><span class="fl">0.06</span>, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(p95,<span class="dv">2</span>)), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
 <span id="cb57-11"><a href="년-3월.html#cb57-11"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="평균검정" class="section level3 hasAnchor">
 <h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -698,7 +698,7 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <span id="cb64-14"><a href="년-3월.html#cb64-14"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>p95, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span></span>
 <span id="cb64-15"><a href="년-3월.html#cb64-15"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">x=</span>p95<span class="fl">+0.3</span>, <span class="dt">y=</span><span class="fl">0.06</span>, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(p95,<span class="dv">2</span>)), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
 <span id="cb64-16"><a href="년-3월.html#cb64-16"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 </div>
 <div id="til20220305" class="section level2 hasAnchor">
@@ -711,13 +711,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <span id="cb65-3"><a href="년-3월.html#cb65-3"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)</span>
 <span id="cb65-4"><a href="년-3월.html#cb65-4"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x,y)) <span class="op">+</span></span>
 <span id="cb65-5"><a href="년-3월.html#cb65-5"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="년-3월.html#cb66-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">65</span>,<span class="dv">135</span>)), <span class="kw">aes</span>(x)) <span class="op">+</span></span>
 <span id="cb66-2"><a href="년-3월.html#cb66-2"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun=</span>dnorm, <span class="dt">n=</span><span class="dv">101</span>, <span class="dt">args=</span><span class="kw">list</span>(<span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)) <span class="op">+</span></span>
 <span id="cb66-3"><a href="년-3월.html#cb66-3"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Normal Distribution&quot;</span>, <span class="dt">x=</span><span class="st">&quot;x&quot;</span>, <span class="dt">y=</span><span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
 <span id="cb66-4"><a href="년-3월.html#cb66-4"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span></span>
 <span id="cb66-5"><a href="년-3월.html#cb66-5"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="년-3월.html#cb67-1"></a><span class="co"># IQ가 110 이하일 누적확률 계산</span></span>
 <span id="cb67-2"><a href="년-3월.html#cb67-2"></a><span class="kw">pnorm</span>(<span class="dv">110</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 0.8413447</code></pre>
@@ -743,13 +743,13 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="년-3월.html#cb85-1"></a><span class="kw">qnorm</span>(<span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="년-3월.html#cb87-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 98.97042</code></pre>
+<pre><code>## [1] 82.77472</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="년-3월.html#cb89-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1]  88.92777  91.61920  89.16436 107.81707  90.49127</code></pre>
+<pre><code>## [1] 102.89449  96.20081  88.12878 103.99834  88.65691</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="년-3월.html#cb91-1"></a><span class="kw">rnorm</span>(<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 0.683347</code></pre>
+<pre><code>## [1] -0.2010032</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="년-3월.html#cb93-1"></a><span class="kw">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  0.2391410  1.1129040 -0.5687881 -0.3106973  0.1085354</code></pre>
+<pre><code>## [1] 0.5295201 0.5811194 0.7594536 1.6749296 0.1641260</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -769,12 +769,12 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="년-3월.html#cb99-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb99-2"><a href="년-3월.html#cb99-2"></a><span class="kw">qqnorm</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>), <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Sample from Normal Distribution&quot;</span>)</span>
 <span id="cb99-3"><a href="년-3월.html#cb99-3"></a><span class="kw">qqline</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean=</span><span class="dv">100</span>, <span class="dt">sd=</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 표본이다.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="년-3월.html#cb100-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb100-2"><a href="년-3월.html#cb100-2"></a><span class="kw">qqnorm</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min=</span><span class="dv">2</span>, <span class="dt">max=</span><span class="dv">4</span>), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Sample from Uniform Distribution&quot;</span>)</span>
 <span id="cb100-3"><a href="년-3월.html#cb100-3"></a><span class="kw">qqline</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min=</span><span class="dv">2</span>, <span class="dt">max=</span><span class="dv">4</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 </div>
 </div>
 <div id="til20220304" class="section level2 hasAnchor">
