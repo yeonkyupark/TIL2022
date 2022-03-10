@@ -57,7 +57,7 @@ if(!require(DMwR)) {
 }
 
 if(!require(rpart)) {
-  remotes::install_github("rpart")
+  install.packages("rpart")
   library(rpart)
 }
 
