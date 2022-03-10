@@ -51,6 +51,11 @@ if(!require(remotes)) {
   library(remotes)
 }
 
+if(!require(devtools)) {
+  install.packages("devtools")
+  library(devtools)
+}
+
 if(!require(DMwR)) {
   devtools::install_github("cran/DMwR")
   library(DMwR)
