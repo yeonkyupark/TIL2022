@@ -21,7 +21,6 @@ Install an R package directly from a URL for the package source^[https://stackov
 
 ```{r}
 install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL, method="libcurl")
-library(DMwR)
 ```
 
 
