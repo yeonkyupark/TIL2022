@@ -36,7 +36,7 @@ install.packages("caret")
 install.packages("remotes")
 install.packages("devtools")
 install.packages("rpart")
-devtools::install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL, method="libcurl")
+install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL, method="libcurl")
 ```
 
 # 시작하며  
