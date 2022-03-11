@@ -75,13 +75,13 @@ bc <- BreastCancer[, -1] # Id 열 제외
 str(bc)
 ```
 
-```{r}
+```{r eval=FALSE}
 train.index <- createDataPartition(bc$Class, p=0.75, list=F)
 bc.train <- bc[train.index, ]; bc.test <- bc[-train.index, ];
 rbind(TrainData = table(bc.train$Class), TestData = table(bc.test$Class))
 ```
 
-```{r warning=FALSE}
+```{r eval=FALSE, warning=FALSE}
 # upsampling / downsample / SMOTE
 bc.train.up <- upSample(subset(bc.train, select = -Class), bc.train$Class)
 bc.train.down <- downSample(subset(bc.train, select = -Class), bc.train$Class)
@@ -91,31 +91,31 @@ rbind(Upsampling = table(bc.train.up$Class),
       SMOTE = table(bc.train.smote$Class))
 ```
 
-```{r}
+```{r eval=FALSE}
 p.dt <- rpart(Class ~ ., bc.train)
 p.dt.pred <- predict(p.dt, bc.test, type = "class")
 orig.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
 ```
 
-```{r}
+```{r eval=FALSE}
 p.dt <- rpart(Class ~ ., bc.train.up)
 p.dt.pred <- predict(p.dt, bc.test, type = "class")
 up.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
 ```
 
-```{r}
+```{r eval=FALSE}
 p.dt <- rpart(Class ~ ., bc.train.down)
 p.dt.pred <- predict(p.dt, bc.test, type = "class")
 down.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
 ```
 
-```{r}
+```{r eval=FALSE}
 p.dt <- rpart(Class ~ ., bc.train.smote)
 p.dt.pred <- predict(p.dt, bc.test, type = "class")
 smote.cm <- confusionMatrix(p.dt.pred, bc.test$Class)$overall[1]
 ```
 
-```{r}
+```{r eval=FALSE}
 rbind(Orig = orig.cm,
       Upsampling = up.cm,
       Downsampling = down.cm,
