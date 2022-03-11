@@ -11,7 +11,10 @@ library(tidyverse)
 library(caret)
 library(mlbench)
 library(rpart)
-library(DMwR)
+if(!require(DMwR)) {
+  install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL)
+  library(DMwR)
+}
 ```
 
 ## TIL20220311
