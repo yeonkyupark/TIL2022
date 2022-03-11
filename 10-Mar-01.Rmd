@@ -56,10 +56,10 @@ if(!require(devtools)) {
   library(devtools)
 }
 
-if(!require(DMwR)) {
-  devtools::install_github("cran/DMwR")
-  library(DMwR)
-}
+# if(!require(DMwR)) {
+#   devtools::install_github("cran/DMwR")
+#   library(DMwR)
+# }
 
 if(!require(rpart)) {
   install.packages("rpart")
@@ -67,6 +67,16 @@ if(!require(rpart)) {
 }
 
 ```
+
+## TIL20220311
+
+### URL을 통해 직접 패키지 설치
+
+```{r}
+install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL)
+```
+
+
 ## TIL20220310
 
 ```{r}
