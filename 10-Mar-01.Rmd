@@ -15,6 +15,9 @@ library(rpart)
 
 ## TIL20220311
 
+DWmR 패키지는 github actions로 설치 안되는 걸로...  
+RStudio에서 rendering 후 업로드 하자.  
+
 ### URL을 통해 직접 패키지 설치
 
 Install an R package directly from a URL for the package source^[https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source]  
