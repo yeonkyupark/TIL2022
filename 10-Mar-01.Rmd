@@ -29,7 +29,7 @@ data("BreastCancer")
 bc <- BreastCancer[, -1] # Id 열 제외
 ```
 
-```{r}
+```{r eval=FALSE}
 bc.smote <- SMOTE(Class ~ ., bc, perc.over = 100, perc.under = 200)
 bc.smote.compete <- complete(bc.smote)
 rbind(Orig = table(bc$Class), SMOTE = table(bc.smote.compete$Class))
