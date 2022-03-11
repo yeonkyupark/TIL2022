@@ -21,15 +21,23 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE,	warning = FALSE)
 ```{r install_packages, message=FALSE, warning=FALSE, include=FALSE}
 install.packages("dplyr")
 install.packages("ggplot2")
+install.packages("tidyr")
 install.packages("skimr")
 install.packages("palmerpenguins")
+install.packages("mlbench")
 install.packages("MASS")
 install.packages("vcd")
 install.packages("gmodels")
 install.packages("pastecs")
 install.packages("psych")
+install.packages("mice")
+install.packages("tidyverse")
+install.packages("caret")
+install.packages("remotes")
+install.packages("devtools")
+install.packages("rpart")
+install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL)
 ```
-
 
 # 시작하며  
 

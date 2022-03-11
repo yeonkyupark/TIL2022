@@ -1,81 +1,35 @@
 # 2022년 3월
 
 ```{r echo=FALSE, include=FALSE}
-if(!require(ggplot2)) {
-  install.packages("ggplot2")
-  library(ggplot2)
-}
-
-if(!require(MASS)) {
-  install.packages("MASS")
-  library(MASS)
-}
-
-if(!require(tidyr)) {
-  install.packages("tidyr")
-  library(tidyr)
-}
-
-if(!require(palmerpenguins)) {
-  install.packages("palmerpenguins")
-  library(palmerpenguins)
-}
-
-if(!require(dplyr)) {
-  install.packages("dplyr")
-  library(dplyr)
-}
-
-if(!require(mice)) {
-  install.packages("mice")
-  library(mice)
-}
-
-if(!require(tidyverse)) {
-  install.packages("tidyverse")
-  library(tidyverse)
-}
-
-if(!require(caret)) {
-  install.packages("caret")
-  library(caret)
-}
-
-if(!require(mlbench)) {
-  install.packages("mlbench")
-  library(mlbench)
-}
-
-if(!require(remotes)) {
-  install.packages("remotes")
-  library(remotes)
-}
-
-if(!require(devtools)) {
-  install.packages("devtools")
-  library(devtools)
-}
-
-# if(!require(DMwR)) {
-#   devtools::install_github("cran/DMwR")
-#   library(DMwR)
-# }
-
-if(!require(rpart)) {
-  install.packages("rpart")
-  library(rpart)
-}
-
+library(ggplot2)
+library(MASS)
+library(tidyr)
+library(palmerpenguins)
+library(dplyr)
+library(mice)
+library(tidyverse)
+library(caret)
+library(mlbench)
+library(rpart)
+library(DMwR)
 ```
 
 ## TIL20220311
 
 ### URL을 통해 직접 패키지 설치
 
+Install an R package directly from a URL for the package source^[https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source]  
+
 ```{r}
-install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL)
+data("BreastCancer")
+bc <- BreastCancer[, -1] # Id 열 제외
 ```
 
+```{r}
+bc.smote <- SMOTE(Class ~ ., bc, perc.over = 100, perc.under = 200)
+bc.smote.compete <- complete(bc.smote)
+rbind(Orig = table(bc$Class), SMOTE = table(bc.smote.compete$Class))
+```
 
 ## TIL20220310
 
