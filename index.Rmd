@@ -15,7 +15,22 @@ favicon: "favicon.ico"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE,	warning = FALSE)
+knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
+                      eval = TRUE,
+                      echo = FALSE,
+                      cache = FALSE,
+                      include = TRUE,
+                      tidy = TRUE,
+                      tidy.opts = list(blank=FALSE, width.cutoff=120), # 소스 출력길이 지정
+                      message = FALSE,
+                      warning = FALSE,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center",
+                      fig.width = 7,
+                      fig.height = 7,
+                      fig.keep='all', fig.retina=2)
 ```
 
 ```{r install_packages, message=FALSE, warning=FALSE, include=FALSE}
