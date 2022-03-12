@@ -13,6 +13,33 @@ library(mlbench)
 library(rpart)
 ```
 
+## TIL20220312
+
+### RStudio Chunk options
+
+R Code Chunks^[https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html]  
+
+Rmarkdown으로 문서 작성 시 꼭 필요한 사용하게 된다. 알아 둘 것.
+
+```
+knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
+                      eval = TRUE,
+                      echo = FALSE,
+                      cache = FALSE,
+                      include = TRUE,
+                      tidy = TRUE,
+                      tidy.opts = list(blank=FALSE, width.cutoff=120), # 소스 출력길이 지정
+                      message = FALSE,
+                      warning = FALSE,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center",
+                      fig.width = 7,
+                      fig.height = 7,
+                      fig.keep='all', fig.retina=2)
+```
+
 ## TIL20220311
 
 DWmR 패키지는 github actions로 설치 안되는 걸로...  
