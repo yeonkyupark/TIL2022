@@ -24,7 +24,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-12" />
+<meta name="date" content="2022-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220313">TIL20220313<span></span></a></li>
 <li><a href="년-3월.html#til20220312">TIL20220312<span></span></a><ul>
 <li><a href="년-3월.html#rstudio-chunk-options">RStudio Chunk options<span></span></a></li>
 </ul></li>
@@ -254,13 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>연습장<a href="연습장.html#연습장" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="r-코드-연습" class="section level2 hasAnchor">
 <h2>r 코드 연습<a href="연습장.html#r-코드-연습" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="연습장.html#cb333-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb333-2"><a href="연습장.html#cb333-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
-<span id="cb333-3"><a href="연습장.html#cb333-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb333-4"><a href="연습장.html#cb333-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="연습장.html#cb334-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb334-2"><a href="연습장.html#cb334-2"></a>iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="연습장.html#cb168-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb168-2"><a href="연습장.html#cb168-2"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length, <span class="dt">y=</span>Sepal.Width, <span class="dt">color=</span>Species)) <span class="op">+</span></span>
+<span id="cb168-3"><a href="연습장.html#cb168-3"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb168-4"><a href="연습장.html#cb168-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;꽃잎 길이&quot;</span>, <span class="dt">y=</span><span class="st">&quot;꽃잎 넓이&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-164-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
