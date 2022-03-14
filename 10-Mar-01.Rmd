@@ -19,7 +19,21 @@ library(rpart)
 
 ### 일반적인 데이터 분할
 
+```{r}
+trainIndex <- createDataPartition(penguins$species, p=.7, list=F)
+pTrain <- penguins[trainIndex, ]
+pTest <- penguins[-trainIndex, ]
+addmargins(addmargins(rbind(
+  pTrain = table(pTrain$species),
+  pTest = table(pTest$species)
+),2),1)
+```
+
 ### 시계열 데이터 분할
+
+```{r}
+data("AirPassengers")
+```
 
 
 ## TIL20220312
