@@ -261,6 +261,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>데이터 분할, 이건 내일 정리하자. 양이 많네.</p>
 <div id="일반적인-데이터-분할" class="section level3 hasAnchor">
 <h3>일반적인 데이터 분할<a href="년-3월.html#일반적인-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>##        Adelie Chinstrap Gentoo Sum
+## pTrain    107        48     87 242
+## pTest      45        20     37 102
+## Sum       152        68    124 344</code></pre>
 </div>
 <div id="시계열-데이터-분할" class="section level3 hasAnchor">
 <h3>시계열 데이터 분할<a href="년-3월.html#시계열-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -368,7 +372,7 @@ Backtrace:
 </div>
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3>결측치 시각화<a href="년-3월.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="Figures/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
 ## 9         1      1    1              1             1                 1
@@ -630,7 +634,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>귀무가설: 고양이의 몸무게가 2.7kg이다.</li>
 <li>대립가설: 고양이의 몸무게가 2.7kg이 아니다.</li>
@@ -646,7 +650,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="평균검정" class="section level3 hasAnchor">
 <h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -671,7 +675,7 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <p>유사한 방식으로 유의수준 0.05에 해당하는 t값을 계산하고 관측된 t값을 비교하여 검정한다.</p>
 <pre><code>## [1] 2.093024</code></pre>
 <p>주어진 t 값은 유의수준 5%에 해당하는 t값의 오른쪽에 위치함으로 귀무가설을 기각하고 대립가설을 채택한다.</p>
-<p><img src="Figures/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220305" class="section level2 hasAnchor">
@@ -679,8 +683,8 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div id="정규분포" class="section level3 hasAnchor">
 <h3>정규분포<a href="년-3월.html#정규분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.</p>
-<p><img src="Figures/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## [1] 0.8413447</code></pre>
 <pre><code>## [1] 0.1586553</code></pre>
 <pre><code>## [1] 0.5</code></pre>
@@ -692,10 +696,10 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <pre><code>## [1] 116.4485</code></pre>
 <pre><code>## [1]  83.55146 116.44854</code></pre>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
-<pre><code>## [1] 87.77111</code></pre>
-<pre><code>## [1]  96.75529 119.43008  90.19902 115.70561  94.53300</code></pre>
-<pre><code>## [1] -2.053074</code></pre>
-<pre><code>## [1] -2.4715738 -0.8765527  1.1835159 -0.8688897 -0.4689362</code></pre>
+<pre><code>## [1] 96.32818</code></pre>
+<pre><code>## [1]  93.58825  98.02099 109.11159 115.06504  95.95026</code></pre>
+<pre><code>## [1] -0.3547888</code></pre>
+<pre><code>## [1]  0.3240034 -0.1196030  0.1539357 -0.5227672 -1.2138792</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -709,9 +713,9 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 ## 
 ## data:  runif(100, min = 2, max = 4)
 ## W = 0.9454, p-value = 0.0004182</code></pre>
-<p><img src="Figures/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-59-2.png" width="672" style="display: block; margin: auto;" />
+<p><img src="Figures/unnamed-chunk-61-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-61-2.png" width="672" style="display: block; margin: auto;" />
 x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 표본이다.</p>
-<p><img src="Figures/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-60-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-62-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220304" class="section level2 hasAnchor">
