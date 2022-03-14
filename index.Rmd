@@ -52,6 +52,17 @@ install.packages("remotes")
 install.packages("devtools")
 install.packages("rpart")
 install.packages("https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz", repos=NULL, method="libcurl")
+install.packages("glue")
+install.packages("forcats")
+install.packages("timetk")
+install.packages("tidyquant")
+install.packages("tibbletime")
+install.packages("sweep")
+install.packages("cowplot")
+install.packages("recipes")
+install.packages("rsample")
+install.packages("yardstick")
+install.packages("forecast")
 ```
 
 # 시작하며  

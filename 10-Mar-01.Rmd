@@ -31,10 +31,63 @@ addmargins(addmargins(rbind(
 
 ### 시계열 데이터 분할
 
+출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터 ^[http://aispiration.com/model/model-rsampling-time-series.html]
+
+시계열은 일반적인 방법으로 표본상에서 랜덤하게 원소를 추출할 수 없다. 시간 흐름을 고려하여 훈련 데이터와 시험 데이터로 분할해야 한다.
+
 ```{r}
-data("AirPassengers")
+train = 1:18
+test = 19:24
+par(mar=c(0,0,0,0))
+{plot(0,0,xlim=c(0,26),ylim=c(0,2),xaxt="n",yaxt="n",bty="n",xlab="",ylab="",type="n")
+arrows(0,0.5,25,0.5,0.05)
+points(train, train*0+0.5, pch=19, col="blue")
+points(test,  test*0+0.5,  pch=19, col="red")
+text(26,0.5,"시간")
+text(10,0.7,"훈련데이터",col="blue")
+text(21,0.7,"시험데이터",col="red")}
 ```
 
+
+```{r}
+# Core Tidyverse
+library(tidyverse)
+library(glue)
+library(forcats)
+
+# Time Series
+library(timetk)
+library(tidyquant)
+library(tibbletime)
+library(sweep)
+
+# Visualization
+library(cowplot)
+
+# Preprocessing
+library(recipes)
+
+# Sampling / Accuracy
+library(rsample)
+library(yardstick) 
+
+# Modeling
+library(forecast)
+
+data("AirPassengers")
+
+ap_ts <- AirPassengers %>% 
+  tk_tbl() %>% 
+  mutate(index = as_date(index)) %>% 
+  as_tbl_time(index = index) %>% 
+  filter(index >= "1950-01-01", index <= "1959-12-31")
+
+ggplot(ap_ts, aes(x=index, y=value)) +
+  geom_line()
+
+```
+
+오늘은 여기까지...
 
 ## TIL20220312
 
