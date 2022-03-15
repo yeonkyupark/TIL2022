@@ -140,6 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220315">TIL20220315<span></span></a><ul>
+<li><a href="년-3월.html#caret을-이용한-기계학습-절차">caret을 이용한 기계학습 절차<span></span></a></li>
+</ul></li>
 <li><a href="년-3월.html#til20220314">TIL20220314<span></span></a><ul>
 <li><a href="년-3월.html#일반적인-데이터-분할">일반적인 데이터 분할<span></span></a></li>
 </ul></li>
@@ -258,6 +261,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220315" class="section level2 hasAnchor">
+<h2>TIL20220315<a href="년-3월.html#til20220315" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="caret을-이용한-기계학습-절차" class="section level3 hasAnchor">
+<h3>caret을 이용한 기계학습 절차<a href="년-3월.html#caret을-이용한-기계학습-절차" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>데이터 전처리</li>
+<li>데이터 분할</li>
+<li>학습</li>
+<li>성능평가</li>
+<li>하이퍼 파라메터 튜닝</li>
+</ul>
+<pre><code>## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ species          : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ island           : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+##  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+##  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+##  $ sex              : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
+##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+<pre><code>##       species          island    bill_length_mm  bill_depth_mm  
+##  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+##  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+##  Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+##                                  Mean   :43.92   Mean   :17.15  
+##                                  3rd Qu.:48.50   3rd Qu.:18.70  
+##                                  Max.   :59.60   Max.   :21.50  
+##                                  NA&#39;s   :2       NA&#39;s   :2      
+##  flipper_length_mm  body_mass_g       sex           year     
+##  Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+##  1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+##  Median :197.0     Median :4050   NA&#39;s  : 11   Median :2008  
+##  Mean   :200.9     Mean   :4202                Mean   :2008  
+##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+##  Max.   :231.0     Max.   :6300                Max.   :2009  
+##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
+<pre><code>##       species          island    bill_length_mm     bill_depth_mm    
+##  Adelie   :152   Biscoe   :168   Min.   :-2.16821   Min.   :-2.0429  
+##  Chinstrap: 68   Dream    :124   1st Qu.:-0.85174   1st Qu.:-0.7949  
+##  Gentoo   :124   Torgersen: 52   Median : 0.09777   Median : 0.0749  
+##                                  Mean   : 0.00000   Mean   : 0.0000  
+##                                  3rd Qu.: 0.84086   3rd Qu.: 0.7808  
+##                                  Max.   : 2.87749   Max.   : 2.1927  
+##  flipper_length_mm  body_mass_g          sex        year    
+##  Min.   :-2.0581   Min.   :-1.8779   female:174   2007:110  
+##  1st Qu.:-0.7784   1st Qu.:-0.8161   male  :170   2008:114  
+##  Median :-0.2807   Median :-0.1915                2009:120  
+##  Mean   : 0.0000   Mean   : 0.0000                          
+##  3rd Qu.: 0.8747   3rd Qu.: 0.6907                          
+##  Max.   : 2.1367   Max.   : 2.6190</code></pre>
+<pre><code>##          female male Sum
+## TrainSet    122  119 241
+## TestSet      52   51 103</code></pre>
+<pre><code>## Error: Required packages are missing: randomForest</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf&#39; not found</code></pre>
+<pre><code>## Error in predict(model.rf, newdata = data.test): object &#39;model.rf&#39; not found</code></pre>
+<pre><code>## Error in confusionMatrix(model.rf.pred, data.test$sex): object &#39;model.rf.pred&#39; not found</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.cm&#39; not found</code></pre>
+</div>
+</div>
 <div id="til20220314" class="section level2 hasAnchor">
 <h2>TIL20220314<a href="년-3월.html#til20220314" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>데이터 분할, 이건 내일 정리하자. 양이 많네.</p>
@@ -275,8 +338,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>시계열 데이터 분할<a href="년-3월.html#시계열-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>시계열은 일반적인 방법으로 표본상에서 랜덤하게 원소를 추출할 수 없다. 시간 흐름을 고려하여 훈련 데이터와 시험 데이터로 분할해야 한다.</p>
-<p><img src="Figures/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>오늘은 여기까지…</p>
 </div>
 </div>
@@ -382,7 +445,7 @@ Backtrace:
 </div>
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3>결측치 시각화<a href="년-3월.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="Figures/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
 ## 9         1      1    1              1             1                 1
@@ -644,7 +707,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>귀무가설: 고양이의 몸무게가 2.7kg이다.</li>
 <li>대립가설: 고양이의 몸무게가 2.7kg이 아니다.</li>
@@ -660,7 +723,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="평균검정" class="section level3 hasAnchor">
 <h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -685,7 +748,7 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <p>유사한 방식으로 유의수준 0.05에 해당하는 t값을 계산하고 관측된 t값을 비교하여 검정한다.</p>
 <pre><code>## [1] 2.093024</code></pre>
 <p>주어진 t 값은 유의수준 5%에 해당하는 t값의 오른쪽에 위치함으로 귀무가설을 기각하고 대립가설을 채택한다.</p>
-<p><img src="Figures/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220305" class="section level2 hasAnchor">
@@ -693,8 +756,8 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div id="정규분포" class="section level3 hasAnchor">
 <h3>정규분포<a href="년-3월.html#정규분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.</p>
-<p><img src="Figures/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## [1] 0.8413447</code></pre>
 <pre><code>## [1] 0.1586553</code></pre>
 <pre><code>## [1] 0.5</code></pre>
@@ -706,10 +769,10 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <pre><code>## [1] 116.4485</code></pre>
 <pre><code>## [1]  83.55146 116.44854</code></pre>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
-<pre><code>## [1] 94.99794</code></pre>
-<pre><code>## [1] 114.37592  72.75243 112.68837  99.67099 110.93044</code></pre>
-<pre><code>## [1] 0.4984092</code></pre>
-<pre><code>## [1]  0.07342085 -0.54875602 -0.84632494  0.38598452 -0.53297961</code></pre>
+<pre><code>## [1] 91.39335</code></pre>
+<pre><code>## [1] 104.51629  94.05289 103.76381  98.75903  92.99400</code></pre>
+<pre><code>## [1] -0.1941312</code></pre>
+<pre><code>## [1] 2.13306228 0.66563599 0.09880766 0.64266532 0.72742529</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -723,9 +786,9 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 ## 
 ## data:  runif(100, min = 2, max = 4)
 ## W = 0.9454, p-value = 0.0004182</code></pre>
-<p><img src="Figures/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-62-2.png" width="672" style="display: block; margin: auto;" />
+<p><img src="Figures/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-70-2.png" width="672" style="display: block; margin: auto;" />
 x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 표본이다.</p>
-<p><img src="Figures/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-63-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-71-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-71-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220304" class="section level2 hasAnchor">
