@@ -2,7 +2,6 @@ bookdown::gitbook:
   css: style.css
   number_sections: false
   config:
-    toc_depth: 2
     toc:
       before: |
         <li><a href="./">TIL 2022</a></li>
@@ -16,4 +15,5 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+  toc_depth: 1
 bookdown::epub_book: default
