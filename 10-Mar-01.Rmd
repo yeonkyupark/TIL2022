@@ -13,7 +13,7 @@ library(mlbench)
 library(rpart)
 ```
 
-## TIL20220313
+## TIL20220314
 
 데이터 분할, 이건 내일 정리하자. 양이 많네.
 
@@ -28,6 +28,8 @@ addmargins(addmargins(rbind(
   pTest = table(pTest$species)
 ),2),1)
 ```
+
+## TIL20220313 
 
 ### 시계열 데이터 분할
 
