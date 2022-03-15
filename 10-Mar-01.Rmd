@@ -13,6 +13,77 @@ library(mlbench)
 library(rpart)
 ```
 
+## TIL20220315
+
+### caret을 이용한 기계학습 절차
+
+* 데이터 전처리
+* 데이터 분할
+* 학습
+* 성능평가
+* 하이퍼 파라메터 튜닝
+
+```{r}
+# 0. 데이터 준비
+data("penguins")
+str(penguins)
+```
+
+```{r}
+summary(penguins)
+```
+
+```{r}
+# 1. 데이터 전처리
+
+library(mice)
+penguins.preprocessing <- mice(penguins, m=1, print=F)
+
+# 결측치 처리
+data <- complete(penguins.preprocessing)
+
+# 수치형 변수 정규화
+data[, c(3:6)] <- scale(data[, c(3:6)])
+
+# 년도 범주로 변환
+data$year <- as.factor(data$year)
+```
+
+```{r}
+summary(data)
+```
+
+```{r}
+# 2. 데이터 분할
+train.index <- createDataPartition(data$sex, p=0.7, list=F)
+data.train <- data[train.index, ]
+data.test <- data[-train.index, ]
+
+addmargins(rbind(
+  TrainSet = table(data.train$sex),
+  TestSet = table(data.test$sex)
+),2)
+```
+
+
+```{r}
+# 3. 학습
+model.rf <- train(sex ~ ., data=data.train, method = "rf"); model.rf
+```
+
+```{r}
+# 4. 성능평가
+model.rf.pred <- predict(model.rf, newdata = data.test)
+model.rf.cm <- confusionMatrix(model.rf.pred, data.test$sex); model.rf.cm
+```
+
+```{r}
+# 5. 하이퍼 파라메터 튜닝
+```
+
+
+
+
 ## TIL20220314
 
 데이터 분할, 이건 내일 정리하자. 양이 많네.
