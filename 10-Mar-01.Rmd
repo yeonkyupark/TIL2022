@@ -68,7 +68,8 @@ addmargins(rbind(
 
 ```{r}
 # 3. 학습
-model.rf <- train(sex ~ ., data=data.train, method = "rf"); model.rf
+fitControl <- trainControl(method = "repeatedcv", repeats = 5)
+model.rf <- train(sex ~ ., data=data.train, method = "rf", trControl = fitControl); model.rf
 ```
 
 ```{r}
@@ -79,10 +80,32 @@ model.rf.cm <- confusionMatrix(model.rf.pred, data.test$sex); model.rf.cm
 
 ```{r}
 # 5. 하이퍼 파라메터 튜닝
+
+## 5-1. custom search grid
+customGrid <- expand.grid(mtry = 1:(dim(data.train)[2]-1))
+model.rf.tuned <- train(sex ~ ., data=data.train, method = "rf", 
+                        trControl = fitControl,
+                        tuneGrid = customGrid); model.rf.tuned
+
 ```
 
+```{r}
+model.rf.tuned.pred <- predict(model.rf.tuned, newdata = data.test)
+model.rf.tuned.cm <- confusionMatrix(model.rf.tuned.pred, data.test$sex); model.rf.tuned.cm
+```
 
+```{r}
+# 5-2. Random Search Grid
+fitControl.random <- trainControl(method = "repeatedcv", repeats = 5, search = "random")
+model.rf.tuned2 <- train(sex ~ ., data=data.train, method = "rf", 
+                        trControl = fitControl.random,
+                        tuneLength = 10); model.rf.tuned2
+```
 
+```{r}
+model.rf.tuned2.pred <- predict(model.rf.tuned2, newdata = data.test)
+model.rf.tuned2.cm <- confusionMatrix(model.rf.tuned2.pred, data.test$sex); model.rf.tuned2.cm
+```
 
 ## TIL20220314
 
