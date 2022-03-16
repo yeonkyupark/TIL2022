@@ -48,7 +48,7 @@ colnames(Boston.split) <- c("Number"); Boston.split
 * lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
 
 ```{r}
-if (!request(glmnet)) {
+if (!require(glmnet)) {
   install.packages("glmnet")
   library(glmnet)
 }
@@ -101,3 +101,7 @@ postResample(pred = Boston.pred, obs = Boston.test.y)
 
 RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.  
 
+
+### Markdown 문법
+
+https://daringfireball.net/projects/markdown/syntax#p 
