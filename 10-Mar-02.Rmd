@@ -1,0 +1,17 @@
+# 2022년 3월
+
+```{r echo=FALSE, include=FALSE}
+library(ggplot2)
+library(MASS)
+library(tidyr)
+library(palmerpenguins)
+library(dplyr)
+library(mice)
+library(tidyverse)
+library(caret)
+library(mlbench)
+library(rpart)
+```
+
+## TIL20220316
+
