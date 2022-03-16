@@ -37,7 +37,63 @@ Boston.split <-  rbind(Train.Data = nrow(Boston.train), Test.Data = nrow(Boston.
 colnames(Boston.split) <- c("Number"); Boston.split
 ```
 
-```{r}
+`glmnet` 패키지 내 `glmnet()` 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다. 
 
+* family = 결과변수의 확률분포, gaussian, binomial 등
+* alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)
+* lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
+
+```{r}
+if (!request(glmnet)) {
+  install.packages("glmnet")
+  library(glmnet)
+}
+
+# 예측변수 행렬 + 더미변수 생성
+x <- model.matrix(medv ~., Boston.train)[, -1] # 불필요한 첫 번째 열 삭제
+head(x)
 ```
+
+```{r}
+# 결과변수
+y <- Boston.train$medv
+```
+
+```{r}
+# 최적의 람다 계산
+set.seed(123)
+Boston.cv <- cv.glmnet(x = x, y = y, family = "gaussian", alpha = 0) # Ridge
+plot(Boston.cv)
+```
+
+왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.  
+
+```{r}
+str(Boston.cv)
+```
+
+```{r}
+cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.min))
+```
+
+
+```{r}
+Boston.gnet <- glmnet(x = x, y = y, family = "gaussian", 
+       alpha = 0, # Ridge
+       lambda = Boston.cv$lambda.min)
+coef(Boston.gnet)
+```
+
+```{r}
+Boston.test.x <- model.matrix(medv ~ ., Boston.test)[, -1]
+Boston.test.y <- Boston.test$medv
+Boston.pred <- predict(Boston.gnet, newx = Boston.test.x)
+head(Boston.pred)
+```
+
+```{r}
+postResample(pred = Boston.pred, obs = Boston.test.y)
+```
+
+RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.  
 
