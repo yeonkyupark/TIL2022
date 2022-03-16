@@ -137,10 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">TIL 2022</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#시작하며">시작하며<span></span></a><ul>
-<li><a href="index.html#til20220316">TIL20220316<span></span></a></li>
-</ul></li>
+<li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220316">TIL20220316<span></span></a></li>
 <li><a href="년-3월.html#til20220315">TIL20220315<span></span></a></li>
 <li><a href="년-3월.html#til20220314">TIL20220314<span></span></a></li>
 <li><a href="년-3월.html#til20220313">TIL20220313<span></span></a></li>
@@ -207,69 +206,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      다시 시작하는걸로...  </code></pre>
 <p><img src="https://user-images.githubusercontent.com/72383349/155848684-460dbb41-426d-4d5a-9f85-99528427c89d.png" /></p>
 
-<div id="til20220316" class="section level2 hasAnchor">
-<h2>TIL20220316<a href="index.html#til20220316" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="페널티-회귀분석" class="section level3 hasAnchor">
-<h3>페널티 회귀분석<a href="index.html#페널티-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>페널티 회귀분석(penalized regression analysis)</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<ul>
-<li>릿지 (Ridge), 회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수</li>
-<li>라소 (Lasso), 설명력에 기여하지 못하는 독립변수의 회귀계수를 0으로 만듬(간명한 모델), 독립변수의 회귀변수간 차이가 클 때 우수</li>
-<li>일래스틱넷 (ElasticNet), 릿지 + 라소</li>
-</ul>
-<p>지나치게많은 독립변수를 갖는 모델에 페널티를 부과하는 방식으로 보다 간명한 회귀모델을 생성할 수 있다. 모델의 성능에 크게 기여하지 못하는 변수의 영향력을 축소(Lasso)하거나 모델에서 제거(Ridge)한다. 최소자승법에 의한 잔차(=관측값-예측값)의 제곱합과 페널티항의 합이 최소가 되도록 회귀계수를 추정한다.</p>
-<pre><code>## &#39;data.frame&#39;:    506 obs. of  14 variables:
-##  $ crim   : num  0.00632 0.02731 0.02729 0.03237 0.06905 ...
-##  $ zn     : num  18 0 0 0 0 0 12.5 12.5 12.5 12.5 ...
-##  $ indus  : num  2.31 7.07 7.07 2.18 2.18 2.18 7.87 7.87 7.87 7.87 ...
-##  $ chas   : int  0 0 0 0 0 0 0 0 0 0 ...
-##  $ nox    : num  0.538 0.469 0.469 0.458 0.458 0.458 0.524 0.524 0.524 0.524 ...
-##  $ rm     : num  6.58 6.42 7.18 7 7.15 ...
-##  $ age    : num  65.2 78.9 61.1 45.8 54.2 58.7 66.6 96.1 100 85.9 ...
-##  $ dis    : num  4.09 4.97 4.97 6.06 6.06 ...
-##  $ rad    : int  1 2 2 3 3 3 5 5 5 5 ...
-##  $ tax    : num  296 242 242 222 222 222 311 311 311 311 ...
-##  $ ptratio: num  15.3 17.8 17.8 18.7 18.7 18.7 15.2 15.2 15.2 15.2 ...
-##  $ black  : num  397 397 393 395 397 ...
-##  $ lstat  : num  4.98 9.14 4.03 2.94 5.33 ...
-##  $ medv   : num  24 21.6 34.7 33.4 36.2 28.7 22.9 27.1 16.5 18.9 ...</code></pre>
-<pre><code>##            Number
-## Train.Data    356
-## Test.Data     150</code></pre>
-<p><code>glmnet</code> 패키지 내 <code>glmnet()</code> 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다.</p>
-<ul>
-<li>family = 결과변수의 확률분포, gaussian, binomial 등</li>
-<li>alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)</li>
-<li>lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정</li>
-</ul>
-<pre><code>## Error in request(glmnet): could not find function &quot;request&quot;</code></pre>
-<pre><code>##       crim   zn indus chas   nox    rm  age    dis rad tax ptratio  black lstat
-## 1  0.00632 18.0  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
-## 4  0.03237  0.0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
-## 10 0.17004 12.5  7.87    0 0.524 6.004 85.9 6.5921   5 311    15.2 386.71 17.10
-## 12 0.11747 12.5  7.87    0 0.524 6.009 82.9 6.2267   5 311    15.2 396.90 13.27
-## 13 0.09378 12.5  7.87    0 0.524 5.889 39.0 5.4509   5 311    15.2 390.50 15.71
-## 16 0.62739  0.0  8.14    0 0.538 5.834 56.5 4.4986   4 307    21.0 395.62  8.47</code></pre>
-<pre><code>## Error in cv.glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0): could not find function &quot;cv.glmnet&quot;</code></pre>
-<pre><code>## Error in plot(Boston.cv): object &#39;Boston.cv&#39; not found</code></pre>
-<p>왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.</p>
-<pre><code>## Error in str(Boston.cv): object &#39;Boston.cv&#39; not found</code></pre>
-<pre><code>## Error in cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.min)): object &#39;Boston.cv&#39; not found</code></pre>
-<pre><code>## Error in glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0, lambda = Boston.cv$lambda.min): could not find function &quot;glmnet&quot;</code></pre>
-<pre><code>## Error in coef(Boston.gnet): object &#39;Boston.gnet&#39; not found</code></pre>
-<pre><code>## Error in predict(Boston.gnet, newx = Boston.test.x): object &#39;Boston.gnet&#39; not found</code></pre>
-<pre><code>## Error in head(Boston.pred): object &#39;Boston.pred&#39; not found</code></pre>
-<pre><code>## Error in postResample(pred = Boston.pred, obs = Boston.test.y): object &#39;Boston.pred&#39; not found</code></pre>
-<p>RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.</p>
-
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p><a href="https://www.youtube.com/watch?v=3OEwk2VxZdE&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&amp;index=31&amp;t=228s" class="uri">https://www.youtube.com/watch?v=3OEwk2VxZdE&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&amp;index=31&amp;t=228s</a><a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 

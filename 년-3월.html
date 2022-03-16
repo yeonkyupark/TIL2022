@@ -137,10 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">TIL 2022</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#시작하며">시작하며<span></span></a><ul>
-<li><a href="index.html#til20220316">TIL20220316<span></span></a></li>
-</ul></li>
+<li><a href="index.html#시작하며">시작하며<span></span></a></li>
 <li><a href="년-3월.html#년-3월">2022년 3월<span></span></a><ul>
+<li><a href="년-3월.html#til20220316">TIL20220316<span></span></a></li>
 <li><a href="년-3월.html#til20220315">TIL20220315<span></span></a></li>
 <li><a href="년-3월.html#til20220314">TIL20220314<span></span></a></li>
 <li><a href="년-3월.html#til20220313">TIL20220313<span></span></a></li>
@@ -196,6 +195,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="년-3월" class="section level1 hasAnchor">
 <h1>2022년 3월<a href="년-3월.html#년-3월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220316" class="section level2 hasAnchor">
+<h2>TIL20220316<a href="년-3월.html#til20220316" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="페널티-회귀분석" class="section level3 hasAnchor">
+<h3>페널티 회귀분석<a href="년-3월.html#페널티-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>페널티 회귀분석(penalized regression analysis)</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<ul>
+<li>릿지 (Ridge)<br><br />
+회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수</li>
+<li>라소 (Lasso)<br>
+설명력에 기여하지 못하는 독립변수의 회귀계수를 0으로 만듬(간명한 모델), 독립변수의 회귀변수간 차이가 클 때 우수</li>
+<li>일래스틱넷 (ElasticNet), 릿지 + 라소</li>
+</ul>
+<p>지나치게많은 독립변수를 갖는 모델에 페널티를 부과하는 방식으로 보다 간명한 회귀모델을 생성할 수 있다. 모델의 성능에 크게 기여하지 못하는 변수의 영향력을 축소(Lasso)하거나 모델에서 제거(Ridge)한다. 최소자승법에 의한 잔차(=관측값-예측값)의 제곱합과 페널티항의 합이 최소가 되도록 회귀계수를 추정한다.</p>
+<pre><code>## &#39;data.frame&#39;:    506 obs. of  14 variables:
+##  $ crim   : num  0.00632 0.02731 0.02729 0.03237 0.06905 ...
+##  $ zn     : num  18 0 0 0 0 0 12.5 12.5 12.5 12.5 ...
+##  $ indus  : num  2.31 7.07 7.07 2.18 2.18 2.18 7.87 7.87 7.87 7.87 ...
+##  $ chas   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ nox    : num  0.538 0.469 0.469 0.458 0.458 0.458 0.524 0.524 0.524 0.524 ...
+##  $ rm     : num  6.58 6.42 7.18 7 7.15 ...
+##  $ age    : num  65.2 78.9 61.1 45.8 54.2 58.7 66.6 96.1 100 85.9 ...
+##  $ dis    : num  4.09 4.97 4.97 6.06 6.06 ...
+##  $ rad    : int  1 2 2 3 3 3 5 5 5 5 ...
+##  $ tax    : num  296 242 242 222 222 222 311 311 311 311 ...
+##  $ ptratio: num  15.3 17.8 17.8 18.7 18.7 18.7 15.2 15.2 15.2 15.2 ...
+##  $ black  : num  397 397 393 395 397 ...
+##  $ lstat  : num  4.98 9.14 4.03 2.94 5.33 ...
+##  $ medv   : num  24 21.6 34.7 33.4 36.2 28.7 22.9 27.1 16.5 18.9 ...</code></pre>
+<pre><code>##            Number
+## Train.Data    356
+## Test.Data     150</code></pre>
+<p><code>glmnet</code> 패키지 내 <code>glmnet()</code> 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다.</p>
+<ul>
+<li>family = 결과변수의 확률분포, gaussian, binomial 등</li>
+<li>alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)</li>
+<li>lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정</li>
+</ul>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpNel7bk/downloaded_packages</code></pre>
+<pre><code>##       crim   zn indus chas   nox    rm  age    dis rad tax ptratio  black lstat
+## 1  0.00632 18.0  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
+## 4  0.03237  0.0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+## 10 0.17004 12.5  7.87    0 0.524 6.004 85.9 6.5921   5 311    15.2 386.71 17.10
+## 12 0.11747 12.5  7.87    0 0.524 6.009 82.9 6.2267   5 311    15.2 396.90 13.27
+## 13 0.09378 12.5  7.87    0 0.524 5.889 39.0 5.4509   5 311    15.2 390.50 15.71
+## 16 0.62739  0.0  8.14    0 0.538 5.834 56.5 4.4986   4 307    21.0 395.62  8.47</code></pre>
+<p><img src="Figures/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.</p>
+<pre><code>## List of 12
+##  $ lambda    : num [1:100] 6648 6057 5519 5029 4582 ...
+##  $ cvm       : num [1:100] 81.3 80.7 80.6 80.5 80.5 ...
+##  $ cvsd      : num [1:100] 4.66 4.63 4.61 4.61 4.6 ...
+##  $ cvup      : num [1:100] 85.9 85.3 85.2 85.1 85.1 ...
+##  $ cvlo      : num [1:100] 76.6 76.1 76 75.9 75.8 ...
+##  $ nzero     : Named int [1:100] 13 13 13 13 13 13 13 13 13 13 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:100] &quot;s0&quot; &quot;s1&quot; &quot;s2&quot; &quot;s3&quot; ...
+##  $ call      : language cv.glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0)
+##  $ name      : Named chr &quot;Mean-Squared Error&quot;
+##   ..- attr(*, &quot;names&quot;)= chr &quot;mse&quot;
+##  $ glmnet.fit:List of 12
+##   ..$ a0       : Named num [1:100] 22.4 22.5 22.5 22.5 22.5 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:100] &quot;s0&quot; &quot;s1&quot; &quot;s2&quot; &quot;s3&quot; ...
+##   ..$ beta     :Formal class &#39;dgCMatrix&#39; [package &quot;Matrix&quot;] with 6 slots
+##   .. .. ..@ i       : int [1:1300] 0 1 2 3 4 5 6 7 8 9 ...
+##   .. .. ..@ p       : int [1:101] 0 13 26 39 52 65 78 91 104 117 ...
+##   .. .. ..@ Dim     : int [1:2] 13 100
+##   .. .. ..@ Dimnames:List of 2
+##   .. .. .. ..$ : chr [1:13] &quot;crim&quot; &quot;zn&quot; &quot;indus&quot; &quot;chas&quot; ...
+##   .. .. .. ..$ : chr [1:100] &quot;s0&quot; &quot;s1&quot; &quot;s2&quot; &quot;s3&quot; ...
+##   .. .. ..@ x       : num [1:1300] -4.24e-37 1.27e-37 -6.75e-37 6.90e-36 -3.46e-35 ...
+##   .. .. ..@ factors : list()
+##   ..$ df       : int [1:100] 13 13 13 13 13 13 13 13 13 13 ...
+##   ..$ dim      : int [1:2] 13 100
+##   ..$ lambda   : num [1:100] 6648 6057 5519 5029 4582 ...
+##   ..$ dev.ratio: num [1:100] 5.72e-36 8.32e-03 9.12e-03 1.00e-02 1.10e-02 ...
+##   ..$ nulldev  : num 28877
+##   ..$ npasses  : int 452
+##   ..$ jerr     : int 0
+##   ..$ offset   : logi FALSE
+##   ..$ call     : language glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0)
+##   ..$ nobs     : int 356
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;elnet&quot; &quot;glmnet&quot;
+##  $ lambda.min: num 0.665
+##  $ lambda.1se: num 3.89
+##  $ index     : int [1:2, 1] 100 81
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:2] &quot;min&quot; &quot;1se&quot;
+##   .. ..$ : chr &quot;Lambda&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;cv.glmnet&quot;</code></pre>
+<pre><code>##      lambda.min lambda.min.log
+## [1,]  0.6647797     -0.4082995</code></pre>
+<pre><code>## 14 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                        s0
+## (Intercept)  26.562458173
+## crim         -0.074637662
+## zn            0.017675831
+## indus        -0.084095173
+## chas          3.084971492
+## nox         -11.016754020
+## rm            4.080060454
+## age          -0.003541674
+## dis          -0.951812086
+## rad           0.143586748
+## tax          -0.005498664
+## ptratio      -0.845505137
+## black         0.008415669
+## lstat        -0.432346168</code></pre>
+<pre><code>##         s0
+## 2 25.28493
+## 3 30.64018
+## 5 28.96135
+## 6 26.05142
+## 7 23.45445
+## 8 20.73295</code></pre>
+<pre><code>##     RMSE Rsquared      MAE 
+## 5.270168 0.707766 3.343058</code></pre>
+<p>RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.</p>
+</div>
+<div id="markdown-문법" class="section level3 hasAnchor">
+<h3>Markdown 문법<a href="년-3월.html#markdown-문법" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://daringfireball.net/projects/markdown/syntax#p" class="uri">https://daringfireball.net/projects/markdown/syntax#p</a></p>
+
+</div>
+</div>
 <div id="til20220315" class="section level2 hasAnchor">
 <h2>TIL20220315<a href="년-3월.html#til20220315" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="caret을-이용한-기계학습-절차" class="section level3 hasAnchor">
@@ -232,23 +356,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
 ##  Max.   :231.0     Max.   :6300                Max.   :2009  
 ##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
-<pre><code>##       species          island    bill_length_mm     bill_depth_mm     
-##  Adelie   :152   Biscoe   :168   Min.   :-2.16574   Min.   :-2.03298  
-##  Chinstrap: 68   Dream    :124   1st Qu.:-0.86371   1st Qu.:-0.79087  
-##  Gentoo   :124   Torgersen: 52   Median : 0.09905   Median : 0.07484  
-##                                  Mean   : 0.00000   Mean   : 0.00000  
-##                                  3rd Qu.: 0.84175   3rd Qu.: 0.77745  
-##                                  Max.   : 2.87731   Max.   : 2.18266  
+<pre><code>##       species          island    bill_length_mm    bill_depth_mm     
+##  Adelie   :152   Biscoe   :168   Min.   :-2.1655   Min.   :-2.04700  
+##  Chinstrap: 68   Dream    :124   1st Qu.:-0.8652   1st Qu.:-0.79498  
+##  Gentoo   :124   Torgersen: 52   Median : 0.0962   Median : 0.07764  
+##                                  Mean   : 0.0000   Mean   : 0.00000  
+##                                  3rd Qu.: 0.8379   3rd Qu.: 0.78586  
+##                                  Max.   : 2.8707   Max.   : 2.20229  
 ##  flipper_length_mm  body_mass_g          sex        year    
-##  Min.   :-2.0529   Min.   :-1.8789   female:174   2007:110  
-##  1st Qu.:-0.7752   1st Qu.:-0.8163   male  :170   2008:114  
-##  Median :-0.2784   Median :-0.1913                2009:120  
+##  Min.   :-2.0578   Min.   :-1.8752   female:172   2007:110  
+##  1st Qu.:-0.7762   1st Qu.:-0.8156   male  :172   2008:114  
+##  Median :-0.2778   Median :-0.1922                2009:120  
 ##  Mean   : 0.0000   Mean   : 0.0000                          
-##  3rd Qu.: 0.8751   3rd Qu.: 0.6837                          
-##  Max.   : 2.1350   Max.   : 2.6213</code></pre>
+##  3rd Qu.: 0.8614   3rd Qu.: 0.6882                          
+##  Max.   : 2.1431   Max.   : 2.6126</code></pre>
 <pre><code>##          female male Sum
-## TrainSet    122  119 241
-## TestSet      52   51 103</code></pre>
+## TrainSet    121  121 242
+## TestSet      51   51 102</code></pre>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf&#39; not found</code></pre>
 <pre><code>## Error in predict(model.rf, newdata = data.test): object &#39;model.rf&#39; not found</code></pre>
@@ -283,8 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>시계열 데이터 분할<a href="년-3월.html#시계열-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>시계열은 일반적인 방법으로 표본상에서 랜덤하게 원소를 추출할 수 없다. 시간 흐름을 고려하여 훈련 데이터와 시험 데이터로 분할해야 한다.</p>
+<p><img src="Figures/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><img src="Figures/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>오늘은 여기까지…</p>
 </div>
 </div>
@@ -390,7 +514,7 @@ Backtrace:
 </div>
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3>결측치 시각화<a href="년-3월.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="Figures/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
 ## 9         1      1    1              1             1                 1
@@ -652,7 +776,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>귀무가설: 고양이의 몸무게가 2.7kg이다.</li>
 <li>대립가설: 고양이의 몸무게가 2.7kg이 아니다.</li>
@@ -668,7 +792,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-61-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="평균검정" class="section level3 hasAnchor">
 <h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -693,7 +817,7 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <p>유사한 방식으로 유의수준 0.05에 해당하는 t값을 계산하고 관측된 t값을 비교하여 검정한다.</p>
 <pre><code>## [1] 2.093024</code></pre>
 <p>주어진 t 값은 유의수준 5%에 해당하는 t값의 오른쪽에 위치함으로 귀무가설을 기각하고 대립가설을 채택한다.</p>
-<p><img src="Figures/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220305" class="section level2 hasAnchor">
@@ -701,8 +825,8 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div id="정규분포" class="section level3 hasAnchor">
 <h3>정규분포<a href="년-3월.html#정규분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.</p>
+<p><img src="Figures/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><img src="Figures/unnamed-chunk-66-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-67-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## [1] 0.8413447</code></pre>
 <pre><code>## [1] 0.1586553</code></pre>
 <pre><code>## [1] 0.5</code></pre>
@@ -714,10 +838,10 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <pre><code>## [1] 116.4485</code></pre>
 <pre><code>## [1]  83.55146 116.44854</code></pre>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
-<pre><code>## [1] 96.85168</code></pre>
-<pre><code>## [1]  98.20928 100.52268 106.10881  97.06203  73.20284</code></pre>
-<pre><code>## [1] -1.237844</code></pre>
-<pre><code>## [1]  0.5765686  1.1358906  0.6941418  0.2865712 -1.9980673</code></pre>
+<pre><code>## [1] 95.07461</code></pre>
+<pre><code>## [1]  95.37173  98.49644  94.15030  82.73492 106.04025</code></pre>
+<pre><code>## [1] 0.02687699</code></pre>
+<pre><code>## [1] -3.0469666  1.1075277 -0.6916751  0.1957096  0.2922544</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -731,9 +855,9 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 ## 
 ## data:  runif(100, min = 2, max = 4)
 ## W = 0.9454, p-value = 0.0004182</code></pre>
-<p><img src="Figures/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-84-2.png" width="672" style="display: block; margin: auto;" />
+<p><img src="Figures/unnamed-chunk-83-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-83-2.png" width="672" style="display: block; margin: auto;" />
 x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 표본이다.</p>
-<p><img src="Figures/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-85-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-84-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220304" class="section level2 hasAnchor">
@@ -1472,7 +1596,8 @@ x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
+<ol start="1">
+<li id="fn1"><p><a href="https://www.youtube.com/watch?v=3OEwk2VxZdE&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&amp;index=31&amp;t=228s" class="uri">https://www.youtube.com/watch?v=3OEwk2VxZdE&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&amp;index=31&amp;t=228s</a><a href="년-3월.html#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p><a href="http://aispiration.com/model/model-rsampling-time-series.html" class="uri">http://aispiration.com/model/model-rsampling-time-series.html</a><a href="년-3월.html#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p><a href="https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html" class="uri">https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html</a><a href="년-3월.html#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source" class="uri">https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source</a><a href="년-3월.html#fnref4" class="footnote-back">↩︎</a></p></li>
@@ -1520,7 +1645,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/10-Mar-02.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/10-Mar-01.Rmd",
 "text": "Edit"
 },
 "history": {
