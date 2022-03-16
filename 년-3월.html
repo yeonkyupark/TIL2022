@@ -232,23 +232,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
 ##  Max.   :231.0     Max.   :6300                Max.   :2009  
 ##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
-<pre><code>##       species          island    bill_length_mm    bill_depth_mm     
-##  Adelie   :152   Biscoe   :168   Min.   :-2.1615   Min.   :-2.04877  
-##  Chinstrap: 68   Dream    :124   1st Qu.:-0.8623   1st Qu.:-0.79530  
-##  Gentoo   :124   Torgersen: 52   Median : 0.0983   Median : 0.07832  
-##                                  Mean   : 0.0000   Mean   : 0.00000  
-##                                  3rd Qu.: 0.8394   3rd Qu.: 0.78735  
-##                                  Max.   : 2.8704   Max.   : 2.20542  
+<pre><code>##       species          island    bill_length_mm     bill_depth_mm     
+##  Adelie   :152   Biscoe   :168   Min.   :-2.17101   Min.   :-2.04327  
+##  Chinstrap: 68   Dream    :124   1st Qu.:-0.85375   1st Qu.:-0.79263  
+##  Gentoo   :124   Torgersen: 52   Median : 0.09633   Median : 0.07903  
+##                                  Mean   : 0.00000   Mean   : 0.00000  
+##                                  3rd Qu.: 0.83987   3rd Qu.: 0.78646  
+##                                  Max.   : 2.87773   Max.   : 2.20132  
 ##  flipper_length_mm  body_mass_g          sex        year    
-##  Min.   :-2.0506   Min.   :-1.8751   female:174   2007:110  
-##  1st Qu.:-0.7744   1st Qu.:-0.8142   male  :170   2008:114  
-##  Median :-0.2780   Median :-0.1901                2009:120  
+##  Min.   :-2.0589   Min.   :-1.8760   female:173   2007:110  
+##  1st Qu.:-0.7770   1st Qu.:-0.8151   male  :171   2008:114  
+##  Median :-0.2784   Median :-0.1910                2009:120  
 ##  Mean   : 0.0000   Mean   : 0.0000                          
-##  3rd Qu.: 0.8741   3rd Qu.: 0.6914                          
-##  Max.   : 2.1326   Max.   : 2.6182</code></pre>
+##  3rd Qu.: 0.8610   3rd Qu.: 0.6904                          
+##  Max.   : 2.1429   Max.   : 2.6172</code></pre>
 <pre><code>##          female male Sum
-## TrainSet    122  119 241
-## TestSet      52   51 103</code></pre>
+## TrainSet    122  120 242
+## TestSet      51   51 102</code></pre>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf&#39; not found</code></pre>
 <pre><code>## Error in predict(model.rf, newdata = data.test): object &#39;model.rf&#39; not found</code></pre>
@@ -281,10 +281,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>TIL20220313<a href="년-3월.html#til20220313" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="시계열-데이터-분할" class="section level3 hasAnchor">
 <h3>시계열 데이터 분할<a href="년-3월.html#시계열-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>시계열은 일반적인 방법으로 표본상에서 랜덤하게 원소를 추출할 수 없다. 시간 흐름을 고려하여 훈련 데이터와 시험 데이터로 분할해야 한다.</p>
-<p><img src="Figures/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>오늘은 여기까지…</p>
 </div>
 </div>
@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>TIL20220312<a href="년-3월.html#til20220312" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="rstudio-chunk-options" class="section level3 hasAnchor">
 <h3>RStudio Chunk options<a href="년-3월.html#rstudio-chunk-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R Code Chunks<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>R Code Chunks<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p>Rmarkdown으로 문서 작성 시 꼭 필요한 사용하게 된다. 알아 둘 것.</p>
 <pre><code>knitr::opts_chunk$set(# root.dir = &#39;../..&#39;, # 프로젝트 폴더 지정
                       eval = TRUE,
@@ -318,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 RStudio에서 rendering 후 업로드 하자.</p>
 <div id="url을-통해-직접-패키지-설치" class="section level3 hasAnchor">
 <h3>URL을 통해 직접 패키지 설치<a href="년-3월.html#url을-통해-직접-패키지-설치" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Install an R package directly from a URL for the package source<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>Install an R package directly from a URL for the package source<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 </div>
 </div>
 <div id="til20220310" class="section level2 hasAnchor">
@@ -348,11 +348,11 @@ RStudio에서 rendering 후 업로드 하자.</p>
 <p>분류 분석의 경우 관찰된 표본 범주 비율이 큰 쪽으로 편향되는 경향이 있다. 이를 해결하기 위해 범주의 비율을 조절하여 정제한다.</p>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png" alt="" />
-<p class="caption">Downsampling &amp; Upsampling<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p class="caption">Downsampling &amp; Upsampling<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 </div>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png" alt="" />
-<p class="caption">SMOTE<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p class="caption">SMOTE<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 </div>
 <ul>
 <li>Upsampling: this method increases the size of the minority class by sampling with replacement so that the classes will have the same size.</li>
@@ -360,7 +360,7 @@ RStudio에서 rendering 후 업로드 하자.</p>
 </li>
 <li>Hybrid methods : The well known hybrid methods are ROSE (Random oversampling examples), and SMOTE (Synthetic minority oversampling technique), they downsample the majority class, and creat new artificial points in the minority class. For more detail about SMOTE method click here, and for ROSE click here.</li>
 </ul>
-<p>from: Methods for dealing with imbalanced data<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>from: Methods for dealing with imbalanced data<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
 </div>
 </div>
 <div id="til20220308" class="section level2 hasAnchor">
@@ -390,7 +390,7 @@ Backtrace:
 </div>
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3>결측치 시각화<a href="년-3월.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="Figures/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
 ## 9         1      1    1              1             1                 1
@@ -652,7 +652,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>귀무가설: 고양이의 몸무게가 2.7kg이다.</li>
 <li>대립가설: 고양이의 몸무게가 2.7kg이 아니다.</li>
@@ -668,7 +668,7 @@ Backtrace:
 ## sample estimates:
 ## mean of x 
 ##  2.723611</code></pre>
-<p><img src="Figures/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="평균검정" class="section level3 hasAnchor">
 <h3>평균검정<a href="년-3월.html#평균검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -693,7 +693,7 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <p>유사한 방식으로 유의수준 0.05에 해당하는 t값을 계산하고 관측된 t값을 비교하여 검정한다.</p>
 <pre><code>## [1] 2.093024</code></pre>
 <p>주어진 t 값은 유의수준 5%에 해당하는 t값의 오른쪽에 위치함으로 귀무가설을 기각하고 대립가설을 채택한다.</p>
-<p><img src="Figures/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220305" class="section level2 hasAnchor">
@@ -701,8 +701,8 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <div id="정규분포" class="section level3 hasAnchor">
 <h3>정규분포<a href="년-3월.html#정규분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.</p>
-<p><img src="Figures/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="Figures/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## [1] 0.8413447</code></pre>
 <pre><code>## [1] 0.1586553</code></pre>
 <pre><code>## [1] 0.5</code></pre>
@@ -714,10 +714,10 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 <pre><code>## [1] 116.4485</code></pre>
 <pre><code>## [1]  83.55146 116.44854</code></pre>
 <pre><code>## [1] -1.959964  1.959964</code></pre>
-<pre><code>## [1] 102.771</code></pre>
-<pre><code>## [1]  90.58253 110.31075  97.59238  97.76767 114.82239</code></pre>
-<pre><code>## [1] -0.9803342</code></pre>
-<pre><code>## [1] -0.6929236  1.1642512 -0.9495340  0.2500292  0.3231328</code></pre>
+<pre><code>## [1] 87.72416</code></pre>
+<pre><code>## [1]  97.08145 112.12737 105.77182 122.80428  89.95890</code></pre>
+<pre><code>## [1] 0.1059482</code></pre>
+<pre><code>## [1] 3.05712530 0.01974265 0.89149575 0.84944344 1.61090482</code></pre>
 </div>
 <div id="데이터의-정규성-검정" class="section level3 hasAnchor">
 <h3>데이터의 정규성 검정<a href="년-3월.html#데이터의-정규성-검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -731,9 +731,9 @@ t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 ## 
 ## data:  runif(100, min = 2, max = 4)
 ## W = 0.9454, p-value = 0.0004182</code></pre>
-<p><img src="Figures/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-74-2.png" width="672" style="display: block; margin: auto;" />
+<p><img src="Figures/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-77-2.png" width="672" style="display: block; margin: auto;" />
 x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 표본이다.</p>
-<p><img src="Figures/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-75-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="Figures/unnamed-chunk-78-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-78-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="til20220304" class="section level2 hasAnchor">
@@ -764,11 +764,11 @@ x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 
 <li>표본으로부터 관측된 결과(즉 계산된 통계량)가 나타날 가능성이 5% 미만 또는 1% 미만이 되는 귀무가설을 기각하면 이를 통계적으로 유의하다(statistically significant)라고 표현함</li>
 </ul>
 <p><strong>가설검정과 검정력</strong></p>
-<p><img src="http://www.ktword.co.kr/img_data/5094_2.JPG" />출처<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<p><img src="http://www.ktword.co.kr/img_data/5094_2.JPG" />출처<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
 </div>
 <div id="확률분포" class="section level3 hasAnchor">
 <h3>확률분포<a href="년-3월.html#확률분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p><strong>이항분포(binomial distribution)</strong></p>
 <p>대표적인 이산확률분포(discrete probability distribution)로서 매회 어떤 사건이 일어날 확률이 동일한 독립 시행의 경우에 있어서 이 사건이 일어나는 횟수가 만들어 내는 분포이다. 예를 들면 동전 던지기로 동전을 일정 횟수 반복하여 던지는 실험에서 매 시행시마다 숫자면이 나타날 확률이 1/2이라고 할 때 숫자면이 나타나는 횟수는 이항분포를 따른다고 할 수 있다.</p>
 <pre><code>## [1] 0.1171875</code></pre>
@@ -1472,15 +1472,15 @@ x축은 이론적 정규 분포에 의해 생성된 표본이고 y축은 실제 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p><a href="http://aispiration.com/model/model-rsampling-time-series.html" class="uri">http://aispiration.com/model/model-rsampling-time-series.html</a><a href="년-3월.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html" class="uri">https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html</a><a href="년-3월.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source" class="uri">https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source</a><a href="년-3월.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png</a><a href="년-3월.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png</a><a href="년-3월.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p><a href="https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/" class="uri">https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/</a><a href="년-3월.html#fnref6" class="footnote-back">↩︎</a></p></li>
-<li id="fn7"><p><a href="http://www.ktword.co.kr/img_data/5094_2.JPG" class="uri">http://www.ktword.co.kr/img_data/5094_2.JPG</a><a href="년-3월.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p><a href="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" class="uri">https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png</a><a href="년-3월.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p><a href="http://aispiration.com/model/model-rsampling-time-series.html" class="uri">http://aispiration.com/model/model-rsampling-time-series.html</a><a href="년-3월.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html" class="uri">https://zorba78.github.io/cnu-r-programming-lecture-note/r-code-chunks.html</a><a href="년-3월.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source" class="uri">https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source</a><a href="년-3월.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/resampling.png</a><a href="년-3월.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png" class="uri">https://raw.githubusercontent.com/rafjaa/machine_learning_fecib/master/src/static/img/smote.png</a><a href="년-3월.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/" class="uri">https://www.r-bloggers.com/2019/04/methods-for-dealing-with-imbalanced-data/</a><a href="년-3월.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a href="http://www.ktword.co.kr/img_data/5094_2.JPG" class="uri">http://www.ktword.co.kr/img_data/5094_2.JPG</a><a href="년-3월.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" class="uri">https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png</a><a href="년-3월.html#fnref9" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

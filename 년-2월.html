@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>TIL20220228<a href="년-2월.html#til20220228" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="데이터-수집" class="section level3 hasAnchor">
 <h3>데이터 수집<a href="년-2월.html#데이터-수집" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>통계데이터분석 - 데이터 수집<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p>통계데이터분석 - 데이터 수집<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
 <div id="데이터-수집-원천" class="section level4 hasAnchor">
 <h4>데이터 수집 원천<a href="년-2월.html#데이터-수집-원천" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -272,11 +272,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>TIL20220226<a href="년-2월.html#til20220226" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="데이터-훑어보기" class="section level3 hasAnchor">
 <h3>데이터 훑어보기<a href="년-2월.html#데이터-훑어보기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="년-2월.html#cb180-1"></a><span class="kw">library</span>(palmerpenguins) <span class="co"># 사용할 데이터 셋</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="년-2월.html#cb182-1"></a><span class="kw">library</span>(palmerpenguins) <span class="co"># 사용할 데이터 셋</span></span></code></pre></div>
 <p>우선 데이터 구조는 <code>str()</code></p>
 <p>일반적으로 <code>summary()</code>를 통해 수치 연산 결과를 전체적인 모습을 살펴볼 수 있다.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="년-2월.html#cb181-1"></a><span class="co"># base package</span></span>
-<span id="cb181-2"><a href="년-2월.html#cb181-2"></a><span class="kw">summary</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="년-2월.html#cb183-1"></a><span class="co"># base package</span></span>
+<span id="cb183-2"><a href="년-2월.html#cb183-2"></a><span class="kw">summary</span>(penguins)</span></code></pre></div>
 <pre><code>##       species          island    bill_length_mm  bill_depth_mm  
 ##  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
 ##  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
@@ -294,10 +294,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :231.0     Max.   :6300                Max.   :2009  
 ##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
 <p>skimr 패키지의 <code>skim()</code>을 통해 유사한 수치연산 결과를 보다 가독성이 좋은 형태로 출력해 준다.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="년-2월.html#cb183-1"></a><span class="kw">library</span>(skimr)</span>
-<span id="cb183-2"><a href="년-2월.html#cb183-2"></a><span class="kw">skim</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="년-2월.html#cb185-1"></a><span class="kw">library</span>(skimr)</span>
+<span id="cb185-2"><a href="년-2월.html#cb185-2"></a><span class="kw">skim</span>(penguins)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-171">TABLE 1: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-174">TABLE 1: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
@@ -469,8 +469,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>R에서 데이터 읽어 오기<a href="년-2월.html#r에서-데이터-읽어-오기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>csv 포멧으로 사용하는게 가장 편하고, 파일 형식이 다른 경우 csv 파일 형태로 변환하여 사용하길 추천.
 여건이 되지 않으면 구글링해서 해당 포멧 처리하는 것으로, 하지만 가능하면 엑셀로 기본 전처리 후 csv로 변환하여 사용.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="년-2월.html#cb184-1"></a><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</span>
-<span id="cb184-2"><a href="년-2월.html#cb184-2"></a>         <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="년-2월.html#cb186-1"></a><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</span>
+<span id="cb186-2"><a href="년-2월.html#cb186-2"></a>         <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</span></code></pre></div>
 </div>
 </div>
 <div id="til20220224" class="section level2 hasAnchor">
@@ -491,21 +491,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="https://user-images.githubusercontent.com/72383349/155531792-c1ee35db-65f7-4424-befd-1e579d6df3f7.png" /></p></li>
 <li><p>생성된 Project GitHub에 올리기</p></li>
 </ol>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="년-2월.html#cb185-1"></a>git checkout main</span>
-<span id="cb185-2"><a href="년-2월.html#cb185-2"></a>git add .</span>
-<span id="cb185-3"><a href="년-2월.html#cb185-3"></a>git commit <span class="op">-</span>m <span class="st">&#39;1st commit on main&#39;</span></span>
-<span id="cb185-4"><a href="년-2월.html#cb185-4"></a>git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="년-2월.html#cb187-1"></a>git checkout main</span>
+<span id="cb187-2"><a href="년-2월.html#cb187-2"></a>git add .</span>
+<span id="cb187-3"><a href="년-2월.html#cb187-3"></a>git commit <span class="op">-</span>m <span class="st">&#39;1st commit on main&#39;</span></span>
+<span id="cb187-4"><a href="년-2월.html#cb187-4"></a>git push origin main</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>GitHub Action workflow 생성하기<br />
 gh-pages 브랜치를 생성한다.</li>
 </ol>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="년-2월.html#cb186-1"></a>git checkout <span class="op">--</span>orphan gh<span class="op">-</span>pages</span>
-<span id="cb186-2"><a href="년-2월.html#cb186-2"></a>git rm <span class="op">-</span>rf .</span>
-<span id="cb186-3"><a href="년-2월.html#cb186-3"></a>git commit <span class="op">--</span>allow<span class="op">-</span>empty <span class="op">-</span>m <span class="st">&#39;1st commit on gh-pages&#39;</span></span>
-<span id="cb186-4"><a href="년-2월.html#cb186-4"></a>git push origin gh<span class="op">-</span>pages</span>
-<span id="cb186-5"><a href="년-2월.html#cb186-5"></a>git checkout main</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="년-2월.html#cb188-1"></a>git checkout <span class="op">--</span>orphan gh<span class="op">-</span>pages</span>
+<span id="cb188-2"><a href="년-2월.html#cb188-2"></a>git rm <span class="op">-</span>rf .</span>
+<span id="cb188-3"><a href="년-2월.html#cb188-3"></a>git commit <span class="op">--</span>allow<span class="op">-</span>empty <span class="op">-</span>m <span class="st">&#39;1st commit on gh-pages&#39;</span></span>
+<span id="cb188-4"><a href="년-2월.html#cb188-4"></a>git push origin gh<span class="op">-</span>pages</span>
+<span id="cb188-5"><a href="년-2월.html#cb188-5"></a>git checkout main</span></code></pre></div>
 <p>RStudio Console에서 Workflow를 생성한다.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="년-2월.html#cb187-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="년-2월.html#cb189-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li><p>수정된 파일 GitHub에 올리기<br />
 <img src="https://user-images.githubusercontent.com/72383349/155535920-b59330f1-dfb3-4e10-bb81-f0d9b6de18d9.png" /></p></li>
@@ -524,7 +524,7 @@ gh-pages 브랜치를 생성한다.</li>
 <div id="rstudio.cloud-pat-업데이트" class="section level3 hasAnchor">
 <h3>rstudio.cloud PAT 업데이트<a href="년-2월.html#rstudio.cloud-pat-업데이트" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy" class="uri">https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy</a></p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="년-2월.html#cb188-1"></a>credentials<span class="op">::</span><span class="kw">set_gethub_pat</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="년-2월.html#cb190-1"></a>credentials<span class="op">::</span><span class="kw">set_gethub_pat</span>()</span></code></pre></div>
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/72383349/155330329-ed50990b-e823-4158-9d6b-b523aa1cb581.png" alt="" />
 <p class="caption">image</p>
@@ -549,14 +549,14 @@ gh-pages 브랜치를 생성한다.</li>
 <img src="https://user-images.githubusercontent.com/72383349/155138784-e1994a7c-86e0-4476-9472-e116c77841b3.png" alt="" />
 <p class="caption">image</p>
 </div>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="년-2월.html#cb189-1"></a><span class="co"># snippet 등록</span></span>
-<span id="cb189-2"><a href="년-2월.html#cb189-2"></a>snippet myggplot</span>
-<span id="cb189-3"><a href="년-2월.html#cb189-3"></a>  <span class="co"># 코드 작성 시 반드시 tab으로 띄워쓰기 할 것</span></span>
-<span id="cb189-4"><a href="년-2월.html#cb189-4"></a>    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">$</span>{<span class="dv">1</span><span class="op">:</span>데이터}, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">$</span>{<span class="dv">2</span><span class="op">:</span>변수1}, <span class="dt">y=</span><span class="op">$</span>{<span class="dv">3</span><span class="op">:</span>변수2}, <span class="dt">col=</span><span class="op">$</span>{<span class="dv">4</span><span class="op">:</span>범주1}, <span class="dt">fill=</span><span class="op">$</span>{<span class="dv">5</span><span class="op">:</span>범주2})) <span class="op">+</span></span>
-<span id="cb189-5"><a href="년-2월.html#cb189-5"></a><span class="st">      </span>geom_<span class="op">$</span>{<span class="dv">6</span><span class="op">:</span>그래프종류}() <span class="op">+</span></span>
-<span id="cb189-6"><a href="년-2월.html#cb189-6"></a><span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;${7:그래프제목}&quot;</span>, <span class="dt">x=</span><span class="st">&quot;${8:x축}&quot;</span>, <span class="dt">y=</span><span class="st">&quot;${9:y축}&quot;</span>) <span class="op">+</span></span>
-<span id="cb189-7"><a href="년-2월.html#cb189-7"></a><span class="st">      </span><span class="kw">theme_bw</span>()</span>
-<span id="cb189-8"><a href="년-2월.html#cb189-8"></a>    p</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="년-2월.html#cb191-1"></a><span class="co"># snippet 등록</span></span>
+<span id="cb191-2"><a href="년-2월.html#cb191-2"></a>snippet myggplot</span>
+<span id="cb191-3"><a href="년-2월.html#cb191-3"></a>  <span class="co"># 코드 작성 시 반드시 tab으로 띄워쓰기 할 것</span></span>
+<span id="cb191-4"><a href="년-2월.html#cb191-4"></a>    p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">$</span>{<span class="dv">1</span><span class="op">:</span>데이터}, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">$</span>{<span class="dv">2</span><span class="op">:</span>변수1}, <span class="dt">y=</span><span class="op">$</span>{<span class="dv">3</span><span class="op">:</span>변수2}, <span class="dt">col=</span><span class="op">$</span>{<span class="dv">4</span><span class="op">:</span>범주1}, <span class="dt">fill=</span><span class="op">$</span>{<span class="dv">5</span><span class="op">:</span>범주2})) <span class="op">+</span></span>
+<span id="cb191-5"><a href="년-2월.html#cb191-5"></a><span class="st">      </span>geom_<span class="op">$</span>{<span class="dv">6</span><span class="op">:</span>그래프종류}() <span class="op">+</span></span>
+<span id="cb191-6"><a href="년-2월.html#cb191-6"></a><span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;${7:그래프제목}&quot;</span>, <span class="dt">x=</span><span class="st">&quot;${8:x축}&quot;</span>, <span class="dt">y=</span><span class="st">&quot;${9:y축}&quot;</span>) <span class="op">+</span></span>
+<span id="cb191-7"><a href="년-2월.html#cb191-7"></a><span class="st">      </span><span class="kw">theme_bw</span>()</span>
+<span id="cb191-8"><a href="년-2월.html#cb191-8"></a>    p</span></code></pre></div>
 <p><img src="https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png" /></p>
 <hr />
 </div>
@@ -579,7 +579,7 @@ ref to: <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-w
 <li><p>GitHub Actions를 위한 workflows를 생성한다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png" /></p></li>
 </ol>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="년-2월.html#cb190-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="년-2월.html#cb192-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li><p>배포할 브랜치를 변경해 준다.<br />
 <img src="https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png" /></p></li>
@@ -639,8 +639,8 @@ RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 �
 </div>
 <div class="footnotes">
 <hr />
-<ol start="9">
-<li id="fn9"><p><a href="https://www.youtube.com/watch?v=Z4Hn4LoNuE8&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_" class="uri">https://www.youtube.com/watch?v=Z4Hn4LoNuE8&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_</a><a href="년-2월.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<ol start="10">
+<li id="fn10"><p><a href="https://www.youtube.com/watch?v=Z4Hn4LoNuE8&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_" class="uri">https://www.youtube.com/watch?v=Z4Hn4LoNuE8&amp;list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_</a><a href="년-2월.html#fnref10" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
