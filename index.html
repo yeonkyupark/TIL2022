@@ -236,6 +236,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>##            Number
 ## Train.Data    356
 ## Test.Data     150</code></pre>
+<p><code>glmnet</code> 패키지 내 <code>glmnet()</code> 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다.</p>
+<ul>
+<li>family = 결과변수의 확률분포, gaussian, binomial 등</li>
+<li>alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)</li>
+<li>lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정</li>
+</ul>
+<pre><code>## Error in request(glmnet): could not find function &quot;request&quot;</code></pre>
+<pre><code>##       crim   zn indus chas   nox    rm  age    dis rad tax ptratio  black lstat
+## 1  0.00632 18.0  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
+## 4  0.03237  0.0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+## 10 0.17004 12.5  7.87    0 0.524 6.004 85.9 6.5921   5 311    15.2 386.71 17.10
+## 12 0.11747 12.5  7.87    0 0.524 6.009 82.9 6.2267   5 311    15.2 396.90 13.27
+## 13 0.09378 12.5  7.87    0 0.524 5.889 39.0 5.4509   5 311    15.2 390.50 15.71
+## 16 0.62739  0.0  8.14    0 0.538 5.834 56.5 4.4986   4 307    21.0 395.62  8.47</code></pre>
+<pre><code>## Error in cv.glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0): could not find function &quot;cv.glmnet&quot;</code></pre>
+<pre><code>## Error in plot(Boston.cv): object &#39;Boston.cv&#39; not found</code></pre>
+<p>왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.</p>
+<pre><code>## Error in str(Boston.cv): object &#39;Boston.cv&#39; not found</code></pre>
+<pre><code>## Error in cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.min)): object &#39;Boston.cv&#39; not found</code></pre>
+<pre><code>## Error in glmnet(x = x, y = y, family = &quot;gaussian&quot;, alpha = 0, lambda = Boston.cv$lambda.min): could not find function &quot;glmnet&quot;</code></pre>
+<pre><code>## Error in coef(Boston.gnet): object &#39;Boston.gnet&#39; not found</code></pre>
+<pre><code>## Error in predict(Boston.gnet, newx = Boston.test.x): object &#39;Boston.gnet&#39; not found</code></pre>
+<pre><code>## Error in head(Boston.pred): object &#39;Boston.pred&#39; not found</code></pre>
+<pre><code>## Error in postResample(pred = Boston.pred, obs = Boston.test.y): object &#39;Boston.pred&#39; not found</code></pre>
+<p>RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.</p>
 
 </div>
 </div>
