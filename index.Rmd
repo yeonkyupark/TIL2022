@@ -18,7 +18,7 @@ favicon: "favicon.ico"
 knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
                       eval = TRUE,
                       echo = TRUE,
-                      cache = FALSE,
+                      cache = TRUE,
                       include = TRUE,
                       tidy = TRUE,
                       tidy.opts = list(blank=FALSE, width.cutoff=120), # 소스 출력길이 지정
