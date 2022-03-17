@@ -3,8 +3,7 @@ bookdown::gitbook:
   number_sections: false
   config:
     toc:
-      collapse: none
-      scroll_highlight: true
+      collapse: section
       before: |
         <li><a href="./">TIL 2022</a></li>
       after: |
