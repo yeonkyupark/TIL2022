@@ -15,7 +15,7 @@ library(rpart)
 
 ## TIL20220317
 
-### 페널티 회귀분석
+### 페널티 회귀분석 - 2
 
 ```{r}
 str(Boston)
@@ -179,7 +179,7 @@ summary(diff(resamples(models), metric="RMSE"))
 
 ## TIL20220316
 
-### 페널티 회귀분석
+### 페널티 회귀분석 - 1
 
 **페널티 회귀분석(penalized regression analysis)**^[https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s]  
 
