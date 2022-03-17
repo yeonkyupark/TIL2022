@@ -14,9 +14,10 @@ library(dplyr)
 iris %>% head()
 ```
 
-## 
+## 구미시 선별진료소
 
-![구미선별진료소 - 구미보건소](https://user-images.githubusercontent.com/72383349/158912022-84b65ae1-d20c-4cbd-95cd-5d1441309fa6.png)
+![구미시 선별진료소](https://user-images.githubusercontent.com/72383349/158912378-c9df3d5a-61ab-4706-ae9f-a8bd98c07763.png)  
+
 
 
 
