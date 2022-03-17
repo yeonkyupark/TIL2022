@@ -17,7 +17,7 @@ favicon: "favicon.ico"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
                       eval = TRUE,
-                      echo = FALSE,
+                      echo = TRUE,
                       cache = FALSE,
                       include = TRUE,
                       tidy = TRUE,
