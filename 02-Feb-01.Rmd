@@ -1,0 +1,299 @@
+# 2022년 2월 
+
+### bookdown으로 블로그 전환
+
+jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
+RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.
+
+----
+
+## TIL20220218 
+
+### github repo 삭제하면 잔디도 죽는다
+
+사용하던 github repo를 모두 삭제했다.  
+repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알게 되었다.  
+덕분에 깨끗한 마음으로 새로 시작할 수 있을 것 같다 '^'  
+
+![](https://user-images.githubusercontent.com/72383349/154695072-8480a46d-4174-4a4a-829f-e97f361dbf29.png)
+
+----
+
+## TIL20220219
+
+### netlify와 bookdown 연동
+
+https://bookdown.org/yihui/blogdown/netlify.html
+
+----
+
+## TIL20220220
+
+### netlify 자동 배포 1
+
+rendering 안해도 netlify에 deploy되나 ('' ?)  
+우선 rendering된 docs 폴더를 netlify에 연결하는 걸로 하자.  
+
+### netlify 자동 배포 2
+
+https://www.emilhvitfeldt.com/post/bookdown-netlify-github-actions/  
+
+* 1차 실패
+* 2차 진행 중 ...
+* 3차, 편한 방법을 찾자.
+
+----
+
+## TIL20220221
+
+### Github Actions를 이용한 자동 배포
+
+세상은 넓고 똑똑한 사람은 참 많은 것 같다.  
+ref to: [How to publish bookdown projects with GitHub Actions on GitHub Pages](https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e)  
+
+### 실습
+
+1. RStudio에서 bookdown project를 하나 만든다.  
+![](https://user-images.githubusercontent.com/72383349/154965280-0f32d064-ede3-4fff-91fc-19841ff22141.png)  
+  
+2. GitHub에서 Repository를 하나 만든다.  
+![](https://user-images.githubusercontent.com/72383349/154965633-4b3137d4-4daa-4535-a023-eccde1ad5eb8.png)  
+  
+3. 둘이 연결한다.  
+  
+4. GitHub Actions를 위한 workflows를 생성한다.  
+![](https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png)  
+
+```{r echo=T, eval=FALSE}
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
+```
+
+
+5. 배포할 브랜치를 변경해 준다.  
+![](https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png)  
+  
+6. 코드 업데이트 후 정상 동작 확인한다.  
+  
+  
+***! 주의***  
+
+* deploy_bookdown.yml의 branch 이름 확인할 것, 최근에 master에서 main으로 변경됨
+* bookdown의 \_bookdown.yml의 output_dir과 deploy_bookdown.yml의 build_dir 일치시킬 것
+* repository에 build_dir(\_book)가 없으면 만들어 둘 것
+
+----
+
+## TIL20220222
+
+### code snippet in R
+
+RStudio에서 snippet 설정을 한다.
+
+* Tools → Global Options → Code → Editing → Snippets
+
+![image](https://user-images.githubusercontent.com/72383349/155138784-e1994a7c-86e0-4476-9472-e116c77841b3.png)
+
+
+```{r echo=T, eval=FALSE}
+# snippet 등록
+snippet myggplot
+  # 코드 작성 시 반드시 tab으로 띄워쓰기 할 것
+	p <- ggplot(data = ${1:데이터}, aes(x=${2:변수1}, y=${3:변수2}, col=${4:범주1}, fill=${5:범주2})) +
+	  geom_${6:그래프종류}() +
+	  labs(title="${7:그래프제목}", x="${8:x축}", y="${9:y축}") +
+	  theme_bw()
+	p
+```
+
+![](https://user-images.githubusercontent.com/72383349/155125070-44a98fdd-ddd1-4752-b114-dea6331213ca.png)
+
+----
+
+## TIL20220223
+
+### rstudio.cloud PAT 업데이트
+
+https://stackoverflow.com/questions/66065099/how-to-update-github-authentification-token-on-rstudio-to-match-the-new-policy
+
+```{r echo=T, eval=FALSE}
+credentials::set_gethub_pat()
+```
+
+![image](https://user-images.githubusercontent.com/72383349/155330329-ed50990b-e823-4158-9d6b-b523aa1cb581.png)
+
+위 코드로 해결함.
+
+### 파비콘 만들기
+
+[https://www.favicon-generator.org](https://www.favicon-generator.org)
+
+----
+
+## TIL20220224
+
+### RStudio + bookdown + github 배포하기
+
+1. GitHub Repository 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155529400-0b7bb6ea-c5bb-4bb1-a495-707e4cec87d8.png)  
+![](https://user-images.githubusercontent.com/72383349/155529668-ed28438b-6f60-4049-ba00-14ac64e6f3cb.png)  
+
+2. 생성된 Git Repo로 RStudio 빈 Project 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155530017-c4434193-0fa4-43f6-beff-f2dda105c652.png)  
+![](https://user-images.githubusercontent.com/72383349/155530102-4c6e014e-896b-45ef-8fcc-1fec200fc508.png)  
+![](https://user-images.githubusercontent.com/72383349/155530335-3862cffe-c925-4b26-a9b5-2b3e96a78516.png)  
+
+3. Bookdown Project 생성하기  
+![](https://user-images.githubusercontent.com/72383349/155531484-c96d8348-be98-42a5-9238-8a6ebad8d661.png)  
+![](https://user-images.githubusercontent.com/72383349/155531685-8e24b9ac-69f8-45d3-9891-fd769bedc641.png)
+![](https://user-images.githubusercontent.com/72383349/155531792-c1ee35db-65f7-4424-befd-1e579d6df3f7.png)  
+
+4. 생성된 Project GitHub에 올리기
+```{r echo=T, eval=FALSE}
+git checkout main
+git add .
+git commit -m '1st commit on main'
+git push origin main
+```
+
+5. GitHub Action workflow 생성하기  
+gh-pages 브랜치를 생성한다.  
+```{r echo=T, eval=FALSE}
+git checkout --orphan gh-pages
+git rm -rf .
+git commit --allow-empty -m '1st commit on gh-pages'
+git push origin gh-pages
+git checkout main
+```
+
+RStudio Console에서 Workflow를 생성한다.  
+```{r echo=T, eval=FALSE}
+usethis::use_github_action(url = "https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml")
+```
+
+6. 수정된 파일 GitHub에 올리기  
+![](https://user-images.githubusercontent.com/72383349/155535920-b59330f1-dfb3-4e10-bb81-f0d9b6de18d9.png)
+
+7. Workflow 및 배포된 페이지 확인하기
+![](https://user-images.githubusercontent.com/72383349/155536392-9a01a6f8-2f9a-41ea-8e78-edadbac748cd.png)
+![](https://user-images.githubusercontent.com/72383349/155536602-0cd067a6-c228-42d8-bb5b-648d35f44eab.png)
+![](https://user-images.githubusercontent.com/72383349/155537012-7c94fc40-8f13-4539-937a-3ea1ce4798c2.png)
+
+8. page 생성/수정 후 정상동작 확인하기  
+[https://yeonkyupark.github.io/Rdataanalysis/](https://yeonkyupark.github.io/Rdataanalysis/)  
+
+----
+
+## TIL20220225
+
+### R에서 데이터 읽어 오기
+
+csv 포멧으로 사용하는게 가장 편하고, 파일 형식이 다른 경우 csv 파일 형태로 변환하여 사용하길 추천.
+여건이 되지 않으면 구글링해서 해당 포멧 처리하는 것으로, 하지만 가능하면 엑셀로 기본 전처리 후 csv로 변환하여 사용.
+
+```{r echo=T, eval=FALSE}
+read.csv(file, header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE, comment.char = "", ...)
+```
+
+----
+
+## TIL20220226
+
+### 데이터 훑어보기
+
+```{r echo=T, eval=T}
+if(!require(palmerpenguins)) {
+  install.packages("palmerpenguins")
+  library(palmerpenguins)
+}
+```
+
+우선 데이터 구조는 `str()`
+
+일반적으로 `summary()`를 통해 수치 연산 결과를 전체적인 모습을 살펴볼 수 있다.
+
+```{r echo=T, eval=T}
+# base package
+summary(penguins)
+```
+
+skimr 패키지의 `skim()`을 통해 유사한 수치연산 결과를 보다 가독성이 좋은 형태로 출력해 준다.  
+
+```{r echo=T, eval=T}
+if(!require(skimr)) {
+  install.packages("skimr")
+  library(skimr)
+}
+
+skim(penguins)
+```
+
+----
+
+## TIL20220227
+
+### GitHub에 파일 올리기
+
+연습용 csv 파일 올리기, GitHub Edit 창에 Drop&Drop으로 등록할 수 있다.
+
+* [Sample_w_Header.csv](https://github.com/yeonkyupark/TIL2022/files/8148798/Sample_w_Header.csv)
+* [Sample_wo_Header.csv](https://github.com/yeonkyupark/TIL2022/files/8148797/Sample_wo_Header.csv)
+
+```{r}
+sample <- read.csv("https://github.com/yeonkyupark/TIL2022/files/8148798/Sample_w_Header.csv", fileEncoding="UTF-8-BOM")
+colnames(sample)
+sample <- read.csv("https://github.com/yeonkyupark/TIL2022/files/8148798/Sample_w_Header.csv")
+colnames(sample)
+```
+
+읽어들인 첫번째 데이터가 깨지는 경우 인코딩을 확인해 본다.
+
+![](https://user-images.githubusercontent.com/72383349/155887261-56dada5c-a79d-463e-87fa-c3da4d0acc23.png)
+
+* [R을 이용하여 CSV 파일을 읽을 때 첫번째 문자가 깨지는 오류 해결 방법](https://118k.tistory.com/863)
+
+### 엑셀 if 함수 정리
+
+* [엑셀 IF 함수 사용법 및 예제 정리 :: 논리함수](https://www.oppadu.com/%EC%97%91%EC%85%80-if-%ED%95%A8%EC%88%98/)
+
+```
+=IF(AND(D2>=C2, D2<=B2), "PASS", "FAIL")
+```
+
+----
+
+## TIL20220228
+
+### 데이터 수집
+
+통계데이터분석 - 데이터 수집^[https://www.youtube.com/watch?v=Z4Hn4LoNuE8&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_]  
+
+#### 데이터 수집 원천  
+
+* 출판물(publication)
+* 실험(experiment)
+* 관찰(observation)
+* 서베이(servey)  
+
+#### 표본과 모집단  
+
+* `표본`, 데이터 수집에 포한된 참여자의 집단, 기술통계(descriptive statistics)
+* `모집단`, 우리가 궁극적으로 결론을 도출하고자 하는 대상이 되는 전체 집단, 추론통계(inferential statistics)  
+
+#### 표본의 선정  
+
+* 판단표본(judgment sample)
+* 편의표본(convenience sample)
+* 무작위표본(random sample)
+
+#### 측정척도  
+
+* 측정(measurement), 데이터 항목의 속성에 숫자를 부여하는 과정
+* 척도(scale), 측정을 위하여 사용되는 도구
+
+#### 척도의 종류  
+
+* 명목척도(nominal scale)
+* 서열척도(ordinal scale)
+* 간격척도(interval scale)
+* 비율척도(ratio scale)
