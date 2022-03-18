@@ -1,6 +1,6 @@
 # 연습장 {-}
 
-## r 코드 연습
+## r 코드 연습 {-}
 
 ```{r echo=T, eval=T}
 library(ggplot2)
@@ -14,7 +14,7 @@ library(dplyr)
 iris %>% head()
 ```
 
-## 구미시 선별진료소
+## 구미시 선별진료소 {-}
 
 ![구미시 선별진료소^[https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp]](https://user-images.githubusercontent.com/72383349/158912378-c9df3d5a-61ab-4706-ae9f-a8bd98c07763.png)  
 
