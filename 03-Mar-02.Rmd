@@ -1,30 +1,30 @@
-----
+------------------------------------------------------------------------
 
 ## TIL20220316
 
 ### 페널티 회귀분석 - 1
 
-**페널티 회귀분석(penalized regression analysis)**^[https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s]  
+**페널티 회귀분석(penalized regression analysis)**[^mar-02-1]
 
-* 릿지 (Ridge)  
-회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수
-* 라소 (Lasso)  
-설명력에 기여하지 못하는 독립변수의 회귀계수를 0으로 만듬(간명한 모델), 독립변수의 회귀변수간 차이가 클 때 우수
-* 일래스틱넷 (ElasticNet), 릿지 + 라소
+[^mar-02-1]: <https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s>
 
-지나치게많은 독립변수를 갖는 모델에 페널티를 부과하는 방식으로 보다 간명한 회귀모델을 생성할 수 있다. 모델의 성능에 크게 기여하지 못하는 변수의 영향력을 축소(Lasso)하거나 모델에서 제거(Ridge)한다. 최소자승법에 의한 잔차(=관측값-예측값)의 제곱합과 페널티항의 합이 최소가 되도록 회귀계수를 추정한다.  
+-   릿지 (Ridge)\
+    회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수
+-   라소 (Lasso)\
+    설명력에 기여하지 못하는 독립변수의 회귀계수를 0으로 만듬(간명한 모델), 독립변수의 회귀변수간 차이가 클 때 우수
+-   일래스틱넷 (ElasticNet), 릿지 + 라소
 
+지나치게많은 독립변수를 갖는 모델에 페널티를 부과하는 방식으로 보다 간명한 회귀모델을 생성할 수 있다. 모델의 성능에 크게 기여하지 못하는 변수의 영향력을 축소(Lasso)하거나 모델에서 제거(Ridge)한다. 최소자승법에 의한 잔차(=관측값-예측값)의 제곱합과 페널티항의 합이 최소가 되도록 회귀계수를 추정한다.
 
 ```{r}
 str(Boston)
 ```
 
+`glmnet` 패키지 내 `glmnet()` 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다.
 
-`glmnet` 패키지 내 `glmnet()` 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다. 
-
-* family = 결과변수의 확률분포, gaussian, binomial 등
-* alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)
-* lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
+-   family = 결과변수의 확률분포, gaussian, binomial 등
+-   alpha = 0(Ridge), 1(Lasso), 0\~1(ElasticNet)
+-   lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
 
 #### Ridge Regression
 
@@ -35,7 +35,7 @@ Boston.cv <- cv.glmnet(x = x, y = y, family = "gaussian", alpha = 0) # Ridge
 plot(Boston.cv)
 ```
 
-왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.  
+왼쪽의 점선은 최적 람다의 로그 값, 상단의 숫자는 예측변수의 개수, Ridge 회귀분석은 회귀계수를 0으로 만들지 않기 때문에 예측변수 개수가 줄어들지 않는다.
 
 ```{r}
 str(Boston.cv)
@@ -44,7 +44,6 @@ str(Boston.cv)
 ```{r}
 cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.min))
 ```
-
 
 ```{r}
 Boston.gnet <- glmnet(x = x, y = y, family = "gaussian", 
@@ -62,30 +61,28 @@ head(Boston.pred)
 postResample(pred = Boston.pred, obs = Boston.test.y)
 ```
 
-RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.  
-
-
+RMSE와 MAE는 오차 지표로 값이 작을수록, Rsquared는 모델의 설명력 지표로 값이 클수록 우수한 모델이다.
 
 ### Markdown 문법
 
-https://daringfireball.net/projects/markdown/syntax#p 
+<https://daringfireball.net/projects/markdown/syntax#p>
 
-
-----
+------------------------------------------------------------------------
 
 ## TIL20220317
 
 ### 분산분석
 
-분산분석(analysis of variance, ANOVA)은 여러 모집단 간의 평균의 동일성을 검정한다.^[https://www.youtube.com/watch?v=BnFkVjjSv6I&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=11]  
+분산분석(analysis of variance, ANOVA)은 여러 모집단 간의 평균의 동일성을 검정한다.[^mar-02-2]
 
-* 일원분산분석 (one-way ANOVA)
-* 이원분산분석 (two-way ANOVA)
-* 공분산분석 (analysis of corvariance, ANCOVA)
-* 반복측정 분산분석 (repeated measures ANOVA)
-* 다변량 분산분석 (multivariate analysis of variance, MANOVA)
-* 다변량 공분산분석 (multivariate analysis of covariance, MANCOVA)
+[^mar-02-2]: <https://www.youtube.com/watch?v=BnFkVjjSv6I&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=11>
 
+-   일원분산분석 (one-way ANOVA)
+-   이원분산분석 (two-way ANOVA)
+-   공분산분석 (analysis of corvariance, ANCOVA)
+-   반복측정 분산분석 (repeated measures ANOVA)
+-   다변량 분산분석 (multivariate analysis of variance, MANOVA)
+-   다변량 공분산분석 (multivariate analysis of covariance, MANCOVA)
 
 ### 페널티 회귀분석 - 2
 
@@ -105,11 +102,11 @@ Boston.split <-  rbind(Train.Data = nrow(Boston.train), Test.Data = nrow(Boston.
 colnames(Boston.split) <- c("Number"); Boston.split
 ```
 
-`glmnet` 패키지 내 `glmnet()` 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다. 
+`glmnet` 패키지 내 `glmnet()` 함수를 통해 페널티 회귀분석을 수행할 수 있다. glmnet() 함수는 인자로 결과변수 y는 벡터로 예측변수 x는 행렬 형태로 제공해야 한다. 추가로 연속형 변수만 처리 가능하므로 범주형 변수는 사전에 더미변수로 변환해야 한다.
 
-* family = 결과변수의 확률분포, gaussian, binomial 등
-* alpha = 0(Ridge), 1(Lasso), 0~1(ElasticNet)
-* lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
+-   family = 결과변수의 확률분포, gaussian, binomial 등
+-   alpha = 0(Ridge), 1(Lasso), 0\~1(ElasticNet)
+-   lambda = 패널티 크기 조절, 예측오차를 최소화 하는 람다 설정, 교차검정을 통해 설정
 
 ```{r}
 if(!require(glmnet)) { install.packages("glmnet"); library(glmnet); }
@@ -132,7 +129,7 @@ Boston.cv <- cv.glmnet(x = x, y = y, family = "gaussian", alpha = 1) # Lasso
 plot(Boston.cv)
 ```
 
-왼쪽의 점선은 예측오차를 최소화하는, 즉 예측 정확도를 가장 크게하는 로그 람다값을 나타낸다. Lasso 회귀분석에서는 영향력이 작은 예측변수의 회귀계수를 0으로 만들어 제거할 수 있다. 우측 상단의 예측변수 개수에서 확인이 가능하다. 
+왼쪽의 점선은 예측오차를 최소화하는, 즉 예측 정확도를 가장 크게하는 로그 람다값을 나타낸다. Lasso 회귀분석에서는 영향력이 작은 예측변수의 회귀계수를 0으로 만들어 제거할 수 있다. 우측 상단의 예측변수 개수에서 확인이 가능하다.
 
 ```{r}
 cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.min))
@@ -158,7 +155,6 @@ Boston.pred1 <- predict(Boston.gnet1, newx = Boston.test.x)
 postResample(pred = Boston.pred1, obs = Boston.test.y)
 ```
 
-
 ```{r}
 Boston.gnet2 <- glmnet(x = x, y = y, family = "gaussian", 
        alpha = 1,
@@ -169,7 +165,7 @@ postResample(pred = Boston.pred2, obs = Boston.test.y)
 
 #### ElasticNet Regression
 
-ElasticNet읜 L2-norm, L1-norm 페널티항을 설정해야 하므로 최적의 alpha값을 산출해야 한다. *caret* 패키지 내 *train()* 함수를 이용한다.  
+ElasticNet읜 L2-norm, L1-norm 페널티항을 설정해야 하므로 최적의 alpha값을 산출해야 한다. *caret* 패키지 내 *train()* 함수를 이용한다.
 
 ```{r}
 set.seed(123)
@@ -244,18 +240,20 @@ summary(resamples(models))
 summary(diff(resamples(models), metric="RMSE"))
 ```
 
-행렬의 대각선 위쪽은 모델간 차이, 아래쪽은 유의확률을 나타낸다. 세 모델 간 통계적 유의한 차이는 없는 것으로 확인된다. 따라서 간명도 관점에서 예측변수의 개수가 적은 모델을 선택하는 것이 바람직하다.  
+행렬의 대각선 위쪽은 모델간 차이, 아래쪽은 유의확률을 나타낸다. 세 모델 간 통계적 유의한 차이는 없는 것으로 확인된다. 따라서 간명도 관점에서 예측변수의 개수가 적은 모델을 선택하는 것이 바람직하다.
 
-
-----
+------------------------------------------------------------------------
 
 ## TIL20220318
 
 ### 구미시 선별진료소
 
-![구미시 선별진료소^[https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp]](https://user-images.githubusercontent.com/72383349/158912378-c9df3d5a-61ab-4706-ae9f-a8bd98c07763.png)  
+![구미시 선별진료소[^mar-02-3]](https://user-images.githubusercontent.com/72383349/158912378-c9df3d5a-61ab-4706-ae9f-a8bd98c07763.png)
 
+[^mar-02-3]: <https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp>
 
+[^mar-02-4]: <https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp>
 
-----
+### 로지스틱 회귀분석
 
+------------------------------------------------------------------------
