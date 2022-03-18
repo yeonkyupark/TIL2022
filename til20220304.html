@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>연습장 | Today I Learned in 2022</title>
+  <title>3.4 TIL20220304 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="연습장 | Today I Learned in 2022" />
+  <meta property="og:title" content="3.4 TIL20220304 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="연습장 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="3.4 TIL20220304 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220317.html"/>
-<link rel="next" href="r-코드-연습.html"/>
+<link rel="prev" href="til20220303.html"/>
+<link rel="next" href="til20220305.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,16 +212,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="연습장" class="section level1 unnumbered hasAnchor">
-<h1>연습장<a href="연습장.html#연습장" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220304" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.4</span> TIL20220304<a href="til20220304.html#til20220304" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="가설검정" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.1</span> 가설검정<a href="til20220304.html#가설검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>가설의 종류</strong></p>
+<ul>
+<li>대립가설(alternative hypothesis), 모집단에 대한 새로운 주장</li>
+<li>귀무가설(null hypothesis), 기존의 주장</li>
+</ul>
+<p>통계적 검정(statistical test) 또는 가설검정(hypothesis test)이란 표본 데이터를 기반으로 모집단에 대한 새로운 주장의 옮고 그름을 추론하는 과정을 말한다.</p>
+<p><strong>가설검정 절차</strong></p>
+<p>귀무가설이 사실이라는 전제하에서 수행되며 일반적으로 다음과 같은 절차를 따른다.</p>
+<ol style="list-style-type: decimal">
+<li>표본으로부터 검정하고자 하는 <strong>검정통계량(test statistic)</strong> 계산</li>
+<li>검정통계량과 그 <strong>확률분포</strong>로부터 p-값(p-value) 계산</li>
+</ol>
+<ul>
+<li>귀무가설이 사실이라는 가정하에서 관측한 통계량과 같거나 그보다 더 극단적인 값이 발생할 확률을 의미</li>
+<li>유의확률(significance probability)이라고도 함</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>p-값이 매우 작으면 귀무가설 기각</li>
+</ol>
+<ul>
+<li>판단의 기준으로 사용하는 5% 또는 1%의 확률을 유의수준(significance level)이라고 함</li>
+<li>표본으로부터 관측된 결과(즉 계산된 통계량)가 나타날 가능성이 5% 미만 또는 1% 미만이 되는 귀무가설을 기각하면 이를 통계적으로 유의하다(statistically significant)라고 표현함</li>
+</ul>
+<p><strong>가설검정과 검정력</strong></p>
+<p><img src="http://www.ktword.co.kr/img_data/5094_2.JPG" />출처<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+</div>
+<div id="확률분포" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.2</span> 확률분포<a href="til20220304.html#확률분포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p><strong>이항분포(binomial distribution)</strong></p>
+<p>대표적인 이산확률분포(discrete probability distribution)로서 매회 어떤 사건이 일어날 확률이 동일한 독립 시행의 경우에 있어서 이 사건이 일어나는 횟수가 만들어 내는 분포이다. 예를 들면 동전 던지기로 동전을 일정 횟수 반복하여 던지는 실험에서 매 시행시마다 숫자면이 나타날 확률이 1/2이라고 할 때 숫자면이 나타나는 횟수는 이항분포를 따른다고 할 수 있다.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="til20220304.html#cb215-1"></a><span class="kw">dbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 나타날 확률</span></span></code></pre></div>
+<pre><code>## [1] 0.1171875</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="til20220304.html#cb217-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 이하가 나타날 확률</span></span></code></pre></div>
+<pre><code>## [1] 0.9453125</code></pre>
+<p>누적확률은 밀도함수의 합으로 계산이 가능하다.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="til20220304.html#cb219-1"></a><span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>)) <span class="co"># 0번, 1번, ..., 7번 나타날 확률의 합</span></span></code></pre></div>
+<pre><code>## [1] 0.9453125</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="til20220304.html#cb221-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> F) <span class="co"># 1 - pbinom(7, 10, 0.5)</span></span></code></pre></div>
+<pre><code>## [1] 0.0546875</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="til20220304.html#cb223-1"></a><span class="co"># 4번 이상 7번 이하 발생할 누적확률, 7번에서 4번의 누적확률을 빼서 계산</span></span>
+<span id="cb223-2"><a href="til20220304.html#cb223-2"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.7734375</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="til20220304.html#cb225-1"></a><span class="kw">diff</span>(<span class="kw">pbinom</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>## [1] 0.7734375</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="til20220304.html#cb227-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb227-2"><a href="til20220304.html#cb227-2"></a><span class="kw">rbinom</span>(<span class="dv">1</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="til20220304.html#cb229-1"></a><span class="kw">rbinom</span>(<span class="dv">5</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 4 5 7 4 7</code></pre>
+<hr />
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p><a href="http://www.ktword.co.kr/img_data/5094_2.JPG" class="uri">http://www.ktword.co.kr/img_data/5094_2.JPG</a><a href="til20220304.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" class="uri">https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png</a><a href="til20220304.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220317.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-코드-연습.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220303.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220305.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -252,7 +313,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/99-memo.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/03-Mar-01.Rmd",
 "text": "Edit"
 },
 "history": {

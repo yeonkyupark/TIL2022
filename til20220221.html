@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>연습장 | Today I Learned in 2022</title>
+  <title>2.21 TIL20220221 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="연습장 | Today I Learned in 2022" />
+  <meta property="og:title" content="2.21 TIL20220221 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="연습장 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="2.21 TIL20220221 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220317.html"/>
-<link rel="next" href="r-코드-연습.html"/>
+<link rel="prev" href="til20220220.html"/>
+<link rel="next" href="til20220222.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,16 +212,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="연습장" class="section level1 unnumbered hasAnchor">
-<h1>연습장<a href="연습장.html#연습장" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220221" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.21</span> TIL20220221<a href="til20220221.html#til20220221" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="github-actions를-이용한-자동-배포" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.21.1</span> Github Actions를 이용한 자동 배포<a href="til20220221.html#github-actions를-이용한-자동-배포" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>세상은 넓고 똑똑한 사람은 참 많은 것 같다.<br />
+ref to: <a href="https://medium.com/@delucmat/how-to-publish-bookdown-projects-with-github-actions-on-github-pages-6e6aecc7331e">How to publish bookdown projects with GitHub Actions on GitHub Pages</a></p>
+</div>
+<div id="실습" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.21.2</span> 실습<a href="til20220221.html#실습" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>RStudio에서 bookdown project를 하나 만든다.<br />
+<img src="https://user-images.githubusercontent.com/72383349/154965280-0f32d064-ede3-4fff-91fc-19841ff22141.png" /></p></li>
+<li><p>GitHub에서 Repository를 하나 만든다.<br />
+<img src="https://user-images.githubusercontent.com/72383349/154965633-4b3137d4-4daa-4535-a023-eccde1ad5eb8.png" /></p></li>
+<li><p>둘이 연결한다.</p></li>
+<li><p>GitHub Actions를 위한 workflows를 생성한다.<br />
+<img src="https://user-images.githubusercontent.com/72383349/154966480-ea1f1a89-0d87-4828-babd-2a1110041070.png" /></p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="til20220221.html#cb2-1"></a>usethis<span class="op">::</span><span class="kw">use_github_action</span>(<span class="dt">url =</span> <span class="st">&quot;https://raw.githubusercontent.com/ropenscilabs/actions_sandbox/main/.github/workflows/deploy_bookdown.yml&quot;</span>)</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li><p>배포할 브랜치를 변경해 준다.<br />
+<img src="https://user-images.githubusercontent.com/72383349/154968943-d7ddb6b6-46ae-46df-8fd1-386eaf8455dc.png" /></p></li>
+<li><p>코드 업데이트 후 정상 동작 확인한다.</p></li>
+</ol>
+<p><strong><em>! 주의</em></strong></p>
+<ul>
+<li>deploy_bookdown.yml의 branch 이름 확인할 것, 최근에 master에서 main으로 변경됨</li>
+<li>bookdown의 _bookdown.yml의 output_dir과 deploy_bookdown.yml의 build_dir 일치시킬 것</li>
+<li>repository에 build_dir(_book)가 없으면 만들어 둘 것</li>
+</ul>
+<hr />
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220317.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-코드-연습.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220220.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220222.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -252,7 +282,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/99-memo.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/02-Feb-01.Rmd",
 "text": "Edit"
 },
 "history": {

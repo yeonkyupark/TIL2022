@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>연습장 | Today I Learned in 2022</title>
+  <title>3.14 TIL20220314 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="연습장 | Today I Learned in 2022" />
+  <meta property="og:title" content="3.14 TIL20220314 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="연습장 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="3.14 TIL20220314 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220317.html"/>
-<link rel="next" href="r-코드-연습.html"/>
+<link rel="prev" href="til20220313.html"/>
+<link rel="next" href="til20220315.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,16 +212,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="연습장" class="section level1 unnumbered hasAnchor">
-<h1>연습장<a href="연습장.html#연습장" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220314" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.14</span> TIL20220314<a href="til20220314.html#til20220314" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>데이터 분할, 이건 내일 정리하자. 양이 많네.</p>
+<div id="일반적인-데이터-분할" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.14.1</span> 일반적인 데이터 분할<a href="til20220314.html#일반적인-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220314.html#cb368-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp8GnIc6/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="til20220314.html#cb370-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
+<span id="cb370-2"><a href="til20220314.html#cb370-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
+<span id="cb370-3"><a href="til20220314.html#cb370-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
+<span id="cb370-4"><a href="til20220314.html#cb370-4"></a><span class="kw">addmargins</span>(<span class="kw">addmargins</span>(<span class="kw">rbind</span>(</span>
+<span id="cb370-5"><a href="til20220314.html#cb370-5"></a>  <span class="dt">pTrain =</span> <span class="kw">table</span>(pTrain<span class="op">$</span>species),</span>
+<span id="cb370-6"><a href="til20220314.html#cb370-6"></a>  <span class="dt">pTest =</span> <span class="kw">table</span>(pTest<span class="op">$</span>species)</span>
+<span id="cb370-7"><a href="til20220314.html#cb370-7"></a>),<span class="dv">2</span>),<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##        Adelie Chinstrap Gentoo Sum
+## pTrain    107        48     87 242
+## pTest      45        20     37 102
+## Sum       152        68    124 344</code></pre>
+<hr />
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220317.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-코드-연습.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220313.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220315.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -252,7 +272,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/99-memo.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/03-Mar-01.Rmd",
 "text": "Edit"
 },
 "history": {

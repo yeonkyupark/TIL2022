@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>연습장 | Today I Learned in 2022</title>
+  <title>2.26 TIL20220226 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="연습장 | Today I Learned in 2022" />
+  <meta property="og:title" content="2.26 TIL20220226 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="연습장 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="2.26 TIL20220226 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220317.html"/>
-<link rel="next" href="r-코드-연습.html"/>
+<link rel="prev" href="til20220225.html"/>
+<link rel="next" href="til20220227.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,16 +212,221 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="연습장" class="section level1 unnumbered hasAnchor">
-<h1>연습장<a href="연습장.html#연습장" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="til20220226" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.26</span> TIL20220226<a href="til20220226.html#til20220226" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="데이터-훑어보기" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.26.1</span> 데이터 훑어보기<a href="til20220226.html#데이터-훑어보기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="til20220226.html#cb9-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) {</span>
+<span id="cb9-2"><a href="til20220226.html#cb9-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>)</span>
+<span id="cb9-3"><a href="til20220226.html#cb9-3"></a>  <span class="kw">library</span>(palmerpenguins)</span>
+<span id="cb9-4"><a href="til20220226.html#cb9-4"></a>}</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp8GnIc6/downloaded_packages</code></pre>
+<p>우선 데이터 구조는 <code>str()</code></p>
+<p>일반적으로 <code>summary()</code>를 통해 수치 연산 결과를 전체적인 모습을 살펴볼 수 있다.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="til20220226.html#cb11-1"></a><span class="co"># base package</span></span>
+<span id="cb11-2"><a href="til20220226.html#cb11-2"></a><span class="kw">summary</span>(penguins)</span></code></pre></div>
+<pre><code>##       species          island    bill_length_mm  bill_depth_mm  
+##  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+##  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+##  Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+##                                  Mean   :43.92   Mean   :17.15  
+##                                  3rd Qu.:48.50   3rd Qu.:18.70  
+##                                  Max.   :59.60   Max.   :21.50  
+##                                  NA&#39;s   :2       NA&#39;s   :2      
+##  flipper_length_mm  body_mass_g       sex           year     
+##  Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+##  1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+##  Median :197.0     Median :4050   NA&#39;s  : 11   Median :2008  
+##  Mean   :200.9     Mean   :4202                Mean   :2008  
+##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+##  Max.   :231.0     Max.   :6300                Max.   :2009  
+##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
+<p>skimr 패키지의 <code>skim()</code>을 통해 유사한 수치연산 결과를 보다 가독성이 좋은 형태로 출력해 준다.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="til20220226.html#cb13-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) {</span>
+<span id="cb13-2"><a href="til20220226.html#cb13-2"></a>  <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>)</span>
+<span id="cb13-3"><a href="til20220226.html#cb13-3"></a>  <span class="kw">library</span>(skimr)</span>
+<span id="cb13-4"><a href="til20220226.html#cb13-4"></a>}</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp8GnIc6/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="til20220226.html#cb15-1"></a><span class="kw">skim</span>(penguins)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-10">TABLE 2.1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">penguins</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">344</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">8</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">factor</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="left">ordered</th>
+<th align="right">n_unique</th>
+<th align="left">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">species</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="left">FALSE</td>
+<td align="right">3</td>
+<td align="left">Ade: 152, Gen: 124, Chi: 68</td>
+</tr>
+<tr class="even">
+<td align="left">island</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="left">FALSE</td>
+<td align="right">3</td>
+<td align="left">Bis: 168, Dre: 124, Tor: 52</td>
+</tr>
+<tr class="odd">
+<td align="left">sex</td>
+<td align="right">11</td>
+<td align="right">0.97</td>
+<td align="left">FALSE</td>
+<td align="right">2</td>
+<td align="left">mal: 168, fem: 165</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">bill_length_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">43.92</td>
+<td align="right">5.46</td>
+<td align="right">32.1</td>
+<td align="right">39.23</td>
+<td align="right">44.45</td>
+<td align="right">48.5</td>
+<td align="right">59.6</td>
+<td align="left">▃▇▇▆▁</td>
+</tr>
+<tr class="even">
+<td align="left">bill_depth_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">17.15</td>
+<td align="right">1.97</td>
+<td align="right">13.1</td>
+<td align="right">15.60</td>
+<td align="right">17.30</td>
+<td align="right">18.7</td>
+<td align="right">21.5</td>
+<td align="left">▅▅▇▇▂</td>
+</tr>
+<tr class="odd">
+<td align="left">flipper_length_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">200.92</td>
+<td align="right">14.06</td>
+<td align="right">172.0</td>
+<td align="right">190.00</td>
+<td align="right">197.00</td>
+<td align="right">213.0</td>
+<td align="right">231.0</td>
+<td align="left">▂▇▃▅▂</td>
+</tr>
+<tr class="even">
+<td align="left">body_mass_g</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">4201.75</td>
+<td align="right">801.95</td>
+<td align="right">2700.0</td>
+<td align="right">3550.00</td>
+<td align="right">4050.00</td>
+<td align="right">4750.0</td>
+<td align="right">6300.0</td>
+<td align="left">▃▇▆▃▂</td>
+</tr>
+<tr class="odd">
+<td align="left">year</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">2008.03</td>
+<td align="right">0.82</td>
+<td align="right">2007.0</td>
+<td align="right">2007.00</td>
+<td align="right">2008.00</td>
+<td align="right">2009.0</td>
+<td align="right">2009.0</td>
+<td align="left">▇▁▇▁▇</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220317.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-코드-연습.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220225.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220227.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -252,7 +457,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/99-memo.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/02-Feb-01.Rmd",
 "text": "Edit"
 },
 "history": {
