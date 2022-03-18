@@ -48,7 +48,7 @@ cbind(lambda.min = Boston.cv$lambda.min, lambda.min.log = log(Boston.cv$lambda.m
 
 ```{r}
 Boston.gnet <- glmnet(x = x, y = y, family = "gaussian", 
-       alpha = 0, # Ridge
+       alpha = 0,
        lambda = Boston.cv$lambda.min)
 coef(Boston.gnet)
 ```
@@ -152,7 +152,7 @@ lambda.min은 1개의, lambda.1se는 3개의 예측변수가 제거되었다.
 
 ```{r}
 Boston.gnet1 <- glmnet(x = x, y = y, family = "gaussian", 
-       alpha = 1, # Lasso
+       alpha = 1,
        lambda = Boston.cv$lambda.min)
 Boston.pred1 <- predict(Boston.gnet1, newx = Boston.test.x)
 postResample(pred = Boston.pred1, obs = Boston.test.y)
@@ -161,7 +161,7 @@ postResample(pred = Boston.pred1, obs = Boston.test.y)
 
 ```{r}
 Boston.gnet2 <- glmnet(x = x, y = y, family = "gaussian", 
-       alpha = 1, # Lasso
+       alpha = 1,
        lambda = Boston.cv$lambda.1se)
 Boston.pred2 <- predict(Boston.gnet2, newx = Boston.test.x)
 postResample(pred = Boston.pred2, obs = Boston.test.y)

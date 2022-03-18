@@ -1,11 +1,22 @@
-# 2022년 2월 
+# 2002년 2월
 
-### bookdown으로 블로그 전환
-
-jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
-RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.
-
-----
+## TIL20220201 
+## TIL20220202 
+## TIL20220203 
+## TIL20220204 
+## TIL20220205 
+## TIL20220206 
+## TIL20220207 
+## TIL20220208 
+## TIL20220209
+## TIL20220210 
+## TIL20220211
+## TIL20220212
+## TIL20220213
+## TIL20220214
+## TIL20220215
+## TIL20220216
+## TIL20220217
 
 ## TIL20220218 
 
@@ -16,6 +27,11 @@ repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알�
 덕분에 깨끗한 마음으로 새로 시작할 수 있을 것 같다 '^'  
 
 ![](https://user-images.githubusercontent.com/72383349/154695072-8480a46d-4174-4a4a-829f-e97f361dbf29.png)
+
+### bookdown으로 블로그 전환
+
+jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.  
+RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다.  중간중간 설명이 필요한 부분도 있지만 우선 [여기](https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/) 참조하면 세팅할 수 있다.  
 
 ----
 

@@ -65,7 +65,7 @@ knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
 # install.packages("forecast")
 ```
 
-# 시작하며  
+# 시작하며  {-}
 
 ```
 1/01 github에 매일매일 잔디 심고 있었다.  
