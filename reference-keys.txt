@@ -116,3 +116,4 @@ elasticnet-regression
 모델별-비교
 til20220318
 구미시-선별진료소
+로지스틱-회귀분석
