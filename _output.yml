@@ -1,6 +1,7 @@
 bookdown::gitbook:
   css: style.css
-  number_sections: false
+  split_by: section
+  number_sections: true
   toc_depth: 2
   config:
     toc:
