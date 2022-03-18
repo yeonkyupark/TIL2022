@@ -513,6 +513,8 @@ rbinom(5, size=10, prob = 0.5)
 정규분포(normal distribution)는 대표적인 연속확률분포(continuous probability distribution)으로 통계적 검정을 위해 가장 널리 사용되는 분포이다. 정규분포에서는 대부분의 관측값이 중앙에 몰려 있으며 중앙에서 멀어질수록 그 빈도수가 점점 작아지는 종 모양의 대칭인 모습을 가진다.
 
 ```{r}
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); } 
+
 x <- seq(-4, 4, length=100)
 y <- dnorm(x)
 df <- data.frame(x=x, y=y)
@@ -641,6 +643,8 @@ t.test(extra ~ group, data = sleep, paired = T)
 주어진 표본이 wide format일 경우 벡터를 직접 지정하여 수행한다.
 
 ```{r}
+if(!require(tidyr)) { install.packages("tidyr"); library(tidyr); }
+
 sleep.wide <- spread(sleep, key = group, value = extra)
 sleep.wide
 ```
@@ -867,6 +871,8 @@ colSums(is.na(penguins.naomit)); nrow(penguins.naomit)
 
 ```{r}
 # 연속형 변수에 대해서만 적용
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+
 penguins.0 <- penguins[c(3:6)] %>%
   select_if(function(x) any(is.na(x))) %>% 
   replace(is.na(.), 0)
@@ -940,6 +946,8 @@ Backtrace:
 ### 결측치 시각화
 
 ```{r}
+if(!require(mice)) { install.packages("mice"); library(mice); }
+
 md.pattern(penguins, plot=T, rotate.names = T)
 ```
 
@@ -971,6 +979,8 @@ from: Methods for dealing with imbalanced data^[https://www.r-bloggers.com/2019/
 ## TIL20220310
 
 ```{r}
+if(!require(MASS)) { install.packages("MASS"); library(MASS); }
+
 data("BreastCancer")
 bc <- BreastCancer[, -1] # Id 열 제외
 str(bc)
@@ -1160,6 +1170,8 @@ ggplot(ap_ts, aes(x=index, y=value)) +
 ### 일반적인 데이터 분할
 
 ```{r}
+if(!require(caret)) { install.packages("caret"); library(caret); }
+
 trainIndex <- createDataPartition(penguins$species, p=.7, list=F)
 pTrain <- penguins[trainIndex, ]
 pTest <- penguins[-trainIndex, ]
