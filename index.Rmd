@@ -1,4 +1,4 @@
---- 
+---
 title: "Today I Learned in 2022"
 author: "PARK Yeonkyu"
 date: "`r Sys.Date()`"
@@ -65,14 +65,11 @@ knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
 # install.packages("forecast")
 ```
 
-# 시작하며  {-}
+# 시작하며 {.unnumbered}
 
-```
-1/01 github에 매일매일 잔디 심고 있었다.  
-2/18 github를 청소해 보겠다고 repo를 전체 삭제했다.  
-     잔디도 깔끔하게 같이 사라졌다.
-     다시 시작하는걸로...  
-```
+    1/01 github에 매일매일 잔디 심고 있었다.  
+    2/18 github를 청소해 보겠다고 repo를 전체 삭제했다.  
+         잔디도 깔끔하게 같이 사라졌다.
+         다시 시작하는걸로...  
 
 ![](https://user-images.githubusercontent.com/72383349/155848684-460dbb41-426d-4d5a-9f85-99528427c89d.png)
-
