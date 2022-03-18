@@ -114,5 +114,3 @@ til20220317
 lasso-regression
 elasticnet-regression
 모델별-비교
-r-코드-연습
-구미시-선별진료소

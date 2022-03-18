@@ -262,8 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li><a href="연습장.html#연습장">연습장<span></span></a><ul>
-<li class="chapter" data-level="3.18" data-path="r-코드-연습.html"><a href="r-코드-연습.html"><i class="fa fa-check"></i><b>3.18</b> r 코드 연습<span></span></a></li>
-<li class="chapter" data-level="3.19" data-path="구미시-선별진료소.html"><a href="구미시-선별진료소.html"><i class="fa fa-check"></i><b>3.19</b> 구미시 선별진료소<span></span></a></li>
+<li><a href="r-코드-연습.html#r-코드-연습">r 코드 연습<span></span></a></li>
+<li><a href="구미시-선별진료소.html#구미시-선별진료소">구미시 선별진료소<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="til20220317.html#cb429-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpeEqqsp/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmplM1fMb/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="til20220317.html#cb431-1"></a><span class="co"># 예측변수 행렬 + 더미변수 생성</span></span>
 <span id="cb431-2"><a href="til20220317.html#cb431-2"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(medv <span class="op">~</span>., Boston.train)[, <span class="dv">-1</span>] <span class="co"># 불필요한 첫 번째 열 삭제</span></span>
 <span id="cb431-3"><a href="til20220317.html#cb431-3"></a><span class="kw">head</span>(x)</span></code></pre></div>
@@ -627,7 +627,8 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "section"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });
