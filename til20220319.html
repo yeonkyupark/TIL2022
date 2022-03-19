@@ -293,13 +293,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.19.1</span> 일반선형델회귀모델<a href="til20220319.html#일반선형델회귀모델" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <dl>
 <dt>일반선형회귀모델</dt>
-<dd><p><span class="math inline">\(f(\mu \_y) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_n x_n\)</span></p>
+<dd><p>$ f(_y) = _0 + _1 x_1 + _2 x_2 + … + _n x_n $</p>
 </dd>
 <dt>로지스틱 선형회귀모델</dt>
-<dd><p><span class="math inline">\(ln( \frac{p}{1-p} ) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
+<dd><p>$ ln(  ) = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
 </dd>
 <dt>포아송 선형회귀모델</dt>
-<dd><p><span class="math inline">\(ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
+<dd><p>$ ln() = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
 </dd>
 </dl>
 <div id="이항-로지스틱-회귀분석" class="section level4 hasAnchor">
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7SOkTm/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdS7Y3y/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
 <span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
@@ -548,7 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="til20220319.html#cb510-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7SOkTm/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdS7Y3y/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="til20220319.html#cb512-1"></a><span class="kw">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
 <span id="cb512-2"><a href="til20220319.html#cb512-2"></a><span class="kw">str</span>(PimaIndiansDiabetes2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    768 obs. of  9 variables:
