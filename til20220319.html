@@ -265,6 +265,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.19" data-path="til20220319.html"><a href="til20220319.html"><i class="fa fa-check"></i><b>3.19</b> TIL20220319<span></span></a><ul>
 <li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#일반선형델회귀모델"><i class="fa fa-check"></i><b>3.19.1</b> 일반선형델회귀모델<span></span></a></li>
+<li class="chapter" data-level="3.19.2" data-path="til20220319.html"><a href="til20220319.html#이항-로지스틱-회귀분석"><i class="fa fa-check"></i><b>3.19.2</b> 이항 로지스틱 회귀분석<span></span></a></li>
+<li class="chapter" data-level="3.19.3" data-path="til20220319.html"><a href="til20220319.html#패널티-로지스틱회귀분석"><i class="fa fa-check"></i><b>3.19.3</b> 패널티 로지스틱회귀분석<span></span></a></li>
+<li class="chapter" data-level="3.19.4" data-path="til20220319.html"><a href="til20220319.html#다항-로지스틱회귀분석"><i class="fa fa-check"></i><b>3.19.4</b> 다항 로지스틱회귀분석<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -293,22 +296,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.19.1</span> 일반선형델회귀모델<a href="til20220319.html#일반선형델회귀모델" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <dl>
 <dt>일반선형회귀모델</dt>
-<dd><p>$ f(_y) = _0 + _1 x_1 + _2 x_2 + … + _n x_n $</p>
+<dd><p><span class="math inline">\(f(\mu \_y) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_n x_n\)</span></p>
 </dd>
 <dt>로지스틱 선형회귀모델</dt>
-<dd><p>$ ln(  ) = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
+<dd><p><span class="math inline">\(ln( \frac{p}{1-p} ) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
 </dd>
 <dt>포아송 선형회귀모델</dt>
-<dd><p>$ ln() = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
+<dd><p><span class="math inline">\(ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
 </dd>
 </dl>
-<div id="이항-로지스틱-회귀분석" class="section level4 hasAnchor">
-<h4><span class="header-section-number">3.19.1.1</span> 이항 로지스틱 회귀분석<a href="til20220319.html#이항-로지스틱-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="이항-로지스틱-회귀분석" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.19.2</span> 이항 로지스틱 회귀분석<a href="til20220319.html#이항-로지스틱-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>결과변수(종속변수)가 이분형 범주를 가질 때 예측변수(독립변수)로부터 결과변수의 범주를 예측한다.</p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdS7Y3y/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpnA657A/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
 <span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
@@ -541,14 +545,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 0.08385493</code></pre>
 <p>위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.</p>
 </div>
-<div id="패널티-로지스틱회귀분석" class="section level4 hasAnchor">
-<h4><span class="header-section-number">3.19.1.2</span> 패널티 로지스틱회귀분석<a href="til20220319.html#패널티-로지스틱회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="패널티-로지스틱회귀분석" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.19.3</span> 패널티 로지스틱회귀분석<a href="til20220319.html#패널티-로지스틱회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="til20220316.html#til20220316">3.16</a> 참고</p>
 <p>당뇨평(diabetes) 여부를 예측하는 모델을 생성한다.</p>
 <div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="til20220319.html#cb510-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdS7Y3y/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpnA657A/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="til20220319.html#cb512-1"></a><span class="kw">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
 <span id="cb512-2"><a href="til20220319.html#cb512-2"></a><span class="kw">str</span>(PimaIndiansDiabetes2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    768 obs. of  9 variables:
@@ -652,8 +656,247 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## lambda.min    0.7521368
 ## lambda.1se    0.7606838
 ## predictor.all 0.7264957</code></pre>
-
 </div>
+<div id="다항-로지스틱회귀분석" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.19.4</span> 다항 로지스틱회귀분석<a href="til20220319.html#다항-로지스틱회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>세 개 이상의 범주를 갖는 결과변수의 사건발생확률을 예측한다.</p>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="til20220319.html#cb534-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(EffectStars)) { <span class="kw">install.packages</span>(<span class="st">&quot;EffectStars&quot;</span>); <span class="kw">library</span>(EffectStars); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpnA657A/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="til20220319.html#cb536-1"></a><span class="kw">data</span>(PID)</span>
+<span id="cb536-2"><a href="til20220319.html#cb536-2"></a><span class="kw">str</span>(PID)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    944 obs. of  6 variables:
+##  $ TVnews    : int  7 1 7 4 7 3 7 1 7 0 ...
+##  $ PID       : Factor w/ 3 levels &quot;Democrat&quot;,&quot;Independent&quot;,..: 3 1 1 1 1 1 1 2 2 1 ...
+##  $ Income    : num  1.5 1.5 1.5 1.5 1.5 1.5 1.5 1.5 1.5 1.5 ...
+##  $ Education : Factor w/ 2 levels &quot;low&quot;,&quot;high&quot;: 1 2 2 2 2 2 2 2 2 1 ...
+##  $ Age       : int  36 20 24 28 68 21 77 21 31 39 ...
+##  $ Population: int  0 190 31 83 640 110 100 31 180 2800 ...</code></pre>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="til20220319.html#cb538-1"></a><span class="kw">levels</span>(PID<span class="op">$</span>PID)</span></code></pre></div>
+<pre><code>## [1] &quot;Democrat&quot;    &quot;Independent&quot; &quot;Republican&quot;</code></pre>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="til20220319.html#cb540-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(VGAM)) { <span class="kw">install.packages</span>(<span class="st">&quot;VGAM&quot;</span>); <span class="kw">library</span>(VGAM); }</span>
+<span id="cb540-2"><a href="til20220319.html#cb540-2"></a>pid.mlogit &lt;-<span class="st"> </span><span class="kw">vglm</span>(PID <span class="op">~</span><span class="st"> </span>., <span class="dt">family =</span> <span class="kw">multinomial</span>(), <span class="dt">data =</span> PID)</span>
+<span id="cb540-3"><a href="til20220319.html#cb540-3"></a><span class="kw">summary</span>(pid.mlogit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## vglm(formula = PID ~ ., family = multinomial(), data = PID)
+## 
+## Coefficients: 
+##                   Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept):1    1.2296119  0.3031106   4.057 4.98e-05 ***
+## (Intercept):2    0.1275830  0.3405777   0.375  0.70795    
+## TVnews:1         0.0440935  0.0321897   1.370  0.17075    
+## TVnews:2         0.0247123  0.0350497   0.705  0.48077    
+## Income:1        -0.0165464  0.0027760  -5.960 2.51e-09 ***
+## Income:2        -0.0002418  0.0027864  -0.087  0.93085    
+## Educationhigh:1 -0.2886055  0.1759813  -1.640  0.10101    
+## Educationhigh:2 -0.3530642  0.1971199  -1.791  0.07328 .  
+## Age:1           -0.0077751  0.0052743  -1.474  0.14044    
+## Age:2           -0.0066722  0.0059864  -1.115  0.26503    
+## Population:1     0.0002592  0.0000984   2.634  0.00844 ** 
+## Population:2     0.0002052  0.0001053   1.949  0.05135 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Names of linear predictors: log(mu[,1]/mu[,3]), log(mu[,2]/mu[,3])
+## 
+## Residual deviance: 1969.38 on 1876 degrees of freedom
+## 
+## Log-likelihood: -984.6901 on 1876 degrees of freedom
+## 
+## Number of Fisher scoring iterations: 4 
+## 
+## No Hauck-Donner effect found in any of the estimates
+## 
+## 
+## Reference group is level  3  of the response</code></pre>
+<p><em>vglm()</em> 함수는 마지막 범주를 기준범주로 사용한다.</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="til20220319.html#cb542-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(pid.mlogit))</span></code></pre></div>
+<pre><code>##   (Intercept):1   (Intercept):2        TVnews:1        TVnews:2        Income:1 
+##       3.4199020       1.1360792       1.0450800       1.0250202       0.9835898 
+##        Income:2 Educationhigh:1 Educationhigh:2           Age:1           Age:2 
+##       0.9997582       0.7493078       0.7025321       0.9922550       0.9933500 
+##    Population:1    Population:2 
+##       1.0002592       1.0002052</code></pre>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="til20220319.html#cb544-1"></a>pid.mlogit.pred &lt;-<span class="st"> </span><span class="kw">fitted</span>(pid.mlogit)</span>
+<span id="cb544-2"><a href="til20220319.html#cb544-2"></a><span class="kw">head</span>(pid.mlogit.pred)</span></code></pre></div>
+<pre><code>##    Democrat Independent Republican
+## 1 0.6247928   0.1932306  0.1819766
+## 2 0.5739020   0.1817883  0.2443097
+## 3 0.6109039   0.1745194  0.2145766
+## 4 0.5843473   0.1772105  0.2384421
+## 5 0.5839453   0.1694467  0.2466080
+## 6 0.5856824   0.1794368  0.2348808</code></pre>
+<p>교육수준에 정치 성향에 미치는 영향을 보고 위해 교육수준은 변화시키고 나머지 예측변수는 고정된 데이터셋을 생성한다.</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="til20220319.html#cb546-1"></a>testdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb546-2"><a href="til20220319.html#cb546-2"></a>  <span class="dt">Education =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>),</span>
+<span id="cb546-3"><a href="til20220319.html#cb546-3"></a>  <span class="dt">TVnews =</span> <span class="kw">mean</span>(PID<span class="op">$</span>TVnews),</span>
+<span id="cb546-4"><a href="til20220319.html#cb546-4"></a>  <span class="dt">Income =</span> <span class="kw">mean</span>(PID<span class="op">$</span>Income),</span>
+<span id="cb546-5"><a href="til20220319.html#cb546-5"></a>  <span class="dt">Age =</span> <span class="kw">mean</span>(PID<span class="op">$</span>Age),</span>
+<span id="cb546-6"><a href="til20220319.html#cb546-6"></a>  <span class="dt">Population =</span> <span class="kw">mean</span>(PID<span class="op">$</span>Population)</span>
+<span id="cb546-7"><a href="til20220319.html#cb546-7"></a>); testdata;</span></code></pre></div>
+<pre><code>##   Education   TVnews   Income      Age Population
+## 1       low 3.727754 46.57574 47.04343   306.3814
+## 2      high 3.727754 46.57574 47.04343   306.3814</code></pre>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="til20220319.html#cb548-1"></a>pid.mlogit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(pid.mlogit, <span class="dt">newdata =</span> testdata, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb548-2"><a href="til20220319.html#cb548-2"></a><span class="kw">cbind</span>(testdata, pid.mlogit.pred)</span></code></pre></div>
+<pre><code>##   Education   TVnews   Income      Age Population  Democrat Independent
+## 1       low 3.727754 46.57574 47.04343   306.3814 0.4169951   0.2852971
+## 2      high 3.727754 46.57574 47.04343   306.3814 0.3854667   0.2472630
+##   Republican
+## 1  0.2977078
+## 2  0.3672703</code></pre>
+<p>교육수준이 low -&gt; higt로 변화하면 Democrat일 확률이 감소하고, Republican일 확률이 증가하는 것을 볼 수 있다. 하지만 교육수준의 변화와 상관없이 항상 Democrate으로 예측할 확률이 가장 높기 때문에 교육수준과 성치성향과의 명확한 관계가 있다고 판단하기는 어렵다. 이는 교육수준의 회귀계수가 통계적으로 유의하지 않다는 것을 의미하기도 한다.</p>
+<p>소득수준을 기준으로 같은 분석을 진행한다.</p>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="til20220319.html#cb550-1"></a><span class="kw">range</span>(PID<span class="op">$</span>Income)</span></code></pre></div>
+<pre><code>## [1]   1.5 115.0</code></pre>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="til20220319.html#cb552-1"></a>testdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb552-2"><a href="til20220319.html#cb552-2"></a>  <span class="dt">Education =</span> <span class="kw">rep</span>(<span class="st">&quot;low&quot;</span>, <span class="dv">5</span>),</span>
+<span id="cb552-3"><a href="til20220319.html#cb552-3"></a>  <span class="dt">TVnews =</span> <span class="kw">mean</span>(PID<span class="op">$</span>TVnews),</span>
+<span id="cb552-4"><a href="til20220319.html#cb552-4"></a>  <span class="dt">Income =</span> <span class="kw">seq</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">20</span>),</span>
+<span id="cb552-5"><a href="til20220319.html#cb552-5"></a>  <span class="dt">Age =</span> <span class="kw">mean</span>(PID<span class="op">$</span>Age),</span>
+<span id="cb552-6"><a href="til20220319.html#cb552-6"></a>  <span class="dt">Population =</span> <span class="kw">mean</span>(PID<span class="op">$</span>Population)</span>
+<span id="cb552-7"><a href="til20220319.html#cb552-7"></a>); testdata;</span></code></pre></div>
+<pre><code>##   Education   TVnews Income      Age Population
+## 1       low 3.727754     20 47.04343   306.3814
+## 2       low 3.727754     40 47.04343   306.3814
+## 3       low 3.727754     60 47.04343   306.3814
+## 4       low 3.727754     80 47.04343   306.3814
+## 5       low 3.727754    100 47.04343   306.3814</code></pre>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="til20220319.html#cb554-1"></a>pid.mlogit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(pid.mlogit, <span class="dt">newdata =</span> testdata, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb554-2"><a href="til20220319.html#cb554-2"></a><span class="kw">cbind</span>(testdata, pid.mlogit.pred)</span></code></pre></div>
+<pre><code>##   Education   TVnews Income      Age Population  Democrat Independent
+## 1       low 3.727754     20 47.04343   306.3814 0.5253435   0.2330383
+## 2       low 3.727754     40 47.04343   306.3814 0.4434690   0.2725630
+## 3       low 3.727754     60 47.04343   306.3814 0.3645531   0.3104445
+## 4       low 3.727754     80 47.04343   306.3814 0.2923033   0.3448868
+## 5       low 3.727754    100 47.04343   306.3814 0.2292065   0.3747050
+##   Republican
+## 1  0.2416182
+## 2  0.2839680
+## 3  0.3250024
+## 4  0.3628100
+## 5  0.3960885</code></pre>
+<p>소득의 수준에 따른 정치성향이 다른 것을 알 수 있다.</p>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="til20220319.html#cb556-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(MASS)) { <span class="kw">install.packages</span>(<span class="st">&quot;MASS&quot;</span>); <span class="kw">library</span>(MASS); }</span>
+<span id="cb556-2"><a href="til20220319.html#cb556-2"></a><span class="kw">str</span>(fgl) <span class="co"># 유리 조각에 대한 성분 </span></span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    214 obs. of  10 variables:
+##  $ RI  : num  3.01 -0.39 -1.82 -0.34 -0.58 ...
+##  $ Na  : num  13.6 13.9 13.5 13.2 13.3 ...
+##  $ Mg  : num  4.49 3.6 3.55 3.69 3.62 3.61 3.6 3.61 3.58 3.6 ...
+##  $ Al  : num  1.1 1.36 1.54 1.29 1.24 1.62 1.14 1.05 1.37 1.36 ...
+##  $ Si  : num  71.8 72.7 73 72.6 73.1 ...
+##  $ K   : num  0.06 0.48 0.39 0.57 0.55 0.64 0.58 0.57 0.56 0.57 ...
+##  $ Ca  : num  8.75 7.83 7.78 8.22 8.07 8.07 8.17 8.24 8.3 8.4 ...
+##  $ Ba  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Fe  : num  0 0 0 0 0 0.26 0 0 0 0.11 ...
+##  $ type: Factor w/ 6 levels &quot;WinF&quot;,&quot;WinNF&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="til20220319.html#cb558-1"></a><span class="kw">levels</span>(fgl<span class="op">$</span>type) <span class="co"># (6개의 유리 유형)</span></span></code></pre></div>
+<pre><code>## [1] &quot;WinF&quot;  &quot;WinNF&quot; &quot;Veh&quot;   &quot;Con&quot;   &quot;Tabl&quot;  &quot;Head&quot;</code></pre>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="til20220319.html#cb560-1"></a><span class="co"># 변수 값의 범위가 다양하여 표준화하는 전처리 진행</span></span>
+<span id="cb560-2"><a href="til20220319.html#cb560-2"></a>fgl.scaled &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">scale</span>(fgl[, <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>]), fgl[<span class="dv">10</span>])</span>
+<span id="cb560-3"><a href="til20220319.html#cb560-3"></a></span>
+<span id="cb560-4"><a href="til20220319.html#cb560-4"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb560-5"><a href="til20220319.html#cb560-5"></a>train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(fgl), <span class="fl">0.7</span><span class="op">*</span><span class="kw">nrow</span>(fgl))</span>
+<span id="cb560-6"><a href="til20220319.html#cb560-6"></a>fgl.train &lt;-<span class="st"> </span>fgl.scaled[train, ]</span>
+<span id="cb560-7"><a href="til20220319.html#cb560-7"></a>fgl.test &lt;-<span class="st"> </span>fgl.scaled[<span class="op">-</span>train, ]</span>
+<span id="cb560-8"><a href="til20220319.html#cb560-8"></a><span class="kw">rbind</span>(<span class="dt">Train =</span> <span class="kw">table</span>(fgl.train<span class="op">$</span>type), <span class="dt">Test =</span> <span class="kw">table</span>(fgl.train<span class="op">$</span>type))</span></code></pre></div>
+<pre><code>##       WinF WinNF Veh Con Tabl Head
+## Train   48    54  10  11    5   21
+## Test    48    54  10  11    5   21</code></pre>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="til20220319.html#cb562-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;nnet&quot;</span>); <span class="kw">library</span>(nnet); }</span>
+<span id="cb562-2"><a href="til20220319.html#cb562-2"></a>fgl.mlogit &lt;-<span class="st"> </span><span class="kw">multinom</span>(type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> fgl.train, <span class="dt">trace =</span> <span class="dv">0</span>)</span>
+<span id="cb562-3"><a href="til20220319.html#cb562-3"></a><span class="kw">summary</span>(fgl.mlogit)</span></code></pre></div>
+<pre><code>## Call:
+## multinom(formula = type ~ ., data = fgl.train, trace = 0)
+## 
+## Coefficients:
+##         (Intercept)           RI           Na           Mg           Al
+## WinNF  9.355295e-02   -0.8953382    -4.063962    -9.048398   -0.5114149
+## Veh   -1.133317e+03   -8.6962954    -5.829434    -7.471188   -3.8837185
+## Con   -1.775676e+03  809.3073019 -1498.700239 -5267.689197 2633.0124594
+## Tabl  -5.707417e+03 1503.0305126  3453.631583   402.083873 4796.9312894
+## Head  -3.440740e+03 3973.2180820  2766.948337  -567.865018 6106.0668610
+##                Si            K           Ca           Ba            Fe
+## WinNF   -4.762664    -5.224543    -7.036873    -6.887587     0.3130040
+## Veh     -9.568647    -8.386972    -2.916572 -3210.962581     0.2369889
+## Con    411.127579 -2096.906955 -3215.489974  3890.713665 -1142.1918831
+## Tabl  2213.126389 -5318.320092   850.190517   356.705595 -4547.5583934
+## Head  5085.219769   463.552740  -641.047023  4867.920523 -1662.5175407
+## 
+## Std. Errors:
+##       (Intercept)        RI       Na        Mg        Al        Si         K
+## WinNF    2.250252  1.199628 2.399749  4.300370  1.600933  2.240364  2.512023
+## Veh      1.639861  2.688003 3.037652  5.870651  2.192671  3.194121  3.509944
+## Con     13.950757 10.090718 4.104262 13.278437 15.332909  3.331481 62.182580
+## Tabl     0.000000  0.000000 0.000000  0.000000  0.000000  0.000000  0.000000
+## Head     5.158491  8.757124 2.576395  9.600709 16.273983 12.993265 45.186352
+##              Ca         Ba        Fe
+## WinNF  4.440853  6.3418754 0.2713187
+## Veh    5.911691  0.5773154 0.4929929
+## Con   12.352283 16.6950553 7.2049922
+## Tabl   0.000000  0.0000000 0.0000000
+## Head   7.347112  1.8160539 3.0181253
+## 
+## Residual Deviance: 140.2764 
+## AIC: 240.2764</code></pre>
+<p><em>multinom()</em> 함수는 첫 번째 범주를 기준 범주로 사용한다.</p>
+<p>회귀계수에 대한 유의확률을 제공하지 않아 별도로 계산을 해야 한다.
+회귀계수를 표준오차로 나눠서 <em>z</em> 값을 계산하고 이 <em>z</em> 값으로 유의확률을 계산한다.</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="til20220319.html#cb564-1"></a>z &lt;-<span class="st"> </span><span class="kw">summary</span>(fgl.mlogit)<span class="op">$</span>coefficients<span class="op">/</span><span class="kw">summary</span>(fgl.mlogit)<span class="op">$</span>standard.errors</span>
+<span id="cb564-2"><a href="til20220319.html#cb564-2"></a>p &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="kw">abs</span>(z), <span class="dv">0</span>, <span class="dv">1</span>))<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb564-3"><a href="til20220319.html#cb564-3"></a><span class="kw">print</span>(p, <span class="dt">digit=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##       (Intercept)      RI     Na     Mg     Al      Si      K    Ca    Ba    Fe
+## WinNF       0.967 0.45546 0.0904 0.0354 0.7494 0.03352 0.0375 0.113 0.277 0.249
+## Veh         0.000 0.00122 0.0550 0.2031 0.0765 0.00274 0.0169 0.622 0.000 0.631
+## Con         0.000 0.00000 0.0000 0.0000 0.0000 0.00000 0.0000 0.000 0.000 0.000
+## Tabl        0.000 0.00000 0.0000 0.0000 0.0000 0.00000 0.0000 0.000 0.000 0.000
+## Head        0.000 0.00000 0.0000 0.0000 0.0000 0.00000 0.0000 0.000 0.000 0.000</code></pre>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="til20220319.html#cb566-1"></a>fgl.mlogit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(fgl.mlogit, fgl.test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in match.arg(type): &#39;arg&#39; should be one of &quot;class&quot;, &quot;probs&quot;</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="til20220319.html#cb568-1"></a><span class="kw">head</span>(fgl.mlogit.pred)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="til20220319.html#cb570-1"></a><span class="kw">cbind</span>(<span class="kw">round</span>(fgl.mlogit.pred, <span class="dv">3</span>), fgl.test[<span class="st">&quot;type&quot;</span>])</span></code></pre></div>
+<pre><code>## Error in cbind(round(fgl.mlogit.pred, 3), fgl.test[&quot;type&quot;]): object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="til20220319.html#cb572-1"></a>fgl.mlogit.pred &lt;-<span class="st"> </span><span class="kw">colnames</span>(fgl.mlogit.pred)[<span class="kw">max.col</span>(fgl.mlogit.pred)]</span></code></pre></div>
+<pre><code>## Error in is.data.frame(x): object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="til20220319.html#cb574-1"></a><span class="kw">head</span>(fgl.mlogit.pred)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="til20220319.html#cb576-1"></a><span class="kw">table</span>(fgl.test<span class="op">$</span>type, fgl.mlogit.pred, <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in table(fgl.test$type, fgl.mlogit.pred, dnn = c(&quot;Actual&quot;, &quot;Predicted&quot;)): object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="til20220319.html#cb578-1"></a><span class="kw">table</span>(fgl.test<span class="op">$</span>type, </span>
+<span id="cb578-2"><a href="til20220319.html#cb578-2"></a>      <span class="kw">factor</span>(fgl.mlogit.pred, </span>
+<span id="cb578-3"><a href="til20220319.html#cb578-3"></a>             <span class="dt">levels=</span><span class="kw">levels</span>(fgl.test<span class="op">$</span>type),</span>
+<span id="cb578-4"><a href="til20220319.html#cb578-4"></a>             <span class="dt">labels=</span><span class="kw">levels</span>(fgl.test<span class="op">$</span>type)),</span>
+<span id="cb578-5"><a href="til20220319.html#cb578-5"></a>      <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>## Error in factor(fgl.mlogit.pred, levels = levels(fgl.test$type), labels = levels(fgl.test$type)): object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="til20220319.html#cb580-1"></a><span class="kw">mean</span>(fgl.test<span class="op">$</span>type <span class="op">==</span><span class="st"> </span>fgl.mlogit.pred)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;mean&#39;: object &#39;fgl.mlogit.pred&#39; not found</code></pre>
+<p>100번의 교차 검정을 통해 보다 안정적인 예측 정확도를 계산한다.</p>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="til20220319.html#cb582-1"></a>fgl.mlogit.cv &lt;-<span class="st"> </span><span class="kw">numeric</span>()</span>
+<span id="cb582-2"><a href="til20220319.html#cb582-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb582-3"><a href="til20220319.html#cb582-3"></a>  train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(fgl), <span class="fl">0.7</span><span class="op">*</span><span class="kw">nrow</span>(fgl))</span>
+<span id="cb582-4"><a href="til20220319.html#cb582-4"></a>  fgl.train &lt;-<span class="st"> </span>fgl.scaled[train, ]</span>
+<span id="cb582-5"><a href="til20220319.html#cb582-5"></a>  fgl.test &lt;-<span class="st"> </span>fgl.scaled[<span class="op">-</span>train, ]</span>
+<span id="cb582-6"><a href="til20220319.html#cb582-6"></a>  </span>
+<span id="cb582-7"><a href="til20220319.html#cb582-7"></a>  fgl.mlogit &lt;-<span class="st"> </span><span class="kw">multinom</span>(type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> fgl.train, <span class="dt">trace =</span> <span class="dv">0</span>)</span>
+<span id="cb582-8"><a href="til20220319.html#cb582-8"></a>  fgl.mlogit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(fgl.mlogit, fgl.test, <span class="dt">type =</span> <span class="st">&quot;probs&quot;</span>)</span>
+<span id="cb582-9"><a href="til20220319.html#cb582-9"></a>  fgl.mlogit.pred &lt;-<span class="st"> </span><span class="kw">colnames</span>(fgl.mlogit.pred)[<span class="kw">max.col</span>(fgl.mlogit.pred)]</span>
+<span id="cb582-10"><a href="til20220319.html#cb582-10"></a>  </span>
+<span id="cb582-11"><a href="til20220319.html#cb582-11"></a>  fgl.mlogit.cv[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(fgl.test<span class="op">$</span>type <span class="op">==</span><span class="st"> </span>fgl.mlogit.pred)</span>
+<span id="cb582-12"><a href="til20220319.html#cb582-12"></a>}</span>
+<span id="cb582-13"><a href="til20220319.html#cb582-13"></a><span class="kw">summary</span>(fgl.mlogit.cv)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.4308  0.5692  0.6000  0.6063  0.6346  0.7538</code></pre>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="til20220319.html#cb584-1"></a><span class="kw">boxplot</span>(fgl.mlogit.cv, <span class="dt">horizontal =</span> T, <span class="dt">col=</span><span class="st">&quot;tomato&quot;</span>,</span>
+<span id="cb584-2"><a href="til20220319.html#cb584-2"></a>        <span class="dt">xlab=</span><span class="st">&quot;Accuracy&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Accuracy for Forensic Glass (100 samples)&quot;</span>)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-253-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="til20220319.html#cb585-1"></a><span class="co"># fgl.mlogit &lt;- vglm(type ~ ., family = multinomial(), data = fgl.train)</span></span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="til20220319.html#cb586-1"></a><span class="co"># fgl.mlogit.pred &lt;- predict(fgl.mlogit, newdata = fgl.test, type=&quot;response&quot;)</span></span>
+<span id="cb586-2"><a href="til20220319.html#cb586-2"></a><span class="co"># fgl.mlogit.pred &lt;- colnames(fgl.mlogit.pred)[max.col(fgl.mlogit.pred)]</span></span>
+<span id="cb586-3"><a href="til20220319.html#cb586-3"></a><span class="co"># mean(fgl.test$type == fgl.mlogit.pred)</span></span></code></pre></div>
+
 </div>
 </div>
 <!-- </div> -->
