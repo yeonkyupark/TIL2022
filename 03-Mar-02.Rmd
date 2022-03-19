@@ -4,9 +4,7 @@
 
 **페널티 회귀분석(penalized regression analysis)**[^mar-02-1]
 
-[^mar-02-1]: 
-
-    <https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s>
+[^mar-02-1]: <https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s>
 
 -   릿지 (Ridge)\
     회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수
@@ -306,7 +304,7 @@ exp(coef(churn_logit)) # 해석상의 용이를 위해 오즈비를 지수변환
 
 Deviance(이탈도)
 
-:    모델의 적합도 정도를 나타내는 지표, 이탈도가 적을수록 우수한 모델임
+:   모델의 적합도 정도를 나타내는 지표, 이탈도가 적을수록 우수한 모델임
 
 Null deviance는 상수항만을 포함하는 모델이고, Residual deviance는 모든변수를 포함하는 모델이다. 예측변수를 포함될수록 설명력은 좋아지기 때문에 이탈도는 작아질 수밖에 없다. 예측변수에 의해 작아지는 정도가 통계적으로 유의한지를 검정한다. 이탈도는 $\chi^2$ 분포를 따르므로 $\chi^2$ 검정 통계량을 계산해서 검정한다.
 
@@ -418,3 +416,107 @@ pchisq(summary(fit.origin2)$dispersion*fit.origin1$df.residual,
 ```
 
 위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.
+
+#### 패널티 로지스틱회귀분석
+
+\@ref(til20220316) 참고
+
+당뇨평(diabetes) 여부를 예측하는 모델을 생성한다.  
+
+```{r}
+if(!require(mlbench)) { install.packages("mlbench"); library(mlbench); }
+data("PimaIndiansDiabetes2")
+str(PimaIndiansDiabetes2)
+```
+
+```{r}
+# 결측치 제거하는 전처리
+PimaIndiansDiabetes3 <- na.omit(PimaIndiansDiabetes2)
+
+if(!require(caret)) { install.packages("caret"); library(caret); }
+set.seed(123)
+train.index <- createDataPartition(y = PimaIndiansDiabetes3$diabetes,
+                                   p = 0.7, list = F)
+diabetes.train <- PimaIndiansDiabetes3[train.index, ]
+diabetes.test <- PimaIndiansDiabetes3[-train.index, ]
+
+class.status <- rbind(
+  Train = prop.table(table(diabetes.train$diabetes)),
+  Test = prop.table(table(diabetes.test$diabetes))
+); colnames(class.status) <- c("Negative", "Positive");
+class.status
+```
+
+```{r}
+# 예측오차를 최소로 하는 최적의 lambda 계산
+if(!require(glmnet)) { install.packages("glmnet"); library(glmnet); }
+x <- model.matrix(diabetes ~ ., diabetes.train)[, -1]
+y <- ifelse(diabetes.train$diabetes == "pos", 1, 0)
+test.x <- model.matrix(diabetes ~ ., diabetes.test)[, -1]
+test.y <- diabetes.test$diabetes
+diabetes.cv <- cv.glmnet(x, y, family = "binomial", alpha = 1)  # lasso 회귀모델
+diabetes.lambda <- cbind(lambda.min = diabetes.cv$lambda.min, lambda.1se = diabetes.cv$lambda.1se)
+rownames(diabetes.lambda) <- c("value");
+diabetes.lambda
+```
+
+```{r}
+cbind(lambda.min = coef(diabetes.cv, diabetes.cv$lambda.min),
+      lambda.1se = coef(diabetes.cv, diabetes.cv$lambda.1se)
+)
+```
+
+예측 오차를 최소로 하는 lambda를 사용하여 모델을 생성한 후 성능을 평가한다.
+
+```{r}
+diabets.gnet.min <- glmnet(x, y, family = "binomial", alpha = 1,
+                           lambda = diabetes.cv$lambda.min)
+diabets.gnet.min.pred <- predict(diabets.gnet.min, test.x, type="response")
+diabets.gnet.min.pred <- ifelse(diabets.gnet.min.pred > 0.5, "pos", "neg")
+table(test.y, diabets.gnet.min.pred, dnn = c("Actual", "Predicted"))
+```
+
+```{r}
+mean(test.y == diabets.gnet.min.pred)
+```
+
+간명도를 고려한 1se lambda를 사용하여 모델을 생성한 후 성능을 평가한다.
+
+```{r}
+diabets.gnet.1se <- glmnet(x, y, family = "binomial", alpha = 1,
+                           lambda = diabetes.cv$lambda.1se)
+diabets.gnet.1se.pred <- predict(diabets.gnet.1se, test.x, type="response")
+diabets.gnet.1se.pred <- ifelse(diabets.gnet.1se.pred > 0.5, "pos", "neg")
+table(test.y, diabets.gnet.1se.pred, dnn = c("Actual", "Predicted"))
+```
+
+```{r}
+mean(test.y == diabets.gnet.min.pred)
+```
+
+모든 예측변수를 사용한 이항 로지스틱회귀모델을 생성하고 성능을 평가한다.
+
+```{r}
+diabetes.logit <- glm(diabetes ~ ., data = diabetes.train, 
+                      family = binomial(link = "logit"))
+diabetes.logit.pred <- predict(diabetes.logit, diabetes.test, type = "response")
+diabetes.logit.pred <- ifelse(diabetes.logit.pred > 0.5, "pos", "neg")
+table(diabetes.test$diabetes, diabetes.logit.pred, dnn = c("Actual", "Predicted"))
+```
+
+```{r}
+mean(diabetes.test$diabetes == diabetes.logit.pred)
+```
+
+최종 모델별 예측정확도는 다음과 같고 간명도 관점에서 1se lambda를 이용한 모델을 선택하는 것이 바람직 하다.
+
+```{r}
+perf.stats <- rbind(
+  lambda.min = mean(test.y == diabets.gnet.min.pred),
+  lambda.1se = mean(test.y == diabets.gnet.1se.pred),
+  predictor.all = mean(diabetes.test$diabetes == diabetes.logit.pred)
+); colnames(perf.stats) <- c("Accuracy");
+perf.stats
+```
+
+
