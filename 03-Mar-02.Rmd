@@ -266,7 +266,7 @@ summary(diff(resamples(models), metric="RMSE"))
 
 :   $ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m$
 
-#### 이항 로지스틱 회귀분석
+### 이항 로지스틱 회귀분석
 
 결과변수(종속변수)가 이분형 범주를 가질 때 예측변수(독립변수)로부터 결과변수의 범주를 예측한다.
 
@@ -417,7 +417,7 @@ pchisq(summary(fit.origin2)$dispersion*fit.origin1$df.residual,
 
 위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.
 
-#### 패널티 로지스틱회귀분석
+### 패널티 로지스틱회귀분석
 
 \@ref(til20220316) 참고
 
@@ -519,4 +519,173 @@ perf.stats <- rbind(
 perf.stats
 ```
 
+### 다항 로지스틱회귀분석
+
+세 개 이상의 범주를 갖는 결과변수의 사건발생확률을 예측한다. 
+
+```{r}
+if(!require(EffectStars)) { install.packages("EffectStars"); library(EffectStars); }
+data(PID)
+str(PID)
+```
+
+```{r}
+levels(PID$PID)
+```
+
+```{r}
+if(!require(VGAM)) { install.packages("VGAM"); library(VGAM); }
+pid.mlogit <- vglm(PID ~ ., family = multinomial(), data = PID)
+summary(pid.mlogit)
+```
+
+*vglm()* 함수는 마지막 범주를 기준범주로 사용한다.
+
+```{r}
+exp(coef(pid.mlogit))
+```
+
+```{r}
+pid.mlogit.pred <- fitted(pid.mlogit)
+head(pid.mlogit.pred)
+```
+
+교육수준에 정치 성향에 미치는 영향을 보고 위해 교육수준은 변화시키고 나머지 예측변수는 고정된 데이터셋을 생성한다.
+
+```{r}
+testdata <- data.frame(
+  Education = c("low", "high"),
+  TVnews = mean(PID$TVnews),
+  Income = mean(PID$Income),
+  Age = mean(PID$Age),
+  Population = mean(PID$Population)
+); testdata;
+```
+
+```{r}
+pid.mlogit.pred <- predict(pid.mlogit, newdata = testdata, type="response")
+cbind(testdata, pid.mlogit.pred)
+```
+교육수준이 low -> higt로 변화하면 Democrat일 확률이 감소하고, Republican일 확률이 증가하는 것을 볼 수 있다. 하지만 교육수준의 변화와 상관없이 항상 Democrate으로 예측할 확률이 가장 높기 때문에 교육수준과 성치성향과의 명확한 관계가 있다고 판단하기는 어렵다. 이는 교육수준의 회귀계수가 통계적으로 유의하지 않다는 것을 의미하기도 한다.  
+
+소득수준을 기준으로 같은 분석을 진행한다.
+
+```{r}
+range(PID$Income)
+testdata <- data.frame(
+  Education = rep("low", 5),
+  TVnews = mean(PID$TVnews),
+  Income = seq(20, 100, 20),
+  Age = mean(PID$Age),
+  Population = mean(PID$Population)
+); testdata;
+```
+
+```{r}
+pid.mlogit.pred <- predict(pid.mlogit, newdata = testdata, type="response")
+cbind(testdata, pid.mlogit.pred)
+```
+
+소득의 수준에 따른 정치성향이 다른 것을 알 수 있다.
+
+
+```{r}
+if(!require(MASS)) { install.packages("MASS"); library(MASS); }
+str(fgl) # 유리 조각에 대한 성분 
+```
+
+```{r}
+levels(fgl$type) # (6개의 유리 유형)
+```
+
+```{r}
+# 변수 값의 범위가 다양하여 표준화하는 전처리 진행
+fgl.scaled <- cbind(scale(fgl[, 1:9]), fgl[10])
+
+set.seed(123)
+train <- sample(nrow(fgl), 0.7*nrow(fgl))
+fgl.train <- fgl.scaled[train, ]
+fgl.test <- fgl.scaled[-train, ]
+rbind(Train = table(fgl.train$type), Test = table(fgl.train$type))
+```
+
+```{r}
+if(!require(nnet)) { install.packages("nnet"); library(nnet); }
+fgl.mlogit <- multinom(type ~ ., data = fgl.train, trace = 0)
+summary(fgl.mlogit)
+```
+
+*multinom()* 함수는 첫 번째 범주를 기준 범주로 사용한다.
+
+회귀계수에 대한 유의확률을 제공하지 않아 별도로 계산을 해야 한다.
+회귀계수를 표준오차로 나눠서 *z* 값을 계산하고 이 *z* 값으로 유의확률을 계산한다.
+
+```{r}
+z <- summary(fgl.mlogit)$coefficients/summary(fgl.mlogit)$standard.errors
+p <- (1- pnorm(abs(z), 0, 1))*2
+print(p, digit=3)
+```
+
+```{r}
+fgl.mlogit.pred <- predict(fgl.mlogit, fgl.test, type = "response")
+head(fgl.mlogit.pred)
+```
+
+```{r}
+cbind(round(fgl.mlogit.pred, 3), fgl.test["type"])
+```
+
+```{r}
+fgl.mlogit.pred <- colnames(fgl.mlogit.pred)[max.col(fgl.mlogit.pred)]
+head(fgl.mlogit.pred)
+```
+
+```{r}
+table(fgl.test$type, fgl.mlogit.pred, dnn=c("Actual", "Predicted"))
+```
+
+```{r}
+table(fgl.test$type, 
+      factor(fgl.mlogit.pred, 
+             levels=levels(fgl.test$type),
+             labels=levels(fgl.test$type)),
+      dnn=c("Actual", "Predicted"))
+```
+
+```{r}
+mean(fgl.test$type == fgl.mlogit.pred)
+```
+
+100번의 교차 검정을 통해 보다 안정적인 예측 정확도를 계산한다.
+
+```{r}
+fgl.mlogit.cv <- numeric()
+for(i in 1:100) {
+  train <- sample(nrow(fgl), 0.7*nrow(fgl))
+  fgl.train <- fgl.scaled[train, ]
+  fgl.test <- fgl.scaled[-train, ]
+  
+  fgl.mlogit <- multinom(type ~ ., data = fgl.train, trace = 0)
+  fgl.mlogit.pred <- predict(fgl.mlogit, fgl.test, type = "probs")
+  fgl.mlogit.pred <- colnames(fgl.mlogit.pred)[max.col(fgl.mlogit.pred)]
+  
+  fgl.mlogit.cv[i] <- mean(fgl.test$type == fgl.mlogit.pred)
+}
+summary(fgl.mlogit.cv)
+```
+
+```{r}
+boxplot(fgl.mlogit.cv, horizontal = T, col="tomato",
+        xlab="Accuracy", main = "Accuracy for Forensic Glass (100 samples)")
+```
+
+```{r}
+# fgl.mlogit <- vglm(type ~ ., family = multinomial(), data = fgl.train)
+```
+
+```{r}
+# fgl.mlogit.pred <- predict(fgl.mlogit, newdata = fgl.test, type="response")
+# fgl.mlogit.pred <- colnames(fgl.mlogit.pred)[max.col(fgl.mlogit.pred)]
+# mean(fgl.test$type == fgl.mlogit.pred)
+```
 
