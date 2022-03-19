@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-18" />
+<meta name="date" content="2022-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -262,7 +262,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.18" data-path="til20220318.html"><a href="til20220318.html"><i class="fa fa-check"></i><b>3.18</b> TIL20220318<span></span></a><ul>
 <li class="chapter" data-level="3.18.1" data-path="til20220318.html"><a href="til20220318.html#구미시-선별진료소"><i class="fa fa-check"></i><b>3.18.1</b> 구미시 선별진료소<span></span></a></li>
-<li class="chapter" data-level="3.18.2" data-path="til20220318.html"><a href="til20220318.html#로지스틱-회귀분석"><i class="fa fa-check"></i><b>3.18.2</b> 로지스틱 회귀분석<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.19" data-path="til20220319.html"><a href="til20220319.html"><i class="fa fa-check"></i><b>3.19</b> TIL20220319<span></span></a><ul>
+<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#시계열의-정상성과-자기상관"><i class="fa fa-check"></i><b>3.19.1</b> 시계열의 정상성과 자기상관<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -312,7 +314,7 @@ Backtrace:
 </div>
 <div id="결측치-시각화" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.8.2</span> 결측치 시각화<a href="til20220308.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="til20220308.html#cb332-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="til20220308.html#cb333-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span></code></pre></div>
 <pre><code>## 
 ##   There is a binary version available but the source version is later:
 ##       binary  source needs_compilation
@@ -320,8 +322,8 @@ Backtrace:
 ## 
 ## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmplUbief/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="til20220308.html#cb334-1"></a><span class="kw">md.pattern</span>(penguins, <span class="dt">plot=</span>T, <span class="dt">rotate.names =</span> T)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpZMGQVr/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="til20220308.html#cb335-1"></a><span class="kw">md.pattern</span>(penguins, <span class="dt">plot=</span>T, <span class="dt">rotate.names =</span> T)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-150-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
 ## 333       1      1    1              1             1                 1
