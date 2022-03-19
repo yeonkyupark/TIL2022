@@ -293,13 +293,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.19.1</span> 일반선형델회귀모델<a href="til20220319.html#일반선형델회귀모델" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <dl>
 <dt>일반선형회귀모델</dt>
-<dd><p>$ f(_y) = _0 + _1 x_1 + _2 x_2 + … + _n x_n $</p>
+<dd><p><span class="math inline">\(f(\mu \_y) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_n x_n\)</span></p>
 </dd>
 <dt>로지스틱 선형회귀모델</dt>
-<dd><p>$ ln(  ) = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
+<dd><p><span class="math inline">\(ln( \frac{p}{1-p} ) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
 </dd>
 <dt>포아송 선형회귀모델</dt>
-<dd><p>$ ln() = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
+<dd><p><span class="math inline">\(ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m\)</span></p>
 </dd>
 </dl>
 <div id="이항-로지스틱-회귀분석" class="section level4 hasAnchor">
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpZnNeKN/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7SOkTm/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
 <span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
@@ -540,6 +540,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb508-22"><a href="til20220319.html#cb508-22"></a>       fit.origin1<span class="op">$</span>df.residual, <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## [1] 0.08385493</code></pre>
 <p>위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.</p>
+</div>
+<div id="패널티-로지스틱회귀분석" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.19.1.2</span> 패널티 로지스틱회귀분석<a href="til20220319.html#패널티-로지스틱회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><a href="til20220316.html#til20220316">3.16</a> 참고</p>
+<p>당뇨평(diabetes) 여부를 예측하는 모델을 생성한다.</p>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="til20220319.html#cb510-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp7SOkTm/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="til20220319.html#cb512-1"></a><span class="kw">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
+<span id="cb512-2"><a href="til20220319.html#cb512-2"></a><span class="kw">str</span>(PimaIndiansDiabetes2)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    768 obs. of  9 variables:
+##  $ pregnant: num  6 1 8 1 0 5 3 10 2 8 ...
+##  $ glucose : num  148 85 183 89 137 116 78 115 197 125 ...
+##  $ pressure: num  72 66 64 66 40 74 50 NA 70 96 ...
+##  $ triceps : num  35 29 NA 23 35 NA 32 NA 45 NA ...
+##  $ insulin : num  NA NA NA 94 168 NA 88 NA 543 NA ...
+##  $ mass    : num  33.6 26.6 23.3 28.1 43.1 25.6 31 35.3 30.5 NA ...
+##  $ pedigree: num  0.627 0.351 0.672 0.167 2.288 ...
+##  $ age     : num  50 31 32 21 33 30 26 29 53 54 ...
+##  $ diabetes: Factor w/ 2 levels &quot;neg&quot;,&quot;pos&quot;: 2 1 2 1 2 1 2 1 2 2 ...</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="til20220319.html#cb514-1"></a><span class="co"># 결측치 제거하는 전처리</span></span>
+<span id="cb514-2"><a href="til20220319.html#cb514-2"></a>PimaIndiansDiabetes3 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(PimaIndiansDiabetes2)</span>
+<span id="cb514-3"><a href="til20220319.html#cb514-3"></a></span>
+<span id="cb514-4"><a href="til20220319.html#cb514-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb514-5"><a href="til20220319.html#cb514-5"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb514-6"><a href="til20220319.html#cb514-6"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> PimaIndiansDiabetes3<span class="op">$</span>diabetes,</span>
+<span id="cb514-7"><a href="til20220319.html#cb514-7"></a>                                   <span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">list =</span> F)</span>
+<span id="cb514-8"><a href="til20220319.html#cb514-8"></a>diabetes.train &lt;-<span class="st"> </span>PimaIndiansDiabetes3[train.index, ]</span>
+<span id="cb514-9"><a href="til20220319.html#cb514-9"></a>diabetes.test &lt;-<span class="st"> </span>PimaIndiansDiabetes3[<span class="op">-</span>train.index, ]</span>
+<span id="cb514-10"><a href="til20220319.html#cb514-10"></a></span>
+<span id="cb514-11"><a href="til20220319.html#cb514-11"></a>class.status &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb514-12"><a href="til20220319.html#cb514-12"></a>  <span class="dt">Train =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.train<span class="op">$</span>diabetes)),</span>
+<span id="cb514-13"><a href="til20220319.html#cb514-13"></a>  <span class="dt">Test =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes))</span>
+<span id="cb514-14"><a href="til20220319.html#cb514-14"></a>); <span class="kw">colnames</span>(class.status) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Negative&quot;</span>, <span class="st">&quot;Positive&quot;</span>);</span>
+<span id="cb514-15"><a href="til20220319.html#cb514-15"></a>class.status</span></code></pre></div>
+<pre><code>##        Negative  Positive
+## Train 0.6690909 0.3309091
+## Test  0.6666667 0.3333333</code></pre>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="til20220319.html#cb516-1"></a><span class="co"># 예측오차를 최소로 하는 최적의 lambda 계산</span></span>
+<span id="cb516-2"><a href="til20220319.html#cb516-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span>
+<span id="cb516-3"><a href="til20220319.html#cb516-3"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.train)[, <span class="dv">-1</span>]</span>
+<span id="cb516-4"><a href="til20220319.html#cb516-4"></a>y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.train<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> &quot;pos&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb516-5"><a href="til20220319.html#cb516-5"></a>test.x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.test)[, <span class="dv">-1</span>]</span>
+<span id="cb516-6"><a href="til20220319.html#cb516-6"></a>test.y &lt;-<span class="st"> </span>diabetes.test<span class="op">$</span>diabetes</span>
+<span id="cb516-7"><a href="til20220319.html#cb516-7"></a>diabetes.cv &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)  <span class="co"># lasso 회귀모델</span></span>
+<span id="cb516-8"><a href="til20220319.html#cb516-8"></a>diabetes.lambda &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> diabetes.cv<span class="op">$</span>lambda.min, <span class="dt">lambda.1se =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb516-9"><a href="til20220319.html#cb516-9"></a><span class="kw">rownames</span>(diabetes.lambda) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value&quot;</span>);</span>
+<span id="cb516-10"><a href="til20220319.html#cb516-10"></a>diabetes.lambda</span></code></pre></div>
+<pre><code>##       lambda.min lambda.1se
+## value 0.01578334 0.05289948</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="til20220319.html#cb518-1"></a><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda.min),</span>
+<span id="cb518-2"><a href="til20220319.html#cb518-2"></a>      <span class="dt">lambda.1se =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb518-3"><a href="til20220319.html#cb518-3"></a>)</span></code></pre></div>
+<pre><code>## 9 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##                       s1            s1
+## (Intercept) -8.747546342 -5.9547905277
+## pregnant     0.001210910  .           
+## glucose      0.033473180  0.0281738015
+## pressure     .            .           
+## triceps      0.025187290  0.0149718685
+## insulin      0.001292712  0.0002823976
+## mass         0.038416286  0.0146328065
+## pedigree     1.025851783  0.3927570506
+## age          0.029786375  0.0153986131</code></pre>
+<p>예측 오차를 최소로 하는 lambda를 사용하여 모델을 생성한 후 성능을 평가한다.</p>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="til20220319.html#cb520-1"></a>diabets.gnet.min &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb520-2"><a href="til20220319.html#cb520-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda.min)</span>
+<span id="cb520-3"><a href="til20220319.html#cb520-3"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet.min, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb520-4"><a href="til20220319.html#cb520-4"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet.min.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb520-5"><a href="til20220319.html#cb520-5"></a><span class="kw">table</span>(test.y, diabets.gnet.min.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>##       Predicted
+## Actual neg pos
+##    neg  69   9
+##    pos  20  19</code></pre>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="til20220319.html#cb522-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
+<pre><code>## [1] 0.7521368</code></pre>
+<p>간명도를 고려한 1se lambda를 사용하여 모델을 생성한 후 성능을 평가한다.</p>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="til20220319.html#cb524-1"></a>diabets.gnet<span class="fl">.1</span>se &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb524-2"><a href="til20220319.html#cb524-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb524-3"><a href="til20220319.html#cb524-3"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet<span class="fl">.1</span>se, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb524-4"><a href="til20220319.html#cb524-4"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet<span class="fl">.1</span>se.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb524-5"><a href="til20220319.html#cb524-5"></a><span class="kw">table</span>(test.y, diabets.gnet<span class="fl">.1</span>se.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>##       Predicted
+## Actual neg pos
+##    neg  71   7
+##    pos  21  18</code></pre>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="til20220319.html#cb526-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
+<pre><code>## [1] 0.7521368</code></pre>
+<p>모든 예측변수를 사용한 이항 로지스틱회귀모델을 생성하고 성능을 평가한다.</p>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="til20220319.html#cb528-1"></a>diabetes.logit &lt;-<span class="st"> </span><span class="kw">glm</span>(diabetes <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> diabetes.train, </span>
+<span id="cb528-2"><a href="til20220319.html#cb528-2"></a>                      <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb528-3"><a href="til20220319.html#cb528-3"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabetes.logit, diabetes.test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb528-4"><a href="til20220319.html#cb528-4"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.logit.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb528-5"><a href="til20220319.html#cb528-5"></a><span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes, diabetes.logit.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>##       Predicted
+## Actual neg pos
+##    neg  66  12
+##    pos  20  19</code></pre>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="til20220319.html#cb530-1"></a><span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span></code></pre></div>
+<pre><code>## [1] 0.7264957</code></pre>
+<p>최종 모델별 예측정확도는 다음과 같고 간명도 관점에서 1se lambda를 이용한 모델을 선택하는 것이 바람직 하다.</p>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="til20220319.html#cb532-1"></a>perf.stats &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb532-2"><a href="til20220319.html#cb532-2"></a>  <span class="dt">lambda.min =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred),</span>
+<span id="cb532-3"><a href="til20220319.html#cb532-3"></a>  <span class="dt">lambda.1se =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet<span class="fl">.1</span>se.pred),</span>
+<span id="cb532-4"><a href="til20220319.html#cb532-4"></a>  <span class="dt">predictor.all =</span> <span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span>
+<span id="cb532-5"><a href="til20220319.html#cb532-5"></a>); <span class="kw">colnames</span>(perf.stats) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accuracy&quot;</span>);</span>
+<span id="cb532-6"><a href="til20220319.html#cb532-6"></a>perf.stats</span></code></pre></div>
+<pre><code>##                Accuracy
+## lambda.min    0.7521368
+## lambda.1se    0.7606838
+## predictor.all 0.7264957</code></pre>
 
 </div>
 </div>
