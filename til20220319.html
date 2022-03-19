@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.18.1" data-path="til20220318.html"><a href="til20220318.html#구미시-선별진료소"><i class="fa fa-check"></i><b>3.18.1</b> 구미시 선별진료소<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3.19" data-path="til20220319.html"><a href="til20220319.html"><i class="fa fa-check"></i><b>3.19</b> TIL20220319<span></span></a><ul>
-<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#시계열의-정상성과-자기상관"><i class="fa fa-check"></i><b>3.19.1</b> 시계열의 정상성과 자기상관<span></span></a></li>
+<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#일반선형델회귀모델"><i class="fa fa-check"></i><b>3.19.1</b> 일반선형델회귀모델<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -289,14 +289,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="til20220319" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.19</span> TIL20220319<a href="til20220319.html#til20220319" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="시계열의-정상성과-자기상관" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.19.1</span> 시계열의 정상성과 자기상관<a href="til20220319.html#시계열의-정상성과-자기상관" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="일반선형델회귀모델" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.19.1</span> 일반선형델회귀모델<a href="til20220319.html#일반선형델회귀모델" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <dl>
-<dt><strong>정상성</strong></dt>
-<dd><p>Stationarity, 시계열 데이터의 특성이 시간의 흐름에 따라 변하지 않는다는 것을 의미한다. 정상 시계열은 일정한 분산과 일정한 평균을 가지므로써 장기적으로 예측 가능한 패턴을 갖지 않는다.</p>
+<dt>일반선형회귀모델</dt>
+<dd><p>$ f(_y) = _0 + _1 x_1 + _2 x_2 + … + _n x_n $</p>
+</dd>
+<dt>로지스틱 선형회귀모델</dt>
+<dd><p>$ ln(  ) = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
+</dd>
+<dt>포아송 선형회귀모델</dt>
+<dd><p>$ ln() = _0 + _1 x_1 + _2 x_2 + … + _m x_m $</p>
 </dd>
 </dl>
+<div id="이항-로지스틱-회귀분석" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.19.1.1</span> 이항 로지스틱 회귀분석<a href="til20220319.html#이항-로지스틱-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>결과변수(종속변수)가 이분형 범주를 가질 때 예측변수(독립변수)로부터 결과변수의 범주를 예측한다.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9P7BpL/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
+<span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
+<pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
+##  $ state                        : Factor w/ 51 levels &quot;AK&quot;,&quot;AL&quot;,&quot;AR&quot;,..: 17 36 32 36 37 2 20 25 19 50 ...
+##  $ account_length               : int [1:5000] 128 107 137 84 75 118 121 147 117 141 ...
+##  $ area_code                    : Factor w/ 3 levels &quot;area_code_408&quot;,..: 2 2 2 1 2 3 3 2 1 2 ...
+##  $ international_plan           : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 2 2 2 1 2 1 2 ...
+##  $ voice_mail_plan              : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 1 1 1 1 2 1 1 2 ...
+##  $ number_vmail_messages        : int [1:5000] 25 26 0 0 0 0 24 0 0 37 ...
+##  $ total_day_minutes            : num [1:5000] 265 162 243 299 167 ...
+##  $ total_day_calls              : int [1:5000] 110 123 114 71 113 98 88 79 97 84 ...
+##  $ total_day_charge             : num [1:5000] 45.1 27.5 41.4 50.9 28.3 ...
+##  $ total_eve_minutes            : num [1:5000] 197.4 195.5 121.2 61.9 148.3 ...
+##  $ total_eve_calls              : int [1:5000] 99 103 110 88 122 101 108 94 80 111 ...
+##  $ total_eve_charge             : num [1:5000] 16.78 16.62 10.3 5.26 12.61 ...
+##  $ total_night_minutes          : num [1:5000] 245 254 163 197 187 ...
+##  $ total_night_calls            : int [1:5000] 91 103 104 89 121 118 118 96 90 97 ...
+##  $ total_night_charge           : num [1:5000] 11.01 11.45 7.32 8.86 8.41 ...
+##  $ total_intl_minutes           : num [1:5000] 10 13.7 12.2 6.6 10.1 6.3 7.5 7.1 8.7 11.2 ...
+##  $ total_intl_calls             : int [1:5000] 3 3 5 7 3 6 7 6 4 5 ...
+##  $ total_intl_charge            : num [1:5000] 2.7 3.7 3.29 1.78 2.73 1.7 2.03 1.92 2.35 3.02 ...
+##  $ number_customer_service_calls: int [1:5000] 1 1 0 2 3 0 3 0 1 0 ...
+##  $ churn                        : Factor w/ 2 levels &quot;yes&quot;,&quot;no&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="til20220319.html#cb472-1"></a>churn &lt;-<span class="st"> </span>mlc_churn[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
+<span id="cb472-2"><a href="til20220319.html#cb472-2"></a>churn<span class="op">$</span>churn &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(churn<span class="op">$</span>churn<span class="op">==</span><span class="st">&quot;no&quot;</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb472-3"><a href="til20220319.html#cb472-3"></a>                      <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb472-4"><a href="til20220319.html#cb472-4"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb472-5"><a href="til20220319.html#cb472-5"></a><span class="kw">str</span>(churn)</span></code></pre></div>
+<pre><code>## tibble [5,000 × 18] (S3: tbl_df/tbl/data.frame)
+##  $ account_length               : int [1:5000] 128 107 137 84 75 118 121 147 117 141 ...
+##  $ international_plan           : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 2 2 2 1 2 1 2 ...
+##  $ voice_mail_plan              : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 1 1 1 1 2 1 1 2 ...
+##  $ number_vmail_messages        : int [1:5000] 25 26 0 0 0 0 24 0 0 37 ...
+##  $ total_day_minutes            : num [1:5000] 265 162 243 299 167 ...
+##  $ total_day_calls              : int [1:5000] 110 123 114 71 113 98 88 79 97 84 ...
+##  $ total_day_charge             : num [1:5000] 45.1 27.5 41.4 50.9 28.3 ...
+##  $ total_eve_minutes            : num [1:5000] 197.4 195.5 121.2 61.9 148.3 ...
+##  $ total_eve_calls              : int [1:5000] 99 103 110 88 122 101 108 94 80 111 ...
+##  $ total_eve_charge             : num [1:5000] 16.78 16.62 10.3 5.26 12.61 ...
+##  $ total_night_minutes          : num [1:5000] 245 254 163 197 187 ...
+##  $ total_night_calls            : int [1:5000] 91 103 104 89 121 118 118 96 90 97 ...
+##  $ total_night_charge           : num [1:5000] 11.01 11.45 7.32 8.86 8.41 ...
+##  $ total_intl_minutes           : num [1:5000] 10 13.7 12.2 6.6 10.1 6.3 7.5 7.1 8.7 11.2 ...
+##  $ total_intl_calls             : int [1:5000] 3 3 5 7 3 6 7 6 4 5 ...
+##  $ total_intl_charge            : num [1:5000] 2.7 3.7 3.29 1.78 2.73 1.7 2.03 1.92 2.35 3.02 ...
+##  $ number_customer_service_calls: int [1:5000] 1 1 0 2 3 0 3 0 1 0 ...
+##  $ churn                        : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="til20220319.html#cb474-1"></a>churn_train &lt;-<span class="st"> </span>churn[<span class="dv">1</span><span class="op">:</span><span class="dv">3333</span>,]</span>
+<span id="cb474-2"><a href="til20220319.html#cb474-2"></a>churn_test &lt;-<span class="st"> </span>churn[<span class="dv">3334</span><span class="op">:</span><span class="dv">5000</span>,]</span>
+<span id="cb474-3"><a href="til20220319.html#cb474-3"></a><span class="kw">rbind</span>(<span class="dt">ChurnTrain =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_train<span class="op">$</span>churn)),</span>
+<span id="cb474-4"><a href="til20220319.html#cb474-4"></a>      <span class="dt">ChurnTest =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_test<span class="op">$</span>churn)))</span></code></pre></div>
+<pre><code>##                   no       yes
+## ChurnTrain 0.8550855 0.1449145
+## ChurnTest  0.8656269 0.1343731</code></pre>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="til20220319.html#cb476-1"></a>churn_logit &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> churn_train, <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb476-2"><a href="til20220319.html#cb476-2"></a><span class="kw">summary</span>(churn_logit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = churn ~ ., family = binomial(link = &quot;logit&quot;), data = churn_train)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.1532  -0.5132  -0.3402  -0.1953   3.2528  
+## 
+## Coefficients:
+##                                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)                   -8.6515638  0.7243142 -11.944  &lt; 2e-16 ***
+## account_length                 0.0008458  0.0013912   0.608 0.543199    
+## international_planyes          2.0427543  0.1454974  14.040  &lt; 2e-16 ***
+## voice_mail_planyes            -2.0250146  0.5740840  -3.527 0.000420 ***
+## number_vmail_messages          0.0358803  0.0180108   1.992 0.046355 *  
+## total_day_minutes             -0.2441993  3.2742224  -0.075 0.940547    
+## total_day_calls                0.0031962  0.0027612   1.158 0.247048    
+## total_day_charge               1.5127081 19.2601862   0.079 0.937398    
+## total_eve_minutes              0.8186945  1.6357258   0.501 0.616717    
+## total_eve_calls                0.0010579  0.0027826   0.380 0.703817    
+## total_eve_charge              -9.5463678 19.2437266  -0.496 0.619840    
+## total_night_minutes           -0.1238287  0.8764906  -0.141 0.887650    
+## total_night_calls              0.0006993  0.0028419   0.246 0.805628    
+## total_night_charge             2.8338084 19.4769043   0.145 0.884319    
+## total_intl_minutes            -4.3377914  5.3009719  -0.818 0.413185    
+## total_intl_calls              -0.0929680  0.0250603  -3.710 0.000207 ***
+## total_intl_charge             16.3900316 19.6323938   0.835 0.403804    
+## number_customer_service_calls  0.5135638  0.0392678  13.079  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 2758.3  on 3332  degrees of freedom
+## Residual deviance: 2158.7  on 3315  degrees of freedom
+## AIC: 2194.7
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="til20220319.html#cb478-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(churn_logit)) <span class="co"># 해석상의 용이를 위해 오즈비를 지수변환 함</span></span></code></pre></div>
+<pre><code>##                   (Intercept)                account_length 
+##                  1.748532e-04                  1.000846e+00 
+##         international_planyes            voice_mail_planyes 
+##                  7.711821e+00                  1.319919e-01 
+##         number_vmail_messages             total_day_minutes 
+##                  1.036532e+00                  7.833315e-01 
+##               total_day_calls              total_day_charge 
+##                  1.003201e+00                  4.539006e+00 
+##             total_eve_minutes               total_eve_calls 
+##                  2.267538e+00                  1.001058e+00 
+##              total_eve_charge           total_night_minutes 
+##                  7.146035e-05                  8.835312e-01 
+##             total_night_calls            total_night_charge 
+##                  1.000700e+00                  1.701012e+01 
+##            total_intl_minutes              total_intl_calls 
+##                  1.306535e-02                  9.112226e-01 
+##             total_intl_charge number_customer_service_calls 
+##                  1.312503e+07                  1.671236e+00</code></pre>
 
+</div>
 </div>
 </div>
 <!-- </div> -->

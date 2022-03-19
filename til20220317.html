@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.18.1" data-path="til20220318.html"><a href="til20220318.html#구미시-선별진료소"><i class="fa fa-check"></i><b>3.18.1</b> 구미시 선별진료소<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3.19" data-path="til20220319.html"><a href="til20220319.html"><i class="fa fa-check"></i><b>3.19</b> TIL20220319<span></span></a><ul>
-<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#시계열의-정상성과-자기상관"><i class="fa fa-check"></i><b>3.19.1</b> 시계열의 정상성과 자기상관<span></span></a></li>
+<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#일반선형델회귀모델"><i class="fa fa-check"></i><b>3.19.1</b> 일반선형델회귀모델<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -340,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="til20220317.html#cb430-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpZMGQVr/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9P7BpL/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="til20220317.html#cb432-1"></a><span class="co"># 예측변수 행렬 + 더미변수 생성</span></span>
 <span id="cb432-2"><a href="til20220317.html#cb432-2"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(medv <span class="op">~</span>., Boston.train)[, <span class="dv">-1</span>] <span class="co"># 불필요한 첫 번째 열 삭제</span></span>
 <span id="cb432-3"><a href="til20220317.html#cb432-3"></a><span class="kw">head</span>(x)</span></code></pre></div>
@@ -565,7 +565,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## lasso   0.7838            0.045413
 ## elastic 1.0000 0.6350</code></pre>
 <p>행렬의 대각선 위쪽은 모델간 차이, 아래쪽은 유의확률을 나타낸다. 세 모델 간 통계적 유의한 차이는 없는 것으로 확인된다. 따라서 간명도 관점에서 예측변수의 개수가 적은 모델을 선택하는 것이 바람직하다.</p>
-<hr />
 </div>
 </div>
 <div class="footnotes">
