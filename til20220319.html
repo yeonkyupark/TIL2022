@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9P7BpL/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpZnNeKN/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
 <span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
@@ -422,6 +422,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                  1.306535e-02                  9.112226e-01 
 ##             total_intl_charge number_customer_service_calls 
 ##                  1.312503e+07                  1.671236e+00</code></pre>
+<p>로지스틱 회귀모델의 통계적 유의성은 summary() 함수를 통해 제공되지 않아 직접 계산을 한다. Null deviance와 Residual deviance를 통해 검정할 수 있다.</p>
+<dl>
+<dt>Deviance(이탈도)</dt>
+<dd><p>모델의 적합도 정도를 나타내는 지표, 이탈도가 적을수록 우수한 모델임</p>
+</dd>
+</dl>
+<p>Null deviance는 상수항만을 포함하는 모델이고, Residual deviance는 모든변수를 포함하는 모델이다. 예측변수를 포함될수록 설명력은 좋아지기 때문에 이탈도는 작아질 수밖에 없다. 예측변수에 의해 작아지는 정도가 통계적으로 유의한지를 검정한다. 이탈도는 <span class="math inline">\(\chi^2\)</span> 분포를 따르므로 <span class="math inline">\(\chi^2\)</span> 검정 통계량을 계산해서 검정한다.</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="til20220319.html#cb480-1"></a><span class="kw">pchisq</span>(<span class="dt">q=</span>(<span class="fl">2758.3-2158.7</span>), <span class="dt">df=</span>(<span class="dv">3332-3315</span>), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 1.731898e-116</code></pre>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="til20220319.html#cb482-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>deviance),</span>
+<span id="cb482-2"><a href="til20220319.html#cb482-2"></a>       <span class="dt">df =</span> (churn_logit<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 1.757917e-116</code></pre>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="til20220319.html#cb484-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit, <span class="dt">newdata =</span> churn_test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb484-2"><a href="til20220319.html#cb484-2"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6 
+## 0.07236813 0.05774332 0.22650409 0.15289153 0.07078500 0.05880824</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="til20220319.html#cb486-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">factor</span>(churn_logit_pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>,</span>
+<span id="cb486-2"><a href="til20220319.html#cb486-2"></a>                           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>),</span>
+<span id="cb486-3"><a href="til20220319.html#cb486-3"></a>                           <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb486-4"><a href="til20220319.html#cb486-4"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
+<pre><code>##  1  2  3  4  5  6 
+## no no no no no no 
+## Levels: no yes</code></pre>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="til20220319.html#cb488-1"></a><span class="kw">table</span>(churn_logit_pred)</span></code></pre></div>
+<pre><code>## churn_logit_pred
+##   no  yes 
+## 1595   72</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="til20220319.html#cb490-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>churn, churn_logit_pred, <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Acutal&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<pre><code>##       Predicted
+## Acutal   no  yes
+##    no  1414   29
+##    yes  181   43</code></pre>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="til20220319.html#cb492-1"></a><span class="kw">mean</span>(churn_test<span class="op">$</span>churn <span class="op">==</span><span class="st"> </span>churn_logit_pred)</span></code></pre></div>
+<pre><code>## [1] 0.8740252</code></pre>
+<p>단계별 변수 선택을 통해 유의한 변수만 선택하만 보다 간결한 모델을 생성할 수 있다.</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="til20220319.html#cb494-1"></a>churn_logit2 &lt;-<span class="st"> </span><span class="kw">step</span>(churn_logit, <span class="dt">trace =</span> F)</span>
+<span id="cb494-2"><a href="til20220319.html#cb494-2"></a><span class="kw">summary</span>(churn_logit2)</span></code></pre></div>
+<pre><code>## Error in summary(churn_logit2): class name too long in &#39;summary&#39;</code></pre>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="til20220319.html#cb496-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit2<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>deviance),</span>
+<span id="cb496-2"><a href="til20220319.html#cb496-2"></a>       <span class="dt">df =</span> (churn_logit2<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## Error in churn_logit2$null.deviance: class name too long in &#39;$&#39;</code></pre>
+<p>특정 예측변수의 변화에 따른 결과변수의 변화를 보기 위해서는 다른 변수를 고정한 후 특정 변수만 변화를 시키면서 결과를 확인할 수 있다.</p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="til20220319.html#cb498-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>number_customer_service_calls)</span></code></pre></div>
+<pre><code>## 
+##   0   1   2   3   4   5   6   7 
+## 326 605 368 236  86  30  12   4</code></pre>
+<p>서비스센터 전화회수의 분포는 0 ~ 7번으로 구성되어 있다. 나머지 변수는 평균이나 가장 낮은 변주 유형으로 고정한 데이터셋을 생성한다.</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="til20220319.html#cb500-1"></a>testdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb500-2"><a href="til20220319.html#cb500-2"></a>  <span class="dt">number_customer_service_calls =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>),</span>
+<span id="cb500-3"><a href="til20220319.html#cb500-3"></a>  <span class="dt">international_plan =</span> <span class="st">&quot;no&quot;</span>,</span>
+<span id="cb500-4"><a href="til20220319.html#cb500-4"></a>  <span class="dt">voice_mail_plan =</span><span class="st">&quot;no&quot;</span> ,</span>
+<span id="cb500-5"><a href="til20220319.html#cb500-5"></a>  <span class="dt">number_vmail_messages =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>number_vmail_messages),</span>
+<span id="cb500-6"><a href="til20220319.html#cb500-6"></a>  <span class="dt">total_day_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_day_charge),</span>
+<span id="cb500-7"><a href="til20220319.html#cb500-7"></a>  <span class="dt">total_eve_minutes =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_eve_minutes),</span>
+<span id="cb500-8"><a href="til20220319.html#cb500-8"></a>  <span class="dt">total_night_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_night_charge),</span>
+<span id="cb500-9"><a href="til20220319.html#cb500-9"></a>  <span class="dt">total_intl_calls =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_calls),</span>
+<span id="cb500-10"><a href="til20220319.html#cb500-10"></a>  <span class="dt">total_intl_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_charge)</span>
+<span id="cb500-11"><a href="til20220319.html#cb500-11"></a>); testdata</span></code></pre></div>
+<pre><code>##   number_customer_service_calls international_plan voice_mail_plan
+## 1                             0                 no              no
+## 2                             1                 no              no
+## 3                             2                 no              no
+## 4                             3                 no              no
+## 5                             4                 no              no
+## 6                             5                 no              no
+## 7                             6                 no              no
+## 8                             7                 no              no
+##   number_vmail_messages total_day_charge total_eve_minutes total_night_charge
+## 1              7.067786         30.82434          199.9492           8.974559
+## 2              7.067786         30.82434          199.9492           8.974559
+## 3              7.067786         30.82434          199.9492           8.974559
+## 4              7.067786         30.82434          199.9492           8.974559
+## 5              7.067786         30.82434          199.9492           8.974559
+## 6              7.067786         30.82434          199.9492           8.974559
+## 7              7.067786         30.82434          199.9492           8.974559
+## 8              7.067786         30.82434          199.9492           8.974559
+##   total_intl_calls total_intl_charge
+## 1         4.346731          2.784421
+## 2         4.346731          2.784421
+## 3         4.346731          2.784421
+## 4         4.346731          2.784421
+## 5         4.346731          2.784421
+## 6         4.346731          2.784421
+## 7         4.346731          2.784421
+## 8         4.346731          2.784421</code></pre>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="til20220319.html#cb502-1"></a>testdata<span class="op">$</span>prob &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit2, <span class="dt">newdata =</span> testdata, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in predict(churn_logit2, newdata = testdata, type = &quot;response&quot;): class name too long in &#39;predict&#39;</code></pre>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="til20220319.html#cb504-1"></a>testdata[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<pre><code>## Error in `[.data.frame`(testdata, c(1, 10)): undefined columns selected</code></pre>
+<p>이항 로지스틱분석은 과산포의 문제를 확인해야 한다. 결과변수의 실제 관측된 분산이 이항분포의 기대되는 분산보다 더 클 때 발생한다. 과산포는 표준오차를 왜곡시켜 회귀계수의 유의성 검정을 부정확하게 만들 위험성이 있다. 과산포 발생 시 <em>family</em> 인수에 <em>quasibinomial()</em> 함수를 적용한다.</p>
+<p>과산포를 확인하는 방법은 이탈도와 자유도간의 비율을 살펴본다. 이탈도대 자유도의 비율이 1을 크게 상외하면 과산포를 의심한다.</p>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="til20220319.html#cb506-1"></a><span class="kw">deviance</span>(churn_logit2) <span class="op">/</span><span class="st"> </span><span class="kw">df.residual</span>(churn_logit2)</span></code></pre></div>
+<pre><code>## Error in deviance(churn_logit2): class name too long in &#39;deviance&#39;</code></pre>
+<p>또는 <em>binomial()</em>와 <em>quasibinomial()</em> 함수를 적용한 모델을 생성하고 통계적으로 유의성을 검정하는 방법도 있다.</p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="til20220319.html#cb508-1"></a>fit.origin1 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
+<span id="cb508-2"><a href="til20220319.html#cb508-2"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
+<span id="cb508-3"><a href="til20220319.html#cb508-3"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
+<span id="cb508-4"><a href="til20220319.html#cb508-4"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
+<span id="cb508-5"><a href="til20220319.html#cb508-5"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
+<span id="cb508-6"><a href="til20220319.html#cb508-6"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
+<span id="cb508-7"><a href="til20220319.html#cb508-7"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
+<span id="cb508-8"><a href="til20220319.html#cb508-8"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
+<span id="cb508-9"><a href="til20220319.html#cb508-9"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
+<span id="cb508-10"><a href="til20220319.html#cb508-10"></a>                  <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb508-11"><a href="til20220319.html#cb508-11"></a>fit.origin2 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
+<span id="cb508-12"><a href="til20220319.html#cb508-12"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
+<span id="cb508-13"><a href="til20220319.html#cb508-13"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
+<span id="cb508-14"><a href="til20220319.html#cb508-14"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
+<span id="cb508-15"><a href="til20220319.html#cb508-15"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
+<span id="cb508-16"><a href="til20220319.html#cb508-16"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
+<span id="cb508-17"><a href="til20220319.html#cb508-17"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
+<span id="cb508-18"><a href="til20220319.html#cb508-18"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
+<span id="cb508-19"><a href="til20220319.html#cb508-19"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
+<span id="cb508-20"><a href="til20220319.html#cb508-20"></a>                  <span class="dt">family =</span> <span class="kw">quasibinomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb508-21"><a href="til20220319.html#cb508-21"></a><span class="kw">pchisq</span>(<span class="kw">summary</span>(fit.origin2)<span class="op">$</span>dispersion<span class="op">*</span>fit.origin1<span class="op">$</span>df.residual,</span>
+<span id="cb508-22"><a href="til20220319.html#cb508-22"></a>       fit.origin1<span class="op">$</span>df.residual, <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 0.08385493</code></pre>
+<p>위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.</p>
 
 </div>
 </div>
