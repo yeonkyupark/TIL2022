@@ -248,8 +248,6 @@ summary(diff(resamples(models), metric="RMSE"))
 
 [^mar-02-3]: <https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp>
 
-[^mar-02-4]: <https://www.mohw.go.kr/react/ncov/selclinic04ls.jsp>
-
 ## TIL20220319
 
 ### 일반선형델회귀모델
@@ -688,4 +686,6 @@ boxplot(fgl.mlogit.cv, horizontal = T, col="tomato",
 # fgl.mlogit.pred <- colnames(fgl.mlogit.pred)[max.col(fgl.mlogit.pred)]
 # mean(fgl.test$type == fgl.mlogit.pred)
 ```
+
+## TIL20220320
 
