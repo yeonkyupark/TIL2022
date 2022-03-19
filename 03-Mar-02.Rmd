@@ -256,15 +256,15 @@ summary(diff(resamples(models), metric="RMSE"))
 
 일반선형회귀모델
 
-:   \$ f(\mu \_y) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_n x_n \$
+:   $f(\mu \_y) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_n x_n$
 
 로지스틱 선형회귀모델
 
-:   \$ ln( \frac{p}{1-p} ) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m \$
+:   $ln( \frac{p}{1-p} ) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m$
 
 포아송 선형회귀모델
 
-:   \$ ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m \$
+:   $ln(\lambda) = \beta\_0 + \beta\_1 x_1 + \beta\_2 x_2 + ... + \beta\_m x_m$
 
 #### 이항 로지스틱 회귀분석
 
