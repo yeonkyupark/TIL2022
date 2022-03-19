@@ -4,7 +4,9 @@
 
 **페널티 회귀분석(penalized regression analysis)**[^mar-02-1]
 
-[^mar-02-1]: <https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s>
+[^mar-02-1]: 
+
+    <https://www.youtube.com/watch?v=3OEwk2VxZdE&list=PLY0OaF78qqGAxKX91WuRigHpwBU0C2SB_&index=31&t=228s>
 
 -   릿지 (Ridge)\
     회귀계수를 0에 가깝게 만듬(모든 변수 사용), 독립변수의 회귀계수가 비슷한 경우 우수
@@ -299,3 +301,120 @@ summary(churn_logit)
 ```{r}
 exp(coef(churn_logit)) # 해석상의 용이를 위해 오즈비를 지수변환 함
 ```
+
+로지스틱 회귀모델의 통계적 유의성은 summary() 함수를 통해 제공되지 않아 직접 계산을 한다. Null deviance와 Residual deviance를 통해 검정할 수 있다.
+
+Deviance(이탈도)
+
+:    모델의 적합도 정도를 나타내는 지표, 이탈도가 적을수록 우수한 모델임
+
+Null deviance는 상수항만을 포함하는 모델이고, Residual deviance는 모든변수를 포함하는 모델이다. 예측변수를 포함될수록 설명력은 좋아지기 때문에 이탈도는 작아질 수밖에 없다. 예측변수에 의해 작아지는 정도가 통계적으로 유의한지를 검정한다. 이탈도는 $\chi^2$ 분포를 따르므로 $\chi^2$ 검정 통계량을 계산해서 검정한다.
+
+```{r}
+pchisq(q=(2758.3-2158.7), df=(3332-3315), lower.tail = F)
+```
+
+```{r}
+pchisq(q = (churn_logit$null.deviance - churn_logit$deviance),
+       df = (churn_logit$df.null - churn_logit$df.residual), lower.tail = F)
+```
+
+```{r}
+churn_logit_pred <- predict(churn_logit, newdata = churn_test, type = "response")
+head(churn_logit_pred)
+```
+
+```{r}
+churn_logit_pred <- factor(churn_logit_pred > 0.5,
+                           levels = c(FALSE, TRUE),
+                           labels = c("no", "yes"))
+head(churn_logit_pred)
+```
+
+```{r}
+table(churn_logit_pred)
+```
+
+```{r}
+table(churn_test$churn, churn_logit_pred, dnn=c("Acutal", "Predicted"))
+```
+
+```{r}
+mean(churn_test$churn == churn_logit_pred)
+```
+
+단계별 변수 선택을 통해 유의한 변수만 선택하만 보다 간결한 모델을 생성할 수 있다.
+
+```{r}
+churn_logit2 <- step(churn_logit, trace = F)
+summary(churn_logit2)
+```
+
+```{r}
+pchisq(q = (churn_logit2$null.deviance - churn_logit2$deviance),
+       df = (churn_logit2$df.null - churn_logit2$df.residual), lower.tail = F)
+```
+
+특정 예측변수의 변화에 따른 결과변수의 변화를 보기 위해서는 다른 변수를 고정한 후 특정 변수만 변화를 시키면서 결과를 확인할 수 있다.
+
+```{r}
+table(churn_test$number_customer_service_calls)
+```
+
+서비스센터 전화회수의 분포는 0 \~ 7번으로 구성되어 있다. 나머지 변수는 평균이나 가장 낮은 변주 유형으로 고정한 데이터셋을 생성한다.
+
+```{r}
+testdata <- data.frame(
+  number_customer_service_calls = c(0:7),
+  international_plan = "no",
+  voice_mail_plan ="no" ,
+  number_vmail_messages = mean(churn_test$number_vmail_messages),
+  total_day_charge = mean(churn_test$total_day_charge),
+  total_eve_minutes = mean(churn_test$total_eve_minutes),
+  total_night_charge = mean(churn_test$total_night_charge),
+  total_intl_calls = mean(churn_test$total_intl_calls),
+  total_intl_charge = mean(churn_test$total_intl_charge)
+); testdata
+```
+
+```{r}
+testdata$prob <- predict(churn_logit2, newdata = testdata, type = "response")
+testdata[c(1,10)]
+```
+
+이항 로지스틱분석은 과산포의 문제를 확인해야 한다. 결과변수의 실제 관측된 분산이 이항분포의 기대되는 분산보다 더 클 때 발생한다. 과산포는 표준오차를 왜곡시켜 회귀계수의 유의성 검정을 부정확하게 만들 위험성이 있다. 과산포 발생 시 *family* 인수에 *quasibinomial()* 함수를 적용한다.
+
+과산포를 확인하는 방법은 이탈도와 자유도간의 비율을 살펴본다. 이탈도대 자유도의 비율이 1을 크게 상외하면 과산포를 의심한다.
+
+```{r}
+deviance(churn_logit2) / df.residual(churn_logit2)
+```
+
+또는 *binomial()*와 *quasibinomial()* 함수를 적용한 모델을 생성하고 통계적으로 유의성을 검정하는 방법도 있다.
+
+```{r}
+fit.origin1 <- glm(churn ~ number_customer_service_calls +
+                  international_plan +
+                  voice_mail_plan +
+                  number_vmail_messages +
+                  total_day_charge +
+                  total_eve_minutes +
+                  total_night_charge +
+                  total_intl_calls +
+                  total_intl_charge, data = churn_train,
+                  family = binomial(link = "logit"))
+fit.origin2 <- glm(churn ~ number_customer_service_calls +
+                  international_plan +
+                  voice_mail_plan +
+                  number_vmail_messages +
+                  total_day_charge +
+                  total_eve_minutes +
+                  total_night_charge +
+                  total_intl_calls +
+                  total_intl_charge, data = churn_train,
+                  family = quasibinomial(link = "logit"))
+pchisq(summary(fit.origin2)$dispersion*fit.origin1$df.residual,
+       fit.origin1$df.residual, lower.tail = F)
+```
+
+위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.
