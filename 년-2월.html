@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.8 TIL20220308 | Today I Learned in 2022</title>
+  <title>2 2022년 2월 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.8 TIL20220308 | Today I Learned in 2022" />
+  <meta property="og:title" content="2 2022년 2월 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.8 TIL20220308 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="2 2022년 2월 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220307.html"/>
-<link rel="next" href="til20220309.html"/>
+<link rel="prev" href="년-1월.html"/>
+<link rel="next" href="til20220201.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -291,59 +291,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220308" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.8</span> TIL20220308<a href="til20220308.html#til20220308" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="r-에러-수정" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.8.1</span> R 에러 수정<a href="til20220308.html#r-에러-수정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<pre><code>&gt; library(dplyr)
-
-Error: package or namespace load failed for ‘dplyr’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
-
- ‘rlang’이라고 불리는 패키지가 없습니다
-
-In addition: Warning message:
-
-패키지 ‘dplyr’는 R 버전 3.4.4에서 작성되었습니다 </code></pre>
-<p>이런 식으로 에러가 발생하면 깔끔하게 R을 재설치 하자. libpath나 패키지 재설치 등의 방법이 언급되지만 안되는 경우가 있다. 한시간 반 소비하고 내린 결론이다.</p>
-<p>4.0.3에서 문제가 일어났고 4.1.2로 버전 업해서 문제 해결되었다.</p>
-<pre><code>Error:
-! Assigned data `all_column_mean[i]` must be compatible with existing data.
-i Error occurred for column `flipper_length_mm`.
-x Can&#39;t convert from &lt;double&gt; to &lt;integer&gt; due to loss of precision.
-* Locations: 1.
-Backtrace:
-  1. base::`[&lt;-`(`*tmp*`, is.na(p.mean[, i]), i, value = `&lt;dbl&gt;`)
- 19. tibble `&lt;fn&gt;`(`&lt;vctrs___&gt;`)</code></pre>
-<p><code>p.mean &lt;- as.data.frame(penguins[c(3:6)])</code>와 같이 데이터 형태를 명시적으로 지정해 준다.</p>
-</div>
-<div id="결측치-시각화" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.8.2</span> 결측치 시각화<a href="til20220308.html#결측치-시각화" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="til20220308.html#cb333-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span></code></pre></div>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpGwY8oc/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="til20220308.html#cb335-1"></a><span class="kw">md.pattern</span>(penguins, <span class="dt">plot=</span>T, <span class="dt">rotate.names =</span> T)</span></code></pre></div>
-<p><img src="Figures/unnamed-chunk-150-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre><code>##     species island year bill_length_mm bill_depth_mm flipper_length_mm
-## 333       1      1    1              1             1                 1
-## 9         1      1    1              1             1                 1
-## 2         1      1    1              0             0                 0
-##           0      0    0              2             2                 2
-##     body_mass_g sex   
-## 333           1   1  0
-## 9             1   0  1
-## 2             0   0  5
-##               2  11 19</code></pre>
-<hr />
-</div>
+<div id="년-2월" class="section level1 hasAnchor">
+<h1><span class="header-section-number">2</span> 2022년 2월<a href="년-2월.html#년-2월" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220307.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="til20220309.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="년-1월.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220201.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -374,7 +331,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/03-Mar-01.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/02-Feb-01.Rmd",
 "text": "Edit"
 },
 "history": {
