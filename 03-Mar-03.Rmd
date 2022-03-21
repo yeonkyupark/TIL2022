@@ -1,0 +1,178 @@
+## TIL20220321
+
+### 가설검정
+
+#### 범주형 데이터
+
+##### 한 집단일 때
+
+**일원 카이 제곱 검정**
+:  one sample $x^2$ test, 적합성 검정에활용
+
+```{r}
+# 주사위를 60번 던져 때, 기대빈도와 관측빈도가 적합한지 검정
+# 귀무가설: 기대빈도와 관측빈도는 차이가 없다
+# 대립가설: 기대빈도와 관측빈도는 차이가 있다.
+
+chisq.test(c(4,6,17,15,9,9), p = rep(1/6, 6))
+```
+
+p값에 따라 유의수준 0.05에서 귀무가설을 기각하고 대립가설을 채택한다. 즉 주사위의 기대빈도와 관측빈도에는 차이가 있다고 판단할 수 있다.
+
+```{r}
+# 통신 3사 점유율 차이 40%, 30%, 30%인지 검정
+chisq.test(c(45, 30, 25), p = c(0.4, 0.3, 0.3))
+```
+
+##### 두 집단일 때
+
+**이원 카이 제곱 검정**
+
+```{r}
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+chisq.test(x=penguins$species, y=penguins$island)
+```
+
+
+```{r}
+if(!require(gmodels)) { install.packages("gmodels"); library(gmodels); }
+
+CrossTable(x=penguins$species, y=penguins$island, chisq = T)
+```
+
+##### 피셔 정확 검정
+
+분할표를 그린 뒤 카이 제곱을 적용할 때 표본 수가 적거나 표본이 분팔표의 셀에 매우 치우치게 분포되어 있다면 카이 제곱 검정의 결과가 부정확할 수 있다. 기대 빈도가 5 이하인 셀이 전체의 20% 수준일 때 표본의 수가 적다고 볼 수 있다. 이런 경우 Fisher's Exact Test를 적용한다.
+
+```{r}
+if(!require(MASS)) { install.packages("MASS"); library(MASS); }
+
+xtabs( ~ W.Hnd + Clap, data = survey)
+```
+
+```{r}
+chisq.test(survey$W.Hnd, survey$Clap)
+```
+
+```{r}
+fisher.test(survey$W.Hnd, survey$Clap)
+```
+
+##### 맥니마 검정 (McNemar Test)
+
+사건 전후의 차이 검정에 활용된다.
+
+```{r}
+Performance <-
+   matrix(c(794, 86, 150, 570),
+          nrow = 2,
+          dimnames = list(
+          "1st Survey" = c("Approve", "Disapprove"),
+          "2nd Survey" = c("Approve", "Disapprove")))
+Performance
+```
+
+```{r}
+mcnemar.test(Performance)
+```
+
+p값에 따라 첫번째 조사와 두번째 조사 간에는 유의확률 0.05 하에서 통계적으로 유의미한 차이가 있다.
+
+참고로, 사건 전후의 차이 검정은 b=c를 검토하여 변화 여부를 판단할 수 있다. 
+$$b \sim B(b+c, \frac{1}{2})$$
+
+따라서 위 예제의 경우 86 ~ B(86+150, 1/2)를 검토한다.
+
+```{r}
+binom.test(86, 86+150, 0.5)
+```
+
+#### 연속형 데이터
+
+##### 정규성 검정
+
+###### shapiro.test()
+
+```{r}
+shapiro.test(rnorm(1000))
+```
+
+###### ks.test()
+
+콜모고로프 스미르노프 검정(Kolmogorov-Smirnov Test), 두 숫자 벡터 간의 차이가 없는지를 검정한다.
+
+```{r}
+ks.test(rnorm(100), rnorm(100))
+```
+
+```{r}
+ks.test(rnorm(100), runif(100))
+```
+
+x를 정규분포에서 추출하였는지 검정을 할 수도 있다.
+
+```{r}
+ks.test(rnorm(1000), "pnorm", 0 ,1)
+```
+
+```{r}
+ks.test(runif(1000), "pnorm", c(0, 1))
+```
+
+###### qqplot()
+
+```{r}
+x <- rnorm(1000, mean = 10, sd = 1)
+qqnorm(x); qqline(x, lty=2, col = "blue")
+```
+
+```{r}
+x <- runif(1000)
+qqnorm(x); qqline(x, lty=2, col = "red")
+```
+
+```{r}
+qqplot(runif(1000, min=1, max=10), 1:10)
+```
+
+```{r}
+qqplot(rnorm(1000), 1:1000)
+```
+
+##### 한 집단일 때
+
+###### one sample t-test
+
+####### 정규성을 만족할 경우 t.test()
+####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon signed rank test
+
+##### 두 집단일 때
+
+###### independent two sample t-test
+
+####### 정규성을 만족할 경우 t.test()
+####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon rank sum test
+
+###### paired two sample t-test
+
+####### 정규성을 만족할 경우 t.test()
+####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon signed rank test with paired
+
+##### 세 집단 이상일 때
+
+####### 정규성을 만족할 경우 aov()
+####### 정규성을 만족하지 못할 경우 kruskal()
+####### 사후검정
+
+Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등 
+
+### 비율검정
+
+#### 일표본 binom.test()
+#### 이표본 prop.test()
+
+### 동질성 검사
+
+#### 이표본 var.test()
+#### 삼표본 이상 bartlett.test() 
+
