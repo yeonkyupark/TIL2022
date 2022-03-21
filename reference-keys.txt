@@ -127,7 +127,8 @@ til20220321
 범주형-데이터
 한-집단일-때
 두-집단일-때
-이원-카이-제곱-검정-chisq.test-crosstable
+피셔-정확-검정
+맥니마-검정-mcnemar-test
 연속형-데이터
 정규성-검정
 shapiro.test
@@ -145,3 +146,5 @@ paired-two-sample-t-test
 동질성-검사
 이표본-var.test
 삼표본-이상-bartlett.test
+til20220322
+비모수-검정
