@@ -176,3 +176,14 @@ Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등
 #### 이표본 var.test()
 #### 삼표본 이상 bartlett.test() 
 
+## TIL20220322
+
+### 비모수 검정
+
+require(moonBook)
+densityplot(body_mass_g ~ sex, data = penguins)
+
+0. 정규성 검정
+1. Wilcoxon Rank Sum Test
+2. Kruskal-Wallis Rank Sun Test
+3. 다중비교 mctp in nparcomp package
