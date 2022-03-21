@@ -697,11 +697,11 @@ boxplot(fgl.mlogit.cv, horizontal = T, col="tomato",
 
 ##### 한 집단일 때
 
-###### 일원 카이 제곡 검정
+###### 일원 카이 제곡 검정 chisq.test()
 
 ##### 두 집단일 때
 
-###### 이원 카이 제곱 검정
+###### 이원 카이 제곱 검정 chisq.test(), CrossTable()
 
 #### 연속형 데이터
 
@@ -745,7 +745,7 @@ Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등
 #### 일표본 binom.test()
 #### 이표본 prop.test()
 
-### 똥질성 검사
+### 동질성 검사
 
 #### 이표본 var.test()
 #### 삼표본 이상 bartlett.test() 
