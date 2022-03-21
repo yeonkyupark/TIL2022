@@ -305,9 +305,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">3.21.1.1</span> 범주형 데이터<a href="til20220321.html#범주형-데이터" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="한-집단일-때" class="section level5 hasAnchor">
 <h5><span class="header-section-number">3.21.1.1.1</span> 한 집단일 때<a href="til20220321.html#한-집단일-때" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<div id="일원-카이-제곡-검정-chisq.test" class="section level6 hasAnchor">
-<h6><span class="header-section-number">3.21.1.1.1.1</span> 일원 카이 제곡 검정 chisq.test()<a href="til20220321.html#일원-카이-제곡-검정-chisq.test" class="anchor-section" aria-label="Anchor link to header"></a></h6>
-</div>
+<dl>
+<dt><strong>일원 카이 제곱 검정</strong></dt>
+<dd>one sample <span class="math inline">\(x^2\)</span> test, 적합성 검정에활용
+</dd>
+</dl>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="til20220321.html#cb586-1"></a><span class="co"># 주사위를 60번 던져 때, 기대빈도와 관측빈도가 적합한지 검정</span></span>
+<span id="cb586-2"><a href="til20220321.html#cb586-2"></a><span class="co"># 귀무가설: 기대빈도와 관측빈도는 차이가 없다</span></span>
+<span id="cb586-3"><a href="til20220321.html#cb586-3"></a><span class="co"># 대립가설: 기대빈도와 관측빈도는 차이가 있다.</span></span>
+<span id="cb586-4"><a href="til20220321.html#cb586-4"></a></span>
+<span id="cb586-5"><a href="til20220321.html#cb586-5"></a><span class="kw">chisq.test</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">17</span>,<span class="dv">15</span>,<span class="dv">9</span>,<span class="dv">9</span>), <span class="dt">p =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">6</span>))</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  c(4, 6, 17, 15, 9, 9)
+## X-squared = 12.8, df = 5, p-value = 0.02533</code></pre>
+<p>p값에 따라 유의수준 0.05에서 귀무가설을 기각하고 대립가설을 채택한다. 즉 주사위의 기대빈도와 관측빈도에는 차이가 있다고 판단할 수 있다.</p>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="til20220321.html#cb588-1"></a><span class="co"># 통신 3사 점유율 차이 40%, 30%, 30%인지 검정</span></span>
+<span id="cb588-2"><a href="til20220321.html#cb588-2"></a><span class="kw">chisq.test</span>(<span class="kw">c</span>(<span class="dv">45</span>, <span class="dv">30</span>, <span class="dv">25</span>), <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>))</span></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  c(45, 30, 25)
+## X-squared = 1.4583, df = 2, p-value = 0.4823</code></pre>
 </div>
 <div id="두-집단일-때" class="section level5 hasAnchor">
 <h5><span class="header-section-number">3.21.1.1.2</span> 두 집단일 때<a href="til20220321.html#두-집단일-때" class="anchor-section" aria-label="Anchor link to header"></a></h5>
