@@ -517,6 +517,8 @@ perf.stats <- rbind(
 perf.stats
 ```
 
+## TIL20220320
+
 ### 다항 로지스틱회귀분석
 
 세 개 이상의 범주를 갖는 결과변수의 사건발생확률을 예측한다. 
@@ -687,5 +689,4 @@ boxplot(fgl.mlogit.cv, horizontal = T, col="tomato",
 # mean(fgl.test$type == fgl.mlogit.pred)
 ```
 
-## TIL20220320
-
+## TIL20220321
