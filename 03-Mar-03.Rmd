@@ -205,7 +205,7 @@ densityplot(body_mass_g ~ sex, data = penguins)
     Bartlette test
     Boxplot
 * 이상치
-    Boxplot
+    Boxplot, outlierTest()
 
 #### ANOVA
 
