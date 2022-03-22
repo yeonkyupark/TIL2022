@@ -180,42 +180,169 @@ Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등
 
 ### 비모수 검정
 
-require(moonBook)
-densityplot(body_mass_g ~ sex, data = penguins)
+```{r}
+if(!require(moonBook)) { install.packages("moonBook"); library(moonBook); }
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+data <- penguins
+densityplot(body_mass_g ~ sex, data = data)
+```
 
-0. 정규성 검정
-1. Wilcoxon Rank Sum Test
-2. Kruskal-Wallis Rank Sun Test
-3. 다중비교 mctp in nparcomp package
+0. 정규성 검정  
+
+```{r}
+shapiro.test(data$body_mass_g)
+```
+
+1. Wilcoxon Rank Sum Test  
+
+```{r}
+wilcox.result <- wilcox.test(body_mass_g ~ sex, data); wilcox.result
+```
+
+2. Kruskal-Wallis Rank Sun Test  
+
+```{r}
+kruskal.result <- kruskal.test(body_mass_g ~ species, data); kruskal.result
+```
+
+
+3. 다중비교 mctp in nparcomp package  
+
+```{r}
+if(!require(nparcomp)) { install.packages("nparcomp"); library(nparcomp); }
+mctp(body_mass_g ~ species, data)
+```
 
 ### ANOVA in R
 
 #### ANOVA 가정 점검
 
+```{r}
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+
+data <- penguins %>% select(body_mass_g, species, sex) %>% na.omit()
+
+ggplot(data, aes(species, body_mass_g, col=sex)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+펭귄 종에 따른 몸무게의 유의한 차이가 있는지 ANOVA로 분석한다. 신뢰성 있는 결과 도출을 위해 아래의 가정을 확인한다.
+
 * 변수 유형
-    독립변수 연속형, 종속변수 범주형
-* 독립성
-    durbinWatsonTest(lm)
+    독립변수 범주형, 종속변수 연속형
+```{r}
+str(data)
+```
+    
+* 독립성, *durbinWatsonTest()* 함수를 통해 통계적으로 검정
+```{r}
+if(!require(car)) { install.packages("car"); library(car); }
+
+data.aov <- aov(body_mass_g ~ species, data)
+durbinWatsonTest(data.aov)
+```
+
+
 * 정규성
-    Shapiro-Wilk normality test
-    Kolmogorov-Smirnov test
-    QQPlot, Histogram
+    * Shapiro-Wilk normality test
+    * Kolmogorov-Smirnov test
+    * QQPlot, Histogram
+```{r}
+# Shapiro-Wilk normality test
+shapiro.test(data.aov$residuals)
+```
+
+
+```{r}
+# Kolmogorov-Smirnov test
+ks.test(x = data$species, y = data$body_mass_g)
+```
+
+
+```{r}
+# QQPlot, Histogram
+qqPlot(data.aov)
+```
+
 * 등분산성
-    Levene's test
-    Bartlette test
-    Boxplot
+    * Levene's test
+    * Bartlette test
+    * Boxplot
+    
+```{r}
+leveneTest(body_mass_g ~ species, data)
+```
+
+```{r}
+leveneTest(body_mass_g ~ species*sex, data)
+```
+
+```{r}
+bartlett.test(body_mass_g ~ species, data)
+```
+    
+```{r}
+bartlett.test(body_mass_g ~ interaction(species,sex), data)
+```
+
 * 이상치
-    Boxplot, outlierTest()
+    * Boxplot, outlierTest()
+    
+```{r}
+outlierTest(data.aov)
+```
+```{r}
+range(data$body_mass_g); data[164,]
+```
 
 #### ANOVA
 
 * oneway.test(..., var.equal=)
+```{r}
+oneway.result <- oneway.test(body_mass_g ~ species, data, var.equal = F); oneway.result
+```
+
 * aov()
+```{r}
+aov.result <- aov(body_mass_g ~ species, data)
+summary(aov.result)
+```
+
 * Kruskal-Wallis test (정규성 불만족 시)
+```{r}
+kruskal.test(body_mass_g ~ species, data)
+```
 
 #### 사후검정
 
 * Tukey HSD
+```{r}
+TukeyHSD(aov.result)
+```
+
+```{r}
+if(!require(multcomp)) { install.packages("multcomp"); library(multcomp); }
+tukey.result <- glht(aov.result, 
+                       linfct = mcp(species = "Tukey")); tukey.result
+```
+
+```{r}
+plot(tukey.result)
+```
+
 * Dunnett
+```{r}
+if(!require(multcomp)) { install.packages("multcomp"); library(multcomp); }
+dunnett.result <- glht(aov.result, 
+                       linfct = mcp(species = "Dunnett")); dunnett.result
+```
+
 * Bonferroni correction
+
+```{r}
+pairwise.t.test(data$body_mass_g, data$species, p.adjust.method = "bonferroni")
+```
 
