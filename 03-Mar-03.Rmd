@@ -187,3 +187,35 @@ densityplot(body_mass_g ~ sex, data = penguins)
 1. Wilcoxon Rank Sum Test
 2. Kruskal-Wallis Rank Sun Test
 3. 다중비교 mctp in nparcomp package
+
+### ANOVA in R
+
+#### ANOVA 가정 점검
+
+* 변수 유형
+    독립변수 연속형, 종속변수 범주형
+* 독립성
+    durbinWatsonTest(lm)
+* 정규성
+    Shapiro-Wilk normality test
+    Kolmogorov-Smirnov test
+    QQPlot, Histogram
+* 등분산성
+    Levene's test
+    Bartlette test
+    Boxplot
+* 이상치
+    Boxplot
+
+#### ANOVA
+
+* oneway.test(..., var.equal=)
+* aov()
+* Kruskal-Wallis test (정규성 불만족 시)
+
+#### 사후검정
+
+* Tukey HSD
+* Dunnett
+* Bonferroni correction
+
