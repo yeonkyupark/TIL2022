@@ -148,3 +148,7 @@ paired-two-sample-t-test
 삼표본-이상-bartlett.test
 til20220322
 비모수-검정
+anova-in-r
+anova-가정-점검
+anova
+사후검정-1
