@@ -7,7 +7,8 @@
 ##### 한 집단일 때
 
 **일원 카이 제곱 검정**
-:  one sample $x^2$ test, 적합성 검정에활용
+
+:   one sample $x^2$ test, 적합성 검정에활용
 
 ```{r}
 # 주사위를 60번 던져 때, 기대빈도와 관측빈도가 적합한지 검정
@@ -32,7 +33,6 @@ chisq.test(c(45, 30, 25), p = c(0.4, 0.3, 0.3))
 if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
 chisq.test(x=penguins$species, y=penguins$island)
 ```
-
 
 ```{r}
 if(!require(gmodels)) { install.packages("gmodels"); library(gmodels); }
@@ -78,10 +78,9 @@ mcnemar.test(Performance)
 
 p값에 따라 첫번째 조사와 두번째 조사 간에는 유의확률 0.05 하에서 통계적으로 유의미한 차이가 있다.
 
-참고로, 사건 전후의 차이 검정은 b=c를 검토하여 변화 여부를 판단할 수 있다. 
-$$b \sim B(b+c, \frac{1}{2})$$
+참고로, 사건 전후의 차이 검정은 b=c를 검토하여 변화 여부를 판단할 수 있다. $$b \sim B(b+c, \frac{1}{2})$$
 
-따라서 위 예제의 경우 86 ~ B(86+150, 1/2)를 검토한다.
+따라서 위 예제의 경우 86 \~ B(86+150, 1/2)를 검토한다.
 
 ```{r}
 binom.test(86, 86+150, 0.5)
@@ -144,6 +143,7 @@ qqplot(rnorm(1000), 1:1000)
 ###### one sample t-test
 
 ####### 정규성을 만족할 경우 t.test()
+
 ####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon signed rank test
 
 ##### 두 집단일 때
@@ -151,30 +151,36 @@ qqplot(rnorm(1000), 1:1000)
 ###### independent two sample t-test
 
 ####### 정규성을 만족할 경우 t.test()
+
 ####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon rank sum test
 
 ###### paired two sample t-test
 
 ####### 정규성을 만족할 경우 t.test()
+
 ####### 정규성을 만족하지 못할 경우 wilcox.test(), Wilcoxon signed rank test with paired
 
 ##### 세 집단 이상일 때
 
 ####### 정규성을 만족할 경우 aov()
+
 ####### 정규성을 만족하지 못할 경우 kruskal()
+
 ####### 사후검정
 
-Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등 
+Fisher's LSD, Bonferroni, Shelf, Turkey, Duncan 등
 
 ### 비율검정
 
 #### 일표본 binom.test()
+
 #### 이표본 prop.test()
 
 ### 동질성 검사
 
 #### 이표본 var.test()
-#### 삼표본 이상 bartlett.test() 
+
+#### 삼표본 이상 bartlett.test()
 
 ## TIL20220322
 
@@ -187,26 +193,25 @@ data <- penguins
 densityplot(body_mass_g ~ sex, data = data)
 ```
 
-0. 정규성 검정  
+0.  정규성 검정
 
 ```{r}
 shapiro.test(data$body_mass_g)
 ```
 
-1. Wilcoxon Rank Sum Test  
+1.  Wilcoxon Rank Sum Test
 
 ```{r}
 wilcox.result <- wilcox.test(body_mass_g ~ sex, data); wilcox.result
 ```
 
-2. Kruskal-Wallis Rank Sun Test  
+2.  Kruskal-Wallis Rank Sun Test
 
 ```{r}
 kruskal.result <- kruskal.test(body_mass_g ~ species, data); kruskal.result
 ```
 
-
-3. 다중비교 mctp in nparcomp package  
+3.  다중비교 mctp in nparcomp package
 
 ```{r}
 if(!require(nparcomp)) { install.packages("nparcomp"); library(nparcomp); }
@@ -231,13 +236,14 @@ ggplot(data, aes(species, body_mass_g, col=sex)) +
 
 펭귄 종에 따른 몸무게의 유의한 차이가 있는지 ANOVA로 분석한다. 신뢰성 있는 결과 도출을 위해 아래의 가정을 확인한다.
 
-* 변수 유형
-    독립변수 범주형, 종속변수 연속형
+-   변수 유형 독립변수 범주형, 종속변수 연속형
+
 ```{r}
 str(data)
 ```
-    
-* 독립성, *durbinWatsonTest()* 함수를 통해 통계적으로 검정
+
+-   독립성, *durbinWatsonTest()* 함수를 통해 통계적으로 검정
+
 ```{r}
 if(!require(car)) { install.packages("car"); library(car); }
 
@@ -245,33 +251,32 @@ data.aov <- aov(body_mass_g ~ species, data)
 durbinWatsonTest(data.aov)
 ```
 
+-   정규성
 
-* 정규성
-    * Shapiro-Wilk normality test
-    * Kolmogorov-Smirnov test
-    * QQPlot, Histogram
-```{r}
-# Shapiro-Wilk normality test
-shapiro.test(data.aov$residuals)
-```
+    -   Shapiro-Wilk normality test
+    -   Kolmogorov-Smirnov test
+    -   QQPlot, Histogram
 
+    ```{r}
+    # Shapiro-Wilk normality test
+    shapiro.test(data.aov$residuals)
+    ```
 
 ```{r}
 # Kolmogorov-Smirnov test
 ks.test(x = data$species, y = data$body_mass_g)
 ```
 
-
 ```{r}
 # QQPlot, Histogram
 qqPlot(data.aov)
 ```
 
-* 등분산성
-    * Levene's test
-    * Bartlette test
-    * Boxplot
-    
+-   등분산성
+    -   Levene's test
+    -   Bartlette test
+    -   Boxplot
+
 ```{r}
 leveneTest(body_mass_g ~ species, data)
 ```
@@ -283,42 +288,47 @@ leveneTest(body_mass_g ~ species*sex, data)
 ```{r}
 bartlett.test(body_mass_g ~ species, data)
 ```
-    
+
 ```{r}
 bartlett.test(body_mass_g ~ interaction(species,sex), data)
 ```
 
-* 이상치
-    * Boxplot, outlierTest()
-    
+-   이상치
+    -   Boxplot, outlierTest()
+
 ```{r}
 outlierTest(data.aov)
 ```
+
 ```{r}
 range(data$body_mass_g); data[164,]
 ```
 
 #### ANOVA
 
-* oneway.test(..., var.equal=)
+-   oneway.test(..., var.equal=)
+
 ```{r}
 oneway.result <- oneway.test(body_mass_g ~ species, data, var.equal = F); oneway.result
 ```
 
-* aov()
+-   aov()
+
 ```{r}
 aov.result <- aov(body_mass_g ~ species, data)
 summary(aov.result)
 ```
 
-* Kruskal-Wallis test (정규성 불만족 시)
+-   Kruskal-Wallis test (정규성 불만족 시)
+
 ```{r}
 kruskal.test(body_mass_g ~ species, data)
 ```
 
 #### 사후검정
 
-* Tukey HSD
+-   Tukey HSD
+
 ```{r}
 TukeyHSD(aov.result)
 ```
@@ -333,16 +343,16 @@ tukey.result <- glht(aov.result,
 plot(tukey.result)
 ```
 
-* Dunnett
+-   Dunnett
+
 ```{r}
 if(!require(multcomp)) { install.packages("multcomp"); library(multcomp); }
 dunnett.result <- glht(aov.result, 
                        linfct = mcp(species = "Dunnett")); dunnett.result
 ```
 
-* Bonferroni correction
+-   Bonferroni correction
 
 ```{r}
 pairwise.t.test(data$body_mass_g, data$species, p.adjust.method = "bonferroni")
 ```
-
