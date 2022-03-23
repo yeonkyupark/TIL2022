@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-22" />
+<meta name="date" content="2022-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="til20220321.html"/>
-
+<link rel="next" href="til20220323.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -280,6 +280,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.22.1" data-path="til20220322.html"><a href="til20220322.html#비모수-검정"><i class="fa fa-check"></i><b>3.22.1</b> 비모수 검정<span></span></a></li>
 <li class="chapter" data-level="3.22.2" data-path="til20220322.html"><a href="til20220322.html#anova-in-r"><i class="fa fa-check"></i><b>3.22.2</b> ANOVA in R<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="3.23" data-path="til20220323.html"><a href="til20220323.html"><i class="fa fa-check"></i><b>3.23</b> TIL20220323<span></span></a><ul>
+<li class="chapter" data-level="3.23.1" data-path="til20220323.html"><a href="til20220323.html#heatmap"><i class="fa fa-check"></i><b>3.23.1</b> Heatmap<span></span></a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -308,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="til20220322.html#cb621-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(moonBook)) { <span class="kw">install.packages</span>(<span class="st">&quot;moonBook&quot;</span>); <span class="kw">library</span>(moonBook); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpsdksQk/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYvB2lo/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="til20220322.html#cb623-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
 <span id="cb623-2"><a href="til20220322.html#cb623-2"></a>data &lt;-<span class="st"> </span>penguins</span>
 <span id="cb623-3"><a href="til20220322.html#cb623-3"></a><span class="kw">densityplot</span>(body_mass_g <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> data)</span></code></pre></div>
@@ -347,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="til20220322.html#cb630-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nparcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;nparcomp&quot;</span>); <span class="kw">library</span>(nparcomp); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpsdksQk/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYvB2lo/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="til20220322.html#cb632-1"></a><span class="kw">mctp</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
 <pre><code>## 
 ##  #----------------Nonparametric Multiple Comparisons for relative effects---------------# 
@@ -492,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="til20220322.html#cb638-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(car)) { <span class="kw">install.packages</span>(<span class="st">&quot;car&quot;</span>); <span class="kw">library</span>(car); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpsdksQk/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYvB2lo/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="til20220322.html#cb640-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span>
 <span id="cb640-2"><a href="til20220322.html#cb640-2"></a><span class="kw">durbinWatsonTest</span>(data.aov)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
@@ -668,35 +671,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Gentoo    &lt;2e-16 &lt;2e-16   
 ## 
 ## P value adjustment method: bonferroni</code></pre>
-
 </div>
 </div>
 </div>
-<!-- </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220321.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="til20220321.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220323.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
