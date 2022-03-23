@@ -356,3 +356,46 @@ dunnett.result <- glht(aov.result,
 ```{r}
 pairwise.t.test(data$body_mass_g, data$species, p.adjust.method = "bonferroni")
 ```
+
+## TIL20220323
+
+### 히트맵 in R
+
+```{r}
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+data <- penguins
+
+data.matrix <- as.matrix(cor(data[,3:6], use="complete.obs"))
+```
+
+#### heatmap() in base
+
+```{r}
+if(!require(reshape2)) { install.packages("reshape2"); library(reshape2); }
+
+heatmap(data.matrix, Rowv = NA, Colv = NA)
+
+```
+
+#### heatmap.2() in gplots
+
+```{r}
+if(!require(gplots)) { install.packages("gplots"); library(gplots); }
+heatmap.2(data.matrix, Rowv = NA, Colv = NA, )
+```
+
+#### geom_tile() in ggplot2
+
+```{r}
+if(!require(reshape2)) { install.packages("reshape2"); library(reshape2); }
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+
+
+data.melted <- melt(data.matrix); head(data.melted)
+
+ggplot(data.melted, aes(x=Var1, y=Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low="red", mid = "white", high="blue") +
+  guides(fill = guide_colorbar(barwidth = .5, barheight = 15
+                               ))
+```
