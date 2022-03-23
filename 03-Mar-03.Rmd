@@ -396,6 +396,5 @@ data.melted <- melt(data.matrix); head(data.melted)
 ggplot(data.melted, aes(x=Var1, y=Var2, fill = value)) +
   geom_tile() +
   scale_fill_gradient2(low="red", mid = "white", high="blue") +
-  guides(fill = guide_colorbar(barwidth = .5, barheight = 15
-                               ))
+  guides(fill = guide_colorbar(barwidth = .5, barheight = 15))
 ```
