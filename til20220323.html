@@ -324,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="til20220323.html#cb677-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(gplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>); <span class="kw">library</span>(gplots); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppVP5qe/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpn7w3MO/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="til20220323.html#cb679-1"></a><span class="kw">heatmap.2</span>(data.matrix, <span class="dt">Rowv =</span> <span class="ot">NA</span>, <span class="dt">Colv =</span> <span class="ot">NA</span>, )</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
@@ -345,8 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="til20220323.html#cb682-1"></a><span class="kw">ggplot</span>(data.melted, <span class="kw">aes</span>(<span class="dt">x=</span>Var1, <span class="dt">y=</span>Var2, <span class="dt">fill =</span> value)) <span class="op">+</span></span>
 <span id="cb682-2"><a href="til20220323.html#cb682-2"></a><span class="st">  </span><span class="kw">geom_tile</span>() <span class="op">+</span></span>
 <span id="cb682-3"><a href="til20220323.html#cb682-3"></a><span class="st">  </span><span class="kw">scale_fill_gradient2</span>(<span class="dt">low=</span><span class="st">&quot;red&quot;</span>, <span class="dt">mid =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
-<span id="cb682-4"><a href="til20220323.html#cb682-4"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_colorbar</span>(<span class="dt">barwidth =</span> <span class="fl">.5</span>, <span class="dt">barheight =</span> <span class="dv">15</span></span>
-<span id="cb682-5"><a href="til20220323.html#cb682-5"></a>                               ))</span></code></pre></div>
+<span id="cb682-4"><a href="til20220323.html#cb682-4"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_colorbar</span>(<span class="dt">barwidth =</span> <span class="fl">.5</span>, <span class="dt">barheight =</span> <span class="dv">15</span>))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
