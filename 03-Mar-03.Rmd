@@ -346,3 +346,14 @@ dunnett.result <- glht(aov.result,
 pairwise.t.test(data$body_mass_g, data$species, p.adjust.method = "bonferroni")
 ```
 
+## TIL20220323
+
+### Heatmap
+
+#### heatmap() in base
+
+#### geom_tile() in ggplot2
+
+#### heatmap.2() in gplots
+
+
