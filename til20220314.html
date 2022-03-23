@@ -280,9 +280,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.22.1" data-path="til20220322.html"><a href="til20220322.html#비모수-검정"><i class="fa fa-check"></i><b>3.22.1</b> 비모수 검정<span></span></a></li>
 <li class="chapter" data-level="3.22.2" data-path="til20220322.html"><a href="til20220322.html#anova-in-r"><i class="fa fa-check"></i><b>3.22.2</b> ANOVA in R<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.23" data-path="til20220323.html"><a href="til20220323.html"><i class="fa fa-check"></i><b>3.23</b> TIL20220323<span></span></a><ul>
-<li class="chapter" data-level="3.23.1" data-path="til20220323.html"><a href="til20220323.html#heatmap"><i class="fa fa-check"></i><b>3.23.1</b> Heatmap<span></span></a></li>
-</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -309,17 +306,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>데이터 분할, 이건 내일 정리하자. 양이 많네.</p>
 <div id="일반적인-데이터-분할" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.14.1</span> 일반적인 데이터 분할<a href="til20220314.html#일반적인-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="til20220314.html#cb369-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220314.html#cb368-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYvB2lo/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="til20220314.html#cb371-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
-<span id="cb371-2"><a href="til20220314.html#cb371-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
-<span id="cb371-3"><a href="til20220314.html#cb371-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
-<span id="cb371-4"><a href="til20220314.html#cb371-4"></a><span class="kw">addmargins</span>(<span class="kw">addmargins</span>(<span class="kw">rbind</span>(</span>
-<span id="cb371-5"><a href="til20220314.html#cb371-5"></a>  <span class="dt">pTrain =</span> <span class="kw">table</span>(pTrain<span class="op">$</span>species),</span>
-<span id="cb371-6"><a href="til20220314.html#cb371-6"></a>  <span class="dt">pTest =</span> <span class="kw">table</span>(pTest<span class="op">$</span>species)</span>
-<span id="cb371-7"><a href="til20220314.html#cb371-7"></a>),<span class="dv">2</span>),<span class="dv">1</span>)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp4xVmmx/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="til20220314.html#cb370-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
+<span id="cb370-2"><a href="til20220314.html#cb370-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
+<span id="cb370-3"><a href="til20220314.html#cb370-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
+<span id="cb370-4"><a href="til20220314.html#cb370-4"></a><span class="kw">addmargins</span>(<span class="kw">addmargins</span>(<span class="kw">rbind</span>(</span>
+<span id="cb370-5"><a href="til20220314.html#cb370-5"></a>  <span class="dt">pTrain =</span> <span class="kw">table</span>(pTrain<span class="op">$</span>species),</span>
+<span id="cb370-6"><a href="til20220314.html#cb370-6"></a>  <span class="dt">pTest =</span> <span class="kw">table</span>(pTest<span class="op">$</span>species)</span>
+<span id="cb370-7"><a href="til20220314.html#cb370-7"></a>),<span class="dv">2</span>),<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##        Adelie Chinstrap Gentoo Sum
 ## pTrain    107        48     87 242
 ## pTest      45        20     37 102
