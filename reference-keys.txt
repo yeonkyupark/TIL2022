@@ -152,3 +152,8 @@ anova-in-r
 anova-가정-점검
 anova
 사후검정-1
+til20220323
+히트맵-in-r
+heatmap-in-base
+heatmap.2-in-gplots
+geom_tile-in-ggplot2

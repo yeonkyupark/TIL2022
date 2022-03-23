@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.18 TIL20220218 | Today I Learned in 2022</title>
+  <title>3.23 TIL20220323 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.18 TIL20220218 | Today I Learned in 2022" />
+  <meta property="og:title" content="3.23 TIL20220323 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.18 TIL20220218 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="3.23 TIL20220323 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220217.html"/>
-<link rel="next" href="til20220219.html"/>
+<link rel="prev" href="til20220322.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -304,29 +304,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220218" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.18</span> TIL20220218<a href="til20220218.html#til20220218" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="github-repo-삭제하면-잔디도-죽는다" class="section level3 hasAnchor">
-<h3><span class="header-section-number">2.18.1</span> github repo 삭제하면 잔디도 죽는다<a href="til20220218.html#github-repo-삭제하면-잔디도-죽는다" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>사용하던 github repo를 모두 삭제했다.<br />
-repo가 삭제되면 심어 두었던 잔디도 같이 죽는다는 것을 알게 되었다.<br />
-덕분에 깨끗한 마음으로 새로 시작할 수 있을 것 같다 ‘^’</p>
-<p><img src="https://user-images.githubusercontent.com/72383349/154695072-8480a46d-4174-4a4a-829f-e97f361dbf29.png" /></p>
+<div id="til20220323" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.23</span> TIL20220323<a href="til20220323.html#til20220323" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="히트맵-in-r" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.23.1</span> 히트맵 in R<a href="til20220323.html#히트맵-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="til20220323.html#cb675-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
+<span id="cb675-2"><a href="til20220323.html#cb675-2"></a>data &lt;-<span class="st"> </span>penguins</span>
+<span id="cb675-3"><a href="til20220323.html#cb675-3"></a></span>
+<span id="cb675-4"><a href="til20220323.html#cb675-4"></a>data.matrix &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">cor</span>(data[,<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">use=</span><span class="st">&quot;complete.obs&quot;</span>))</span></code></pre></div>
+<div id="heatmap-in-base" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.23.1.1</span> heatmap() in base<a href="til20220323.html#heatmap-in-base" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="til20220323.html#cb676-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(reshape2)) { <span class="kw">install.packages</span>(<span class="st">&quot;reshape2&quot;</span>); <span class="kw">library</span>(reshape2); }</span>
+<span id="cb676-2"><a href="til20220323.html#cb676-2"></a></span>
+<span id="cb676-3"><a href="til20220323.html#cb676-3"></a><span class="kw">heatmap</span>(data.matrix, <span class="dt">Rowv =</span> <span class="ot">NA</span>, <span class="dt">Colv =</span> <span class="ot">NA</span>)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-301-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="bookdown으로-블로그-전환" class="section level3 hasAnchor">
-<h3><span class="header-section-number">2.18.2</span> bookdown으로 블로그 전환<a href="til20220218.html#bookdown으로-블로그-전환" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>jekyll로 잘 운영하던 블로그를 bookdown으로 이사, 일단 가볍고 문서 작성하기 편하고 체계적이고, 무엇보다 기존 repo 싹 날려서 그렇다.<br />
-RStudio, Bookdown, Github pages 등으로 검색하면 여러 정보를 얻을 수 있다. 중간중간 설명이 필요한 부분도 있지만 우선 <a href="https://unfinishedgod.netlify.app/2020/08/04/bookdowngithub-page%EC%97%90-publish%ED%95%98%EA%B8%B0/">여기</a> 참조하면 세팅할 수 있다.</p>
-<hr />
+<div id="heatmap.2-in-gplots" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.23.1.2</span> heatmap.2() in gplots<a href="til20220323.html#heatmap.2-in-gplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="til20220323.html#cb677-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(gplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>); <span class="kw">library</span>(gplots); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppVP5qe/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="til20220323.html#cb679-1"></a><span class="kw">heatmap.2</span>(data.matrix, <span class="dt">Rowv =</span> <span class="ot">NA</span>, <span class="dt">Colv =</span> <span class="ot">NA</span>, )</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="geom_tile-in-ggplot2" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.23.1.3</span> geom_tile() in ggplot2<a href="til20220323.html#geom_tile-in-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="til20220323.html#cb680-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(reshape2)) { <span class="kw">install.packages</span>(<span class="st">&quot;reshape2&quot;</span>); <span class="kw">library</span>(reshape2); }</span>
+<span id="cb680-2"><a href="til20220323.html#cb680-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
+<span id="cb680-3"><a href="til20220323.html#cb680-3"></a></span>
+<span id="cb680-4"><a href="til20220323.html#cb680-4"></a></span>
+<span id="cb680-5"><a href="til20220323.html#cb680-5"></a>data.melted &lt;-<span class="st"> </span><span class="kw">melt</span>(data.matrix); <span class="kw">head</span>(data.melted)</span></code></pre></div>
+<pre><code>##                Var1           Var2      value
+## 1    bill_length_mm bill_length_mm  1.0000000
+## 2     bill_depth_mm bill_length_mm -0.2350529
+## 3 flipper_length_mm bill_length_mm  0.6561813
+## 4       body_mass_g bill_length_mm  0.5951098
+## 5    bill_length_mm  bill_depth_mm -0.2350529
+## 6     bill_depth_mm  bill_depth_mm  1.0000000</code></pre>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="til20220323.html#cb682-1"></a><span class="kw">ggplot</span>(data.melted, <span class="kw">aes</span>(<span class="dt">x=</span>Var1, <span class="dt">y=</span>Var2, <span class="dt">fill =</span> value)) <span class="op">+</span></span>
+<span id="cb682-2"><a href="til20220323.html#cb682-2"></a><span class="st">  </span><span class="kw">geom_tile</span>() <span class="op">+</span></span>
+<span id="cb682-3"><a href="til20220323.html#cb682-3"></a><span class="st">  </span><span class="kw">scale_fill_gradient2</span>(<span class="dt">low=</span><span class="st">&quot;red&quot;</span>, <span class="dt">mid =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb682-4"><a href="til20220323.html#cb682-4"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_colorbar</span>(<span class="dt">barwidth =</span> <span class="fl">.5</span>, <span class="dt">barheight =</span> <span class="dv">15</span></span>
+<span id="cb682-5"><a href="til20220323.html#cb682-5"></a>                               ))</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
+
 </div>
 </div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220217.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="til20220219.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220322.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -357,7 +407,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/02-Feb-01.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/03-Mar-03.Rmd",
 "text": "Edit"
 },
 "history": {
