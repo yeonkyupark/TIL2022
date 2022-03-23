@@ -340,7 +340,7 @@ tukey.result <- glht(aov.result,
 ```
 
 ```{r}
-plot(tukey.result)
+plot(tukey.result, las=1)
 ```
 
 -   Dunnett
