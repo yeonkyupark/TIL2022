@@ -364,13 +364,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="til20220324.html#cb691-1"></a><span class="kw">table</span>(data<span class="op">$</span>Class)</span></code></pre></div>
 <pre><code>## &lt; table of extent 0 &gt;</code></pre>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="til20220324.html#cb693-1"></a><span class="co"># 데이터 전처리</span></span>
-<span id="cb693-2"><a href="til20220324.html#cb693-2"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Id) <span class="co"># 필요한 컬럼 제외</span></span></code></pre></div>
+<span id="cb693-2"><a href="til20220324.html#cb693-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb693-3"><a href="til20220324.html#cb693-3"></a></span>
+<span id="cb693-4"><a href="til20220324.html#cb693-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Id) <span class="co"># 필요한 컬럼 제외</span></span></code></pre></div>
 <pre><code>## Error in `select()`:
 ## ! Can&#39;t subset columns that don&#39;t exist.
 ## ✖ Column `Id` doesn&#39;t exist.</code></pre>
 <div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="til20220324.html#cb695-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="co"># 결측치 제외 (16/699이므로)</span></span></code></pre></div>
 <div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="til20220324.html#cb696-1"></a><span class="co"># 데이터 분할</span></span>
-<span id="cb696-2"><a href="til20220324.html#cb696-2"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>Class, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span></code></pre></div>
+<span id="cb696-2"><a href="til20220324.html#cb696-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb696-3"><a href="til20220324.html#cb696-3"></a></span>
+<span id="cb696-4"><a href="til20220324.html#cb696-4"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>Class, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span></code></pre></div>
 <pre><code>## Error in createDataPartition(data$Class, p = 0.7, list = F): y must have at least 2 data points</code></pre>
 <div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="til20220324.html#cb698-1"></a>data.train &lt;-<span class="st"> </span>data[train.index, ]</span>
 <span id="cb698-2"><a href="til20220324.html#cb698-2"></a>data.test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index, ]</span></code></pre></div>
@@ -413,15 +417,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="til20220324.html#cb725-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rpart)) { <span class="kw">install.packages</span>(<span class="st">&quot;rpart&quot;</span>); <span class="kw">library</span>(rpart); }</span>
 <span id="cb725-2"><a href="til20220324.html#cb725-2"></a>data &lt;-<span class="st"> </span>penguins</span>
 <span id="cb725-3"><a href="til20220324.html#cb725-3"></a>data &lt;-<span class="st"> </span><span class="kw">na.omit</span>(data)</span>
-<span id="cb725-4"><a href="til20220324.html#cb725-4"></a>train.index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(data), <span class="fl">0.7</span><span class="op">*</span><span class="kw">nrow</span>(data), <span class="dt">replace=</span>F) </span>
-<span id="cb725-5"><a href="til20220324.html#cb725-5"></a>train &lt;-<span class="st"> </span>data[train.index,]</span>
-<span id="cb725-6"><a href="til20220324.html#cb725-6"></a>test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index,]</span>
-<span id="cb725-7"><a href="til20220324.html#cb725-7"></a>model.dt &lt;-<span class="st"> </span><span class="kw">rpart</span>(species <span class="op">~</span><span class="st"> </span>., train)</span>
-<span id="cb725-8"><a href="til20220324.html#cb725-8"></a>model.dt.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt, test, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)</span>
-<span id="cb725-9"><a href="til20220324.html#cb725-9"></a></span>
-<span id="cb725-10"><a href="til20220324.html#cb725-10"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(pROC)) { <span class="kw">install.packages</span>(<span class="st">&quot;pROC&quot;</span>); <span class="kw">library</span>(pROC); }</span>
-<span id="cb725-11"><a href="til20220324.html#cb725-11"></a>mroc &lt;-<span class="st"> </span><span class="kw">multiclass.roc</span>(test<span class="op">$</span>species, <span class="kw">as.numeric</span>(model.dt.pred))</span>
-<span id="cb725-12"><a href="til20220324.html#cb725-12"></a>pROC<span class="op">::</span><span class="kw">plot.roc</span>(mroc<span class="op">$</span>rocs[[<span class="dv">1</span>]], <span class="dt">plot=</span>T, <span class="dt">col=</span><span class="dv">1</span>, <span class="dt">print.auc=</span>T)</span></code></pre></div>
+<span id="cb725-4"><a href="til20220324.html#cb725-4"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb725-5"><a href="til20220324.html#cb725-5"></a>train.index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(data), <span class="fl">0.7</span><span class="op">*</span><span class="kw">nrow</span>(data), <span class="dt">replace=</span>F) </span>
+<span id="cb725-6"><a href="til20220324.html#cb725-6"></a>train &lt;-<span class="st"> </span>data[train.index,]</span>
+<span id="cb725-7"><a href="til20220324.html#cb725-7"></a>test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index,]</span>
+<span id="cb725-8"><a href="til20220324.html#cb725-8"></a>model.dt &lt;-<span class="st"> </span><span class="kw">rpart</span>(species <span class="op">~</span><span class="st"> </span>., train)</span>
+<span id="cb725-9"><a href="til20220324.html#cb725-9"></a>model.dt.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt, test, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb725-10"><a href="til20220324.html#cb725-10"></a></span>
+<span id="cb725-11"><a href="til20220324.html#cb725-11"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(pROC)) { <span class="kw">install.packages</span>(<span class="st">&quot;pROC&quot;</span>); <span class="kw">library</span>(pROC); }</span>
+<span id="cb725-12"><a href="til20220324.html#cb725-12"></a>mroc &lt;-<span class="st"> </span><span class="kw">multiclass.roc</span>(test<span class="op">$</span>species, <span class="kw">as.numeric</span>(model.dt.pred))</span>
+<span id="cb725-13"><a href="til20220324.html#cb725-13"></a>pROC<span class="op">::</span><span class="kw">plot.roc</span>(mroc<span class="op">$</span>rocs[[<span class="dv">1</span>]], <span class="dt">plot=</span>T, <span class="dt">col=</span><span class="dv">1</span>, <span class="dt">print.auc=</span>T)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-314-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="til20220324.html#cb726-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>) {</span>
 <span id="cb726-2"><a href="til20220324.html#cb726-2"></a>  pROC<span class="op">::</span><span class="kw">plot.roc</span>(mroc<span class="op">$</span>rocs[[i]], <span class="dt">plot=</span>T, <span class="dt">col=</span>i, <span class="dt">print.auc=</span>T, <span class="dt">add=</span>T,</span>
