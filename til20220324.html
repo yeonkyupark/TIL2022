@@ -285,6 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.24" data-path="til20220324.html"><a href="til20220324.html"><i class="fa fa-check"></i><b>3.24</b> TIL20220324<span></span></a><ul>
 <li class="chapter" data-level="3.24.1" data-path="til20220324.html"><a href="til20220324.html#기계학습-모델링-with-caret"><i class="fa fa-check"></i><b>3.24.1</b> 기계학습 모델링 with Caret<span></span></a></li>
+<li class="chapter" data-level="3.24.2" data-path="til20220324.html"><a href="til20220324.html#다중범주-roc"><i class="fa fa-check"></i><b>3.24.2</b> 다중범주 ROC<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -406,6 +407,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Error in roc.default(data.test$Class, model.dt.down.pred[, 1], plot = T, : No valid data provided.</code></pre>
 <div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="til20220324.html#cb723-1"></a><span class="kw">text</span>(<span class="fl">1.2</span>, <span class="fl">0.8</span>, <span class="st">&quot;Blue: Down sampling</span><span class="ch">\n</span><span class="st">Red: Up sampling&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in text.default(1.2, 0.8, &quot;Blue: Down sampling\nRed: Up sampling&quot;): plot.new has not been called yet</code></pre>
+</div>
+<div id="다중범주-roc" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.24.2</span> 다중범주 ROC<a href="til20220324.html#다중범주-roc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="til20220324.html#cb725-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rpart)) { <span class="kw">install.packages</span>(<span class="st">&quot;rpart&quot;</span>); <span class="kw">library</span>(rpart); }</span>
+<span id="cb725-2"><a href="til20220324.html#cb725-2"></a>data &lt;-<span class="st"> </span>penguins</span>
+<span id="cb725-3"><a href="til20220324.html#cb725-3"></a>data &lt;-<span class="st"> </span><span class="kw">na.omit</span>(data)</span>
+<span id="cb725-4"><a href="til20220324.html#cb725-4"></a>train.index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(data), <span class="fl">0.7</span><span class="op">*</span><span class="kw">nrow</span>(data), <span class="dt">replace=</span>F) </span>
+<span id="cb725-5"><a href="til20220324.html#cb725-5"></a>train &lt;-<span class="st"> </span>data[train.index,]</span>
+<span id="cb725-6"><a href="til20220324.html#cb725-6"></a>test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index,]</span>
+<span id="cb725-7"><a href="til20220324.html#cb725-7"></a>model.dt &lt;-<span class="st"> </span><span class="kw">rpart</span>(species <span class="op">~</span><span class="st"> </span>., train)</span>
+<span id="cb725-8"><a href="til20220324.html#cb725-8"></a>model.dt.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt, test, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb725-9"><a href="til20220324.html#cb725-9"></a></span>
+<span id="cb725-10"><a href="til20220324.html#cb725-10"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(pROC)) { <span class="kw">install.packages</span>(<span class="st">&quot;pROC&quot;</span>); <span class="kw">library</span>(pROC); }</span>
+<span id="cb725-11"><a href="til20220324.html#cb725-11"></a>mroc &lt;-<span class="st"> </span><span class="kw">multiclass.roc</span>(test<span class="op">$</span>species, <span class="kw">as.numeric</span>(model.dt.pred))</span>
+<span id="cb725-12"><a href="til20220324.html#cb725-12"></a>pROC<span class="op">::</span><span class="kw">plot.roc</span>(mroc<span class="op">$</span>rocs[[<span class="dv">1</span>]], <span class="dt">plot=</span>T, <span class="dt">col=</span><span class="dv">1</span>, <span class="dt">print.auc=</span>T)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-314-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="til20220324.html#cb726-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>) {</span>
+<span id="cb726-2"><a href="til20220324.html#cb726-2"></a>  pROC<span class="op">::</span><span class="kw">plot.roc</span>(mroc<span class="op">$</span>rocs[[i]], <span class="dt">plot=</span>T, <span class="dt">col=</span>i, <span class="dt">print.auc=</span>T, <span class="dt">add=</span>T,</span>
+<span id="cb726-3"><a href="til20220324.html#cb726-3"></a>                 <span class="dt">print.auc.adj =</span> <span class="kw">c</span>(<span class="dv">0</span>,i))</span>
+<span id="cb726-4"><a href="til20220324.html#cb726-4"></a>}</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-314-2.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
