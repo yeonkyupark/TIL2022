@@ -485,6 +485,27 @@ roc(data.test$Class, model.dt.up.pred[,1], plot=T, print.auc=T, col="red")
 roc(data.test$Class, model.dt.down.pred[,1], plot=T, print.auc=T, add=T, col="blue", print.auc.adj=c(0,-1))
 text(1.2, 0.8, "Blue: Down sampling\nRed: Up sampling")
 ```
+### 다중범주 ROC
+
+```{r}
+if(!require(rpart)) { install.packages("rpart"); library(rpart); }
+data <- penguins
+data <- na.omit(data)
+train.index <- sample(nrow(data), 0.7*nrow(data), replace=F) 
+train <- data[train.index,]
+test <- data[-train.index,]
+model.dt <- rpart(species ~ ., train)
+model.dt.pred <- predict(model.dt, test, type="class")
+
+if(!require(pROC)) { install.packages("pROC"); library(pROC); }
+mroc <- multiclass.roc(test$species, as.numeric(model.dt.pred))
+pROC::plot.roc(mroc$rocs[[1]], plot=T, col=1, print.auc=T)
+for(i in 2:3) {
+  pROC::plot.roc(mroc$rocs[[i]], plot=T, col=i, print.auc=T, add=T,
+                 print.auc.adj = c(0,i))
+}
+```
+
 
 
 
