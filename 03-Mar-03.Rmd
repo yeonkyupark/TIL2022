@@ -403,11 +403,88 @@ ggplot(data.melted, aes(x=Var1, y=Var2, fill = value)) +
 
 ### 기계학습 모델링 with Caret
 
-1. 데이터 준비
-2. 데이터 탐색
-3. 데이터 전처리
-4. 데이터 분할
-5. 모델 학습
-6. 예측 및 성능평가
-7. 모델 개선
+1.  데이터 준비
+2.  데이터 탐색
+3.  데이터 전처리
+4.  데이터 분할
+5.  모델 학습
+6.  예측 및 성능평가
+7.  모델 개선
+
+```{r}
+# 데이터 준비
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+if(!require(caret)) { install.packages("caret"); library(caret); }
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+if(!require(mlbench)) { install.packages("mlbench"); library(mlbench); }
+data <- BreastCancer
+```
+
+
+```{r}
+# 데이터 탐색
+str(data)
+```
+
+
+```{r}
+summary(data)
+```
+
+```{r}
+colSums(is.na(data))
+```
+
+```{r}
+table(data$Class)
+```
+
+
+```{r}
+# 데이터 전처리
+data <- data %>% select(-Id) # 필요한 컬럼 제외
+data <- data %>% na.omit() # 결측치 제외 (16/699이므로)
+```
+
+
+```{r}
+# 데이터 분할
+train.index <- createDataPartition(data$Class, p=.7, list=F)
+data.train <- data[train.index, ]
+data.test <- data[-train.index, ]
+```
+
+
+```{r}
+# 모델 학습
+trCtrl.up <- trainControl(sampling = "up")
+trCtrl.down <- trainControl(sampling = "down")
+
+model.dt.up <- train(Class ~ ., data = data.train, method = "rpart", trControl = trCtrl.up)
+model.dt.down <- train(Class ~ ., data = data.train, method = "rpart", trControl = trCtrl.down)
+
+model.list <- list(up = model.dt.up, down = model.dt.down)
+model.resamples <- resamples(model.list)
+dotplot(model.resamples)
+```
+
+
+```{r}
+# 예측 및 성능평가
+model.dt.up.pred <- predict(model.dt.up, data.test)
+model.dt.down.pred <- predict(model.dt.down, data.test)
+rbind(up = mean(model.dt.up.pred == data.test$Class),
+      down = mean(model.dt.down.pred == data.test$Class) )
+```
+
+```{r}
+if(!require(pROC)) { install.packages("pROC"); library(pROC); }
+model.dt.up.pred <- predict(model.dt.up, data.test, type = "prob")
+model.dt.down.pred <- predict(model.dt.down, data.test, type = "prob")
+roc(data.test$Class, model.dt.up.pred[,1], plot=T, print.auc=T, col="red")
+roc(data.test$Class, model.dt.down.pred[,1], plot=T, print.auc=T, add=T, col="blue", print.auc.adj=c(0,-1))
+text(1.2, 0.8, "Blue: Down sampling\nRed: Up sampling")
+```
+
+
 
