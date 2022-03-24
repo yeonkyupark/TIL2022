@@ -398,3 +398,16 @@ ggplot(data.melted, aes(x=Var1, y=Var2, fill = value)) +
   scale_fill_gradient2(low="red", mid = "white", high="blue") +
   guides(fill = guide_colorbar(barwidth = .5, barheight = 15))
 ```
+
+## TI20220324
+
+### 기계학습 모델링 with Caret
+
+1. 데이터 준비
+2. 데이터 탐색
+3. 데이터 전처리
+4. 데이터 분할
+5. 모델 학습
+6. 예측 및 성능평가
+7. 모델 개선
+
