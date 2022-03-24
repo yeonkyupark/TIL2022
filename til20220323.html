@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-23" />
+<meta name="date" content="2022-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="til20220322.html"/>
-
+<link rel="next" href="ti20220324.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -283,6 +283,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.23" data-path="til20220323.html"><a href="til20220323.html"><i class="fa fa-check"></i><b>3.23</b> TIL20220323<span></span></a><ul>
 <li class="chapter" data-level="3.23.1" data-path="til20220323.html"><a href="til20220323.html#히트맵-in-r"><i class="fa fa-check"></i><b>3.23.1</b> 히트맵 in R<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="3.24" data-path="ti20220324.html"><a href="ti20220324.html"><i class="fa fa-check"></i><b>3.24</b> TI20220324<span></span></a><ul>
+<li class="chapter" data-level="3.24.1" data-path="ti20220324.html"><a href="ti20220324.html#기계학습-모델링-with-caret"><i class="fa fa-check"></i><b>3.24.1</b> 기계학습 모델링 with Caret<span></span></a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -324,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="til20220323.html#cb677-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(gplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>); <span class="kw">library</span>(gplots); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpn7w3MO/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpvdWOZg/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="til20220323.html#cb679-1"></a><span class="kw">heatmap.2</span>(data.matrix, <span class="dt">Rowv =</span> <span class="ot">NA</span>, <span class="dt">Colv =</span> <span class="ot">NA</span>, )</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
@@ -347,35 +350,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb682-3"><a href="til20220323.html#cb682-3"></a><span class="st">  </span><span class="kw">scale_fill_gradient2</span>(<span class="dt">low=</span><span class="st">&quot;red&quot;</span>, <span class="dt">mid =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">high=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
 <span id="cb682-4"><a href="til20220323.html#cb682-4"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_colorbar</span>(<span class="dt">barwidth =</span> <span class="fl">.5</span>, <span class="dt">barheight =</span> <span class="dv">15</span>))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
-
 </div>
 </div>
 </div>
-<!-- </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220322.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="til20220322.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ti20220324.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
