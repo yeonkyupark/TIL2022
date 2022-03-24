@@ -320,6 +320,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>예측 및 성능평가</li>
 <li>모델 개선</li>
 </ol>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="til20220324.html#cb683-1"></a><span class="co"># 데이터 준비</span></span>
+<span id="cb683-2"><a href="til20220324.html#cb683-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb683-3"><a href="til20220324.html#cb683-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb683-4"><a href="til20220324.html#cb683-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
+<span id="cb683-5"><a href="til20220324.html#cb683-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span>
+<span id="cb683-6"><a href="til20220324.html#cb683-6"></a>data &lt;-<span class="st"> </span>BreastCancer</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;BreastCancer&#39; not found</code></pre>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="til20220324.html#cb685-1"></a><span class="co"># 데이터 탐색</span></span>
+<span id="cb685-2"><a href="til20220324.html#cb685-2"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<pre><code>## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ species          : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ island           : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+##  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+##  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+##  $ sex              : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
+##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="til20220324.html#cb687-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
+<pre><code>##       species          island    bill_length_mm  bill_depth_mm  
+##  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+##  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+##  Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+##                                  Mean   :43.92   Mean   :17.15  
+##                                  3rd Qu.:48.50   3rd Qu.:18.70  
+##                                  Max.   :59.60   Max.   :21.50  
+##                                  NA&#39;s   :2       NA&#39;s   :2      
+##  flipper_length_mm  body_mass_g       sex           year     
+##  Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+##  1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+##  Median :197.0     Median :4050   NA&#39;s  : 11   Median :2008  
+##  Mean   :200.9     Mean   :4202                Mean   :2008  
+##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+##  Max.   :231.0     Max.   :6300                Max.   :2009  
+##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="til20220324.html#cb689-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(data))</span></code></pre></div>
+<pre><code>##           species            island    bill_length_mm     bill_depth_mm 
+##                 0                 0                 2                 2 
+## flipper_length_mm       body_mass_g               sex              year 
+##                 2                 2                11                 0</code></pre>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="til20220324.html#cb691-1"></a><span class="kw">table</span>(data<span class="op">$</span>Class)</span></code></pre></div>
+<pre><code>## &lt; table of extent 0 &gt;</code></pre>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="til20220324.html#cb693-1"></a><span class="co"># 데이터 전처리</span></span>
+<span id="cb693-2"><a href="til20220324.html#cb693-2"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Id) <span class="co"># 필요한 컬럼 제외</span></span></code></pre></div>
+<pre><code>## Error in `select()`:
+## ! Can&#39;t subset columns that don&#39;t exist.
+## ✖ Column `Id` doesn&#39;t exist.</code></pre>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="til20220324.html#cb695-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="co"># 결측치 제외 (16/699이므로)</span></span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="til20220324.html#cb696-1"></a><span class="co"># 데이터 분할</span></span>
+<span id="cb696-2"><a href="til20220324.html#cb696-2"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>Class, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span></code></pre></div>
+<pre><code>## Error in createDataPartition(data$Class, p = 0.7, list = F): y must have at least 2 data points</code></pre>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="til20220324.html#cb698-1"></a>data.train &lt;-<span class="st"> </span>data[train.index, ]</span>
+<span id="cb698-2"><a href="til20220324.html#cb698-2"></a>data.test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index, ]</span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="til20220324.html#cb699-1"></a><span class="co"># 모델 학습</span></span>
+<span id="cb699-2"><a href="til20220324.html#cb699-2"></a>trCtrl.up &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">sampling =</span> <span class="st">&quot;up&quot;</span>)</span>
+<span id="cb699-3"><a href="til20220324.html#cb699-3"></a>trCtrl.down &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">sampling =</span> <span class="st">&quot;down&quot;</span>)</span>
+<span id="cb699-4"><a href="til20220324.html#cb699-4"></a></span>
+<span id="cb699-5"><a href="til20220324.html#cb699-5"></a>model.dt.up &lt;-<span class="st"> </span><span class="kw">train</span>(Class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> data.train, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>, <span class="dt">trControl =</span> trCtrl.up)</span></code></pre></div>
+<pre><code>## Error in eval(predvars, data, env): object &#39;Class&#39; not found</code></pre>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="til20220324.html#cb701-1"></a>model.dt.down &lt;-<span class="st"> </span><span class="kw">train</span>(Class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> data.train, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>, <span class="dt">trControl =</span> trCtrl.down)</span></code></pre></div>
+<pre><code>## Error in eval(predvars, data, env): object &#39;Class&#39; not found</code></pre>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="til20220324.html#cb703-1"></a>model.list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">up =</span> model.dt.up, <span class="dt">down =</span> model.dt.down)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;model.dt.up&#39; not found</code></pre>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="til20220324.html#cb705-1"></a>model.resamples &lt;-<span class="st"> </span><span class="kw">resamples</span>(model.list)</span></code></pre></div>
+<pre><code>## Error in resamples(model.list): object &#39;model.list&#39; not found</code></pre>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="til20220324.html#cb707-1"></a><span class="kw">dotplot</span>(model.resamples)</span></code></pre></div>
+<pre><code>## Error in dotplot(model.resamples): object &#39;model.resamples&#39; not found</code></pre>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="til20220324.html#cb709-1"></a><span class="co"># 예측 및 성능평가</span></span>
+<span id="cb709-2"><a href="til20220324.html#cb709-2"></a>model.dt.up.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt.up, data.test)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;model.dt.up&#39; not found</code></pre>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="til20220324.html#cb711-1"></a>model.dt.down.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt.down, data.test)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;model.dt.down&#39; not found</code></pre>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="til20220324.html#cb713-1"></a><span class="kw">rbind</span>(<span class="dt">up =</span> <span class="kw">mean</span>(model.dt.up.pred <span class="op">==</span><span class="st"> </span>data.test<span class="op">$</span>Class),</span>
+<span id="cb713-2"><a href="til20220324.html#cb713-2"></a>      <span class="dt">down =</span> <span class="kw">mean</span>(model.dt.down.pred <span class="op">==</span><span class="st"> </span>data.test<span class="op">$</span>Class) )</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;mean&#39;: object &#39;model.dt.up.pred&#39; not found</code></pre>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="til20220324.html#cb715-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(pROC)) { <span class="kw">install.packages</span>(<span class="st">&quot;pROC&quot;</span>); <span class="kw">library</span>(pROC); }</span>
+<span id="cb715-2"><a href="til20220324.html#cb715-2"></a>model.dt.up.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt.up, data.test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;model.dt.up&#39; not found</code></pre>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="til20220324.html#cb717-1"></a>model.dt.down.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.dt.down, data.test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;model.dt.down&#39; not found</code></pre>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="til20220324.html#cb719-1"></a><span class="kw">roc</span>(data.test<span class="op">$</span>Class, model.dt.up.pred[,<span class="dv">1</span>], <span class="dt">plot=</span>T, <span class="dt">print.auc=</span>T, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in roc.default(data.test$Class, model.dt.up.pred[, 1], plot = T, : No valid data provided.</code></pre>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="til20220324.html#cb721-1"></a><span class="kw">roc</span>(data.test<span class="op">$</span>Class, model.dt.down.pred[,<span class="dv">1</span>], <span class="dt">plot=</span>T, <span class="dt">print.auc=</span>T, <span class="dt">add=</span>T, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">print.auc.adj=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## Error in roc.default(data.test$Class, model.dt.down.pred[, 1], plot = T, : No valid data provided.</code></pre>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="til20220324.html#cb723-1"></a><span class="kw">text</span>(<span class="fl">1.2</span>, <span class="fl">0.8</span>, <span class="st">&quot;Blue: Down sampling</span><span class="ch">\n</span><span class="st">Red: Up sampling&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in text.default(1.2, 0.8, &quot;Blue: Down sampling\nRed: Up sampling&quot;): plot.new has not been called yet</code></pre>
 
 </div>
 </div>
