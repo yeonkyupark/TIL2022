@@ -442,6 +442,8 @@ table(data$Class)
 
 ```{r}
 # 데이터 전처리
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+
 data <- data %>% select(-Id) # 필요한 컬럼 제외
 data <- data %>% na.omit() # 결측치 제외 (16/699이므로)
 ```
@@ -449,6 +451,8 @@ data <- data %>% na.omit() # 결측치 제외 (16/699이므로)
 
 ```{r}
 # 데이터 분할
+if(!require(caret)) { install.packages("caret"); library(caret); }
+
 train.index <- createDataPartition(data$Class, p=.7, list=F)
 data.train <- data[train.index, ]
 data.test <- data[-train.index, ]
@@ -491,6 +495,7 @@ text(1.2, 0.8, "Blue: Down sampling\nRed: Up sampling")
 if(!require(rpart)) { install.packages("rpart"); library(rpart); }
 data <- penguins
 data <- na.omit(data)
+set.seed(1234)
 train.index <- sample(nrow(data), 0.7*nrow(data), replace=F) 
 train <- data[train.index,]
 test <- data[-train.index,]
