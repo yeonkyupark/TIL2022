@@ -399,7 +399,7 @@ ggplot(data.melted, aes(x=Var1, y=Var2, fill = value)) +
   guides(fill = guide_colorbar(barwidth = .5, barheight = 15))
 ```
 
-## TI20220324
+## TIL20220324
 
 ### 기계학습 모델링 with Caret
 
