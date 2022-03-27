@@ -523,6 +523,26 @@ for(i in 2:3) {
 
 ## TIL20220327
 
+```{r}
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+
+x <- seq(-4, 4, length=100)
+y3 <- dt(x, df=3)
+y10 <- dt(x, df=10)
+y50 <- dt(x, df=50)
+
+ggplot(data.frame(x,y3), aes(x,y3)) +
+  geom_line(col=1) +
+  geom_line(aes(x, y10), col=2) +
+  geom_line(aes(x, y50), col=3) +
+  geom_text(aes(-3, 0.3, label="df=50"), color=3) +
+  geom_text(aes(-3, 0.25, label="df=10"), col=2) +
+  geom_text(aes(-3, 0.2, label="df=3"), col=1) +
+  theme_bw()
+```
+
+
+
 
 
 
