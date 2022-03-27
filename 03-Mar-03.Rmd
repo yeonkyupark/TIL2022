@@ -541,7 +541,39 @@ ggplot(data.frame(x,y3), aes(x,y3)) +
   theme_bw()
 ```
 
+```{r}
+str(cars)
+plot(cars$speed, cars$dist)
+```
 
+
+```{r}
+x <- seq(-4, 4, length=100)
+y1 <- dnorm(x, sd=1)
+y2 <- dnorm(x, sd=2)
+ggplot(data.frame(x,y1), aes(x,y1)) +
+  geom_line() +
+  geom_line(aes(y=y2), col=2)
+```
+
+$$CV, coefficient of variance = \frac{s}{\bar x}$$
+
+```{r}
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+pa <- subset(penguins[penguins$species=="Adelie", ], select = c("species", "body_mass_g"))
+pg <- subset(penguins[penguins$species=="Gentoo", ], select = c("species", "body_mass_g"))
+
+pa.cv <- sd(pa$body_mass_g, na.rm=T)/mean(pa$body_mass_g, na.rm = T)
+pg.cv <- sd(pg$body_mass_g, na.rm=T)/mean(pg$body_mass_g, na.rm = T)
+cv <- rbind(Adelie = pa.cv, Gentoo = pg.cv)
+colnames(cv) <- c("CV"); cv
+```
+
+Adelie가 Gentoo에 비해 변동성이 큰 것을 알 수 있다.
+
+```{r}
+boxplot(pa$body_mass_g, pg$body_mass_g)
+```
 
 
 
