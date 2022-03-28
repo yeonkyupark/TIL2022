@@ -575,6 +575,8 @@ Adelie가 Gentoo에 비해 변동성이 큰 것을 알 수 있다.
 boxplot(pa$body_mass_g, pg$body_mass_g)
 ```
 
+## TIL20220328
+
 
 
 
