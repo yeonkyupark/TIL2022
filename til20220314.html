@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220314.html#cb368-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp2KDIbO/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpiH9uwq/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="til20220314.html#cb370-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
 <span id="cb370-2"><a href="til20220314.html#cb370-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
 <span id="cb370-3"><a href="til20220314.html#cb370-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
