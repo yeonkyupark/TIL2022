@@ -639,3 +639,20 @@ nd <- dnorm(x, mean=mean(smp), sd=sd(smp))
 plot(x, nd, type="l", xlab="x", ylab="P(X=x)", lwd=2, col="red");abline(v=mean(smp))
 ```
 
+## TIL20220329
+
+```{r}
+v <- c(1,4,5)
+for (i in v) {
+  print(i)
+}
+```
+
+`모수`  
+:  모집단의  특성을 나타내는 값, parameter  
+
+`통계량`  
+:  표본으로부터 관찰되는 표본의 특성, statistic  
+
+`표본분포`  
+:  표본 크기가 n으로 정해졌을 때 추출될 수 있는 모든 표본으로부터 구한 통계량들로 구성된 확률분포
