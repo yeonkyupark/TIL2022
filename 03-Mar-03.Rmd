@@ -656,3 +656,38 @@ for (i in v) {
 
 `표본분포`  
 :  표본 크기가 n으로 정해졌을 때 추출될 수 있는 모든 표본으로부터 구한 통계량들로 구성된 확률분포
+
+```{r}
+# 모집단 100개 중 표본 크기 10이 되도록 하는 표본추출의 경우의 수
+choose(100, 10)
+```
+
+```{r}
+# 카드 4장 중 2장 선택
+choose(4, 2)
+```
+
+표본평균 $\bar{x}$의 분포
+
+```{r}
+m10 <- rep(NA, 1000)
+m40 <- rep(NA, 1000)
+set.seed(9)
+for(i in 1:1000) {
+  m10[i] <- mean(rnorm(10))
+  m40[i] <- mean(rnorm(40))
+}
+
+options(digits = 4)
+c(mean(m10), sd(m10))
+c(mean(m40), sd(m40))
+
+par(mfrow = c(1,2))
+hist(m10, xlim = c(-1.5, 1.5), main="", xlab="x", ylab="y",
+     col="cyan", border = "blue")
+hist(m40, xlim = c(-1.5, 1.5), main="", xlab="x", ylab="y",
+     col="cyan", border = "blue")
+par(mfrow = c(1,1))
+```
+
+표본 크기가 클수록 기댓값 주변에 많이 몰려 있으며 자료가 분포하는 전체 폭이 줄어듦을 볼 수 있다.
