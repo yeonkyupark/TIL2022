@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-03-29" />
+<meta name="date" content="2022-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -292,6 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.27" data-path="til20220327.html"><a href="til20220327.html"><i class="fa fa-check"></i><b>3.27</b> TIL20220327<span></span></a></li>
 <li class="chapter" data-level="3.28" data-path="til20220328.html"><a href="til20220328.html"><i class="fa fa-check"></i><b>3.28</b> TIL20220328<span></span></a></li>
 <li class="chapter" data-level="3.29" data-path="til20220329.html"><a href="til20220329.html"><i class="fa fa-check"></i><b>3.29</b> TIL20220329<span></span></a></li>
+<li class="chapter" data-level="3.30" data-path="til20220330.html"><a href="til20220330.html"><i class="fa fa-check"></i><b>3.30</b> TIL20220330<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -321,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220314.html#cb368-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpiH9uwq/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpmWwf5Q/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="til20220314.html#cb370-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
 <span id="cb370-2"><a href="til20220314.html#cb370-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
 <span id="cb370-3"><a href="til20220314.html#cb370-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
