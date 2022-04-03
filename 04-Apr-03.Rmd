@@ -38,7 +38,7 @@ head(hmc)
 ```
 
 ```{r}
-stock <- rbind(sec, hmc); stock;
+stock <- rbind(sec, hmc); head(stock);
 ```
 
 ```{r}
@@ -62,7 +62,7 @@ intersect(names(sec), names(fx))
 ```
 
 ```{r}
-report <- merge(sec, fx, by="date"); report;
+report <- merge(sec, fx, by="date"); head(report);
 ```
 
 match() 함수를 이용한 데이터 결합 방법  
