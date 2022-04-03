@@ -3,6 +3,115 @@
 ### 데이터 결합 방법
 
 ```{r}
+# finance.yahoo.com: Samsung Electronics, KRW
+library(quantmod)
+sec <- getSymbols(Symbols = "005930.KS",
+                  from = "2021-10-01",
+                  to = "2021-12-31",
+                  auto.assign = FALSE)
+sec <- as.data.frame(sec)
+str(sec)
+head(sec[c("005930.KS.Close", "005930.KS.Volume")])
 
+sec <- cbind(date=rownames(sec),
+      symbod = "005930.KS",
+      sec[c("005930.KS.Close", "005930.KS.Volume")])
+rownames(sec) <- NULL
+colnames(sec)[c(3,4)] <- c("close", "volume")
+head(sec)
+```
+```{r}
+hmc <- getSymbols(Symbols = "005387.KS",
+                  from = "2021-10-01",
+                  to = "2021-12-31",
+                  auto.assign = FALSE)
+hmc <- as.data.frame(hmc)
+str(hmc)
+head(hmc[c("005387.KS.Close", "005387.KS.Volume")])
+
+hmc <- cbind(date=rownames(hmc),
+      symbod = "005387.KS",
+      hmc[c("005387.KS.Close", "005387.KS.Volume")])
+rownames(hmc) <- NULL
+colnames(hmc)[c(3,4)] <- c("close", "volume")
+head(hmc)
+```
+
+```{r}
+stock <- rbind(sec, hmc); stock;
+```
+
+```{r}
+fx <- getSymbols(Symbols = "KRW=x",
+                  from = "2021-10-01",
+                  to = "2021-12-31",
+                  auto.assign = FALSE)
+fx <- as.data.frame(fx)
+str(fx)
+head(fx[c("KRW=X.Close")])
+
+fx <- cbind(date=rownames(fx),
+      fx[c("KRW=X.Close")])
+rownames(fx) <- NULL
+colnames(fx)[c(2)] <- c("close")
+head(fx)
+```
+
+```{r}
+intersect(names(sec), names(fx))
+```
+
+```{r}
+report <- merge(sec, fx, by="date"); report;
+```
+
+match() 함수를 이용한 데이터 결합 방법  
+
+```{r}
+v <-c(10:1)
+match(7, v)
+match(c(11,5,3,1,0), v)
+```
+
+```{r}
+head(mtcars)
+```
+
+```{r}
+car <- mtcars
+car$name <- rownames(car)
+rownames(car) <- NULL
+head(car)
+```
+
+```{r}
+highhp.car <- car[car$hp > 145, ]; highhp.car;
+lightwt.car <- car[car$wt < 3.2, ]; lightwt.car;
+```
+
+```{r}
+index <- match(highhp.car$name, lighthp.car$name); index;
+```
+
+```{r}
+lighthp.car[na.omit(index), ]
+```
+
+`%in%`를 이용한 데이터 결합
+
+```{r}
+7 %in% v
+```
+
+```{r}
+c(11,5,3,1,0) %in% v
+```
+
+```{r}
+index <- highhp.car$name %in% lightwt.car$name; index;
+```
+
+```{r}
+highhp.car[index,]
 ```
 
