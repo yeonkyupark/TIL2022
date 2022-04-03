@@ -329,6 +329,385 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> TIL20220403<a href="til20220403.html#til20220403" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="데이터-결합-방법" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.3.1</span> 데이터 결합 방법<a href="til20220403.html#데이터-결합-방법" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="til20220403.html#cb785-1"></a><span class="co"># finance.yahoo.com: Samsung Electronics, KRW</span></span>
+<span id="cb785-2"><a href="til20220403.html#cb785-2"></a><span class="kw">library</span>(quantmod)</span>
+<span id="cb785-3"><a href="til20220403.html#cb785-3"></a>sec &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols =</span> <span class="st">&quot;005930.KS&quot;</span>,</span>
+<span id="cb785-4"><a href="til20220403.html#cb785-4"></a>                  <span class="dt">from =</span> <span class="st">&quot;2021-10-01&quot;</span>,</span>
+<span id="cb785-5"><a href="til20220403.html#cb785-5"></a>                  <span class="dt">to =</span> <span class="st">&quot;2021-12-31&quot;</span>,</span>
+<span id="cb785-6"><a href="til20220403.html#cb785-6"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb785-7"><a href="til20220403.html#cb785-7"></a>sec &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(sec)</span>
+<span id="cb785-8"><a href="til20220403.html#cb785-8"></a><span class="kw">str</span>(sec)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    63 obs. of  6 variables:
+##  $ 005930.KS.Open    : num  73900 73000 72600 71600 72300 70700 68700 69000 70200 70200 ...
+##  $ 005930.KS.High    : num  74000 73000 72800 72100 72400 70900 69600 69800 71000 70300 ...
+##  $ 005930.KS.Low     : num  72900 71400 71200 71300 71500 68700 68300 68800 70000 69200 ...
+##  $ 005930.KS.Close   : num  73200 72200 71300 71600 71500 69000 68800 69400 70100 70200 ...
+##  $ 005930.KS.Volume  : num  15803395 24013921 18956962 13683532 14043287 ...
+##  $ 005930.KS.Adjusted: num  72871 71875 70979 71278 71179 ...</code></pre>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="til20220403.html#cb787-1"></a><span class="kw">head</span>(sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span></code></pre></div>
+<pre><code>##            005930.KS.Close 005930.KS.Volume
+## 2021-10-01           73200         15803395
+## 2021-10-05           72200         24013921
+## 2021-10-06           71300         18956962
+## 2021-10-07           71600         13683532
+## 2021-10-08           71500         14043287
+## 2021-10-12           69000         31001484</code></pre>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="til20220403.html#cb789-1"></a>sec &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date=</span><span class="kw">rownames</span>(sec),</span>
+<span id="cb789-2"><a href="til20220403.html#cb789-2"></a>      <span class="dt">symbod =</span> <span class="st">&quot;005930.KS&quot;</span>,</span>
+<span id="cb789-3"><a href="til20220403.html#cb789-3"></a>      sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span>
+<span id="cb789-4"><a href="til20220403.html#cb789-4"></a><span class="kw">rownames</span>(sec) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb789-5"><a href="til20220403.html#cb789-5"></a><span class="kw">colnames</span>(sec)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
+<span id="cb789-6"><a href="til20220403.html#cb789-6"></a><span class="kw">head</span>(sec)</span></code></pre></div>
+<pre><code>##         date    symbod close   volume
+## 1 2021-10-01 005930.KS 73200 15803395
+## 2 2021-10-05 005930.KS 72200 24013921
+## 3 2021-10-06 005930.KS 71300 18956962
+## 4 2021-10-07 005930.KS 71600 13683532
+## 5 2021-10-08 005930.KS 71500 14043287
+## 6 2021-10-12 005930.KS 69000 31001484</code></pre>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="til20220403.html#cb791-1"></a>hmc &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols =</span> <span class="st">&quot;005387.KS&quot;</span>,</span>
+<span id="cb791-2"><a href="til20220403.html#cb791-2"></a>                  <span class="dt">from =</span> <span class="st">&quot;2021-10-01&quot;</span>,</span>
+<span id="cb791-3"><a href="til20220403.html#cb791-3"></a>                  <span class="dt">to =</span> <span class="st">&quot;2021-12-31&quot;</span>,</span>
+<span id="cb791-4"><a href="til20220403.html#cb791-4"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb791-5"><a href="til20220403.html#cb791-5"></a>hmc &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(hmc)</span>
+<span id="cb791-6"><a href="til20220403.html#cb791-6"></a><span class="kw">str</span>(hmc)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    63 obs. of  6 variables:
+##  $ 005387.KS.Open    : num  95100 92400 91700 93100 96400 96100 95900 98800 99700 100000 ...
+##  $ 005387.KS.High    : num  95500 92400 93300 95900 98000 ...
+##  $ 005387.KS.Low     : num  92600 90100 91000 93100 96100 95200 95900 98500 99200 98600 ...
+##  $ 005387.KS.Close   : num  92800 91500 93100 95800 96100 95700 98500 99100 99700 100000 ...
+##  $ 005387.KS.Volume  : num  108008 142854 85533 65835 80350 ...
+##  $ 005387.KS.Adjusted: num  89176 87927 89465 92059 92348 ...</code></pre>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="til20220403.html#cb793-1"></a><span class="kw">head</span>(hmc[<span class="kw">c</span>(<span class="st">&quot;005387.KS.Close&quot;</span>, <span class="st">&quot;005387.KS.Volume&quot;</span>)])</span></code></pre></div>
+<pre><code>##            005387.KS.Close 005387.KS.Volume
+## 2021-10-01           92800           108008
+## 2021-10-05           91500           142854
+## 2021-10-06           93100            85533
+## 2021-10-07           95800            65835
+## 2021-10-08           96100            80350
+## 2021-10-12           95700            52477</code></pre>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="til20220403.html#cb795-1"></a>hmc &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date=</span><span class="kw">rownames</span>(hmc),</span>
+<span id="cb795-2"><a href="til20220403.html#cb795-2"></a>      <span class="dt">symbod =</span> <span class="st">&quot;005387.KS&quot;</span>,</span>
+<span id="cb795-3"><a href="til20220403.html#cb795-3"></a>      hmc[<span class="kw">c</span>(<span class="st">&quot;005387.KS.Close&quot;</span>, <span class="st">&quot;005387.KS.Volume&quot;</span>)])</span>
+<span id="cb795-4"><a href="til20220403.html#cb795-4"></a><span class="kw">rownames</span>(hmc) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb795-5"><a href="til20220403.html#cb795-5"></a><span class="kw">colnames</span>(hmc)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
+<span id="cb795-6"><a href="til20220403.html#cb795-6"></a><span class="kw">head</span>(hmc)</span></code></pre></div>
+<pre><code>##         date    symbod close volume
+## 1 2021-10-01 005387.KS 92800 108008
+## 2 2021-10-05 005387.KS 91500 142854
+## 3 2021-10-06 005387.KS 93100  85533
+## 4 2021-10-07 005387.KS 95800  65835
+## 5 2021-10-08 005387.KS 96100  80350
+## 6 2021-10-12 005387.KS 95700  52477</code></pre>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="til20220403.html#cb797-1"></a>stock &lt;-<span class="st"> </span><span class="kw">rbind</span>(sec, hmc); stock;</span></code></pre></div>
+<pre><code>##           date    symbod  close   volume
+## 1   2021-10-01 005930.KS  73200 15803395
+## 2   2021-10-05 005930.KS  72200 24013921
+## 3   2021-10-06 005930.KS  71300 18956962
+## 4   2021-10-07 005930.KS  71600 13683532
+## 5   2021-10-08 005930.KS  71500 14043287
+## 6   2021-10-12 005930.KS  69000 31001484
+## 7   2021-10-13 005930.KS  68800 24172015
+## 8   2021-10-14 005930.KS  69400 19520641
+## 9   2021-10-15 005930.KS  70100 18051612
+## 10  2021-10-18 005930.KS  70200 13486391
+## 11  2021-10-19 005930.KS  70600  9507991
+## 12  2021-10-20 005930.KS  70300 10151638
+## 13  2021-10-21 005930.KS  70200 10891094
+## 14  2021-10-22 005930.KS  70400  8395448
+## 15  2021-10-25 005930.KS  70200 10029621
+## 16  2021-10-26 005930.KS  71100 10528252
+## 17  2021-10-27 005930.KS  70100 10295316
+## 18  2021-10-28 005930.KS  70700 20644902
+## 19  2021-10-29 005930.KS  69800 17016151
+## 20  2021-11-01 005930.KS  69900 11503729
+## 21  2021-11-02 005930.KS  71500 16812570
+## 22  2021-11-03 005930.KS  70400 12770428
+## 23  2021-11-04 005930.KS  70600 11818987
+## 24  2021-11-05 005930.KS  70200 12667743
+## 25  2021-11-08 005930.KS  70600 11121981
+## 26  2021-11-09 005930.KS  70500 11159589
+## 27  2021-11-10 005930.KS  70200  9422009
+## 28  2021-11-11 005930.KS  69900 11489122
+## 29  2021-11-12 005930.KS  70600 10087450
+## 30  2021-11-15 005930.KS  71400 12420710
+## 31  2021-11-16 005930.KS  71300 10919239
+## 32  2021-11-17 005930.KS  70700 11027606
+## 33  2021-11-18 005930.KS  70200 10144957
+## 34  2021-11-19 005930.KS  71200 11954728
+## 35  2021-11-22 005930.KS  74900 27506623
+## 36  2021-11-23 005930.KS  75300 22029195
+## 37  2021-11-24 005930.KS  74800 15652305
+## 38  2021-11-25 005930.KS  73700 12559258
+## 39  2021-11-26 005930.KS  72300 13002242
+## 40  2021-11-29 005930.KS  72300 16682559
+## 41  2021-11-30 005930.KS  71300 30364841
+## 42  2021-12-01 005930.KS  74400 21954856
+## 43  2021-12-02 005930.KS  75800 23652940
+## 44  2021-12-03 005930.KS  75600 18330240
+## 45  2021-12-06 005930.KS  76300 16391250
+## 46  2021-12-07 005930.KS  77400 19232453
+## 47  2021-12-08 005930.KS  77400 21558340
+## 48  2021-12-09 005930.KS  78200 21604528
+## 49  2021-12-10 005930.KS  76900  9155219
+## 50  2021-12-13 005930.KS  76800 15038750
+## 51  2021-12-14 005930.KS  77000 10976660
+## 52  2021-12-15 005930.KS  77600  9584939
+## 53  2021-12-16 005930.KS  77800 11996128
+## 54  2021-12-17 005930.KS  78000 13108479
+## 55  2021-12-20 005930.KS  77100 11264375
+## 56  2021-12-21 005930.KS  78100 14245298
+## 57  2021-12-22 005930.KS  79400 17105892
+## 58  2021-12-23 005930.KS  79900 13577498
+## 59  2021-12-24 005930.KS  80500 12086380
+## 60  2021-12-27 005930.KS  80200 10783368
+## 61  2021-12-28 005930.KS  80300 18226325
+## 62  2021-12-29 005930.KS  78800 19794795
+## 63  2021-12-30 005930.KS  78300 14236700
+## 64  2021-10-01 005387.KS  92800   108008
+## 65  2021-10-05 005387.KS  91500   142854
+## 66  2021-10-06 005387.KS  93100    85533
+## 67  2021-10-07 005387.KS  95800    65835
+## 68  2021-10-08 005387.KS  96100    80350
+## 69  2021-10-12 005387.KS  95700    52477
+## 70  2021-10-13 005387.KS  98500    98226
+## 71  2021-10-14 005387.KS  99100    75945
+## 72  2021-10-15 005387.KS  99700   109056
+## 73  2021-10-18 005387.KS 100000    43648
+## 74  2021-10-19 005387.KS  99800    38447
+## 75  2021-10-20 005387.KS  99100    52920
+## 76  2021-10-21 005387.KS  98500    28210
+## 77  2021-10-22 005387.KS  98000    53776
+## 78  2021-10-25 005387.KS  98600    30712
+## 79  2021-10-26 005387.KS 100000    49703
+## 80  2021-10-27 005387.KS  99800    46890
+## 81  2021-10-28 005387.KS  99600    65956
+## 82  2021-10-29 005387.KS  97900   190494
+## 83  2021-11-01 005387.KS  97300    38263
+## 84  2021-11-02 005387.KS  99000    52010
+## 85  2021-11-03 005387.KS  98600    52784
+## 86  2021-11-04 005387.KS 101000   102459
+## 87  2021-11-05 005387.KS 102000    50635
+## 88  2021-11-08 005387.KS 102000    45959
+## 89  2021-11-09 005387.KS 100500    43161
+## 90  2021-11-10 005387.KS  99800    61779
+## 91  2021-11-11 005387.KS  99000    62718
+## 92  2021-11-12 005387.KS 100500    77660
+## 93  2021-11-15 005387.KS 101500    50184
+## 94  2021-11-16 005387.KS 100000    81583
+## 95  2021-11-17 005387.KS  99700    99969
+## 96  2021-11-18 005387.KS  99300    62083
+## 97  2021-11-19 005387.KS 101000    93428
+## 98  2021-11-22 005387.KS 103000   115000
+## 99  2021-11-23 005387.KS 101000    49487
+## 100 2021-11-24 005387.KS 100500    46581
+## 101 2021-11-25 005387.KS  99000    44285
+## 102 2021-11-26 005387.KS  96800    59202
+## 103 2021-11-29 005387.KS  95000    64425
+## 104 2021-11-30 005387.KS  92700   126889
+## 105 2021-12-01 005387.KS  95200    57573
+## 106 2021-12-02 005387.KS  98600    97508
+## 107 2021-12-03 005387.KS  98700    58303
+## 108 2021-12-06 005387.KS  99600    37288
+## 109 2021-12-07 005387.KS 100000    74364
+## 110 2021-12-08 005387.KS  99800    68506
+## 111 2021-12-09 005387.KS  99500    73889
+## 112 2021-12-10 005387.KS 100000    36045
+## 113 2021-12-13 005387.KS 101500    74162
+## 114 2021-12-14 005387.KS 102500    51064
+## 115 2021-12-15 005387.KS 101500    54096
+## 116 2021-12-16 005387.KS 102000    40362
+## 117 2021-12-17 005387.KS 101500    82656
+## 118 2021-12-20 005387.KS  99800    57000
+## 119 2021-12-21 005387.KS 100500    49408
+## 120 2021-12-22 005387.KS 102000    48258
+## 121 2021-12-23 005387.KS 102000    42262
+## 122 2021-12-24 005387.KS 105000    78738
+## 123 2021-12-27 005387.KS 104500    69957
+## 124 2021-12-28 005387.KS 105000    82228
+## 125 2021-12-29 005387.KS 101000    88034
+## 126 2021-12-30 005387.KS 101000    45697</code></pre>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="til20220403.html#cb799-1"></a>fx &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols =</span> <span class="st">&quot;KRW=x&quot;</span>,</span>
+<span id="cb799-2"><a href="til20220403.html#cb799-2"></a>                  <span class="dt">from =</span> <span class="st">&quot;2021-10-01&quot;</span>,</span>
+<span id="cb799-3"><a href="til20220403.html#cb799-3"></a>                  <span class="dt">to =</span> <span class="st">&quot;2021-12-31&quot;</span>,</span>
+<span id="cb799-4"><a href="til20220403.html#cb799-4"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb799-5"><a href="til20220403.html#cb799-5"></a>fx &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(fx)</span>
+<span id="cb799-6"><a href="til20220403.html#cb799-6"></a><span class="kw">str</span>(fx)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    66 obs. of  6 variables:
+##  $ KRW=X.Open    : num  1184 1180 1185 1186 1190 ...
+##  $ KRW=X.High    : num  1189 1185 1189 1197 1192 ...
+##  $ KRW=X.Low     : num  1179 1177 1183 1186 1187 ...
+##  $ KRW=X.Close   : num  1184 1180 1184 1187 1191 ...
+##  $ KRW=X.Volume  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ KRW=X.Adjusted: num  1184 1180 1184 1187 1191 ...</code></pre>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="til20220403.html#cb801-1"></a><span class="kw">head</span>(fx[<span class="kw">c</span>(<span class="st">&quot;KRW=X.Close&quot;</span>)])</span></code></pre></div>
+<pre><code>##            KRW=X.Close
+## 2021-10-01        1184
+## 2021-10-04        1180
+## 2021-10-05        1184
+## 2021-10-06        1187
+## 2021-10-07        1191
+## 2021-10-08        1191</code></pre>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="til20220403.html#cb803-1"></a>fx &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date=</span><span class="kw">rownames</span>(fx),</span>
+<span id="cb803-2"><a href="til20220403.html#cb803-2"></a>      fx[<span class="kw">c</span>(<span class="st">&quot;KRW=X.Close&quot;</span>)])</span>
+<span id="cb803-3"><a href="til20220403.html#cb803-3"></a><span class="kw">rownames</span>(fx) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb803-4"><a href="til20220403.html#cb803-4"></a><span class="kw">colnames</span>(fx)[<span class="kw">c</span>(<span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>)</span>
+<span id="cb803-5"><a href="til20220403.html#cb803-5"></a><span class="kw">head</span>(fx)</span></code></pre></div>
+<pre><code>##         date close
+## 1 2021-10-01  1184
+## 2 2021-10-04  1180
+## 3 2021-10-05  1184
+## 4 2021-10-06  1187
+## 5 2021-10-07  1191
+## 6 2021-10-08  1191</code></pre>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="til20220403.html#cb805-1"></a><span class="kw">intersect</span>(<span class="kw">names</span>(sec), <span class="kw">names</span>(fx))</span></code></pre></div>
+<pre><code>## [1] &quot;date&quot;  &quot;close&quot;</code></pre>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="til20220403.html#cb807-1"></a>report &lt;-<span class="st"> </span><span class="kw">merge</span>(sec, fx, <span class="dt">by=</span><span class="st">&quot;date&quot;</span>); report;</span></code></pre></div>
+<pre><code>##          date    symbod close.x   volume close.y
+## 1  2021-10-01 005930.KS   73200 15803395    1184
+## 2  2021-10-05 005930.KS   72200 24013921    1184
+## 3  2021-10-06 005930.KS   71300 18956962    1187
+## 4  2021-10-07 005930.KS   71600 13683532    1191
+## 5  2021-10-08 005930.KS   71500 14043287    1191
+## 6  2021-10-12 005930.KS   69000 31001484    1196
+## 7  2021-10-13 005930.KS   68800 24172015    1197
+## 8  2021-10-14 005930.KS   69400 19520641    1187
+## 9  2021-10-15 005930.KS   70100 18051612    1182
+## 10 2021-10-18 005930.KS   70200 13486391    1182
+## 11 2021-10-19 005930.KS   70600  9507991    1186
+## 12 2021-10-20 005930.KS   70300 10151638    1176
+## 13 2021-10-21 005930.KS   70200 10891094    1175
+## 14 2021-10-22 005930.KS   70400  8395448    1177
+## 15 2021-10-25 005930.KS   70200 10029621    1177
+## 16 2021-10-26 005930.KS   71100 10528252    1167
+## 17 2021-10-27 005930.KS   70100 10295316    1167
+## 18 2021-10-28 005930.KS   70700 20644902    1172
+## 19 2021-10-29 005930.KS   69800 17016151    1167
+## 20 2021-11-01 005930.KS   69900 11503729    1174
+## 21 2021-11-02 005930.KS   71500 16812570    1177
+## 22 2021-11-03 005930.KS   70400 12770428    1178
+## 23 2021-11-04 005930.KS   70600 11818987    1179
+## 24 2021-11-05 005930.KS   70200 12667743    1186
+## 25 2021-11-08 005930.KS   70600 11121981    1180
+## 26 2021-11-09 005930.KS   70500 11159589    1200
+## 27 2021-11-10 005930.KS   70200  9422009    1178
+## 28 2021-11-11 005930.KS   69900 11489122    1184
+## 29 2021-11-12 005930.KS   70600 10087450    1183
+## 30 2021-11-15 005930.KS   71400 12420710    1179
+## 31 2021-11-16 005930.KS   71300 10919239    1184
+## 32 2021-11-17 005930.KS   70700 11027606    1184
+## 33 2021-11-18 005930.KS   70200 10144957    1181
+## 34 2021-11-19 005930.KS   71200 11954728    1183
+## 35 2021-11-22 005930.KS   74900 27506623    1192
+## 36 2021-11-23 005930.KS   75300 22029195    1190
+## 37 2021-11-24 005930.KS   74800 15652305    1190
+## 38 2021-11-25 005930.KS   73700 12559258    1188
+## 39 2021-11-26 005930.KS   72300 13002242    1190
+## 40 2021-11-29 005930.KS   72300 16682559    1195
+## 41 2021-11-30 005930.KS   71300 30364841    1191
+## 42 2021-12-01 005930.KS   74400 21954856    1183
+## 43 2021-12-02 005930.KS   75800 23652940    1177
+## 44 2021-12-03 005930.KS   75600 18330240    1177
+## 45 2021-12-06 005930.KS   76300 16391250    1183
+## 46 2021-12-07 005930.KS   77400 19232453    1181
+## 47 2021-12-08 005930.KS   77400 21558340    1177
+## 48 2021-12-09 005930.KS   78200 21604528    1173
+## 49 2021-12-10 005930.KS   76900  9155219    1177
+## 50 2021-12-13 005930.KS   76800 15038750    1179
+## 51 2021-12-14 005930.KS   77000 10976660    1185
+## 52 2021-12-15 005930.KS   77600  9584939    1184
+## 53 2021-12-16 005930.KS   77800 11996128    1184
+## 54 2021-12-17 005930.KS   78000 13108479    1186
+## 55 2021-12-20 005930.KS   77100 11264375    1186
+## 56 2021-12-21 005930.KS   78100 14245298    1190
+## 57 2021-12-22 005930.KS   79400 17105892    1191
+## 58 2021-12-23 005930.KS   79900 13577498    1188
+## 59 2021-12-24 005930.KS   80500 12086380    1186
+## 60 2021-12-27 005930.KS   80200 10783368    1186
+## 61 2021-12-28 005930.KS   80300 18226325    1186
+## 62 2021-12-29 005930.KS   78800 19794795    1188
+## 63 2021-12-30 005930.KS   78300 14236700    1184</code></pre>
+<p>match() 함수를 이용한 데이터 결합 방법</p>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="til20220403.html#cb809-1"></a>v &lt;-<span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</span>
+<span id="cb809-2"><a href="til20220403.html#cb809-2"></a><span class="kw">match</span>(<span class="dv">7</span>, v)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="til20220403.html#cb811-1"></a><span class="kw">match</span>(<span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">0</span>), v)</span></code></pre></div>
+<pre><code>## [1] NA  6  8 10 NA</code></pre>
+<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="til20220403.html#cb813-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat   wt qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</code></pre>
+<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="til20220403.html#cb815-1"></a>car &lt;-<span class="st"> </span>mtcars</span>
+<span id="cb815-2"><a href="til20220403.html#cb815-2"></a>car<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">rownames</span>(car)</span>
+<span id="cb815-3"><a href="til20220403.html#cb815-3"></a><span class="kw">rownames</span>(car) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb815-4"><a href="til20220403.html#cb815-4"></a><span class="kw">head</span>(car)</span></code></pre></div>
+<pre><code>##    mpg cyl disp  hp drat   wt qsec vs am gear carb              name
+## 1 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4         Mazda RX4
+## 2 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4     Mazda RX4 Wag
+## 3 22.8   4  108  93 3.85 2.32 18.6  1  1    4    1        Datsun 710
+## 4 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1    Hornet 4 Drive
+## 5 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2 Hornet Sportabout
+## 6 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1           Valiant</code></pre>
+<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb817-1"><a href="til20220403.html#cb817-1"></a>highhp.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>hp <span class="op">&gt;</span><span class="st"> </span><span class="dv">145</span>, ]; highhp.car;</span></code></pre></div>
+<pre><code>##     mpg cyl disp  hp drat   wt qsec vs am gear carb                name
+## 5  18.7   8  360 175 3.15 3.44 17.0  0  0    3    2   Hornet Sportabout
+## 7  14.3   8  360 245 3.21 3.57 15.8  0  0    3    4          Duster 360
+## 12 16.4   8  276 180 3.07 4.07 17.4  0  0    3    3          Merc 450SE
+## 13 17.3   8  276 180 3.07 3.73 17.6  0  0    3    3          Merc 450SL
+## 14 15.2   8  276 180 3.07 3.78 18.0  0  0    3    3         Merc 450SLC
+## 15 10.4   8  472 205 2.93 5.25 18.0  0  0    3    4  Cadillac Fleetwood
+## 16 10.4   8  460 215 3.00 5.42 17.8  0  0    3    4 Lincoln Continental
+## 17 14.7   8  440 230 3.23 5.34 17.4  0  0    3    4   Chrysler Imperial
+## 22 15.5   8  318 150 2.76 3.52 16.9  0  0    3    2    Dodge Challenger
+## 23 15.2   8  304 150 3.15 3.44 17.3  0  0    3    2         AMC Javelin
+## 24 13.3   8  350 245 3.73 3.84 15.4  0  0    3    4          Camaro Z28
+## 25 19.2   8  400 175 3.08 3.85 17.1  0  0    3    2    Pontiac Firebird
+## 29 15.8   8  351 264 4.22 3.17 14.5  0  1    5    4      Ford Pantera L
+## 30 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6        Ferrari Dino
+## 31 15.0   8  301 335 3.54 3.57 14.6  0  1    5    8       Maserati Bora</code></pre>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="til20220403.html#cb819-1"></a>lightwt.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>wt <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.2</span>, ]; lightwt.car;</span></code></pre></div>
+<pre><code>##     mpg cyl  disp  hp drat   wt qsec vs am gear carb           name
+## 1  21.0   6 160.0 110 3.90 2.62 16.5  0  1    4    4      Mazda RX4
+## 2  21.0   6 160.0 110 3.90 2.88 17.0  0  1    4    4  Mazda RX4 Wag
+## 3  22.8   4 108.0  93 3.85 2.32 18.6  1  1    4    1     Datsun 710
+## 8  24.4   4 146.7  62 3.69 3.19 20.0  1  0    4    2      Merc 240D
+## 9  22.8   4 140.8  95 3.92 3.15 22.9  1  0    4    2       Merc 230
+## 18 32.4   4  78.7  66 4.08 2.20 19.5  1  1    4    1       Fiat 128
+## 19 30.4   4  75.7  52 4.93 1.61 18.5  1  1    4    2    Honda Civic
+## 20 33.9   4  71.1  65 4.22 1.83 19.9  1  1    4    1 Toyota Corolla
+## 21 21.5   4 120.1  97 3.70 2.46 20.0  1  0    3    1  Toyota Corona
+## 26 27.3   4  79.0  66 4.08 1.94 18.9  1  1    4    1      Fiat X1-9
+## 27 26.0   4 120.3  91 4.43 2.14 16.7  0  1    5    2  Porsche 914-2
+## 28 30.4   4  95.1 113 3.77 1.51 16.9  1  1    5    2   Lotus Europa
+## 29 15.8   8 351.0 264 4.22 3.17 14.5  0  1    5    4 Ford Pantera L
+## 30 19.7   6 145.0 175 3.62 2.77 15.5  0  1    5    6   Ferrari Dino
+## 32 21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2     Volvo 142E</code></pre>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="til20220403.html#cb821-1"></a>index &lt;-<span class="st"> </span><span class="kw">match</span>(highhp.car<span class="op">$</span>name, lighthp.car<span class="op">$</span>name); index;</span></code></pre></div>
+<pre><code>## Error in match(highhp.car$name, lighthp.car$name): object &#39;lighthp.car&#39; not found</code></pre>
+<pre><code>## function (x, ...) 
+## {
+##     UseMethod(&quot;index&quot;)
+## }
+## &lt;bytecode: 0x7fa856adada0&gt;
+## &lt;environment: namespace:zoo&gt;</code></pre>
+<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="til20220403.html#cb824-1"></a>lighthp.car[<span class="kw">na.omit</span>(index), ]</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;lighthp.car&#39; not found</code></pre>
+<p><code>%in%</code>를 이용한 데이터 결합</p>
+<div class="sourceCode" id="cb826"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb826-1"><a href="til20220403.html#cb826-1"></a><span class="dv">7</span> <span class="op">%in%</span><span class="st"> </span>v</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb828"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb828-1"><a href="til20220403.html#cb828-1"></a><span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">0</span>) <span class="op">%in%</span><span class="st"> </span>v</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="til20220403.html#cb830-1"></a>index &lt;-<span class="st"> </span>highhp.car<span class="op">$</span>name <span class="op">%in%</span><span class="st"> </span>lightwt.car<span class="op">$</span>name; index;</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [13]  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="til20220403.html#cb832-1"></a>highhp.car[index,]</span></code></pre></div>
+<pre><code>##     mpg cyl disp  hp drat   wt qsec vs am gear carb           name
+## 29 15.8   8  351 264 4.22 3.17 14.5  0  1    5    4 Ford Pantera L
+## 30 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6   Ferrari Dino</code></pre>
 
 </div>
 </div>
