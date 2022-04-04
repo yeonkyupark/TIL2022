@@ -1,4 +1,48 @@
 ## TIL20220404
 
-### 
+### 일치성
+
+**일치성**
+
+:  표본의 크기와 관련이 있는 추정량의 성질로 이를 만족하는 추정량을 일치추정량이라고 한다.
+
+$$
+\lim_{n \to \infty}P(|\hat\theta-\theta|>\epsilon) = 0
+$$
+
+```{r}
+if(!require(prob)) { install.packages("prob"); library(prob); }
+n <- 3
+smps.all <- rolldie(n)
+str(smps.all)
+head(smps.all)
+```
+
+```{r}
+is.even <- function(x) return(!x%%2)
+var.p <- function(x) {
+  return(sum((x-mean(x))^2/length(x)))
+}
+p.even <- function(x, s.size = 3) {
+  return(sum(is.even(x))/s.size)
+}
+phat <- apply(smps.all, 1, p.even)
+mean(phat)
+```
+
+```{r}
+(p.p <- 0.5)
+```
+
+```{r}
+var.p(phat)
+```
+
+```{r}
+(p.p*(1-p.p)/3)
+```
+
+```{r}
+sqrt(var.p(phat))
+```
 
