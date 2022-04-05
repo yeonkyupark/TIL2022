@@ -391,7 +391,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  3  E
 ## 5  1  A
 ## 6  2  D</code></pre>
+<div id="join-data-with-dplyr" class="section level4 hasAnchor">
+<h4><span class="header-section-number">4.5.1.1</span> Join Data with dplyr<a href="til20220405.html#join-data-with-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="https://user-images.githubusercontent.com/72383349/161749149-ba9fb25a-83de-4899-8c86-ccfa53d93b23.png" alt="Join Data" /><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="til20220405.html#cb868-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,</span>
+<span id="cb868-2"><a href="til20220405.html#cb868-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;a2&quot;</span>),</span>
+<span id="cb868-3"><a href="til20220405.html#cb868-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data1;</span></code></pre></div>
+<pre><code>##   ID x1
+## 1  1 a1
+## 2  2 a2</code></pre>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="til20220405.html#cb870-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,</span>
+<span id="cb870-2"><a href="til20220405.html#cb870-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>, <span class="st">&quot;b2&quot;</span>),</span>
+<span id="cb870-3"><a href="til20220405.html#cb870-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data2;</span></code></pre></div>
+<pre><code>##   ID x1
+## 1  2 b1
+## 2  3 b2</code></pre>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="til20220405.html#cb872-1"></a><span class="kw">inner_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1.x x1.y
+## 1  2   a2   b1</code></pre>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="til20220405.html#cb874-1"></a><span class="kw">left_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1.x x1.y
+## 1  1   a1 &lt;NA&gt;
+## 2  2   a2   b1</code></pre>
+<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="til20220405.html#cb876-1"></a><span class="kw">right_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1.x x1.y
+## 1  2   a2   b1
+## 2  3 &lt;NA&gt;   b2</code></pre>
+<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="til20220405.html#cb878-1"></a><span class="kw">full_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1.x x1.y
+## 1  1   a1 &lt;NA&gt;
+## 2  2   a2   b1
+## 3  3 &lt;NA&gt;   b2</code></pre>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="til20220405.html#cb880-1"></a><span class="kw">semi_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1
+## 1  2 a2</code></pre>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="til20220405.html#cb882-1"></a><span class="kw">anti_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<pre><code>##   ID x1
+## 1  1 a1</code></pre>
 
+</div>
 </div>
 </div>
 <!-- </div> -->
@@ -413,6 +451,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+
+<div class="footnotes">
+<hr />
+<ol start="14">
+<li id="fn14"><p><a href="https://www.youtube.com/watch?v=Yg-pNqzDuN4&amp;list=PLu6UwBFCnlEddsED6LFhgrg1vH-X6e4Ah&amp;index=2" class="uri">https://www.youtube.com/watch?v=Yg-pNqzDuN4&amp;list=PLu6UwBFCnlEddsED6LFhgrg1vH-X6e4Ah&amp;index=2</a><a href="til20220405.html#fnref14" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
