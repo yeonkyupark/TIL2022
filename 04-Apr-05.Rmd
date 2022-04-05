@@ -81,8 +81,28 @@ semi_join(data1, data2, by = "ID")
 anti_join(data1, data2, by = "ID")
 ```
 
+```{r}
+data1 <- data.frame(x1 = 1:5,
+                    x2 = letters[1:5]); data1;
+```
 
+```{r}
+data2 <- data.frame(x1 = 0,
+                    x3 = 5:9); data2;
+```
 
+```{r}
+data3 <- data.frame(x3 = 5:9,
+                    x4 = letters[5:9]); data3;
+```
+
+```{r}
+bind_rows(data1, data2)
+```
+
+```{r}
+bind_cols(data1, data3)
+```
 
 
 
