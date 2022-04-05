@@ -428,6 +428,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="til20220405.html#cb882-1"></a><span class="kw">anti_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1
 ## 1  1 a1</code></pre>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="til20220405.html#cb884-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb884-2"><a href="til20220405.html#cb884-2"></a>                    <span class="dt">x2 =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]); data1;</span></code></pre></div>
+<pre><code>##   x1 x2
+## 1  1  a
+## 2  2  b
+## 3  3  c
+## 4  4  d
+## 5  5  e</code></pre>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="til20220405.html#cb886-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">0</span>,</span>
+<span id="cb886-2"><a href="til20220405.html#cb886-2"></a>                    <span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>); data2;</span></code></pre></div>
+<pre><code>##   x1 x3
+## 1  0  5
+## 2  0  6
+## 3  0  7
+## 4  0  8
+## 5  0  9</code></pre>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="til20220405.html#cb888-1"></a>data3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>,</span>
+<span id="cb888-2"><a href="til20220405.html#cb888-2"></a>                    <span class="dt">x4 =</span> letters[<span class="dv">5</span><span class="op">:</span><span class="dv">9</span>]); data3;</span></code></pre></div>
+<pre><code>##   x3 x4
+## 1  5  e
+## 2  6  f
+## 3  7  g
+## 4  8  h
+## 5  9  i</code></pre>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="til20220405.html#cb890-1"></a><span class="kw">bind_rows</span>(data1, data2)</span></code></pre></div>
+<pre><code>##    x1   x2 x3
+## 1   1    a NA
+## 2   2    b NA
+## 3   3    c NA
+## 4   4    d NA
+## 5   5    e NA
+## 6   0 &lt;NA&gt;  5
+## 7   0 &lt;NA&gt;  6
+## 8   0 &lt;NA&gt;  7
+## 9   0 &lt;NA&gt;  8
+## 10  0 &lt;NA&gt;  9</code></pre>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="til20220405.html#cb892-1"></a><span class="kw">bind_cols</span>(data1, data3)</span></code></pre></div>
+<pre><code>##   x1 x2 x3 x4
+## 1  1  a  5  e
+## 2  2  b  6  f
+## 3  3  c  7  g
+## 4  4  d  8  h
+## 5  5  e  9  i</code></pre>
 
 </div>
 </div>
