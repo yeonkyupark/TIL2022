@@ -41,4 +41,57 @@ sample_n(data, 3)
 select(data, c(x2, x3))
 ```
 
+#### Join Data with dplyr
+
+![Join Data](https://user-images.githubusercontent.com/72383349/161749149-ba9fb25a-83de-4899-8c86-ccfa53d93b23.png)^[https://www.youtube.com/watch?v=Yg-pNqzDuN4&list=PLu6UwBFCnlEddsED6LFhgrg1vH-X6e4Ah&index=2]
+
+```{r}
+data1 <- data.frame(ID = 1:2,
+                    x1 = c("a1", "a2"),
+                    stringsAsFactors = F); data1;
+```
+
+```{r}
+data2 <- data.frame(ID = 2:3,
+                    x1 = c("b1", "b2"),
+                    stringsAsFactors = F); data2;
+```
+
+```{r}
+inner_join(data1, data2, by = "ID")
+```
+
+```{r}
+left_join(data1, data2, by = "ID")
+```
+
+```{r}
+right_join(data1, data2, by = "ID")
+```
+
+```{r}
+full_join(data1, data2, by = "ID")
+```
+
+```{r}
+semi_join(data1, data2, by = "ID")
+```
+
+```{r}
+anti_join(data1, data2, by = "ID")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
