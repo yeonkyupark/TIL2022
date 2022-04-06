@@ -2,3 +2,8 @@
 
 ### R Shiny
 
+```
+install.packages("shiny")
+```
+
+https://shiny.rstudio.com/
