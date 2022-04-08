@@ -1,3 +1,14 @@
 ## TIL20220408
 
 ### R shiny
+
+``` r
+if(!require(shiny)) { install.packages("shiny"); library(shiny); }
+runExample("01_hello")
+```
+
+``` r
+ui     <- fluidPage()
+server <- function(input, output){}
+shinyApp(ui = ui, server = server)
+```
