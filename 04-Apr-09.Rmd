@@ -61,3 +61,6 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
+![image](https://user-images.githubusercontent.com/72383349/162576266-b167d904-fda6-4315-8062-92d6c4786e9d.png)
+
