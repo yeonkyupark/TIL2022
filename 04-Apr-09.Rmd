@@ -2,4 +2,62 @@
 
 ### R shiny (conti.)
 
+``` R
+library(shiny)
+library(shinydashboard)
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
 
+ui <- dashboardPage(
+  dashboardHeader(title = "Basic dashboard"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+      selectInput("select1", label = h3("Select box"), 
+                  choices = list("Adelie" = "Adelie", "Chinstrap" = "Chinstrap", "Gentoo" = "Gentoo"), 
+                  selected = 1),
+      sliderInput("slider2", "Top N of Body Weight", 1, 10, 5),
+      menuItem("Widgets", tabName = "widgets", icon = icon("th"))
+    )
+  ),
+  dashboardBody(
+
+    tabItems(
+      # First tab content
+      tabItem(tabName = "dashboard",
+              fluidRow(
+                box(width=12, plotOutput("plot1", height = 250))
+              ),
+              fluidRow(
+                box(tableOutput("table1"))
+              )
+      ),
+      
+      # Second tab content
+      tabItem(tabName = "widgets",
+              h2("Widgets tab content")
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  data <- penguins
+  
+  print("in Server()")
+  
+  output$plot1 <- renderPlot({
+    print(input$select1)
+    data.hist <- t(data[data$species == input$select1, "body_mass_g"])
+    hist(data.hist, breaks=10, main = paste("Histogram of", input$select1))
+  })
+  output$table1 <- renderTable({
+    data %>% 
+      arrange(body_mass_g) %>% 
+      head(input$slider2)
+  })
+}
+
+shinyApp(ui, server)
+```
