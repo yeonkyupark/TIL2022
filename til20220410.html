@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.11 TIL20220311 | Today I Learned in 2022</title>
+  <title>4.10 TIL20220410 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.11 TIL20220311 | Today I Learned in 2022" />
+  <meta property="og:title" content="4.10 TIL20220410 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.11 TIL20220311 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="4.10 TIL20220410 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220310.html"/>
-<link rel="next" href="til20220312.html"/>
+<link rel="prev" href="til20220409.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -346,36 +346,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220311" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.11</span> TIL20220311<a href="til20220311.html#til20220311" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>DWmR 패키지는 github actions로 설치 안되는 걸로…<br />
-RStudio에서 rendering 후 업로드 하자.</p>
-<div id="url을-통해-직접-패키지-설치" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.11.1</span> URL을 통해 직접 패키지 설치<a href="til20220311.html#url을-통해-직접-패키지-설치" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Install an R package directly from a URL for the package source<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="til20220311.html#cb347-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz&quot;</span>, <span class="dt">repos=</span><span class="ot">NULL</span>, <span class="dt">method=</span><span class="st">&quot;libcurl&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="til20220311.html#cb348-1"></a><span class="kw">data</span>(<span class="st">&quot;BreastCancer&quot;</span>)</span>
-<span id="cb348-2"><a href="til20220311.html#cb348-2"></a>bc &lt;-<span class="st"> </span>BreastCancer[, <span class="dv">-1</span>] <span class="co"># Id 열 제외</span></span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;BreastCancer&#39; not found</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="til20220311.html#cb350-1"></a>bc.smote &lt;-<span class="st"> </span><span class="kw">SMOTE</span>(Class <span class="op">~</span><span class="st"> </span>., bc, <span class="dt">perc.over =</span> <span class="dv">100</span>, <span class="dt">perc.under =</span> <span class="dv">200</span>)</span>
-<span id="cb350-2"><a href="til20220311.html#cb350-2"></a>bc.smote.compete &lt;-<span class="st"> </span><span class="kw">complete</span>(bc.smote)</span>
-<span id="cb350-3"><a href="til20220311.html#cb350-3"></a><span class="kw">rbind</span>(<span class="dt">Orig =</span> <span class="kw">table</span>(bc<span class="op">$</span>Class), <span class="dt">SMOTE =</span> <span class="kw">table</span>(bc.smote.compete<span class="op">$</span>Class))</span></code></pre></div>
-<hr />
+<div id="til20220410" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.10</span> TIL20220410<a href="til20220410.html#til20220410" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-shiny-conti.-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">4.10.1</span> R shiny (conti.)<a href="til20220410.html#r-shiny-conti.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="7">
-<li id="fn7"><p><a href="https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source" class="uri">https://stackoverflow.com/questions/16412638/install-an-r-package-directly-from-a-url-for-the-package-source</a><a href="til20220311.html#fnref7" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220310.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="til20220312.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220409.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -406,7 +410,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/03-Mar-01.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/04-Apr-10.Rmd",
 "text": "Edit"
 },
 "history": {
