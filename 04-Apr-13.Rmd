@@ -1,0 +1,34 @@
+## TIL20220413
+
+### 모집단의 평균검정
+
+```{r}
+data <- read.table("http://jse.amstat.org/datasets/babyboom.dat.txt", header = F)
+str(data)
+```
+
+```{r}
+names(data) <- c("time", "gender", "weight", "minutes")
+tmp <- subset(data, gender==1)
+weight <- tmp[[3]]
+```
+
+```{r}
+barx <- mean(weight)
+s <- sd(weight)
+n <- length(weight)
+h0 <- 2800 #귀무가설: 여아 신생아의 몸무게 평균은 2800(g)보다 무겁다
+(t.t <- (barx - h0)/(s/sqrt(n)))
+```
+
+```{r}
+alpha <- 0.05
+( c.u <- qt(1-alpha, df=n-1) )
+( p.value <-  1 - pt(t.t, df=n-1) )
+```
+
+```{r}
+t.test(weight, mu = 2800, alternative = "greater")
+```
+
+
