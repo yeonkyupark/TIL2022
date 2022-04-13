@@ -193,3 +193,5 @@ til20220411
 r-shiny-reactive
 til20220412
 qcc
+til20220413
+모집단의-평균검정
