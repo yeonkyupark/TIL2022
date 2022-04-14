@@ -196,4 +196,4 @@ qcc
 til20220413
 모집단의-평균검정
 til20220413-1
-section
+aggregate
