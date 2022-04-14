@@ -1,5 +1,24 @@
 ## TIL20220413
 
-### 
+### aggregate()
 
+```{r}
+# aggregate(formula, data, FUN)
+# formula = 수치변수 ~ 카테고리
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+
+aggregate(body_mass_g ~ species, penguins, mean)
+```
+
+```{r}
+aggregate(body_mass_g ~ species + sex, penguins, mean)
+```
+
+```{r}
+aggregate(cbind(body=body_mass_g, bill=bill_length_mm) ~ species + sex, penguins, mean)
+```
+
+```{r}
+aggregate(. ~ species + sex, penguins, mean)
+```
 
