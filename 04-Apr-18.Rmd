@@ -1,0 +1,11 @@
+## TIL20220418
+
+### 단축키
+
+* %>% : ctrl + shift + m
+* <- : alt + -
+* multi cursor: ctrl + alt + 화살표위아래
+* 줄 이동 : alt + 화살표위아래
+* 줄 복사 : alt + shift + 화살표위아래
+* shortcut 설정 : Panel 이동 ctrl + alt + 화살표좌우로 변경
+* 소스코드 패널추가: ctrl + F7
