@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.17 TIL20220416 | Today I Learned in 2022</title>
+  <title>4.17 TIL20220417 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.17 TIL20220416 | Today I Learned in 2022" />
+  <meta property="og:title" content="4.17 TIL20220417 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.17 TIL20220416 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="4.17 TIL20220417 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-17" />
+<meta name="date" content="2022-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -343,8 +343,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.16" data-path="til20220416.html"><a href="til20220416.html"><i class="fa fa-check"></i><b>4.16</b> TIL20220416</a><ul>
 <li class="chapter" data-level="4.16.1" data-path="til20220416.html"><a href="til20220416.html#section"><i class="fa fa-check"></i><b>4.16.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="4.17" data-path="til20220416-1.html"><a href="til20220416-1.html"><i class="fa fa-check"></i><b>4.17</b> TIL20220416</a><ul>
-<li class="chapter" data-level="4.17.1" data-path="til20220416-1.html"><a href="til20220416-1.html#정리-중"><i class="fa fa-check"></i><b>4.17.1</b> 정리 중…</a></li>
+<li class="chapter" data-level="4.17" data-path="til20220417.html"><a href="til20220417.html"><i class="fa fa-check"></i><b>4.17</b> TIL20220417</a><ul>
+<li class="chapter" data-level="4.17.1" data-path="til20220417.html"><a href="til20220417.html#dplyr-1"><i class="fa fa-check"></i><b>4.17.1</b> dplyr</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -367,10 +367,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220416-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.17</span> TIL20220416<a href="til20220416-1.html#til20220416-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="정리-중" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.17.1</span> 정리 중…<a href="til20220416-1.html#정리-중" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="til20220417" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.17</span> TIL20220417<a href="til20220417.html#til20220417" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dplyr-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">4.17.1</span> dplyr<a href="til20220417.html#dplyr-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="til20220417.html#cb935-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
+<span id="cb935-2"><a href="til20220417.html#cb935-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb935-3"><a href="til20220417.html#cb935-3"></a></span>
+<span id="cb935-4"><a href="til20220417.html#cb935-4"></a>data &lt;-<span class="st"> </span>penguins</span>
+<span id="cb935-5"><a href="til20220417.html#cb935-5"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 344
+## Columns: 8
+## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+## $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+## $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+## $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+## $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
+## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="til20220417.html#cb937-1"></a><span class="co"># filter</span></span>
+<span id="cb937-2"><a href="til20220417.html#cb937-2"></a>data <span class="op">%&gt;%</span></span>
+<span id="cb937-3"><a href="til20220417.html#cb937-3"></a><span class="st">  </span><span class="kw">filter</span>(body_mass_g <span class="op">&gt;</span><span class="st"> </span><span class="dv">4500</span> <span class="op">&amp;</span><span class="st"> </span>species <span class="op">==</span><span class="st"> &quot;Adelie&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in filter(., body_mass_g &gt; 4500 &amp; species == &quot;Adelie&quot;): object &#39;body_mass_g&#39; not found</code></pre>
+<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="til20220417.html#cb939-1"></a><span class="co"># select</span></span>
+<span id="cb939-2"><a href="til20220417.html#cb939-2"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb939-3"><a href="til20220417.html#cb939-3"></a><span class="st">  </span><span class="kw">select</span>(island, <span class="kw">everything</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 8
+##    island    species bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;     &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Torgersen Adelie            39.1          18.7               181        3750
+##  2 Torgersen Adelie            39.5          17.4               186        3800
+##  3 Torgersen Adelie            40.3          18                 195        3250
+##  4 Torgersen Adelie            NA            NA                  NA          NA
+##  5 Torgersen Adelie            36.7          19.3               193        3450
+##  6 Torgersen Adelie            39.3          20.6               190        3650
+##  7 Torgersen Adelie            38.9          17.8               181        3625
+##  8 Torgersen Adelie            39.2          19.6               195        4675
+##  9 Torgersen Adelie            34.1          18.1               193        3475
+## 10 Torgersen Adelie            42            20.2               190        4250
+## # … with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="til20220417.html#cb941-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb941-2"><a href="til20220417.html#cb941-2"></a><span class="st">  </span><span class="kw">select</span>(bill_length_mm<span class="op">:</span><span class="kw">last_col</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 6
+##    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex     year
+##             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
+##  1           39.1          18.7               181        3750 male    2007
+##  2           39.5          17.4               186        3800 female  2007
+##  3           40.3          18                 195        3250 female  2007
+##  4           NA            NA                  NA          NA &lt;NA&gt;    2007
+##  5           36.7          19.3               193        3450 female  2007
+##  6           39.3          20.6               190        3650 male    2007
+##  7           38.9          17.8               181        3625 female  2007
+##  8           39.2          19.6               195        4675 male    2007
+##  9           34.1          18.1               193        3475 &lt;NA&gt;    2007
+## 10           42            20.2               190        4250 &lt;NA&gt;    2007
+## # … with 334 more rows</code></pre>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="til20220417.html#cb943-1"></a>data <span class="op">%&gt;%</span></span>
+<span id="cb943-2"><a href="til20220417.html#cb943-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">body_mass_kg =</span> <span class="kw">as.numeric</span>(<span class="kw">substr</span>(body_mass_g,<span class="dv">1</span>,<span class="dv">2</span>))<span class="op">/</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb943-3"><a href="til20220417.html#cb943-3"></a><span class="st">  </span><span class="kw">select</span>(body_mass_g, body_mass_kg)</span></code></pre></div>
+<pre><code>## # A tibble: 344 × 2
+##    body_mass_g body_mass_kg
+##          &lt;int&gt;        &lt;dbl&gt;
+##  1        3750          3.7
+##  2        3800          3.8
+##  3        3250          3.2
+##  4          NA         NA  
+##  5        3450          3.4
+##  6        3650          3.6
+##  7        3625          3.6
+##  8        4675          4.6
+##  9        3475          3.4
+## 10        4250          4.2
+## # … with 334 more rows</code></pre>
 
 </div>
 </div>

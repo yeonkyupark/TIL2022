@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-17" />
+<meta name="date" content="2022-04-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -343,8 +343,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.16" data-path="til20220416.html"><a href="til20220416.html"><i class="fa fa-check"></i><b>4.16</b> TIL20220416</a><ul>
 <li class="chapter" data-level="4.16.1" data-path="til20220416.html"><a href="til20220416.html#section"><i class="fa fa-check"></i><b>4.16.1</b> </a></li>
 </ul></li>
-<li class="chapter" data-level="4.17" data-path="til20220416-1.html"><a href="til20220416-1.html"><i class="fa fa-check"></i><b>4.17</b> TIL20220416</a><ul>
-<li class="chapter" data-level="4.17.1" data-path="til20220416-1.html"><a href="til20220416-1.html#정리-중"><i class="fa fa-check"></i><b>4.17.1</b> 정리 중…</a></li>
+<li class="chapter" data-level="4.17" data-path="til20220417.html"><a href="til20220417.html"><i class="fa fa-check"></i><b>4.17</b> TIL20220417</a><ul>
+<li class="chapter" data-level="4.17.1" data-path="til20220417.html"><a href="til20220417.html#dplyr-1"><i class="fa fa-check"></i><b>4.17.1</b> dplyr</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -373,74 +373,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.13.1</span> 시계열 데이터 분할<a href="til20220313.html#시계열-데이터-분할" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>출처: 시계열 데이터 - 항공여객(Air Passenger) 데이터<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p>시계열은 일반적인 방법으로 표본상에서 랜덤하게 원소를 추출할 수 없다. 시간 흐름을 고려하여 훈련 데이터와 시험 데이터로 분할해야 한다.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="til20220313.html#cb353-1"></a>train =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">18</span></span>
-<span id="cb353-2"><a href="til20220313.html#cb353-2"></a>test =<span class="st"> </span><span class="dv">19</span><span class="op">:</span><span class="dv">24</span></span>
-<span id="cb353-3"><a href="til20220313.html#cb353-3"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb353-4"><a href="til20220313.html#cb353-4"></a>{<span class="kw">plot</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">26</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">bty=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb353-5"><a href="til20220313.html#cb353-5"></a><span class="kw">arrows</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">25</span>,<span class="fl">0.5</span>,<span class="fl">0.05</span>)</span>
-<span id="cb353-6"><a href="til20220313.html#cb353-6"></a><span class="kw">points</span>(train, train<span class="op">*</span><span class="dv">0</span><span class="fl">+0.5</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb353-7"><a href="til20220313.html#cb353-7"></a><span class="kw">points</span>(test,  test<span class="op">*</span><span class="dv">0</span><span class="fl">+0.5</span>,  <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb353-8"><a href="til20220313.html#cb353-8"></a><span class="kw">text</span>(<span class="dv">26</span>,<span class="fl">0.5</span>,<span class="st">&quot;시간&quot;</span>)</span>
-<span id="cb353-9"><a href="til20220313.html#cb353-9"></a><span class="kw">text</span>(<span class="dv">10</span>,<span class="fl">0.7</span>,<span class="st">&quot;훈련데이터&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb353-10"><a href="til20220313.html#cb353-10"></a><span class="kw">text</span>(<span class="dv">21</span>,<span class="fl">0.7</span>,<span class="st">&quot;시험데이터&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)}</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="til20220313.html#cb352-1"></a>train =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">18</span></span>
+<span id="cb352-2"><a href="til20220313.html#cb352-2"></a>test =<span class="st"> </span><span class="dv">19</span><span class="op">:</span><span class="dv">24</span></span>
+<span id="cb352-3"><a href="til20220313.html#cb352-3"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb352-4"><a href="til20220313.html#cb352-4"></a>{<span class="kw">plot</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">26</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">bty=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb352-5"><a href="til20220313.html#cb352-5"></a><span class="kw">arrows</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">25</span>,<span class="fl">0.5</span>,<span class="fl">0.05</span>)</span>
+<span id="cb352-6"><a href="til20220313.html#cb352-6"></a><span class="kw">points</span>(train, train<span class="op">*</span><span class="dv">0</span><span class="fl">+0.5</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb352-7"><a href="til20220313.html#cb352-7"></a><span class="kw">points</span>(test,  test<span class="op">*</span><span class="dv">0</span><span class="fl">+0.5</span>,  <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb352-8"><a href="til20220313.html#cb352-8"></a><span class="kw">text</span>(<span class="dv">26</span>,<span class="fl">0.5</span>,<span class="st">&quot;시간&quot;</span>)</span>
+<span id="cb352-9"><a href="til20220313.html#cb352-9"></a><span class="kw">text</span>(<span class="dv">10</span>,<span class="fl">0.7</span>,<span class="st">&quot;훈련데이터&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb352-10"><a href="til20220313.html#cb352-10"></a><span class="kw">text</span>(<span class="dv">21</span>,<span class="fl">0.7</span>,<span class="st">&quot;시험데이터&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)}</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-163-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="til20220313.html#cb354-1"></a><span class="co"># Core Tidyverse</span></span>
-<span id="cb354-2"><a href="til20220313.html#cb354-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
-<pre><code>## 
-##   There is a binary version available but the source version is later:
-##       binary source needs_compilation
-## haven  2.4.3  2.5.0              TRUE
-## 
-## 
-## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="til20220313.html#cb356-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glue)) { <span class="kw">install.packages</span>(<span class="st">&quot;glue&quot;</span>); <span class="kw">library</span>(glue); }</span>
-<span id="cb356-2"><a href="til20220313.html#cb356-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forcats)) { <span class="kw">install.packages</span>(<span class="st">&quot;forcats&quot;</span>); <span class="kw">library</span>(forcats); }</span>
-<span id="cb356-3"><a href="til20220313.html#cb356-3"></a></span>
-<span id="cb356-4"><a href="til20220313.html#cb356-4"></a><span class="co"># Time Series</span></span>
-<span id="cb356-5"><a href="til20220313.html#cb356-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(timetk)) { <span class="kw">install.packages</span>(<span class="st">&quot;timetk&quot;</span>); <span class="kw">library</span>(timetk); }</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="til20220313.html#cb353-1"></a><span class="co"># Core Tidyverse</span></span>
+<span id="cb353-2"><a href="til20220313.html#cb353-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="til20220313.html#cb358-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyquant)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyquant&quot;</span>); <span class="kw">library</span>(tidyquant); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="til20220313.html#cb355-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glue)) { <span class="kw">install.packages</span>(<span class="st">&quot;glue&quot;</span>); <span class="kw">library</span>(glue); }</span>
+<span id="cb355-2"><a href="til20220313.html#cb355-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forcats)) { <span class="kw">install.packages</span>(<span class="st">&quot;forcats&quot;</span>); <span class="kw">library</span>(forcats); }</span>
+<span id="cb355-3"><a href="til20220313.html#cb355-3"></a></span>
+<span id="cb355-4"><a href="til20220313.html#cb355-4"></a><span class="co"># Time Series</span></span>
+<span id="cb355-5"><a href="til20220313.html#cb355-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(timetk)) { <span class="kw">install.packages</span>(<span class="st">&quot;timetk&quot;</span>); <span class="kw">library</span>(timetk); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="til20220313.html#cb360-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tibbletime)) { <span class="kw">install.packages</span>(<span class="st">&quot;tibbletime&quot;</span>); <span class="kw">library</span>(tibbletime); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="til20220313.html#cb357-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyquant)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyquant&quot;</span>); <span class="kw">library</span>(tidyquant); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="til20220313.html#cb362-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(sweep)) { <span class="kw">install.packages</span>(<span class="st">&quot;sweep&quot;</span>); <span class="kw">library</span>(sweep); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="til20220313.html#cb359-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tibbletime)) { <span class="kw">install.packages</span>(<span class="st">&quot;tibbletime&quot;</span>); <span class="kw">library</span>(tibbletime); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="til20220313.html#cb364-1"></a><span class="co"># Visualization</span></span>
-<span id="cb364-2"><a href="til20220313.html#cb364-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(cowplot)) { <span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>); <span class="kw">library</span>(cowplot); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="til20220313.html#cb361-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(sweep)) { <span class="kw">install.packages</span>(<span class="st">&quot;sweep&quot;</span>); <span class="kw">library</span>(sweep); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="til20220313.html#cb366-1"></a><span class="co"># Preprocessing</span></span>
-<span id="cb366-2"><a href="til20220313.html#cb366-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(recipes)) { <span class="kw">install.packages</span>(<span class="st">&quot;recipes&quot;</span>); <span class="kw">library</span>(recipes); }</span>
-<span id="cb366-3"><a href="til20220313.html#cb366-3"></a></span>
-<span id="cb366-4"><a href="til20220313.html#cb366-4"></a><span class="co"># Sampling / Accuracy</span></span>
-<span id="cb366-5"><a href="til20220313.html#cb366-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rsample)) { <span class="kw">install.packages</span>(<span class="st">&quot;rsample&quot;</span>); <span class="kw">library</span>(rsample); }</span>
-<span id="cb366-6"><a href="til20220313.html#cb366-6"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(yardstick)) { <span class="kw">install.packages</span>(<span class="st">&quot;yardstick&quot;</span>); <span class="kw">library</span>(yardstick); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="til20220313.html#cb363-1"></a><span class="co"># Visualization</span></span>
+<span id="cb363-2"><a href="til20220313.html#cb363-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(cowplot)) { <span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>); <span class="kw">library</span>(cowplot); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyoH75H/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220313.html#cb368-1"></a><span class="co"># Modeling</span></span>
-<span id="cb368-2"><a href="til20220313.html#cb368-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forecast)) { <span class="kw">install.packages</span>(<span class="st">&quot;forecast&quot;</span>); <span class="kw">library</span>(forecast); }</span>
-<span id="cb368-3"><a href="til20220313.html#cb368-3"></a></span>
-<span id="cb368-4"><a href="til20220313.html#cb368-4"></a><span class="kw">data</span>(<span class="st">&quot;AirPassengers&quot;</span>)</span>
-<span id="cb368-5"><a href="til20220313.html#cb368-5"></a></span>
-<span id="cb368-6"><a href="til20220313.html#cb368-6"></a>ap_ts &lt;-<span class="st"> </span>AirPassengers <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb368-7"><a href="til20220313.html#cb368-7"></a><span class="st">  </span><span class="kw">tk_tbl</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb368-8"><a href="til20220313.html#cb368-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> <span class="kw">as_date</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb368-9"><a href="til20220313.html#cb368-9"></a><span class="st">  </span><span class="kw">as_tbl_time</span>(<span class="dt">index =</span> index) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb368-10"><a href="til20220313.html#cb368-10"></a><span class="st">  </span><span class="kw">filter</span>(index <span class="op">&gt;=</span><span class="st"> &quot;1950-01-01&quot;</span>, index <span class="op">&lt;=</span><span class="st"> &quot;1959-12-31&quot;</span>)</span>
-<span id="cb368-11"><a href="til20220313.html#cb368-11"></a></span>
-<span id="cb368-12"><a href="til20220313.html#cb368-12"></a><span class="kw">ggplot</span>(ap_ts, <span class="kw">aes</span>(<span class="dt">x=</span>index, <span class="dt">y=</span>value)) <span class="op">+</span></span>
-<span id="cb368-13"><a href="til20220313.html#cb368-13"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="til20220313.html#cb365-1"></a><span class="co"># Preprocessing</span></span>
+<span id="cb365-2"><a href="til20220313.html#cb365-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(recipes)) { <span class="kw">install.packages</span>(<span class="st">&quot;recipes&quot;</span>); <span class="kw">library</span>(recipes); }</span>
+<span id="cb365-3"><a href="til20220313.html#cb365-3"></a></span>
+<span id="cb365-4"><a href="til20220313.html#cb365-4"></a><span class="co"># Sampling / Accuracy</span></span>
+<span id="cb365-5"><a href="til20220313.html#cb365-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rsample)) { <span class="kw">install.packages</span>(<span class="st">&quot;rsample&quot;</span>); <span class="kw">library</span>(rsample); }</span>
+<span id="cb365-6"><a href="til20220313.html#cb365-6"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(yardstick)) { <span class="kw">install.packages</span>(<span class="st">&quot;yardstick&quot;</span>); <span class="kw">library</span>(yardstick); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYGM4l1/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="til20220313.html#cb367-1"></a><span class="co"># Modeling</span></span>
+<span id="cb367-2"><a href="til20220313.html#cb367-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forecast)) { <span class="kw">install.packages</span>(<span class="st">&quot;forecast&quot;</span>); <span class="kw">library</span>(forecast); }</span>
+<span id="cb367-3"><a href="til20220313.html#cb367-3"></a></span>
+<span id="cb367-4"><a href="til20220313.html#cb367-4"></a><span class="kw">data</span>(<span class="st">&quot;AirPassengers&quot;</span>)</span>
+<span id="cb367-5"><a href="til20220313.html#cb367-5"></a></span>
+<span id="cb367-6"><a href="til20220313.html#cb367-6"></a>ap_ts &lt;-<span class="st"> </span>AirPassengers <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb367-7"><a href="til20220313.html#cb367-7"></a><span class="st">  </span><span class="kw">tk_tbl</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb367-8"><a href="til20220313.html#cb367-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> <span class="kw">as_date</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb367-9"><a href="til20220313.html#cb367-9"></a><span class="st">  </span><span class="kw">as_tbl_time</span>(<span class="dt">index =</span> index) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb367-10"><a href="til20220313.html#cb367-10"></a><span class="st">  </span><span class="kw">filter</span>(index <span class="op">&gt;=</span><span class="st"> &quot;1950-01-01&quot;</span>, index <span class="op">&lt;=</span><span class="st"> &quot;1959-12-31&quot;</span>)</span>
+<span id="cb367-11"><a href="til20220313.html#cb367-11"></a></span>
+<span id="cb367-12"><a href="til20220313.html#cb367-12"></a><span class="kw">ggplot</span>(ap_ts, <span class="kw">aes</span>(<span class="dt">x=</span>index, <span class="dt">y=</span>value)) <span class="op">+</span></span>
+<span id="cb367-13"><a href="til20220313.html#cb367-13"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-164-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>오늘은 여기까지…</p>
 <hr />
