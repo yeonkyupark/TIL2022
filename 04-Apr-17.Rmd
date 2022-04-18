@@ -1,3 +1,35 @@
-## TIL20220416
+## TIL20220417
 
-### 정리 중...
+### dplyr
+
+```{r}
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+
+data <- penguins
+data %>% glimpse()
+```
+
+```{r}
+# filter
+data %>%
+  filter(body_mass_g > 4500 & species == "Adelie")
+```
+
+```{r}
+# select
+data %>% 
+  select(island, everything())
+```
+
+```{r}
+data %>% 
+  select(bill_length_mm:last_col())
+```
+
+```{r}
+data %>%
+  mutate(body_mass_kg = as.numeric(substr(body_mass_g,1,2))/10) %>% 
+  select(body_mass_g, body_mass_kg)
+```
+
