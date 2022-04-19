@@ -1,0 +1,19 @@
+## TIL20220419
+
+### pdf 파일 처리
+
+```{r}
+# 관련 패키지
+if(!require(pdftools)) { install.packages("pdftools"); library(pdftools); }
+pdf <- "https://cran.r-project.org/doc/manuals/r-release/R-data.pdf"
+pdf.text <- pdf_text(pdf)
+head(pdf.text, 2)
+```
+
+```{r}
+keyword <- "odbc"
+result <- grep(keyword, pdf.text); result;
+# pdf.text[result]
+```
+
+
