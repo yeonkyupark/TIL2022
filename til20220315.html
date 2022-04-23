@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-22" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,6 +361,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.22" data-path="til20220422.html"><a href="til20220422.html"><i class="fa fa-check"></i><b>4.22</b> TIL20220422</a><ul>
 <li class="chapter" data-level="4.22.1" data-path="til20220422.html"><a href="til20220422.html#내용-정리-중"><i class="fa fa-check"></i><b>4.22.1</b> 내용 정리 중</a></li>
 </ul></li>
+<li class="chapter" data-level="4.23" data-path="til20220423.html"><a href="til20220423.html"><i class="fa fa-check"></i><b>4.23</b> TIL20220423</a><ul>
+<li class="chapter" data-level="4.23.1" data-path="til20220423.html"><a href="til20220423.html#내용-정리-중-1"><i class="fa fa-check"></i><b>4.23.1</b> 내용 정리 중</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -393,9 +396,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>성능평가</li>
 <li>하이퍼 파라메터 튜닝</li>
 </ul>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="til20220315.html#cb372-1"></a><span class="co"># 0. 데이터 준비</span></span>
-<span id="cb372-2"><a href="til20220315.html#cb372-2"></a><span class="kw">data</span>(<span class="st">&quot;penguins&quot;</span>)</span>
-<span id="cb372-3"><a href="til20220315.html#cb372-3"></a><span class="kw">str</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="til20220315.html#cb373-1"></a><span class="co"># 0. 데이터 준비</span></span>
+<span id="cb373-2"><a href="til20220315.html#cb373-2"></a><span class="kw">data</span>(<span class="st">&quot;penguins&quot;</span>)</span>
+<span id="cb373-3"><a href="til20220315.html#cb373-3"></a><span class="kw">str</span>(penguins)</span></code></pre></div>
 <pre><code>## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 ##  $ species          : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ island           : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -405,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
 ##  $ sex              : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
 ##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="til20220315.html#cb374-1"></a><span class="kw">summary</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="til20220315.html#cb375-1"></a><span class="kw">summary</span>(penguins)</span></code></pre></div>
 <pre><code>##       species          island    bill_length_mm  bill_depth_mm  
 ##  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
 ##  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
@@ -422,21 +425,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
 ##  Max.   :231.0     Max.   :6300                Max.   :2009  
 ##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="til20220315.html#cb376-1"></a><span class="co"># 1. 데이터 전처리</span></span>
-<span id="cb376-2"><a href="til20220315.html#cb376-2"></a></span>
-<span id="cb376-3"><a href="til20220315.html#cb376-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span>
-<span id="cb376-4"><a href="til20220315.html#cb376-4"></a></span>
-<span id="cb376-5"><a href="til20220315.html#cb376-5"></a>penguins.preprocessing &lt;-<span class="st"> </span><span class="kw">mice</span>(penguins, <span class="dt">m=</span><span class="dv">1</span>, <span class="dt">print=</span>F)</span>
-<span id="cb376-6"><a href="til20220315.html#cb376-6"></a></span>
-<span id="cb376-7"><a href="til20220315.html#cb376-7"></a><span class="co"># 결측치 처리</span></span>
-<span id="cb376-8"><a href="til20220315.html#cb376-8"></a>data &lt;-<span class="st"> </span><span class="kw">complete</span>(penguins.preprocessing)</span>
-<span id="cb376-9"><a href="til20220315.html#cb376-9"></a></span>
-<span id="cb376-10"><a href="til20220315.html#cb376-10"></a><span class="co"># 수치형 변수 정규화</span></span>
-<span id="cb376-11"><a href="til20220315.html#cb376-11"></a>data[, <span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>)] &lt;-<span class="st"> </span><span class="kw">scale</span>(data[, <span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>)])</span>
-<span id="cb376-12"><a href="til20220315.html#cb376-12"></a></span>
-<span id="cb376-13"><a href="til20220315.html#cb376-13"></a><span class="co"># 년도 범주로 변환</span></span>
-<span id="cb376-14"><a href="til20220315.html#cb376-14"></a>data<span class="op">$</span>year &lt;-<span class="st"> </span><span class="kw">as.factor</span>(data<span class="op">$</span>year)</span></code></pre></div>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="til20220315.html#cb377-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="til20220315.html#cb377-1"></a><span class="co"># 1. 데이터 전처리</span></span>
+<span id="cb377-2"><a href="til20220315.html#cb377-2"></a></span>
+<span id="cb377-3"><a href="til20220315.html#cb377-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span>
+<span id="cb377-4"><a href="til20220315.html#cb377-4"></a></span>
+<span id="cb377-5"><a href="til20220315.html#cb377-5"></a>penguins.preprocessing &lt;-<span class="st"> </span><span class="kw">mice</span>(penguins, <span class="dt">m=</span><span class="dv">1</span>, <span class="dt">print=</span>F)</span>
+<span id="cb377-6"><a href="til20220315.html#cb377-6"></a></span>
+<span id="cb377-7"><a href="til20220315.html#cb377-7"></a><span class="co"># 결측치 처리</span></span>
+<span id="cb377-8"><a href="til20220315.html#cb377-8"></a>data &lt;-<span class="st"> </span><span class="kw">complete</span>(penguins.preprocessing)</span>
+<span id="cb377-9"><a href="til20220315.html#cb377-9"></a></span>
+<span id="cb377-10"><a href="til20220315.html#cb377-10"></a><span class="co"># 수치형 변수 정규화</span></span>
+<span id="cb377-11"><a href="til20220315.html#cb377-11"></a>data[, <span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>)] &lt;-<span class="st"> </span><span class="kw">scale</span>(data[, <span class="kw">c</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>)])</span>
+<span id="cb377-12"><a href="til20220315.html#cb377-12"></a></span>
+<span id="cb377-13"><a href="til20220315.html#cb377-13"></a><span class="co"># 년도 범주로 변환</span></span>
+<span id="cb377-14"><a href="til20220315.html#cb377-14"></a>data<span class="op">$</span>year &lt;-<span class="st"> </span><span class="kw">as.factor</span>(data<span class="op">$</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="til20220315.html#cb378-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
 <pre><code>##       species          island    bill_length_mm    bill_depth_mm     
 ##  Adelie   :152   Biscoe   :168   Min.   :-2.1700   Min.   :-2.03915  
 ##  Chinstrap: 68   Dream    :124   1st Qu.:-0.8530   1st Qu.:-0.79363  
@@ -451,53 +454,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   : 0.0000   Mean   : 0.0000                          
 ##  3rd Qu.: 0.8766   3rd Qu.: 0.6851                          
 ##  Max.   : 2.1394   Max.   : 2.6216</code></pre>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="til20220315.html#cb379-1"></a><span class="co"># 2. 데이터 분할</span></span>
-<span id="cb379-2"><a href="til20220315.html#cb379-2"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>sex, <span class="dt">p=</span><span class="fl">0.7</span>, <span class="dt">list=</span>F)</span>
-<span id="cb379-3"><a href="til20220315.html#cb379-3"></a>data.train &lt;-<span class="st"> </span>data[train.index, ]</span>
-<span id="cb379-4"><a href="til20220315.html#cb379-4"></a>data.test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index, ]</span>
-<span id="cb379-5"><a href="til20220315.html#cb379-5"></a></span>
-<span id="cb379-6"><a href="til20220315.html#cb379-6"></a><span class="kw">addmargins</span>(<span class="kw">rbind</span>(</span>
-<span id="cb379-7"><a href="til20220315.html#cb379-7"></a>  <span class="dt">TrainSet =</span> <span class="kw">table</span>(data.train<span class="op">$</span>sex),</span>
-<span id="cb379-8"><a href="til20220315.html#cb379-8"></a>  <span class="dt">TestSet =</span> <span class="kw">table</span>(data.test<span class="op">$</span>sex)</span>
-<span id="cb379-9"><a href="til20220315.html#cb379-9"></a>),<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="til20220315.html#cb380-1"></a><span class="co"># 2. 데이터 분할</span></span>
+<span id="cb380-2"><a href="til20220315.html#cb380-2"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>sex, <span class="dt">p=</span><span class="fl">0.7</span>, <span class="dt">list=</span>F)</span>
+<span id="cb380-3"><a href="til20220315.html#cb380-3"></a>data.train &lt;-<span class="st"> </span>data[train.index, ]</span>
+<span id="cb380-4"><a href="til20220315.html#cb380-4"></a>data.test &lt;-<span class="st"> </span>data[<span class="op">-</span>train.index, ]</span>
+<span id="cb380-5"><a href="til20220315.html#cb380-5"></a></span>
+<span id="cb380-6"><a href="til20220315.html#cb380-6"></a><span class="kw">addmargins</span>(<span class="kw">rbind</span>(</span>
+<span id="cb380-7"><a href="til20220315.html#cb380-7"></a>  <span class="dt">TrainSet =</span> <span class="kw">table</span>(data.train<span class="op">$</span>sex),</span>
+<span id="cb380-8"><a href="til20220315.html#cb380-8"></a>  <span class="dt">TestSet =</span> <span class="kw">table</span>(data.test<span class="op">$</span>sex)</span>
+<span id="cb380-9"><a href="til20220315.html#cb380-9"></a>),<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##          female male Sum
 ## TrainSet    122  120 242
 ## TestSet      51   51 102</code></pre>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="til20220315.html#cb381-1"></a><span class="co"># 3. 학습</span></span>
-<span id="cb381-2"><a href="til20220315.html#cb381-2"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">repeats =</span> <span class="dv">5</span>)</span>
-<span id="cb381-3"><a href="til20220315.html#cb381-3"></a>model.rf &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, <span class="dt">trControl =</span> fitControl); model.rf</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="til20220315.html#cb382-1"></a><span class="co"># 3. 학습</span></span>
+<span id="cb382-2"><a href="til20220315.html#cb382-2"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">repeats =</span> <span class="dv">5</span>)</span>
+<span id="cb382-3"><a href="til20220315.html#cb382-3"></a>model.rf &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, <span class="dt">trControl =</span> fitControl); model.rf</span></code></pre></div>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf&#39; not found</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="til20220315.html#cb384-1"></a><span class="co"># 4. 성능평가</span></span>
-<span id="cb384-2"><a href="til20220315.html#cb384-2"></a>model.rf.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="til20220315.html#cb385-1"></a><span class="co"># 4. 성능평가</span></span>
+<span id="cb385-2"><a href="til20220315.html#cb385-2"></a>model.rf.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
 <pre><code>## Error in predict(model.rf, newdata = data.test): object &#39;model.rf&#39; not found</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="til20220315.html#cb386-1"></a>model.rf.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.pred, data.test<span class="op">$</span>sex); model.rf.cm</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="til20220315.html#cb387-1"></a>model.rf.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.pred, data.test<span class="op">$</span>sex); model.rf.cm</span></code></pre></div>
 <pre><code>## Error in confusionMatrix(model.rf.pred, data.test$sex): object &#39;model.rf.pred&#39; not found</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.cm&#39; not found</code></pre>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="til20220315.html#cb389-1"></a><span class="co"># 5. 하이퍼 파라메터 튜닝</span></span>
-<span id="cb389-2"><a href="til20220315.html#cb389-2"></a></span>
-<span id="cb389-3"><a href="til20220315.html#cb389-3"></a><span class="co">## 5-1. custom search grid</span></span>
-<span id="cb389-4"><a href="til20220315.html#cb389-4"></a>customGrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">mtry =</span> <span class="dv">1</span><span class="op">:</span>(<span class="kw">dim</span>(data.train)[<span class="dv">2</span>]<span class="op">-</span><span class="dv">1</span>))</span>
-<span id="cb389-5"><a href="til20220315.html#cb389-5"></a>model.rf.tuned &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, </span>
-<span id="cb389-6"><a href="til20220315.html#cb389-6"></a>                        <span class="dt">trControl =</span> fitControl,</span>
-<span id="cb389-7"><a href="til20220315.html#cb389-7"></a>                        <span class="dt">tuneGrid =</span> customGrid); model.rf.tuned</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="til20220315.html#cb390-1"></a><span class="co"># 5. 하이퍼 파라메터 튜닝</span></span>
+<span id="cb390-2"><a href="til20220315.html#cb390-2"></a></span>
+<span id="cb390-3"><a href="til20220315.html#cb390-3"></a><span class="co">## 5-1. custom search grid</span></span>
+<span id="cb390-4"><a href="til20220315.html#cb390-4"></a>customGrid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">mtry =</span> <span class="dv">1</span><span class="op">:</span>(<span class="kw">dim</span>(data.train)[<span class="dv">2</span>]<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb390-5"><a href="til20220315.html#cb390-5"></a>model.rf.tuned &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, </span>
+<span id="cb390-6"><a href="til20220315.html#cb390-6"></a>                        <span class="dt">trControl =</span> fitControl,</span>
+<span id="cb390-7"><a href="til20220315.html#cb390-7"></a>                        <span class="dt">tuneGrid =</span> customGrid); model.rf.tuned</span></code></pre></div>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.tuned&#39; not found</code></pre>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="til20220315.html#cb392-1"></a>model.rf.tuned.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf.tuned, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="til20220315.html#cb393-1"></a>model.rf.tuned.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf.tuned, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
 <pre><code>## Error in predict(model.rf.tuned, newdata = data.test): object &#39;model.rf.tuned&#39; not found</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="til20220315.html#cb394-1"></a>model.rf.tuned.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.tuned.pred, data.test<span class="op">$</span>sex); model.rf.tuned.cm</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="til20220315.html#cb395-1"></a>model.rf.tuned.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.tuned.pred, data.test<span class="op">$</span>sex); model.rf.tuned.cm</span></code></pre></div>
 <pre><code>## Error in confusionMatrix(model.rf.tuned.pred, data.test$sex): object &#39;model.rf.tuned.pred&#39; not found</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.tuned.cm&#39; not found</code></pre>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="til20220315.html#cb397-1"></a><span class="co"># 5-2. Random Search Grid</span></span>
-<span id="cb397-2"><a href="til20220315.html#cb397-2"></a>fitControl.random &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">repeats =</span> <span class="dv">5</span>, <span class="dt">search =</span> <span class="st">&quot;random&quot;</span>)</span>
-<span id="cb397-3"><a href="til20220315.html#cb397-3"></a>model.rf.tuned2 &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, </span>
-<span id="cb397-4"><a href="til20220315.html#cb397-4"></a>                        <span class="dt">trControl =</span> fitControl.random,</span>
-<span id="cb397-5"><a href="til20220315.html#cb397-5"></a>                        <span class="dt">tuneLength =</span> <span class="dv">10</span>); model.rf.tuned2</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="til20220315.html#cb398-1"></a><span class="co"># 5-2. Random Search Grid</span></span>
+<span id="cb398-2"><a href="til20220315.html#cb398-2"></a>fitControl.random &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">repeats =</span> <span class="dv">5</span>, <span class="dt">search =</span> <span class="st">&quot;random&quot;</span>)</span>
+<span id="cb398-3"><a href="til20220315.html#cb398-3"></a>model.rf.tuned2 &lt;-<span class="st"> </span><span class="kw">train</span>(sex <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>data.train, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>, </span>
+<span id="cb398-4"><a href="til20220315.html#cb398-4"></a>                        <span class="dt">trControl =</span> fitControl.random,</span>
+<span id="cb398-5"><a href="til20220315.html#cb398-5"></a>                        <span class="dt">tuneLength =</span> <span class="dv">10</span>); model.rf.tuned2</span></code></pre></div>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.tuned2&#39; not found</code></pre>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="til20220315.html#cb400-1"></a>model.rf.tuned2.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf.tuned2, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="til20220315.html#cb401-1"></a>model.rf.tuned2.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model.rf.tuned2, <span class="dt">newdata =</span> data.test)</span></code></pre></div>
 <pre><code>## Error in predict(model.rf.tuned2, newdata = data.test): object &#39;model.rf.tuned2&#39; not found</code></pre>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="til20220315.html#cb402-1"></a>model.rf.tuned2.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.tuned2.pred, data.test<span class="op">$</span>sex); model.rf.tuned2.cm</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="til20220315.html#cb403-1"></a>model.rf.tuned2.cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(model.rf.tuned2.pred, data.test<span class="op">$</span>sex); model.rf.tuned2.cm</span></code></pre></div>
 <pre><code>## Error in confusionMatrix(model.rf.tuned2.pred, data.test$sex): object &#39;model.rf.tuned2.pred&#39; not found</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;model.rf.tuned2.cm&#39; not found</code></pre>
 

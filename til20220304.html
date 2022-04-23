@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-22" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,6 +361,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.22" data-path="til20220422.html"><a href="til20220422.html"><i class="fa fa-check"></i><b>4.22</b> TIL20220422</a><ul>
 <li class="chapter" data-level="4.22.1" data-path="til20220422.html"><a href="til20220422.html#내용-정리-중"><i class="fa fa-check"></i><b>4.22.1</b> 내용 정리 중</a></li>
 </ul></li>
+<li class="chapter" data-level="4.23" data-path="til20220423.html"><a href="til20220423.html"><i class="fa fa-check"></i><b>4.23</b> TIL20220423</a><ul>
+<li class="chapter" data-level="4.23.1" data-path="til20220423.html"><a href="til20220423.html#내용-정리-중-1"><i class="fa fa-check"></i><b>4.23.1</b> 내용 정리 중</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -417,24 +420,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="https://miro.medium.com/max/1400/1*fP1TTrA7TYD58rYgMHiL_A.png" />출처<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p><strong>이항분포(binomial distribution)</strong></p>
 <p>대표적인 이산확률분포(discrete probability distribution)로서 매회 어떤 사건이 일어날 확률이 동일한 독립 시행의 경우에 있어서 이 사건이 일어나는 횟수가 만들어 내는 분포이다. 예를 들면 동전 던지기로 동전을 일정 횟수 반복하여 던지는 실험에서 매 시행시마다 숫자면이 나타날 확률이 1/2이라고 할 때 숫자면이 나타나는 횟수는 이항분포를 따른다고 할 수 있다.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="til20220304.html#cb215-1"></a><span class="kw">dbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 나타날 확률</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="til20220304.html#cb216-1"></a><span class="kw">dbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 나타날 확률</span></span></code></pre></div>
 <pre><code>## [1] 0.1171875</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="til20220304.html#cb217-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 이하가 나타날 확률</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="til20220304.html#cb218-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)  <span class="co"># 10번 던져 숫자면이 7번 이하가 나타날 확률</span></span></code></pre></div>
 <pre><code>## [1] 0.9453125</code></pre>
 <p>누적확률은 밀도함수의 합으로 계산이 가능하다.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="til20220304.html#cb219-1"></a><span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>)) <span class="co"># 0번, 1번, ..., 7번 나타날 확률의 합</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="til20220304.html#cb220-1"></a><span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>)) <span class="co"># 0번, 1번, ..., 7번 나타날 확률의 합</span></span></code></pre></div>
 <pre><code>## [1] 0.9453125</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="til20220304.html#cb221-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> F) <span class="co"># 1 - pbinom(7, 10, 0.5)</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="til20220304.html#cb222-1"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> F) <span class="co"># 1 - pbinom(7, 10, 0.5)</span></span></code></pre></div>
 <pre><code>## [1] 0.0546875</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="til20220304.html#cb223-1"></a><span class="co"># 4번 이상 7번 이하 발생할 누적확률, 7번에서 4번의 누적확률을 빼서 계산</span></span>
-<span id="cb223-2"><a href="til20220304.html#cb223-2"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="til20220304.html#cb224-1"></a><span class="co"># 4번 이상 7번 이하 발생할 누적확률, 7번에서 4번의 누적확률을 빼서 계산</span></span>
+<span id="cb224-2"><a href="til20220304.html#cb224-2"></a><span class="kw">pbinom</span>(<span class="dv">7</span>, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.7734375</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="til20220304.html#cb225-1"></a><span class="kw">diff</span>(<span class="kw">pbinom</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="til20220304.html#cb226-1"></a><span class="kw">diff</span>(<span class="kw">pbinom</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>), <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code></pre></div>
 <pre><code>## [1] 0.7734375</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="til20220304.html#cb227-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb227-2"><a href="til20220304.html#cb227-2"></a><span class="kw">rbinom</span>(<span class="dv">1</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="til20220304.html#cb228-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb228-2"><a href="til20220304.html#cb228-2"></a><span class="kw">rbinom</span>(<span class="dv">1</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="til20220304.html#cb229-1"></a><span class="kw">rbinom</span>(<span class="dv">5</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="til20220304.html#cb230-1"></a><span class="kw">rbinom</span>(<span class="dv">5</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 4 5 7 4 7</code></pre>
 <hr />
 </div>

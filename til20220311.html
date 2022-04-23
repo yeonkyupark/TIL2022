@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-22" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,6 +361,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.22" data-path="til20220422.html"><a href="til20220422.html"><i class="fa fa-check"></i><b>4.22</b> TIL20220422</a><ul>
 <li class="chapter" data-level="4.22.1" data-path="til20220422.html"><a href="til20220422.html#내용-정리-중"><i class="fa fa-check"></i><b>4.22.1</b> 내용 정리 중</a></li>
 </ul></li>
+<li class="chapter" data-level="4.23" data-path="til20220423.html"><a href="til20220423.html"><i class="fa fa-check"></i><b>4.23</b> TIL20220423</a><ul>
+<li class="chapter" data-level="4.23.1" data-path="til20220423.html"><a href="til20220423.html#내용-정리-중-1"><i class="fa fa-check"></i><b>4.23.1</b> 내용 정리 중</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -389,13 +392,13 @@ RStudio에서 rendering 후 업로드 하자.</p>
 <div id="url을-통해-직접-패키지-설치" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.11.1</span> URL을 통해 직접 패키지 설치<a href="til20220311.html#url을-통해-직접-패키지-설치" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Install an R package directly from a URL for the package source<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="til20220311.html#cb347-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz&quot;</span>, <span class="dt">repos=</span><span class="ot">NULL</span>, <span class="dt">method=</span><span class="st">&quot;libcurl&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="til20220311.html#cb348-1"></a><span class="kw">data</span>(<span class="st">&quot;BreastCancer&quot;</span>)</span>
-<span id="cb348-2"><a href="til20220311.html#cb348-2"></a>bc &lt;-<span class="st"> </span>BreastCancer[, <span class="dv">-1</span>] <span class="co"># Id 열 제외</span></span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="til20220311.html#cb348-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz&quot;</span>, <span class="dt">repos=</span><span class="ot">NULL</span>, <span class="dt">method=</span><span class="st">&quot;libcurl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="til20220311.html#cb349-1"></a><span class="kw">data</span>(<span class="st">&quot;BreastCancer&quot;</span>)</span>
+<span id="cb349-2"><a href="til20220311.html#cb349-2"></a>bc &lt;-<span class="st"> </span>BreastCancer[, <span class="dv">-1</span>] <span class="co"># Id 열 제외</span></span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;BreastCancer&#39; not found</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="til20220311.html#cb350-1"></a>bc.smote &lt;-<span class="st"> </span><span class="kw">SMOTE</span>(Class <span class="op">~</span><span class="st"> </span>., bc, <span class="dt">perc.over =</span> <span class="dv">100</span>, <span class="dt">perc.under =</span> <span class="dv">200</span>)</span>
-<span id="cb350-2"><a href="til20220311.html#cb350-2"></a>bc.smote.compete &lt;-<span class="st"> </span><span class="kw">complete</span>(bc.smote)</span>
-<span id="cb350-3"><a href="til20220311.html#cb350-3"></a><span class="kw">rbind</span>(<span class="dt">Orig =</span> <span class="kw">table</span>(bc<span class="op">$</span>Class), <span class="dt">SMOTE =</span> <span class="kw">table</span>(bc.smote.compete<span class="op">$</span>Class))</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="til20220311.html#cb351-1"></a>bc.smote &lt;-<span class="st"> </span><span class="kw">SMOTE</span>(Class <span class="op">~</span><span class="st"> </span>., bc, <span class="dt">perc.over =</span> <span class="dv">100</span>, <span class="dt">perc.under =</span> <span class="dv">200</span>)</span>
+<span id="cb351-2"><a href="til20220311.html#cb351-2"></a>bc.smote.compete &lt;-<span class="st"> </span><span class="kw">complete</span>(bc.smote)</span>
+<span id="cb351-3"><a href="til20220311.html#cb351-3"></a><span class="kw">rbind</span>(<span class="dt">Orig =</span> <span class="kw">table</span>(bc<span class="op">$</span>Class), <span class="dt">SMOTE =</span> <span class="kw">table</span>(bc.smote.compete<span class="op">$</span>Class))</span></code></pre></div>
 <hr />
 </div>
 </div>
