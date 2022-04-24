@@ -2,6 +2,31 @@
 
 ### shiny app 배포. 계속 -> NFT 공부
 
-1. 메타마스크 가입 및 지갑 만들기
+1. 메타마스크(MetaMask) 가입 및 지갑 만들기
+   
+![image](https://user-images.githubusercontent.com/72383349/164954735-7b40dccf-1d23-4d4f-ae05-efcde5d15f61.png)
 
+![image](https://user-images.githubusercontent.com/72383349/164954801-56ddaee4-529e-4813-8151-48d33ceee306.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164954808-cfbd8c34-d481-4a6e-87b0-4ae7f8f26779.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164955123-7ff84285-bf8a-4c57-854a-673bfdcd34f3.png)
+
+2. 오픈씨(https://opensea.io) 연동
+
+![image](https://user-images.githubusercontent.com/72383349/164956066-1e366401-0eea-4dba-a234-a74e9826f5fc.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164956084-0cb8176b-183e-4cd6-b23d-f12e6f125446.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164956106-a33eefa0-26c7-43af-a6b1-17bc4a44da55.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164956173-8cad3115-09a8-46ad-83e8-b3799167da9b.png)
+
+![image](https://user-images.githubusercontent.com/72383349/164956209-d24a4181-7d55-466c-9403-2398e4ede317.png)
+
+  - 네트워크 이름 : Polygon Mainnet
+  - 새 RPC URL : https://polygon-rpc.com/
+  - 체인 ID : 137
+  - 통화 기호 (옵션) : MATIC
+  - 블록 탐색기 URL (옵션) : https://polygonscan.com
 
