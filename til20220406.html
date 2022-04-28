@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -383,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.29.1" data-path="til20220429.html"><a href="til20220429.html#section-2"><i class="fa fa-check"></i><b>4.29.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="4.30" data-path="til20220430.html"><a href="til20220430.html"><i class="fa fa-check"></i><b>4.30</b> TIL20220430</a><ul>
-<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#section-3"><i class="fa fa-check"></i><b>4.30.1</b> </a></li>
+<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#오늘가까지-휴가가"><i class="fa fa-check"></i><b>4.30.1</b> 오늘가까지 휴가가</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -413,55 +413,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>install.packages(&quot;shiny&quot;)
 library(shiny)</code></pre>
 <p><a href="https://shiny.rstudio.com/" class="uri">https://shiny.rstudio.com/</a></p>
-<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="til20220406.html#cb896-1"></a><span class="co">#</span></span>
-<span id="cb896-2"><a href="til20220406.html#cb896-2"></a><span class="co"># This is a Shiny web application. You can run the application by clicking</span></span>
-<span id="cb896-3"><a href="til20220406.html#cb896-3"></a><span class="co"># the &#39;Run App&#39; button above.</span></span>
-<span id="cb896-4"><a href="til20220406.html#cb896-4"></a><span class="co">#</span></span>
-<span id="cb896-5"><a href="til20220406.html#cb896-5"></a><span class="co"># Find out more about building applications with Shiny here:</span></span>
-<span id="cb896-6"><a href="til20220406.html#cb896-6"></a><span class="co">#</span></span>
-<span id="cb896-7"><a href="til20220406.html#cb896-7"></a><span class="co">#    http://shiny.rstudio.com/</span></span>
-<span id="cb896-8"><a href="til20220406.html#cb896-8"></a><span class="co">#</span></span>
-<span id="cb896-9"><a href="til20220406.html#cb896-9"></a></span>
-<span id="cb896-10"><a href="til20220406.html#cb896-10"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb896-11"><a href="til20220406.html#cb896-11"></a></span>
-<span id="cb896-12"><a href="til20220406.html#cb896-12"></a><span class="co"># Define UI for application that draws a histogram</span></span>
-<span id="cb896-13"><a href="til20220406.html#cb896-13"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
-<span id="cb896-14"><a href="til20220406.html#cb896-14"></a></span>
-<span id="cb896-15"><a href="til20220406.html#cb896-15"></a>    <span class="co"># Application title</span></span>
-<span id="cb896-16"><a href="til20220406.html#cb896-16"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),</span>
-<span id="cb896-17"><a href="til20220406.html#cb896-17"></a></span>
-<span id="cb896-18"><a href="til20220406.html#cb896-18"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
-<span id="cb896-19"><a href="til20220406.html#cb896-19"></a>    <span class="kw">sidebarLayout</span>(</span>
-<span id="cb896-20"><a href="til20220406.html#cb896-20"></a>        <span class="kw">sidebarPanel</span>(</span>
-<span id="cb896-21"><a href="til20220406.html#cb896-21"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,</span>
-<span id="cb896-22"><a href="til20220406.html#cb896-22"></a>                        <span class="st">&quot;Number of bins:&quot;</span>,</span>
-<span id="cb896-23"><a href="til20220406.html#cb896-23"></a>                        <span class="dt">min =</span> <span class="dv">1</span>,</span>
-<span id="cb896-24"><a href="til20220406.html#cb896-24"></a>                        <span class="dt">max =</span> <span class="dv">50</span>,</span>
-<span id="cb896-25"><a href="til20220406.html#cb896-25"></a>                        <span class="dt">value =</span> <span class="dv">30</span>)</span>
-<span id="cb896-26"><a href="til20220406.html#cb896-26"></a>        ),</span>
-<span id="cb896-27"><a href="til20220406.html#cb896-27"></a></span>
-<span id="cb896-28"><a href="til20220406.html#cb896-28"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
-<span id="cb896-29"><a href="til20220406.html#cb896-29"></a>        <span class="kw">mainPanel</span>(</span>
-<span id="cb896-30"><a href="til20220406.html#cb896-30"></a>           <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
-<span id="cb896-31"><a href="til20220406.html#cb896-31"></a>        )</span>
-<span id="cb896-32"><a href="til20220406.html#cb896-32"></a>    )</span>
-<span id="cb896-33"><a href="til20220406.html#cb896-33"></a>)</span>
-<span id="cb896-34"><a href="til20220406.html#cb896-34"></a></span>
-<span id="cb896-35"><a href="til20220406.html#cb896-35"></a><span class="co"># Define server logic required to draw a histogram</span></span>
-<span id="cb896-36"><a href="til20220406.html#cb896-36"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb896-37"><a href="til20220406.html#cb896-37"></a></span>
-<span id="cb896-38"><a href="til20220406.html#cb896-38"></a>    output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
-<span id="cb896-39"><a href="til20220406.html#cb896-39"></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
-<span id="cb896-40"><a href="til20220406.html#cb896-40"></a>        x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>]</span>
-<span id="cb896-41"><a href="til20220406.html#cb896-41"></a>        bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb896-42"><a href="til20220406.html#cb896-42"></a></span>
-<span id="cb896-43"><a href="til20220406.html#cb896-43"></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
-<span id="cb896-44"><a href="til20220406.html#cb896-44"></a>        <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)</span>
-<span id="cb896-45"><a href="til20220406.html#cb896-45"></a>    })</span>
-<span id="cb896-46"><a href="til20220406.html#cb896-46"></a>}</span>
-<span id="cb896-47"><a href="til20220406.html#cb896-47"></a></span>
-<span id="cb896-48"><a href="til20220406.html#cb896-48"></a><span class="co"># Run the application </span></span>
-<span id="cb896-49"><a href="til20220406.html#cb896-49"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="til20220406.html#cb895-1"></a><span class="co">#</span></span>
+<span id="cb895-2"><a href="til20220406.html#cb895-2"></a><span class="co"># This is a Shiny web application. You can run the application by clicking</span></span>
+<span id="cb895-3"><a href="til20220406.html#cb895-3"></a><span class="co"># the &#39;Run App&#39; button above.</span></span>
+<span id="cb895-4"><a href="til20220406.html#cb895-4"></a><span class="co">#</span></span>
+<span id="cb895-5"><a href="til20220406.html#cb895-5"></a><span class="co"># Find out more about building applications with Shiny here:</span></span>
+<span id="cb895-6"><a href="til20220406.html#cb895-6"></a><span class="co">#</span></span>
+<span id="cb895-7"><a href="til20220406.html#cb895-7"></a><span class="co">#    http://shiny.rstudio.com/</span></span>
+<span id="cb895-8"><a href="til20220406.html#cb895-8"></a><span class="co">#</span></span>
+<span id="cb895-9"><a href="til20220406.html#cb895-9"></a></span>
+<span id="cb895-10"><a href="til20220406.html#cb895-10"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb895-11"><a href="til20220406.html#cb895-11"></a></span>
+<span id="cb895-12"><a href="til20220406.html#cb895-12"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb895-13"><a href="til20220406.html#cb895-13"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb895-14"><a href="til20220406.html#cb895-14"></a></span>
+<span id="cb895-15"><a href="til20220406.html#cb895-15"></a>    <span class="co"># Application title</span></span>
+<span id="cb895-16"><a href="til20220406.html#cb895-16"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Old Faithful Geyser Data&quot;</span>),</span>
+<span id="cb895-17"><a href="til20220406.html#cb895-17"></a></span>
+<span id="cb895-18"><a href="til20220406.html#cb895-18"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
+<span id="cb895-19"><a href="til20220406.html#cb895-19"></a>    <span class="kw">sidebarLayout</span>(</span>
+<span id="cb895-20"><a href="til20220406.html#cb895-20"></a>        <span class="kw">sidebarPanel</span>(</span>
+<span id="cb895-21"><a href="til20220406.html#cb895-21"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;bins&quot;</span>,</span>
+<span id="cb895-22"><a href="til20220406.html#cb895-22"></a>                        <span class="st">&quot;Number of bins:&quot;</span>,</span>
+<span id="cb895-23"><a href="til20220406.html#cb895-23"></a>                        <span class="dt">min =</span> <span class="dv">1</span>,</span>
+<span id="cb895-24"><a href="til20220406.html#cb895-24"></a>                        <span class="dt">max =</span> <span class="dv">50</span>,</span>
+<span id="cb895-25"><a href="til20220406.html#cb895-25"></a>                        <span class="dt">value =</span> <span class="dv">30</span>)</span>
+<span id="cb895-26"><a href="til20220406.html#cb895-26"></a>        ),</span>
+<span id="cb895-27"><a href="til20220406.html#cb895-27"></a></span>
+<span id="cb895-28"><a href="til20220406.html#cb895-28"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb895-29"><a href="til20220406.html#cb895-29"></a>        <span class="kw">mainPanel</span>(</span>
+<span id="cb895-30"><a href="til20220406.html#cb895-30"></a>           <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb895-31"><a href="til20220406.html#cb895-31"></a>        )</span>
+<span id="cb895-32"><a href="til20220406.html#cb895-32"></a>    )</span>
+<span id="cb895-33"><a href="til20220406.html#cb895-33"></a>)</span>
+<span id="cb895-34"><a href="til20220406.html#cb895-34"></a></span>
+<span id="cb895-35"><a href="til20220406.html#cb895-35"></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb895-36"><a href="til20220406.html#cb895-36"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb895-37"><a href="til20220406.html#cb895-37"></a></span>
+<span id="cb895-38"><a href="til20220406.html#cb895-38"></a>    output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb895-39"><a href="til20220406.html#cb895-39"></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
+<span id="cb895-40"><a href="til20220406.html#cb895-40"></a>        x    &lt;-<span class="st"> </span>faithful[, <span class="dv">2</span>]</span>
+<span id="cb895-41"><a href="til20220406.html#cb895-41"></a>        bins &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length.out =</span> input<span class="op">$</span>bins <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb895-42"><a href="til20220406.html#cb895-42"></a></span>
+<span id="cb895-43"><a href="til20220406.html#cb895-43"></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
+<span id="cb895-44"><a href="til20220406.html#cb895-44"></a>        <span class="kw">hist</span>(x, <span class="dt">breaks =</span> bins, <span class="dt">col =</span> <span class="st">&#39;darkgray&#39;</span>, <span class="dt">border =</span> <span class="st">&#39;white&#39;</span>)</span>
+<span id="cb895-45"><a href="til20220406.html#cb895-45"></a>    })</span>
+<span id="cb895-46"><a href="til20220406.html#cb895-46"></a>}</span>
+<span id="cb895-47"><a href="til20220406.html#cb895-47"></a></span>
+<span id="cb895-48"><a href="til20220406.html#cb895-48"></a><span class="co"># Run the application </span></span>
+<span id="cb895-49"><a href="til20220406.html#cb895-49"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
 
 </div>
 </div>

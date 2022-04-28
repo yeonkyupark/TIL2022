@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -383,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.29.1" data-path="til20220429.html"><a href="til20220429.html#section-2"><i class="fa fa-check"></i><b>4.29.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="4.30" data-path="til20220430.html"><a href="til20220430.html"><i class="fa fa-check"></i><b>4.30</b> TIL20220430</a><ul>
-<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#section-3"><i class="fa fa-check"></i><b>4.30.1</b> </a></li>
+<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#오늘가까지-휴가가"><i class="fa fa-check"></i><b>4.30.1</b> 오늘가까지 휴가가</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -408,20 +408,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="til20220401" class="section level2 hasAnchor">
 <h2><span class="header-section-number">4.1</span> TIL20220401<a href="til20220401.html#til20220401" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="til20220401.html#cb776-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">by=</span><span class="fl">0.01</span>)</span>
-<span id="cb776-2"><a href="til20220401.html#cb776-2"></a>y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x)</span>
-<span id="cb776-3"><a href="til20220401.html#cb776-3"></a>y<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
-<span id="cb776-4"><a href="til20220401.html#cb776-4"></a>y<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>))</span>
-<span id="cb776-5"><a href="til20220401.html#cb776-5"></a><span class="kw">pnorm</span>(<span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="til20220401.html#cb775-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dt">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb775-2"><a href="til20220401.html#cb775-2"></a>y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x)</span>
+<span id="cb775-3"><a href="til20220401.html#cb775-3"></a>y<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span>
+<span id="cb775-4"><a href="til20220401.html#cb775-4"></a>y<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>))</span>
+<span id="cb775-5"><a href="til20220401.html#cb775-5"></a><span class="kw">pnorm</span>(<span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] 0.1375</code></pre>
-<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="til20220401.html#cb778-1"></a><span class="kw">pnorm</span>(<span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="til20220401.html#cb777-1"></a><span class="kw">pnorm</span>(<span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="dv">7</span><span class="op">/</span><span class="dv">18</span>))</span></code></pre></div>
 <pre><code>## [1] 0.1274</code></pre>
-<div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="til20220401.html#cb780-1"></a>{ <span class="kw">plot</span>(x, y , <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>), <span class="dt">axes =</span> F, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb780-2"><a href="til20220401.html#cb780-2"></a>     <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;yellow&quot;</span>)</span>
-<span id="cb780-3"><a href="til20220401.html#cb780-3"></a>  <span class="kw">lines</span>(x, y<span class="fl">.1</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb780-4"><a href="til20220401.html#cb780-4"></a>  <span class="kw">lines</span>(x, y<span class="fl">.2</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb780-5"><a href="til20220401.html#cb780-5"></a>  <span class="kw">axis</span>(<span class="dv">1</span>)</span>
-<span id="cb780-6"><a href="til20220401.html#cb780-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="til20220401.html#cb779-1"></a>{ <span class="kw">plot</span>(x, y , <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>), <span class="dt">axes =</span> F, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb779-2"><a href="til20220401.html#cb779-2"></a>     <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;yellow&quot;</span>)</span>
+<span id="cb779-3"><a href="til20220401.html#cb779-3"></a>  <span class="kw">lines</span>(x, y<span class="fl">.1</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb779-4"><a href="til20220401.html#cb779-4"></a>  <span class="kw">lines</span>(x, y<span class="fl">.2</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb779-5"><a href="til20220401.html#cb779-5"></a>  <span class="kw">axis</span>(<span class="dv">1</span>)</span>
+<span id="cb779-6"><a href="til20220401.html#cb779-6"></a>}</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-336-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
