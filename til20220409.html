@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-28" />
+<meta name="date" content="2022-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -380,10 +380,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.28.1" data-path="til20220428.html"><a href="til20220428.html#section-1"><i class="fa fa-check"></i><b>4.28.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="4.29" data-path="til20220429.html"><a href="til20220429.html"><i class="fa fa-check"></i><b>4.29</b> TIL20220429</a><ul>
-<li class="chapter" data-level="4.29.1" data-path="til20220429.html"><a href="til20220429.html#section-2"><i class="fa fa-check"></i><b>4.29.1</b> </a></li>
+<li class="chapter" data-level="4.29.1" data-path="til20220429.html"><a href="til20220429.html#오늘까지-휴가"><i class="fa fa-check"></i><b>4.29.1</b> 오늘까지 휴가</a></li>
 </ul></li>
 <li class="chapter" data-level="4.30" data-path="til20220430.html"><a href="til20220430.html"><i class="fa fa-check"></i><b>4.30</b> TIL20220430</a><ul>
-<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#오늘가까지-휴가가"><i class="fa fa-check"></i><b>4.30.1</b> 오늘가까지 휴가가</a></li>
+<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#section-2"><i class="fa fa-check"></i><b>4.30.1</b> </a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -410,63 +410,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.9</span> TIL20220409<a href="til20220409.html#til20220409" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="r-shiny-conti." class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.9.1</span> R shiny (conti.)<a href="til20220409.html#r-shiny-conti." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="til20220409.html#cb906-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb906-2"><a href="til20220409.html#cb906-2"></a><span class="kw">library</span>(shinydashboard)</span>
-<span id="cb906-3"><a href="til20220409.html#cb906-3"></a><span class="kw">library</span>(palmerpenguins)</span>
-<span id="cb906-4"><a href="til20220409.html#cb906-4"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb906-5"><a href="til20220409.html#cb906-5"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb906-6"><a href="til20220409.html#cb906-6"></a></span>
-<span id="cb906-7"><a href="til20220409.html#cb906-7"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
-<span id="cb906-8"><a href="til20220409.html#cb906-8"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),</span>
-<span id="cb906-9"><a href="til20220409.html#cb906-9"></a>  <span class="kw">dashboardSidebar</span>(</span>
-<span id="cb906-10"><a href="til20220409.html#cb906-10"></a>    <span class="kw">sidebarMenu</span>(</span>
-<span id="cb906-11"><a href="til20220409.html#cb906-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)),</span>
-<span id="cb906-12"><a href="til20220409.html#cb906-12"></a>      <span class="kw">selectInput</span>(<span class="st">&quot;select1&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Select box&quot;</span>), </span>
-<span id="cb906-13"><a href="til20220409.html#cb906-13"></a>                  <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Adelie&quot;</span> =<span class="st"> &quot;Adelie&quot;</span>, <span class="st">&quot;Chinstrap&quot;</span> =<span class="st"> &quot;Chinstrap&quot;</span>, <span class="st">&quot;Gentoo&quot;</span> =<span class="st"> &quot;Gentoo&quot;</span>), </span>
-<span id="cb906-14"><a href="til20220409.html#cb906-14"></a>                  <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb906-15"><a href="til20220409.html#cb906-15"></a>      <span class="kw">sliderInput</span>(<span class="st">&quot;slider2&quot;</span>, <span class="st">&quot;Top N of Body Weight&quot;</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>),</span>
-<span id="cb906-16"><a href="til20220409.html#cb906-16"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
-<span id="cb906-17"><a href="til20220409.html#cb906-17"></a>    )</span>
-<span id="cb906-18"><a href="til20220409.html#cb906-18"></a>  ),</span>
-<span id="cb906-19"><a href="til20220409.html#cb906-19"></a>  <span class="kw">dashboardBody</span>(</span>
-<span id="cb906-20"><a href="til20220409.html#cb906-20"></a></span>
-<span id="cb906-21"><a href="til20220409.html#cb906-21"></a>    <span class="kw">tabItems</span>(</span>
-<span id="cb906-22"><a href="til20220409.html#cb906-22"></a>      <span class="co"># First tab content</span></span>
-<span id="cb906-23"><a href="til20220409.html#cb906-23"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,</span>
-<span id="cb906-24"><a href="til20220409.html#cb906-24"></a>              <span class="kw">fluidRow</span>(</span>
-<span id="cb906-25"><a href="til20220409.html#cb906-25"></a>                <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">12</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;plot1&quot;</span>, <span class="dt">height =</span> <span class="dv">250</span>))</span>
-<span id="cb906-26"><a href="til20220409.html#cb906-26"></a>              ),</span>
-<span id="cb906-27"><a href="til20220409.html#cb906-27"></a>              <span class="kw">fluidRow</span>(</span>
-<span id="cb906-28"><a href="til20220409.html#cb906-28"></a>                <span class="kw">box</span>(<span class="kw">tableOutput</span>(<span class="st">&quot;table1&quot;</span>))</span>
-<span id="cb906-29"><a href="til20220409.html#cb906-29"></a>              )</span>
-<span id="cb906-30"><a href="til20220409.html#cb906-30"></a>      ),</span>
-<span id="cb906-31"><a href="til20220409.html#cb906-31"></a>      </span>
-<span id="cb906-32"><a href="til20220409.html#cb906-32"></a>      <span class="co"># Second tab content</span></span>
-<span id="cb906-33"><a href="til20220409.html#cb906-33"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
-<span id="cb906-34"><a href="til20220409.html#cb906-34"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
-<span id="cb906-35"><a href="til20220409.html#cb906-35"></a>      )</span>
-<span id="cb906-36"><a href="til20220409.html#cb906-36"></a>    )</span>
-<span id="cb906-37"><a href="til20220409.html#cb906-37"></a>  )</span>
-<span id="cb906-38"><a href="til20220409.html#cb906-38"></a>)</span>
-<span id="cb906-39"><a href="til20220409.html#cb906-39"></a></span>
-<span id="cb906-40"><a href="til20220409.html#cb906-40"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb906-41"><a href="til20220409.html#cb906-41"></a>  data &lt;-<span class="st"> </span>penguins</span>
-<span id="cb906-42"><a href="til20220409.html#cb906-42"></a>  </span>
-<span id="cb906-43"><a href="til20220409.html#cb906-43"></a>  <span class="kw">print</span>(<span class="st">&quot;in Server()&quot;</span>)</span>
-<span id="cb906-44"><a href="til20220409.html#cb906-44"></a>  </span>
-<span id="cb906-45"><a href="til20220409.html#cb906-45"></a>  output<span class="op">$</span>plot1 &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
-<span id="cb906-46"><a href="til20220409.html#cb906-46"></a>    <span class="kw">print</span>(input<span class="op">$</span>select1)</span>
-<span id="cb906-47"><a href="til20220409.html#cb906-47"></a>    data.hist &lt;-<span class="st"> </span><span class="kw">t</span>(data[data<span class="op">$</span>species <span class="op">==</span><span class="st"> </span>input<span class="op">$</span>select1, <span class="st">&quot;body_mass_g&quot;</span>])</span>
-<span id="cb906-48"><a href="til20220409.html#cb906-48"></a>    <span class="kw">hist</span>(data.hist, <span class="dt">breaks=</span><span class="dv">10</span>, <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, input<span class="op">$</span>select1))</span>
-<span id="cb906-49"><a href="til20220409.html#cb906-49"></a>  })</span>
-<span id="cb906-50"><a href="til20220409.html#cb906-50"></a>  output<span class="op">$</span>table1 &lt;-<span class="st"> </span><span class="kw">renderTable</span>({</span>
-<span id="cb906-51"><a href="til20220409.html#cb906-51"></a>    data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb906-52"><a href="til20220409.html#cb906-52"></a><span class="st">      </span><span class="kw">arrange</span>(body_mass_g) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb906-53"><a href="til20220409.html#cb906-53"></a><span class="st">      </span><span class="kw">head</span>(input<span class="op">$</span>slider2)</span>
-<span id="cb906-54"><a href="til20220409.html#cb906-54"></a>  })</span>
-<span id="cb906-55"><a href="til20220409.html#cb906-55"></a>}</span>
-<span id="cb906-56"><a href="til20220409.html#cb906-56"></a></span>
-<span id="cb906-57"><a href="til20220409.html#cb906-57"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
+<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb942-1"><a href="til20220409.html#cb942-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb942-2"><a href="til20220409.html#cb942-2"></a><span class="kw">library</span>(shinydashboard)</span>
+<span id="cb942-3"><a href="til20220409.html#cb942-3"></a><span class="kw">library</span>(palmerpenguins)</span>
+<span id="cb942-4"><a href="til20220409.html#cb942-4"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb942-5"><a href="til20220409.html#cb942-5"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb942-6"><a href="til20220409.html#cb942-6"></a></span>
+<span id="cb942-7"><a href="til20220409.html#cb942-7"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
+<span id="cb942-8"><a href="til20220409.html#cb942-8"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),</span>
+<span id="cb942-9"><a href="til20220409.html#cb942-9"></a>  <span class="kw">dashboardSidebar</span>(</span>
+<span id="cb942-10"><a href="til20220409.html#cb942-10"></a>    <span class="kw">sidebarMenu</span>(</span>
+<span id="cb942-11"><a href="til20220409.html#cb942-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)),</span>
+<span id="cb942-12"><a href="til20220409.html#cb942-12"></a>      <span class="kw">selectInput</span>(<span class="st">&quot;select1&quot;</span>, <span class="dt">label =</span> <span class="kw">h3</span>(<span class="st">&quot;Select box&quot;</span>), </span>
+<span id="cb942-13"><a href="til20220409.html#cb942-13"></a>                  <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Adelie&quot;</span> =<span class="st"> &quot;Adelie&quot;</span>, <span class="st">&quot;Chinstrap&quot;</span> =<span class="st"> &quot;Chinstrap&quot;</span>, <span class="st">&quot;Gentoo&quot;</span> =<span class="st"> &quot;Gentoo&quot;</span>), </span>
+<span id="cb942-14"><a href="til20220409.html#cb942-14"></a>                  <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb942-15"><a href="til20220409.html#cb942-15"></a>      <span class="kw">sliderInput</span>(<span class="st">&quot;slider2&quot;</span>, <span class="st">&quot;Top N of Body Weight&quot;</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>),</span>
+<span id="cb942-16"><a href="til20220409.html#cb942-16"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
+<span id="cb942-17"><a href="til20220409.html#cb942-17"></a>    )</span>
+<span id="cb942-18"><a href="til20220409.html#cb942-18"></a>  ),</span>
+<span id="cb942-19"><a href="til20220409.html#cb942-19"></a>  <span class="kw">dashboardBody</span>(</span>
+<span id="cb942-20"><a href="til20220409.html#cb942-20"></a></span>
+<span id="cb942-21"><a href="til20220409.html#cb942-21"></a>    <span class="kw">tabItems</span>(</span>
+<span id="cb942-22"><a href="til20220409.html#cb942-22"></a>      <span class="co"># First tab content</span></span>
+<span id="cb942-23"><a href="til20220409.html#cb942-23"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,</span>
+<span id="cb942-24"><a href="til20220409.html#cb942-24"></a>              <span class="kw">fluidRow</span>(</span>
+<span id="cb942-25"><a href="til20220409.html#cb942-25"></a>                <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">12</span>, <span class="kw">plotOutput</span>(<span class="st">&quot;plot1&quot;</span>, <span class="dt">height =</span> <span class="dv">250</span>))</span>
+<span id="cb942-26"><a href="til20220409.html#cb942-26"></a>              ),</span>
+<span id="cb942-27"><a href="til20220409.html#cb942-27"></a>              <span class="kw">fluidRow</span>(</span>
+<span id="cb942-28"><a href="til20220409.html#cb942-28"></a>                <span class="kw">box</span>(<span class="kw">tableOutput</span>(<span class="st">&quot;table1&quot;</span>))</span>
+<span id="cb942-29"><a href="til20220409.html#cb942-29"></a>              )</span>
+<span id="cb942-30"><a href="til20220409.html#cb942-30"></a>      ),</span>
+<span id="cb942-31"><a href="til20220409.html#cb942-31"></a>      </span>
+<span id="cb942-32"><a href="til20220409.html#cb942-32"></a>      <span class="co"># Second tab content</span></span>
+<span id="cb942-33"><a href="til20220409.html#cb942-33"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
+<span id="cb942-34"><a href="til20220409.html#cb942-34"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
+<span id="cb942-35"><a href="til20220409.html#cb942-35"></a>      )</span>
+<span id="cb942-36"><a href="til20220409.html#cb942-36"></a>    )</span>
+<span id="cb942-37"><a href="til20220409.html#cb942-37"></a>  )</span>
+<span id="cb942-38"><a href="til20220409.html#cb942-38"></a>)</span>
+<span id="cb942-39"><a href="til20220409.html#cb942-39"></a></span>
+<span id="cb942-40"><a href="til20220409.html#cb942-40"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb942-41"><a href="til20220409.html#cb942-41"></a>  data &lt;-<span class="st"> </span>penguins</span>
+<span id="cb942-42"><a href="til20220409.html#cb942-42"></a>  </span>
+<span id="cb942-43"><a href="til20220409.html#cb942-43"></a>  <span class="kw">print</span>(<span class="st">&quot;in Server()&quot;</span>)</span>
+<span id="cb942-44"><a href="til20220409.html#cb942-44"></a>  </span>
+<span id="cb942-45"><a href="til20220409.html#cb942-45"></a>  output<span class="op">$</span>plot1 &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb942-46"><a href="til20220409.html#cb942-46"></a>    <span class="kw">print</span>(input<span class="op">$</span>select1)</span>
+<span id="cb942-47"><a href="til20220409.html#cb942-47"></a>    data.hist &lt;-<span class="st"> </span><span class="kw">t</span>(data[data<span class="op">$</span>species <span class="op">==</span><span class="st"> </span>input<span class="op">$</span>select1, <span class="st">&quot;body_mass_g&quot;</span>])</span>
+<span id="cb942-48"><a href="til20220409.html#cb942-48"></a>    <span class="kw">hist</span>(data.hist, <span class="dt">breaks=</span><span class="dv">10</span>, <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, input<span class="op">$</span>select1))</span>
+<span id="cb942-49"><a href="til20220409.html#cb942-49"></a>  })</span>
+<span id="cb942-50"><a href="til20220409.html#cb942-50"></a>  output<span class="op">$</span>table1 &lt;-<span class="st"> </span><span class="kw">renderTable</span>({</span>
+<span id="cb942-51"><a href="til20220409.html#cb942-51"></a>    data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb942-52"><a href="til20220409.html#cb942-52"></a><span class="st">      </span><span class="kw">arrange</span>(body_mass_g) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb942-53"><a href="til20220409.html#cb942-53"></a><span class="st">      </span><span class="kw">head</span>(input<span class="op">$</span>slider2)</span>
+<span id="cb942-54"><a href="til20220409.html#cb942-54"></a>  })</span>
+<span id="cb942-55"><a href="til20220409.html#cb942-55"></a>}</span>
+<span id="cb942-56"><a href="til20220409.html#cb942-56"></a></span>
+<span id="cb942-57"><a href="til20220409.html#cb942-57"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/72383349/162576266-b167d904-fda6-4315-8062-92d6c4786e9d.png" alt="" />
 <p class="caption">image</p>
