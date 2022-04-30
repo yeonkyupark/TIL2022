@@ -3,6 +3,69 @@
 ### 오늘까지 휴가
 
 ```{r}
-
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+df1 <- data.frame(x=1:6,y=month.name[1:6])
+df2 <- data.frame(x=7:12,y=month.name[7:12])
+df1; df2;
 ```
+
+```{r}
+df3 <- bind_rows(df1, df2)
+df3
+```
+
+```{r}
+df4 <- data.frame(z=month.abb)
+df4
+```
+
+```{r}
+df5 <- bind_cols(df3, df4); df5
+```
+
+```{r}
+df5 <- bind_cols(df3, df4) %>% print()
+```
+
+```{r}
+band_members
+band_instruments
+```
+
+```{r}
+inner_join(x=band_members, y=band_instruments, by="name")
+```
+
+```{r}
+left_join(x=band_members, y=band_instruments, by="name")
+```
+
+```{r}
+right_join(x=band_members, y=band_instruments, by="name")
+```
+
+```{r}
+full_join(x=band_members, y=band_instruments, by="name")
+```
+
+```{r}
+band_instruments2
+```
+
+```{r}
+full_join(x=band_members, y=band_instruments2, by=c("name"="artist"))
+```
+
+```{r}
+full_join(x=band_members, y=band_instruments2, by=c("name"="artist"), keep=T)
+```
+
+```{r}
+semi_join(x=band_members, y=band_instruments, by="name")
+```
+
+```{r}
+anti_join(x=band_members, y=band_instruments, by="name")
+```
+
 
