@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-04-29" />
+<meta name="date" content="2022-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -410,63 +410,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.11</span> TIL20220411<a href="til20220411.html#til20220411" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="r-shiny-reactive" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.11.1</span> r shiny reactive<a href="til20220411.html#r-shiny-reactive" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="til20220411.html#cb946-1"></a><span class="co"># Load packages ----</span></span>
-<span id="cb946-2"><a href="til20220411.html#cb946-2"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb946-3"><a href="til20220411.html#cb946-3"></a><span class="kw">library</span>(quantmod)</span>
-<span id="cb946-4"><a href="til20220411.html#cb946-4"></a></span>
-<span id="cb946-5"><a href="til20220411.html#cb946-5"></a><span class="co"># Source helpers ----</span></span>
-<span id="cb946-6"><a href="til20220411.html#cb946-6"></a><span class="kw">source</span>(<span class="st">&quot;helpers.R&quot;</span>)</span>
-<span id="cb946-7"><a href="til20220411.html#cb946-7"></a></span>
-<span id="cb946-8"><a href="til20220411.html#cb946-8"></a><span class="co"># User interface ----</span></span>
-<span id="cb946-9"><a href="til20220411.html#cb946-9"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
-<span id="cb946-10"><a href="til20220411.html#cb946-10"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;stockVis&quot;</span>),</span>
-<span id="cb946-11"><a href="til20220411.html#cb946-11"></a></span>
-<span id="cb946-12"><a href="til20220411.html#cb946-12"></a>  <span class="kw">sidebarLayout</span>(</span>
-<span id="cb946-13"><a href="til20220411.html#cb946-13"></a>    <span class="kw">sidebarPanel</span>(</span>
-<span id="cb946-14"><a href="til20220411.html#cb946-14"></a>      <span class="kw">helpText</span>(<span class="st">&quot;Select a stock to examine.</span></span>
-<span id="cb946-15"><a href="til20220411.html#cb946-15"></a></span>
-<span id="cb946-16"><a href="til20220411.html#cb946-16"></a><span class="st">        Information will be collected from Yahoo finance.&quot;</span>),</span>
-<span id="cb946-17"><a href="til20220411.html#cb946-17"></a>      <span class="kw">textInput</span>(<span class="st">&quot;symb&quot;</span>, <span class="st">&quot;Symbol&quot;</span>, <span class="st">&quot;SPY&quot;</span>),</span>
-<span id="cb946-18"><a href="til20220411.html#cb946-18"></a></span>
-<span id="cb946-19"><a href="til20220411.html#cb946-19"></a>      <span class="kw">dateRangeInput</span>(<span class="st">&quot;dates&quot;</span>,</span>
-<span id="cb946-20"><a href="til20220411.html#cb946-20"></a>                     <span class="st">&quot;Date range&quot;</span>,</span>
-<span id="cb946-21"><a href="til20220411.html#cb946-21"></a>                     <span class="dt">start =</span> <span class="st">&quot;2013-01-01&quot;</span>,</span>
-<span id="cb946-22"><a href="til20220411.html#cb946-22"></a>                     <span class="dt">end =</span> <span class="kw">as.character</span>(<span class="kw">Sys.Date</span>())),</span>
-<span id="cb946-23"><a href="til20220411.html#cb946-23"></a></span>
-<span id="cb946-24"><a href="til20220411.html#cb946-24"></a>      <span class="kw">br</span>(),</span>
-<span id="cb946-25"><a href="til20220411.html#cb946-25"></a>      <span class="kw">br</span>(),</span>
-<span id="cb946-26"><a href="til20220411.html#cb946-26"></a></span>
-<span id="cb946-27"><a href="til20220411.html#cb946-27"></a>      <span class="kw">checkboxInput</span>(<span class="st">&quot;log&quot;</span>, <span class="st">&quot;Plot y axis on log scale&quot;</span>,</span>
-<span id="cb946-28"><a href="til20220411.html#cb946-28"></a>                    <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
-<span id="cb946-29"><a href="til20220411.html#cb946-29"></a></span>
-<span id="cb946-30"><a href="til20220411.html#cb946-30"></a>      <span class="kw">checkboxInput</span>(<span class="st">&quot;adjust&quot;</span>,</span>
-<span id="cb946-31"><a href="til20220411.html#cb946-31"></a>                    <span class="st">&quot;Adjust prices for inflation&quot;</span>, <span class="dt">value =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb946-32"><a href="til20220411.html#cb946-32"></a>    ),</span>
-<span id="cb946-33"><a href="til20220411.html#cb946-33"></a></span>
-<span id="cb946-34"><a href="til20220411.html#cb946-34"></a>    <span class="kw">mainPanel</span>(<span class="kw">plotOutput</span>(<span class="st">&quot;plot&quot;</span>))</span>
-<span id="cb946-35"><a href="til20220411.html#cb946-35"></a>  )</span>
-<span id="cb946-36"><a href="til20220411.html#cb946-36"></a>)</span>
-<span id="cb946-37"><a href="til20220411.html#cb946-37"></a></span>
-<span id="cb946-38"><a href="til20220411.html#cb946-38"></a><span class="co"># Server logic</span></span>
-<span id="cb946-39"><a href="til20220411.html#cb946-39"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb946-40"><a href="til20220411.html#cb946-40"></a></span>
-<span id="cb946-41"><a href="til20220411.html#cb946-41"></a>  dataInput &lt;-<span class="st"> </span><span class="kw">reactive</span>({</span>
-<span id="cb946-42"><a href="til20220411.html#cb946-42"></a>    <span class="kw">getSymbols</span>(input<span class="op">$</span>symb, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>,</span>
-<span id="cb946-43"><a href="til20220411.html#cb946-43"></a>               <span class="dt">from =</span> input<span class="op">$</span>dates[<span class="dv">1</span>],</span>
-<span id="cb946-44"><a href="til20220411.html#cb946-44"></a>               <span class="dt">to =</span> input<span class="op">$</span>dates[<span class="dv">2</span>],</span>
-<span id="cb946-45"><a href="til20220411.html#cb946-45"></a>               <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb946-46"><a href="til20220411.html#cb946-46"></a>  })</span>
-<span id="cb946-47"><a href="til20220411.html#cb946-47"></a></span>
-<span id="cb946-48"><a href="til20220411.html#cb946-48"></a>  output<span class="op">$</span>plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
-<span id="cb946-49"><a href="til20220411.html#cb946-49"></a></span>
-<span id="cb946-50"><a href="til20220411.html#cb946-50"></a>    <span class="kw">chartSeries</span>(<span class="kw">dataInput</span>(), <span class="dt">theme =</span> <span class="kw">chartTheme</span>(<span class="st">&quot;white&quot;</span>),</span>
-<span id="cb946-51"><a href="til20220411.html#cb946-51"></a>                <span class="dt">type =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">log.scale =</span> input<span class="op">$</span>log, <span class="dt">TA =</span> <span class="ot">NULL</span>)</span>
-<span id="cb946-52"><a href="til20220411.html#cb946-52"></a>  })</span>
-<span id="cb946-53"><a href="til20220411.html#cb946-53"></a></span>
-<span id="cb946-54"><a href="til20220411.html#cb946-54"></a>}</span>
-<span id="cb946-55"><a href="til20220411.html#cb946-55"></a></span>
-<span id="cb946-56"><a href="til20220411.html#cb946-56"></a><span class="co"># Run the app</span></span>
-<span id="cb946-57"><a href="til20220411.html#cb946-57"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="til20220411.html#cb914-1"></a><span class="co"># Load packages ----</span></span>
+<span id="cb914-2"><a href="til20220411.html#cb914-2"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb914-3"><a href="til20220411.html#cb914-3"></a><span class="kw">library</span>(quantmod)</span>
+<span id="cb914-4"><a href="til20220411.html#cb914-4"></a></span>
+<span id="cb914-5"><a href="til20220411.html#cb914-5"></a><span class="co"># Source helpers ----</span></span>
+<span id="cb914-6"><a href="til20220411.html#cb914-6"></a><span class="kw">source</span>(<span class="st">&quot;helpers.R&quot;</span>)</span>
+<span id="cb914-7"><a href="til20220411.html#cb914-7"></a></span>
+<span id="cb914-8"><a href="til20220411.html#cb914-8"></a><span class="co"># User interface ----</span></span>
+<span id="cb914-9"><a href="til20220411.html#cb914-9"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb914-10"><a href="til20220411.html#cb914-10"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;stockVis&quot;</span>),</span>
+<span id="cb914-11"><a href="til20220411.html#cb914-11"></a></span>
+<span id="cb914-12"><a href="til20220411.html#cb914-12"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb914-13"><a href="til20220411.html#cb914-13"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb914-14"><a href="til20220411.html#cb914-14"></a>      <span class="kw">helpText</span>(<span class="st">&quot;Select a stock to examine.</span></span>
+<span id="cb914-15"><a href="til20220411.html#cb914-15"></a></span>
+<span id="cb914-16"><a href="til20220411.html#cb914-16"></a><span class="st">        Information will be collected from Yahoo finance.&quot;</span>),</span>
+<span id="cb914-17"><a href="til20220411.html#cb914-17"></a>      <span class="kw">textInput</span>(<span class="st">&quot;symb&quot;</span>, <span class="st">&quot;Symbol&quot;</span>, <span class="st">&quot;SPY&quot;</span>),</span>
+<span id="cb914-18"><a href="til20220411.html#cb914-18"></a></span>
+<span id="cb914-19"><a href="til20220411.html#cb914-19"></a>      <span class="kw">dateRangeInput</span>(<span class="st">&quot;dates&quot;</span>,</span>
+<span id="cb914-20"><a href="til20220411.html#cb914-20"></a>                     <span class="st">&quot;Date range&quot;</span>,</span>
+<span id="cb914-21"><a href="til20220411.html#cb914-21"></a>                     <span class="dt">start =</span> <span class="st">&quot;2013-01-01&quot;</span>,</span>
+<span id="cb914-22"><a href="til20220411.html#cb914-22"></a>                     <span class="dt">end =</span> <span class="kw">as.character</span>(<span class="kw">Sys.Date</span>())),</span>
+<span id="cb914-23"><a href="til20220411.html#cb914-23"></a></span>
+<span id="cb914-24"><a href="til20220411.html#cb914-24"></a>      <span class="kw">br</span>(),</span>
+<span id="cb914-25"><a href="til20220411.html#cb914-25"></a>      <span class="kw">br</span>(),</span>
+<span id="cb914-26"><a href="til20220411.html#cb914-26"></a></span>
+<span id="cb914-27"><a href="til20220411.html#cb914-27"></a>      <span class="kw">checkboxInput</span>(<span class="st">&quot;log&quot;</span>, <span class="st">&quot;Plot y axis on log scale&quot;</span>,</span>
+<span id="cb914-28"><a href="til20220411.html#cb914-28"></a>                    <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb914-29"><a href="til20220411.html#cb914-29"></a></span>
+<span id="cb914-30"><a href="til20220411.html#cb914-30"></a>      <span class="kw">checkboxInput</span>(<span class="st">&quot;adjust&quot;</span>,</span>
+<span id="cb914-31"><a href="til20220411.html#cb914-31"></a>                    <span class="st">&quot;Adjust prices for inflation&quot;</span>, <span class="dt">value =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb914-32"><a href="til20220411.html#cb914-32"></a>    ),</span>
+<span id="cb914-33"><a href="til20220411.html#cb914-33"></a></span>
+<span id="cb914-34"><a href="til20220411.html#cb914-34"></a>    <span class="kw">mainPanel</span>(<span class="kw">plotOutput</span>(<span class="st">&quot;plot&quot;</span>))</span>
+<span id="cb914-35"><a href="til20220411.html#cb914-35"></a>  )</span>
+<span id="cb914-36"><a href="til20220411.html#cb914-36"></a>)</span>
+<span id="cb914-37"><a href="til20220411.html#cb914-37"></a></span>
+<span id="cb914-38"><a href="til20220411.html#cb914-38"></a><span class="co"># Server logic</span></span>
+<span id="cb914-39"><a href="til20220411.html#cb914-39"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb914-40"><a href="til20220411.html#cb914-40"></a></span>
+<span id="cb914-41"><a href="til20220411.html#cb914-41"></a>  dataInput &lt;-<span class="st"> </span><span class="kw">reactive</span>({</span>
+<span id="cb914-42"><a href="til20220411.html#cb914-42"></a>    <span class="kw">getSymbols</span>(input<span class="op">$</span>symb, <span class="dt">src =</span> <span class="st">&quot;yahoo&quot;</span>,</span>
+<span id="cb914-43"><a href="til20220411.html#cb914-43"></a>               <span class="dt">from =</span> input<span class="op">$</span>dates[<span class="dv">1</span>],</span>
+<span id="cb914-44"><a href="til20220411.html#cb914-44"></a>               <span class="dt">to =</span> input<span class="op">$</span>dates[<span class="dv">2</span>],</span>
+<span id="cb914-45"><a href="til20220411.html#cb914-45"></a>               <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb914-46"><a href="til20220411.html#cb914-46"></a>  })</span>
+<span id="cb914-47"><a href="til20220411.html#cb914-47"></a></span>
+<span id="cb914-48"><a href="til20220411.html#cb914-48"></a>  output<span class="op">$</span>plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb914-49"><a href="til20220411.html#cb914-49"></a></span>
+<span id="cb914-50"><a href="til20220411.html#cb914-50"></a>    <span class="kw">chartSeries</span>(<span class="kw">dataInput</span>(), <span class="dt">theme =</span> <span class="kw">chartTheme</span>(<span class="st">&quot;white&quot;</span>),</span>
+<span id="cb914-51"><a href="til20220411.html#cb914-51"></a>                <span class="dt">type =</span> <span class="st">&quot;line&quot;</span>, <span class="dt">log.scale =</span> input<span class="op">$</span>log, <span class="dt">TA =</span> <span class="ot">NULL</span>)</span>
+<span id="cb914-52"><a href="til20220411.html#cb914-52"></a>  })</span>
+<span id="cb914-53"><a href="til20220411.html#cb914-53"></a></span>
+<span id="cb914-54"><a href="til20220411.html#cb914-54"></a>}</span>
+<span id="cb914-55"><a href="til20220411.html#cb914-55"></a></span>
+<span id="cb914-56"><a href="til20220411.html#cb914-56"></a><span class="co"># Run the app</span></span>
+<span id="cb914-57"><a href="til20220411.html#cb914-57"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 
 </div>
 </div>
