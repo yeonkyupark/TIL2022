@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="til20220504.html"><a href="til20220504.html#section-2"><i class="fa fa-check"></i><b>5.4.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="til20220505.html"><a href="til20220505.html"><i class="fa fa-check"></i><b>5.5</b> TIL20220505</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="til20220505.html"><a href="til20220505.html#어린이날날"><i class="fa fa-check"></i><b>5.5.1</b> 어린이날날</a></li>
+<li class="chapter" data-level="5.5.1" data-path="til20220505.html"><a href="til20220505.html#shiny-app-배포-1"><i class="fa fa-check"></i><b>5.5.1</b> shiny app 배포</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="til202205.html"><a href="til202205.html"><i class="fa fa-check"></i><b>5.6</b> TIL202205</a><ul>
 <li class="chapter" data-level="5.6.1" data-path="til202205.html"><a href="til202205.html#section-3"><i class="fa fa-check"></i><b>5.6.1</b> </a></li>
@@ -508,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="til20220322.html#cb620-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(moonBook)) { <span class="kw">install.packages</span>(<span class="st">&quot;moonBook&quot;</span>); <span class="kw">library</span>(moonBook); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyOOsOS/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdbZPV4/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="til20220322.html#cb622-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
 <span id="cb622-2"><a href="til20220322.html#cb622-2"></a>data &lt;-<span class="st"> </span>penguins</span>
 <span id="cb622-3"><a href="til20220322.html#cb622-3"></a><span class="kw">densityplot</span>(body_mass_g <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> data)</span></code></pre></div>
@@ -547,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="til20220322.html#cb629-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nparcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;nparcomp&quot;</span>); <span class="kw">library</span>(nparcomp); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyOOsOS/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdbZPV4/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="til20220322.html#cb631-1"></a><span class="kw">mctp</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
 <pre><code>## 
 ##  #----------------Nonparametric Multiple Comparisons for relative effects---------------# 
@@ -697,15 +697,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## quantreg   5.88   5.93              TRUE
 ## car      3.0-12 3.0-13             FALSE
 ## 
-## Error in download.file(url, destfile, method, mode = &quot;wb&quot;, ...) : 
-##   cannot open URL &#39;https://cloud.r-project.org/bin/macosx/contrib/4.2/carData_3.0-5.tgz&#39;
 ## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpyOOsOS/downloaded_packages</code></pre>
-<pre><code>## Error in library(car): there is no package called &#39;car&#39;</code></pre>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="til20220322.html#cb640-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span>
-<span id="cb640-2"><a href="til20220322.html#cb640-2"></a><span class="kw">durbinWatsonTest</span>(data.aov)</span></code></pre></div>
-<pre><code>## Error in durbinWatsonTest(data.aov): could not find function &quot;durbinWatsonTest&quot;</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpdbZPV4/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="til20220322.html#cb639-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span>
+<span id="cb639-2"><a href="til20220322.html#cb639-2"></a><span class="kw">durbinWatsonTest</span>(data.aov)</span></code></pre></div>
+<pre><code>##  lag Autocorrelation D-W Statistic p-value
+##    1      -0.4946035      2.989155       0
+##  Alternative hypothesis: rho != 0</code></pre>
 <ul>
 <li><p>정규성</p>
 <ul>
@@ -713,25 +712,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Kolmogorov-Smirnov test</li>
 <li>QQPlot, Histogram</li>
 </ul>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="til20220322.html#cb642-1"></a><span class="co"># Shapiro-Wilk normality test</span></span>
-<span id="cb642-2"><a href="til20220322.html#cb642-2"></a><span class="kw">shapiro.test</span>(data.aov<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="til20220322.html#cb641-1"></a><span class="co"># Shapiro-Wilk normality test</span></span>
+<span id="cb641-2"><a href="til20220322.html#cb641-2"></a><span class="kw">shapiro.test</span>(data.aov<span class="op">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  data.aov$residuals
 ## W = 0.9922, p-value = 0.07835</code></pre></li>
 </ul>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="til20220322.html#cb644-1"></a><span class="co"># Kolmogorov-Smirnov test</span></span>
-<span id="cb644-2"><a href="til20220322.html#cb644-2"></a><span class="kw">ks.test</span>(<span class="dt">x =</span> data<span class="op">$</span>species, <span class="dt">y =</span> data<span class="op">$</span>body_mass_g)</span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="til20220322.html#cb643-1"></a><span class="co"># Kolmogorov-Smirnov test</span></span>
+<span id="cb643-2"><a href="til20220322.html#cb643-2"></a><span class="kw">ks.test</span>(<span class="dt">x =</span> data<span class="op">$</span>species, <span class="dt">y =</span> data<span class="op">$</span>body_mass_g)</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic two-sample Kolmogorov-Smirnov test
 ## 
 ## data:  data$species and data$body_mass_g
 ## D = 1, p-value &lt; 2.2e-16
 ## alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="til20220322.html#cb646-1"></a><span class="co"># QQPlot, Histogram</span></span>
-<span id="cb646-2"><a href="til20220322.html#cb646-2"></a><span class="kw">qqPlot</span>(data.aov)</span></code></pre></div>
-<pre><code>## Error in qqPlot(data.aov): could not find function &quot;qqPlot&quot;</code></pre>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="til20220322.html#cb645-1"></a><span class="co"># QQPlot, Histogram</span></span>
+<span id="cb645-2"><a href="til20220322.html#cb645-2"></a><span class="kw">qqPlot</span>(data.aov)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-285-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>## [1] 164 186</code></pre>
 <ul>
 <li>등분산성
 <ul>
@@ -740,17 +740,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Boxplot</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="til20220322.html#cb648-1"></a><span class="kw">leveneTest</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
-<pre><code>## Error in leveneTest(body_mass_g ~ species, data): could not find function &quot;leveneTest&quot;</code></pre>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="til20220322.html#cb650-1"></a><span class="kw">leveneTest</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species<span class="op">*</span>sex, data)</span></code></pre></div>
-<pre><code>## Error in leveneTest(body_mass_g ~ species * sex, data): could not find function &quot;leveneTest&quot;</code></pre>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="til20220322.html#cb652-1"></a><span class="kw">bartlett.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="til20220322.html#cb647-1"></a><span class="kw">leveneTest</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value   Pr(&gt;F)   
+## group   2  5.1349 0.006367 **
+##       330                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="til20220322.html#cb649-1"></a><span class="kw">leveneTest</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species<span class="op">*</span>sex, data)</span></code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value Pr(&gt;F)
+## group   5  1.3908 0.2272
+##       327</code></pre>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="til20220322.html#cb651-1"></a><span class="kw">bartlett.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  body_mass_g by species
 ## Bartlett&#39;s K-squared = 5.692, df = 2, p-value = 0.05808</code></pre>
-<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="til20220322.html#cb654-1"></a><span class="kw">bartlett.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species,sex), data)</span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="til20220322.html#cb653-1"></a><span class="kw">bartlett.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species,sex), data)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -762,9 +770,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Boxplot, outlierTest()</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="til20220322.html#cb656-1"></a><span class="kw">outlierTest</span>(data.aov)</span></code></pre></div>
-<pre><code>## Error in outlierTest(data.aov): could not find function &quot;outlierTest&quot;</code></pre>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="til20220322.html#cb658-1"></a><span class="kw">range</span>(data<span class="op">$</span>body_mass_g); data[<span class="dv">164</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="til20220322.html#cb655-1"></a><span class="kw">outlierTest</span>(data.aov)</span></code></pre></div>
+<pre><code>## No Studentized residuals with Bonferroni p &lt; 0.05
+## Largest |rstudent|:
+##     rstudent unadjusted p-value Bonferroni p
+## 164 2.655717          0.0082993           NA</code></pre>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="til20220322.html#cb657-1"></a><span class="kw">range</span>(data<span class="op">$</span>body_mass_g); data[<span class="dv">164</span>,]</span></code></pre></div>
 <pre><code>## [1] 2700 6300</code></pre>
 <pre><code>## # A tibble: 1 × 3
 ##   body_mass_g species sex  
@@ -776,7 +787,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>oneway.test(…, var.equal=)</li>
 </ul>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="til20220322.html#cb661-1"></a>oneway.result &lt;-<span class="st"> </span><span class="kw">oneway.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data, <span class="dt">var.equal =</span> F); oneway.result</span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="til20220322.html#cb660-1"></a>oneway.result &lt;-<span class="st"> </span><span class="kw">oneway.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data, <span class="dt">var.equal =</span> F); oneway.result</span></code></pre></div>
 <pre><code>## 
 ##  One-way analysis of means (not assuming equal variances)
 ## 
@@ -785,8 +796,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>aov()</li>
 </ul>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="til20220322.html#cb663-1"></a>aov.result &lt;-<span class="st"> </span><span class="kw">aov</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span>
-<span id="cb663-2"><a href="til20220322.html#cb663-2"></a><span class="kw">summary</span>(aov.result)</span></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="til20220322.html#cb662-1"></a>aov.result &lt;-<span class="st"> </span><span class="kw">aov</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span>
+<span id="cb662-2"><a href="til20220322.html#cb662-2"></a><span class="kw">summary</span>(aov.result)</span></code></pre></div>
 <pre><code>##              Df    Sum Sq  Mean Sq F value Pr(&gt;F)    
 ## species       2 145190219 72595110   341.9 &lt;2e-16 ***
 ## Residuals   330  70069447   212332                   
@@ -795,7 +806,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Kruskal-Wallis test (정규성 불만족 시)</li>
 </ul>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="til20220322.html#cb665-1"></a><span class="kw">kruskal.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="til20220322.html#cb664-1"></a><span class="kw">kruskal.test</span>(body_mass_g <span class="op">~</span><span class="st"> </span>species, data)</span></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
@@ -807,7 +818,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Tukey HSD</li>
 </ul>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="til20220322.html#cb667-1"></a><span class="kw">TukeyHSD</span>(aov.result)</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="til20220322.html#cb666-1"></a><span class="kw">TukeyHSD</span>(aov.result)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -818,9 +829,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chinstrap-Adelie   26.92385 -132.3528  186.2005 0.916431
 ## Gentoo-Adelie    1386.27259 1252.2897 1520.2554 0.000000
 ## Gentoo-Chinstrap 1359.34874 1194.4304 1524.2671 0.000000</code></pre>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="til20220322.html#cb669-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(multcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;multcomp&quot;</span>); <span class="kw">library</span>(multcomp); }</span>
-<span id="cb669-2"><a href="til20220322.html#cb669-2"></a>tukey.result &lt;-<span class="st"> </span><span class="kw">glht</span>(aov.result, </span>
-<span id="cb669-3"><a href="til20220322.html#cb669-3"></a>                       <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>)); tukey.result</span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="til20220322.html#cb668-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(multcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;multcomp&quot;</span>); <span class="kw">library</span>(multcomp); }</span>
+<span id="cb668-2"><a href="til20220322.html#cb668-2"></a>tukey.result &lt;-<span class="st"> </span><span class="kw">glht</span>(aov.result, </span>
+<span id="cb668-3"><a href="til20220322.html#cb668-3"></a>                       <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>)); tukey.result</span></code></pre></div>
 <pre><code>## 
 ##   General Linear Hypotheses
 ## 
@@ -832,14 +843,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chinstrap - Adelie == 0    26.92
 ## Gentoo - Adelie == 0     1386.27
 ## Gentoo - Chinstrap == 0  1359.35</code></pre>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="til20220322.html#cb671-1"></a><span class="kw">plot</span>(tukey.result, <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="til20220322.html#cb670-1"></a><span class="kw">plot</span>(tukey.result, <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-297-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>Dunnett</li>
 </ul>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="til20220322.html#cb672-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(multcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;multcomp&quot;</span>); <span class="kw">library</span>(multcomp); }</span>
-<span id="cb672-2"><a href="til20220322.html#cb672-2"></a>dunnett.result &lt;-<span class="st"> </span><span class="kw">glht</span>(aov.result, </span>
-<span id="cb672-3"><a href="til20220322.html#cb672-3"></a>                       <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Dunnett&quot;</span>)); dunnett.result</span></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="til20220322.html#cb671-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(multcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;multcomp&quot;</span>); <span class="kw">library</span>(multcomp); }</span>
+<span id="cb671-2"><a href="til20220322.html#cb671-2"></a>dunnett.result &lt;-<span class="st"> </span><span class="kw">glht</span>(aov.result, </span>
+<span id="cb671-3"><a href="til20220322.html#cb671-3"></a>                       <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Dunnett&quot;</span>)); dunnett.result</span></code></pre></div>
 <pre><code>## 
 ##   General Linear Hypotheses
 ## 
@@ -853,7 +864,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Bonferroni correction</li>
 </ul>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="til20220322.html#cb674-1"></a><span class="kw">pairwise.t.test</span>(data<span class="op">$</span>body_mass_g, data<span class="op">$</span>species, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="til20220322.html#cb673-1"></a><span class="kw">pairwise.t.test</span>(data<span class="op">$</span>body_mass_g, data<span class="op">$</span>species, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 

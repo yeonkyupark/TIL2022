@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.1" data-path="til20220504.html"><a href="til20220504.html#section-2"><i class="fa fa-check"></i><b>5.4.1</b> </a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="til20220505.html"><a href="til20220505.html"><i class="fa fa-check"></i><b>5.5</b> TIL20220505</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="til20220505.html"><a href="til20220505.html#어린이날날"><i class="fa fa-check"></i><b>5.5.1</b> 어린이날날</a></li>
+<li class="chapter" data-level="5.5.1" data-path="til20220505.html"><a href="til20220505.html#shiny-app-배포-1"><i class="fa fa-check"></i><b>5.5.1</b> shiny app 배포</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="til202205.html"><a href="til202205.html"><i class="fa fa-check"></i><b>5.6</b> TIL202205</a><ul>
 <li class="chapter" data-level="5.6.1" data-path="til202205.html"><a href="til202205.html#section-3"><i class="fa fa-check"></i><b>5.6.1</b> </a></li>
@@ -528,16 +528,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Error in new.session() : Could not establish session after 5 attempts.</p>
 </blockquote>
 <p><a href="https://stackoverflow.com/questions/72057342/error-in-new-session-could-not-establish-session-after-5-attempts" class="uri">https://stackoverflow.com/questions/72057342/error-in-new-session-could-not-establish-session-after-5-attempts</a></p>
-<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="til20220501.html#cb1003-1"></a><span class="co"># finance.yahoo.com: Samsung Electronics, KRW</span></span>
-<span id="cb1003-2"><a href="til20220501.html#cb1003-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(quantmod)) { <span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>); <span class="kw">library</span>(quantmod); }</span>
-<span id="cb1003-3"><a href="til20220501.html#cb1003-3"></a></span>
-<span id="cb1003-4"><a href="til20220501.html#cb1003-4"></a>sec &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;005930.KS&quot;</span>,</span>
-<span id="cb1003-5"><a href="til20220501.html#cb1003-5"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
-<span id="cb1003-6"><a href="til20220501.html#cb1003-6"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
-<span id="cb1003-7"><a href="til20220501.html#cb1003-7"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb1003-8"><a href="til20220501.html#cb1003-8"></a></span>
-<span id="cb1003-9"><a href="til20220501.html#cb1003-9"></a>sec &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(sec)</span></code></pre></div>
-<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="til20220501.html#cb1004-1"></a><span class="kw">head</span>(sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="til20220501.html#cb1002-1"></a><span class="co"># finance.yahoo.com: Samsung Electronics, KRW</span></span>
+<span id="cb1002-2"><a href="til20220501.html#cb1002-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(quantmod)) { <span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>); <span class="kw">library</span>(quantmod); }</span>
+<span id="cb1002-3"><a href="til20220501.html#cb1002-3"></a></span>
+<span id="cb1002-4"><a href="til20220501.html#cb1002-4"></a>sec &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;005930.KS&quot;</span>,</span>
+<span id="cb1002-5"><a href="til20220501.html#cb1002-5"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
+<span id="cb1002-6"><a href="til20220501.html#cb1002-6"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
+<span id="cb1002-7"><a href="til20220501.html#cb1002-7"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb1002-8"><a href="til20220501.html#cb1002-8"></a></span>
+<span id="cb1002-9"><a href="til20220501.html#cb1002-9"></a>sec &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(sec)</span></code></pre></div>
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="til20220501.html#cb1003-1"></a><span class="kw">head</span>(sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span></code></pre></div>
 <pre><code>##            005930.KS.Close 005930.KS.Volume
 ## 2022-01-04           78700         12427416
 ## 2022-01-05           77400         25470640
@@ -545,10 +545,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2022-01-07           78300         15163757
 ## 2022-01-10           78000          9947422
 ## 2022-01-11           78900         13221123</code></pre>
-<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="til20220501.html#cb1006-1"></a>sec &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(sec),</span>
-<span id="cb1006-2"><a href="til20220501.html#cb1006-2"></a>             <span class="dt">symbol =</span> <span class="st">&quot;005930.KS&quot;</span>,</span>
-<span id="cb1006-3"><a href="til20220501.html#cb1006-3"></a>             sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span>
-<span id="cb1006-4"><a href="til20220501.html#cb1006-4"></a><span class="kw">head</span>(sec)</span></code></pre></div>
+<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1005-1"><a href="til20220501.html#cb1005-1"></a>sec &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(sec),</span>
+<span id="cb1005-2"><a href="til20220501.html#cb1005-2"></a>             <span class="dt">symbol =</span> <span class="st">&quot;005930.KS&quot;</span>,</span>
+<span id="cb1005-3"><a href="til20220501.html#cb1005-3"></a>             sec[<span class="kw">c</span>(<span class="st">&quot;005930.KS.Close&quot;</span>, <span class="st">&quot;005930.KS.Volume&quot;</span>)])</span>
+<span id="cb1005-4"><a href="til20220501.html#cb1005-4"></a><span class="kw">head</span>(sec)</span></code></pre></div>
 <pre><code>##                  date    symbol 005930.KS.Close 005930.KS.Volume
 ## 2022-01-04 2022-01-04 005930.KS           78700         12427416
 ## 2022-01-05 2022-01-05 005930.KS           77400         25470640
@@ -556,9 +556,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2022-01-07 2022-01-07 005930.KS           78300         15163757
 ## 2022-01-10 2022-01-10 005930.KS           78000          9947422
 ## 2022-01-11 2022-01-11 005930.KS           78900         13221123</code></pre>
-<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="til20220501.html#cb1008-1"></a><span class="kw">rownames</span>(sec) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb1008-2"><a href="til20220501.html#cb1008-2"></a><span class="kw">colnames</span>(sec)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
-<span id="cb1008-3"><a href="til20220501.html#cb1008-3"></a><span class="kw">head</span>(sec)</span></code></pre></div>
+<div class="sourceCode" id="cb1007"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1007-1"><a href="til20220501.html#cb1007-1"></a><span class="kw">rownames</span>(sec) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb1007-2"><a href="til20220501.html#cb1007-2"></a><span class="kw">colnames</span>(sec)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
+<span id="cb1007-3"><a href="til20220501.html#cb1007-3"></a><span class="kw">head</span>(sec)</span></code></pre></div>
 <pre><code>##         date    symbol close   volume
 ## 1 2022-01-04 005930.KS 78700 12427416
 ## 2 2022-01-05 005930.KS 77400 25470640
@@ -566,17 +566,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 2022-01-07 005930.KS 78300 15163757
 ## 5 2022-01-10 005930.KS 78000  9947422
 ## 6 2022-01-11 005930.KS 78900 13221123</code></pre>
-<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="til20220501.html#cb1010-1"></a>hmc &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;005387.KS&quot;</span>,</span>
-<span id="cb1010-2"><a href="til20220501.html#cb1010-2"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
-<span id="cb1010-3"><a href="til20220501.html#cb1010-3"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
-<span id="cb1010-4"><a href="til20220501.html#cb1010-4"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb1010-5"><a href="til20220501.html#cb1010-5"></a></span>
-<span id="cb1010-6"><a href="til20220501.html#cb1010-6"></a>hmc &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(hmc)</span>
-<span id="cb1010-7"><a href="til20220501.html#cb1010-7"></a></span>
-<span id="cb1010-8"><a href="til20220501.html#cb1010-8"></a>hmc &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(hmc),</span>
-<span id="cb1010-9"><a href="til20220501.html#cb1010-9"></a>             <span class="dt">symbol =</span> <span class="st">&quot;005387.KS&quot;</span>,</span>
-<span id="cb1010-10"><a href="til20220501.html#cb1010-10"></a>             hmc[<span class="kw">c</span>(<span class="st">&quot;005387.KS.Close&quot;</span>, <span class="st">&quot;005387.KS.Volume&quot;</span>)])</span>
-<span id="cb1010-11"><a href="til20220501.html#cb1010-11"></a><span class="kw">head</span>(hmc)</span></code></pre></div>
+<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1009-1"><a href="til20220501.html#cb1009-1"></a>hmc &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;005387.KS&quot;</span>,</span>
+<span id="cb1009-2"><a href="til20220501.html#cb1009-2"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
+<span id="cb1009-3"><a href="til20220501.html#cb1009-3"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
+<span id="cb1009-4"><a href="til20220501.html#cb1009-4"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb1009-5"><a href="til20220501.html#cb1009-5"></a></span>
+<span id="cb1009-6"><a href="til20220501.html#cb1009-6"></a>hmc &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(hmc)</span>
+<span id="cb1009-7"><a href="til20220501.html#cb1009-7"></a></span>
+<span id="cb1009-8"><a href="til20220501.html#cb1009-8"></a>hmc &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(hmc),</span>
+<span id="cb1009-9"><a href="til20220501.html#cb1009-9"></a>             <span class="dt">symbol =</span> <span class="st">&quot;005387.KS&quot;</span>,</span>
+<span id="cb1009-10"><a href="til20220501.html#cb1009-10"></a>             hmc[<span class="kw">c</span>(<span class="st">&quot;005387.KS.Close&quot;</span>, <span class="st">&quot;005387.KS.Volume&quot;</span>)])</span>
+<span id="cb1009-11"><a href="til20220501.html#cb1009-11"></a><span class="kw">head</span>(hmc)</span></code></pre></div>
 <pre><code>##                  date    symbol 005387.KS.Close 005387.KS.Volume
 ## 2022-01-04 2022-01-04 005387.KS          100500            63345
 ## 2022-01-05 2022-01-05 005387.KS          102500            81498
@@ -584,9 +584,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2022-01-07 2022-01-07 005387.KS          101000            67106
 ## 2022-01-10 2022-01-10 005387.KS          100500            51838
 ## 2022-01-11 2022-01-11 005387.KS          101500            65582</code></pre>
-<div class="sourceCode" id="cb1012"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1012-1"><a href="til20220501.html#cb1012-1"></a><span class="kw">rownames</span>(hmc) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb1012-2"><a href="til20220501.html#cb1012-2"></a><span class="kw">colnames</span>(hmc)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
-<span id="cb1012-3"><a href="til20220501.html#cb1012-3"></a><span class="kw">head</span>(hmc)</span></code></pre></div>
+<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1011-1"><a href="til20220501.html#cb1011-1"></a><span class="kw">rownames</span>(hmc) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb1011-2"><a href="til20220501.html#cb1011-2"></a><span class="kw">colnames</span>(hmc)[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>, <span class="st">&quot;volume&quot;</span>)</span>
+<span id="cb1011-3"><a href="til20220501.html#cb1011-3"></a><span class="kw">head</span>(hmc)</span></code></pre></div>
 <pre><code>##         date    symbol  close volume
 ## 1 2022-01-04 005387.KS 100500  63345
 ## 2 2022-01-05 005387.KS 102500  81498
@@ -594,14 +594,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 2022-01-07 005387.KS 101000  67106
 ## 5 2022-01-10 005387.KS 100500  51838
 ## 6 2022-01-11 005387.KS 101500  65582</code></pre>
-<div class="sourceCode" id="cb1014"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1014-1"><a href="til20220501.html#cb1014-1"></a><span class="co"># 환률 데이터</span></span>
-<span id="cb1014-2"><a href="til20220501.html#cb1014-2"></a>fx &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;KRW=x&quot;</span>,</span>
-<span id="cb1014-3"><a href="til20220501.html#cb1014-3"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
-<span id="cb1014-4"><a href="til20220501.html#cb1014-4"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
-<span id="cb1014-5"><a href="til20220501.html#cb1014-5"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb1014-6"><a href="til20220501.html#cb1014-6"></a></span>
-<span id="cb1014-7"><a href="til20220501.html#cb1014-7"></a>fx &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(fx)</span>
-<span id="cb1014-8"><a href="til20220501.html#cb1014-8"></a><span class="kw">str</span>(fx)</span></code></pre></div>
+<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1013-1"><a href="til20220501.html#cb1013-1"></a><span class="co"># 환률 데이터</span></span>
+<span id="cb1013-2"><a href="til20220501.html#cb1013-2"></a>fx &lt;-<span class="st"> </span><span class="kw">getSymbols</span>(<span class="dt">Symbols=</span><span class="st">&quot;KRW=x&quot;</span>,</span>
+<span id="cb1013-3"><a href="til20220501.html#cb1013-3"></a>                  <span class="dt">from =</span> <span class="st">&quot;2022-01-01&quot;</span>,</span>
+<span id="cb1013-4"><a href="til20220501.html#cb1013-4"></a>                  <span class="dt">to =</span> <span class="st">&quot;2022-03-31&quot;</span>,</span>
+<span id="cb1013-5"><a href="til20220501.html#cb1013-5"></a>                  <span class="dt">auto.assign =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb1013-6"><a href="til20220501.html#cb1013-6"></a></span>
+<span id="cb1013-7"><a href="til20220501.html#cb1013-7"></a>fx &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(fx)</span>
+<span id="cb1013-8"><a href="til20220501.html#cb1013-8"></a><span class="kw">str</span>(fx)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    64 obs. of  6 variables:
 ##  $ KRW=X.Open    : num  1187 1196 1197 1199 1205 ...
 ##  $ KRW=X.High    : num  1195 1200 1200 1206 1205 ...
@@ -609,8 +609,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ KRW=X.Close   : num  1188 1195 1196 1199 1206 ...
 ##  $ KRW=X.Volume  : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ KRW=X.Adjusted: num  1188 1195 1196 1199 1206 ...</code></pre>
-<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="til20220501.html#cb1016-1"></a>fx &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(fx), fx[<span class="kw">c</span>(<span class="st">&quot;KRW=X.Close&quot;</span>)])</span>
-<span id="cb1016-2"><a href="til20220501.html#cb1016-2"></a><span class="kw">head</span>(fx)</span></code></pre></div>
+<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1015-1"><a href="til20220501.html#cb1015-1"></a>fx &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">date =</span> <span class="kw">rownames</span>(fx), fx[<span class="kw">c</span>(<span class="st">&quot;KRW=X.Close&quot;</span>)])</span>
+<span id="cb1015-2"><a href="til20220501.html#cb1015-2"></a><span class="kw">head</span>(fx)</span></code></pre></div>
 <pre><code>##                  date KRW=X.Close
 ## 2022-01-03 2022-01-03        1188
 ## 2022-01-04 2022-01-04        1195
@@ -618,9 +618,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2022-01-06 2022-01-06        1199
 ## 2022-01-07 2022-01-07        1206
 ## 2022-01-10 2022-01-10        1197</code></pre>
-<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1018-1"><a href="til20220501.html#cb1018-1"></a><span class="kw">rownames</span>(fx) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb1018-2"><a href="til20220501.html#cb1018-2"></a><span class="kw">colnames</span>(fx)[<span class="kw">c</span>(<span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>)</span>
-<span id="cb1018-3"><a href="til20220501.html#cb1018-3"></a><span class="kw">head</span>(fx)</span></code></pre></div>
+<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1017-1"><a href="til20220501.html#cb1017-1"></a><span class="kw">rownames</span>(fx) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb1017-2"><a href="til20220501.html#cb1017-2"></a><span class="kw">colnames</span>(fx)[<span class="kw">c</span>(<span class="dv">2</span>)] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;close&quot;</span>)</span>
+<span id="cb1017-3"><a href="til20220501.html#cb1017-3"></a><span class="kw">head</span>(fx)</span></code></pre></div>
 <pre><code>##         date close
 ## 1 2022-01-03  1188
 ## 2 2022-01-04  1195
@@ -628,10 +628,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 2022-01-06  1199
 ## 5 2022-01-07  1206
 ## 6 2022-01-10  1197</code></pre>
-<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="til20220501.html#cb1020-1"></a><span class="kw">intersect</span>(<span class="kw">names</span>(sec), <span class="kw">names</span>(fx))</span></code></pre></div>
+<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="til20220501.html#cb1019-1"></a><span class="kw">intersect</span>(<span class="kw">names</span>(sec), <span class="kw">names</span>(fx))</span></code></pre></div>
 <pre><code>## [1] &quot;date&quot;  &quot;close&quot;</code></pre>
-<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1022-1"><a href="til20220501.html#cb1022-1"></a>report &lt;-<span class="st"> </span><span class="kw">merge</span>(sec, fx, <span class="dt">by=</span><span class="st">&quot;date&quot;</span>)</span>
-<span id="cb1022-2"><a href="til20220501.html#cb1022-2"></a><span class="kw">head</span>(report)</span></code></pre></div>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="til20220501.html#cb1021-1"></a>report &lt;-<span class="st"> </span><span class="kw">merge</span>(sec, fx, <span class="dt">by=</span><span class="st">&quot;date&quot;</span>)</span>
+<span id="cb1021-2"><a href="til20220501.html#cb1021-2"></a><span class="kw">head</span>(report)</span></code></pre></div>
 <pre><code>##         date    symbol close.x   volume close.y
 ## 1 2022-01-04 005930.KS   78700 12427416    1195
 ## 2 2022-01-05 005930.KS   77400 25470640    1196
@@ -639,12 +639,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 2022-01-07 005930.KS   78300 15163757    1206
 ## 5 2022-01-10 005930.KS   78000  9947422    1197
 ## 6 2022-01-11 005930.KS   78900 13221123    1198</code></pre>
-<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="til20220501.html#cb1024-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</span>
-<span id="cb1024-2"><a href="til20220501.html#cb1024-2"></a><span class="kw">match</span>(<span class="dv">7</span>, v) <span class="co"># match(x y), x는 찾을 값, y는 대상, 반환값은 y에서의 인덱스</span></span></code></pre></div>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="til20220501.html#cb1023-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</span>
+<span id="cb1023-2"><a href="til20220501.html#cb1023-2"></a><span class="kw">match</span>(<span class="dv">7</span>, v) <span class="co"># match(x y), x는 찾을 값, y는 대상, 반환값은 y에서의 인덱스</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb1026"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1026-1"><a href="til20220501.html#cb1026-1"></a><span class="kw">match</span>(<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">5</span>), v)</span></code></pre></div>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="til20220501.html#cb1025-1"></a><span class="kw">match</span>(<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">5</span>), v)</span></code></pre></div>
 <pre><code>## [1] NA  1  6</code></pre>
-<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1028-1"><a href="til20220501.html#cb1028-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb1027"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1027-1"><a href="til20220501.html#cb1027-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat   wt qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
@@ -652,10 +652,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</code></pre>
-<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="til20220501.html#cb1030-1"></a>car &lt;-<span class="st"> </span>mtcars</span>
-<span id="cb1030-2"><a href="til20220501.html#cb1030-2"></a>car<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">rownames</span>(car)</span>
-<span id="cb1030-3"><a href="til20220501.html#cb1030-3"></a><span class="kw">rownames</span>(car) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb1030-4"><a href="til20220501.html#cb1030-4"></a><span class="kw">head</span>(car)</span></code></pre></div>
+<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1029-1"><a href="til20220501.html#cb1029-1"></a>car &lt;-<span class="st"> </span>mtcars</span>
+<span id="cb1029-2"><a href="til20220501.html#cb1029-2"></a>car<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">rownames</span>(car)</span>
+<span id="cb1029-3"><a href="til20220501.html#cb1029-3"></a><span class="kw">rownames</span>(car) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb1029-4"><a href="til20220501.html#cb1029-4"></a><span class="kw">head</span>(car)</span></code></pre></div>
 <pre><code>##    mpg cyl disp  hp drat   wt qsec vs am gear carb              name
 ## 1 21.0   6  160 110 3.90 2.62 16.5  0  1    4    4         Mazda RX4
 ## 2 21.0   6  160 110 3.90 2.88 17.0  0  1    4    4     Mazda RX4 Wag
@@ -663,33 +663,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1    Hornet 4 Drive
 ## 5 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2 Hornet Sportabout
 ## 6 18.1   6  225 105 2.76 3.46 20.2  1  0    3    1           Valiant</code></pre>
-<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1032-1"><a href="til20220501.html#cb1032-1"></a><span class="co"># 2개의 데이터 서브셋</span></span>
-<span id="cb1032-2"><a href="til20220501.html#cb1032-2"></a><span class="co"># 1. 힘 좋은 차량</span></span>
-<span id="cb1032-3"><a href="til20220501.html#cb1032-3"></a><span class="co"># 2. 가벼운 차량</span></span>
-<span id="cb1032-4"><a href="til20220501.html#cb1032-4"></a><span class="co"># 힘 좋고 가벼운 차량 검색</span></span>
-<span id="cb1032-5"><a href="til20220501.html#cb1032-5"></a></span>
-<span id="cb1032-6"><a href="til20220501.html#cb1032-6"></a>highhp.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>hp <span class="op">&gt;</span><span class="st"> </span><span class="dv">145</span>, ]</span>
-<span id="cb1032-7"><a href="til20220501.html#cb1032-7"></a>lightwt.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>wt <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.2</span>, ]</span>
-<span id="cb1032-8"><a href="til20220501.html#cb1032-8"></a></span>
-<span id="cb1032-9"><a href="til20220501.html#cb1032-9"></a>index &lt;-<span class="st"> </span><span class="kw">match</span>(highhp.car<span class="op">$</span>name, lightwt.car<span class="op">$</span>name)</span>
-<span id="cb1032-10"><a href="til20220501.html#cb1032-10"></a>lightwt.car[<span class="kw">na.omit</span>(index), ]</span></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1031-1"><a href="til20220501.html#cb1031-1"></a><span class="co"># 2개의 데이터 서브셋</span></span>
+<span id="cb1031-2"><a href="til20220501.html#cb1031-2"></a><span class="co"># 1. 힘 좋은 차량</span></span>
+<span id="cb1031-3"><a href="til20220501.html#cb1031-3"></a><span class="co"># 2. 가벼운 차량</span></span>
+<span id="cb1031-4"><a href="til20220501.html#cb1031-4"></a><span class="co"># 힘 좋고 가벼운 차량 검색</span></span>
+<span id="cb1031-5"><a href="til20220501.html#cb1031-5"></a></span>
+<span id="cb1031-6"><a href="til20220501.html#cb1031-6"></a>highhp.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>hp <span class="op">&gt;</span><span class="st"> </span><span class="dv">145</span>, ]</span>
+<span id="cb1031-7"><a href="til20220501.html#cb1031-7"></a>lightwt.car &lt;-<span class="st"> </span>car[car<span class="op">$</span>wt <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.2</span>, ]</span>
+<span id="cb1031-8"><a href="til20220501.html#cb1031-8"></a></span>
+<span id="cb1031-9"><a href="til20220501.html#cb1031-9"></a>index &lt;-<span class="st"> </span><span class="kw">match</span>(highhp.car<span class="op">$</span>name, lightwt.car<span class="op">$</span>name)</span>
+<span id="cb1031-10"><a href="til20220501.html#cb1031-10"></a>lightwt.car[<span class="kw">na.omit</span>(index), ]</span></code></pre></div>
 <pre><code>##     mpg cyl disp  hp drat   wt qsec vs am gear carb           name
 ## 29 15.8   8  351 264 4.22 3.17 14.5  0  1    5    4 Ford Pantera L
 ## 30 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6   Ferrari Dino</code></pre>
-<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="til20220501.html#cb1034-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</span>
-<span id="cb1034-2"><a href="til20220501.html#cb1034-2"></a><span class="dv">7</span> <span class="op">%in%</span><span class="st"> </span>v <span class="co"># 논리값 반환</span></span></code></pre></div>
+<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1033-1"><a href="til20220501.html#cb1033-1"></a>v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</span>
+<span id="cb1033-2"><a href="til20220501.html#cb1033-2"></a><span class="dv">7</span> <span class="op">%in%</span><span class="st"> </span>v <span class="co"># 논리값 반환</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb1036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1036-1"><a href="til20220501.html#cb1036-1"></a><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">5</span>) <span class="op">%in%</span><span class="st"> </span>v</span></code></pre></div>
+<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1035-1"><a href="til20220501.html#cb1035-1"></a><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">5</span>) <span class="op">%in%</span><span class="st"> </span>v</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb1038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1038-1"><a href="til20220501.html#cb1038-1"></a>index &lt;-<span class="st"> </span>highhp.car<span class="op">$</span>name <span class="op">%in%</span><span class="st"> </span>lightwt.car<span class="op">$</span>name</span>
-<span id="cb1038-2"><a href="til20220501.html#cb1038-2"></a>index</span></code></pre></div>
+<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1037-1"><a href="til20220501.html#cb1037-1"></a>index &lt;-<span class="st"> </span>highhp.car<span class="op">$</span>name <span class="op">%in%</span><span class="st"> </span>lightwt.car<span class="op">$</span>name</span>
+<span id="cb1037-2"><a href="til20220501.html#cb1037-2"></a>index</span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ## [13]  TRUE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb1040"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1040-1"><a href="til20220501.html#cb1040-1"></a>lightwt.car[index, ]</span></code></pre></div>
+<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1039-1"><a href="til20220501.html#cb1039-1"></a>lightwt.car[index, ]</span></code></pre></div>
 <pre><code>##     mpg cyl disp  hp drat   wt qsec vs am gear carb           name
 ## 29 15.8   8  351 264 4.22 3.17 14.5  0  1    5    4 Ford Pantera L
 ## 30 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6   Ferrari Dino</code></pre>
-<div class="sourceCode" id="cb1042"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1042-1"><a href="til20220501.html#cb1042-1"></a>highhp.car[index, ]</span></code></pre></div>
+<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="til20220501.html#cb1041-1"></a>highhp.car[index, ]</span></code></pre></div>
 <pre><code>##     mpg cyl disp  hp drat   wt qsec vs am gear carb           name
 ## 29 15.8   8  351 264 4.22 3.17 14.5  0  1    5    4 Ford Pantera L
 ## 30 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6   Ferrari Dino</code></pre>
