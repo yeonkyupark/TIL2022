@@ -1,6 +1,11 @@
 ## TIL20220505
 
-### 어린이날날
+### shiny app 배포
+
+1. https://www.shinyapps.io/ 가입
+
+2. 
+
 
 ```{r}
 
