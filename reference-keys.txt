@@ -238,6 +238,8 @@ til20220503
 shiny-app-example
 til20220504
 section-2
+til20220505
+어린이날날
 til202205
 section-3
 til202205-1
@@ -290,5 +292,3 @@ til202205-24
 section-27
 til202205-25
 section-28
-til202205-26
-section-29
