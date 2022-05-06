@@ -529,7 +529,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="til20220313.html#cb355-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glue)) { <span class="kw">install.packages</span>(<span class="st">&quot;glue&quot;</span>); <span class="kw">library</span>(glue); }</span>
 <span id="cb355-2"><a href="til20220313.html#cb355-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forcats)) { <span class="kw">install.packages</span>(<span class="st">&quot;forcats&quot;</span>); <span class="kw">library</span>(forcats); }</span>
 <span id="cb355-3"><a href="til20220313.html#cb355-3"></a></span>
@@ -544,46 +544,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="til20220313.html#cb357-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyquant)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyquant&quot;</span>); <span class="kw">library</span>(tidyquant); }</span></code></pre></div>
+<pre><code>## Error in download.file(url, destfile, method, mode = &quot;wb&quot;, ...) : 
+##   download from &#39;https://cloud.r-project.org/bin/macosx/contrib/4.2/PerformanceAnalytics_2.0.4.tgz&#39; failed
+## Error in download.file(url, destfile, method, mode = &quot;wb&quot;, ...) : 
+##   cannot open URL &#39;https://cloud.r-project.org/bin/macosx/contrib/4.2/riingo_0.3.1.tgz&#39;
+## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
+<pre><code>## Error: package &#39;PerformanceAnalytics&#39; required by &#39;tidyquant&#39; could not be found</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="til20220313.html#cb360-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tibbletime)) { <span class="kw">install.packages</span>(<span class="st">&quot;tibbletime&quot;</span>); <span class="kw">library</span>(tibbletime); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="til20220313.html#cb359-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tibbletime)) { <span class="kw">install.packages</span>(<span class="st">&quot;tibbletime&quot;</span>); <span class="kw">library</span>(tibbletime); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="til20220313.html#cb362-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(sweep)) { <span class="kw">install.packages</span>(<span class="st">&quot;sweep&quot;</span>); <span class="kw">library</span>(sweep); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="til20220313.html#cb361-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(sweep)) { <span class="kw">install.packages</span>(<span class="st">&quot;sweep&quot;</span>); <span class="kw">library</span>(sweep); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="til20220313.html#cb364-1"></a><span class="co"># Visualization</span></span>
+<span id="cb364-2"><a href="til20220313.html#cb364-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(cowplot)) { <span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>); <span class="kw">library</span>(cowplot); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="til20220313.html#cb363-1"></a><span class="co"># Visualization</span></span>
-<span id="cb363-2"><a href="til20220313.html#cb363-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(cowplot)) { <span class="kw">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>); <span class="kw">library</span>(cowplot); }</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="til20220313.html#cb366-1"></a><span class="co"># Preprocessing</span></span>
+<span id="cb366-2"><a href="til20220313.html#cb366-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(recipes)) { <span class="kw">install.packages</span>(<span class="st">&quot;recipes&quot;</span>); <span class="kw">library</span>(recipes); }</span>
+<span id="cb366-3"><a href="til20220313.html#cb366-3"></a></span>
+<span id="cb366-4"><a href="til20220313.html#cb366-4"></a><span class="co"># Sampling / Accuracy</span></span>
+<span id="cb366-5"><a href="til20220313.html#cb366-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rsample)) { <span class="kw">install.packages</span>(<span class="st">&quot;rsample&quot;</span>); <span class="kw">library</span>(rsample); }</span>
+<span id="cb366-6"><a href="til20220313.html#cb366-6"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(yardstick)) { <span class="kw">install.packages</span>(<span class="st">&quot;yardstick&quot;</span>); <span class="kw">library</span>(yardstick); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="til20220313.html#cb365-1"></a><span class="co"># Preprocessing</span></span>
-<span id="cb365-2"><a href="til20220313.html#cb365-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(recipes)) { <span class="kw">install.packages</span>(<span class="st">&quot;recipes&quot;</span>); <span class="kw">library</span>(recipes); }</span>
-<span id="cb365-3"><a href="til20220313.html#cb365-3"></a></span>
-<span id="cb365-4"><a href="til20220313.html#cb365-4"></a><span class="co"># Sampling / Accuracy</span></span>
-<span id="cb365-5"><a href="til20220313.html#cb365-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rsample)) { <span class="kw">install.packages</span>(<span class="st">&quot;rsample&quot;</span>); <span class="kw">library</span>(rsample); }</span>
-<span id="cb365-6"><a href="til20220313.html#cb365-6"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(yardstick)) { <span class="kw">install.packages</span>(<span class="st">&quot;yardstick&quot;</span>); <span class="kw">library</span>(yardstick); }</span></code></pre></div>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpc4JJZJ/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="til20220313.html#cb367-1"></a><span class="co"># Modeling</span></span>
-<span id="cb367-2"><a href="til20220313.html#cb367-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forecast)) { <span class="kw">install.packages</span>(<span class="st">&quot;forecast&quot;</span>); <span class="kw">library</span>(forecast); }</span>
-<span id="cb367-3"><a href="til20220313.html#cb367-3"></a></span>
-<span id="cb367-4"><a href="til20220313.html#cb367-4"></a><span class="kw">data</span>(<span class="st">&quot;AirPassengers&quot;</span>)</span>
-<span id="cb367-5"><a href="til20220313.html#cb367-5"></a></span>
-<span id="cb367-6"><a href="til20220313.html#cb367-6"></a>ap_ts &lt;-<span class="st"> </span>AirPassengers <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb367-7"><a href="til20220313.html#cb367-7"></a><span class="st">  </span><span class="kw">tk_tbl</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb367-8"><a href="til20220313.html#cb367-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> <span class="kw">as_date</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb367-9"><a href="til20220313.html#cb367-9"></a><span class="st">  </span><span class="kw">as_tbl_time</span>(<span class="dt">index =</span> index) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb367-10"><a href="til20220313.html#cb367-10"></a><span class="st">  </span><span class="kw">filter</span>(index <span class="op">&gt;=</span><span class="st"> &quot;1950-01-01&quot;</span>, index <span class="op">&lt;=</span><span class="st"> &quot;1959-12-31&quot;</span>)</span>
-<span id="cb367-11"><a href="til20220313.html#cb367-11"></a></span>
-<span id="cb367-12"><a href="til20220313.html#cb367-12"></a><span class="kw">ggplot</span>(ap_ts, <span class="kw">aes</span>(<span class="dt">x=</span>index, <span class="dt">y=</span>value)) <span class="op">+</span></span>
-<span id="cb367-13"><a href="til20220313.html#cb367-13"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLkfhwR/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220313.html#cb368-1"></a><span class="co"># Modeling</span></span>
+<span id="cb368-2"><a href="til20220313.html#cb368-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(forecast)) { <span class="kw">install.packages</span>(<span class="st">&quot;forecast&quot;</span>); <span class="kw">library</span>(forecast); }</span>
+<span id="cb368-3"><a href="til20220313.html#cb368-3"></a></span>
+<span id="cb368-4"><a href="til20220313.html#cb368-4"></a><span class="kw">data</span>(<span class="st">&quot;AirPassengers&quot;</span>)</span>
+<span id="cb368-5"><a href="til20220313.html#cb368-5"></a></span>
+<span id="cb368-6"><a href="til20220313.html#cb368-6"></a>ap_ts &lt;-<span class="st"> </span>AirPassengers <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb368-7"><a href="til20220313.html#cb368-7"></a><span class="st">  </span><span class="kw">tk_tbl</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb368-8"><a href="til20220313.html#cb368-8"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">index =</span> <span class="kw">as_date</span>(index)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb368-9"><a href="til20220313.html#cb368-9"></a><span class="st">  </span><span class="kw">as_tbl_time</span>(<span class="dt">index =</span> index) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb368-10"><a href="til20220313.html#cb368-10"></a><span class="st">  </span><span class="kw">filter</span>(index <span class="op">&gt;=</span><span class="st"> &quot;1950-01-01&quot;</span>, index <span class="op">&lt;=</span><span class="st"> &quot;1959-12-31&quot;</span>)</span>
+<span id="cb368-11"><a href="til20220313.html#cb368-11"></a></span>
+<span id="cb368-12"><a href="til20220313.html#cb368-12"></a><span class="kw">ggplot</span>(ap_ts, <span class="kw">aes</span>(<span class="dt">x=</span>index, <span class="dt">y=</span>value)) <span class="op">+</span></span>
+<span id="cb368-13"><a href="til20220313.html#cb368-13"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-164-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>오늘은 여기까지…</p>
 <hr />

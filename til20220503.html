@@ -506,176 +506,176 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.3</span> TIL20220503<a href="til20220503.html#til20220503" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="shiny-app-example" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.3.1</span> shiny app example<a href="til20220503.html#shiny-app-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1048"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1048-1"><a href="til20220503.html#cb1048-1"></a><span class="co">## app.R ##</span></span>
-<span id="cb1048-2"><a href="til20220503.html#cb1048-2"></a><span class="kw">library</span>(shinydashboard)</span>
-<span id="cb1048-3"><a href="til20220503.html#cb1048-3"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb1048-4"><a href="til20220503.html#cb1048-4"></a></span>
-<span id="cb1048-5"><a href="til20220503.html#cb1048-5"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
-<span id="cb1048-6"><a href="til20220503.html#cb1048-6"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),   <span class="co"># Header title</span></span>
-<span id="cb1048-7"><a href="til20220503.html#cb1048-7"></a>  </span>
-<span id="cb1048-8"><a href="til20220503.html#cb1048-8"></a>  <span class="kw">dashboardSidebar</span>(</span>
-<span id="cb1048-9"><a href="til20220503.html#cb1048-9"></a>    <span class="kw">sidebarMenu</span>(</span>
-<span id="cb1048-10"><a href="til20220503.html#cb1048-10"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)),</span>
-<span id="cb1048-11"><a href="til20220503.html#cb1048-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
-<span id="cb1048-12"><a href="til20220503.html#cb1048-12"></a>    )</span>
-<span id="cb1048-13"><a href="til20220503.html#cb1048-13"></a>  ),</span>
-<span id="cb1048-14"><a href="til20220503.html#cb1048-14"></a>  </span>
-<span id="cb1048-15"><a href="til20220503.html#cb1048-15"></a>  </span>
-<span id="cb1048-16"><a href="til20220503.html#cb1048-16"></a>  <span class="kw">dashboardBody</span>(</span>
-<span id="cb1048-17"><a href="til20220503.html#cb1048-17"></a>    <span class="kw">tabItems</span>(</span>
-<span id="cb1048-18"><a href="til20220503.html#cb1048-18"></a>      <span class="co"># First tab content</span></span>
-<span id="cb1048-19"><a href="til20220503.html#cb1048-19"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,</span>
-<span id="cb1048-20"><a href="til20220503.html#cb1048-20"></a>              <span class="co"># Boxes need to be put in a row (or column)</span></span>
-<span id="cb1048-21"><a href="til20220503.html#cb1048-21"></a>              <span class="kw">fluidRow</span>(</span>
-<span id="cb1048-22"><a href="til20220503.html#cb1048-22"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
-<span id="cb1048-23"><a href="til20220503.html#cb1048-23"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process1&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1048-24"><a href="til20220503.html#cb1048-24"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1048-25"><a href="til20220503.html#cb1048-25"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1048-26"><a href="til20220503.html#cb1048-26"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value1&quot;</span>, <span class="dt">placeholder=</span>T)</span>
-<span id="cb1048-27"><a href="til20220503.html#cb1048-27"></a>                ),</span>
-<span id="cb1048-28"><a href="til20220503.html#cb1048-28"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
-<span id="cb1048-29"><a href="til20220503.html#cb1048-29"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process2&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
-<span id="cb1048-30"><a href="til20220503.html#cb1048-30"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.35</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.37</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.32</span>), </span>
-<span id="cb1048-31"><a href="til20220503.html#cb1048-31"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1048-32"><a href="til20220503.html#cb1048-32"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value2&quot;</span>)</span>
-<span id="cb1048-33"><a href="til20220503.html#cb1048-33"></a>                ),</span>
-<span id="cb1048-34"><a href="til20220503.html#cb1048-34"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
-<span id="cb1048-35"><a href="til20220503.html#cb1048-35"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process3&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
-<span id="cb1048-36"><a href="til20220503.html#cb1048-36"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.45</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.47</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.42</span>), </span>
-<span id="cb1048-37"><a href="til20220503.html#cb1048-37"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1048-38"><a href="til20220503.html#cb1048-38"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value3&quot;</span>)</span>
-<span id="cb1048-39"><a href="til20220503.html#cb1048-39"></a>                ),</span>
-<span id="cb1048-40"><a href="til20220503.html#cb1048-40"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
-<span id="cb1048-41"><a href="til20220503.html#cb1048-41"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process4&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
-<span id="cb1048-42"><a href="til20220503.html#cb1048-42"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.65</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.67</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.62</span>), </span>
-<span id="cb1048-43"><a href="til20220503.html#cb1048-43"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1048-44"><a href="til20220503.html#cb1048-44"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value4&quot;</span>)</span>
-<span id="cb1048-45"><a href="til20220503.html#cb1048-45"></a>                ),</span>
-<span id="cb1048-46"><a href="til20220503.html#cb1048-46"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
-<span id="cb1048-47"><a href="til20220503.html#cb1048-47"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process5&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
-<span id="cb1048-48"><a href="til20220503.html#cb1048-48"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.75</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.77</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.72</span>), </span>
-<span id="cb1048-49"><a href="til20220503.html#cb1048-49"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1048-50"><a href="til20220503.html#cb1048-50"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value5&quot;</span>)</span>
-<span id="cb1048-51"><a href="til20220503.html#cb1048-51"></a>                ),</span>
-<span id="cb1048-52"><a href="til20220503.html#cb1048-52"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Total TT&quot;</span>,</span>
-<span id="cb1048-53"><a href="til20220503.html#cb1048-53"></a>                    <span class="dt">status =</span> <span class="st">&quot;primary&quot;</span>,</span>
-<span id="cb1048-54"><a href="til20220503.html#cb1048-54"></a>                    <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value6&quot;</span>)</span>
-<span id="cb1048-55"><a href="til20220503.html#cb1048-55"></a>                ),</span>
-<span id="cb1048-56"><a href="til20220503.html#cb1048-56"></a>              ),</span>
-<span id="cb1048-57"><a href="til20220503.html#cb1048-57"></a>      ),</span>
-<span id="cb1048-58"><a href="til20220503.html#cb1048-58"></a>      </span>
-<span id="cb1048-59"><a href="til20220503.html#cb1048-59"></a>      <span class="co"># Second tab content</span></span>
-<span id="cb1048-60"><a href="til20220503.html#cb1048-60"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
-<span id="cb1048-61"><a href="til20220503.html#cb1048-61"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
-<span id="cb1048-62"><a href="til20220503.html#cb1048-62"></a>      )</span>
-<span id="cb1048-63"><a href="til20220503.html#cb1048-63"></a>    )</span>
-<span id="cb1048-64"><a href="til20220503.html#cb1048-64"></a>  )</span>
-<span id="cb1048-65"><a href="til20220503.html#cb1048-65"></a>)</span>
-<span id="cb1048-66"><a href="til20220503.html#cb1048-66"></a></span>
-<span id="cb1048-67"><a href="til20220503.html#cb1048-67"></a></span>
-<span id="cb1048-68"><a href="til20220503.html#cb1048-68"></a></span>
-<span id="cb1048-69"><a href="til20220503.html#cb1048-69"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb1048-70"><a href="til20220503.html#cb1048-70"></a>  output<span class="op">$</span>value1 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process1) })</span>
-<span id="cb1048-71"><a href="til20220503.html#cb1048-71"></a>  output<span class="op">$</span>value2 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process2) })</span>
-<span id="cb1048-72"><a href="til20220503.html#cb1048-72"></a>  output<span class="op">$</span>value3 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process3) })</span>
-<span id="cb1048-73"><a href="til20220503.html#cb1048-73"></a>  output<span class="op">$</span>value4 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process4) })</span>
-<span id="cb1048-74"><a href="til20220503.html#cb1048-74"></a>  output<span class="op">$</span>value5 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process5) })</span>
-<span id="cb1048-75"><a href="til20220503.html#cb1048-75"></a>  output<span class="op">$</span>value6 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ </span>
-<span id="cb1048-76"><a href="til20220503.html#cb1048-76"></a>      <span class="kw">as.numeric</span>(input<span class="op">$</span>process1) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1048-77"><a href="til20220503.html#cb1048-77"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process2) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1048-78"><a href="til20220503.html#cb1048-78"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process3) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1048-79"><a href="til20220503.html#cb1048-79"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process4) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1048-80"><a href="til20220503.html#cb1048-80"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process5) })</span>
-<span id="cb1048-81"><a href="til20220503.html#cb1048-81"></a>}</span>
-<span id="cb1048-82"><a href="til20220503.html#cb1048-82"></a></span>
-<span id="cb1048-83"><a href="til20220503.html#cb1048-83"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 <div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1049-1"><a href="til20220503.html#cb1049-1"></a><span class="co">## app.R ##</span></span>
 <span id="cb1049-2"><a href="til20220503.html#cb1049-2"></a><span class="kw">library</span>(shinydashboard)</span>
 <span id="cb1049-3"><a href="til20220503.html#cb1049-3"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb1049-4"><a href="til20220503.html#cb1049-4"></a><span class="kw">library</span>(shinyjs)</span>
-<span id="cb1049-5"><a href="til20220503.html#cb1049-5"></a></span>
-<span id="cb1049-6"><a href="til20220503.html#cb1049-6"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
-<span id="cb1049-7"><a href="til20220503.html#cb1049-7"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),   <span class="co"># Header title</span></span>
-<span id="cb1049-8"><a href="til20220503.html#cb1049-8"></a>  </span>
-<span id="cb1049-9"><a href="til20220503.html#cb1049-9"></a>  <span class="kw">dashboardSidebar</span>(</span>
-<span id="cb1049-10"><a href="til20220503.html#cb1049-10"></a>    <span class="kw">sidebarMenu</span>(</span>
-<span id="cb1049-11"><a href="til20220503.html#cb1049-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)), <span class="co"># Tab 항목 추가</span></span>
-<span id="cb1049-12"><a href="til20220503.html#cb1049-12"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
-<span id="cb1049-13"><a href="til20220503.html#cb1049-13"></a>    )</span>
-<span id="cb1049-14"><a href="til20220503.html#cb1049-14"></a>  ),</span>
+<span id="cb1049-4"><a href="til20220503.html#cb1049-4"></a></span>
+<span id="cb1049-5"><a href="til20220503.html#cb1049-5"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
+<span id="cb1049-6"><a href="til20220503.html#cb1049-6"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),   <span class="co"># Header title</span></span>
+<span id="cb1049-7"><a href="til20220503.html#cb1049-7"></a>  </span>
+<span id="cb1049-8"><a href="til20220503.html#cb1049-8"></a>  <span class="kw">dashboardSidebar</span>(</span>
+<span id="cb1049-9"><a href="til20220503.html#cb1049-9"></a>    <span class="kw">sidebarMenu</span>(</span>
+<span id="cb1049-10"><a href="til20220503.html#cb1049-10"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)),</span>
+<span id="cb1049-11"><a href="til20220503.html#cb1049-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
+<span id="cb1049-12"><a href="til20220503.html#cb1049-12"></a>    )</span>
+<span id="cb1049-13"><a href="til20220503.html#cb1049-13"></a>  ),</span>
+<span id="cb1049-14"><a href="til20220503.html#cb1049-14"></a>  </span>
 <span id="cb1049-15"><a href="til20220503.html#cb1049-15"></a>  </span>
-<span id="cb1049-16"><a href="til20220503.html#cb1049-16"></a>  </span>
-<span id="cb1049-17"><a href="til20220503.html#cb1049-17"></a>  <span class="kw">dashboardBody</span>(</span>
-<span id="cb1049-18"><a href="til20220503.html#cb1049-18"></a>    <span class="kw">useShinyjs</span>(),</span>
-<span id="cb1049-19"><a href="til20220503.html#cb1049-19"></a>    <span class="kw">tabItems</span>(</span>
-<span id="cb1049-20"><a href="til20220503.html#cb1049-20"></a>      <span class="co"># First tab content</span></span>
-<span id="cb1049-21"><a href="til20220503.html#cb1049-21"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,                      <span class="co"># 처음 Tab 항목에 box들 포함</span></span>
-<span id="cb1049-22"><a href="til20220503.html#cb1049-22"></a>              <span class="co"># Boxes need to be put in a row (or column)</span></span>
-<span id="cb1049-23"><a href="til20220503.html#cb1049-23"></a>              <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">10</span>,</span>
-<span id="cb1049-24"><a href="til20220503.html#cb1049-24"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-25"><a href="til20220503.html#cb1049-25"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process0&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-26"><a href="til20220503.html#cb1049-26"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM Ver&quot;</span> =<span class="st"> &quot;T/T&quot;</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-27"><a href="til20220503.html#cb1049-27"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value0&quot;</span>)),</span>
-<span id="cb1049-28"><a href="til20220503.html#cb1049-28"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-29"><a href="til20220503.html#cb1049-29"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process1&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-30"><a href="til20220503.html#cb1049-30"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-31"><a href="til20220503.html#cb1049-31"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value1&quot;</span>)</span>
-<span id="cb1049-32"><a href="til20220503.html#cb1049-32"></a>                  ),</span>
-<span id="cb1049-33"><a href="til20220503.html#cb1049-33"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-34"><a href="til20220503.html#cb1049-34"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process2&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-35"><a href="til20220503.html#cb1049-35"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-36"><a href="til20220503.html#cb1049-36"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value2&quot;</span>)</span>
-<span id="cb1049-37"><a href="til20220503.html#cb1049-37"></a>                  ),</span>
-<span id="cb1049-38"><a href="til20220503.html#cb1049-38"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-39"><a href="til20220503.html#cb1049-39"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process3&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-40"><a href="til20220503.html#cb1049-40"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-41"><a href="til20220503.html#cb1049-41"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value3&quot;</span>)</span>
-<span id="cb1049-42"><a href="til20220503.html#cb1049-42"></a>                  ),</span>
-<span id="cb1049-43"><a href="til20220503.html#cb1049-43"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-44"><a href="til20220503.html#cb1049-44"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process4&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-45"><a href="til20220503.html#cb1049-45"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-46"><a href="til20220503.html#cb1049-46"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value4&quot;</span>)</span>
-<span id="cb1049-47"><a href="til20220503.html#cb1049-47"></a>                  ),</span>
-<span id="cb1049-48"><a href="til20220503.html#cb1049-48"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
-<span id="cb1049-49"><a href="til20220503.html#cb1049-49"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process5&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-50"><a href="til20220503.html#cb1049-50"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
-<span id="cb1049-51"><a href="til20220503.html#cb1049-51"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value5&quot;</span>)</span>
-<span id="cb1049-52"><a href="til20220503.html#cb1049-52"></a>                  ),</span>
-<span id="cb1049-53"><a href="til20220503.html#cb1049-53"></a>              ),</span>
-<span id="cb1049-54"><a href="til20220503.html#cb1049-54"></a>              <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">2</span>,</span>
-<span id="cb1049-55"><a href="til20220503.html#cb1049-55"></a>                        <span class="kw">selectInput</span>(<span class="st">&quot;process6&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
-<span id="cb1049-56"><a href="til20220503.html#cb1049-56"></a>                                    <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Total T/T&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>),</span>
-<span id="cb1049-57"><a href="til20220503.html#cb1049-57"></a>                                    <span class="dt">selected =</span> <span class="dv">1</span>),</span>
-<span id="cb1049-58"><a href="til20220503.html#cb1049-58"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value6&quot;</span>)</span>
-<span id="cb1049-59"><a href="til20220503.html#cb1049-59"></a>              ),</span>
-<span id="cb1049-60"><a href="til20220503.html#cb1049-60"></a>      ),</span>
-<span id="cb1049-61"><a href="til20220503.html#cb1049-61"></a>      </span>
-<span id="cb1049-62"><a href="til20220503.html#cb1049-62"></a>      <span class="co"># Second tab content</span></span>
-<span id="cb1049-63"><a href="til20220503.html#cb1049-63"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
-<span id="cb1049-64"><a href="til20220503.html#cb1049-64"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
-<span id="cb1049-65"><a href="til20220503.html#cb1049-65"></a>      )</span>
-<span id="cb1049-66"><a href="til20220503.html#cb1049-66"></a>    )</span>
-<span id="cb1049-67"><a href="til20220503.html#cb1049-67"></a>  )</span>
-<span id="cb1049-68"><a href="til20220503.html#cb1049-68"></a>)</span>
-<span id="cb1049-69"><a href="til20220503.html#cb1049-69"></a></span>
-<span id="cb1049-70"><a href="til20220503.html#cb1049-70"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb1049-71"><a href="til20220503.html#cb1049-71"></a>  shinyjs<span class="op">::</span><span class="kw">disable</span>(<span class="st">&quot;process0&quot;</span>)</span>
-<span id="cb1049-72"><a href="til20220503.html#cb1049-72"></a>  output<span class="op">$</span>value0 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process0 })</span>
-<span id="cb1049-73"><a href="til20220503.html#cb1049-73"></a>  output<span class="op">$</span>value1 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process1 })</span>
-<span id="cb1049-74"><a href="til20220503.html#cb1049-74"></a>  output<span class="op">$</span>value2 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process2 })</span>
-<span id="cb1049-75"><a href="til20220503.html#cb1049-75"></a>  output<span class="op">$</span>value3 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process3 })</span>
-<span id="cb1049-76"><a href="til20220503.html#cb1049-76"></a>  output<span class="op">$</span>value4 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process4 })</span>
-<span id="cb1049-77"><a href="til20220503.html#cb1049-77"></a>  output<span class="op">$</span>value5 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process5 })</span>
-<span id="cb1049-78"><a href="til20220503.html#cb1049-78"></a>  shinyjs<span class="op">::</span><span class="kw">disable</span>(<span class="st">&quot;process6&quot;</span>)</span>
-<span id="cb1049-79"><a href="til20220503.html#cb1049-79"></a>  output<span class="op">$</span>value6 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ </span>
-<span id="cb1049-80"><a href="til20220503.html#cb1049-80"></a>      <span class="kw">as.numeric</span>(input<span class="op">$</span>process1) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1049-81"><a href="til20220503.html#cb1049-81"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process2) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1049-82"><a href="til20220503.html#cb1049-82"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process3) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1049-83"><a href="til20220503.html#cb1049-83"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process4) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb1049-84"><a href="til20220503.html#cb1049-84"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process5) })</span>
-<span id="cb1049-85"><a href="til20220503.html#cb1049-85"></a>}</span>
-<span id="cb1049-86"><a href="til20220503.html#cb1049-86"></a></span>
-<span id="cb1049-87"><a href="til20220503.html#cb1049-87"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
+<span id="cb1049-16"><a href="til20220503.html#cb1049-16"></a>  <span class="kw">dashboardBody</span>(</span>
+<span id="cb1049-17"><a href="til20220503.html#cb1049-17"></a>    <span class="kw">tabItems</span>(</span>
+<span id="cb1049-18"><a href="til20220503.html#cb1049-18"></a>      <span class="co"># First tab content</span></span>
+<span id="cb1049-19"><a href="til20220503.html#cb1049-19"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,</span>
+<span id="cb1049-20"><a href="til20220503.html#cb1049-20"></a>              <span class="co"># Boxes need to be put in a row (or column)</span></span>
+<span id="cb1049-21"><a href="til20220503.html#cb1049-21"></a>              <span class="kw">fluidRow</span>(</span>
+<span id="cb1049-22"><a href="til20220503.html#cb1049-22"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
+<span id="cb1049-23"><a href="til20220503.html#cb1049-23"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process1&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1049-24"><a href="til20220503.html#cb1049-24"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1049-25"><a href="til20220503.html#cb1049-25"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1049-26"><a href="til20220503.html#cb1049-26"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value1&quot;</span>, <span class="dt">placeholder=</span>T)</span>
+<span id="cb1049-27"><a href="til20220503.html#cb1049-27"></a>                ),</span>
+<span id="cb1049-28"><a href="til20220503.html#cb1049-28"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
+<span id="cb1049-29"><a href="til20220503.html#cb1049-29"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process2&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
+<span id="cb1049-30"><a href="til20220503.html#cb1049-30"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.35</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.37</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.32</span>), </span>
+<span id="cb1049-31"><a href="til20220503.html#cb1049-31"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1049-32"><a href="til20220503.html#cb1049-32"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value2&quot;</span>)</span>
+<span id="cb1049-33"><a href="til20220503.html#cb1049-33"></a>                ),</span>
+<span id="cb1049-34"><a href="til20220503.html#cb1049-34"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
+<span id="cb1049-35"><a href="til20220503.html#cb1049-35"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process3&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
+<span id="cb1049-36"><a href="til20220503.html#cb1049-36"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.45</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.47</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.42</span>), </span>
+<span id="cb1049-37"><a href="til20220503.html#cb1049-37"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1049-38"><a href="til20220503.html#cb1049-38"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value3&quot;</span>)</span>
+<span id="cb1049-39"><a href="til20220503.html#cb1049-39"></a>                ),</span>
+<span id="cb1049-40"><a href="til20220503.html#cb1049-40"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
+<span id="cb1049-41"><a href="til20220503.html#cb1049-41"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process4&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
+<span id="cb1049-42"><a href="til20220503.html#cb1049-42"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.65</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.67</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.62</span>), </span>
+<span id="cb1049-43"><a href="til20220503.html#cb1049-43"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1049-44"><a href="til20220503.html#cb1049-44"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value4&quot;</span>)</span>
+<span id="cb1049-45"><a href="til20220503.html#cb1049-45"></a>                ),</span>
+<span id="cb1049-46"><a href="til20220503.html#cb1049-46"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Select Version&quot;</span>,</span>
+<span id="cb1049-47"><a href="til20220503.html#cb1049-47"></a>                  <span class="kw">selectInput</span>(<span class="st">&quot;process5&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>, </span>
+<span id="cb1049-48"><a href="til20220503.html#cb1049-48"></a>                              <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.75</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.77</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.72</span>), </span>
+<span id="cb1049-49"><a href="til20220503.html#cb1049-49"></a>                              <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1049-50"><a href="til20220503.html#cb1049-50"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value5&quot;</span>)</span>
+<span id="cb1049-51"><a href="til20220503.html#cb1049-51"></a>                ),</span>
+<span id="cb1049-52"><a href="til20220503.html#cb1049-52"></a>                <span class="kw">box</span>(<span class="dt">width =</span> <span class="dv">2</span>, <span class="dt">solidHeader =</span> T, <span class="dt">title=</span><span class="st">&quot;Total TT&quot;</span>,</span>
+<span id="cb1049-53"><a href="til20220503.html#cb1049-53"></a>                    <span class="dt">status =</span> <span class="st">&quot;primary&quot;</span>,</span>
+<span id="cb1049-54"><a href="til20220503.html#cb1049-54"></a>                    <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value6&quot;</span>)</span>
+<span id="cb1049-55"><a href="til20220503.html#cb1049-55"></a>                ),</span>
+<span id="cb1049-56"><a href="til20220503.html#cb1049-56"></a>              ),</span>
+<span id="cb1049-57"><a href="til20220503.html#cb1049-57"></a>      ),</span>
+<span id="cb1049-58"><a href="til20220503.html#cb1049-58"></a>      </span>
+<span id="cb1049-59"><a href="til20220503.html#cb1049-59"></a>      <span class="co"># Second tab content</span></span>
+<span id="cb1049-60"><a href="til20220503.html#cb1049-60"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
+<span id="cb1049-61"><a href="til20220503.html#cb1049-61"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
+<span id="cb1049-62"><a href="til20220503.html#cb1049-62"></a>      )</span>
+<span id="cb1049-63"><a href="til20220503.html#cb1049-63"></a>    )</span>
+<span id="cb1049-64"><a href="til20220503.html#cb1049-64"></a>  )</span>
+<span id="cb1049-65"><a href="til20220503.html#cb1049-65"></a>)</span>
+<span id="cb1049-66"><a href="til20220503.html#cb1049-66"></a></span>
+<span id="cb1049-67"><a href="til20220503.html#cb1049-67"></a></span>
+<span id="cb1049-68"><a href="til20220503.html#cb1049-68"></a></span>
+<span id="cb1049-69"><a href="til20220503.html#cb1049-69"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb1049-70"><a href="til20220503.html#cb1049-70"></a>  output<span class="op">$</span>value1 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process1) })</span>
+<span id="cb1049-71"><a href="til20220503.html#cb1049-71"></a>  output<span class="op">$</span>value2 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process2) })</span>
+<span id="cb1049-72"><a href="til20220503.html#cb1049-72"></a>  output<span class="op">$</span>value3 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process3) })</span>
+<span id="cb1049-73"><a href="til20220503.html#cb1049-73"></a>  output<span class="op">$</span>value4 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process4) })</span>
+<span id="cb1049-74"><a href="til20220503.html#cb1049-74"></a>  output<span class="op">$</span>value5 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ <span class="kw">paste0</span>(<span class="st">&quot;T/T:&quot;</span>, input<span class="op">$</span>process5) })</span>
+<span id="cb1049-75"><a href="til20220503.html#cb1049-75"></a>  output<span class="op">$</span>value6 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ </span>
+<span id="cb1049-76"><a href="til20220503.html#cb1049-76"></a>      <span class="kw">as.numeric</span>(input<span class="op">$</span>process1) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1049-77"><a href="til20220503.html#cb1049-77"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process2) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1049-78"><a href="til20220503.html#cb1049-78"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process3) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1049-79"><a href="til20220503.html#cb1049-79"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process4) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1049-80"><a href="til20220503.html#cb1049-80"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process5) })</span>
+<span id="cb1049-81"><a href="til20220503.html#cb1049-81"></a>}</span>
+<span id="cb1049-82"><a href="til20220503.html#cb1049-82"></a></span>
+<span id="cb1049-83"><a href="til20220503.html#cb1049-83"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
+<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="til20220503.html#cb1050-1"></a><span class="co">## app.R ##</span></span>
+<span id="cb1050-2"><a href="til20220503.html#cb1050-2"></a><span class="kw">library</span>(shinydashboard)</span>
+<span id="cb1050-3"><a href="til20220503.html#cb1050-3"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb1050-4"><a href="til20220503.html#cb1050-4"></a><span class="kw">library</span>(shinyjs)</span>
+<span id="cb1050-5"><a href="til20220503.html#cb1050-5"></a></span>
+<span id="cb1050-6"><a href="til20220503.html#cb1050-6"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
+<span id="cb1050-7"><a href="til20220503.html#cb1050-7"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;Basic dashboard&quot;</span>),   <span class="co"># Header title</span></span>
+<span id="cb1050-8"><a href="til20220503.html#cb1050-8"></a>  </span>
+<span id="cb1050-9"><a href="til20220503.html#cb1050-9"></a>  <span class="kw">dashboardSidebar</span>(</span>
+<span id="cb1050-10"><a href="til20220503.html#cb1050-10"></a>    <span class="kw">sidebarMenu</span>(</span>
+<span id="cb1050-11"><a href="til20220503.html#cb1050-11"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Dashboard&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;dashboard&quot;</span>)), <span class="co"># Tab 항목 추가</span></span>
+<span id="cb1050-12"><a href="til20220503.html#cb1050-12"></a>      <span class="kw">menuItem</span>(<span class="st">&quot;Widgets&quot;</span>, <span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>, <span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;th&quot;</span>))</span>
+<span id="cb1050-13"><a href="til20220503.html#cb1050-13"></a>    )</span>
+<span id="cb1050-14"><a href="til20220503.html#cb1050-14"></a>  ),</span>
+<span id="cb1050-15"><a href="til20220503.html#cb1050-15"></a>  </span>
+<span id="cb1050-16"><a href="til20220503.html#cb1050-16"></a>  </span>
+<span id="cb1050-17"><a href="til20220503.html#cb1050-17"></a>  <span class="kw">dashboardBody</span>(</span>
+<span id="cb1050-18"><a href="til20220503.html#cb1050-18"></a>    <span class="kw">useShinyjs</span>(),</span>
+<span id="cb1050-19"><a href="til20220503.html#cb1050-19"></a>    <span class="kw">tabItems</span>(</span>
+<span id="cb1050-20"><a href="til20220503.html#cb1050-20"></a>      <span class="co"># First tab content</span></span>
+<span id="cb1050-21"><a href="til20220503.html#cb1050-21"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;dashboard&quot;</span>,                      <span class="co"># 처음 Tab 항목에 box들 포함</span></span>
+<span id="cb1050-22"><a href="til20220503.html#cb1050-22"></a>              <span class="co"># Boxes need to be put in a row (or column)</span></span>
+<span id="cb1050-23"><a href="til20220503.html#cb1050-23"></a>              <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">10</span>,</span>
+<span id="cb1050-24"><a href="til20220503.html#cb1050-24"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-25"><a href="til20220503.html#cb1050-25"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process0&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-26"><a href="til20220503.html#cb1050-26"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM Ver&quot;</span> =<span class="st"> &quot;T/T&quot;</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-27"><a href="til20220503.html#cb1050-27"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value0&quot;</span>)),</span>
+<span id="cb1050-28"><a href="til20220503.html#cb1050-28"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-29"><a href="til20220503.html#cb1050-29"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process1&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-30"><a href="til20220503.html#cb1050-30"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-31"><a href="til20220503.html#cb1050-31"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value1&quot;</span>)</span>
+<span id="cb1050-32"><a href="til20220503.html#cb1050-32"></a>                  ),</span>
+<span id="cb1050-33"><a href="til20220503.html#cb1050-33"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-34"><a href="til20220503.html#cb1050-34"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process2&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-35"><a href="til20220503.html#cb1050-35"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-36"><a href="til20220503.html#cb1050-36"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value2&quot;</span>)</span>
+<span id="cb1050-37"><a href="til20220503.html#cb1050-37"></a>                  ),</span>
+<span id="cb1050-38"><a href="til20220503.html#cb1050-38"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-39"><a href="til20220503.html#cb1050-39"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process3&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-40"><a href="til20220503.html#cb1050-40"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-41"><a href="til20220503.html#cb1050-41"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value3&quot;</span>)</span>
+<span id="cb1050-42"><a href="til20220503.html#cb1050-42"></a>                  ),</span>
+<span id="cb1050-43"><a href="til20220503.html#cb1050-43"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-44"><a href="til20220503.html#cb1050-44"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process4&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-45"><a href="til20220503.html#cb1050-45"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-46"><a href="til20220503.html#cb1050-46"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value4&quot;</span>)</span>
+<span id="cb1050-47"><a href="til20220503.html#cb1050-47"></a>                  ),</span>
+<span id="cb1050-48"><a href="til20220503.html#cb1050-48"></a>                  <span class="kw">column</span>(<span class="dv">2</span>,</span>
+<span id="cb1050-49"><a href="til20220503.html#cb1050-49"></a>                         <span class="kw">selectInput</span>(<span class="st">&quot;process5&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-50"><a href="til20220503.html#cb1050-50"></a>                                     <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;PGM 1.1&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>), </span>
+<span id="cb1050-51"><a href="til20220503.html#cb1050-51"></a>                                     <span class="dt">selected =</span> <span class="dv">1</span>), <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value5&quot;</span>)</span>
+<span id="cb1050-52"><a href="til20220503.html#cb1050-52"></a>                  ),</span>
+<span id="cb1050-53"><a href="til20220503.html#cb1050-53"></a>              ),</span>
+<span id="cb1050-54"><a href="til20220503.html#cb1050-54"></a>              <span class="kw">box</span>(<span class="dt">width=</span><span class="dv">2</span>,</span>
+<span id="cb1050-55"><a href="til20220503.html#cb1050-55"></a>                        <span class="kw">selectInput</span>(<span class="st">&quot;process6&quot;</span>, <span class="dt">label =</span> <span class="ot">NULL</span>,</span>
+<span id="cb1050-56"><a href="til20220503.html#cb1050-56"></a>                                    <span class="dt">choices =</span> <span class="kw">list</span>(<span class="st">&quot;Total T/T&quot;</span> =<span class="st"> </span><span class="fl">0.55</span>, <span class="st">&quot;PGM 1.2&quot;</span> =<span class="st"> </span><span class="fl">0.57</span>, <span class="st">&quot;PGM 1.3&quot;</span> =<span class="st"> </span><span class="fl">0.52</span>),</span>
+<span id="cb1050-57"><a href="til20220503.html#cb1050-57"></a>                                    <span class="dt">selected =</span> <span class="dv">1</span>),</span>
+<span id="cb1050-58"><a href="til20220503.html#cb1050-58"></a>                  <span class="kw">verbatimTextOutput</span>(<span class="st">&quot;value6&quot;</span>)</span>
+<span id="cb1050-59"><a href="til20220503.html#cb1050-59"></a>              ),</span>
+<span id="cb1050-60"><a href="til20220503.html#cb1050-60"></a>      ),</span>
+<span id="cb1050-61"><a href="til20220503.html#cb1050-61"></a>      </span>
+<span id="cb1050-62"><a href="til20220503.html#cb1050-62"></a>      <span class="co"># Second tab content</span></span>
+<span id="cb1050-63"><a href="til20220503.html#cb1050-63"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;widgets&quot;</span>,</span>
+<span id="cb1050-64"><a href="til20220503.html#cb1050-64"></a>              <span class="kw">h2</span>(<span class="st">&quot;Widgets tab content&quot;</span>)</span>
+<span id="cb1050-65"><a href="til20220503.html#cb1050-65"></a>      )</span>
+<span id="cb1050-66"><a href="til20220503.html#cb1050-66"></a>    )</span>
+<span id="cb1050-67"><a href="til20220503.html#cb1050-67"></a>  )</span>
+<span id="cb1050-68"><a href="til20220503.html#cb1050-68"></a>)</span>
+<span id="cb1050-69"><a href="til20220503.html#cb1050-69"></a></span>
+<span id="cb1050-70"><a href="til20220503.html#cb1050-70"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb1050-71"><a href="til20220503.html#cb1050-71"></a>  shinyjs<span class="op">::</span><span class="kw">disable</span>(<span class="st">&quot;process0&quot;</span>)</span>
+<span id="cb1050-72"><a href="til20220503.html#cb1050-72"></a>  output<span class="op">$</span>value0 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process0 })</span>
+<span id="cb1050-73"><a href="til20220503.html#cb1050-73"></a>  output<span class="op">$</span>value1 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process1 })</span>
+<span id="cb1050-74"><a href="til20220503.html#cb1050-74"></a>  output<span class="op">$</span>value2 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process2 })</span>
+<span id="cb1050-75"><a href="til20220503.html#cb1050-75"></a>  output<span class="op">$</span>value3 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process3 })</span>
+<span id="cb1050-76"><a href="til20220503.html#cb1050-76"></a>  output<span class="op">$</span>value4 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process4 })</span>
+<span id="cb1050-77"><a href="til20220503.html#cb1050-77"></a>  output<span class="op">$</span>value5 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ input<span class="op">$</span>process5 })</span>
+<span id="cb1050-78"><a href="til20220503.html#cb1050-78"></a>  shinyjs<span class="op">::</span><span class="kw">disable</span>(<span class="st">&quot;process6&quot;</span>)</span>
+<span id="cb1050-79"><a href="til20220503.html#cb1050-79"></a>  output<span class="op">$</span>value6 &lt;-<span class="st"> </span><span class="kw">renderText</span>({ </span>
+<span id="cb1050-80"><a href="til20220503.html#cb1050-80"></a>      <span class="kw">as.numeric</span>(input<span class="op">$</span>process1) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1050-81"><a href="til20220503.html#cb1050-81"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process2) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1050-82"><a href="til20220503.html#cb1050-82"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process3) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1050-83"><a href="til20220503.html#cb1050-83"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process4) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb1050-84"><a href="til20220503.html#cb1050-84"></a><span class="st">      </span><span class="kw">as.numeric</span>(input<span class="op">$</span>process5) })</span>
+<span id="cb1050-85"><a href="til20220503.html#cb1050-85"></a>}</span>
+<span id="cb1050-86"><a href="til20220503.html#cb1050-86"></a></span>
+<span id="cb1050-87"><a href="til20220503.html#cb1050-87"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 
 </div>
 </div>

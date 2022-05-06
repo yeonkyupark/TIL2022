@@ -517,22 +517,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 * Kolmogorov-Smirnov test(KS test)
 * Lilliefors test(LF test)
 * Shapiro-Wilk test(SW test)</p>
-<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="til20220502.html#cb1043-1"></a>x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
-<span id="cb1043-2"><a href="til20220502.html#cb1043-2"></a></span>
-<span id="cb1043-3"><a href="til20220502.html#cb1043-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nortest)) { <span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>); <span class="kw">library</span>(nortest); }</span>
-<span id="cb1043-4"><a href="til20220502.html#cb1043-4"></a><span class="kw">lillie.test</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1044"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1044-1"><a href="til20220502.html#cb1044-1"></a>x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb1044-2"><a href="til20220502.html#cb1044-2"></a></span>
+<span id="cb1044-3"><a href="til20220502.html#cb1044-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nortest)) { <span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>); <span class="kw">library</span>(nortest); }</span>
+<span id="cb1044-4"><a href="til20220502.html#cb1044-4"></a><span class="kw">lillie.test</span>(x)</span></code></pre></div>
 <pre><code>## 
 ##  Lilliefors (Kolmogorov-Smirnov) normality test
 ## 
 ## data:  x
 ## D = 0.1, p-value = 0.5</code></pre>
-<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="til20220502.html#cb1045-1"></a><span class="kw">shapiro.test</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="til20220502.html#cb1046-1"></a><span class="kw">shapiro.test</span>(x)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  x
 ## W = 1, p-value = 0.7</code></pre>
-<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="til20220502.html#cb1047-1"></a><span class="kw">qqnorm</span>(x); <span class="kw">qqline</span>(x, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1048"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1048-1"><a href="til20220502.html#cb1048-1"></a><span class="kw">qqnorm</span>(x); <span class="kw">qqline</span>(x, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-447-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-447-2.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
