@@ -1,8 +1,76 @@
-## TIL202205
+## TIL20220506
 
-### 
+### shinyapp, loop로 메뉴 구성
 
-```{r}
+```R
+library(shiny)
+library(shinyjs) 
+library(shinydashboard)
 
+VecNames=c("A","B","C","D","E")
+
+ui <- dashboardPage(
+  dashboardHeader(title = "My Page"),
+  dashboardSidebar(sidebarMenuOutput("sideBar_menu_UI")),
+  dashboardBody(
+    uiOutput("body_UI"),
+    uiOutput("test_UI")
+  ) 
+)
+
+server <- shinyServer(function(input, output, session) { 
+  output$sideBar_menu_UI <- renderMenu({
+    sidebarMenu(id = "sideBar_Menu",
+                menuItem("Menu 1", tabName="menu1_tab", icon =       icon("calendar"),
+                         lapply(1:length(VecNames), function(i) {
+                           menuSubItem(VecNames[i], tabName = VecNames[i]  ,icon = icon("angle-right"))
+                         })
+                ),
+                menuItem("Menu 2", tabName="menu2_tab", icon =  icon("database"))
+    )
+  }) 
+  
+  output$test_UI <- renderUI ({
+    A=tabItems(
+      tabItem(tabName = "menu1_tab", uiOutput("menu1_UI")),    
+      
+      output$test_UI <- renderUI ({
+        items <- c(
+          list(tabItem(tabName = "menu1_tab", uiOutput("menu1_UI"))),
+          lapply(1:5, function(i){
+            tabItem(tabName = VecNames[i], uiOutput(paste0("Menu",i)))        
+          })
+        )
+        do.call(tabItems, items)
+      }),
+      # tabItem(tabName = VecNames[1], uiOutput(paste0("Menu",1))),
+      # tabItem(tabName = VecNames[2], uiOutput(paste0("Menu",2))),
+      # tabItem(tabName = VecNames[3], uiOutput(paste0("Menu",3))),
+      # tabItem(tabName = VecNames[4], uiOutput(paste0("Menu",4))),
+      # tabItem(tabName = VecNames[5], uiOutput(paste0("Menu",5))),      
+      
+      
+      tabItem(tabName = "menu2_tab", uiOutput("menu2_UI"))
+    )
+  })
+  output$body_UI <- renderUI ({
+    p("Default content in body outsite any sidebar menus.")
+  })
+  output$menu1_UI <- renderUI ({
+    box("Menu 1 Content")
+  })
+  output$menu2_UI <- renderUI ({
+    box("Menu 2 Content")
+  })
+  
+  lapply(1:5, function(i){
+    output[[paste0("Menu",i)]]<- renderUI({
+      box(paste0("Menu",i))
+    })
+  })
+  
+})
+
+runApp(list(ui= ui, server = server))
 ```
 
