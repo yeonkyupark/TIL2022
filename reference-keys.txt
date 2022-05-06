@@ -237,9 +237,10 @@ til20220502
 til20220503
 shiny-app-example
 til20220504
-section-2
+독립-t검정
 til20220505
 shiny-app-배포-1
+section-2
 til202205
 section-3
 til202205-1
