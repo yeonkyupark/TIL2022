@@ -241,6 +241,8 @@ til20220504
 til20220505
 shiny-app-배포-1
 section-2
+til20220506
+shinyapp-loop로-메뉴-구성
 til202205
 section-3
 til202205-1
@@ -291,5 +293,3 @@ til202205-23
 section-26
 til202205-24
 section-27
-til202205-25
-section-28
