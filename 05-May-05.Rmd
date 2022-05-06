@@ -1,13 +1,13 @@
----
+------------------------------------------------------------------------
 
----
+------------------------------------------------------------------------
 
 ## TIL20220505
 
 ### shiny app 배포
 
 1.  <https://www.shinyapps.io/> 가입\
-2.  rsconnect 패키지 설치 \>
+2.  rsconnect 패키지 설치
 
 ``` r
 #rsconnect 패키지 설치
@@ -15,7 +15,7 @@ install.packages("rsconnect")
 library(rsconnect)
 ```
 
-3.  토큰생성 \>
+3.  토큰생성
 
 ``` r
 rsconnect::setAccountInfo(name='yeonkyupark', token='<token>', secret='<secret>')
