@@ -19,3 +19,7 @@ lapply(exams, length)
 sapply(exams, length)
 ```
 
+```{r}
+sapply(iris, function(x) ifelse(is.numeric(x), mean(x), NA))
+```
+
