@@ -250,6 +250,8 @@ til20220508
 클라우드-msp
 til20220509
 lapply
+til20220510
+svar-모형
 til202205
 section-3
 til202205-1
@@ -292,5 +294,3 @@ til202205-19
 section-22
 til202205-20
 section-23
-til202205-21
-section-24
