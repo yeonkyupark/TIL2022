@@ -254,6 +254,8 @@ til20220510
 svar-모형
 til20220511
 출장중
+til20220512
+출장-중
 til202205
 section-3
 til202205-1
@@ -292,5 +294,3 @@ til202205-17
 section-20
 til202205-18
 section-21
-til202205-19
-section-22
