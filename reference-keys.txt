@@ -265,7 +265,7 @@ docker
 til20220516
 모델-분석-절차
 til20220517
-오늘은-음에
+tidy-model
 til20220518
 postgresql-r
 til202205
