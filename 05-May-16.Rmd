@@ -1,8 +1,5 @@
 ## TIL20220516
 
-### tidyverse
+### 모델 분석 절차
 
-```{r}
-
-```
-
+![<https://www.youtube.com/watch?v=c2hMvVJ-Qho&list=PLEUKy_nwlzwEedTUqX7VeFRpx10_TxI7F&index=21>](images/paste-A2AC6834.png)
