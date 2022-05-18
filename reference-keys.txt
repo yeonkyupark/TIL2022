@@ -263,7 +263,7 @@ mlops
 til20220515
 docker
 til20220516
-tidyverse
+모델-분석-절차
 til20220517
 오늘은-음에
 til20220518

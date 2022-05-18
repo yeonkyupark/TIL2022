@@ -435,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.15.1" data-path="til20220515.html"><a href="til20220515.html#docker"><i class="fa fa-check"></i><b>5.15.1</b> docker</a></li>
 </ul></li>
 <li class="chapter" data-level="5.16" data-path="til20220516.html"><a href="til20220516.html"><i class="fa fa-check"></i><b>5.16</b> TIL20220516</a><ul>
-<li class="chapter" data-level="5.16.1" data-path="til20220516.html"><a href="til20220516.html#tidyverse"><i class="fa fa-check"></i><b>5.16.1</b> tidyverse</a></li>
+<li class="chapter" data-level="5.16.1" data-path="til20220516.html"><a href="til20220516.html#모델-분석-절차"><i class="fa fa-check"></i><b>5.16.1</b> 모델 분석 절차</a></li>
 </ul></li>
 <li class="chapter" data-level="5.17" data-path="til20220517.html"><a href="til20220517.html"><i class="fa fa-check"></i><b>5.17</b> TIL20220517</a><ul>
 <li class="chapter" data-level="5.17.1" data-path="til20220517.html"><a href="til20220517.html#오늘은-음에"><i class="fa fa-check"></i><b>5.17.1</b> 오늘은 음…에…</a></li>
@@ -556,7 +556,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="til20220317.html#cb430-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp8hG4X7/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp21xh2r/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="til20220317.html#cb432-1"></a><span class="co"># 예측변수 행렬 + 더미변수 생성</span></span>
 <span id="cb432-2"><a href="til20220317.html#cb432-2"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(medv <span class="op">~</span>., Boston.train)[, <span class="dv">-1</span>] <span class="co"># 불필요한 첫 번째 열 삭제</span></span>
 <span id="cb432-3"><a href="til20220317.html#cb432-3"></a><span class="kw">head</span>(x)</span></code></pre></div>
