@@ -1,6 +1,15 @@
 ## TIL20220515
 
-###  docker
+###  ICC
+
+급내상관계수, Interclass Correlation Coefficients  
+
+
+### R 변수명 깨질 때
+
+read.csv(fileEncoding="UTF-8-BOM")
+
+출처: https://118k.tistory.com/863 [개발자로 살아남기]
 
 
 
