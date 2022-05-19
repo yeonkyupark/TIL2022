@@ -261,13 +261,16 @@ section-3
 til20220514
 mlops
 til20220515
-docker
+icc
+r-변수명-깨질-때
 til20220516
 모델-분석-절차
 til20220517
 tidy-model
 til20220518
 postgresql-r
+til20220519
+모델-만들기
 til202205
 section-4
 til202205-1
@@ -292,5 +295,3 @@ til202205-10
 section-14
 til202205-11
 section-15
-til202205-12
-section-16
