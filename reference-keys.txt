@@ -271,6 +271,8 @@ til20220518
 postgresql-r
 til20220519
 모델-만들기
+til20220520
+출장
 til202205
 section-4
 til202205-1
@@ -293,5 +295,3 @@ til202205-9
 section-13
 til202205-10
 section-14
-til202205-11
-section-15
