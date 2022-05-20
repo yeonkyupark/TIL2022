@@ -94,3 +94,44 @@ train_data <- training(bank_split)
 test_data <- testing(bank_split)
 ```
 
+
+```{r}
+args(decision_tree)
+```
+
+```{r}
+# model
+tree_model <- decision_tree() %>% 
+  set_engine("rpart") %>% 
+  set_mode("classification")
+tree_model
+```
+
+```{r}
+# recipe
+tree_recipe <- train_data %>% 
+  recipe(Personal_Loan ~ .) %>% 
+  step_dummy(all_nominal(), -all_outcomes())
+summary(tree_recipe)
+```
+
+
+```{r}
+# workflow
+tree_workflow <- workflow() %>% 
+  add_model(tree_model) %>% 
+  add_recipe(tree_recipe)
+tree_workflow
+```
+
+```{r}
+# fit
+tree_train_fit <- tree_workflow %>% 
+  fit(data = train_data)
+tree_train_fit
+```
+
+```{r}
+
+```
+
