@@ -512,16 +512,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1105-2"><a href="til20220519.html#cb1105-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidymodels)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>); <span class="kw">library</span>(tidymodels); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpV1ue28/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpmXHtli/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb1107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1107-1"><a href="til20220519.html#cb1107-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidytext)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); <span class="kw">library</span>(tidytext); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpV1ue28/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpmXHtli/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb1109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1109-1"><a href="til20220519.html#cb1109-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) { <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>); <span class="kw">library</span>(skimr); }</span>
 <span id="cb1109-2"><a href="til20220519.html#cb1109-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vip)) { <span class="kw">install.packages</span>(<span class="st">&quot;vip&quot;</span>); <span class="kw">library</span>(vip); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpV1ue28/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpmXHtli/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb1111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1111-1"><a href="til20220519.html#cb1111-1"></a>bank_tb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;UniversalBank.csv&quot;</span>, <span class="dt">col_names =</span> T,</span>
 <span id="cb1111-2"><a href="til20220519.html#cb1111-2"></a>                    <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>),</span>
 <span id="cb1111-3"><a href="til20220519.html#cb1111-3"></a>                    <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -591,6 +591,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Error in analysis(x): object &#39;bank_split&#39; not found</code></pre>
 <div class="sourceCode" id="cb1141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1141-1"><a href="til20220519.html#cb1141-1"></a>test_data &lt;-<span class="st"> </span><span class="kw">testing</span>(bank_split)</span></code></pre></div>
 <pre><code>## Error in assessment(x): object &#39;bank_split&#39; not found</code></pre>
+<div class="sourceCode" id="cb1143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1143-1"><a href="til20220519.html#cb1143-1"></a><span class="kw">args</span>(decision_tree)</span></code></pre></div>
+<pre><code>## function (mode = &quot;unknown&quot;, engine = &quot;rpart&quot;, cost_complexity = NULL, 
+##     tree_depth = NULL, min_n = NULL) 
+## NULL</code></pre>
+<div class="sourceCode" id="cb1145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1145-1"><a href="til20220519.html#cb1145-1"></a><span class="co"># model</span></span>
+<span id="cb1145-2"><a href="til20220519.html#cb1145-2"></a>tree_model &lt;-<span class="st"> </span><span class="kw">decision_tree</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1145-3"><a href="til20220519.html#cb1145-3"></a><span class="st">  </span><span class="kw">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1145-4"><a href="til20220519.html#cb1145-4"></a><span class="st">  </span><span class="kw">set_mode</span>(<span class="st">&quot;classification&quot;</span>)</span>
+<span id="cb1145-5"><a href="til20220519.html#cb1145-5"></a>tree_model</span></code></pre></div>
+<pre><code>## Decision Tree Model Specification (classification)
+## 
+## Computational engine: rpart</code></pre>
+<div class="sourceCode" id="cb1147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1147-1"><a href="til20220519.html#cb1147-1"></a><span class="co"># recipe</span></span>
+<span id="cb1147-2"><a href="til20220519.html#cb1147-2"></a>tree_recipe &lt;-<span class="st"> </span>train_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1147-3"><a href="til20220519.html#cb1147-3"></a><span class="st">  </span><span class="kw">recipe</span>(Personal_Loan <span class="op">~</span><span class="st"> </span>.) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1147-4"><a href="til20220519.html#cb1147-4"></a><span class="st">  </span><span class="kw">step_dummy</span>(<span class="kw">all_nominal</span>(), <span class="op">-</span><span class="kw">all_outcomes</span>())</span></code></pre></div>
+<pre><code>## Error in recipe(., Personal_Loan ~ .): object &#39;train_data&#39; not found</code></pre>
+<div class="sourceCode" id="cb1149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1149-1"><a href="til20220519.html#cb1149-1"></a><span class="kw">summary</span>(tree_recipe)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;tree_recipe&#39; not found</code></pre>
+<div class="sourceCode" id="cb1151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1151-1"><a href="til20220519.html#cb1151-1"></a><span class="co"># workflow</span></span>
+<span id="cb1151-2"><a href="til20220519.html#cb1151-2"></a>tree_workflow &lt;-<span class="st"> </span><span class="kw">workflow</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1151-3"><a href="til20220519.html#cb1151-3"></a><span class="st">  </span><span class="kw">add_model</span>(tree_model) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1151-4"><a href="til20220519.html#cb1151-4"></a><span class="st">  </span><span class="kw">add_recipe</span>(tree_recipe)</span></code></pre></div>
+<pre><code>## Error in is_recipe(recipe): object &#39;tree_recipe&#39; not found</code></pre>
+<div class="sourceCode" id="cb1153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1153-1"><a href="til20220519.html#cb1153-1"></a>tree_workflow</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;tree_workflow&#39; not found</code></pre>
+<div class="sourceCode" id="cb1155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1155-1"><a href="til20220519.html#cb1155-1"></a><span class="co"># fit</span></span>
+<span id="cb1155-2"><a href="til20220519.html#cb1155-2"></a>tree_train_fit &lt;-<span class="st"> </span>tree_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1155-3"><a href="til20220519.html#cb1155-3"></a><span class="st">  </span><span class="kw">fit</span>(<span class="dt">data =</span> train_data)</span></code></pre></div>
+<pre><code>## Error in fit(., data = train_data): object &#39;tree_workflow&#39; not found</code></pre>
+<div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1157-1"><a href="til20220519.html#cb1157-1"></a>tree_train_fit</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;tree_train_fit&#39; not found</code></pre>
 
 </div>
 </div>
