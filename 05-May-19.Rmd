@@ -132,6 +132,175 @@ tree_train_fit
 ```
 
 ```{r}
+tree_train_pred <- predict(tree_train_fit,
+                           train_data,
+                           type = "prob") %>% 
+  bind_cols(predict(tree_train_fit, train_data)) %>% 
+  bind_cols(train_data %>% select(Personal_Loan))
+```
 
+```{r}
+tree_train_conf <- tree_train_pred %>% 
+  conf_mat(truth = Personal_Loan, estimate = .pred_class)
+```
+
+```{r}
+autoplot(tree_train_conf, type = "heatmap")
+```
+
+```{r}
+autoplot(tree_train_conf, type = "mosaic")
+```
+
+```{r}
+summary(tree_train_conf)
+```
+
+```{r}
+tree_train_pred %>% 
+  roc_auc(truth = Personal_Loan, .pred_Yes)
+```
+
+```{r}
+train_auc <- tree_train_pred %>% 
+  roc_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  mutate(model = "train_auc")
+```
+
+```{r}
+autoplot(train_auc)
+```
+
+
+
+```{r}
+tree_train_pred %>% 
+  lift_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  autoplot()
+```
+
+```{r}
+tree_train_pred %>% 
+  gain_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  autoplot()
+```
+
+```{r}
+tree_train_fit %>% 
+  pull_workflow_fit() %>% 
+  vip()
+```
+
+```{r}
+tree_test_fit <- 
+  tree_workflow %>% 
+  last_fit(bank_split)
+tree_test_fit
+```
+
+```{r}
+tree_test_fit$.predictions
+```
+
+```{r}
+tree_test_pred <- 
+  tree_test_fit %>% 
+  collect_predictions()
+```
+
+```{r}
+tree_test_conf <- 
+  tree_test_pred %>% 
+  conf_mat(truth = Personal_Loan,
+           estimate = .pred_class)
+tree_test_conf
+```
+
+```{r}
+tree_test_conf %>% autoplot(type = "heatmap")
+```
+
+```{r}
+summary(tree_test_conf)
+```
+
+
+```{r}
+tree_test_pred %>% 
+  roc_auc(truth = Personal_Loan, estimate = .pred_Yes)
+```
+
+```{r}
+test_auc <- tree_test_pred %>% 
+  roc_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  mutate(model = "test_auc")
+autoplot(test_auc)
+```
+
+```{r}
+tree_test_pred %>% 
+  lift_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  autoplot()
+```
+
+```{r}
+tree_test_pred %>% 
+  gain_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  autoplot()
+```
+
+```{r}
+tree_test_fit %>% 
+  pluck(".workflow", 1) %>% 
+  pull_workflow_fit() %>% 
+  vip(num_features = 20)
+```
+
+```{r}
+tree_train_conf
+```
+
+```{r}
+tree_test_conf
+```
+
+```{r}
+summary(tree_train_conf)
+```
+
+```{r}
+summary(tree_test_conf)
+```
+
+```{r}
+bind_rows(train_auc, test_auc) %>% 
+  ggplot(mapping = aes(x = 1-specificity,
+                       y = sensitivity,
+                       color = model)) +
+  geom_path(lwd = 1.5) +
+  geom_abline(lty = 3) +
+  coord_equal()
+```
+
+```{r}
+if(!require(rpart.plot)) { install.packages("rpart.plot"); library(rpart.plot); }
+rpart_fit <- tree_train_fit %>% 
+  pull_workflow_fit()
+```
+
+```{r}
+rpart.plot(x = rpart_fit$fit,
+           yesno = 2, type = 2, extra = 1, split.font = 1, varlen = -10)
+```
+
+```{r}
+prp(x = rpart_fit$fit, 
+    type = 1, 
+    extra = 1, 
+    under = T, 
+    split.font = 1, 
+    varlen = -10,
+    box.col = ifelse(rpart_fit$fit$frame$var == "<leaf>", "gray", "white")
+)
 ```
 
