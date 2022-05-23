@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-05-22" />
+<meta name="date" content="2022-05-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -457,7 +457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.22.1" data-path="til20220522.html"><a href="til20220522.html#최적-모델"><i class="fa fa-check"></i><b>5.22.1</b> 최적 모델</a></li>
 </ul></li>
 <li class="chapter" data-level="5.23" data-path="til20220523.html"><a href="til20220523.html"><i class="fa fa-check"></i><b>5.23</b> TIL20220523</a><ul>
-<li class="chapter" data-level="5.23.1" data-path="til20220523.html"><a href="til20220523.html#til20220519-참고"><i class="fa fa-check"></i><b>5.23.1</b> TIL20220519 참고</a></li>
+<li class="chapter" data-level="5.23.1" data-path="til20220523.html"><a href="til20220523.html#histogram"><i class="fa fa-check"></i><b>5.23.1</b> histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="5.24" data-path="til202205.html"><a href="til202205.html"><i class="fa fa-check"></i><b>5.24</b> TIL202205</a><ul>
 <li class="chapter" data-level="5.24.1" data-path="til202205.html"><a href="til202205.html#section-4"><i class="fa fa-check"></i><b>5.24.1</b> </a></li>
@@ -506,8 +506,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="til20220523" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.23</span> TIL20220523<a href="til20220523.html#til20220523" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="til20220519-참고" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.23.1</span> TIL20220519 참고<a href="til20220523.html#til20220519-참고" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="histogram" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.23.1</span> histogram<a href="til20220523.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb1366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1366-1"><a href="til20220523.html#cb1366-1"></a>data &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">160</span><span class="op">:</span><span class="dv">190</span>, <span class="dv">50</span>, <span class="dt">replace =</span> T)</span>
+<span id="cb1366-2"><a href="til20220523.html#cb1366-2"></a>hg &lt;-<span class="st"> </span><span class="kw">hist</span>(data)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-566-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1367-1"><a href="til20220523.html#cb1367-1"></a><span class="kw">text</span>(hg<span class="op">$</span>mids, hg<span class="op">$</span>counts, <span class="dt">adj=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">-0.5</span>))</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-566-2.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
