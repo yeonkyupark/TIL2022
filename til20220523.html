@@ -513,6 +513,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Figures/unnamed-chunk-566-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb1367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1367-1"><a href="til20220523.html#cb1367-1"></a><span class="kw">text</span>(hg<span class="op">$</span>mids, hg<span class="op">$</span>counts, <span class="dt">adj=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">-0.5</span>))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-566-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1368-1"><a href="til20220523.html#cb1368-1"></a>mh &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">500</span>, <span class="dv">170</span>, <span class="dv">5</span>)</span>
+<span id="cb1368-2"><a href="til20220523.html#cb1368-2"></a>fh &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">500</span>, <span class="dv">160</span>, <span class="dv">5</span>)</span>
+<span id="cb1368-3"><a href="til20220523.html#cb1368-3"></a>x_range &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">130</span>, <span class="dv">200</span>, <span class="dt">by =</span> <span class="dv">2</span>)</span>
+<span id="cb1368-4"><a href="til20220523.html#cb1368-4"></a>mh_hist &lt;-<span class="st"> </span><span class="kw">hist</span>(mh, <span class="dt">breaks =</span> x_range, <span class="dt">plot =</span> F)</span>
+<span id="cb1368-5"><a href="til20220523.html#cb1368-5"></a>fh_hist &lt;-<span class="st"> </span><span class="kw">hist</span>(fh, <span class="dt">breaks =</span> x_range, <span class="dt">plot =</span> F)</span>
+<span id="cb1368-6"><a href="til20220523.html#cb1368-6"></a>ymax &lt;-<span class="st"> </span><span class="kw">max</span>(<span class="kw">max</span>(mh_hist<span class="op">$</span>counts), <span class="kw">max</span>(fh_hist<span class="op">$</span>counts))</span>
+<span id="cb1368-7"><a href="til20220523.html#cb1368-7"></a>{</span>
+<span id="cb1368-8"><a href="til20220523.html#cb1368-8"></a>  <span class="kw">plot</span>(mh_hist, <span class="dt">col=</span><span class="kw">adjustcolor</span>(<span class="st">&quot;blue&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>), <span class="dt">ann =</span> F, <span class="dt">axes =</span> F)</span>
+<span id="cb1368-9"><a href="til20220523.html#cb1368-9"></a>  <span class="kw">plot</span>(fh_hist, <span class="dt">col=</span><span class="kw">adjustcolor</span>(<span class="st">&quot;red&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>), <span class="dt">ann =</span> F, <span class="dt">axes =</span> F, <span class="dt">add =</span> T)</span>
+<span id="cb1368-10"><a href="til20220523.html#cb1368-10"></a>  <span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;Hight of Man and Female&quot;</span>)</span>
+<span id="cb1368-11"><a href="til20220523.html#cb1368-11"></a>  x_axis_tick &lt;-<span class="st"> </span>x_range</span>
+<span id="cb1368-12"><a href="til20220523.html#cb1368-12"></a>  <span class="kw">axis</span>(<span class="dt">side=</span><span class="dv">1</span>, <span class="dt">at=</span>x_axis_tick)</span>
+<span id="cb1368-13"><a href="til20220523.html#cb1368-13"></a>  y_axis_tick &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, ymax, <span class="dt">by =</span> <span class="dv">10</span>)</span>
+<span id="cb1368-14"><a href="til20220523.html#cb1368-14"></a>  <span class="kw">axis</span>(<span class="dt">side=</span><span class="dv">2</span>, <span class="dt">at=</span>y_axis_tick)</span>
+<span id="cb1368-15"><a href="til20220523.html#cb1368-15"></a>  <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))</span>
+<span id="cb1368-16"><a href="til20220523.html#cb1368-16"></a>  <span class="kw">box</span>(<span class="st">&quot;figure&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb1368-17"><a href="til20220523.html#cb1368-17"></a>}</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-567-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
