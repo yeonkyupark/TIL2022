@@ -1,8 +1,11 @@
 ## TIL20220523
 
-### TIL20220519 참고
+### histogram
 
 ```{r}
-
+data <- sample(160:190, 50, replace = T)
+hg <- hist(data)
+text(hg$mids, hg$counts, adj=c(0.5, -0.5))
 ```
+
 
