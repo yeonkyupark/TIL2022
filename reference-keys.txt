@@ -285,13 +285,13 @@ til20220525
 section-5
 til20220526
 section-6
+til20220527
+factor형-label변경
+til20220528
+bcr
 til202205
 section-7
 til202205-1
 section-8
 til202205-2
 section-9
-til202205-3
-section-10
-til202205-4
-section-11
