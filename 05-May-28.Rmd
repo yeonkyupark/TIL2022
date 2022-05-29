@@ -7,4 +7,3 @@
 BCR
 : BCR (Balanced Classification Rate) = 1/2* (TP / (TP + FN) + TN / (TN + FP))
   [출처](https://www.geeksforgeeks.org/calculate-efficiency-binary-classifier/)
-
