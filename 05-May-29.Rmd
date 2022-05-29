@@ -1,8 +1,14 @@
-## TIL202205
+## TIL20220529
 
 ### 
 
 ```{r}
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+str(msleep)
+```
 
+```{r}
+my_data <- msleep %>% 
+  select(name, sleep_total)
 ```
 
