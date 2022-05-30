@@ -1,8 +1,30 @@
-## TIL202205
+## TIL20220530
 
-### 
+### 회귀분석 가정
+
+선형성(linearity)
+: 종속변수와 독립변수 간의 관계는 선형이다.  
+
+정규성(normality)
+: 독립변수 값에 대해 대응되는 종속변수 값들의 분포는 정규분포이다.  
+
+등분산성(homoscedasticity, equality of variance)
+: 독립변수 값에 대해 대응되는 종속변수 값들의 분포는 모두 동일한 분산을 갖는다.  
+
+독립성(independence)
+: 모든 관측값은 서로 독립이다. 하나의 관측값은 다른 관측값에 영향을 미치지 않는다.  
+
+
 
 ```{r}
-
+str(mtcars)
 ```
+
+```{r}
+mtcars.lm <- lm(mpg ~ hp + wt + disp + drat, data = mtcars)
+plot(mtcars.lm)
+```
+
+도표 순서대로 1) 선형성, 2) 정규성, 3) 등분산성, 4) 주의를 요하는 관측값 정보를 출력해 준다.  
+
 
