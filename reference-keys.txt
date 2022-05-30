@@ -289,9 +289,9 @@ til20220527
 factor형-label변경
 til20220528
 bcr
-til202205
+til20220529
 section-7
-til202205-1
+til20220530
+회귀분석-가정
+til202205
 section-8
-til202205-2
-section-9
