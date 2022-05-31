@@ -293,5 +293,5 @@ til20220529
 section-7
 til20220530
 회귀분석-가정
-til202205
+til20220531
 section-8
