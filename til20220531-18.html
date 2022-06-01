@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.19 TIL20220531 | Today I Learned in 2022</title>
+  <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.19 TIL20220531 | Today I Learned in 2022" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
+  <meta name="github-repo" content="yeonkyupark/TIL2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.19 TIL20220531 | Today I Learned in 2022" />
+  
+  <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
+  
+
+<meta name="author" content="PARK Yeonkyu" />
+
+
+<meta name="date" content="2022-06-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="til20220531-17.html"/>
+<link rel="next" href="til20220531-19.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">TIL 2022</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>시작하며</a></li>
+<li class="chapter" data-level="1" data-path="년-1월.html"><a href="년-1월.html"><i class="fa fa-check"></i><b>1</b> 2022년 1월</a></li>
+<li class="chapter" data-level="2" data-path="년-2월.html"><a href="년-2월.html"><i class="fa fa-check"></i><b>2</b> 2022년 2월</a><ul>
+<li class="chapter" data-level="2.1" data-path="til20220201.html"><a href="til20220201.html"><i class="fa fa-check"></i><b>2.1</b> TIL20220201</a></li>
+<li class="chapter" data-level="2.2" data-path="til20220202.html"><a href="til20220202.html"><i class="fa fa-check"></i><b>2.2</b> TIL20220202</a></li>
+<li class="chapter" data-level="2.3" data-path="til20220203.html"><a href="til20220203.html"><i class="fa fa-check"></i><b>2.3</b> TIL20220203</a></li>
+<li class="chapter" data-level="2.4" data-path="til20220204.html"><a href="til20220204.html"><i class="fa fa-check"></i><b>2.4</b> TIL20220204</a></li>
+<li class="chapter" data-level="2.5" data-path="til20220205.html"><a href="til20220205.html"><i class="fa fa-check"></i><b>2.5</b> TIL20220205</a></li>
+<li class="chapter" data-level="2.6" data-path="til20220206.html"><a href="til20220206.html"><i class="fa fa-check"></i><b>2.6</b> TIL20220206</a></li>
+<li class="chapter" data-level="2.7" data-path="til20220207.html"><a href="til20220207.html"><i class="fa fa-check"></i><b>2.7</b> TIL20220207</a></li>
+<li class="chapter" data-level="2.8" data-path="til20220208.html"><a href="til20220208.html"><i class="fa fa-check"></i><b>2.8</b> TIL20220208</a></li>
+<li class="chapter" data-level="2.9" data-path="til20220209.html"><a href="til20220209.html"><i class="fa fa-check"></i><b>2.9</b> TIL20220209</a></li>
+<li class="chapter" data-level="2.10" data-path="til20220210.html"><a href="til20220210.html"><i class="fa fa-check"></i><b>2.10</b> TIL20220210</a></li>
+<li class="chapter" data-level="2.11" data-path="til20220211.html"><a href="til20220211.html"><i class="fa fa-check"></i><b>2.11</b> TIL20220211</a></li>
+<li class="chapter" data-level="2.12" data-path="til20220212.html"><a href="til20220212.html"><i class="fa fa-check"></i><b>2.12</b> TIL20220212</a></li>
+<li class="chapter" data-level="2.13" data-path="til20220213.html"><a href="til20220213.html"><i class="fa fa-check"></i><b>2.13</b> TIL20220213</a></li>
+<li class="chapter" data-level="2.14" data-path="til20220214.html"><a href="til20220214.html"><i class="fa fa-check"></i><b>2.14</b> TIL20220214</a></li>
+<li class="chapter" data-level="2.15" data-path="til20220215.html"><a href="til20220215.html"><i class="fa fa-check"></i><b>2.15</b> TIL20220215</a></li>
+<li class="chapter" data-level="2.16" data-path="til20220216.html"><a href="til20220216.html"><i class="fa fa-check"></i><b>2.16</b> TIL20220216</a></li>
+<li class="chapter" data-level="2.17" data-path="til20220217.html"><a href="til20220217.html"><i class="fa fa-check"></i><b>2.17</b> TIL20220217</a></li>
+<li class="chapter" data-level="2.18" data-path="til20220218.html"><a href="til20220218.html"><i class="fa fa-check"></i><b>2.18</b> TIL20220218</a><ul>
+<li class="chapter" data-level="2.18.1" data-path="til20220218.html"><a href="til20220218.html#github-repo-삭제하면-잔디도-죽는다"><i class="fa fa-check"></i><b>2.18.1</b> github repo 삭제하면 잔디도 죽는다</a></li>
+<li class="chapter" data-level="2.18.2" data-path="til20220218.html"><a href="til20220218.html#bookdown으로-블로그-전환"><i class="fa fa-check"></i><b>2.18.2</b> bookdown으로 블로그 전환</a></li>
+</ul></li>
+<li class="chapter" data-level="2.19" data-path="til20220219.html"><a href="til20220219.html"><i class="fa fa-check"></i><b>2.19</b> TIL20220219</a><ul>
+<li class="chapter" data-level="2.19.1" data-path="til20220219.html"><a href="til20220219.html#netlify와-bookdown-연동"><i class="fa fa-check"></i><b>2.19.1</b> netlify와 bookdown 연동</a></li>
+</ul></li>
+<li class="chapter" data-level="2.20" data-path="til20220220.html"><a href="til20220220.html"><i class="fa fa-check"></i><b>2.20</b> TIL20220220</a><ul>
+<li class="chapter" data-level="2.20.1" data-path="til20220220.html"><a href="til20220220.html#netlify-자동-배포-1"><i class="fa fa-check"></i><b>2.20.1</b> netlify 자동 배포 1</a></li>
+<li class="chapter" data-level="2.20.2" data-path="til20220220.html"><a href="til20220220.html#netlify-자동-배포-2"><i class="fa fa-check"></i><b>2.20.2</b> netlify 자동 배포 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.21" data-path="til20220221.html"><a href="til20220221.html"><i class="fa fa-check"></i><b>2.21</b> TIL20220221</a><ul>
+<li class="chapter" data-level="2.21.1" data-path="til20220221.html"><a href="til20220221.html#github-actions를-이용한-자동-배포"><i class="fa fa-check"></i><b>2.21.1</b> Github Actions를 이용한 자동 배포</a></li>
+<li class="chapter" data-level="2.21.2" data-path="til20220221.html"><a href="til20220221.html#실습"><i class="fa fa-check"></i><b>2.21.2</b> 실습</a></li>
+</ul></li>
+<li class="chapter" data-level="2.22" data-path="til20220222.html"><a href="til20220222.html"><i class="fa fa-check"></i><b>2.22</b> TIL20220222</a><ul>
+<li class="chapter" data-level="2.22.1" data-path="til20220222.html"><a href="til20220222.html#code-snippet-in-r"><i class="fa fa-check"></i><b>2.22.1</b> code snippet in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.23" data-path="til20220223.html"><a href="til20220223.html"><i class="fa fa-check"></i><b>2.23</b> TIL20220223</a><ul>
+<li class="chapter" data-level="2.23.1" data-path="til20220223.html"><a href="til20220223.html#rstudio.cloud-pat-업데이트"><i class="fa fa-check"></i><b>2.23.1</b> rstudio.cloud PAT 업데이트</a></li>
+<li class="chapter" data-level="2.23.2" data-path="til20220223.html"><a href="til20220223.html#파비콘-만들기"><i class="fa fa-check"></i><b>2.23.2</b> 파비콘 만들기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.24" data-path="til20220224.html"><a href="til20220224.html"><i class="fa fa-check"></i><b>2.24</b> TIL20220224</a><ul>
+<li class="chapter" data-level="2.24.1" data-path="til20220224.html"><a href="til20220224.html#rstudio-bookdown-github-배포하기"><i class="fa fa-check"></i><b>2.24.1</b> RStudio + bookdown + github 배포하기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.25" data-path="til20220225.html"><a href="til20220225.html"><i class="fa fa-check"></i><b>2.25</b> TIL20220225</a><ul>
+<li class="chapter" data-level="2.25.1" data-path="til20220225.html"><a href="til20220225.html#r에서-데이터-읽어-오기"><i class="fa fa-check"></i><b>2.25.1</b> R에서 데이터 읽어 오기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.26" data-path="til20220226.html"><a href="til20220226.html"><i class="fa fa-check"></i><b>2.26</b> TIL20220226</a><ul>
+<li class="chapter" data-level="2.26.1" data-path="til20220226.html"><a href="til20220226.html#데이터-훑어보기"><i class="fa fa-check"></i><b>2.26.1</b> 데이터 훑어보기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.27" data-path="til20220227.html"><a href="til20220227.html"><i class="fa fa-check"></i><b>2.27</b> TIL20220227</a><ul>
+<li class="chapter" data-level="2.27.1" data-path="til20220227.html"><a href="til20220227.html#github에-파일-올리기"><i class="fa fa-check"></i><b>2.27.1</b> GitHub에 파일 올리기</a></li>
+<li class="chapter" data-level="2.27.2" data-path="til20220227.html"><a href="til20220227.html#엑셀-if-함수-정리"><i class="fa fa-check"></i><b>2.27.2</b> 엑셀 if 함수 정리</a></li>
+</ul></li>
+<li class="chapter" data-level="2.28" data-path="til20220228.html"><a href="til20220228.html"><i class="fa fa-check"></i><b>2.28</b> TIL20220228</a><ul>
+<li class="chapter" data-level="2.28.1" data-path="til20220228.html"><a href="til20220228.html#데이터-수집"><i class="fa fa-check"></i><b>2.28.1</b> 데이터 수집</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="년-3월.html"><a href="년-3월.html"><i class="fa fa-check"></i><b>3</b> 2022년 3월</a><ul>
+<li class="chapter" data-level="3.1" data-path="til20220301.html"><a href="til20220301.html"><i class="fa fa-check"></i><b>3.1</b> TIL20220301</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="til20220301.html"><a href="til20220301.html#데이터-요약"><i class="fa fa-check"></i><b>3.1.1</b> 데이터 요약</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="til20220302.html"><a href="til20220302.html"><i class="fa fa-check"></i><b>3.2</b> TIL20220302</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="til20220302.html"><a href="til20220302.html#데이터-요약-1"><i class="fa fa-check"></i><b>3.2.1</b> 데이터 요약</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="til20220303.html"><a href="til20220303.html"><i class="fa fa-check"></i><b>3.3</b> TIL20220303</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="til20220303.html"><a href="til20220303.html#데이터-요약-2"><i class="fa fa-check"></i><b>3.3.1</b> 데이터 요약</a></li>
+<li class="chapter" data-level="3.3.2" data-path="til20220303.html"><a href="til20220303.html#변동성-지표"><i class="fa fa-check"></i><b>3.3.2</b> 변동성 지표</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="til20220304.html"><a href="til20220304.html"><i class="fa fa-check"></i><b>3.4</b> TIL20220304</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="til20220304.html"><a href="til20220304.html#가설검정"><i class="fa fa-check"></i><b>3.4.1</b> 가설검정</a></li>
+<li class="chapter" data-level="3.4.2" data-path="til20220304.html"><a href="til20220304.html#확률분포"><i class="fa fa-check"></i><b>3.4.2</b> 확률분포</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="til20220305.html"><a href="til20220305.html"><i class="fa fa-check"></i><b>3.5</b> TIL20220305</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="til20220305.html"><a href="til20220305.html#정규분포"><i class="fa fa-check"></i><b>3.5.1</b> 정규분포</a></li>
+<li class="chapter" data-level="3.5.2" data-path="til20220305.html"><a href="til20220305.html#데이터의-정규성-검정"><i class="fa fa-check"></i><b>3.5.2</b> 데이터의 정규성 검정</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="til20220306.html"><a href="til20220306.html"><i class="fa fa-check"></i><b>3.6</b> TIL20220306</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="til20220306.html"><a href="til20220306.html#대응표본-평균검정"><i class="fa fa-check"></i><b>3.6.1</b> 대응표본 평균검정</a></li>
+<li class="chapter" data-level="3.6.2" data-path="til20220306.html"><a href="til20220306.html#독립표본-비율검정"><i class="fa fa-check"></i><b>3.6.2</b> 독립표본 비율검정</a></li>
+<li class="chapter" data-level="3.6.3" data-path="til20220306.html"><a href="til20220306.html#독립표본-평균검정"><i class="fa fa-check"></i><b>3.6.3</b> 독립표본 평균검정</a></li>
+<li class="chapter" data-level="3.6.4" data-path="til20220306.html"><a href="til20220306.html#일표본-비율검정"><i class="fa fa-check"></i><b>3.6.4</b> 일표본 비율검정</a></li>
+<li class="chapter" data-level="3.6.5" data-path="til20220306.html"><a href="til20220306.html#일표본-평균검정"><i class="fa fa-check"></i><b>3.6.5</b> 일표본 평균검정</a></li>
+<li class="chapter" data-level="3.6.6" data-path="til20220306.html"><a href="til20220306.html#평균검정"><i class="fa fa-check"></i><b>3.6.6</b> 평균검정</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="til20220307.html"><a href="til20220307.html"><i class="fa fa-check"></i><b>3.7</b> TIL20220307</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="til20220307.html"><a href="til20220307.html#결측치-처리"><i class="fa fa-check"></i><b>3.7.1</b> 결측치 처리</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="til20220308.html"><a href="til20220308.html"><i class="fa fa-check"></i><b>3.8</b> TIL20220308</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="til20220308.html"><a href="til20220308.html#r-에러-수정"><i class="fa fa-check"></i><b>3.8.1</b> R 에러 수정</a></li>
+<li class="chapter" data-level="3.8.2" data-path="til20220308.html"><a href="til20220308.html#결측치-시각화"><i class="fa fa-check"></i><b>3.8.2</b> 결측치 시각화</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="til20220309.html"><a href="til20220309.html"><i class="fa fa-check"></i><b>3.9</b> TIL20220309</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="til20220309.html"><a href="til20220309.html#클래스-불균형과-샘플링"><i class="fa fa-check"></i><b>3.9.1</b> 클래스 불균형과 샘플링</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="til20220310.html"><a href="til20220310.html"><i class="fa fa-check"></i><b>3.10</b> TIL20220310</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="til20220310.html"><a href="til20220310.html#smote-데이터-형식-오류"><i class="fa fa-check"></i><b>3.10.1</b> SMOTE 데이터 형식 오류</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="til20220311.html"><a href="til20220311.html"><i class="fa fa-check"></i><b>3.11</b> TIL20220311</a><ul>
+<li class="chapter" data-level="3.11.1" data-path="til20220311.html"><a href="til20220311.html#url을-통해-직접-패키지-설치"><i class="fa fa-check"></i><b>3.11.1</b> URL을 통해 직접 패키지 설치</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="til20220312.html"><a href="til20220312.html"><i class="fa fa-check"></i><b>3.12</b> TIL20220312</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="til20220312.html"><a href="til20220312.html#rstudio-chunk-options"><i class="fa fa-check"></i><b>3.12.1</b> RStudio Chunk options</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="til20220313.html"><a href="til20220313.html"><i class="fa fa-check"></i><b>3.13</b> TIL20220313</a><ul>
+<li class="chapter" data-level="3.13.1" data-path="til20220313.html"><a href="til20220313.html#시계열-데이터-분할"><i class="fa fa-check"></i><b>3.13.1</b> 시계열 데이터 분할</a></li>
+</ul></li>
+<li class="chapter" data-level="3.14" data-path="til20220314.html"><a href="til20220314.html"><i class="fa fa-check"></i><b>3.14</b> TIL20220314</a><ul>
+<li class="chapter" data-level="3.14.1" data-path="til20220314.html"><a href="til20220314.html#일반적인-데이터-분할"><i class="fa fa-check"></i><b>3.14.1</b> 일반적인 데이터 분할</a></li>
+</ul></li>
+<li class="chapter" data-level="3.15" data-path="til20220315.html"><a href="til20220315.html"><i class="fa fa-check"></i><b>3.15</b> TIL20220315</a><ul>
+<li class="chapter" data-level="3.15.1" data-path="til20220315.html"><a href="til20220315.html#caret을-이용한-기계학습-절차"><i class="fa fa-check"></i><b>3.15.1</b> caret을 이용한 기계학습 절차</a></li>
+</ul></li>
+<li class="chapter" data-level="3.16" data-path="til20220316.html"><a href="til20220316.html"><i class="fa fa-check"></i><b>3.16</b> TIL20220316</a><ul>
+<li class="chapter" data-level="3.16.1" data-path="til20220316.html"><a href="til20220316.html#페널티-회귀분석---1"><i class="fa fa-check"></i><b>3.16.1</b> 페널티 회귀분석 - 1</a></li>
+<li class="chapter" data-level="3.16.2" data-path="til20220316.html"><a href="til20220316.html#markdown-문법"><i class="fa fa-check"></i><b>3.16.2</b> Markdown 문법</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="til20220317.html"><a href="til20220317.html"><i class="fa fa-check"></i><b>3.17</b> TIL20220317</a><ul>
+<li class="chapter" data-level="3.17.1" data-path="til20220317.html"><a href="til20220317.html#분산분석"><i class="fa fa-check"></i><b>3.17.1</b> 분산분석</a></li>
+<li class="chapter" data-level="3.17.2" data-path="til20220317.html"><a href="til20220317.html#페널티-회귀분석---2"><i class="fa fa-check"></i><b>3.17.2</b> 페널티 회귀분석 - 2</a></li>
+<li class="chapter" data-level="3.17.3" data-path="til20220317.html"><a href="til20220317.html#모델별-비교"><i class="fa fa-check"></i><b>3.17.3</b> 모델별 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="3.18" data-path="til20220318.html"><a href="til20220318.html"><i class="fa fa-check"></i><b>3.18</b> TIL20220318</a><ul>
+<li class="chapter" data-level="3.18.1" data-path="til20220318.html"><a href="til20220318.html#구미시-선별진료소"><i class="fa fa-check"></i><b>3.18.1</b> 구미시 선별진료소</a></li>
+</ul></li>
+<li class="chapter" data-level="3.19" data-path="til20220319.html"><a href="til20220319.html"><i class="fa fa-check"></i><b>3.19</b> TIL20220319</a><ul>
+<li class="chapter" data-level="3.19.1" data-path="til20220319.html"><a href="til20220319.html#일반선형델회귀모델"><i class="fa fa-check"></i><b>3.19.1</b> 일반선형델회귀모델</a></li>
+<li class="chapter" data-level="3.19.2" data-path="til20220319.html"><a href="til20220319.html#이항-로지스틱-회귀분석"><i class="fa fa-check"></i><b>3.19.2</b> 이항 로지스틱 회귀분석</a></li>
+<li class="chapter" data-level="3.19.3" data-path="til20220319.html"><a href="til20220319.html#패널티-로지스틱회귀분석"><i class="fa fa-check"></i><b>3.19.3</b> 패널티 로지스틱회귀분석</a></li>
+</ul></li>
+<li class="chapter" data-level="3.20" data-path="til20220320.html"><a href="til20220320.html"><i class="fa fa-check"></i><b>3.20</b> TIL20220320</a><ul>
+<li class="chapter" data-level="3.20.1" data-path="til20220320.html"><a href="til20220320.html#다항-로지스틱회귀분석"><i class="fa fa-check"></i><b>3.20.1</b> 다항 로지스틱회귀분석</a></li>
+</ul></li>
+<li class="chapter" data-level="3.21" data-path="til20220321.html"><a href="til20220321.html"><i class="fa fa-check"></i><b>3.21</b> TIL20220321</a><ul>
+<li class="chapter" data-level="3.21.1" data-path="til20220321.html"><a href="til20220321.html#가설검정-1"><i class="fa fa-check"></i><b>3.21.1</b> 가설검정</a></li>
+<li class="chapter" data-level="3.21.2" data-path="til20220321.html"><a href="til20220321.html#비율검정"><i class="fa fa-check"></i><b>3.21.2</b> 비율검정</a></li>
+<li class="chapter" data-level="3.21.3" data-path="til20220321.html"><a href="til20220321.html#동질성-검사"><i class="fa fa-check"></i><b>3.21.3</b> 동질성 검사</a></li>
+</ul></li>
+<li class="chapter" data-level="3.22" data-path="til20220322.html"><a href="til20220322.html"><i class="fa fa-check"></i><b>3.22</b> TIL20220322</a><ul>
+<li class="chapter" data-level="3.22.1" data-path="til20220322.html"><a href="til20220322.html#비모수-검정"><i class="fa fa-check"></i><b>3.22.1</b> 비모수 검정</a></li>
+<li class="chapter" data-level="3.22.2" data-path="til20220322.html"><a href="til20220322.html#anova-in-r"><i class="fa fa-check"></i><b>3.22.2</b> ANOVA in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.23" data-path="til20220323.html"><a href="til20220323.html"><i class="fa fa-check"></i><b>3.23</b> TIL20220323</a><ul>
+<li class="chapter" data-level="3.23.1" data-path="til20220323.html"><a href="til20220323.html#히트맵-in-r"><i class="fa fa-check"></i><b>3.23.1</b> 히트맵 in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.24" data-path="til20220324.html"><a href="til20220324.html"><i class="fa fa-check"></i><b>3.24</b> TIL20220324</a><ul>
+<li class="chapter" data-level="3.24.1" data-path="til20220324.html"><a href="til20220324.html#기계학습-모델링-with-caret"><i class="fa fa-check"></i><b>3.24.1</b> 기계학습 모델링 with Caret</a></li>
+<li class="chapter" data-level="3.24.2" data-path="til20220324.html"><a href="til20220324.html#다중범주-roc"><i class="fa fa-check"></i><b>3.24.2</b> 다중범주 ROC</a></li>
+</ul></li>
+<li class="chapter" data-level="3.25" data-path="til20220325.html"><a href="til20220325.html"><i class="fa fa-check"></i><b>3.25</b> TIL20220325</a></li>
+<li class="chapter" data-level="3.26" data-path="til20220326.html"><a href="til20220326.html"><i class="fa fa-check"></i><b>3.26</b> TIL20220326</a></li>
+<li class="chapter" data-level="3.27" data-path="til20220327.html"><a href="til20220327.html"><i class="fa fa-check"></i><b>3.27</b> TIL20220327</a></li>
+<li class="chapter" data-level="3.28" data-path="til20220328.html"><a href="til20220328.html"><i class="fa fa-check"></i><b>3.28</b> TIL20220328</a></li>
+<li class="chapter" data-level="3.29" data-path="til20220329.html"><a href="til20220329.html"><i class="fa fa-check"></i><b>3.29</b> TIL20220329</a></li>
+<li class="chapter" data-level="3.30" data-path="til20220330.html"><a href="til20220330.html"><i class="fa fa-check"></i><b>3.30</b> TIL20220330</a><ul>
+<li class="chapter" data-level="3.30.1" data-path="til20220330.html"><a href="til20220330.html#정규분포에서-추출한-표본평균의-분포"><i class="fa fa-check"></i><b>3.30.1</b> 정규분포에서 추출한 표본평균의 분포</a></li>
+<li class="chapter" data-level="3.30.2" data-path="til20220330.html"><a href="til20220330.html#모집단이-정규분포-이외의-분포를-따를-경우"><i class="fa fa-check"></i><b>3.30.2</b> 모집단이 정규분포 이외의 분포를 따를 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="3.31" data-path="til20220331.html"><a href="til20220331.html"><i class="fa fa-check"></i><b>3.31</b> TIL20220331</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="년-4월.html"><a href="년-4월.html"><i class="fa fa-check"></i><b>4</b> 2022년 4월</a><ul>
+<li class="chapter" data-level="4.1" data-path="til20220401.html"><a href="til20220401.html"><i class="fa fa-check"></i><b>4.1</b> TIL20220401</a></li>
+<li class="chapter" data-level="4.2" data-path="til20220402.html"><a href="til20220402.html"><i class="fa fa-check"></i><b>4.2</b> TIL20220402</a></li>
+<li class="chapter" data-level="4.3" data-path="til20220403.html"><a href="til20220403.html"><i class="fa fa-check"></i><b>4.3</b> TIL20220403</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="til20220403.html"><a href="til20220403.html#데이터-결합-방법"><i class="fa fa-check"></i><b>4.3.1</b> 데이터 결합 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="til20220404.html"><a href="til20220404.html"><i class="fa fa-check"></i><b>4.4</b> TIL20220404</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="til20220404.html"><a href="til20220404.html#일치성"><i class="fa fa-check"></i><b>4.4.1</b> 일치성</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="til20220405.html"><a href="til20220405.html"><i class="fa fa-check"></i><b>4.5</b> TIL20220405</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="til20220405.html"><a href="til20220405.html#dplyr"><i class="fa fa-check"></i><b>4.5.1</b> dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="til20220406.html"><a href="til20220406.html"><i class="fa fa-check"></i><b>4.6</b> TIL20220406</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="til20220406.html"><a href="til20220406.html#r-shiny"><i class="fa fa-check"></i><b>4.6.1</b> R Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="til20220407.html"><a href="til20220407.html"><i class="fa fa-check"></i><b>4.7</b> TIL20220407</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="til20220407.html"><a href="til20220407.html#다중-그래프-in-ggplot"><i class="fa fa-check"></i><b>4.7.1</b> 다중 그래프 in ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="til20220408.html"><a href="til20220408.html"><i class="fa fa-check"></i><b>4.8</b> TIL20220408</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="til20220408.html"><a href="til20220408.html#r-shiny-1"><i class="fa fa-check"></i><b>4.8.1</b> R shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="til20220409.html"><a href="til20220409.html"><i class="fa fa-check"></i><b>4.9</b> TIL20220409</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="til20220409.html"><a href="til20220409.html#r-shiny-conti."><i class="fa fa-check"></i><b>4.9.1</b> R shiny (conti.)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="til20220410.html"><a href="til20220410.html"><i class="fa fa-check"></i><b>4.10</b> TIL20220410</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="til20220410.html"><a href="til20220410.html#신뢰구간"><i class="fa fa-check"></i><b>4.10.1</b> 신뢰구간</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="til20220411.html"><a href="til20220411.html"><i class="fa fa-check"></i><b>4.11</b> TIL20220411</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="til20220411.html"><a href="til20220411.html#r-shiny-reactive"><i class="fa fa-check"></i><b>4.11.1</b> r shiny reactive</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="til20220412.html"><a href="til20220412.html"><i class="fa fa-check"></i><b>4.12</b> TIL20220412</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="til20220412.html"><a href="til20220412.html#qcc"><i class="fa fa-check"></i><b>4.12.1</b> qcc</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="til20220413.html"><a href="til20220413.html"><i class="fa fa-check"></i><b>4.13</b> TIL20220413</a><ul>
+<li class="chapter" data-level="4.13.1" data-path="til20220413.html"><a href="til20220413.html#모집단의-평균검정"><i class="fa fa-check"></i><b>4.13.1</b> 모집단의 평균검정</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="til20220414.html"><a href="til20220414.html"><i class="fa fa-check"></i><b>4.14</b> TIL20220414</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="til20220414.html"><a href="til20220414.html#aggregate"><i class="fa fa-check"></i><b>4.14.1</b> aggregate()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.15" data-path="til20220415.html"><a href="til20220415.html"><i class="fa fa-check"></i><b>4.15</b> TIL20220415</a><ul>
+<li class="chapter" data-level="4.15.1" data-path="til20220415.html"><a href="til20220415.html#집단별-함수-적용"><i class="fa fa-check"></i><b>4.15.1</b> 집단별 함수 적용</a></li>
+</ul></li>
+<li class="chapter" data-level="4.16" data-path="til20220416.html"><a href="til20220416.html"><i class="fa fa-check"></i><b>4.16</b> TIL20220416</a><ul>
+<li class="chapter" data-level="4.16.1" data-path="til20220416.html"><a href="til20220416.html#section"><i class="fa fa-check"></i><b>4.16.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="4.17" data-path="til20220417.html"><a href="til20220417.html"><i class="fa fa-check"></i><b>4.17</b> TIL20220417</a><ul>
+<li class="chapter" data-level="4.17.1" data-path="til20220417.html"><a href="til20220417.html#dplyr-1"><i class="fa fa-check"></i><b>4.17.1</b> dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.18" data-path="til20220418.html"><a href="til20220418.html"><i class="fa fa-check"></i><b>4.18</b> TIL20220418</a><ul>
+<li class="chapter" data-level="4.18.1" data-path="til20220418.html"><a href="til20220418.html#단축키"><i class="fa fa-check"></i><b>4.18.1</b> 단축키</a></li>
+</ul></li>
+<li class="chapter" data-level="4.19" data-path="til20220419.html"><a href="til20220419.html"><i class="fa fa-check"></i><b>4.19</b> TIL20220419</a><ul>
+<li class="chapter" data-level="4.19.1" data-path="til20220419.html"><a href="til20220419.html#pdf-파일-처리"><i class="fa fa-check"></i><b>4.19.1</b> pdf 파일 처리</a></li>
+</ul></li>
+<li class="chapter" data-level="4.20" data-path="til20220420.html"><a href="til20220420.html"><i class="fa fa-check"></i><b>4.20</b> TIL20220420</a><ul>
+<li class="chapter" data-level="4.20.1" data-path="til20220420.html"><a href="til20220420.html#지도-그리기"><i class="fa fa-check"></i><b>4.20.1</b> 지도 그리기</a></li>
+</ul></li>
+<li class="chapter" data-level="4.21" data-path="til20220421.html"><a href="til20220421.html"><i class="fa fa-check"></i><b>4.21</b> TIL20220421</a><ul>
+<li class="chapter" data-level="4.21.1" data-path="til20220421.html"><a href="til20220421.html#shiny-server"><i class="fa fa-check"></i><b>4.21.1</b> shiny server</a></li>
+</ul></li>
+<li class="chapter" data-level="4.22" data-path="til20220422.html"><a href="til20220422.html"><i class="fa fa-check"></i><b>4.22</b> TIL20220422</a><ul>
+<li class="chapter" data-level="4.22.1" data-path="til20220422.html"><a href="til20220422.html#내용-정리-중"><i class="fa fa-check"></i><b>4.22.1</b> 내용 정리 중</a></li>
+</ul></li>
+<li class="chapter" data-level="4.23" data-path="til20220423.html"><a href="til20220423.html"><i class="fa fa-check"></i><b>4.23</b> TIL20220423</a><ul>
+<li class="chapter" data-level="4.23.1" data-path="til20220423.html"><a href="til20220423.html#shiny-app-배포"><i class="fa fa-check"></i><b>4.23.1</b> shiny app 배포</a></li>
+</ul></li>
+<li class="chapter" data-level="4.24" data-path="til20220424.html"><a href="til20220424.html"><i class="fa fa-check"></i><b>4.24</b> TIL20220424</a><ul>
+<li class="chapter" data-level="4.24.1" data-path="til20220424.html"><a href="til20220424.html#shiny-app-배포.-계속---nft-공부"><i class="fa fa-check"></i><b>4.24.1</b> shiny app 배포. 계속 -&gt; NFT 공부</a></li>
+</ul></li>
+<li class="chapter" data-level="4.25" data-path="til20220425.html"><a href="til20220425.html"><i class="fa fa-check"></i><b>4.25</b> TIL20220425</a><ul>
+<li class="chapter" data-level="4.25.1" data-path="til20220425.html"><a href="til20220425.html#휴가-중"><i class="fa fa-check"></i><b>4.25.1</b> 휴가 중</a></li>
+</ul></li>
+<li class="chapter" data-level="4.26" data-path="til20220426.html"><a href="til20220426.html"><i class="fa fa-check"></i><b>4.26</b> TIL20220426</a><ul>
+<li class="chapter" data-level="4.26.1" data-path="til20220426.html"><a href="til20220426.html#휴가-중-1"><i class="fa fa-check"></i><b>4.26.1</b> 휴가 중</a></li>
+</ul></li>
+<li class="chapter" data-level="4.27" data-path="til20220427.html"><a href="til20220427.html"><i class="fa fa-check"></i><b>4.27</b> TIL20220427</a><ul>
+<li class="chapter" data-level="4.27.1" data-path="til20220427.html"><a href="til20220427.html#휴가-중-2"><i class="fa fa-check"></i><b>4.27.1</b> 휴가 중</a></li>
+</ul></li>
+<li class="chapter" data-level="4.28" data-path="til20220428.html"><a href="til20220428.html"><i class="fa fa-check"></i><b>4.28</b> TIL20220428</a><ul>
+<li class="chapter" data-level="4.28.1" data-path="til20220428.html"><a href="til20220428.html#section-1"><i class="fa fa-check"></i><b>4.28.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="4.29" data-path="til20220429.html"><a href="til20220429.html"><i class="fa fa-check"></i><b>4.29</b> TIL20220429</a><ul>
+<li class="chapter" data-level="4.29.1" data-path="til20220429.html"><a href="til20220429.html#오늘까지-휴가"><i class="fa fa-check"></i><b>4.29.1</b> 오늘까지 휴가</a></li>
+</ul></li>
+<li class="chapter" data-level="4.30" data-path="til20220430.html"><a href="til20220430.html"><i class="fa fa-check"></i><b>4.30</b> TIL20220430</a><ul>
+<li class="chapter" data-level="4.30.1" data-path="til20220430.html"><a href="til20220430.html#일기가-꼬인-듯-29일에-작성완료"><i class="fa fa-check"></i><b>4.30.1</b> 일기가 꼬인 듯, 29일에 작성완료</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="년-5월.html"><a href="년-5월.html"><i class="fa fa-check"></i><b>5</b> 2022년 5월</a><ul>
+<li class="chapter" data-level="5.1" data-path="til20220501.html"><a href="til20220501.html"><i class="fa fa-check"></i><b>5.1</b> TIL20220501</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="til20220501.html"><a href="til20220501.html#데이터-결합-방법-1"><i class="fa fa-check"></i><b>5.1.1</b> 데이터 결합 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="til20220502.html"><a href="til20220502.html"><i class="fa fa-check"></i><b>5.2</b> TIL20220502</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="til20220502.html"><a href="til20220502.html#정규성-검정-1"><i class="fa fa-check"></i><b>5.2.1</b> 정규성 검정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="til20220503.html"><a href="til20220503.html"><i class="fa fa-check"></i><b>5.3</b> TIL20220503</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="til20220503.html"><a href="til20220503.html#shiny-app-example"><i class="fa fa-check"></i><b>5.3.1</b> shiny app example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="til20220504.html"><a href="til20220504.html"><i class="fa fa-check"></i><b>5.4</b> TIL20220504</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="til20220504.html"><a href="til20220504.html#독립-t검정"><i class="fa fa-check"></i><b>5.4.1</b> 독립 t검정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="til20220505.html"><a href="til20220505.html"><i class="fa fa-check"></i><b>5.5</b> TIL20220505</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="til20220505.html"><a href="til20220505.html#shiny-app-배포-1"><i class="fa fa-check"></i><b>5.5.1</b> shiny app 배포</a></li>
+<li class="chapter" data-level="5.5.2" data-path="til20220505.html"><a href="til20220505.html#section-2"><i class="fa fa-check"></i><b>5.5.2</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="til20220506.html"><a href="til20220506.html"><i class="fa fa-check"></i><b>5.6</b> TIL20220506</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="til20220506.html"><a href="til20220506.html#shinyapp-loop로-메뉴-구성"><i class="fa fa-check"></i><b>5.6.1</b> shinyapp, loop로 메뉴 구성</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="til20220507.html"><a href="til20220507.html"><i class="fa fa-check"></i><b>5.7</b> TIL20220507</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="til20220507.html"><a href="til20220507.html#lapply를-이용한-box-반복생성"><i class="fa fa-check"></i><b>5.7.1</b> lapply를 이용한 box 반복생성</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="til20220508.html"><a href="til20220508.html"><i class="fa fa-check"></i><b>5.8</b> TIL20220508</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="til20220508.html"><a href="til20220508.html#상자그림"><i class="fa fa-check"></i><b>5.8.1</b> 상자그림</a></li>
+<li class="chapter" data-level="5.8.2" data-path="til20220508.html"><a href="til20220508.html#클라우드-msp"><i class="fa fa-check"></i><b>5.8.2</b> 클라우드, MSP</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="til20220509.html"><a href="til20220509.html"><i class="fa fa-check"></i><b>5.9</b> TIL20220509</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="til20220509.html"><a href="til20220509.html#lapply"><i class="fa fa-check"></i><b>5.9.1</b> lapply</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="til20220510.html"><a href="til20220510.html"><i class="fa fa-check"></i><b>5.10</b> TIL20220510</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="til20220510.html"><a href="til20220510.html#svar-모형"><i class="fa fa-check"></i><b>5.10.1</b> svar 모형</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="til20220511.html"><a href="til20220511.html"><i class="fa fa-check"></i><b>5.11</b> TIL20220511</a><ul>
+<li class="chapter" data-level="5.11.1" data-path="til20220511.html"><a href="til20220511.html#출장중"><i class="fa fa-check"></i><b>5.11.1</b> 출장중</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="til20220512.html"><a href="til20220512.html"><i class="fa fa-check"></i><b>5.12</b> TIL20220512</a><ul>
+<li class="chapter" data-level="5.12.1" data-path="til20220512.html"><a href="til20220512.html#출장-중"><i class="fa fa-check"></i><b>5.12.1</b> 출장 중</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="til20220513.html"><a href="til20220513.html"><i class="fa fa-check"></i><b>5.13</b> TIL20220513</a><ul>
+<li class="chapter" data-level="5.13.1" data-path="til20220513.html"><a href="til20220513.html#section-3"><i class="fa fa-check"></i><b>5.13.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="til20220514.html"><a href="til20220514.html"><i class="fa fa-check"></i><b>5.14</b> TIL20220514</a><ul>
+<li class="chapter" data-level="5.14.1" data-path="til20220514.html"><a href="til20220514.html#mlops"><i class="fa fa-check"></i><b>5.14.1</b> MLOps</a></li>
+</ul></li>
+<li class="chapter" data-level="5.15" data-path="til20220515.html"><a href="til20220515.html"><i class="fa fa-check"></i><b>5.15</b> TIL20220515</a><ul>
+<li class="chapter" data-level="5.15.1" data-path="til20220515.html"><a href="til20220515.html#icc"><i class="fa fa-check"></i><b>5.15.1</b> ICC</a></li>
+<li class="chapter" data-level="5.15.2" data-path="til20220515.html"><a href="til20220515.html#r-변수명-깨질-때"><i class="fa fa-check"></i><b>5.15.2</b> R 변수명 깨질 때</a></li>
+</ul></li>
+<li class="chapter" data-level="5.16" data-path="til20220516.html"><a href="til20220516.html"><i class="fa fa-check"></i><b>5.16</b> TIL20220516</a><ul>
+<li class="chapter" data-level="5.16.1" data-path="til20220516.html"><a href="til20220516.html#모델-분석-절차"><i class="fa fa-check"></i><b>5.16.1</b> 모델 분석 절차</a></li>
+</ul></li>
+<li class="chapter" data-level="5.17" data-path="til20220517.html"><a href="til20220517.html"><i class="fa fa-check"></i><b>5.17</b> TIL20220517</a><ul>
+<li class="chapter" data-level="5.17.1" data-path="til20220517.html"><a href="til20220517.html#tidy-model"><i class="fa fa-check"></i><b>5.17.1</b> tidy model</a></li>
+</ul></li>
+<li class="chapter" data-level="5.18" data-path="til20220518.html"><a href="til20220518.html"><i class="fa fa-check"></i><b>5.18</b> TIL20220518</a><ul>
+<li class="chapter" data-level="5.18.1" data-path="til20220518.html"><a href="til20220518.html#postgresql-r"><i class="fa fa-check"></i><b>5.18.1</b> PostgreSQL + R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.19" data-path="til20220519.html"><a href="til20220519.html"><i class="fa fa-check"></i><b>5.19</b> TIL20220519</a><ul>
+<li class="chapter" data-level="5.19.1" data-path="til20220519.html"><a href="til20220519.html#모델-만들기"><i class="fa fa-check"></i><b>5.19.1</b> 모델 만들기</a></li>
+</ul></li>
+<li class="chapter" data-level="5.20" data-path="til20220520.html"><a href="til20220520.html"><i class="fa fa-check"></i><b>5.20</b> TIL20220520</a><ul>
+<li class="chapter" data-level="5.20.1" data-path="til20220520.html"><a href="til20220520.html#출장"><i class="fa fa-check"></i><b>5.20.1</b> 출장</a></li>
+</ul></li>
+<li class="chapter" data-level="5.21" data-path="til20220521.html"><a href="til20220521.html"><i class="fa fa-check"></i><b>5.21</b> TIL20220521</a><ul>
+<li class="chapter" data-level="5.21.1" data-path="til20220521.html"><a href="til20220521.html#일-참고"><i class="fa fa-check"></i><b>5.21.1</b> 19일 참고</a></li>
+</ul></li>
+<li class="chapter" data-level="5.22" data-path="til20220522.html"><a href="til20220522.html"><i class="fa fa-check"></i><b>5.22</b> TIL20220522</a><ul>
+<li class="chapter" data-level="5.22.1" data-path="til20220522.html"><a href="til20220522.html#최적-모델"><i class="fa fa-check"></i><b>5.22.1</b> 최적 모델</a></li>
+</ul></li>
+<li class="chapter" data-level="5.23" data-path="til20220523.html"><a href="til20220523.html"><i class="fa fa-check"></i><b>5.23</b> TIL20220523</a><ul>
+<li class="chapter" data-level="5.23.1" data-path="til20220523.html"><a href="til20220523.html#histogram"><i class="fa fa-check"></i><b>5.23.1</b> histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="5.24" data-path="til20220524.html"><a href="til20220524.html"><i class="fa fa-check"></i><b>5.24</b> TIL20220524</a><ul>
+<li class="chapter" data-level="5.24.1" data-path="til20220524.html"><a href="til20220524.html#section-4"><i class="fa fa-check"></i><b>5.24.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.25" data-path="til20220525.html"><a href="til20220525.html"><i class="fa fa-check"></i><b>5.25</b> TIL20220525</a><ul>
+<li class="chapter" data-level="5.25.1" data-path="til20220525.html"><a href="til20220525.html#section-5"><i class="fa fa-check"></i><b>5.25.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.26" data-path="til20220526.html"><a href="til20220526.html"><i class="fa fa-check"></i><b>5.26</b> TIL20220526</a><ul>
+<li class="chapter" data-level="5.26.1" data-path="til20220526.html"><a href="til20220526.html#section-6"><i class="fa fa-check"></i><b>5.26.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.27" data-path="til20220527.html"><a href="til20220527.html"><i class="fa fa-check"></i><b>5.27</b> TIL20220527</a><ul>
+<li class="chapter" data-level="5.27.1" data-path="til20220527.html"><a href="til20220527.html#factor형-label변경"><i class="fa fa-check"></i><b>5.27.1</b> factor형 label변경</a></li>
+</ul></li>
+<li class="chapter" data-level="5.28" data-path="til20220528.html"><a href="til20220528.html"><i class="fa fa-check"></i><b>5.28</b> TIL20220528</a><ul>
+<li class="chapter" data-level="5.28.1" data-path="til20220528.html"><a href="til20220528.html#bcr"><i class="fa fa-check"></i><b>5.28.1</b> BCR</a></li>
+</ul></li>
+<li class="chapter" data-level="5.29" data-path="til20220529.html"><a href="til20220529.html"><i class="fa fa-check"></i><b>5.29</b> TIL20220529</a><ul>
+<li class="chapter" data-level="5.29.1" data-path="til20220529.html"><a href="til20220529.html#section-7"><i class="fa fa-check"></i><b>5.29.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="5.30" data-path="til20220530.html"><a href="til20220530.html"><i class="fa fa-check"></i><b>5.30</b> TIL20220530</a><ul>
+<li class="chapter" data-level="5.30.1" data-path="til20220530.html"><a href="til20220530.html#회귀분석-가정"><i class="fa fa-check"></i><b>5.30.1</b> 회귀분석 가정</a></li>
+</ul></li>
+<li class="chapter" data-level="5.31" data-path="til20220531.html"><a href="til20220531.html"><i class="fa fa-check"></i><b>5.31</b> TIL20220531</a><ul>
+<li class="chapter" data-level="5.31.1" data-path="til20220531.html"><a href="til20220531.html#월에-더-열심히"><i class="fa fa-check"></i><b>5.31.1</b> 6월에 더 열심히 …</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="년-6월.html"><a href="년-6월.html"><i class="fa fa-check"></i><b>6</b> 2022년 6월</a><ul>
+<li class="chapter" data-level="6.1" data-path="til20220601.html"><a href="til20220601.html"><i class="fa fa-check"></i><b>6.1</b> TIL20220601</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="til20220601.html"><a href="til20220601.html#section-8"><i class="fa fa-check"></i><b>6.1.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="til20220531-1.html"><a href="til20220531-1.html"><i class="fa fa-check"></i><b>6.2</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="til20220531-1.html"><a href="til20220531-1.html#section-9"><i class="fa fa-check"></i><b>6.2.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="til20220531-2.html"><a href="til20220531-2.html"><i class="fa fa-check"></i><b>6.3</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="til20220531-2.html"><a href="til20220531-2.html#section-10"><i class="fa fa-check"></i><b>6.3.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="til20220531-3.html"><a href="til20220531-3.html"><i class="fa fa-check"></i><b>6.4</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="til20220531-3.html"><a href="til20220531-3.html#section-11"><i class="fa fa-check"></i><b>6.4.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="til20220531-4.html"><a href="til20220531-4.html"><i class="fa fa-check"></i><b>6.5</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="til20220531-4.html"><a href="til20220531-4.html#section-12"><i class="fa fa-check"></i><b>6.5.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="til20220531-5.html"><a href="til20220531-5.html"><i class="fa fa-check"></i><b>6.6</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="til20220531-5.html"><a href="til20220531-5.html#section-13"><i class="fa fa-check"></i><b>6.6.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="til20220531-6.html"><a href="til20220531-6.html"><i class="fa fa-check"></i><b>6.7</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="til20220531-6.html"><a href="til20220531-6.html#section-14"><i class="fa fa-check"></i><b>6.7.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="til20220531-7.html"><a href="til20220531-7.html"><i class="fa fa-check"></i><b>6.8</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="til20220531-7.html"><a href="til20220531-7.html#section-15"><i class="fa fa-check"></i><b>6.8.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="til20220531-8.html"><a href="til20220531-8.html"><i class="fa fa-check"></i><b>6.9</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="til20220531-8.html"><a href="til20220531-8.html#section-16"><i class="fa fa-check"></i><b>6.9.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="til20220531-9.html"><a href="til20220531-9.html"><i class="fa fa-check"></i><b>6.10</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="til20220531-9.html"><a href="til20220531-9.html#section-17"><i class="fa fa-check"></i><b>6.10.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="til20220531-10.html"><a href="til20220531-10.html"><i class="fa fa-check"></i><b>6.11</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.11.1" data-path="til20220531-10.html"><a href="til20220531-10.html#section-18"><i class="fa fa-check"></i><b>6.11.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="til20220531-11.html"><a href="til20220531-11.html"><i class="fa fa-check"></i><b>6.12</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="til20220531-11.html"><a href="til20220531-11.html#section-19"><i class="fa fa-check"></i><b>6.12.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="til20220531-12.html"><a href="til20220531-12.html"><i class="fa fa-check"></i><b>6.13</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.13.1" data-path="til20220531-12.html"><a href="til20220531-12.html#section-20"><i class="fa fa-check"></i><b>6.13.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.14" data-path="til20220531-13.html"><a href="til20220531-13.html"><i class="fa fa-check"></i><b>6.14</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.14.1" data-path="til20220531-13.html"><a href="til20220531-13.html#section-21"><i class="fa fa-check"></i><b>6.14.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.15" data-path="til20220531-14.html"><a href="til20220531-14.html"><i class="fa fa-check"></i><b>6.15</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.15.1" data-path="til20220531-14.html"><a href="til20220531-14.html#section-22"><i class="fa fa-check"></i><b>6.15.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.16" data-path="til20220531-15.html"><a href="til20220531-15.html"><i class="fa fa-check"></i><b>6.16</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.16.1" data-path="til20220531-15.html"><a href="til20220531-15.html#section-23"><i class="fa fa-check"></i><b>6.16.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.17" data-path="til20220531-16.html"><a href="til20220531-16.html"><i class="fa fa-check"></i><b>6.17</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.17.1" data-path="til20220531-16.html"><a href="til20220531-16.html#section-24"><i class="fa fa-check"></i><b>6.17.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.18" data-path="til20220531-17.html"><a href="til20220531-17.html"><i class="fa fa-check"></i><b>6.18</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.18.1" data-path="til20220531-17.html"><a href="til20220531-17.html#section-25"><i class="fa fa-check"></i><b>6.18.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.19" data-path="til20220531-18.html"><a href="til20220531-18.html"><i class="fa fa-check"></i><b>6.19</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.19.1" data-path="til20220531-18.html"><a href="til20220531-18.html#section-26"><i class="fa fa-check"></i><b>6.19.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.20" data-path="til20220531-19.html"><a href="til20220531-19.html"><i class="fa fa-check"></i><b>6.20</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.20.1" data-path="til20220531-19.html"><a href="til20220531-19.html#section-27"><i class="fa fa-check"></i><b>6.20.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.21" data-path="til20220531-20.html"><a href="til20220531-20.html"><i class="fa fa-check"></i><b>6.21</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.21.1" data-path="til20220531-20.html"><a href="til20220531-20.html#section-28"><i class="fa fa-check"></i><b>6.21.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.22" data-path="til20220531-21.html"><a href="til20220531-21.html"><i class="fa fa-check"></i><b>6.22</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.22.1" data-path="til20220531-21.html"><a href="til20220531-21.html#section-29"><i class="fa fa-check"></i><b>6.22.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.23" data-path="til20220531-22.html"><a href="til20220531-22.html"><i class="fa fa-check"></i><b>6.23</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.23.1" data-path="til20220531-22.html"><a href="til20220531-22.html#section-30"><i class="fa fa-check"></i><b>6.23.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.24" data-path="til20220531-23.html"><a href="til20220531-23.html"><i class="fa fa-check"></i><b>6.24</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.24.1" data-path="til20220531-23.html"><a href="til20220531-23.html#section-31"><i class="fa fa-check"></i><b>6.24.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.25" data-path="til20220531-24.html"><a href="til20220531-24.html"><i class="fa fa-check"></i><b>6.25</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.25.1" data-path="til20220531-24.html"><a href="til20220531-24.html#section-32"><i class="fa fa-check"></i><b>6.25.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.26" data-path="til20220531-25.html"><a href="til20220531-25.html"><i class="fa fa-check"></i><b>6.26</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.26.1" data-path="til20220531-25.html"><a href="til20220531-25.html#section-33"><i class="fa fa-check"></i><b>6.26.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.27" data-path="til20220531-26.html"><a href="til20220531-26.html"><i class="fa fa-check"></i><b>6.27</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.27.1" data-path="til20220531-26.html"><a href="til20220531-26.html#section-34"><i class="fa fa-check"></i><b>6.27.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.28" data-path="til20220531-27.html"><a href="til20220531-27.html"><i class="fa fa-check"></i><b>6.28</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.28.1" data-path="til20220531-27.html"><a href="til20220531-27.html#section-35"><i class="fa fa-check"></i><b>6.28.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.29" data-path="til20220531-28.html"><a href="til20220531-28.html"><i class="fa fa-check"></i><b>6.29</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.29.1" data-path="til20220531-28.html"><a href="til20220531-28.html#section-36"><i class="fa fa-check"></i><b>6.29.1</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="6.30" data-path="til20220531-29.html"><a href="til20220531-29.html"><i class="fa fa-check"></i><b>6.30</b> TIL20220531</a><ul>
+<li class="chapter" data-level="6.30.1" data-path="til20220531-29.html"><a href="til20220531-29.html#section-37"><i class="fa fa-check"></i><b>6.30.1</b> </a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Today I Learned in 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="til20220531-18" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.19</span> TIL20220531<a href="til20220531-18.html#til20220531-18" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-26" class="section level3">
+<h3><span class="header-section-number">6.19.1</span> </h3>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="til20220531-17.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="til20220531-19.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/06-Jun-19.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
