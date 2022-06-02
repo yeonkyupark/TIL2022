@@ -87,6 +87,15 @@ round(x_2,2)
 
 ##### 이상치 처리
 
+```{r}
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+ggplot(wine, aes(x=as.factor(Class), y=Alcohol)) + geom_boxplot()
+```
+
+```{r}
+ggplot(wine, aes(x=as.factor(Class), y=wine$Proline)) + geom_boxplot()
+```
+
 #### 데이터 가공
 
 #### 데이터 분할
