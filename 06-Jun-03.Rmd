@@ -1,8 +1,56 @@
-## TIL20220531
+## TIL20220603
 
-### 
+### PCA 변환 모델 성능 비교
 
 ```{r}
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+if(!require(caret)) { install.packages("caret"); library(caret); }
+if(!require(mlbench)) { install.packages("mlbench"); library(mlbench); }
+```
 
+```{r}
+data("BostonHousing")
+bh <- BostonHousing
+```
+
+```{r}
+# EDA
+colSums(is.na(bh))
+```
+
+```{r}
+summary(bh)
+```
+
+```{r}
+trainIndex <- createDataPartition(bh$medv, p=.75, list=F)
+bhTrain <- bh[ trainIndex, ]
+bhTest  <- bh[-trainIndex, ]
+```
+
+```{r}
+bhTrainPP <- preProcess(bhTrain[, -14], method = c("center", "scale", "pca"))
+newbhTrain <- predict(bhTrainPP, bhTrain[, -14])
+newbhTrain <- cbind(newbhTrain, medv = bhTrain[, 14])
+```
+
+```{r}
+fitControl <- trainControl(method = "cv")
+rfFit <- train(medv ~ ., data = newbhTrain, method = "rf",
+               trControl = fitControl, verbose = F)
+```
+
+```{r}
+bhTestPP <- preProcess(bhTest[, -14], method = c("center", "scale", "pca"))
+newbhTest <- predict(bhTestPP, bhTest[, -14])
+newbhTest <- cbind(newbhTest, medv = bhTest[, 14])
+```
+
+```{r}
+bhPred <- predict(rfFit, newbhTest)
+```
+
+```{r}
+caret::RMSE(bhPred, newbhTest$medv)
 ```
 
