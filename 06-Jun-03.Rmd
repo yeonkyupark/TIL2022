@@ -51,6 +51,7 @@ bhPred <- predict(rfFit, newbhTest)
 ```
 
 ```{r}
+caret::
 caret::RMSE(bhPred, newbhTest$medv)
 ```
 

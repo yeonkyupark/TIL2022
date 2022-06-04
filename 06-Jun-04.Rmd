@@ -1,8 +1,54 @@
-## TIL20220531
+## TIL20220604
 
-### 
+### 변수명으로 특정 컬럼 제거하기
 
 ```{r}
-
+df <- data.frame(
+  sex = c("M", "F", "F", "M", "F", "M", "F", "M", "M", "F"),
+  score = c(5,4,3,4,NA,5,4,NA,4,5)
+); df$sex <- as.factor(df$sex)
+df
 ```
+
+```{r}
+df2 <- df[, -"score"]
+```
+
+```{r}
+df2 <- df[, -c("score")]
+```
+
+```{r}
+# 01
+colnames(df)
+df2 <- df[, !(colnames(df) %in% "score")]
+```
+
+
+```{r}
+# 02
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+colIndex <- which(colnames(df) %in% "score")
+df2 <- df %>% select(-all_of(colIndex))
+df2
+```
+
+
+### 결측치 처리
+
+```{r}
+df_nomiss <- df %>% filter(!is.na(score))
+df_mean <- mean(df_nomiss$score)
+df_nomiss2 <- na.omit(df)
+```
+
+```{r}
+if(!require(caret)) { install.packages("caret"); library(caret); }
+if(!require(RANN)) { install.packages("RANN"); library(RANN); }
+
+df$sex <- as.integer(df$sex)
+df_naknn <- preProcess(df, method = "knnImpute", k=3)
+df_new <- predict(df_naknn, df); df_new
+```
+
 
