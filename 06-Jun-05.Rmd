@@ -2,7 +2,7 @@
 
 ### 여러 패키지 한번에 읽어 오기
 
-```{r}
+```R
 packages <- c("dplyr", "ggplot2")
 invisible(
   lapply(packages, require, character.only = T)
