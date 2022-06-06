@@ -9,3 +9,37 @@ invisible(
 )
 ```
 
+### 반복측정 분산분석
+
+```{r}
+data <- CO2
+str(data)
+```
+
+```{r}
+data <- subset(data, Treatment == "chilled")
+data$conc <- factor(data$conc)
+str(data)
+```
+
+```{r}
+head(data)
+```
+
+
+```{r}
+data.aov <- aov(uptake ~ Type * conc + Error(Plant/conc), data)
+summary(data.aov)
+```
+
+```{r}
+boxplot(uptake ~ Type * conc, data,
+        col = c("deepskyblue", "violet"), las = 2, cex.axis=0.7, 
+        xlab = "", ylab = "Carbon dioxide uptake rate")
+```
+
+```{r}
+if(!require(HH)) { install.packages("HH"); library(HH); }
+interaction2wt(uptake ~ Type * conc, data)
+```
+
