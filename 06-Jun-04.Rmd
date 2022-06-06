@@ -37,15 +37,14 @@ df2
 ### 결측치 처리
 
 ```{r}
+if(!require(caret)) { install.packages("caret"); library(caret); }
+if(!require(RANN)) { install.packages("RANN"); library(RANN); }
 df_nomiss <- df %>% filter(!is.na(score))
 df_mean <- mean(df_nomiss$score)
 df_nomiss2 <- na.omit(df)
 ```
 
 ```{r}
-if(!require(caret)) { install.packages("caret"); library(caret); }
-if(!require(RANN)) { install.packages("RANN"); library(RANN); }
-
 df$sex <- as.integer(df$sex)
 df_naknn <- preProcess(df, method = "knnImpute", k=3)
 df_new <- predict(df_naknn, df); df_new
