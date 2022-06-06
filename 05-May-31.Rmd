@@ -1,8 +1,64 @@
 ## TIL20220531
 
-### 6월에 더 열심히 ... 
+### 다변량 분산분석
 
 ```{r}
-
+if(!require(heplots)) { install.packages("heplots"); library(heplots); }
+str(Skulls)
+data <- Skulls
 ```
+
+```{r}
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+sample_n(data, 10)
+```
+
+
+```{r}
+data %>% 
+  group_by(epoch) %>% 
+  summarise_all(
+    list(
+      Mean = mean,
+      Meidan = median,
+      SD = sd
+    )
+  )
+```
+
+```{r}
+data %>% 
+  group_by(epoch) %>% 
+  summarise_if(is.numeric, list(mean, sd), na.rm = T)
+```
+
+```{r}
+data %>% 
+  group_by(epoch) %>% 
+  summarise_if(is.numeric, list(Min = min, Max = max), na.rm = T)
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+y <- data[, -1]; head(y)
+```
+
+```{r}
+data %>% 
+  group_by(epoch) %>% 
+  summarise_all(list(Mean = mean))
+```
+
+```{r}
+data.manova <- manova(cbind(mb,bh,bl,nh) ~ epoch, data)
+summary(data.manova)
+```
+
+```{r}
+summary.aov(data.manova)
+```
+
 
