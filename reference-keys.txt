@@ -310,6 +310,8 @@ til20220601
 결과-활용
 til20220602
 section-8
+til20220603
+pca-변환-모델-성능-비교
 til20220531-1
 section-9
 til20220531-2
@@ -364,5 +366,3 @@ til20220531-26
 section-34
 til20220531-27
 section-35
-til20220531-28
-section-36
