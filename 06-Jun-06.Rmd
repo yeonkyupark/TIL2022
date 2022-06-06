@@ -1,8 +1,83 @@
 ## TIL20220606
 
-### 
+### 이원분산분석
 
 ```{r}
-
+str(ToothGrowth)
 ```
+
+```{r}
+data <- ToothGrowth
+# 연속형 종속변수 ~ 범주형 독립변수 * 범주형 독립변수
+data$dose <- factor(data$dose,
+                    levels = c(0.5, 1.0, 2.0),
+                    labels = c("Low", "Mid", "High"))
+str(data)
+```
+
+```{r}
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
+data %>% group_by(supp, dose) %>% 
+  summarise(Length = n(),
+    Mean = mean(len),
+    SD = round(sd(len),2))
+```
+
+```{r}
+boxplot(data$len ~ data$supp)
+```
+
+```{r}
+boxplot(data$len ~ data$dose)
+```
+
+```{r}
+data.aov <- aov(len ~ supp * dose, data = data)
+summary(data.aov)
+```
+
+```{r}
+model.tables(data.aov, type = "means")
+```
+
+```{r}
+boxplot(len ~ supp * dose, data = data,
+        col = c("deeppink", "yellowgreen"),
+        las = 1, xlab = "Vitamin C type", ylab = "Tooth Growth")
+```
+
+```{r}
+interaction.plot(x.factor = data$dose,
+                 trace.factor = data$supp,
+                 response = data$len,
+                 trace.label = "Supplement",
+                 las = 1, type = "b", pch = c(1, 19), col = c("blue", "red"),
+                 xlab = "Vitamin C type", ylab = "Tooth Growth")
+```
+
+```{r}
+if(!require(gplots)) { install.packages("gplots"); library(gplots); }
+interaction(data$supp, data$dose, sep = " ")
+```
+
+```{r}
+plotmeans(len ~ interaction(supp, dose, sep = " "), data,
+          col = c("red", "green3"),
+          connect = list(c(1,3,5), c(2,4,6)))
+```
+
+```{r}
+coplot(len ~ dose | supp, data, col = "steelblue", pch = 19,
+       panel = panel.smooth, lwd = 2, col.smooth = "darkorange")
+```
+
+```r
+if(!require(HH)) { install.packages("HH"); library(HH); }
+interaction2wt(len ~ supp * dose, data = data)
+```
+
+```{r}
+TukeyHSD(data.aov)
+```
+
 
