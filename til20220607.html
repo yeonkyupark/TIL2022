@@ -507,6 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.7" data-path="til20220607.html"><a href="til20220607.html"><i class="fa fa-check"></i><b>6.7</b> TIL20220607</a><ul>
 <li class="chapter" data-level="6.7.1" data-path="til20220607.html"><a href="til20220607.html#일표본-평균-검정"><i class="fa fa-check"></i><b>6.7.1</b> 일표본 평균 검정</a></li>
+<li class="chapter" data-level="6.7.2" data-path="til20220607.html"><a href="til20220607.html#일원-분산-분석"><i class="fa fa-check"></i><b>6.7.2</b> 일원 분산 분석</a></li>
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="til20220608.html"><a href="til20220608.html"><i class="fa fa-check"></i><b>6.8</b> TIL20220608</a><ul>
 <li class="chapter" data-level="6.8.1" data-path="til20220608.html"><a href="til20220608.html#section-9"><i class="fa fa-check"></i><b>6.8.1</b> </a></li>
@@ -632,6 +633,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1517-1"><a href="til20220607.html#cb1517-1"></a><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(t, <span class="kw">length</span>(data<span class="op">$</span>Bwt)<span class="op">-</span><span class="dv">1</span>, <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## [1] 0.00267</code></pre>
 <p><img src="https://mblogthumb-phinf.pstatic.net/MjAxODA4MDZfOTEg/MDAxNTMzNDgxNzAyNDk4.IBPmkCiJrRmNhL06uJz4ECrwy6yimbg_aO3CglRFfoAg.ATFTXkhbnoMK9_pNUDGOOYOrR3Ch4czEYrTZIwvOTLIg.JPEG.sendmethere/t%25EA%25B2%2580%25EC%25A0%2595%25EC%25A2%2585%25EB%25A5%2598.jpg?type=w800" /></p>
+</div>
+<div id="일원-분산-분석" class="section level3 hasAnchor">
+<h3><span class="header-section-number">6.7.2</span> 일원 분산 분석<a href="til20220607.html#일원-분산-분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="til20220607.html#cb1519-1"></a>data &lt;-<span class="st"> </span>InsectSprays</span>
+<span id="cb1519-2"><a href="til20220607.html#cb1519-2"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    72 obs. of  2 variables:
+##  $ count: num  10 7 20 14 14 12 10 23 17 20 ...
+##  $ spray: Factor w/ 6 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="til20220607.html#cb1521-1"></a>data_aov &lt;-<span class="st"> </span><span class="kw">aov</span>(count <span class="op">~</span><span class="st"> </span>spray, data)</span>
+<span id="cb1521-2"><a href="til20220607.html#cb1521-2"></a><span class="kw">summary</span>(data_aov)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## spray        5   2669     534    34.7 &lt;2e-16 ***
+## Residuals   66   1015      15                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>집단간 통계적으로 유의한 차이가 있음을 확인, 어느 집단 간에 차이가 있는지는 사후 분석을 통해 확인한다.</p>
+<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="til20220607.html#cb1523-1"></a>data_tukeyhsd &lt;-<span class="st"> </span><span class="kw">TukeyHSD</span>(data_aov)</span>
+<span id="cb1523-2"><a href="til20220607.html#cb1523-2"></a><span class="kw">plot</span>(data_tukeyhsd, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-647-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1524-1"><a href="til20220607.html#cb1524-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(multcomp)) { <span class="kw">install.packages</span>(<span class="st">&quot;multcomp&quot;</span>); <span class="kw">library</span>(multcomp); }</span>
+<span id="cb1524-2"><a href="til20220607.html#cb1524-2"></a>data_tukeyhsd &lt;-<span class="st"> </span><span class="kw">glht</span>(<span class="dt">model =</span> data_aov, <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">spray =</span> <span class="st">&quot;Tukey&quot;</span>))</span>
+<span id="cb1524-3"><a href="til20220607.html#cb1524-3"></a><span class="kw">cld</span>(data_tukeyhsd, <span class="dt">level =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>##   A   B   C   D   E   F 
+## &quot;b&quot; &quot;b&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot;</code></pre>
+<div class="sourceCode" id="cb1526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1526-1"><a href="til20220607.html#cb1526-1"></a><span class="kw">plot</span>(<span class="kw">cld</span>(data_tukeyhsd, <span class="dt">level =</span> <span class="fl">0.05</span>), <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="Figures/unnamed-chunk-648-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
