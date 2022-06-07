@@ -32,3 +32,31 @@ t <- (data.mean - data.mu)/(data.sd/sqrt(length(data$Bwt))); t
 ```
 
 ![](https://mblogthumb-phinf.pstatic.net/MjAxODA4MDZfOTEg/MDAxNTMzNDgxNzAyNDk4.IBPmkCiJrRmNhL06uJz4ECrwy6yimbg_aO3CglRFfoAg.ATFTXkhbnoMK9_pNUDGOOYOrR3Ch4czEYrTZIwvOTLIg.JPEG.sendmethere/t%25EA%25B2%2580%25EC%25A0%2595%25EC%25A2%2585%25EB%25A5%2598.jpg?type=w800)
+
+
+### 일원 분산 분석
+
+```{r}
+data <- InsectSprays
+str(data)
+```
+
+```{r}
+data_aov <- aov(count ~ spray, data)
+summary(data_aov)
+```
+
+집단간 통계적으로 유의한 차이가 있음을 확인, 어느 집단 간에 차이가 있는지는 사후 분석을 통해 확인한다.
+
+```{r}
+data_tukeyhsd <- TukeyHSD(data_aov)
+plot(data_tukeyhsd, col = "blue", las = 1)
+```
+
+```{r}
+if(!require(multcomp)) { install.packages("multcomp"); library(multcomp); }
+data_tukeyhsd <- glht(model = data_aov, linfct = mcp(spray = "Tukey"))
+cld(data_tukeyhsd, level = 0.05)
+plot(cld(data_tukeyhsd, level = 0.05), col="orange", las=1)
+```
+
