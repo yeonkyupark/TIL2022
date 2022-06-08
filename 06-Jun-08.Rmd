@@ -1,8 +1,22 @@
 ## TIL20220608
 
-### 
+### qcc
 
 ```{r}
+if(!require(qcc)) { install.packages("qcc"); library(qcc); }
 
+library(qcc)
+data(pistonrings)
+diameter <- qcc.groups(pistonrings$diameter, pistonrings$sample)
+head(diameter)
 ```
+
+```{r}
+qcc(diameter[1:25,], type = "xbar")
+```
+
+```{r}
+plot(q1, fill = FALSE)
+```
+
 
