@@ -1,8 +1,69 @@
 ## TIL20220609
 
-### 
+### 결측치 대체
+
+from [Impute Missing Data - The Basics](http://rismyhammer.com/ml/ImputeMissingData1.html) 
 
 ```{r}
+if(!require(imputeMissings)) { install.packages("imputeMissings"); library(imputeMissings); }
+if(!require(dplyr)) { install.packages("dplyr"); library(dplyr); }
 
+#Make up some data
+income <- round(runif(100, min = 35000, max = 350000), 0)
+age <- round(runif(100, min=18, max=72), 0)
+myData <- data.frame(age, income)
+noise <- round(runif(100, min = 1500, max = 15000), 0)
+myData$income <- myData$income + noise
+myData <- arrange(myData, desc(income))
+myData$education <- as.factor(sample(c("High School", "Bachelors", "Masters", "Doctorate"), 100, replace = TRUE, prob =c(0.7, 0.15, 0.12, 0.03) ))
+head(myData, 5)
+```
+
+```{r}
+#add some missing data this time
+myData$age[sample(1:nrow(myData),15)] <- NA
+myData$income[sample(1:nrow(myData),10)] <- NA
+myData$education[sample(1:nrow(myData),10)] <- NA
+summary(myData)
+```
+
+```{r}
+myDataImputed1 <- impute(myData, method = "median/mode")
+summary(myDataImputed1)
+```
+
+```{r}
+if(!require(caret)) { install.packages("caret"); library(caret); }
+myDataImputed2 <- preProcess(myData[, c("income", "age")], method = "medianImpute")
+myDataImputed2 <- predict(myDataImputed2, myData[, c("income", "age")])
+summary(myDataImputed2)
+```
+
+```R
+myDataImputed3 <- preProcess(myData[, c("income", "age")], method = "knnImpute", k=2)
+myDataImputed3 <- predict(myDataImputed3, myData[, c("income", "age")])
+```
+
+Error in FUN(newX[, i], …) : cannot impute when all predictors are missing in the new data point
+
+두 컬럼 모두 NA인 행이 있는 경우 위와 같은 에러가 발생한다.  
+
+
+```{r}
+myBadDataRows <- which(is.na(myData$income) & is.na(myData$age))
+
+myDataImputed3 <- preProcess(myData[-myBadDataRows, c("income", "age")],method = "knnImpute", k=2)
+myDataImputed3 <- predict(myDataImputed3,myData[-myBadDataRows, c("income", "age")])
+summary(myDataImputed3)
+```
+
+MICE (Multivariate Imputation via Chained Equations)를 이용해 결측치를 제거할 수 있다.  
+
+```{r}
+if(!require(mice)) { install.packages("mice"); library(mice); }
+myDataImputed4 <- myData
+DataMICE <- mice(myData)
+myDataImputed4 <- complete(DataMICE)
+summary(myDataImputed4)
 ```
 
