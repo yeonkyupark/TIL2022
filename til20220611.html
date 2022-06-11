@@ -603,8 +603,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.11</span> TIL20220611<a href="til20220611.html#til20220611" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="데이터프레임에서-컬럼-벡터로-추출" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.11.1</span> 데이터프레임에서 컬럼 벡터로 추출<a href="til20220611.html#데이터프레임에서-컬럼-벡터로-추출" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="til20220611.html#cb1577-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb1577-2"><a href="til20220611.html#cb1577-2"></a>airquality <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Ozone)</span></code></pre></div>
+<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="til20220611.html#cb1577-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</span>
+<span id="cb1577-2"><a href="til20220611.html#cb1577-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb1577-3"><a href="til20220611.html#cb1577-3"></a>airquality <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Ozone)</span></code></pre></div>
 <pre><code>##     Ozone
 ## 1      41
 ## 2      36
