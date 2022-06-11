@@ -51,7 +51,6 @@ fitControl <- trainControl(method = "repeatedcv", number = 5, repeats = 1)
 modelRF <- train(species ~ ., trainSetPp,
                  method = "rf",
                  trControl = fitControl,
-                 preProcess = prepControl,
                  verbose = F)
 ```
 
