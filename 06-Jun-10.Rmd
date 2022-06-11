@@ -1,8 +1,65 @@
 ## TIL20220610
 
-### caret
+### caret 기본
 
 ```{r}
+# 0. load data and packages needed ----
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+if(!require(caret)) { install.packages("caret"); library(caret); }
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
 
+data <- penguins
 ```
+
+```{r}
+# 1. do eda ----
+dim(data)
+str(data)
+summary(data)
+```
+
+```{r}
+# 2. split data set ----
+trainIndex <- createDataPartition(data$species, p =.7, list = F)
+trainSet <- data[trainIndex,]
+testSet <- data[-trainIndex,]
+```
+
+```{r}
+# 3. preprocess data set
+# 3-1 handle NAs
+if(!require(imputeMissings)) { install.packages("imputeMissings"); library(imputeMissings); }
+colSums(is.na(trainSet))
+```
+
+```{r}
+trainSetPp <- impute(trainSet)
+colSums(is.na(trainSetPp))
+```
+
+```{r}
+trainSet %>% summarise_if(is.numeric, mean, na.rm = T) %>% print
+```
+
+
+```{r}
+trainSetPp %>% summarise_if(is.numeric, mean, na.rm = T) %>% print
+```
+```{r}
+# 4. fit model ----
+fitControl <- trainControl(method = "repeatedcv", number = 5, repeats = 1)
+modelRF <- train(species ~ ., trainSetPp,
+                 method = "rf",
+                 trControl = fitControl,
+                 preProcess = prepControl,
+                 verbose = F)
+```
+
+```{r}
+# 5. evaluate model
+testSetPp <- impute(testSet)
+modelPred <- predict(modelRF, testSetPp)
+confusionMatrix(modelPred, testSetPp$species)
+```
+
 
