@@ -671,8 +671,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1569-3"><a href="til20220610.html#cb1569-3"></a>modelRF &lt;-<span class="st"> </span><span class="kw">train</span>(species <span class="op">~</span><span class="st"> </span>., trainSetPp,</span>
 <span id="cb1569-4"><a href="til20220610.html#cb1569-4"></a>                 <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>,</span>
 <span id="cb1569-5"><a href="til20220610.html#cb1569-5"></a>                 <span class="dt">trControl =</span> fitControl,</span>
-<span id="cb1569-6"><a href="til20220610.html#cb1569-6"></a>                 <span class="dt">preProcess =</span> prepControl,</span>
-<span id="cb1569-7"><a href="til20220610.html#cb1569-7"></a>                 <span class="dt">verbose =</span> F)</span></code></pre></div>
+<span id="cb1569-6"><a href="til20220610.html#cb1569-6"></a>                 <span class="dt">verbose =</span> F)</span></code></pre></div>
 <pre><code>## Error in eval(expr, p): object &#39;trainSetPp&#39; not found</code></pre>
 <div class="sourceCode" id="cb1571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1571-1"><a href="til20220610.html#cb1571-1"></a><span class="co"># 5. evaluate model</span></span>
 <span id="cb1571-2"><a href="til20220610.html#cb1571-2"></a>testSetPp &lt;-<span class="st"> </span><span class="kw">impute</span>(testSet)</span></code></pre></div>
