@@ -1,8 +1,66 @@
 ## TIL20220613
 
-### 
+### ROC curve
 
 ```{r}
-
+rm(list = ls())
 ```
+
+```{r}
+packages <- list("tidyverse", "caret", "palmerpenguins", "imputeMissings")
+invisible(
+    lapply(packages, require, character.only = T)
+)
+```
+
+```{r}
+data <- penguins
+```
+
+```{r}
+train_index <- createDataPartition(data$species, p = 0.75, list = F)
+train_set <- data[train_index, ]
+test_set <- data[-train_index, ]
+```
+
+```{r}
+colSums(is.na(train_set))
+```
+
+```{r}
+train_set <- impute(train_set)
+colSums(is.na(train_set))
+```
+
+```{r}
+model_list <- c("rf")
+model_fit <- list()
+model_pred <- list()
+
+colSums(is.na(test_set))
+```
+
+```{r}
+test_set <- impute(test_set)
+colSums(is.na(test_set))
+```
+
+```{r}
+model_fit <- train(
+  species ~ ., train_set,
+  method = model_list,
+  verbose = F,
+  )
+model_pred <- predict(model_fit, test_set)
+```
+
+```{r}
+confusionMatrix(model_pred, test_set$species)
+```
+
+```r
+if(!require(ROCR)) { install.packages("ROCR"); library(ROCR); }
+roc_pred_rf <- prediction(as.numeric(model_pred), as.numeric(test_set$species))
+```
+
 
