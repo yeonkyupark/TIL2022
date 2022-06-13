@@ -3,6 +3,68 @@
 ### 분류 모델 비교
 
 ```{r}
-
+rm(list = ls())
 ```
+
+```{r}
+packages <- list("tidyverse", "caret", "palmerpenguins", "imputeMissings")
+invisible(
+    lapply(packages, require, character.only = T)
+)
+```
+
+```{r}
+data <- penguins
+```
+
+```{r}
+train_index <- createDataPartition(data$sex, p = 0.75, list = F)
+train_set <- data[train_index, ]
+test_set <- data[-train_index, ]
+```
+
+```{r}
+colSums(is.na(train_set))
+```
+
+```{r}
+train_set <- impute(train_set)
+colSums(is.na(train_set))
+```
+
+```{r}
+model_list <- c("rf", "svmRadial", "lda")
+model_fit <- list()
+model_pred <- list()
+
+colSums(is.na(test_set))
+```
+
+```{r}
+test_set <- impute(test_set)
+colSums(is.na(test_set))
+```
+
+```{r}
+for(i in 1:length(model_list)) {
+    model_fit[[i]] <- train(
+      species ~ ., train_set,
+      method = model_list[i],
+      verbose = F,
+    )
+    model_pred[[i]] <- predict(model_fit[[i]], test_set)
+}
+```
+
+```{r}
+resamps <- resamples(list(RF = model_fit[[1]], SVM = model_fit[[2]], LDA = model_fit[[3]]))
+summary(resamps)
+```
+
+```{r}
+for(i in 1:3) {
+  print(confusionMatrix(model_pred[[i]], test_set$species))
+}
+```
+
 
