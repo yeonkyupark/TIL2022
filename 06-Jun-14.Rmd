@@ -1,6 +1,11 @@
 ## TIL20220614
 
-### 
+### caret package를 이용한 시계열 데이터 분석 
+
+```{r}
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+if(!require(caret)) { install.packages("caret"); library(caret); }
+```
 
 ```{r}
 
