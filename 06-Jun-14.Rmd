@@ -7,7 +7,31 @@ if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
 if(!require(caret)) { install.packages("caret"); library(caret); }
 ```
 
-```{r}
+#### 시계열 데이터 분석
 
+1. 정상성 시계열  
+: 데이터의 변화 패턴이 평균값을 중심으로 일정한 변동폭을 갖는 시계열  
+  시간의 추이와 상관없이 평균과 분산이 일정한 데이터  
+  
+2. 비정상성 시계열  
+: 시간의 추이에 따라서 점진적으로 증가하는 추세  
+  분산이 일정하지 않은 경우  
+  
+
+#### 시계열 분석 절차
+
+1. 시계열 자료 특성 분석
+2. 정상성 시계열 변환
+   - 차분과 변환을 통해 정상 시계열로 변환
+3. 모형 생성
+4. 미래 예측(forecasting)
+
+
+#### 정상성 평가
+
+```{r}
+if(!require(tseries)) { install.packages("tseries"); library(tseries); }
+adf.test(AirPassengers, k=12)
 ```
 
+p값에 따라 귀무가설을 기각하지 못한다. 따라서 해당 데이터는 lag 12에서 정상성을 만족하지 못한다고 판단할 수 있다.  
