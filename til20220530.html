@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-06-14" />
+<meta name="date" content="2022-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -531,10 +531,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14.1" data-path="til20220614.html"><a href="til20220614.html#caret-package를-이용한-시계열-데이터-분석"><i class="fa fa-check"></i><b>6.14.1</b> caret package를 이용한 시계열 데이터 분석</a></li>
 </ul></li>
 <li class="chapter" data-level="6.15" data-path="til20220615.html"><a href="til20220615.html"><i class="fa fa-check"></i><b>6.15</b> TIL20220615</a><ul>
-<li class="chapter" data-level="6.15.1" data-path="til20220615.html"><a href="til20220615.html#section-9"><i class="fa fa-check"></i><b>6.15.1</b> </a></li>
+<li class="chapter" data-level="6.15.1" data-path="til20220615.html"><a href="til20220615.html#section-9"><i class="fa fa-check"></i><b>6.15.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.16" data-path="til20220616.html"><a href="til20220616.html"><i class="fa fa-check"></i><b>6.16</b> TIL20220616</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="til20220616.html"><a href="til20220616.html#section-10"><i class="fa fa-check"></i><b>6.16.1</b> </a></li>
+<li class="chapter" data-level="6.16.1" data-path="til20220616.html"><a href="til20220616.html#section-10"><i class="fa fa-check"></i><b>6.16.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.17" data-path="til20220617.html"><a href="til20220617.html"><i class="fa fa-check"></i><b>6.17</b> TIL20220617</a><ul>
 <li class="chapter" data-level="6.17.1" data-path="til20220617.html"><a href="til20220617.html#section-11"><i class="fa fa-check"></i><b>6.17.1</b> </a></li>
@@ -617,7 +617,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <dd>모든 관측값은 서로 독립이다. 하나의 관측값은 다른 관측값에 영향을 미치지 않는다.
 </dd>
 </dl>
-<div class="sourceCode" id="cb1378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1378-1"><a href="til20220530.html#cb1378-1"></a><span class="kw">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb1377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1377-1"><a href="til20220530.html#cb1377-1"></a><span class="kw">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
@@ -630,8 +630,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-<div class="sourceCode" id="cb1380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1380-1"><a href="til20220530.html#cb1380-1"></a>mtcars.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp <span class="op">+</span><span class="st"> </span>drat, <span class="dt">data =</span> mtcars)</span>
-<span id="cb1380-2"><a href="til20220530.html#cb1380-2"></a><span class="kw">plot</span>(mtcars.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb1379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1379-1"><a href="til20220530.html#cb1379-1"></a>mtcars.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp <span class="op">+</span><span class="st"> </span>drat, <span class="dt">data =</span> mtcars)</span>
+<span id="cb1379-2"><a href="til20220530.html#cb1379-2"></a><span class="kw">plot</span>(mtcars.lm)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-578-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-578-2.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-578-3.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-578-4.png" width="672" style="display: block; margin: auto;" /></p>
 <p>도표 순서대로 1) 선형성, 2) 정규성, 3) 등분산성, 4) 주의를 요하는 관측값 정보를 출력해 준다.</p>
 <dl>
@@ -640,8 +640,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display">\[VIF = \frac{1}{1-R_i^2}\]</span>
 </dd>
 </dl>
-<div class="sourceCode" id="cb1381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1381-1"><a href="til20220530.html#cb1381-1"></a><span class="kw">library</span>(car)</span>
-<span id="cb1381-2"><a href="til20220530.html#cb1381-2"></a><span class="kw">vif</span>(mtcars.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb1380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1380-1"><a href="til20220530.html#cb1380-1"></a><span class="kw">library</span>(car)</span>
+<span id="cb1380-2"><a href="til20220530.html#cb1380-2"></a><span class="kw">vif</span>(mtcars.lm)</span></code></pre></div>
 <pre><code>##   hp   wt disp drat 
 ## 2.89 5.10 8.21 2.28</code></pre>
 <p><strong>회귀모델 수정</strong></p>
@@ -656,13 +656,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>다중공선성 -&gt; 변수 제거</li>
 </ul>
 <p>정규성 미충족 시 변수변환을 통해 회귀모델을 수정한다.</p>
-<div class="sourceCode" id="cb1383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1383-1"><a href="til20220530.html#cb1383-1"></a><span class="co"># 종속변수의 람다값을 추정한다.</span></span>
-<span id="cb1383-2"><a href="til20220530.html#cb1383-2"></a>car<span class="op">::</span><span class="kw">powerTransform</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb1382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1382-1"><a href="til20220530.html#cb1382-1"></a><span class="co"># 종속변수의 람다값을 추정한다.</span></span>
+<span id="cb1382-2"><a href="til20220530.html#cb1382-2"></a>car<span class="op">::</span><span class="kw">powerTransform</span>(mtcars<span class="op">$</span>mpg)</span></code></pre></div>
 <pre><code>## Estimated transformation parameter 
 ## mtcars$mpg 
 ##     0.0296</code></pre>
-<div class="sourceCode" id="cb1385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1385-1"><a href="til20220530.html#cb1385-1"></a><span class="co"># 귀무가설: 변환을 하지 않는다</span></span>
-<span id="cb1385-2"><a href="til20220530.html#cb1385-2"></a><span class="kw">summary</span>(car<span class="op">::</span><span class="kw">powerTransform</span>(mtcars<span class="op">$</span>mpg))</span></code></pre></div>
+<div class="sourceCode" id="cb1384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1384-1"><a href="til20220530.html#cb1384-1"></a><span class="co"># 귀무가설: 변환을 하지 않는다</span></span>
+<span id="cb1384-2"><a href="til20220530.html#cb1384-2"></a><span class="kw">summary</span>(car<span class="op">::</span><span class="kw">powerTransform</span>(mtcars<span class="op">$</span>mpg))</span></code></pre></div>
 <pre><code>## bcPower Transformation to Normality 
 ##            Est Power Rounded Pwr Wald Lwr Bnd Wald Upr Bnd
 ## mtcars$mpg    0.0296           1        -1.01         1.07
@@ -675,8 +675,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Likelihood ratio test that no transformation is needed
 ##                        LRT df pval
 ## LR test, lambda = (1) 3.21  1 0.07</code></pre>
-<div class="sourceCode" id="cb1387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1387-1"><a href="til20220530.html#cb1387-1"></a><span class="co"># 독립변수의 람다값을 추정한다.</span></span>
-<span id="cb1387-2"><a href="til20220530.html#cb1387-2"></a>car<span class="op">::</span><span class="kw">boxTidwell</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb1386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1386-1"><a href="til20220530.html#cb1386-1"></a><span class="co"># 독립변수의 람다값을 추정한다.</span></span>
+<span id="cb1386-2"><a href="til20220530.html#cb1386-2"></a>car<span class="op">::</span><span class="kw">boxTidwell</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)</span></code></pre></div>
 <pre><code>##    MLE of lambda Score Statistic (z) Pr(&gt;|z|)   
 ## hp          -0.6                   2    0.018 * 
 ## wt          -0.4                   3    0.006 **
@@ -684,9 +684,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## iterations =  6</code></pre>
-<div class="sourceCode" id="cb1389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1389-1"><a href="til20220530.html#cb1389-1"></a><span class="co"># 등분산 위배 시 종속변수 변환</span></span>
-<span id="cb1389-2"><a href="til20220530.html#cb1389-2"></a><span class="co"># 등분산성을 개선하기 위한 람다 계산</span></span>
-<span id="cb1389-3"><a href="til20220530.html#cb1389-3"></a>car<span class="op">::</span><span class="kw">spreadLevelPlot</span>(<span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars))</span></code></pre></div>
+<div class="sourceCode" id="cb1388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1388-1"><a href="til20220530.html#cb1388-1"></a><span class="co"># 등분산 위배 시 종속변수 변환</span></span>
+<span id="cb1388-2"><a href="til20220530.html#cb1388-2"></a><span class="co"># 등분산성을 개선하기 위한 람다 계산</span></span>
+<span id="cb1388-3"><a href="til20220530.html#cb1388-3"></a>car<span class="op">::</span><span class="kw">spreadLevelPlot</span>(<span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-583-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## 
 ## Suggested power transformation:  0.585</code></pre>

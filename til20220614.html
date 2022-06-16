@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-06-14" />
+<meta name="date" content="2022-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -531,10 +531,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.14.1" data-path="til20220614.html"><a href="til20220614.html#caret-package를-이용한-시계열-데이터-분석"><i class="fa fa-check"></i><b>6.14.1</b> caret package를 이용한 시계열 데이터 분석</a></li>
 </ul></li>
 <li class="chapter" data-level="6.15" data-path="til20220615.html"><a href="til20220615.html"><i class="fa fa-check"></i><b>6.15</b> TIL20220615</a><ul>
-<li class="chapter" data-level="6.15.1" data-path="til20220615.html"><a href="til20220615.html#section-9"><i class="fa fa-check"></i><b>6.15.1</b> </a></li>
+<li class="chapter" data-level="6.15.1" data-path="til20220615.html"><a href="til20220615.html#section-9"><i class="fa fa-check"></i><b>6.15.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.16" data-path="til20220616.html"><a href="til20220616.html"><i class="fa fa-check"></i><b>6.16</b> TIL20220616</a><ul>
-<li class="chapter" data-level="6.16.1" data-path="til20220616.html"><a href="til20220616.html#section-10"><i class="fa fa-check"></i><b>6.16.1</b> </a></li>
+<li class="chapter" data-level="6.16.1" data-path="til20220616.html"><a href="til20220616.html#section-10"><i class="fa fa-check"></i><b>6.16.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.17" data-path="til20220617.html"><a href="til20220617.html"><i class="fa fa-check"></i><b>6.17</b> TIL20220617</a><ul>
 <li class="chapter" data-level="6.17.1" data-path="til20220617.html"><a href="til20220617.html#section-11"><i class="fa fa-check"></i><b>6.17.1</b> </a></li>
@@ -603,9 +603,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.14</span> TIL20220614<a href="til20220614.html#til20220614" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="caret-package를-이용한-시계열-데이터-분석" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.14.1</span> caret package를 이용한 시계열 데이터 분석<a href="til20220614.html#caret-package를-이용한-시계열-데이터-분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1618-1"><a href="til20220614.html#cb1618-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1618-2"><a href="til20220614.html#cb1618-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
+<div class="sourceCode" id="cb1617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1617-1"><a href="til20220614.html#cb1617-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1617-2"><a href="til20220614.html#cb1617-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
+<div id="시계열-데이터-분석" class="section level4 hasAnchor">
+<h4><span class="header-section-number">6.14.1.1</span> 시계열 데이터 분석<a href="til20220614.html#시계열-데이터-분석" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li><dl>
+<dt>정상성 시계열</dt>
+<dd>데이터의 변화 패턴이 평균값을 중심으로 일정한 변동폭을 갖는 시계열<br />
+시간의 추이와 상관없이 평균과 분산이 일정한 데이터
+</dd>
+</dl></li>
+<li><dl>
+<dt>비정상성 시계열</dt>
+<dd>시간의 추이에 따라서 점진적으로 증가하는 추세<br />
+분산이 일정하지 않은 경우
+</dd>
+</dl></li>
+</ol>
+</div>
+<div id="시계열-분석-절차" class="section level4 hasAnchor">
+<h4><span class="header-section-number">6.14.1.2</span> 시계열 분석 절차<a href="til20220614.html#시계열-분석-절차" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>시계열 자료 특성 분석</li>
+<li>정상성 시계열 변환
+<ul>
+<li>차분과 변환을 통해 정상 시계열로 변환</li>
+</ul></li>
+<li>모형 생성</li>
+<li>미래 예측(forecasting)</li>
+</ol>
+</div>
+<div id="정상성-평가" class="section level4 hasAnchor">
+<h4><span class="header-section-number">6.14.1.3</span> 정상성 평가<a href="til20220614.html#정상성-평가" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1618-1"><a href="til20220614.html#cb1618-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tseries)) { <span class="kw">install.packages</span>(<span class="st">&quot;tseries&quot;</span>); <span class="kw">library</span>(tseries); }</span>
+<span id="cb1618-2"><a href="til20220614.html#cb1618-2"></a><span class="kw">adf.test</span>(AirPassengers, <span class="dt">k=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## 
+##  Augmented Dickey-Fuller Test
+## 
+## data:  AirPassengers
+## Dickey-Fuller = -2, Lag order = 12, p-value = 0.8
+## alternative hypothesis: stationary</code></pre>
+<p>p값에 따라 귀무가설을 기각하지 못한다. 따라서 해당 데이터는 lag 12에서 정상성을 만족하지 못한다고 판단할 수 있다.</p>
 
+</div>
 </div>
 </div>
             </section>
