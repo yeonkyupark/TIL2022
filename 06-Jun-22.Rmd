@@ -1,8 +1,21 @@
 ## TIL20220622
 
-### 
+### MBTI
 
-```{r}
+INFP
+https://namu.wiki/w/INFP 
 
-```
+
+### Cp, Cpk, Pp, Ppk
+
+$$
+Cp = \frac{USL-LSL}{6\sigma}
+$$
+USL - LSL = 규격공차(Tolerance)라고 한다.
+${6\sigma} = \mu \pm 3\sigma$ = 공정산포의 크기(Process variation)이라고 한다.
+위 식은 정규분포를 따른다는 가정하에 계산된다.
+
+
+
+
 
