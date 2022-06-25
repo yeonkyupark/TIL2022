@@ -604,60 +604,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="svar-모형" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.10.1</span> svar 모형<a href="til20220510.html#svar-모형" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb1071"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1071-1"><a href="til20220510.html#cb1071-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vars)) { <span class="kw">install.packages</span>(<span class="st">&quot;vars&quot;</span>); <span class="kw">library</span>(vars); }</span></code></pre></div>
-<pre><code>## 
+<pre><code>## Error in download.file(url, destfile, method, mode = &quot;wb&quot;, ...) : 
+##   cannot open URL &#39;https://cloud.r-project.org/bin/macosx/contrib/4.2/vars_1.5-6.tgz&#39;
+## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpa00qcR/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1073-1"><a href="til20220510.html#cb1073-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
-<span id="cb1073-2"><a href="til20220510.html#cb1073-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tseries)) { <span class="kw">install.packages</span>(<span class="st">&quot;tseries&quot;</span>); <span class="kw">library</span>(tseries); }</span></code></pre></div>
-<div class="sourceCode" id="cb1074"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1074-1"><a href="til20220510.html#cb1074-1"></a><span class="kw">data</span>(<span class="st">&quot;Canada&quot;</span>)</span>
-<span id="cb1074-2"><a href="til20220510.html#cb1074-2"></a><span class="kw">summary</span>(Canada)</span></code></pre></div>
-<pre><code>##        e            prod           rw            U        
-##  Min.   :929   Min.   :401   Min.   :386   Min.   : 6.70  
-##  1st Qu.:935   1st Qu.:405   1st Qu.:424   1st Qu.: 7.78  
-##  Median :946   Median :406   Median :444   Median : 9.45  
-##  Mean   :944   Mean   :408   Mean   :441   Mean   : 9.32  
-##  3rd Qu.:950   3rd Qu.:411   3rd Qu.:461   3rd Qu.:10.61  
-##  Max.   :962   Max.   :418   Max.   :470   Max.   :12.77</code></pre>
-<div class="sourceCode" id="cb1076"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1076-1"><a href="til20220510.html#cb1076-1"></a><span class="kw">head</span>(Canada)</span></code></pre></div>
-<pre><code>##           e prod  rw    U
-## 1980 Q1 930  405 386 7.53
-## 1980 Q2 930  405 388 7.70
-## 1980 Q3 930  404 391 7.47
-## 1980 Q4 931  404 394 7.27
-## 1981 Q1 933  405 397 7.37
-## 1981 Q2 934  404 400 7.13</code></pre>
-<div class="sourceCode" id="cb1078"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1078-1"><a href="til20220510.html#cb1078-1"></a>Canada2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(Canada, diff)</span>
-<span id="cb1078-2"><a href="til20220510.html#cb1078-2"></a><span class="kw">summary</span>(Canada2)</span></code></pre></div>
-<pre><code>##        e               prod              rw              U         
-##  Min.   :-1.539   Min.   :-2.160   Min.   :-0.87   Min.   :-0.660  
-##  1st Qu.: 0.123   1st Qu.:-0.365   1st Qu.: 0.27   1st Qu.:-0.240  
-##  Median : 0.462   Median : 0.225   Median : 0.75   Median :-0.100  
-##  Mean   : 0.387   Mean   : 0.143   Mean   : 1.01   Mean   :-0.008  
-##  3rd Qu.: 0.785   3rd Qu.: 0.614   3rd Qu.: 1.60   3rd Qu.: 0.165  
-##  Max.   : 1.412   Max.   : 1.852   Max.   : 4.98   Max.   : 1.770</code></pre>
-<div class="sourceCode" id="cb1080"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1080-1"><a href="til20220510.html#cb1080-1"></a><span class="kw">head</span>(Canada2)</span></code></pre></div>
-<pre><code>##            e   prod   rw     U
-## [1,]  0.1935 -0.727 2.00  0.17
-## [2,]  0.5144 -0.825 2.40 -0.23
-## [3,]  1.1093  0.401 3.42 -0.20
-## [4,]  1.2343  0.831 2.80  0.10
-## [5,]  0.8889 -0.630 3.26 -0.24
-## [6,] -0.0194 -1.598 0.73  0.27</code></pre>
-<div class="sourceCode" id="cb1082"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1082-1"><a href="til20220510.html#cb1082-1"></a><span class="kw">colnames</span>(Canada2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;de&quot;</span>, <span class="st">&quot;dprod&quot;</span>, <span class="st">&quot;drw&quot;</span>, <span class="st">&quot;dU&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1083"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1083-1"><a href="til20220510.html#cb1083-1"></a>aa &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1083-2"><a href="til20220510.html#cb1083-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb1083-3"><a href="til20220510.html#cb1083-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
-<span id="cb1083-4"><a href="til20220510.html#cb1083-4"></a>  aa[i] &lt;-<span class="st"> </span><span class="kw">plot</span>(Canada[, i], <span class="dt">ylab =</span> <span class="kw">colnames</span>(Canada)[i])</span>
-<span id="cb1083-5"><a href="til20220510.html#cb1083-5"></a>}</span></code></pre></div>
-<p><img src="Figures/unnamed-chunk-465-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1084"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1084-1"><a href="til20220510.html#cb1084-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb1085"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1085-1"><a href="til20220510.html#cb1085-1"></a>bb &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1085-2"><a href="til20220510.html#cb1085-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb1085-3"><a href="til20220510.html#cb1085-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
-<span id="cb1085-4"><a href="til20220510.html#cb1085-4"></a>  bb[i] &lt;-<span class="st"> </span><span class="kw">plot</span>(Canada2[, i], <span class="dt">ylab =</span> <span class="kw">colnames</span>(Canada2)[i], <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb1085-5"><a href="til20220510.html#cb1085-5"></a>}</span></code></pre></div>
-<p><img src="Figures/unnamed-chunk-466-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1086"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1086-1"><a href="til20220510.html#cb1086-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpknYcvM/downloaded_packages</code></pre>
+<pre><code>## Error in library(vars): there is no package called &#39;vars&#39;</code></pre>
+<div class="sourceCode" id="cb1074"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1074-1"><a href="til20220510.html#cb1074-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
+<span id="cb1074-2"><a href="til20220510.html#cb1074-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tseries)) { <span class="kw">install.packages</span>(<span class="st">&quot;tseries&quot;</span>); <span class="kw">library</span>(tseries); }</span></code></pre></div>
+<div class="sourceCode" id="cb1075"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1075-1"><a href="til20220510.html#cb1075-1"></a><span class="kw">data</span>(<span class="st">&quot;Canada&quot;</span>)</span>
+<span id="cb1075-2"><a href="til20220510.html#cb1075-2"></a><span class="kw">summary</span>(Canada)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;Canada&#39; not found</code></pre>
+<div class="sourceCode" id="cb1077"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1077-1"><a href="til20220510.html#cb1077-1"></a><span class="kw">head</span>(Canada)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;Canada&#39; not found</code></pre>
+<div class="sourceCode" id="cb1079"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1079-1"><a href="til20220510.html#cb1079-1"></a>Canada2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(Canada, diff)</span></code></pre></div>
+<pre><code>## Error in lapply(X = X, FUN = FUN, ...): object &#39;Canada&#39; not found</code></pre>
+<div class="sourceCode" id="cb1081"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1081-1"><a href="til20220510.html#cb1081-1"></a><span class="kw">summary</span>(Canada2)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;Canada2&#39; not found</code></pre>
+<div class="sourceCode" id="cb1083"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1083-1"><a href="til20220510.html#cb1083-1"></a><span class="kw">head</span>(Canada2)</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;Canada2&#39; not found</code></pre>
+<div class="sourceCode" id="cb1085"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1085-1"><a href="til20220510.html#cb1085-1"></a><span class="kw">colnames</span>(Canada2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;de&quot;</span>, <span class="st">&quot;dprod&quot;</span>, <span class="st">&quot;drw&quot;</span>, <span class="st">&quot;dU&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in colnames(Canada2) &lt;- c(&quot;de&quot;, &quot;dprod&quot;, &quot;drw&quot;, &quot;dU&quot;): object &#39;Canada2&#39; not found</code></pre>
+<div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1087-1"><a href="til20220510.html#cb1087-1"></a>aa &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1087-2"><a href="til20220510.html#cb1087-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb1087-3"><a href="til20220510.html#cb1087-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb1087-4"><a href="til20220510.html#cb1087-4"></a>  aa[i] &lt;-<span class="st"> </span><span class="kw">plot</span>(Canada[, i], <span class="dt">ylab =</span> <span class="kw">colnames</span>(Canada)[i])</span>
+<span id="cb1087-5"><a href="til20220510.html#cb1087-5"></a>}</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: object &#39;Canada&#39; not found</code></pre>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="til20220510.html#cb1089-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="til20220510.html#cb1090-1"></a>bb &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1090-2"><a href="til20220510.html#cb1090-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb1090-3"><a href="til20220510.html#cb1090-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb1090-4"><a href="til20220510.html#cb1090-4"></a>  bb[i] &lt;-<span class="st"> </span><span class="kw">plot</span>(Canada2[, i], <span class="dt">ylab =</span> <span class="kw">colnames</span>(Canada2)[i], <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb1090-5"><a href="til20220510.html#cb1090-5"></a>}</span></code></pre></div>
+<pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: object &#39;Canada2&#39; not found</code></pre>
+<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="til20220510.html#cb1092-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 
 </div>
 </div>
