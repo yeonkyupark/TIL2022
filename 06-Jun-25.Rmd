@@ -1,8 +1,9 @@
 ## TIL20220625
 
-### Anaconda | Data science technology for a better world
+### Anaconda \| Data science technology for a better world
 
-https://www.anaconda.com/
+<https://www.anaconda.com/>
 
+### jupyter notebook 홈 디렉토리 변경
 
 
