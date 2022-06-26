@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-06-25" />
+<meta name="date" content="2022-06-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -564,10 +564,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.25.2" data-path="til20220625.html"><a href="til20220625.html#jupyter-notebook-홈-디렉토리-변경"><i class="fa fa-check"></i><b>6.25.2</b> jupyter notebook 홈 디렉토리 변경</a></li>
 </ul></li>
 <li class="chapter" data-level="6.26" data-path="til20220626.html"><a href="til20220626.html"><i class="fa fa-check"></i><b>6.26</b> TIL20220626</a><ul>
-<li class="chapter" data-level="6.26.1" data-path="til20220626.html"><a href="til20220626.html#section-14"><i class="fa fa-check"></i><b>6.26.1</b> </a></li>
+<li class="chapter" data-level="6.26.1" data-path="til20220626.html"><a href="til20220626.html#section-14"><i class="fa fa-check"></i><b>6.26.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.27" data-path="til20220627.html"><a href="til20220627.html"><i class="fa fa-check"></i><b>6.27</b> TIL20220627</a><ul>
-<li class="chapter" data-level="6.27.1" data-path="til20220627.html"><a href="til20220627.html#section-15"><i class="fa fa-check"></i><b>6.27.1</b> </a></li>
+<li class="chapter" data-level="6.27.1" data-path="til20220627.html"><a href="til20220627.html#section-15"><i class="fa fa-check"></i><b>6.27.1</b> …</a></li>
 </ul></li>
 <li class="chapter" data-level="6.28" data-path="til20220628.html"><a href="til20220628.html"><i class="fa fa-check"></i><b>6.28</b> TIL20220628</a><ul>
 <li class="chapter" data-level="6.28.1" data-path="til20220628.html"><a href="til20220628.html#section-16"><i class="fa fa-check"></i><b>6.28.1</b> </a></li>
@@ -611,21 +611,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <dd><p><a href="https://dbeaver.io/download/" class="uri">https://dbeaver.io/download/</a></p>
 </dd>
 </dl>
-<div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1104-1"><a href="til20220518.html#cb1104-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(DBI)) { <span class="kw">install.packages</span>(<span class="st">&quot;DBI&quot;</span>); <span class="kw">library</span>(DBI); }</span>
-<span id="cb1104-2"><a href="til20220518.html#cb1104-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(RPostgres)) { <span class="kw">install.packages</span>(<span class="st">&quot;RPostgres&quot;</span>); <span class="kw">library</span>(RPostgres); }</span>
-<span id="cb1104-3"><a href="til20220518.html#cb1104-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
-<div class="sourceCode" id="cb1105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1105-1"><a href="til20220518.html#cb1105-1"></a>db_postgre_con &lt;-<span class="st"> </span>{<span class="kw">dbConnect</span>(</span>
-<span id="cb1105-2"><a href="til20220518.html#cb1105-2"></a>  RPostgres<span class="op">::</span><span class="kw">Postgres</span>(),</span>
-<span id="cb1105-3"><a href="til20220518.html#cb1105-3"></a>  <span class="dt">host =</span> <span class="st">&quot;localhost&quot;</span>,</span>
-<span id="cb1105-4"><a href="til20220518.html#cb1105-4"></a>  <span class="dt">port =</span> <span class="dv">5432</span>,</span>
-<span id="cb1105-5"><a href="til20220518.html#cb1105-5"></a>  <span class="dt">user =</span> <span class="st">&quot;postgres&quot;</span>,</span>
-<span id="cb1105-6"><a href="til20220518.html#cb1105-6"></a>  <span class="dt">password =</span> <span class="st">&quot;1234&quot;</span>,</span>
-<span id="cb1105-7"><a href="til20220518.html#cb1105-7"></a>  <span class="dt">dbname =</span> <span class="st">&quot;postgres&quot;</span></span>
-<span id="cb1105-8"><a href="til20220518.html#cb1105-8"></a>)}</span></code></pre></div>
-<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1106-1"><a href="til20220518.html#cb1106-1"></a>my_table &lt;-<span class="st"> </span>db_postgre_con <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1106-2"><a href="til20220518.html#cb1106-2"></a><span class="st">  </span><span class="kw">dbGetQuery</span>(<span class="st">&quot;select * from public.penguins&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1106-3"><a href="til20220518.html#cb1106-3"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1106-4"><a href="til20220518.html#cb1106-4"></a><span class="st">  </span><span class="kw">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1098-1"><a href="til20220518.html#cb1098-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(DBI)) { <span class="kw">install.packages</span>(<span class="st">&quot;DBI&quot;</span>); <span class="kw">library</span>(DBI); }</span>
+<span id="cb1098-2"><a href="til20220518.html#cb1098-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(RPostgres)) { <span class="kw">install.packages</span>(<span class="st">&quot;RPostgres&quot;</span>); <span class="kw">library</span>(RPostgres); }</span>
+<span id="cb1098-3"><a href="til20220518.html#cb1098-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
+<div class="sourceCode" id="cb1099"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1099-1"><a href="til20220518.html#cb1099-1"></a>db_postgre_con &lt;-<span class="st"> </span>{<span class="kw">dbConnect</span>(</span>
+<span id="cb1099-2"><a href="til20220518.html#cb1099-2"></a>  RPostgres<span class="op">::</span><span class="kw">Postgres</span>(),</span>
+<span id="cb1099-3"><a href="til20220518.html#cb1099-3"></a>  <span class="dt">host =</span> <span class="st">&quot;localhost&quot;</span>,</span>
+<span id="cb1099-4"><a href="til20220518.html#cb1099-4"></a>  <span class="dt">port =</span> <span class="dv">5432</span>,</span>
+<span id="cb1099-5"><a href="til20220518.html#cb1099-5"></a>  <span class="dt">user =</span> <span class="st">&quot;postgres&quot;</span>,</span>
+<span id="cb1099-6"><a href="til20220518.html#cb1099-6"></a>  <span class="dt">password =</span> <span class="st">&quot;1234&quot;</span>,</span>
+<span id="cb1099-7"><a href="til20220518.html#cb1099-7"></a>  <span class="dt">dbname =</span> <span class="st">&quot;postgres&quot;</span></span>
+<span id="cb1099-8"><a href="til20220518.html#cb1099-8"></a>)}</span></code></pre></div>
+<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1100-1"><a href="til20220518.html#cb1100-1"></a>my_table &lt;-<span class="st"> </span>db_postgre_con <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1100-2"><a href="til20220518.html#cb1100-2"></a><span class="st">  </span><span class="kw">dbGetQuery</span>(<span class="st">&quot;select * from public.penguins&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1100-3"><a href="til20220518.html#cb1100-3"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1100-4"><a href="til20220518.html#cb1100-4"></a><span class="st">  </span><span class="kw">glimpse</span>()</span></code></pre></div>
 
 </div>
 </div>
