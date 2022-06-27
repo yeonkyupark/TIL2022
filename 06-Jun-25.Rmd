@@ -6,4 +6,5 @@
 
 ### jupyter notebook 홈 디렉토리 변경
 
+![image](https://user-images.githubusercontent.com/72383349/175776443-2338b578-53a7-409b-ac5f-291c85883dd1.png)
 
