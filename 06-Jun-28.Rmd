@@ -1,8 +1,6 @@
 ## TIL20220628
 
-### 
+### 주피터 노트북 주요 단축키
 
-```{r}
-
-```
+![image](https://user-images.githubusercontent.com/72383349/176144842-ff573562-b84b-4fed-9f2f-44e752db5d73.png)
 
