@@ -370,6 +370,6 @@ section-15
 til20220628
 주피터-노트북-주요-단축키
 til20220629
-section-16
+구글-프레젠테이션-서식-복사
 til20220630
-section-17
+section-16
