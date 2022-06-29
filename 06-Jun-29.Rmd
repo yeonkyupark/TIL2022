@@ -7,3 +7,10 @@
 `Ctrl + Alt + v` 서식 붙여넣기  
 
 
+### Rstudio + Python
+
+```{python test1, echo = T}
+import numpy as np
+a = np.arange(5)
+a
+```
