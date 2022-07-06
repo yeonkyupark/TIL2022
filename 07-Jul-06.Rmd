@@ -1,0 +1,7 @@
+## TIL20220706
+
+### Powershell conda
+
+miniconda 삭제 후 파워셀에서 에러 출력될 때
+
+https://stackoverflow.com/questions/65133472/after-removing-anaconda3-i-still-get-these-errors-in-powershell
