@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-10" />
+<meta name="date" content="2022-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -578,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.30" data-path="til20220630.html"><a href="til20220630.html"><i class="fa fa-check"></i><b>6.30</b> TIL20220630</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="년-07월.html"><a href="년-07월.html"><i class="fa fa-check"></i><b>7</b> 2022년 07월</a><ul>
+<li class="chapter" data-level="7" data-path="년-7월.html"><a href="년-7월.html"><i class="fa fa-check"></i><b>7</b> 2022년 7월</a><ul>
 <li class="chapter" data-level="7.1" data-path="til20220701.html"><a href="til20220701.html"><i class="fa fa-check"></i><b>7.1</b> TIL20220701</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="til20220701.html"><a href="til20220701.html#section-16"><i class="fa fa-check"></i><b>7.1.1</b> …</a></li>
 </ul></li>
@@ -634,13 +634,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.12</span> TIL20220412<a href="til20220412.html#til20220412" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="qcc" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.12.1</span> qcc<a href="til20220412.html#qcc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="til20220412.html#cb915-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(qcc)) { <span class="kw">install.packages</span>(<span class="st">&quot;qcc&quot;</span>); <span class="kw">library</span>(qcc); }</span></code></pre></div>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb916-1"><a href="til20220412.html#cb916-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(qcc)) { <span class="kw">install.packages</span>(<span class="st">&quot;qcc&quot;</span>); <span class="kw">library</span>(qcc); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpzGMrhL/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="til20220412.html#cb917-1"></a><span class="kw">data</span>(pistonrings)</span>
-<span id="cb917-2"><a href="til20220412.html#cb917-2"></a>diameter =<span class="st"> </span><span class="kw">with</span>(pistonrings, <span class="kw">qcc.groups</span>(diameter, sample))</span>
-<span id="cb917-3"><a href="til20220412.html#cb917-3"></a><span class="kw">head</span>(diameter)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpFu5Xha/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="til20220412.html#cb918-1"></a><span class="kw">data</span>(pistonrings)</span>
+<span id="cb918-2"><a href="til20220412.html#cb918-2"></a>diameter =<span class="st"> </span><span class="kw">with</span>(pistonrings, <span class="kw">qcc.groups</span>(diameter, sample))</span>
+<span id="cb918-3"><a href="til20220412.html#cb918-3"></a><span class="kw">head</span>(diameter)</span></code></pre></div>
 <pre><code>##   [,1] [,2] [,3] [,4] [,5]
 ## 1   74   74   74   74   74
 ## 2   74   74   74   74   74
@@ -648,7 +648,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   74   74   74   74   74
 ## 5   74   74   74   74   74
 ## 6   74   74   74   74   74</code></pre>
-<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb919-1"><a href="til20220412.html#cb919-1"></a>q1 =<span class="st"> </span><span class="kw">qcc</span>(diameter[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,], <span class="dt">type=</span><span class="st">&quot;xbar&quot;</span>, <span class="dt">newdata=</span>diameter[<span class="dv">26</span><span class="op">:</span><span class="dv">40</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="til20220412.html#cb920-1"></a>q1 =<span class="st"> </span><span class="kw">qcc</span>(diameter[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,], <span class="dt">type=</span><span class="st">&quot;xbar&quot;</span>, <span class="dt">newdata=</span>diameter[<span class="dv">26</span><span class="op">:</span><span class="dv">40</span>,])</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-391-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>

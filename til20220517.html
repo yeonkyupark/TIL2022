@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-10" />
+<meta name="date" content="2022-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -578,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.30" data-path="til20220630.html"><a href="til20220630.html"><i class="fa fa-check"></i><b>6.30</b> TIL20220630</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="년-07월.html"><a href="년-07월.html"><i class="fa fa-check"></i><b>7</b> 2022년 07월</a><ul>
+<li class="chapter" data-level="7" data-path="년-7월.html"><a href="년-7월.html"><i class="fa fa-check"></i><b>7</b> 2022년 7월</a><ul>
 <li class="chapter" data-level="7.1" data-path="til20220701.html"><a href="til20220701.html"><i class="fa fa-check"></i><b>7.1</b> TIL20220701</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="til20220701.html"><a href="til20220701.html#section-16"><i class="fa fa-check"></i><b>7.1.1</b> …</a></li>
 </ul></li>
@@ -634,64 +634,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.17</span> TIL20220517<a href="til20220517.html#til20220517" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="tidy-model" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.17.1</span> tidy model<a href="til20220517.html#tidy-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1087-1"><a href="til20220517.html#cb1087-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1087-2"><a href="til20220517.html#cb1087-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidymodels)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>); <span class="kw">library</span>(tidymodels); }</span>
-<span id="cb1087-3"><a href="til20220517.html#cb1087-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidytext)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); <span class="kw">library</span>(tidytext); }</span>
-<span id="cb1087-4"><a href="til20220517.html#cb1087-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) { <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>); <span class="kw">library</span>(skimr); }</span>
-<span id="cb1087-5"><a href="til20220517.html#cb1087-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vip)) { <span class="kw">install.packages</span>(<span class="st">&quot;vip&quot;</span>); <span class="kw">library</span>(vip); }</span></code></pre></div>
-<div class="sourceCode" id="cb1088"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1088-1"><a href="til20220517.html#cb1088-1"></a>bank_tb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;UniversalBank.csv&quot;</span>, <span class="dt">col_names =</span> T,</span>
-<span id="cb1088-2"><a href="til20220517.html#cb1088-2"></a>                    <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>),</span>
-<span id="cb1088-3"><a href="til20220517.html#cb1088-3"></a>                    <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1088-4"><a href="til20220517.html#cb1088-4"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.character, as.factor) </span>
-<span id="cb1088-5"><a href="til20220517.html#cb1088-5"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
-<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="til20220517.html#cb1089-1"></a><span class="kw">head</span>(bank_tb)</span></code></pre></div>
-<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="til20220517.html#cb1090-1"></a><span class="co"># 변수명 점검</span></span>
-<span id="cb1090-2"><a href="til20220517.html#cb1090-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1090-3"><a href="til20220517.html#cb1090-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="kw">c</span>(<span class="st">&quot;Personal_Loan&quot;</span> =<span class="st"> &quot;Personal Loan&quot;</span>,</span>
-<span id="cb1090-4"><a href="til20220517.html#cb1090-4"></a>           <span class="st">&quot;CD_Account&quot;</span> =<span class="st"> &quot;CD Account&quot;</span>,</span>
-<span id="cb1090-5"><a href="til20220517.html#cb1090-5"></a>           <span class="st">&quot;Securities_Account&quot;</span> =<span class="st"> &quot;Securities Account&quot;</span>))</span>
-<span id="cb1090-6"><a href="til20220517.html#cb1090-6"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
-<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="til20220517.html#cb1091-1"></a><span class="co"># 자료형 점검</span></span>
+<div class="sourceCode" id="cb1088"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1088-1"><a href="til20220517.html#cb1088-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1088-2"><a href="til20220517.html#cb1088-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidymodels)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>); <span class="kw">library</span>(tidymodels); }</span>
+<span id="cb1088-3"><a href="til20220517.html#cb1088-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidytext)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); <span class="kw">library</span>(tidytext); }</span>
+<span id="cb1088-4"><a href="til20220517.html#cb1088-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) { <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>); <span class="kw">library</span>(skimr); }</span>
+<span id="cb1088-5"><a href="til20220517.html#cb1088-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vip)) { <span class="kw">install.packages</span>(<span class="st">&quot;vip&quot;</span>); <span class="kw">library</span>(vip); }</span></code></pre></div>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="til20220517.html#cb1089-1"></a>bank_tb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;UniversalBank.csv&quot;</span>, <span class="dt">col_names =</span> T,</span>
+<span id="cb1089-2"><a href="til20220517.html#cb1089-2"></a>                    <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>),</span>
+<span id="cb1089-3"><a href="til20220517.html#cb1089-3"></a>                    <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1089-4"><a href="til20220517.html#cb1089-4"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.character, as.factor) </span>
+<span id="cb1089-5"><a href="til20220517.html#cb1089-5"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="til20220517.html#cb1090-1"></a><span class="kw">head</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="til20220517.html#cb1091-1"></a><span class="co"># 변수명 점검</span></span>
 <span id="cb1091-2"><a href="til20220517.html#cb1091-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1091-3"><a href="til20220517.html#cb1091-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Personal_Loan =</span> <span class="kw">factor</span>(Personal_Loan,</span>
-<span id="cb1091-4"><a href="til20220517.html#cb1091-4"></a>                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb1091-5"><a href="til20220517.html#cb1091-5"></a>                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1091-6"><a href="til20220517.html#cb1091-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Securities_Account =</span> <span class="kw">factor</span>(Securities_Account,</span>
-<span id="cb1091-7"><a href="til20220517.html#cb1091-7"></a>                                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1091-8"><a href="til20220517.html#cb1091-8"></a>                                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1091-9"><a href="til20220517.html#cb1091-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CD_Account =</span> <span class="kw">factor</span>(CD_Account, </span>
-<span id="cb1091-10"><a href="til20220517.html#cb1091-10"></a>                             <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1091-11"><a href="til20220517.html#cb1091-11"></a>                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1091-12"><a href="til20220517.html#cb1091-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Online =</span> <span class="kw">factor</span>(Online, </span>
-<span id="cb1091-13"><a href="til20220517.html#cb1091-13"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1091-14"><a href="til20220517.html#cb1091-14"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1091-15"><a href="til20220517.html#cb1091-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CreditCard =</span> <span class="kw">factor</span>(CreditCard, </span>
-<span id="cb1091-16"><a href="til20220517.html#cb1091-16"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1091-17"><a href="til20220517.html#cb1091-17"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span></span>
-<span id="cb1091-18"><a href="til20220517.html#cb1091-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Education =</span> <span class="kw">factor</span>(Education, </span>
-<span id="cb1091-19"><a href="til20220517.html#cb1091-19"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>),</span>
-<span id="cb1091-20"><a href="til20220517.html#cb1091-20"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Graduate&quot;</span>, <span class="st">&quot;Professonal&quot;</span>)))</span>
-<span id="cb1091-21"><a href="til20220517.html#cb1091-21"></a><span class="kw">str</span>(bank_tb)  </span></code></pre></div>
-<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="til20220517.html#cb1092-1"></a><span class="co"># 변수 점검 (삭제, 변환 등)</span></span>
+<span id="cb1091-3"><a href="til20220517.html#cb1091-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="kw">c</span>(<span class="st">&quot;Personal_Loan&quot;</span> =<span class="st"> &quot;Personal Loan&quot;</span>,</span>
+<span id="cb1091-4"><a href="til20220517.html#cb1091-4"></a>           <span class="st">&quot;CD_Account&quot;</span> =<span class="st"> &quot;CD Account&quot;</span>,</span>
+<span id="cb1091-5"><a href="til20220517.html#cb1091-5"></a>           <span class="st">&quot;Securities_Account&quot;</span> =<span class="st"> &quot;Securities Account&quot;</span>))</span>
+<span id="cb1091-6"><a href="til20220517.html#cb1091-6"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="til20220517.html#cb1092-1"></a><span class="co"># 자료형 점검</span></span>
 <span id="cb1092-2"><a href="til20220517.html#cb1092-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1092-3"><a href="til20220517.html#cb1092-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ID, <span class="st">&#39;ZIP Code&#39;</span>))</span>
-<span id="cb1092-4"><a href="til20220517.html#cb1092-4"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
-<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="til20220517.html#cb1093-1"></a><span class="co"># EDA</span></span>
-<span id="cb1093-2"><a href="til20220517.html#cb1093-2"></a><span class="kw">skim</span>(bank_tb)</span></code></pre></div>
-<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="til20220517.html#cb1094-1"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1094-2"><a href="til20220517.html#cb1094-2"></a><span class="st">  </span><span class="kw">group_by</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1094-3"><a href="til20220517.html#cb1094-3"></a><span class="st">  </span><span class="kw">skim</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="til20220517.html#cb1095-1"></a><span class="co"># base accuracy</span></span>
-<span id="cb1095-2"><a href="til20220517.html#cb1095-2"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1095-3"><a href="til20220517.html#cb1095-3"></a><span class="st">  </span><span class="kw">count</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1095-4"><a href="til20220517.html#cb1095-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</span></code></pre></div>
-<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="til20220517.html#cb1096-1"></a><span class="co"># 데이터셋 분할</span></span>
-<span id="cb1096-2"><a href="til20220517.html#cb1096-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1096-3"><a href="til20220517.html#cb1096-3"></a>bank_split &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1096-4"><a href="til20220517.html#cb1096-4"></a><span class="st">  </span><span class="kw">initial_split</span>(<span class="dt">strata =</span> Personal_Loan)</span>
-<span id="cb1096-5"><a href="til20220517.html#cb1096-5"></a>bank_split</span></code></pre></div>
-<div class="sourceCode" id="cb1097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1097-1"><a href="til20220517.html#cb1097-1"></a>train_data &lt;-<span class="st"> </span><span class="kw">training</span>(bank_split)</span>
-<span id="cb1097-2"><a href="til20220517.html#cb1097-2"></a>test_data &lt;-<span class="st"> </span><span class="kw">testing</span>(bank_split)</span></code></pre></div>
+<span id="cb1092-3"><a href="til20220517.html#cb1092-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Personal_Loan =</span> <span class="kw">factor</span>(Personal_Loan,</span>
+<span id="cb1092-4"><a href="til20220517.html#cb1092-4"></a>                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1092-5"><a href="til20220517.html#cb1092-5"></a>                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1092-6"><a href="til20220517.html#cb1092-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Securities_Account =</span> <span class="kw">factor</span>(Securities_Account,</span>
+<span id="cb1092-7"><a href="til20220517.html#cb1092-7"></a>                                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1092-8"><a href="til20220517.html#cb1092-8"></a>                                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1092-9"><a href="til20220517.html#cb1092-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CD_Account =</span> <span class="kw">factor</span>(CD_Account, </span>
+<span id="cb1092-10"><a href="til20220517.html#cb1092-10"></a>                             <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1092-11"><a href="til20220517.html#cb1092-11"></a>                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1092-12"><a href="til20220517.html#cb1092-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Online =</span> <span class="kw">factor</span>(Online, </span>
+<span id="cb1092-13"><a href="til20220517.html#cb1092-13"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1092-14"><a href="til20220517.html#cb1092-14"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1092-15"><a href="til20220517.html#cb1092-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CreditCard =</span> <span class="kw">factor</span>(CreditCard, </span>
+<span id="cb1092-16"><a href="til20220517.html#cb1092-16"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1092-17"><a href="til20220517.html#cb1092-17"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb1092-18"><a href="til20220517.html#cb1092-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Education =</span> <span class="kw">factor</span>(Education, </span>
+<span id="cb1092-19"><a href="til20220517.html#cb1092-19"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>),</span>
+<span id="cb1092-20"><a href="til20220517.html#cb1092-20"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Graduate&quot;</span>, <span class="st">&quot;Professonal&quot;</span>)))</span>
+<span id="cb1092-21"><a href="til20220517.html#cb1092-21"></a><span class="kw">str</span>(bank_tb)  </span></code></pre></div>
+<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="til20220517.html#cb1093-1"></a><span class="co"># 변수 점검 (삭제, 변환 등)</span></span>
+<span id="cb1093-2"><a href="til20220517.html#cb1093-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1093-3"><a href="til20220517.html#cb1093-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ID, <span class="st">&#39;ZIP Code&#39;</span>))</span>
+<span id="cb1093-4"><a href="til20220517.html#cb1093-4"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="til20220517.html#cb1094-1"></a><span class="co"># EDA</span></span>
+<span id="cb1094-2"><a href="til20220517.html#cb1094-2"></a><span class="kw">skim</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="til20220517.html#cb1095-1"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1095-2"><a href="til20220517.html#cb1095-2"></a><span class="st">  </span><span class="kw">group_by</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1095-3"><a href="til20220517.html#cb1095-3"></a><span class="st">  </span><span class="kw">skim</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="til20220517.html#cb1096-1"></a><span class="co"># base accuracy</span></span>
+<span id="cb1096-2"><a href="til20220517.html#cb1096-2"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1096-3"><a href="til20220517.html#cb1096-3"></a><span class="st">  </span><span class="kw">count</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1096-4"><a href="til20220517.html#cb1096-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb1097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1097-1"><a href="til20220517.html#cb1097-1"></a><span class="co"># 데이터셋 분할</span></span>
+<span id="cb1097-2"><a href="til20220517.html#cb1097-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1097-3"><a href="til20220517.html#cb1097-3"></a>bank_split &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1097-4"><a href="til20220517.html#cb1097-4"></a><span class="st">  </span><span class="kw">initial_split</span>(<span class="dt">strata =</span> Personal_Loan)</span>
+<span id="cb1097-5"><a href="til20220517.html#cb1097-5"></a>bank_split</span></code></pre></div>
+<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1098-1"><a href="til20220517.html#cb1098-1"></a>train_data &lt;-<span class="st"> </span><span class="kw">training</span>(bank_split)</span>
+<span id="cb1098-2"><a href="til20220517.html#cb1098-2"></a>test_data &lt;-<span class="st"> </span><span class="kw">testing</span>(bank_split)</span></code></pre></div>
 
 </div>
 </div>
