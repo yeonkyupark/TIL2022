@@ -618,6 +618,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.13" data-path="til20220713.html"><a href="til20220713.html"><i class="fa fa-check"></i><b>7.13</b> TIL20220713</a><ul>
 <li class="chapter" data-level="7.13.1" data-path="til20220713.html"><a href="til20220713.html#r에서-숫자-콤파-자리수-지정하기"><i class="fa fa-check"></i><b>7.13.1</b> R에서 숫자 콤파(,), 자리수 지정하기</a></li>
+<li class="chapter" data-level="7.13.2" data-path="til20220713.html"><a href="til20220713.html#rmarkdown-폰트-색깔-지정"><i class="fa fa-check"></i><b>7.13.2</b> rmarkdown, 폰트 색깔 지정</a></li>
+<li class="chapter" data-level="7.13.3" data-path="til20220713.html"><a href="til20220713.html#yaml에-오늘-날짜-지정하기"><i class="fa fa-check"></i><b>7.13.3</b> YAML에 오늘 날짜 지정하기</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -645,10 +647,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r에서-숫자-콤파-자리수-지정하기" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.13.1</span> R에서 숫자 콤파(,), 자리수 지정하기<a href="til20220713.html#r에서-숫자-콤파-자리수-지정하기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb1623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1623-1"><a href="til20220713.html#cb1623-1"></a><span class="co"># 콤마 찍기, big.interval로 간격 조절</span></span>
-<span id="cb1623-2"><a href="til20220713.html#cb1623-2"></a><span class="kw">format</span>(<span class="dv">1234567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1.23e+09&quot;</code></pre>
-<div class="sourceCode" id="cb1625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1625-1"><a href="til20220713.html#cb1625-1"></a><span class="kw">format</span>(<span class="dv">1234567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">big.interval =</span> <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1.23e+09&quot;</code></pre>
+<span id="cb1623-2"><a href="til20220713.html#cb1623-2"></a><span class="kw">format</span>(<span class="dv">567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;567,890&quot;</code></pre>
+<div class="sourceCode" id="cb1625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1625-1"><a href="til20220713.html#cb1625-1"></a><span class="kw">format</span>(<span class="dv">567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">big.interval =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;56,78,90&quot;</code></pre>
 <div class="sourceCode" id="cb1627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1627-1"><a href="til20220713.html#cb1627-1"></a><span class="co"># 자리수 지정</span></span>
 <span id="cb1627-2"><a href="til20220713.html#cb1627-2"></a><span class="kw">format</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot; 1&quot; &quot; 2&quot; &quot; 3&quot; &quot; 4&quot; &quot; 5&quot; &quot; 6&quot; &quot; 7&quot; &quot; 8&quot; &quot; 9&quot; &quot;10&quot;</code></pre>
@@ -657,6 +659,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1631-1"><a href="til20220713.html#cb1631-1"></a><span class="co"># digits 전체 자릿수, nsmall 소수점 이하 자릿수</span></span>
 <span id="cb1631-2"><a href="til20220713.html#cb1631-2"></a><span class="kw">format</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="fl">15.8</span>), <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">nsmall =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot; 7.00&quot; &quot;15.80&quot;</code></pre>
+</div>
+<div id="rmarkdown-폰트-색깔-지정" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.13.2</span> rmarkdown, 폰트 색깔 지정<a href="til20220713.html#rmarkdown-폰트-색깔-지정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>&lt;span style = &quot;color: red;&quot;&gt;**_DANGER_**: This is a warning.&lt;/span&gt;</code></pre>
+<p><span style="color: red;"><strong><em>DANGER</em></strong>: This is a warning.</span></p>
+</div>
+<div id="yaml에-오늘-날짜-지정하기" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.13.3</span> YAML에 오늘 날짜 지정하기<a href="til20220713.html#yaml에-오늘-날짜-지정하기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>date: &quot;2022-07-13&quot;</code></pre>
 
 </div>
 </div>
