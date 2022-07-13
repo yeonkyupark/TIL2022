@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.9 TIL20220509 | Today I Learned in 2022</title>
+  <title>7.13 TIL20220713 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.9 TIL20220509 | Today I Learned in 2022" />
+  <meta property="og:title" content="7.13 TIL20220713 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.9 TIL20220509 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="7.13 TIL20220713 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220508.html"/>
-<link rel="next" href="til20220510.html"/>
+<link rel="prev" href="til20220712.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -640,55 +640,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220509" class="section level2 hasAnchor">
-<h2><span class="header-section-number">5.9</span> TIL20220509<a href="til20220509.html#til20220509" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="lapply" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.9.1</span> lapply<a href="til20220509.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1064"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1064-1"><a href="til20220509.html#cb1064-1"></a><span class="co"># https://www.youtube.com/watch?v=zuBuRYIk0C4</span></span>
-<span id="cb1064-2"><a href="til20220509.html#cb1064-2"></a>exams &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">s20 =</span> <span class="kw">c</span>(<span class="dv">78</span>,<span class="dv">89</span>,<span class="dv">91</span>,<span class="dv">85</span>,<span class="dv">96</span>,<span class="dv">98</span>),</span>
-<span id="cb1064-3"><a href="til20220509.html#cb1064-3"></a>              <span class="dt">s21 =</span> <span class="kw">c</span>(<span class="dv">85</span>,<span class="dv">86</span>,<span class="dv">97</span>,<span class="dv">99</span>,<span class="dv">90</span>),</span>
-<span id="cb1064-4"><a href="til20220509.html#cb1064-4"></a>              <span class="dt">s22 =</span> <span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">96</span>,<span class="dv">89</span>,<span class="dv">90</span>,<span class="dv">93</span>,<span class="dv">85</span>,<span class="dv">92</span>),</span>
-<span id="cb1064-5"><a href="til20220509.html#cb1064-5"></a>              <span class="dt">s23 =</span> <span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">88</span>,<span class="dv">93</span>,<span class="dv">99</span>))</span>
-<span id="cb1064-6"><a href="til20220509.html#cb1064-6"></a>exams</span></code></pre></div>
-<pre><code>## $s20
-## [1] 78 89 91 85 96 98
-## 
-## $s21
-## [1] 85 86 97 99 90
-## 
-## $s22
-## [1] 98 96 89 90 93 85 92
-## 
-## $s23
-## [1] 98 96 91 88 93 99</code></pre>
-<div class="sourceCode" id="cb1066"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1066-1"><a href="til20220509.html#cb1066-1"></a><span class="kw">lapply</span>(exams, length)</span></code></pre></div>
-<pre><code>## $s20
-## [1] 6
-## 
-## $s21
-## [1] 5
-## 
-## $s22
-## [1] 7
-## 
-## $s23
-## [1] 6</code></pre>
-<div class="sourceCode" id="cb1068"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1068-1"><a href="til20220509.html#cb1068-1"></a><span class="kw">sapply</span>(exams, length)</span></code></pre></div>
-<pre><code>## s20 s21 s22 s23 
-##   6   5   7   6</code></pre>
-<div class="sourceCode" id="cb1070"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1070-1"><a href="til20220509.html#cb1070-1"></a><span class="kw">sapply</span>(iris, <span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.numeric</span>(x), <span class="kw">mean</span>(x), <span class="ot">NA</span>))</span></code></pre></div>
-<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
-##         5.84         3.06         3.76         1.20           NA</code></pre>
+<div id="til20220713" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.13</span> TIL20220713<a href="til20220713.html#til20220713" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r에서-숫자-콤파-자리수-지정하기" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.13.1</span> R에서 숫자 콤파(,), 자리수 지정하기<a href="til20220713.html#r에서-숫자-콤파-자리수-지정하기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb1623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1623-1"><a href="til20220713.html#cb1623-1"></a><span class="co"># 콤마 찍기, big.interval로 간격 조절</span></span>
+<span id="cb1623-2"><a href="til20220713.html#cb1623-2"></a><span class="kw">format</span>(<span class="dv">1234567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;1.23e+09&quot;</code></pre>
+<div class="sourceCode" id="cb1625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1625-1"><a href="til20220713.html#cb1625-1"></a><span class="kw">format</span>(<span class="dv">1234567890</span>, <span class="dt">big.mark =</span> <span class="st">&#39;,&#39;</span>, <span class="dt">big.interval =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;1.23e+09&quot;</code></pre>
+<div class="sourceCode" id="cb1627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1627-1"><a href="til20220713.html#cb1627-1"></a><span class="co"># 자리수 지정</span></span>
+<span id="cb1627-2"><a href="til20220713.html#cb1627-2"></a><span class="kw">format</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot; 1&quot; &quot; 2&quot; &quot; 3&quot; &quot; 4&quot; &quot; 5&quot; &quot; 6&quot; &quot; 7&quot; &quot; 8&quot; &quot; 9&quot; &quot;10&quot;</code></pre>
+<div class="sourceCode" id="cb1629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1629-1"><a href="til20220713.html#cb1629-1"></a><span class="kw">format</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">width =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;   1&quot; &quot;   2&quot; &quot;   3&quot; &quot;   4&quot; &quot;   5&quot; &quot;   6&quot; &quot;   7&quot; &quot;   8&quot; &quot;   9&quot; &quot;  10&quot;</code></pre>
+<div class="sourceCode" id="cb1631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1631-1"><a href="til20220713.html#cb1631-1"></a><span class="co"># digits 전체 자릿수, nsmall 소수점 이하 자릿수</span></span>
+<span id="cb1631-2"><a href="til20220713.html#cb1631-2"></a><span class="kw">format</span>(<span class="kw">c</span>(<span class="dv">7</span>, <span class="fl">15.8</span>), <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">nsmall =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot; 7.00&quot; &quot;15.80&quot;</code></pre>
 
 </div>
 </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220508.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="til20220510.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220712.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -719,7 +717,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/05-May-09.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/07-Jul-13.Rmd",
 "text": "Edit"
 },
 "history": {
