@@ -4,8 +4,8 @@
 
 ```{r}
 # 콤마 찍기, big.interval로 간격 조절
-format(1234567890, big.mark = ',')
-format(1234567890, big.mark = ',', big.interval = 2)
+format(567890, big.mark = ',')
+format(567890, big.mark = ',', big.interval = 2)
 
 # 자리수 지정
 format(1:10)
@@ -13,4 +13,18 @@ format(1:10, width = 4)
 
 # digits 전체 자릿수, nsmall 소수점 이하 자릿수
 format(c(7, 15.8), digits = 2, nsmall = 2)
+```
+
+### rmarkdown, 폰트 색깔 지정
+
+```
+<span style = "color: red;">**_DANGER_**: This is a warning.</span>
+```
+<span style = "color: red;">**_DANGER_**: This is a warning.</span>
+
+
+### YAML에 오늘 날짜 지정하기
+
+```
+date: "`r Sys.Date()`"
 ```
