@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-13" />
+<meta name="date" content="2022-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -621,6 +621,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.13.2" data-path="til20220713.html"><a href="til20220713.html#rmarkdown-폰트-색깔-지정"><i class="fa fa-check"></i><b>7.13.2</b> rmarkdown, 폰트 색깔 지정</a></li>
 <li class="chapter" data-level="7.13.3" data-path="til20220713.html"><a href="til20220713.html#yaml에-오늘-날짜-지정하기"><i class="fa fa-check"></i><b>7.13.3</b> YAML에 오늘 날짜 지정하기</a></li>
 </ul></li>
+<li class="chapter" data-level="7.14" data-path="til20220714.html"><a href="til20220714.html"><i class="fa fa-check"></i><b>7.14</b> TIL20220714</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="til20220714.html"><a href="til20220714.html#section-23"><i class="fa fa-check"></i><b>7.14.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -661,12 +664,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="이항-로지스틱-회귀분석" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.19.2</span> 이항 로지스틱 회귀분석<a href="til20220319.html#이항-로지스틱-회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>결과변수(종속변수)가 이분형 범주를 가질 때 예측변수(독립변수)로부터 결과변수의 범주를 예측한다.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="til20220319.html#cb468-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="til20220319.html#cb467-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(modeldata)) { <span class="kw">install.packages</span>(<span class="st">&quot;modeldata&quot;</span>); <span class="kw">library</span>(modeldata); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpSSgfJH/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="til20220319.html#cb470-1"></a><span class="kw">data</span>(mlc_churn)</span>
-<span id="cb470-2"><a href="til20220319.html#cb470-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpTYDaV8/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="til20220319.html#cb469-1"></a><span class="kw">data</span>(mlc_churn)</span>
+<span id="cb469-2"><a href="til20220319.html#cb469-2"></a><span class="kw">str</span>(mlc_churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 20] (S3: tbl_df/tbl/data.frame)
 ##  $ state                        : Factor w/ 51 levels &quot;AK&quot;,&quot;AL&quot;,&quot;AR&quot;,..: 17 36 32 36 37 2 20 25 19 50 ...
 ##  $ account_length               : int [1:5000] 128 107 137 84 75 118 121 147 117 141 ...
@@ -688,11 +691,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ total_intl_charge            : num [1:5000] 2.7 3.7 3.29 1.78 2.73 1.7 2.03 1.92 2.35 3.02 ...
 ##  $ number_customer_service_calls: int [1:5000] 1 1 0 2 3 0 3 0 1 0 ...
 ##  $ churn                        : Factor w/ 2 levels &quot;yes&quot;,&quot;no&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="til20220319.html#cb472-1"></a>churn &lt;-<span class="st"> </span>mlc_churn[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
-<span id="cb472-2"><a href="til20220319.html#cb472-2"></a>churn<span class="op">$</span>churn &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(churn<span class="op">$</span>churn<span class="op">==</span><span class="st">&quot;no&quot;</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb472-3"><a href="til20220319.html#cb472-3"></a>                      <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb472-4"><a href="til20220319.html#cb472-4"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb472-5"><a href="til20220319.html#cb472-5"></a><span class="kw">str</span>(churn)</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="til20220319.html#cb471-1"></a>churn &lt;-<span class="st"> </span>mlc_churn[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
+<span id="cb471-2"><a href="til20220319.html#cb471-2"></a>churn<span class="op">$</span>churn &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(churn<span class="op">$</span>churn<span class="op">==</span><span class="st">&quot;no&quot;</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb471-3"><a href="til20220319.html#cb471-3"></a>                      <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb471-4"><a href="til20220319.html#cb471-4"></a>                      <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb471-5"><a href="til20220319.html#cb471-5"></a><span class="kw">str</span>(churn)</span></code></pre></div>
 <pre><code>## tibble [5,000 × 18] (S3: tbl_df/tbl/data.frame)
 ##  $ account_length               : int [1:5000] 128 107 137 84 75 118 121 147 117 141 ...
 ##  $ international_plan           : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 2 2 2 1 2 1 2 ...
@@ -712,15 +715,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ total_intl_charge            : num [1:5000] 2.7 3.7 3.29 1.78 2.73 1.7 2.03 1.92 2.35 3.02 ...
 ##  $ number_customer_service_calls: int [1:5000] 1 1 0 2 3 0 3 0 1 0 ...
 ##  $ churn                        : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="til20220319.html#cb474-1"></a>churn_train &lt;-<span class="st"> </span>churn[<span class="dv">1</span><span class="op">:</span><span class="dv">3333</span>,]</span>
-<span id="cb474-2"><a href="til20220319.html#cb474-2"></a>churn_test &lt;-<span class="st"> </span>churn[<span class="dv">3334</span><span class="op">:</span><span class="dv">5000</span>,]</span>
-<span id="cb474-3"><a href="til20220319.html#cb474-3"></a><span class="kw">rbind</span>(<span class="dt">ChurnTrain =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_train<span class="op">$</span>churn)),</span>
-<span id="cb474-4"><a href="til20220319.html#cb474-4"></a>      <span class="dt">ChurnTest =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_test<span class="op">$</span>churn)))</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="til20220319.html#cb473-1"></a>churn_train &lt;-<span class="st"> </span>churn[<span class="dv">1</span><span class="op">:</span><span class="dv">3333</span>,]</span>
+<span id="cb473-2"><a href="til20220319.html#cb473-2"></a>churn_test &lt;-<span class="st"> </span>churn[<span class="dv">3334</span><span class="op">:</span><span class="dv">5000</span>,]</span>
+<span id="cb473-3"><a href="til20220319.html#cb473-3"></a><span class="kw">rbind</span>(<span class="dt">ChurnTrain =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_train<span class="op">$</span>churn)),</span>
+<span id="cb473-4"><a href="til20220319.html#cb473-4"></a>      <span class="dt">ChurnTest =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(churn_test<span class="op">$</span>churn)))</span></code></pre></div>
 <pre><code>##                   no       yes
 ## ChurnTrain 0.8550855 0.1449145
 ## ChurnTest  0.8656269 0.1343731</code></pre>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="til20220319.html#cb476-1"></a>churn_logit &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> churn_train, <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb476-2"><a href="til20220319.html#cb476-2"></a><span class="kw">summary</span>(churn_logit)</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="til20220319.html#cb475-1"></a>churn_logit &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> churn_train, <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb475-2"><a href="til20220319.html#cb475-2"></a><span class="kw">summary</span>(churn_logit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = churn ~ ., family = binomial(link = &quot;logit&quot;), data = churn_train)
@@ -759,7 +762,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## AIC: 2194.7
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="til20220319.html#cb478-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(churn_logit)) <span class="co"># 해석상의 용이를 위해 오즈비를 지수변환 함</span></span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="til20220319.html#cb477-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(churn_logit)) <span class="co"># 해석상의 용이를 위해 오즈비를 지수변환 함</span></span></code></pre></div>
 <pre><code>##                   (Intercept)                account_length 
 ##                  1.748532e-04                  1.000846e+00 
 ##         international_planyes            voice_mail_planyes 
@@ -785,57 +788,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </dd>
 </dl>
 <p>Null deviance는 상수항만을 포함하는 모델이고, Residual deviance는 모든변수를 포함하는 모델이다. 예측변수를 포함될수록 설명력은 좋아지기 때문에 이탈도는 작아질 수밖에 없다. 예측변수에 의해 작아지는 정도가 통계적으로 유의한지를 검정한다. 이탈도는 <span class="math inline">\(\chi^2\)</span> 분포를 따르므로 <span class="math inline">\(\chi^2\)</span> 검정 통계량을 계산해서 검정한다.</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="til20220319.html#cb480-1"></a><span class="kw">pchisq</span>(<span class="dt">q=</span>(<span class="fl">2758.3-2158.7</span>), <span class="dt">df=</span>(<span class="dv">3332-3315</span>), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="til20220319.html#cb479-1"></a><span class="kw">pchisq</span>(<span class="dt">q=</span>(<span class="fl">2758.3-2158.7</span>), <span class="dt">df=</span>(<span class="dv">3332-3315</span>), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## [1] 1.731898e-116</code></pre>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="til20220319.html#cb482-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>deviance),</span>
-<span id="cb482-2"><a href="til20220319.html#cb482-2"></a>       <span class="dt">df =</span> (churn_logit<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="til20220319.html#cb481-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>deviance),</span>
+<span id="cb481-2"><a href="til20220319.html#cb481-2"></a>       <span class="dt">df =</span> (churn_logit<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## [1] 1.757917e-116</code></pre>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="til20220319.html#cb484-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit, <span class="dt">newdata =</span> churn_test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb484-2"><a href="til20220319.html#cb484-2"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="til20220319.html#cb483-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit, <span class="dt">newdata =</span> churn_test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb483-2"><a href="til20220319.html#cb483-2"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
 <pre><code>##          1          2          3          4          5          6 
 ## 0.07236813 0.05774332 0.22650409 0.15289153 0.07078500 0.05880824</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="til20220319.html#cb486-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">factor</span>(churn_logit_pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>,</span>
-<span id="cb486-2"><a href="til20220319.html#cb486-2"></a>                           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>),</span>
-<span id="cb486-3"><a href="til20220319.html#cb486-3"></a>                           <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
-<span id="cb486-4"><a href="til20220319.html#cb486-4"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="til20220319.html#cb485-1"></a>churn_logit_pred &lt;-<span class="st"> </span><span class="kw">factor</span>(churn_logit_pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>,</span>
+<span id="cb485-2"><a href="til20220319.html#cb485-2"></a>                           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>),</span>
+<span id="cb485-3"><a href="til20220319.html#cb485-3"></a>                           <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span>
+<span id="cb485-4"><a href="til20220319.html#cb485-4"></a><span class="kw">head</span>(churn_logit_pred)</span></code></pre></div>
 <pre><code>##  1  2  3  4  5  6 
 ## no no no no no no 
 ## Levels: no yes</code></pre>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="til20220319.html#cb488-1"></a><span class="kw">table</span>(churn_logit_pred)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="til20220319.html#cb487-1"></a><span class="kw">table</span>(churn_logit_pred)</span></code></pre></div>
 <pre><code>## churn_logit_pred
 ##   no  yes 
 ## 1595   72</code></pre>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="til20220319.html#cb490-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>churn, churn_logit_pred, <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Acutal&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="til20220319.html#cb489-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>churn, churn_logit_pred, <span class="dt">dnn=</span><span class="kw">c</span>(<span class="st">&quot;Acutal&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
 <pre><code>##       Predicted
 ## Acutal   no  yes
 ##    no  1414   29
 ##    yes  181   43</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="til20220319.html#cb492-1"></a><span class="kw">mean</span>(churn_test<span class="op">$</span>churn <span class="op">==</span><span class="st"> </span>churn_logit_pred)</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="til20220319.html#cb491-1"></a><span class="kw">mean</span>(churn_test<span class="op">$</span>churn <span class="op">==</span><span class="st"> </span>churn_logit_pred)</span></code></pre></div>
 <pre><code>## [1] 0.8740252</code></pre>
 <p>단계별 변수 선택을 통해 유의한 변수만 선택하만 보다 간결한 모델을 생성할 수 있다.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="til20220319.html#cb494-1"></a>churn_logit2 &lt;-<span class="st"> </span><span class="kw">step</span>(churn_logit, <span class="dt">trace =</span> F)</span>
-<span id="cb494-2"><a href="til20220319.html#cb494-2"></a><span class="kw">summary</span>(churn_logit2)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="til20220319.html#cb493-1"></a>churn_logit2 &lt;-<span class="st"> </span><span class="kw">step</span>(churn_logit, <span class="dt">trace =</span> F)</span>
+<span id="cb493-2"><a href="til20220319.html#cb493-2"></a><span class="kw">summary</span>(churn_logit2)</span></code></pre></div>
 <pre><code>## Error in summary(churn_logit2): class name too long in &#39;summary&#39;</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="til20220319.html#cb496-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit2<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>deviance),</span>
-<span id="cb496-2"><a href="til20220319.html#cb496-2"></a>       <span class="dt">df =</span> (churn_logit2<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="til20220319.html#cb495-1"></a><span class="kw">pchisq</span>(<span class="dt">q =</span> (churn_logit2<span class="op">$</span>null.deviance <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>deviance),</span>
+<span id="cb495-2"><a href="til20220319.html#cb495-2"></a>       <span class="dt">df =</span> (churn_logit2<span class="op">$</span>df.null <span class="op">-</span><span class="st"> </span>churn_logit2<span class="op">$</span>df.residual), <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## Error in churn_logit2$null.deviance: class name too long in &#39;$&#39;</code></pre>
 <p>특정 예측변수의 변화에 따른 결과변수의 변화를 보기 위해서는 다른 변수를 고정한 후 특정 변수만 변화를 시키면서 결과를 확인할 수 있다.</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="til20220319.html#cb498-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>number_customer_service_calls)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="til20220319.html#cb497-1"></a><span class="kw">table</span>(churn_test<span class="op">$</span>number_customer_service_calls)</span></code></pre></div>
 <pre><code>## 
 ##   0   1   2   3   4   5   6   7 
 ## 326 605 368 236  86  30  12   4</code></pre>
 <p>서비스센터 전화회수의 분포는 0 ~ 7번으로 구성되어 있다. 나머지 변수는 평균이나 가장 낮은 변주 유형으로 고정한 데이터셋을 생성한다.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="til20220319.html#cb500-1"></a>testdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb500-2"><a href="til20220319.html#cb500-2"></a>  <span class="dt">number_customer_service_calls =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>),</span>
-<span id="cb500-3"><a href="til20220319.html#cb500-3"></a>  <span class="dt">international_plan =</span> <span class="st">&quot;no&quot;</span>,</span>
-<span id="cb500-4"><a href="til20220319.html#cb500-4"></a>  <span class="dt">voice_mail_plan =</span><span class="st">&quot;no&quot;</span> ,</span>
-<span id="cb500-5"><a href="til20220319.html#cb500-5"></a>  <span class="dt">number_vmail_messages =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>number_vmail_messages),</span>
-<span id="cb500-6"><a href="til20220319.html#cb500-6"></a>  <span class="dt">total_day_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_day_charge),</span>
-<span id="cb500-7"><a href="til20220319.html#cb500-7"></a>  <span class="dt">total_eve_minutes =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_eve_minutes),</span>
-<span id="cb500-8"><a href="til20220319.html#cb500-8"></a>  <span class="dt">total_night_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_night_charge),</span>
-<span id="cb500-9"><a href="til20220319.html#cb500-9"></a>  <span class="dt">total_intl_calls =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_calls),</span>
-<span id="cb500-10"><a href="til20220319.html#cb500-10"></a>  <span class="dt">total_intl_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_charge)</span>
-<span id="cb500-11"><a href="til20220319.html#cb500-11"></a>); testdata</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="til20220319.html#cb499-1"></a>testdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb499-2"><a href="til20220319.html#cb499-2"></a>  <span class="dt">number_customer_service_calls =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>),</span>
+<span id="cb499-3"><a href="til20220319.html#cb499-3"></a>  <span class="dt">international_plan =</span> <span class="st">&quot;no&quot;</span>,</span>
+<span id="cb499-4"><a href="til20220319.html#cb499-4"></a>  <span class="dt">voice_mail_plan =</span><span class="st">&quot;no&quot;</span> ,</span>
+<span id="cb499-5"><a href="til20220319.html#cb499-5"></a>  <span class="dt">number_vmail_messages =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>number_vmail_messages),</span>
+<span id="cb499-6"><a href="til20220319.html#cb499-6"></a>  <span class="dt">total_day_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_day_charge),</span>
+<span id="cb499-7"><a href="til20220319.html#cb499-7"></a>  <span class="dt">total_eve_minutes =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_eve_minutes),</span>
+<span id="cb499-8"><a href="til20220319.html#cb499-8"></a>  <span class="dt">total_night_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_night_charge),</span>
+<span id="cb499-9"><a href="til20220319.html#cb499-9"></a>  <span class="dt">total_intl_calls =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_calls),</span>
+<span id="cb499-10"><a href="til20220319.html#cb499-10"></a>  <span class="dt">total_intl_charge =</span> <span class="kw">mean</span>(churn_test<span class="op">$</span>total_intl_charge)</span>
+<span id="cb499-11"><a href="til20220319.html#cb499-11"></a>); testdata</span></code></pre></div>
 <pre><code>##   number_customer_service_calls international_plan voice_mail_plan
 ## 1                             0                 no              no
 ## 2                             1                 no              no
@@ -863,37 +866,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6         4.346731          2.784421
 ## 7         4.346731          2.784421
 ## 8         4.346731          2.784421</code></pre>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="til20220319.html#cb502-1"></a>testdata<span class="op">$</span>prob &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit2, <span class="dt">newdata =</span> testdata, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="til20220319.html#cb501-1"></a>testdata<span class="op">$</span>prob &lt;-<span class="st"> </span><span class="kw">predict</span>(churn_logit2, <span class="dt">newdata =</span> testdata, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in predict(churn_logit2, newdata = testdata, type = &quot;response&quot;): class name too long in &#39;predict&#39;</code></pre>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="til20220319.html#cb504-1"></a>testdata[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="til20220319.html#cb503-1"></a>testdata[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>)]</span></code></pre></div>
 <pre><code>## Error in `[.data.frame`(testdata, c(1, 10)): undefined columns selected</code></pre>
 <p>이항 로지스틱분석은 과산포의 문제를 확인해야 한다. 결과변수의 실제 관측된 분산이 이항분포의 기대되는 분산보다 더 클 때 발생한다. 과산포는 표준오차를 왜곡시켜 회귀계수의 유의성 검정을 부정확하게 만들 위험성이 있다. 과산포 발생 시 <em>family</em> 인수에 <em>quasibinomial()</em> 함수를 적용한다.</p>
 <p>과산포를 확인하는 방법은 이탈도와 자유도간의 비율을 살펴본다. 이탈도대 자유도의 비율이 1을 크게 상외하면 과산포를 의심한다.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="til20220319.html#cb506-1"></a><span class="kw">deviance</span>(churn_logit2) <span class="op">/</span><span class="st"> </span><span class="kw">df.residual</span>(churn_logit2)</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="til20220319.html#cb505-1"></a><span class="kw">deviance</span>(churn_logit2) <span class="op">/</span><span class="st"> </span><span class="kw">df.residual</span>(churn_logit2)</span></code></pre></div>
 <pre><code>## Error in deviance(churn_logit2): class name too long in &#39;deviance&#39;</code></pre>
 <p>또는 <em>binomial()</em>와 <em>quasibinomial()</em> 함수를 적용한 모델을 생성하고 통계적으로 유의성을 검정하는 방법도 있다.</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="til20220319.html#cb508-1"></a>fit.origin1 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
-<span id="cb508-2"><a href="til20220319.html#cb508-2"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
-<span id="cb508-3"><a href="til20220319.html#cb508-3"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
-<span id="cb508-4"><a href="til20220319.html#cb508-4"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
-<span id="cb508-5"><a href="til20220319.html#cb508-5"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
-<span id="cb508-6"><a href="til20220319.html#cb508-6"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
-<span id="cb508-7"><a href="til20220319.html#cb508-7"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
-<span id="cb508-8"><a href="til20220319.html#cb508-8"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
-<span id="cb508-9"><a href="til20220319.html#cb508-9"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
-<span id="cb508-10"><a href="til20220319.html#cb508-10"></a>                  <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb508-11"><a href="til20220319.html#cb508-11"></a>fit.origin2 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
-<span id="cb508-12"><a href="til20220319.html#cb508-12"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
-<span id="cb508-13"><a href="til20220319.html#cb508-13"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
-<span id="cb508-14"><a href="til20220319.html#cb508-14"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
-<span id="cb508-15"><a href="til20220319.html#cb508-15"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
-<span id="cb508-16"><a href="til20220319.html#cb508-16"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
-<span id="cb508-17"><a href="til20220319.html#cb508-17"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
-<span id="cb508-18"><a href="til20220319.html#cb508-18"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
-<span id="cb508-19"><a href="til20220319.html#cb508-19"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
-<span id="cb508-20"><a href="til20220319.html#cb508-20"></a>                  <span class="dt">family =</span> <span class="kw">quasibinomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb508-21"><a href="til20220319.html#cb508-21"></a><span class="kw">pchisq</span>(<span class="kw">summary</span>(fit.origin2)<span class="op">$</span>dispersion<span class="op">*</span>fit.origin1<span class="op">$</span>df.residual,</span>
-<span id="cb508-22"><a href="til20220319.html#cb508-22"></a>       fit.origin1<span class="op">$</span>df.residual, <span class="dt">lower.tail =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="til20220319.html#cb507-1"></a>fit.origin1 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
+<span id="cb507-2"><a href="til20220319.html#cb507-2"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
+<span id="cb507-3"><a href="til20220319.html#cb507-3"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
+<span id="cb507-4"><a href="til20220319.html#cb507-4"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
+<span id="cb507-5"><a href="til20220319.html#cb507-5"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
+<span id="cb507-6"><a href="til20220319.html#cb507-6"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
+<span id="cb507-7"><a href="til20220319.html#cb507-7"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
+<span id="cb507-8"><a href="til20220319.html#cb507-8"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
+<span id="cb507-9"><a href="til20220319.html#cb507-9"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
+<span id="cb507-10"><a href="til20220319.html#cb507-10"></a>                  <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb507-11"><a href="til20220319.html#cb507-11"></a>fit.origin2 &lt;-<span class="st"> </span><span class="kw">glm</span>(churn <span class="op">~</span><span class="st"> </span>number_customer_service_calls <span class="op">+</span></span>
+<span id="cb507-12"><a href="til20220319.html#cb507-12"></a><span class="st">                  </span>international_plan <span class="op">+</span></span>
+<span id="cb507-13"><a href="til20220319.html#cb507-13"></a><span class="st">                  </span>voice_mail_plan <span class="op">+</span></span>
+<span id="cb507-14"><a href="til20220319.html#cb507-14"></a><span class="st">                  </span>number_vmail_messages <span class="op">+</span></span>
+<span id="cb507-15"><a href="til20220319.html#cb507-15"></a><span class="st">                  </span>total_day_charge <span class="op">+</span></span>
+<span id="cb507-16"><a href="til20220319.html#cb507-16"></a><span class="st">                  </span>total_eve_minutes <span class="op">+</span></span>
+<span id="cb507-17"><a href="til20220319.html#cb507-17"></a><span class="st">                  </span>total_night_charge <span class="op">+</span></span>
+<span id="cb507-18"><a href="til20220319.html#cb507-18"></a><span class="st">                  </span>total_intl_calls <span class="op">+</span></span>
+<span id="cb507-19"><a href="til20220319.html#cb507-19"></a><span class="st">                  </span>total_intl_charge, <span class="dt">data =</span> churn_train,</span>
+<span id="cb507-20"><a href="til20220319.html#cb507-20"></a>                  <span class="dt">family =</span> <span class="kw">quasibinomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb507-21"><a href="til20220319.html#cb507-21"></a><span class="kw">pchisq</span>(<span class="kw">summary</span>(fit.origin2)<span class="op">$</span>dispersion<span class="op">*</span>fit.origin1<span class="op">$</span>df.residual,</span>
+<span id="cb507-22"><a href="til20220319.html#cb507-22"></a>       fit.origin1<span class="op">$</span>df.residual, <span class="dt">lower.tail =</span> F)</span></code></pre></div>
 <pre><code>## [1] 0.08385493</code></pre>
 <p>위 예제에서는 p값이 0.08385493로 유의수준 0.05에서 통계적으로 과산포의 가능성은 작다고 볼 수 있다.</p>
 </div>
@@ -901,12 +904,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">3.19.3</span> 패널티 로지스틱회귀분석<a href="til20220319.html#패널티-로지스틱회귀분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="til20220316.html#til20220316">3.16</a> 참고</p>
 <p>당뇨평(diabetes) 여부를 예측하는 모델을 생성한다.</p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="til20220319.html#cb510-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="til20220319.html#cb509-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpSSgfJH/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="til20220319.html#cb512-1"></a><span class="kw">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
-<span id="cb512-2"><a href="til20220319.html#cb512-2"></a><span class="kw">str</span>(PimaIndiansDiabetes2)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpTYDaV8/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="til20220319.html#cb511-1"></a><span class="kw">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
+<span id="cb511-2"><a href="til20220319.html#cb511-2"></a><span class="kw">str</span>(PimaIndiansDiabetes2)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    768 obs. of  9 variables:
 ##  $ pregnant: num  6 1 8 1 0 5 3 10 2 8 ...
 ##  $ glucose : num  148 85 183 89 137 116 78 115 197 125 ...
@@ -917,39 +920,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ pedigree: num  0.627 0.351 0.672 0.167 2.288 ...
 ##  $ age     : num  50 31 32 21 33 30 26 29 53 54 ...
 ##  $ diabetes: Factor w/ 2 levels &quot;neg&quot;,&quot;pos&quot;: 2 1 2 1 2 1 2 1 2 2 ...</code></pre>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="til20220319.html#cb514-1"></a><span class="co"># 결측치 제거하는 전처리</span></span>
-<span id="cb514-2"><a href="til20220319.html#cb514-2"></a>PimaIndiansDiabetes3 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(PimaIndiansDiabetes2)</span>
-<span id="cb514-3"><a href="til20220319.html#cb514-3"></a></span>
-<span id="cb514-4"><a href="til20220319.html#cb514-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
-<span id="cb514-5"><a href="til20220319.html#cb514-5"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb514-6"><a href="til20220319.html#cb514-6"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> PimaIndiansDiabetes3<span class="op">$</span>diabetes,</span>
-<span id="cb514-7"><a href="til20220319.html#cb514-7"></a>                                   <span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">list =</span> F)</span>
-<span id="cb514-8"><a href="til20220319.html#cb514-8"></a>diabetes.train &lt;-<span class="st"> </span>PimaIndiansDiabetes3[train.index, ]</span>
-<span id="cb514-9"><a href="til20220319.html#cb514-9"></a>diabetes.test &lt;-<span class="st"> </span>PimaIndiansDiabetes3[<span class="op">-</span>train.index, ]</span>
-<span id="cb514-10"><a href="til20220319.html#cb514-10"></a></span>
-<span id="cb514-11"><a href="til20220319.html#cb514-11"></a>class.status &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
-<span id="cb514-12"><a href="til20220319.html#cb514-12"></a>  <span class="dt">Train =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.train<span class="op">$</span>diabetes)),</span>
-<span id="cb514-13"><a href="til20220319.html#cb514-13"></a>  <span class="dt">Test =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes))</span>
-<span id="cb514-14"><a href="til20220319.html#cb514-14"></a>); <span class="kw">colnames</span>(class.status) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Negative&quot;</span>, <span class="st">&quot;Positive&quot;</span>);</span>
-<span id="cb514-15"><a href="til20220319.html#cb514-15"></a>class.status</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="til20220319.html#cb513-1"></a><span class="co"># 결측치 제거하는 전처리</span></span>
+<span id="cb513-2"><a href="til20220319.html#cb513-2"></a>PimaIndiansDiabetes3 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(PimaIndiansDiabetes2)</span>
+<span id="cb513-3"><a href="til20220319.html#cb513-3"></a></span>
+<span id="cb513-4"><a href="til20220319.html#cb513-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb513-5"><a href="til20220319.html#cb513-5"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb513-6"><a href="til20220319.html#cb513-6"></a>train.index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> PimaIndiansDiabetes3<span class="op">$</span>diabetes,</span>
+<span id="cb513-7"><a href="til20220319.html#cb513-7"></a>                                   <span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">list =</span> F)</span>
+<span id="cb513-8"><a href="til20220319.html#cb513-8"></a>diabetes.train &lt;-<span class="st"> </span>PimaIndiansDiabetes3[train.index, ]</span>
+<span id="cb513-9"><a href="til20220319.html#cb513-9"></a>diabetes.test &lt;-<span class="st"> </span>PimaIndiansDiabetes3[<span class="op">-</span>train.index, ]</span>
+<span id="cb513-10"><a href="til20220319.html#cb513-10"></a></span>
+<span id="cb513-11"><a href="til20220319.html#cb513-11"></a>class.status &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb513-12"><a href="til20220319.html#cb513-12"></a>  <span class="dt">Train =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.train<span class="op">$</span>diabetes)),</span>
+<span id="cb513-13"><a href="til20220319.html#cb513-13"></a>  <span class="dt">Test =</span> <span class="kw">prop.table</span>(<span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes))</span>
+<span id="cb513-14"><a href="til20220319.html#cb513-14"></a>); <span class="kw">colnames</span>(class.status) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Negative&quot;</span>, <span class="st">&quot;Positive&quot;</span>);</span>
+<span id="cb513-15"><a href="til20220319.html#cb513-15"></a>class.status</span></code></pre></div>
 <pre><code>##        Negative  Positive
 ## Train 0.6690909 0.3309091
 ## Test  0.6666667 0.3333333</code></pre>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="til20220319.html#cb516-1"></a><span class="co"># 예측오차를 최소로 하는 최적의 lambda 계산</span></span>
-<span id="cb516-2"><a href="til20220319.html#cb516-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span>
-<span id="cb516-3"><a href="til20220319.html#cb516-3"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.train)[, <span class="dv">-1</span>]</span>
-<span id="cb516-4"><a href="til20220319.html#cb516-4"></a>y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.train<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> &quot;pos&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb516-5"><a href="til20220319.html#cb516-5"></a>test.x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.test)[, <span class="dv">-1</span>]</span>
-<span id="cb516-6"><a href="til20220319.html#cb516-6"></a>test.y &lt;-<span class="st"> </span>diabetes.test<span class="op">$</span>diabetes</span>
-<span id="cb516-7"><a href="til20220319.html#cb516-7"></a>diabetes.cv &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)  <span class="co"># lasso 회귀모델</span></span>
-<span id="cb516-8"><a href="til20220319.html#cb516-8"></a>diabetes.lambda &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> diabetes.cv<span class="op">$</span>lambda.min, <span class="dt">lambda.1se =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
-<span id="cb516-9"><a href="til20220319.html#cb516-9"></a><span class="kw">rownames</span>(diabetes.lambda) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value&quot;</span>);</span>
-<span id="cb516-10"><a href="til20220319.html#cb516-10"></a>diabetes.lambda</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="til20220319.html#cb515-1"></a><span class="co"># 예측오차를 최소로 하는 최적의 lambda 계산</span></span>
+<span id="cb515-2"><a href="til20220319.html#cb515-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(glmnet)) { <span class="kw">install.packages</span>(<span class="st">&quot;glmnet&quot;</span>); <span class="kw">library</span>(glmnet); }</span>
+<span id="cb515-3"><a href="til20220319.html#cb515-3"></a>x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.train)[, <span class="dv">-1</span>]</span>
+<span id="cb515-4"><a href="til20220319.html#cb515-4"></a>y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.train<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> &quot;pos&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb515-5"><a href="til20220319.html#cb515-5"></a>test.x &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(diabetes <span class="op">~</span><span class="st"> </span>., diabetes.test)[, <span class="dv">-1</span>]</span>
+<span id="cb515-6"><a href="til20220319.html#cb515-6"></a>test.y &lt;-<span class="st"> </span>diabetes.test<span class="op">$</span>diabetes</span>
+<span id="cb515-7"><a href="til20220319.html#cb515-7"></a>diabetes.cv &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>)  <span class="co"># lasso 회귀모델</span></span>
+<span id="cb515-8"><a href="til20220319.html#cb515-8"></a>diabetes.lambda &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> diabetes.cv<span class="op">$</span>lambda.min, <span class="dt">lambda.1se =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb515-9"><a href="til20220319.html#cb515-9"></a><span class="kw">rownames</span>(diabetes.lambda) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value&quot;</span>);</span>
+<span id="cb515-10"><a href="til20220319.html#cb515-10"></a>diabetes.lambda</span></code></pre></div>
 <pre><code>##       lambda.min lambda.1se
 ## value 0.01578334 0.05289948</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="til20220319.html#cb518-1"></a><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda.min),</span>
-<span id="cb518-2"><a href="til20220319.html#cb518-2"></a>      <span class="dt">lambda.1se =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
-<span id="cb518-3"><a href="til20220319.html#cb518-3"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="til20220319.html#cb517-1"></a><span class="kw">cbind</span>(<span class="dt">lambda.min =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda.min),</span>
+<span id="cb517-2"><a href="til20220319.html#cb517-2"></a>      <span class="dt">lambda.1se =</span> <span class="kw">coef</span>(diabetes.cv, diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb517-3"><a href="til20220319.html#cb517-3"></a>)</span></code></pre></div>
 <pre><code>## 9 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                       s1            s1
 ## (Intercept) -8.747546346 -5.9547905324
@@ -962,48 +965,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## pedigree     1.025851784  0.3927570516
 ## age          0.029786375  0.0153986132</code></pre>
 <p>예측 오차를 최소로 하는 lambda를 사용하여 모델을 생성한 후 성능을 평가한다.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="til20220319.html#cb520-1"></a>diabets.gnet.min &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb520-2"><a href="til20220319.html#cb520-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda.min)</span>
-<span id="cb520-3"><a href="til20220319.html#cb520-3"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet.min, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
-<span id="cb520-4"><a href="til20220319.html#cb520-4"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet.min.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
-<span id="cb520-5"><a href="til20220319.html#cb520-5"></a><span class="kw">table</span>(test.y, diabets.gnet.min.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="til20220319.html#cb519-1"></a>diabets.gnet.min &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb519-2"><a href="til20220319.html#cb519-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda.min)</span>
+<span id="cb519-3"><a href="til20220319.html#cb519-3"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet.min, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb519-4"><a href="til20220319.html#cb519-4"></a>diabets.gnet.min.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet.min.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb519-5"><a href="til20220319.html#cb519-5"></a><span class="kw">table</span>(test.y, diabets.gnet.min.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
 <pre><code>##       Predicted
 ## Actual neg pos
 ##    neg  69   9
 ##    pos  20  19</code></pre>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="til20220319.html#cb522-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="til20220319.html#cb521-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
 <pre><code>## [1] 0.7521368</code></pre>
 <p>간명도를 고려한 1se lambda를 사용하여 모델을 생성한 후 성능을 평가한다.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="til20220319.html#cb524-1"></a>diabets.gnet<span class="fl">.1</span>se &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb524-2"><a href="til20220319.html#cb524-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
-<span id="cb524-3"><a href="til20220319.html#cb524-3"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet<span class="fl">.1</span>se, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
-<span id="cb524-4"><a href="til20220319.html#cb524-4"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet<span class="fl">.1</span>se.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
-<span id="cb524-5"><a href="til20220319.html#cb524-5"></a><span class="kw">table</span>(test.y, diabets.gnet<span class="fl">.1</span>se.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="til20220319.html#cb523-1"></a>diabets.gnet<span class="fl">.1</span>se &lt;-<span class="st"> </span><span class="kw">glmnet</span>(x, y, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb523-2"><a href="til20220319.html#cb523-2"></a>                           <span class="dt">lambda =</span> diabetes.cv<span class="op">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb523-3"><a href="til20220319.html#cb523-3"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabets.gnet<span class="fl">.1</span>se, test.x, <span class="dt">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb523-4"><a href="til20220319.html#cb523-4"></a>diabets.gnet<span class="fl">.1</span>se.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabets.gnet<span class="fl">.1</span>se.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb523-5"><a href="til20220319.html#cb523-5"></a><span class="kw">table</span>(test.y, diabets.gnet<span class="fl">.1</span>se.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
 <pre><code>##       Predicted
 ## Actual neg pos
 ##    neg  71   7
 ##    pos  21  18</code></pre>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="til20220319.html#cb526-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="til20220319.html#cb525-1"></a><span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred)</span></code></pre></div>
 <pre><code>## [1] 0.7521368</code></pre>
 <p>모든 예측변수를 사용한 이항 로지스틱회귀모델을 생성하고 성능을 평가한다.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="til20220319.html#cb528-1"></a>diabetes.logit &lt;-<span class="st"> </span><span class="kw">glm</span>(diabetes <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> diabetes.train, </span>
-<span id="cb528-2"><a href="til20220319.html#cb528-2"></a>                      <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
-<span id="cb528-3"><a href="til20220319.html#cb528-3"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabetes.logit, diabetes.test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb528-4"><a href="til20220319.html#cb528-4"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.logit.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
-<span id="cb528-5"><a href="til20220319.html#cb528-5"></a><span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes, diabetes.logit.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="til20220319.html#cb527-1"></a>diabetes.logit &lt;-<span class="st"> </span><span class="kw">glm</span>(diabetes <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> diabetes.train, </span>
+<span id="cb527-2"><a href="til20220319.html#cb527-2"></a>                      <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb527-3"><a href="til20220319.html#cb527-3"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(diabetes.logit, diabetes.test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb527-4"><a href="til20220319.html#cb527-4"></a>diabetes.logit.pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(diabetes.logit.pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&quot;pos&quot;</span>, <span class="st">&quot;neg&quot;</span>)</span>
+<span id="cb527-5"><a href="til20220319.html#cb527-5"></a><span class="kw">table</span>(diabetes.test<span class="op">$</span>diabetes, diabetes.logit.pred, <span class="dt">dnn =</span> <span class="kw">c</span>(<span class="st">&quot;Actual&quot;</span>, <span class="st">&quot;Predicted&quot;</span>))</span></code></pre></div>
 <pre><code>##       Predicted
 ## Actual neg pos
 ##    neg  66  12
 ##    pos  20  19</code></pre>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="til20220319.html#cb530-1"></a><span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="til20220319.html#cb529-1"></a><span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span></code></pre></div>
 <pre><code>## [1] 0.7264957</code></pre>
 <p>최종 모델별 예측정확도는 다음과 같고 간명도 관점에서 1se lambda를 이용한 모델을 선택하는 것이 바람직 하다.</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="til20220319.html#cb532-1"></a>perf.stats &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
-<span id="cb532-2"><a href="til20220319.html#cb532-2"></a>  <span class="dt">lambda.min =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred),</span>
-<span id="cb532-3"><a href="til20220319.html#cb532-3"></a>  <span class="dt">lambda.1se =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet<span class="fl">.1</span>se.pred),</span>
-<span id="cb532-4"><a href="til20220319.html#cb532-4"></a>  <span class="dt">predictor.all =</span> <span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span>
-<span id="cb532-5"><a href="til20220319.html#cb532-5"></a>); <span class="kw">colnames</span>(perf.stats) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accuracy&quot;</span>);</span>
-<span id="cb532-6"><a href="til20220319.html#cb532-6"></a>perf.stats</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="til20220319.html#cb531-1"></a>perf.stats &lt;-<span class="st"> </span><span class="kw">rbind</span>(</span>
+<span id="cb531-2"><a href="til20220319.html#cb531-2"></a>  <span class="dt">lambda.min =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet.min.pred),</span>
+<span id="cb531-3"><a href="til20220319.html#cb531-3"></a>  <span class="dt">lambda.1se =</span> <span class="kw">mean</span>(test.y <span class="op">==</span><span class="st"> </span>diabets.gnet<span class="fl">.1</span>se.pred),</span>
+<span id="cb531-4"><a href="til20220319.html#cb531-4"></a>  <span class="dt">predictor.all =</span> <span class="kw">mean</span>(diabetes.test<span class="op">$</span>diabetes <span class="op">==</span><span class="st"> </span>diabetes.logit.pred)</span>
+<span id="cb531-5"><a href="til20220319.html#cb531-5"></a>); <span class="kw">colnames</span>(perf.stats) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accuracy&quot;</span>);</span>
+<span id="cb531-6"><a href="til20220319.html#cb531-6"></a>perf.stats</span></code></pre></div>
 <pre><code>##                Accuracy
 ## lambda.min    0.7521368
 ## lambda.1se    0.7606838

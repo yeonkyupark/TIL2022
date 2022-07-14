@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-13" />
+<meta name="date" content="2022-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -621,6 +621,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.13.2" data-path="til20220713.html"><a href="til20220713.html#rmarkdown-폰트-색깔-지정"><i class="fa fa-check"></i><b>7.13.2</b> rmarkdown, 폰트 색깔 지정</a></li>
 <li class="chapter" data-level="7.13.3" data-path="til20220713.html"><a href="til20220713.html#yaml에-오늘-날짜-지정하기"><i class="fa fa-check"></i><b>7.13.3</b> YAML에 오늘 날짜 지정하기</a></li>
 </ul></li>
+<li class="chapter" data-level="7.14" data-path="til20220714.html"><a href="til20220714.html"><i class="fa fa-check"></i><b>7.14</b> TIL20220714</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="til20220714.html"><a href="til20220714.html#section-23"><i class="fa fa-check"></i><b>7.14.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -646,11 +649,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.5</span> TIL20220405<a href="til20220405.html#til20220405" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="dplyr" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.5.1</span> dplyr<a href="til20220405.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="til20220405.html#cb855-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb855-2"><a href="til20220405.html#cb855-2"></a>  <span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,</span>
-<span id="cb855-3"><a href="til20220405.html#cb855-3"></a>  <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb855-4"><a href="til20220405.html#cb855-4"></a>  <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
-<span id="cb855-5"><a href="til20220405.html#cb855-5"></a>); data;</span></code></pre></div>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="til20220405.html#cb854-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb854-2"><a href="til20220405.html#cb854-2"></a>  <span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,</span>
+<span id="cb854-3"><a href="til20220405.html#cb854-3"></a>  <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb854-4"><a href="til20220405.html#cb854-4"></a>  <span class="dt">x3 =</span> <span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb854-5"><a href="til20220405.html#cb854-5"></a>); data;</span></code></pre></div>
 <pre><code>##   x1 x2 x3
 ## 1  1  1  F
 ## 2  2  2  B
@@ -658,8 +661,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  4  3  E
 ## 5  5  1  A
 ## 6  6  2  D</code></pre>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="til20220405.html#cb857-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span></code></pre></div>
-<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="til20220405.html#cb858-1"></a><span class="kw">arrange</span>(data, x3)</span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="til20220405.html#cb856-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span></code></pre></div>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="til20220405.html#cb857-1"></a><span class="kw">arrange</span>(data, x3)</span></code></pre></div>
 <pre><code>##   x1 x2 x3
 ## 1  5  1  A
 ## 2  2  2  B
@@ -667,12 +670,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  6  2  D
 ## 5  4  3  E
 ## 6  1  1  F</code></pre>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="til20220405.html#cb860-1"></a><span class="kw">filter</span>(data, x2 <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="til20220405.html#cb859-1"></a><span class="kw">filter</span>(data, x2 <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   x1 x2 x3
 ## 1  2  2  B
 ## 2  3  2  C
 ## 3  6  2  D</code></pre>
-<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb862-1"><a href="til20220405.html#cb862-1"></a><span class="kw">mutate</span>(data, <span class="dt">x4 =</span> x1 <span class="op">+</span><span class="st"> </span>x2)</span></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="til20220405.html#cb861-1"></a><span class="kw">mutate</span>(data, <span class="dt">x4 =</span> x1 <span class="op">+</span><span class="st"> </span>x2)</span></code></pre></div>
 <pre><code>##   x1 x2 x3 x4
 ## 1  1  1  F  2
 ## 2  2  2  B  4
@@ -680,10 +683,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  4  3  E  7
 ## 5  5  1  A  6
 ## 6  6  2  D  8</code></pre>
-<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="til20220405.html#cb864-1"></a><span class="kw">pull</span>(data, x2); <span class="kw">class</span>(<span class="kw">pull</span>(data, x2))</span></code></pre></div>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="til20220405.html#cb863-1"></a><span class="kw">pull</span>(data, x2); <span class="kw">class</span>(<span class="kw">pull</span>(data, x2))</span></code></pre></div>
 <pre><code>## [1] 1 2 2 3 1 2</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="til20220405.html#cb867-1"></a><span class="kw">rename</span>(data, <span class="dt">new_name =</span> x3)</span></code></pre></div>
+<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="til20220405.html#cb866-1"></a><span class="kw">rename</span>(data, <span class="dt">new_name =</span> x3)</span></code></pre></div>
 <pre><code>##   x1 x2 new_name
 ## 1  1  1        F
 ## 2  2  2        B
@@ -691,13 +694,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  4  3        E
 ## 5  5  1        A
 ## 6  6  2        D</code></pre>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="til20220405.html#cb869-1"></a><span class="kw">set.seed</span>(<span class="dv">765</span>)</span>
-<span id="cb869-2"><a href="til20220405.html#cb869-2"></a><span class="kw">sample_n</span>(data, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="til20220405.html#cb868-1"></a><span class="kw">set.seed</span>(<span class="dv">765</span>)</span>
+<span id="cb868-2"><a href="til20220405.html#cb868-2"></a><span class="kw">sample_n</span>(data, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   x1 x2 x3
 ## 1  4  3  E
 ## 2  6  2  D
 ## 3  3  2  C</code></pre>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="til20220405.html#cb871-1"></a><span class="kw">select</span>(data, <span class="kw">c</span>(x2, x3))</span></code></pre></div>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="til20220405.html#cb870-1"></a><span class="kw">select</span>(data, <span class="kw">c</span>(x2, x3))</span></code></pre></div>
 <pre><code>##   x2 x3
 ## 1  1  F
 ## 2  2  B
@@ -708,65 +711,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="join-data-with-dplyr" class="section level4 hasAnchor">
 <h4><span class="header-section-number">4.5.1.1</span> Join Data with dplyr<a href="til20220405.html#join-data-with-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><img src="https://user-images.githubusercontent.com/72383349/161749149-ba9fb25a-83de-4899-8c86-ccfa53d93b23.png" alt="Join Data" /><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a></p>
-<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="til20220405.html#cb873-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,</span>
-<span id="cb873-2"><a href="til20220405.html#cb873-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;a2&quot;</span>),</span>
-<span id="cb873-3"><a href="til20220405.html#cb873-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data1;</span></code></pre></div>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="til20220405.html#cb872-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,</span>
+<span id="cb872-2"><a href="til20220405.html#cb872-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;a2&quot;</span>),</span>
+<span id="cb872-3"><a href="til20220405.html#cb872-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data1;</span></code></pre></div>
 <pre><code>##   ID x1
 ## 1  1 a1
 ## 2  2 a2</code></pre>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="til20220405.html#cb875-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,</span>
-<span id="cb875-2"><a href="til20220405.html#cb875-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>, <span class="st">&quot;b2&quot;</span>),</span>
-<span id="cb875-3"><a href="til20220405.html#cb875-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data2;</span></code></pre></div>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="til20220405.html#cb874-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>,</span>
+<span id="cb874-2"><a href="til20220405.html#cb874-2"></a>                    <span class="dt">x1 =</span> <span class="kw">c</span>(<span class="st">&quot;b1&quot;</span>, <span class="st">&quot;b2&quot;</span>),</span>
+<span id="cb874-3"><a href="til20220405.html#cb874-3"></a>                    <span class="dt">stringsAsFactors =</span> F); data2;</span></code></pre></div>
 <pre><code>##   ID x1
 ## 1  2 b1
 ## 2  3 b2</code></pre>
-<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="til20220405.html#cb877-1"></a><span class="kw">inner_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="til20220405.html#cb876-1"></a><span class="kw">inner_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1.x x1.y
 ## 1  2   a2   b1</code></pre>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="til20220405.html#cb879-1"></a><span class="kw">left_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="til20220405.html#cb878-1"></a><span class="kw">left_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1.x x1.y
 ## 1  1   a1 &lt;NA&gt;
 ## 2  2   a2   b1</code></pre>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="til20220405.html#cb881-1"></a><span class="kw">right_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="til20220405.html#cb880-1"></a><span class="kw">right_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1.x x1.y
 ## 1  2   a2   b1
 ## 2  3 &lt;NA&gt;   b2</code></pre>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="til20220405.html#cb883-1"></a><span class="kw">full_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="til20220405.html#cb882-1"></a><span class="kw">full_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1.x x1.y
 ## 1  1   a1 &lt;NA&gt;
 ## 2  2   a2   b1
 ## 3  3 &lt;NA&gt;   b2</code></pre>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="til20220405.html#cb885-1"></a><span class="kw">semi_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="til20220405.html#cb884-1"></a><span class="kw">semi_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1
 ## 1  2 a2</code></pre>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="til20220405.html#cb887-1"></a><span class="kw">anti_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="til20220405.html#cb886-1"></a><span class="kw">anti_join</span>(data1, data2, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>##   ID x1
 ## 1  1 a1</code></pre>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="til20220405.html#cb889-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb889-2"><a href="til20220405.html#cb889-2"></a>                    <span class="dt">x2 =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]); data1;</span></code></pre></div>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="til20220405.html#cb888-1"></a>data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb888-2"><a href="til20220405.html#cb888-2"></a>                    <span class="dt">x2 =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]); data1;</span></code></pre></div>
 <pre><code>##   x1 x2
 ## 1  1  a
 ## 2  2  b
 ## 3  3  c
 ## 4  4  d
 ## 5  5  e</code></pre>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="til20220405.html#cb891-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">0</span>,</span>
-<span id="cb891-2"><a href="til20220405.html#cb891-2"></a>                    <span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>); data2;</span></code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="til20220405.html#cb890-1"></a>data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1 =</span> <span class="dv">0</span>,</span>
+<span id="cb890-2"><a href="til20220405.html#cb890-2"></a>                    <span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>); data2;</span></code></pre></div>
 <pre><code>##   x1 x3
 ## 1  0  5
 ## 2  0  6
 ## 3  0  7
 ## 4  0  8
 ## 5  0  9</code></pre>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="til20220405.html#cb893-1"></a>data3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>,</span>
-<span id="cb893-2"><a href="til20220405.html#cb893-2"></a>                    <span class="dt">x4 =</span> letters[<span class="dv">5</span><span class="op">:</span><span class="dv">9</span>]); data3;</span></code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="til20220405.html#cb892-1"></a>data3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x3 =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">9</span>,</span>
+<span id="cb892-2"><a href="til20220405.html#cb892-2"></a>                    <span class="dt">x4 =</span> letters[<span class="dv">5</span><span class="op">:</span><span class="dv">9</span>]); data3;</span></code></pre></div>
 <pre><code>##   x3 x4
 ## 1  5  e
 ## 2  6  f
 ## 3  7  g
 ## 4  8  h
 ## 5  9  i</code></pre>
-<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="til20220405.html#cb895-1"></a><span class="kw">bind_rows</span>(data1, data2)</span></code></pre></div>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="til20220405.html#cb894-1"></a><span class="kw">bind_rows</span>(data1, data2)</span></code></pre></div>
 <pre><code>##    x1   x2 x3
 ## 1   1    a NA
 ## 2   2    b NA
@@ -778,7 +781,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8   0 &lt;NA&gt;  7
 ## 9   0 &lt;NA&gt;  8
 ## 10  0 &lt;NA&gt;  9</code></pre>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="til20220405.html#cb897-1"></a><span class="kw">bind_cols</span>(data1, data3)</span></code></pre></div>
+<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="til20220405.html#cb896-1"></a><span class="kw">bind_cols</span>(data1, data3)</span></code></pre></div>
 <pre><code>##   x1 x2 x3 x4
 ## 1  1  a  5  e
 ## 2  2  b  6  f

@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-13" />
+<meta name="date" content="2022-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -621,6 +621,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.13.2" data-path="til20220713.html"><a href="til20220713.html#rmarkdown-폰트-색깔-지정"><i class="fa fa-check"></i><b>7.13.2</b> rmarkdown, 폰트 색깔 지정</a></li>
 <li class="chapter" data-level="7.13.3" data-path="til20220713.html"><a href="til20220713.html#yaml에-오늘-날짜-지정하기"><i class="fa fa-check"></i><b>7.13.3</b> YAML에 오늘 날짜 지정하기</a></li>
 </ul></li>
+<li class="chapter" data-level="7.14" data-path="til20220714.html"><a href="til20220714.html"><i class="fa fa-check"></i><b>7.14</b> TIL20220714</a><ul>
+<li class="chapter" data-level="7.14.1" data-path="til20220714.html"><a href="til20220714.html#section-23"><i class="fa fa-check"></i><b>7.14.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -646,20 +649,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.31</span> TIL20220531<a href="til20220531.html#til20220531" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="다변량-분산분석" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.31.1</span> 다변량 분산분석<a href="til20220531.html#다변량-분산분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1391-1"><a href="til20220531.html#cb1391-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(heplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;heplots&quot;</span>); <span class="kw">library</span>(heplots); }</span></code></pre></div>
+<div class="sourceCode" id="cb1390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1390-1"><a href="til20220531.html#cb1390-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(heplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;heplots&quot;</span>); <span class="kw">library</span>(heplots); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpSSgfJH/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1393-1"><a href="til20220531.html#cb1393-1"></a><span class="kw">str</span>(Skulls)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpTYDaV8/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb1392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1392-1"><a href="til20220531.html#cb1392-1"></a><span class="kw">str</span>(Skulls)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ epoch: Ord.factor w/ 5 levels &quot;c4000BC&quot;&lt;&quot;c3300BC&quot;&lt;..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ mb   : num  131 125 131 119 136 138 139 125 131 134 ...
 ##  $ bh   : num  138 131 132 132 143 137 130 136 134 134 ...
 ##  $ bl   : num  89 92 99 96 100 89 108 93 102 99 ...
 ##  $ nh   : num  49 48 50 44 54 56 48 48 51 51 ...</code></pre>
-<div class="sourceCode" id="cb1395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1395-1"><a href="til20220531.html#cb1395-1"></a>data &lt;-<span class="st"> </span>Skulls</span></code></pre></div>
-<div class="sourceCode" id="cb1396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1396-1"><a href="til20220531.html#cb1396-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb1396-2"><a href="til20220531.html#cb1396-2"></a><span class="kw">sample_n</span>(data, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1394-1"><a href="til20220531.html#cb1394-1"></a>data &lt;-<span class="st"> </span>Skulls</span></code></pre></div>
+<div class="sourceCode" id="cb1395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1395-1"><a href="til20220531.html#cb1395-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb1395-2"><a href="til20220531.html#cb1395-2"></a><span class="kw">sample_n</span>(data, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##       epoch  mb  bh  bl nh
 ## 46  c3300BC 131 128  98 45
 ## 51  c3300BC 137 136 106 49
@@ -671,15 +674,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 122  cAD150 136 131  95 49
 ## 114  c200BC 130 131  98 53
 ## 130  cAD150 139 135  92 54</code></pre>
-<div class="sourceCode" id="cb1398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1398-1"><a href="til20220531.html#cb1398-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1398-2"><a href="til20220531.html#cb1398-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1398-3"><a href="til20220531.html#cb1398-3"></a><span class="st">  </span><span class="kw">summarise_all</span>(</span>
-<span id="cb1398-4"><a href="til20220531.html#cb1398-4"></a>    <span class="kw">list</span>(</span>
-<span id="cb1398-5"><a href="til20220531.html#cb1398-5"></a>      <span class="dt">Mean =</span> mean,</span>
-<span id="cb1398-6"><a href="til20220531.html#cb1398-6"></a>      <span class="dt">Meidan =</span> median,</span>
-<span id="cb1398-7"><a href="til20220531.html#cb1398-7"></a>      <span class="dt">SD =</span> sd</span>
-<span id="cb1398-8"><a href="til20220531.html#cb1398-8"></a>    )</span>
-<span id="cb1398-9"><a href="til20220531.html#cb1398-9"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb1397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1397-1"><a href="til20220531.html#cb1397-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1397-2"><a href="til20220531.html#cb1397-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1397-3"><a href="til20220531.html#cb1397-3"></a><span class="st">  </span><span class="kw">summarise_all</span>(</span>
+<span id="cb1397-4"><a href="til20220531.html#cb1397-4"></a>    <span class="kw">list</span>(</span>
+<span id="cb1397-5"><a href="til20220531.html#cb1397-5"></a>      <span class="dt">Mean =</span> mean,</span>
+<span id="cb1397-6"><a href="til20220531.html#cb1397-6"></a>      <span class="dt">Meidan =</span> median,</span>
+<span id="cb1397-7"><a href="til20220531.html#cb1397-7"></a>      <span class="dt">SD =</span> sd</span>
+<span id="cb1397-8"><a href="til20220531.html#cb1397-8"></a>    )</span>
+<span id="cb1397-9"><a href="til20220531.html#cb1397-9"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 13
 ##   epoch  mb_Mean bh_Mean bl_Mean nh_Mean mb_Meidan bh_Meidan bl_Meidan nh_Meidan
 ##   &lt;ord&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -689,9 +692,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 c200BC    136.    132.    94.5    52.0       135      132       94.5      52  
 ## 5 cAD150    136.    130.    93.5    51.4       137      130       94        52  
 ## # … with 4 more variables: mb_SD &lt;dbl&gt;, bh_SD &lt;dbl&gt;, bl_SD &lt;dbl&gt;, nh_SD &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb1400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1400-1"><a href="til20220531.html#cb1400-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1400-2"><a href="til20220531.html#cb1400-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1400-3"><a href="til20220531.html#cb1400-3"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(mean, sd), <span class="dt">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1399-1"><a href="til20220531.html#cb1399-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1399-2"><a href="til20220531.html#cb1399-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1399-3"><a href="til20220531.html#cb1399-3"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(mean, sd), <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 9
 ##   epoch   mb_fn1 bh_fn1 bl_fn1 nh_fn1 mb_fn2 bh_fn2 bl_fn2 nh_fn2
 ##   &lt;ord&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -700,9 +703,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 c1850BC   134.   134.   96.0   50.6   3.48   4.98   4.55   3.55
 ## 4 c200BC    136.   132.   94.5   52.0   3.92   5.13   4.59   2.82
 ## 5 cAD150    136.   130.   93.5   51.4   5.35   4.97   5.06   3.72</code></pre>
-<div class="sourceCode" id="cb1402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1402-1"><a href="til20220531.html#cb1402-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1402-2"><a href="til20220531.html#cb1402-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1402-3"><a href="til20220531.html#cb1402-3"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(<span class="dt">Min =</span> min, <span class="dt">Max =</span> max), <span class="dt">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1401-1"><a href="til20220531.html#cb1401-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1401-2"><a href="til20220531.html#cb1401-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1401-3"><a href="til20220531.html#cb1401-3"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(<span class="dt">Min =</span> min, <span class="dt">Max =</span> max), <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 9
 ##   epoch   mb_Min bh_Min bl_Min nh_Min mb_Max bh_Max bl_Max nh_Max
 ##   &lt;ord&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -711,7 +714,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 c1850BC    126    123     87     45    140    145    106     60
 ## 4 c200BC     129    120     86     46    144    142    107     60
 ## 5 cAD150     126    120     81     44    147    138    103     58</code></pre>
-<div class="sourceCode" id="cb1404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1404-1"><a href="til20220531.html#cb1404-1"></a><span class="kw">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1403-1"><a href="til20220531.html#cb1403-1"></a><span class="kw">head</span>(data)</span></code></pre></div>
 <pre><code>##     epoch  mb  bh  bl nh
 ## 1 c4000BC 131 138  89 49
 ## 2 c4000BC 125 131  92 48
@@ -719,7 +722,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 c4000BC 119 132  96 44
 ## 5 c4000BC 136 143 100 54
 ## 6 c4000BC 138 137  89 56</code></pre>
-<div class="sourceCode" id="cb1406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1406-1"><a href="til20220531.html#cb1406-1"></a>y &lt;-<span class="st"> </span>data[, <span class="dv">-1</span>]; <span class="kw">head</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb1405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1405-1"><a href="til20220531.html#cb1405-1"></a>y &lt;-<span class="st"> </span>data[, <span class="dv">-1</span>]; <span class="kw">head</span>(y)</span></code></pre></div>
 <pre><code>##    mb  bh  bl nh
 ## 1 131 138  89 49
 ## 2 125 131  92 48
@@ -727,9 +730,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 119 132  96 44
 ## 5 136 143 100 54
 ## 6 138 137  89 56</code></pre>
-<div class="sourceCode" id="cb1408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1408-1"><a href="til20220531.html#cb1408-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1408-2"><a href="til20220531.html#cb1408-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1408-3"><a href="til20220531.html#cb1408-3"></a><span class="st">  </span><span class="kw">summarise_all</span>(<span class="kw">list</span>(<span class="dt">Mean =</span> mean))</span></code></pre></div>
+<div class="sourceCode" id="cb1407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1407-1"><a href="til20220531.html#cb1407-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1407-2"><a href="til20220531.html#cb1407-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1407-3"><a href="til20220531.html#cb1407-3"></a><span class="st">  </span><span class="kw">summarise_all</span>(<span class="kw">list</span>(<span class="dt">Mean =</span> mean))</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
 ##   epoch   mb_Mean bh_Mean bl_Mean nh_Mean
 ##   &lt;ord&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -738,14 +741,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 c1850BC    134.    134.    96.0    50.6
 ## 4 c200BC     136.    132.    94.5    52.0
 ## 5 cAD150     136.    130.    93.5    51.4</code></pre>
-<div class="sourceCode" id="cb1410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1410-1"><a href="til20220531.html#cb1410-1"></a>data.manova &lt;-<span class="st"> </span><span class="kw">manova</span>(<span class="kw">cbind</span>(mb,bh,bl,nh) <span class="op">~</span><span class="st"> </span>epoch, data)</span>
-<span id="cb1410-2"><a href="til20220531.html#cb1410-2"></a><span class="kw">summary</span>(data.manova)</span></code></pre></div>
+<div class="sourceCode" id="cb1409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1409-1"><a href="til20220531.html#cb1409-1"></a>data.manova &lt;-<span class="st"> </span><span class="kw">manova</span>(<span class="kw">cbind</span>(mb,bh,bl,nh) <span class="op">~</span><span class="st"> </span>epoch, data)</span>
+<span id="cb1409-2"><a href="til20220531.html#cb1409-2"></a><span class="kw">summary</span>(data.manova)</span></code></pre></div>
 <pre><code>##            Df Pillai approx F num Df den Df  Pr(&gt;F)    
 ## epoch       4  0.353     3.51     16    580 4.7e-06 ***
 ## Residuals 145                                          
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb1412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1412-1"><a href="til20220531.html#cb1412-1"></a><span class="kw">summary.aov</span>(data.manova)</span></code></pre></div>
+<div class="sourceCode" id="cb1411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1411-1"><a href="til20220531.html#cb1411-1"></a><span class="kw">summary.aov</span>(data.manova)</span></code></pre></div>
 <pre><code>##  Response mb :
 ##              Df Sum Sq Mean Sq F value  Pr(&gt;F)    
 ## epoch         4    503   125.7    5.95 0.00018 ***
