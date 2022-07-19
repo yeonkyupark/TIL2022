@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-18" />
+<meta name="date" content="2022-07-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -636,6 +636,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.18" data-path="til20220718.html"><a href="til20220718.html"><i class="fa fa-check"></i><b>7.18</b> TIL20220718</a><ul>
 <li class="chapter" data-level="7.18.1" data-path="til20220718.html"><a href="til20220718.html#r-그래프에서-축과-그래프-사이-마진-줄이는-법"><i class="fa fa-check"></i><b>7.18.1</b> R 그래프에서 축과 그래프 사이 마진 줄이는 법</a></li>
 </ul></li>
+<li class="chapter" data-level="7.19" data-path="til20220719.html"><a href="til20220719.html"><i class="fa fa-check"></i><b>7.19</b> TIL20220719</a><ul>
+<li class="chapter" data-level="7.19.1" data-path="til20220719.html"><a href="til20220719.html#section-26"><i class="fa fa-check"></i><b>7.19.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -664,7 +667,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1390-1"><a href="til20220531.html#cb1390-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(heplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;heplots&quot;</span>); <span class="kw">library</span>(heplots); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp6PtEPz/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpP5p1OJ/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb1392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1392-1"><a href="til20220531.html#cb1392-1"></a><span class="kw">str</span>(Skulls)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ epoch: Ord.factor w/ 5 levels &quot;c4000BC&quot;&lt;&quot;c3300BC&quot;&lt;..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -696,14 +699,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1397-8"><a href="til20220531.html#cb1397-8"></a>    )</span>
 <span id="cb1397-9"><a href="til20220531.html#cb1397-9"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 13
-##   epoch  mb_Mean bh_Mean bl_Mean nh_Mean mb_Meidan bh_Meidan bl_Meidan nh_Meidan
-##   &lt;ord&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 c4000…    131.    134.    99.2    50.5       131      134      100        50  
-## 2 c3300…    132.    133.    99.1    50.2       132      133       98.5      50.5
-## 3 c1850…    134.    134.    96.0    50.6       136      134.      96        50  
-## 4 c200BC    136.    132.    94.5    52.0       135      132       94.5      52  
-## 5 cAD150    136.    130.    93.5    51.4       137      130       94        52  
-## # … with 4 more variables: mb_SD &lt;dbl&gt;, bh_SD &lt;dbl&gt;, bl_SD &lt;dbl&gt;, nh_SD &lt;dbl&gt;</code></pre>
+##   epoch   mb_Mean bh_Mean bl_Mean nh_Mean mb_Mei…¹ bh_Me…² bl_Me…³ nh_Me…⁴ mb_SD
+##   &lt;ord&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 c4000BC    131.    134.    99.2    50.5      131    134    100      50    5.13
+## 2 c3300BC    132.    133.    99.1    50.2      132    133     98.5    50.5  4.81
+## 3 c1850BC    134.    134.    96.0    50.6      136    134.    96      50    3.48
+## 4 c200BC     136.    132.    94.5    52.0      135    132     94.5    52    3.92
+## 5 cAD150     136.    130.    93.5    51.4      137    130     94      52    5.35
+## # … with 3 more variables: bh_SD &lt;dbl&gt;, bl_SD &lt;dbl&gt;, nh_SD &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​mb_Meidan, ²​bh_Meidan, ³​bl_Meidan, ⁴​nh_Meidan
+## # ℹ Use `colnames()` to see all variable names</code></pre>
 <div class="sourceCode" id="cb1399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1399-1"><a href="til20220531.html#cb1399-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb1399-2"><a href="til20220531.html#cb1399-2"></a><span class="st">  </span><span class="kw">group_by</span>(epoch) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb1399-3"><a href="til20220531.html#cb1399-3"></a><span class="st">  </span><span class="kw">summarise_if</span>(is.numeric, <span class="kw">list</span>(mean, sd), <span class="dt">na.rm =</span> T)</span></code></pre></div>
