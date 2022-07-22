@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-20" />
+<meta name="date" content="2022-07-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -641,6 +641,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.20" data-path="section-27.html"><a href="section-27.html"><i class="fa fa-check"></i><b>7.20</b> 20220720</a><ul>
 <li class="chapter" data-level="7.20.1" data-path="section-27.html"><a href="section-27.html#section-28"><i class="fa fa-check"></i><b>7.20.1</b> …</a></li>
+<li class="chapter" data-level="7.20.2" data-path="section-27.html"><a href="section-27.html#section-29"><i class="fa fa-check"></i><b>7.20.2</b> …</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -671,7 +672,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="til20220314.html#cb368-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpEvd9c3/downloaded_packages</code></pre>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpWJRW9V/downloaded_packages</code></pre>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="til20220314.html#cb370-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(penguins<span class="op">$</span>species, <span class="dt">p=</span>.<span class="dv">7</span>, <span class="dt">list=</span>F)</span>
 <span id="cb370-2"><a href="til20220314.html#cb370-2"></a>pTrain &lt;-<span class="st"> </span>penguins[trainIndex, ]</span>
 <span id="cb370-3"><a href="til20220314.html#cb370-3"></a>pTest &lt;-<span class="st"> </span>penguins[<span class="op">-</span>trainIndex, ]</span>
