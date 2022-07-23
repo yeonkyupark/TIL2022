@@ -1,0 +1,16 @@
+## TIL20220711
+
+### 통계학
+
+* 라이팅게일, 장미도표
+* 리터러리 다이제스트, 표본추출의 편중현상(selection bias)
+
+### 통계자료
+
+* 질적 변수 (qualitative variable)
+  * 명목형 자료 (nominal data)
+  * 순서형 자료 (ordinal data)
+* 양적 변수 (quantitative variable)
+  * 이산형 자료 (discrete data)
+  * 연속형 자료 (continous data)
+
