@@ -421,4 +421,4 @@ section-29
 til20220722
 section-30
 til20220723
-section-31
+t-통계량
