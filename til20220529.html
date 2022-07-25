@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2022-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -649,6 +649,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.22" data-path="til20220723.html"><a href="til20220723.html"><i class="fa fa-check"></i><b>7.22</b> TIL20220723</a><ul>
 <li class="chapter" data-level="7.22.1" data-path="til20220723.html"><a href="til20220723.html#t-통계량"><i class="fa fa-check"></i><b>7.22.1</b> t 통계량</a></li>
 </ul></li>
+<li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
+<li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -674,8 +677,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.29</span> TIL20220529<a href="til20220529.html#til20220529" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="section-7" class="section level3">
 <h3><span class="header-section-number">5.29.1</span> </h3>
-<div class="sourceCode" id="cb1374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1374-1"><a href="til20220529.html#cb1374-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1374-2"><a href="til20220529.html#cb1374-2"></a><span class="kw">str</span>(msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb1387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1387-1"><a href="til20220529.html#cb1387-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1387-2"><a href="til20220529.html#cb1387-2"></a><span class="kw">str</span>(msleep)</span></code></pre></div>
 <pre><code>## tibble [83 × 11] (S3: tbl_df/tbl/data.frame)
 ##  $ name        : chr [1:83] &quot;Cheetah&quot; &quot;Owl monkey&quot; &quot;Mountain beaver&quot; &quot;Greater short-tailed shrew&quot; ...
 ##  $ genus       : chr [1:83] &quot;Acinonyx&quot; &quot;Aotus&quot; &quot;Aplodontia&quot; &quot;Blarina&quot; ...
@@ -688,8 +691,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ awake       : num [1:83] 11.9 7 9.6 9.1 20 9.6 15.3 17 13.9 21 ...
 ##  $ brainwt     : num [1:83] NA 0.0155 NA 0.00029 0.423 NA NA NA 0.07 0.0982 ...
 ##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...</code></pre>
-<div class="sourceCode" id="cb1376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1376-1"><a href="til20220529.html#cb1376-1"></a>my_data &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1376-2"><a href="til20220529.html#cb1376-2"></a><span class="st">  </span><span class="kw">select</span>(name, sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb1389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1389-1"><a href="til20220529.html#cb1389-1"></a>my_data &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1389-2"><a href="til20220529.html#cb1389-2"></a><span class="st">  </span><span class="kw">select</span>(name, sleep_total)</span></code></pre></div>
 
 </div>
 </div>

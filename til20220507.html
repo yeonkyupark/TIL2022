@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2022-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -649,6 +649,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.22" data-path="til20220723.html"><a href="til20220723.html"><i class="fa fa-check"></i><b>7.22</b> TIL20220723</a><ul>
 <li class="chapter" data-level="7.22.1" data-path="til20220723.html"><a href="til20220723.html#t-통계량"><i class="fa fa-check"></i><b>7.22.1</b> t 통계량</a></li>
 </ul></li>
+<li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
+<li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -674,29 +677,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.7</span> TIL20220507<a href="til20220507.html#til20220507" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="lapply를-이용한-box-반복생성" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.7.1</span> lapply를 이용한 box 반복생성<a href="til20220507.html#lapply를-이용한-box-반복생성" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1061-1"><a href="til20220507.html#cb1061-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb1061-2"><a href="til20220507.html#cb1061-2"></a><span class="kw">library</span>(shinydashboard)</span>
-<span id="cb1061-3"><a href="til20220507.html#cb1061-3"></a></span>
-<span id="cb1061-4"><a href="til20220507.html#cb1061-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(      </span>
-<span id="cb1061-5"><a href="til20220507.html#cb1061-5"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Dynamic Boxes&quot;</span>),      </span>
-<span id="cb1061-6"><a href="til20220507.html#cb1061-6"></a>  <span class="kw">fluidRow</span>(</span>
-<span id="cb1061-7"><a href="til20220507.html#cb1061-7"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;boxes&quot;</span>)</span>
-<span id="cb1061-8"><a href="til20220507.html#cb1061-8"></a>  )</span>
-<span id="cb1061-9"><a href="til20220507.html#cb1061-9"></a>)</span>
-<span id="cb1061-10"><a href="til20220507.html#cb1061-10"></a></span>
-<span id="cb1061-11"><a href="til20220507.html#cb1061-11"></a>proList &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
-<span id="cb1061-12"><a href="til20220507.html#cb1061-12"></a></span>
-<span id="cb1061-13"><a href="til20220507.html#cb1061-13"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {      </span>
-<span id="cb1061-14"><a href="til20220507.html#cb1061-14"></a>  output<span class="op">$</span>boxes &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</span>
-<span id="cb1061-15"><a href="til20220507.html#cb1061-15"></a>    <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(proList), <span class="cf">function</span>(a) {</span>
-<span id="cb1061-16"><a href="til20220507.html#cb1061-16"></a>      x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></span>
-<span id="cb1061-17"><a href="til20220507.html#cb1061-17"></a>      <span class="kw">box</span>(<span class="dt">title =</span> <span class="kw">paste0</span>(<span class="st">&quot;box_&quot;</span>, a), </span>
-<span id="cb1061-18"><a href="til20220507.html#cb1061-18"></a>          <span class="kw">renderPlot</span>(<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> x<span class="op">^</span>a, <span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>)))</span>
-<span id="cb1061-19"><a href="til20220507.html#cb1061-19"></a>    })</span>
-<span id="cb1061-20"><a href="til20220507.html#cb1061-20"></a>  })</span>
-<span id="cb1061-21"><a href="til20220507.html#cb1061-21"></a>}</span>
-<span id="cb1061-22"><a href="til20220507.html#cb1061-22"></a></span>
-<span id="cb1061-23"><a href="til20220507.html#cb1061-23"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb1074"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1074-1"><a href="til20220507.html#cb1074-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb1074-2"><a href="til20220507.html#cb1074-2"></a><span class="kw">library</span>(shinydashboard)</span>
+<span id="cb1074-3"><a href="til20220507.html#cb1074-3"></a></span>
+<span id="cb1074-4"><a href="til20220507.html#cb1074-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(      </span>
+<span id="cb1074-5"><a href="til20220507.html#cb1074-5"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Dynamic Boxes&quot;</span>),      </span>
+<span id="cb1074-6"><a href="til20220507.html#cb1074-6"></a>  <span class="kw">fluidRow</span>(</span>
+<span id="cb1074-7"><a href="til20220507.html#cb1074-7"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;boxes&quot;</span>)</span>
+<span id="cb1074-8"><a href="til20220507.html#cb1074-8"></a>  )</span>
+<span id="cb1074-9"><a href="til20220507.html#cb1074-9"></a>)</span>
+<span id="cb1074-10"><a href="til20220507.html#cb1074-10"></a></span>
+<span id="cb1074-11"><a href="til20220507.html#cb1074-11"></a>proList &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb1074-12"><a href="til20220507.html#cb1074-12"></a></span>
+<span id="cb1074-13"><a href="til20220507.html#cb1074-13"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {      </span>
+<span id="cb1074-14"><a href="til20220507.html#cb1074-14"></a>  output<span class="op">$</span>boxes &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</span>
+<span id="cb1074-15"><a href="til20220507.html#cb1074-15"></a>    <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(proList), <span class="cf">function</span>(a) {</span>
+<span id="cb1074-16"><a href="til20220507.html#cb1074-16"></a>      x =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></span>
+<span id="cb1074-17"><a href="til20220507.html#cb1074-17"></a>      <span class="kw">box</span>(<span class="dt">title =</span> <span class="kw">paste0</span>(<span class="st">&quot;box_&quot;</span>, a), </span>
+<span id="cb1074-18"><a href="til20220507.html#cb1074-18"></a>          <span class="kw">renderPlot</span>(<span class="kw">plot</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> x<span class="op">^</span>a, <span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>)))</span>
+<span id="cb1074-19"><a href="til20220507.html#cb1074-19"></a>    })</span>
+<span id="cb1074-20"><a href="til20220507.html#cb1074-20"></a>  })</span>
+<span id="cb1074-21"><a href="til20220507.html#cb1074-21"></a>}</span>
+<span id="cb1074-22"><a href="til20220507.html#cb1074-22"></a></span>
+<span id="cb1074-23"><a href="til20220507.html#cb1074-23"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
 
 </div>
 </div>

@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2022-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -649,6 +649,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.22" data-path="til20220723.html"><a href="til20220723.html"><i class="fa fa-check"></i><b>7.22</b> TIL20220723</a><ul>
 <li class="chapter" data-level="7.22.1" data-path="til20220723.html"><a href="til20220723.html#t-통계량"><i class="fa fa-check"></i><b>7.22.1</b> t 통계량</a></li>
 </ul></li>
+<li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
+<li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -674,11 +677,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.17</span> TIL20220417<a href="til20220417.html#til20220417" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="dplyr-1" class="section level3 hasAnchor">
 <h3><span class="header-section-number">4.17.1</span> dplyr<a href="til20220417.html#dplyr-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="til20220417.html#cb939-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
-<span id="cb939-2"><a href="til20220417.html#cb939-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb939-3"><a href="til20220417.html#cb939-3"></a></span>
-<span id="cb939-4"><a href="til20220417.html#cb939-4"></a>data &lt;-<span class="st"> </span>penguins</span>
-<span id="cb939-5"><a href="til20220417.html#cb939-5"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="til20220417.html#cb952-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
+<span id="cb952-2"><a href="til20220417.html#cb952-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb952-3"><a href="til20220417.html#cb952-3"></a></span>
+<span id="cb952-4"><a href="til20220417.html#cb952-4"></a>data &lt;-<span class="st"> </span>penguins</span>
+<span id="cb952-5"><a href="til20220417.html#cb952-5"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</span></code></pre></div>
 <pre><code>## Rows: 344
 ## Columns: 8
 ## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
@@ -689,9 +692,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
 ## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
 ## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="til20220417.html#cb941-1"></a><span class="co"># filter</span></span>
-<span id="cb941-2"><a href="til20220417.html#cb941-2"></a>data <span class="op">%&gt;%</span></span>
-<span id="cb941-3"><a href="til20220417.html#cb941-3"></a><span class="st">  </span><span class="kw">filter</span>(body_mass_g <span class="op">&gt;</span><span class="st"> </span><span class="dv">4500</span> <span class="op">&amp;</span><span class="st"> </span>species <span class="op">==</span><span class="st"> &quot;Adelie&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb954-1"><a href="til20220417.html#cb954-1"></a><span class="co"># filter</span></span>
+<span id="cb954-2"><a href="til20220417.html#cb954-2"></a>data <span class="op">%&gt;%</span></span>
+<span id="cb954-3"><a href="til20220417.html#cb954-3"></a><span class="st">  </span><span class="kw">filter</span>(body_mass_g <span class="op">&gt;</span><span class="st"> </span><span class="dv">4500</span> <span class="op">&amp;</span><span class="st"> </span>species <span class="op">==</span><span class="st"> &quot;Adelie&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 8
 ##   species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
 ##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
@@ -703,9 +706,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 Adelie  Biscoe              43.2          19           197    4775 male   2009
 ## 7 Adelie  Biscoe              45.6          20.3         191    4600 male   2009
 ## # … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
-<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="til20220417.html#cb943-1"></a><span class="co"># select</span></span>
-<span id="cb943-2"><a href="til20220417.html#cb943-2"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb943-3"><a href="til20220417.html#cb943-3"></a><span class="st">  </span><span class="kw">select</span>(island, <span class="kw">everything</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="til20220417.html#cb956-1"></a><span class="co"># select</span></span>
+<span id="cb956-2"><a href="til20220417.html#cb956-2"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb956-3"><a href="til20220417.html#cb956-3"></a><span class="st">  </span><span class="kw">select</span>(island, <span class="kw">everything</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 8
 ##    island    species bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
 ##    &lt;fct&gt;     &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
@@ -722,8 +725,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
 ## #   ²​body_mass_g
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="til20220417.html#cb945-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb945-2"><a href="til20220417.html#cb945-2"></a><span class="st">  </span><span class="kw">select</span>(bill_length_mm<span class="op">:</span><span class="kw">last_col</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="til20220417.html#cb958-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb958-2"><a href="til20220417.html#cb958-2"></a><span class="st">  </span><span class="kw">select</span>(bill_length_mm<span class="op">:</span><span class="kw">last_col</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 6
 ##    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex     year
 ##             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt;  &lt;int&gt;
@@ -739,9 +742,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10           42            20.2               190        4250 &lt;NA&gt;    2007
 ## # … with 334 more rows
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="til20220417.html#cb947-1"></a>data <span class="op">%&gt;%</span></span>
-<span id="cb947-2"><a href="til20220417.html#cb947-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">body_mass_kg =</span> <span class="kw">as.numeric</span>(<span class="kw">substr</span>(body_mass_g,<span class="dv">1</span>,<span class="dv">2</span>))<span class="op">/</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb947-3"><a href="til20220417.html#cb947-3"></a><span class="st">  </span><span class="kw">select</span>(body_mass_g, body_mass_kg)</span></code></pre></div>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="til20220417.html#cb960-1"></a>data <span class="op">%&gt;%</span></span>
+<span id="cb960-2"><a href="til20220417.html#cb960-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">body_mass_kg =</span> <span class="kw">as.numeric</span>(<span class="kw">substr</span>(body_mass_g,<span class="dv">1</span>,<span class="dv">2</span>))<span class="op">/</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb960-3"><a href="til20220417.html#cb960-3"></a><span class="st">  </span><span class="kw">select</span>(body_mass_g, body_mass_kg)</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 2
 ##    body_mass_g body_mass_kg
 ##          &lt;int&gt;        &lt;dbl&gt;

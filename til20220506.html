@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2022-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -649,6 +649,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.22" data-path="til20220723.html"><a href="til20220723.html"><i class="fa fa-check"></i><b>7.22</b> TIL20220723</a><ul>
 <li class="chapter" data-level="7.22.1" data-path="til20220723.html"><a href="til20220723.html#t-통계량"><i class="fa fa-check"></i><b>7.22.1</b> t 통계량</a></li>
 </ul></li>
+<li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
+<li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -674,75 +677,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.6</span> TIL20220506<a href="til20220506.html#til20220506" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="shinyapp-loop로-메뉴-구성" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.6.1</span> shinyapp, loop로 메뉴 구성<a href="til20220506.html#shinyapp-loop로-메뉴-구성" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1060"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1060-1"><a href="til20220506.html#cb1060-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb1060-2"><a href="til20220506.html#cb1060-2"></a><span class="kw">library</span>(shinyjs) </span>
-<span id="cb1060-3"><a href="til20220506.html#cb1060-3"></a><span class="kw">library</span>(shinydashboard)</span>
-<span id="cb1060-4"><a href="til20220506.html#cb1060-4"></a></span>
-<span id="cb1060-5"><a href="til20220506.html#cb1060-5"></a>VecNames=<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
-<span id="cb1060-6"><a href="til20220506.html#cb1060-6"></a></span>
-<span id="cb1060-7"><a href="til20220506.html#cb1060-7"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
-<span id="cb1060-8"><a href="til20220506.html#cb1060-8"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;My Page&quot;</span>),</span>
-<span id="cb1060-9"><a href="til20220506.html#cb1060-9"></a>  <span class="kw">dashboardSidebar</span>(<span class="kw">sidebarMenuOutput</span>(<span class="st">&quot;sideBar_menu_UI&quot;</span>)),</span>
-<span id="cb1060-10"><a href="til20220506.html#cb1060-10"></a>  <span class="kw">dashboardBody</span>(</span>
-<span id="cb1060-11"><a href="til20220506.html#cb1060-11"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;body_UI&quot;</span>),</span>
-<span id="cb1060-12"><a href="til20220506.html#cb1060-12"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;test_UI&quot;</span>)</span>
-<span id="cb1060-13"><a href="til20220506.html#cb1060-13"></a>  ) </span>
-<span id="cb1060-14"><a href="til20220506.html#cb1060-14"></a>)</span>
-<span id="cb1060-15"><a href="til20220506.html#cb1060-15"></a></span>
-<span id="cb1060-16"><a href="til20220506.html#cb1060-16"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output, session) { </span>
-<span id="cb1060-17"><a href="til20220506.html#cb1060-17"></a>  output<span class="op">$</span>sideBar_menu_UI &lt;-<span class="st"> </span><span class="kw">renderMenu</span>({</span>
-<span id="cb1060-18"><a href="til20220506.html#cb1060-18"></a>    <span class="kw">sidebarMenu</span>(<span class="dt">id =</span> <span class="st">&quot;sideBar_Menu&quot;</span>,</span>
-<span id="cb1060-19"><a href="til20220506.html#cb1060-19"></a>                <span class="kw">menuItem</span>(<span class="st">&quot;Menu 1&quot;</span>, <span class="dt">tabName=</span><span class="st">&quot;menu1_tab&quot;</span>, <span class="dt">icon =</span>       <span class="kw">icon</span>(<span class="st">&quot;calendar&quot;</span>),</span>
-<span id="cb1060-20"><a href="til20220506.html#cb1060-20"></a>                         <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(VecNames), <span class="cf">function</span>(i) {</span>
-<span id="cb1060-21"><a href="til20220506.html#cb1060-21"></a>                           <span class="kw">menuSubItem</span>(VecNames[i], <span class="dt">tabName =</span> VecNames[i]  ,<span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;angle-right&quot;</span>))</span>
-<span id="cb1060-22"><a href="til20220506.html#cb1060-22"></a>                         })</span>
-<span id="cb1060-23"><a href="til20220506.html#cb1060-23"></a>                ),</span>
-<span id="cb1060-24"><a href="til20220506.html#cb1060-24"></a>                <span class="kw">menuItem</span>(<span class="st">&quot;Menu 2&quot;</span>, <span class="dt">tabName=</span><span class="st">&quot;menu2_tab&quot;</span>, <span class="dt">icon =</span>  <span class="kw">icon</span>(<span class="st">&quot;database&quot;</span>))</span>
-<span id="cb1060-25"><a href="til20220506.html#cb1060-25"></a>    )</span>
-<span id="cb1060-26"><a href="til20220506.html#cb1060-26"></a>  }) </span>
-<span id="cb1060-27"><a href="til20220506.html#cb1060-27"></a>  </span>
-<span id="cb1060-28"><a href="til20220506.html#cb1060-28"></a>  output<span class="op">$</span>test_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
-<span id="cb1060-29"><a href="til20220506.html#cb1060-29"></a>    A=<span class="kw">tabItems</span>(</span>
-<span id="cb1060-30"><a href="til20220506.html#cb1060-30"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu1_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu1_UI&quot;</span>)),    </span>
-<span id="cb1060-31"><a href="til20220506.html#cb1060-31"></a>      </span>
-<span id="cb1060-32"><a href="til20220506.html#cb1060-32"></a>      output<span class="op">$</span>test_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
-<span id="cb1060-33"><a href="til20220506.html#cb1060-33"></a>        items &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb1060-34"><a href="til20220506.html#cb1060-34"></a>          <span class="kw">list</span>(<span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu1_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu1_UI&quot;</span>))),</span>
-<span id="cb1060-35"><a href="til20220506.html#cb1060-35"></a>          <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(i){</span>
-<span id="cb1060-36"><a href="til20220506.html#cb1060-36"></a>            <span class="kw">tabItem</span>(<span class="dt">tabName =</span> VecNames[i], <span class="kw">uiOutput</span>(<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i)))        </span>
-<span id="cb1060-37"><a href="til20220506.html#cb1060-37"></a>          })</span>
-<span id="cb1060-38"><a href="til20220506.html#cb1060-38"></a>        )</span>
-<span id="cb1060-39"><a href="til20220506.html#cb1060-39"></a>        <span class="kw">do.call</span>(tabItems, items)</span>
-<span id="cb1060-40"><a href="til20220506.html#cb1060-40"></a>      }),</span>
-<span id="cb1060-41"><a href="til20220506.html#cb1060-41"></a>      <span class="co"># tabItem(tabName = VecNames[1], uiOutput(paste0(&quot;Menu&quot;,1))),</span></span>
-<span id="cb1060-42"><a href="til20220506.html#cb1060-42"></a>      <span class="co"># tabItem(tabName = VecNames[2], uiOutput(paste0(&quot;Menu&quot;,2))),</span></span>
-<span id="cb1060-43"><a href="til20220506.html#cb1060-43"></a>      <span class="co"># tabItem(tabName = VecNames[3], uiOutput(paste0(&quot;Menu&quot;,3))),</span></span>
-<span id="cb1060-44"><a href="til20220506.html#cb1060-44"></a>      <span class="co"># tabItem(tabName = VecNames[4], uiOutput(paste0(&quot;Menu&quot;,4))),</span></span>
-<span id="cb1060-45"><a href="til20220506.html#cb1060-45"></a>      <span class="co"># tabItem(tabName = VecNames[5], uiOutput(paste0(&quot;Menu&quot;,5))),      </span></span>
-<span id="cb1060-46"><a href="til20220506.html#cb1060-46"></a>      </span>
-<span id="cb1060-47"><a href="til20220506.html#cb1060-47"></a>      </span>
-<span id="cb1060-48"><a href="til20220506.html#cb1060-48"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu2_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu2_UI&quot;</span>))</span>
-<span id="cb1060-49"><a href="til20220506.html#cb1060-49"></a>    )</span>
-<span id="cb1060-50"><a href="til20220506.html#cb1060-50"></a>  })</span>
-<span id="cb1060-51"><a href="til20220506.html#cb1060-51"></a>  output<span class="op">$</span>body_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
-<span id="cb1060-52"><a href="til20220506.html#cb1060-52"></a>    <span class="kw">p</span>(<span class="st">&quot;Default content in body outsite any sidebar menus.&quot;</span>)</span>
-<span id="cb1060-53"><a href="til20220506.html#cb1060-53"></a>  })</span>
-<span id="cb1060-54"><a href="til20220506.html#cb1060-54"></a>  output<span class="op">$</span>menu1_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
-<span id="cb1060-55"><a href="til20220506.html#cb1060-55"></a>    <span class="kw">box</span>(<span class="st">&quot;Menu 1 Content&quot;</span>)</span>
-<span id="cb1060-56"><a href="til20220506.html#cb1060-56"></a>  })</span>
-<span id="cb1060-57"><a href="til20220506.html#cb1060-57"></a>  output<span class="op">$</span>menu2_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
-<span id="cb1060-58"><a href="til20220506.html#cb1060-58"></a>    <span class="kw">box</span>(<span class="st">&quot;Menu 2 Content&quot;</span>)</span>
-<span id="cb1060-59"><a href="til20220506.html#cb1060-59"></a>  })</span>
-<span id="cb1060-60"><a href="til20220506.html#cb1060-60"></a>  </span>
-<span id="cb1060-61"><a href="til20220506.html#cb1060-61"></a>  <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(i){</span>
-<span id="cb1060-62"><a href="til20220506.html#cb1060-62"></a>    output[[<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i)]]&lt;-<span class="st"> </span><span class="kw">renderUI</span>({</span>
-<span id="cb1060-63"><a href="til20220506.html#cb1060-63"></a>      <span class="kw">box</span>(<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i))</span>
-<span id="cb1060-64"><a href="til20220506.html#cb1060-64"></a>    })</span>
-<span id="cb1060-65"><a href="til20220506.html#cb1060-65"></a>  })</span>
-<span id="cb1060-66"><a href="til20220506.html#cb1060-66"></a>  </span>
-<span id="cb1060-67"><a href="til20220506.html#cb1060-67"></a>})</span>
-<span id="cb1060-68"><a href="til20220506.html#cb1060-68"></a></span>
-<span id="cb1060-69"><a href="til20220506.html#cb1060-69"></a><span class="kw">runApp</span>(<span class="kw">list</span>(<span class="dt">ui=</span> ui, <span class="dt">server =</span> server))</span></code></pre></div>
+<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1073-1"><a href="til20220506.html#cb1073-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb1073-2"><a href="til20220506.html#cb1073-2"></a><span class="kw">library</span>(shinyjs) </span>
+<span id="cb1073-3"><a href="til20220506.html#cb1073-3"></a><span class="kw">library</span>(shinydashboard)</span>
+<span id="cb1073-4"><a href="til20220506.html#cb1073-4"></a></span>
+<span id="cb1073-5"><a href="til20220506.html#cb1073-5"></a>VecNames=<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
+<span id="cb1073-6"><a href="til20220506.html#cb1073-6"></a></span>
+<span id="cb1073-7"><a href="til20220506.html#cb1073-7"></a>ui &lt;-<span class="st"> </span><span class="kw">dashboardPage</span>(</span>
+<span id="cb1073-8"><a href="til20220506.html#cb1073-8"></a>  <span class="kw">dashboardHeader</span>(<span class="dt">title =</span> <span class="st">&quot;My Page&quot;</span>),</span>
+<span id="cb1073-9"><a href="til20220506.html#cb1073-9"></a>  <span class="kw">dashboardSidebar</span>(<span class="kw">sidebarMenuOutput</span>(<span class="st">&quot;sideBar_menu_UI&quot;</span>)),</span>
+<span id="cb1073-10"><a href="til20220506.html#cb1073-10"></a>  <span class="kw">dashboardBody</span>(</span>
+<span id="cb1073-11"><a href="til20220506.html#cb1073-11"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;body_UI&quot;</span>),</span>
+<span id="cb1073-12"><a href="til20220506.html#cb1073-12"></a>    <span class="kw">uiOutput</span>(<span class="st">&quot;test_UI&quot;</span>)</span>
+<span id="cb1073-13"><a href="til20220506.html#cb1073-13"></a>  ) </span>
+<span id="cb1073-14"><a href="til20220506.html#cb1073-14"></a>)</span>
+<span id="cb1073-15"><a href="til20220506.html#cb1073-15"></a></span>
+<span id="cb1073-16"><a href="til20220506.html#cb1073-16"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output, session) { </span>
+<span id="cb1073-17"><a href="til20220506.html#cb1073-17"></a>  output<span class="op">$</span>sideBar_menu_UI &lt;-<span class="st"> </span><span class="kw">renderMenu</span>({</span>
+<span id="cb1073-18"><a href="til20220506.html#cb1073-18"></a>    <span class="kw">sidebarMenu</span>(<span class="dt">id =</span> <span class="st">&quot;sideBar_Menu&quot;</span>,</span>
+<span id="cb1073-19"><a href="til20220506.html#cb1073-19"></a>                <span class="kw">menuItem</span>(<span class="st">&quot;Menu 1&quot;</span>, <span class="dt">tabName=</span><span class="st">&quot;menu1_tab&quot;</span>, <span class="dt">icon =</span>       <span class="kw">icon</span>(<span class="st">&quot;calendar&quot;</span>),</span>
+<span id="cb1073-20"><a href="til20220506.html#cb1073-20"></a>                         <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(VecNames), <span class="cf">function</span>(i) {</span>
+<span id="cb1073-21"><a href="til20220506.html#cb1073-21"></a>                           <span class="kw">menuSubItem</span>(VecNames[i], <span class="dt">tabName =</span> VecNames[i]  ,<span class="dt">icon =</span> <span class="kw">icon</span>(<span class="st">&quot;angle-right&quot;</span>))</span>
+<span id="cb1073-22"><a href="til20220506.html#cb1073-22"></a>                         })</span>
+<span id="cb1073-23"><a href="til20220506.html#cb1073-23"></a>                ),</span>
+<span id="cb1073-24"><a href="til20220506.html#cb1073-24"></a>                <span class="kw">menuItem</span>(<span class="st">&quot;Menu 2&quot;</span>, <span class="dt">tabName=</span><span class="st">&quot;menu2_tab&quot;</span>, <span class="dt">icon =</span>  <span class="kw">icon</span>(<span class="st">&quot;database&quot;</span>))</span>
+<span id="cb1073-25"><a href="til20220506.html#cb1073-25"></a>    )</span>
+<span id="cb1073-26"><a href="til20220506.html#cb1073-26"></a>  }) </span>
+<span id="cb1073-27"><a href="til20220506.html#cb1073-27"></a>  </span>
+<span id="cb1073-28"><a href="til20220506.html#cb1073-28"></a>  output<span class="op">$</span>test_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
+<span id="cb1073-29"><a href="til20220506.html#cb1073-29"></a>    A=<span class="kw">tabItems</span>(</span>
+<span id="cb1073-30"><a href="til20220506.html#cb1073-30"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu1_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu1_UI&quot;</span>)),    </span>
+<span id="cb1073-31"><a href="til20220506.html#cb1073-31"></a>      </span>
+<span id="cb1073-32"><a href="til20220506.html#cb1073-32"></a>      output<span class="op">$</span>test_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
+<span id="cb1073-33"><a href="til20220506.html#cb1073-33"></a>        items &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb1073-34"><a href="til20220506.html#cb1073-34"></a>          <span class="kw">list</span>(<span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu1_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu1_UI&quot;</span>))),</span>
+<span id="cb1073-35"><a href="til20220506.html#cb1073-35"></a>          <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(i){</span>
+<span id="cb1073-36"><a href="til20220506.html#cb1073-36"></a>            <span class="kw">tabItem</span>(<span class="dt">tabName =</span> VecNames[i], <span class="kw">uiOutput</span>(<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i)))        </span>
+<span id="cb1073-37"><a href="til20220506.html#cb1073-37"></a>          })</span>
+<span id="cb1073-38"><a href="til20220506.html#cb1073-38"></a>        )</span>
+<span id="cb1073-39"><a href="til20220506.html#cb1073-39"></a>        <span class="kw">do.call</span>(tabItems, items)</span>
+<span id="cb1073-40"><a href="til20220506.html#cb1073-40"></a>      }),</span>
+<span id="cb1073-41"><a href="til20220506.html#cb1073-41"></a>      <span class="co"># tabItem(tabName = VecNames[1], uiOutput(paste0(&quot;Menu&quot;,1))),</span></span>
+<span id="cb1073-42"><a href="til20220506.html#cb1073-42"></a>      <span class="co"># tabItem(tabName = VecNames[2], uiOutput(paste0(&quot;Menu&quot;,2))),</span></span>
+<span id="cb1073-43"><a href="til20220506.html#cb1073-43"></a>      <span class="co"># tabItem(tabName = VecNames[3], uiOutput(paste0(&quot;Menu&quot;,3))),</span></span>
+<span id="cb1073-44"><a href="til20220506.html#cb1073-44"></a>      <span class="co"># tabItem(tabName = VecNames[4], uiOutput(paste0(&quot;Menu&quot;,4))),</span></span>
+<span id="cb1073-45"><a href="til20220506.html#cb1073-45"></a>      <span class="co"># tabItem(tabName = VecNames[5], uiOutput(paste0(&quot;Menu&quot;,5))),      </span></span>
+<span id="cb1073-46"><a href="til20220506.html#cb1073-46"></a>      </span>
+<span id="cb1073-47"><a href="til20220506.html#cb1073-47"></a>      </span>
+<span id="cb1073-48"><a href="til20220506.html#cb1073-48"></a>      <span class="kw">tabItem</span>(<span class="dt">tabName =</span> <span class="st">&quot;menu2_tab&quot;</span>, <span class="kw">uiOutput</span>(<span class="st">&quot;menu2_UI&quot;</span>))</span>
+<span id="cb1073-49"><a href="til20220506.html#cb1073-49"></a>    )</span>
+<span id="cb1073-50"><a href="til20220506.html#cb1073-50"></a>  })</span>
+<span id="cb1073-51"><a href="til20220506.html#cb1073-51"></a>  output<span class="op">$</span>body_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
+<span id="cb1073-52"><a href="til20220506.html#cb1073-52"></a>    <span class="kw">p</span>(<span class="st">&quot;Default content in body outsite any sidebar menus.&quot;</span>)</span>
+<span id="cb1073-53"><a href="til20220506.html#cb1073-53"></a>  })</span>
+<span id="cb1073-54"><a href="til20220506.html#cb1073-54"></a>  output<span class="op">$</span>menu1_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
+<span id="cb1073-55"><a href="til20220506.html#cb1073-55"></a>    <span class="kw">box</span>(<span class="st">&quot;Menu 1 Content&quot;</span>)</span>
+<span id="cb1073-56"><a href="til20220506.html#cb1073-56"></a>  })</span>
+<span id="cb1073-57"><a href="til20220506.html#cb1073-57"></a>  output<span class="op">$</span>menu2_UI &lt;-<span class="st"> </span><span class="kw">renderUI</span> ({</span>
+<span id="cb1073-58"><a href="til20220506.html#cb1073-58"></a>    <span class="kw">box</span>(<span class="st">&quot;Menu 2 Content&quot;</span>)</span>
+<span id="cb1073-59"><a href="til20220506.html#cb1073-59"></a>  })</span>
+<span id="cb1073-60"><a href="til20220506.html#cb1073-60"></a>  </span>
+<span id="cb1073-61"><a href="til20220506.html#cb1073-61"></a>  <span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="cf">function</span>(i){</span>
+<span id="cb1073-62"><a href="til20220506.html#cb1073-62"></a>    output[[<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i)]]&lt;-<span class="st"> </span><span class="kw">renderUI</span>({</span>
+<span id="cb1073-63"><a href="til20220506.html#cb1073-63"></a>      <span class="kw">box</span>(<span class="kw">paste0</span>(<span class="st">&quot;Menu&quot;</span>,i))</span>
+<span id="cb1073-64"><a href="til20220506.html#cb1073-64"></a>    })</span>
+<span id="cb1073-65"><a href="til20220506.html#cb1073-65"></a>  })</span>
+<span id="cb1073-66"><a href="til20220506.html#cb1073-66"></a>  </span>
+<span id="cb1073-67"><a href="til20220506.html#cb1073-67"></a>})</span>
+<span id="cb1073-68"><a href="til20220506.html#cb1073-68"></a></span>
+<span id="cb1073-69"><a href="til20220506.html#cb1073-69"></a><span class="kw">runApp</span>(<span class="kw">list</span>(<span class="dt">ui=</span> ui, <span class="dt">server =</span> server))</span></code></pre></div>
 
 </div>
 </div>

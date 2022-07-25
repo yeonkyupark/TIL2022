@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-23" />
+<meta name="date" content="2022-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -649,6 +649,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.22" data-path="til20220723.html"><a href="til20220723.html"><i class="fa fa-check"></i><b>7.22</b> TIL20220723</a><ul>
 <li class="chapter" data-level="7.22.1" data-path="til20220723.html"><a href="til20220723.html#t-통계량"><i class="fa fa-check"></i><b>7.22.1</b> t 통계량</a></li>
 </ul></li>
+<li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
+<li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -674,57 +677,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.12</span> TIL20220612<a href="til20220612.html#til20220612" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="분류-모델-비교" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.12.1</span> 분류 모델 비교<a href="til20220612.html#분류-모델-비교" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1580-1"><a href="til20220612.html#cb1580-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb1581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1581-1"><a href="til20220612.html#cb1581-1"></a>packages &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>, <span class="st">&quot;imputeMissings&quot;</span>)</span>
-<span id="cb1581-2"><a href="til20220612.html#cb1581-2"></a><span class="kw">invisible</span>(</span>
-<span id="cb1581-3"><a href="til20220612.html#cb1581-3"></a>    <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
-<span id="cb1581-4"><a href="til20220612.html#cb1581-4"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb1582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1582-1"><a href="til20220612.html#cb1582-1"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
-<div class="sourceCode" id="cb1583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1583-1"><a href="til20220612.html#cb1583-1"></a>train_index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>sex, <span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">list =</span> F)</span>
-<span id="cb1583-2"><a href="til20220612.html#cb1583-2"></a>train_set &lt;-<span class="st"> </span>data[train_index, ]</span>
-<span id="cb1583-3"><a href="til20220612.html#cb1583-3"></a>test_set &lt;-<span class="st"> </span>data[<span class="op">-</span>train_index, ]</span></code></pre></div>
-<div class="sourceCode" id="cb1584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1584-1"><a href="til20220612.html#cb1584-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1593-1"><a href="til20220612.html#cb1593-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb1594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1594-1"><a href="til20220612.html#cb1594-1"></a>packages &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>, <span class="st">&quot;imputeMissings&quot;</span>)</span>
+<span id="cb1594-2"><a href="til20220612.html#cb1594-2"></a><span class="kw">invisible</span>(</span>
+<span id="cb1594-3"><a href="til20220612.html#cb1594-3"></a>    <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
+<span id="cb1594-4"><a href="til20220612.html#cb1594-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1595-1"><a href="til20220612.html#cb1595-1"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
+<div class="sourceCode" id="cb1596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1596-1"><a href="til20220612.html#cb1596-1"></a>train_index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>sex, <span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">list =</span> F)</span>
+<span id="cb1596-2"><a href="til20220612.html#cb1596-2"></a>train_set &lt;-<span class="st"> </span>data[train_index, ]</span>
+<span id="cb1596-3"><a href="til20220612.html#cb1596-3"></a>test_set &lt;-<span class="st"> </span>data[<span class="op">-</span>train_index, ]</span></code></pre></div>
+<div class="sourceCode" id="cb1597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1597-1"><a href="til20220612.html#cb1597-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 2                 2 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 2                 2                 9</code></pre>
-<div class="sourceCode" id="cb1586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1586-1"><a href="til20220612.html#cb1586-1"></a>train_set &lt;-<span class="st"> </span><span class="kw">impute</span>(train_set)</span>
-<span id="cb1586-2"><a href="til20220612.html#cb1586-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1599-1"><a href="til20220612.html#cb1599-1"></a>train_set &lt;-<span class="st"> </span><span class="kw">impute</span>(train_set)</span>
+<span id="cb1599-2"><a href="til20220612.html#cb1599-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 0</code></pre>
-<div class="sourceCode" id="cb1588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1588-1"><a href="til20220612.html#cb1588-1"></a>model_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rf&quot;</span>, <span class="st">&quot;svmRadial&quot;</span>, <span class="st">&quot;lda&quot;</span>)</span>
-<span id="cb1588-2"><a href="til20220612.html#cb1588-2"></a>model_fit &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1588-3"><a href="til20220612.html#cb1588-3"></a>model_pred &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1588-4"><a href="til20220612.html#cb1588-4"></a></span>
-<span id="cb1588-5"><a href="til20220612.html#cb1588-5"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1601-1"><a href="til20220612.html#cb1601-1"></a>model_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rf&quot;</span>, <span class="st">&quot;svmRadial&quot;</span>, <span class="st">&quot;lda&quot;</span>)</span>
+<span id="cb1601-2"><a href="til20220612.html#cb1601-2"></a>model_fit &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1601-3"><a href="til20220612.html#cb1601-3"></a>model_pred &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1601-4"><a href="til20220612.html#cb1601-4"></a></span>
+<span id="cb1601-5"><a href="til20220612.html#cb1601-5"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 2</code></pre>
-<div class="sourceCode" id="cb1590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1590-1"><a href="til20220612.html#cb1590-1"></a>test_set &lt;-<span class="st"> </span><span class="kw">impute</span>(test_set)</span>
-<span id="cb1590-2"><a href="til20220612.html#cb1590-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1603-1"><a href="til20220612.html#cb1603-1"></a>test_set &lt;-<span class="st"> </span><span class="kw">impute</span>(test_set)</span>
+<span id="cb1603-2"><a href="til20220612.html#cb1603-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 0</code></pre>
-<div class="sourceCode" id="cb1592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1592-1"><a href="til20220612.html#cb1592-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(model_list)) {</span>
-<span id="cb1592-2"><a href="til20220612.html#cb1592-2"></a>    model_fit[[i]] &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb1592-3"><a href="til20220612.html#cb1592-3"></a>      species <span class="op">~</span><span class="st"> </span>., train_set,</span>
-<span id="cb1592-4"><a href="til20220612.html#cb1592-4"></a>      <span class="dt">method =</span> model_list[i],</span>
-<span id="cb1592-5"><a href="til20220612.html#cb1592-5"></a>      <span class="dt">verbose =</span> F,</span>
-<span id="cb1592-6"><a href="til20220612.html#cb1592-6"></a>    )</span>
-<span id="cb1592-7"><a href="til20220612.html#cb1592-7"></a>    model_pred[[i]] &lt;-<span class="st"> </span><span class="kw">predict</span>(model_fit[[i]], test_set)</span>
-<span id="cb1592-8"><a href="til20220612.html#cb1592-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1605-1"><a href="til20220612.html#cb1605-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(model_list)) {</span>
+<span id="cb1605-2"><a href="til20220612.html#cb1605-2"></a>    model_fit[[i]] &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
+<span id="cb1605-3"><a href="til20220612.html#cb1605-3"></a>      species <span class="op">~</span><span class="st"> </span>., train_set,</span>
+<span id="cb1605-4"><a href="til20220612.html#cb1605-4"></a>      <span class="dt">method =</span> model_list[i],</span>
+<span id="cb1605-5"><a href="til20220612.html#cb1605-5"></a>      <span class="dt">verbose =</span> F,</span>
+<span id="cb1605-6"><a href="til20220612.html#cb1605-6"></a>    )</span>
+<span id="cb1605-7"><a href="til20220612.html#cb1605-7"></a>    model_pred[[i]] &lt;-<span class="st"> </span><span class="kw">predict</span>(model_fit[[i]], test_set)</span>
+<span id="cb1605-8"><a href="til20220612.html#cb1605-8"></a>}</span></code></pre></div>
 <pre><code>## Error: Required packages are missing: kernlab</code></pre>
-<div class="sourceCode" id="cb1594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1594-1"><a href="til20220612.html#cb1594-1"></a>resamps &lt;-<span class="st"> </span><span class="kw">resamples</span>(<span class="kw">list</span>(<span class="dt">RF =</span> model_fit[[<span class="dv">1</span>]], <span class="dt">SVM =</span> model_fit[[<span class="dv">2</span>]], <span class="dt">LDA =</span> model_fit[[<span class="dv">3</span>]]))</span></code></pre></div>
+<div class="sourceCode" id="cb1607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1607-1"><a href="til20220612.html#cb1607-1"></a>resamps &lt;-<span class="st"> </span><span class="kw">resamples</span>(<span class="kw">list</span>(<span class="dt">RF =</span> model_fit[[<span class="dv">1</span>]], <span class="dt">SVM =</span> model_fit[[<span class="dv">2</span>]], <span class="dt">LDA =</span> model_fit[[<span class="dv">3</span>]]))</span></code></pre></div>
 <pre><code>## Error in model_fit[[2]]: subscript out of bounds</code></pre>
-<div class="sourceCode" id="cb1596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1596-1"><a href="til20220612.html#cb1596-1"></a><span class="kw">summary</span>(resamps)</span></code></pre></div>
+<div class="sourceCode" id="cb1609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1609-1"><a href="til20220612.html#cb1609-1"></a><span class="kw">summary</span>(resamps)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;resamps&#39; not found</code></pre>
-<div class="sourceCode" id="cb1598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1598-1"><a href="til20220612.html#cb1598-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
-<span id="cb1598-2"><a href="til20220612.html#cb1598-2"></a>  <span class="kw">print</span>(<span class="kw">confusionMatrix</span>(model_pred[[i]], test_set<span class="op">$</span>species))</span>
-<span id="cb1598-3"><a href="til20220612.html#cb1598-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1611-1"><a href="til20220612.html#cb1611-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
+<span id="cb1611-2"><a href="til20220612.html#cb1611-2"></a>  <span class="kw">print</span>(<span class="kw">confusionMatrix</span>(model_pred[[i]], test_set<span class="op">$</span>species))</span>
+<span id="cb1611-3"><a href="til20220612.html#cb1611-3"></a>}</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##            Reference
