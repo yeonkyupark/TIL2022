@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-25" />
+<meta name="date" content="2022-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -652,6 +652,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
 <li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="7.24" data-path="til20220726.html"><a href="til20220726.html"><i class="fa fa-check"></i><b>7.24</b> TIL20220726</a><ul>
+<li class="chapter" data-level="7.24.1" data-path="til20220726.html"><a href="til20220726.html#section-32"><i class="fa fa-check"></i><b>7.24.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -677,12 +680,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.8</span> TIL20220608<a href="til20220608.html#til20220608" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="qcc-1" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.8.1</span> qcc<a href="til20220608.html#qcc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="til20220608.html#cb1539-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(qcc)) { <span class="kw">install.packages</span>(<span class="st">&quot;qcc&quot;</span>); <span class="kw">library</span>(qcc); }</span>
-<span id="cb1539-2"><a href="til20220608.html#cb1539-2"></a></span>
-<span id="cb1539-3"><a href="til20220608.html#cb1539-3"></a><span class="kw">library</span>(qcc)</span>
-<span id="cb1539-4"><a href="til20220608.html#cb1539-4"></a><span class="kw">data</span>(pistonrings)</span>
-<span id="cb1539-5"><a href="til20220608.html#cb1539-5"></a>diameter &lt;-<span class="st"> </span><span class="kw">qcc.groups</span>(pistonrings<span class="op">$</span>diameter, pistonrings<span class="op">$</span>sample)</span>
-<span id="cb1539-6"><a href="til20220608.html#cb1539-6"></a><span class="kw">head</span>(diameter)</span></code></pre></div>
+<div class="sourceCode" id="cb1526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1526-1"><a href="til20220608.html#cb1526-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(qcc)) { <span class="kw">install.packages</span>(<span class="st">&quot;qcc&quot;</span>); <span class="kw">library</span>(qcc); }</span>
+<span id="cb1526-2"><a href="til20220608.html#cb1526-2"></a></span>
+<span id="cb1526-3"><a href="til20220608.html#cb1526-3"></a><span class="kw">library</span>(qcc)</span>
+<span id="cb1526-4"><a href="til20220608.html#cb1526-4"></a><span class="kw">data</span>(pistonrings)</span>
+<span id="cb1526-5"><a href="til20220608.html#cb1526-5"></a>diameter &lt;-<span class="st"> </span><span class="kw">qcc.groups</span>(pistonrings<span class="op">$</span>diameter, pistonrings<span class="op">$</span>sample)</span>
+<span id="cb1526-6"><a href="til20220608.html#cb1526-6"></a><span class="kw">head</span>(diameter)</span></code></pre></div>
 <pre><code>##   [,1] [,2] [,3] [,4] [,5]
 ## 1   74   74   74   74   74
 ## 2   74   74   74   74   74
@@ -690,7 +693,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   74   74   74   74   74
 ## 5   74   74   74   74   74
 ## 6   74   74   74   74   74</code></pre>
-<div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="til20220608.html#cb1541-1"></a><span class="kw">qcc</span>(diameter[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,], <span class="dt">type =</span> <span class="st">&quot;xbar&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1528-1"><a href="til20220608.html#cb1528-1"></a><span class="kw">qcc</span>(diameter[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,], <span class="dt">type =</span> <span class="st">&quot;xbar&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-650-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>## List of 11
 ##  $ call      : language qcc(data = diameter[1:25, ], type = &quot;xbar&quot;)
@@ -709,7 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   ..- attr(*, &quot;dimnames&quot;)=List of 2
 ##  $ violations:List of 2
 ##  - attr(*, &quot;class&quot;)= chr &quot;qcc&quot;</code></pre>
-<div class="sourceCode" id="cb1543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1543-1"><a href="til20220608.html#cb1543-1"></a><span class="kw">plot</span>(q1, <span class="dt">fill =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1530-1"><a href="til20220608.html#cb1530-1"></a><span class="kw">plot</span>(q1, <span class="dt">fill =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-651-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>

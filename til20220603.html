@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-25" />
+<meta name="date" content="2022-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -652,6 +652,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
 <li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="7.24" data-path="til20220726.html"><a href="til20220726.html"><i class="fa fa-check"></i><b>7.24</b> TIL20220726</a><ul>
+<li class="chapter" data-level="7.24.1" data-path="til20220726.html"><a href="til20220726.html#section-32"><i class="fa fa-check"></i><b>7.24.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -677,18 +680,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> TIL20220603<a href="til20220603.html#til20220603" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="pca-변환-모델-성능-비교" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.3.1</span> PCA 변환 모델 성능 비교<a href="til20220603.html#pca-변환-모델-성능-비교" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1466-1"><a href="til20220603.html#cb1466-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1466-2"><a href="til20220603.html#cb1466-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
-<span id="cb1466-3"><a href="til20220603.html#cb1466-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
-<div class="sourceCode" id="cb1467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1467-1"><a href="til20220603.html#cb1467-1"></a><span class="kw">data</span>(<span class="st">&quot;BostonHousing&quot;</span>)</span>
-<span id="cb1467-2"><a href="til20220603.html#cb1467-2"></a>bh &lt;-<span class="st"> </span>BostonHousing</span></code></pre></div>
-<div class="sourceCode" id="cb1468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1468-1"><a href="til20220603.html#cb1468-1"></a><span class="co"># EDA</span></span>
-<span id="cb1468-2"><a href="til20220603.html#cb1468-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(bh))</span></code></pre></div>
+<div class="sourceCode" id="cb1453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1453-1"><a href="til20220603.html#cb1453-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1453-2"><a href="til20220603.html#cb1453-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb1453-3"><a href="til20220603.html#cb1453-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mlbench)) { <span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>); <span class="kw">library</span>(mlbench); }</span></code></pre></div>
+<div class="sourceCode" id="cb1454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1454-1"><a href="til20220603.html#cb1454-1"></a><span class="kw">data</span>(<span class="st">&quot;BostonHousing&quot;</span>)</span>
+<span id="cb1454-2"><a href="til20220603.html#cb1454-2"></a>bh &lt;-<span class="st"> </span>BostonHousing</span></code></pre></div>
+<div class="sourceCode" id="cb1455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1455-1"><a href="til20220603.html#cb1455-1"></a><span class="co"># EDA</span></span>
+<span id="cb1455-2"><a href="til20220603.html#cb1455-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(bh))</span></code></pre></div>
 <pre><code>##    crim      zn   indus    chas     nox      rm     age     dis     rad     tax 
 ##       0       0       0       0       0       0       0       0       0       0 
 ## ptratio       b   lstat    medv 
 ##       0       0       0       0</code></pre>
-<div class="sourceCode" id="cb1470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1470-1"><a href="til20220603.html#cb1470-1"></a><span class="kw">summary</span>(bh)</span></code></pre></div>
+<div class="sourceCode" id="cb1457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1457-1"><a href="til20220603.html#cb1457-1"></a><span class="kw">summary</span>(bh)</span></code></pre></div>
 <pre><code>##       crim            zn            indus       chas         nox       
 ##  Min.   : 0.0   Min.   :  0.0   Min.   : 0.46   0:471   Min.   :0.385  
 ##  1st Qu.: 0.1   1st Qu.:  0.0   1st Qu.: 5.19   1: 35   1st Qu.:0.449  
@@ -710,22 +713,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :18.5   Mean   :357   Mean   :12.7   Mean   :22.5  
 ##  3rd Qu.:20.2   3rd Qu.:396   3rd Qu.:17.0   3rd Qu.:25.0  
 ##  Max.   :22.0   Max.   :397   Max.   :38.0   Max.   :50.0</code></pre>
-<div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="til20220603.html#cb1472-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(bh<span class="op">$</span>medv, <span class="dt">p=</span>.<span class="dv">75</span>, <span class="dt">list=</span>F)</span>
-<span id="cb1472-2"><a href="til20220603.html#cb1472-2"></a>bhTrain &lt;-<span class="st"> </span>bh[ trainIndex, ]</span>
-<span id="cb1472-3"><a href="til20220603.html#cb1472-3"></a>bhTest  &lt;-<span class="st"> </span>bh[<span class="op">-</span>trainIndex, ]</span></code></pre></div>
-<div class="sourceCode" id="cb1473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1473-1"><a href="til20220603.html#cb1473-1"></a>bhTrainPP &lt;-<span class="st"> </span><span class="kw">preProcess</span>(bhTrain[, <span class="dv">-14</span>], <span class="dt">method =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>))</span>
-<span id="cb1473-2"><a href="til20220603.html#cb1473-2"></a>newbhTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(bhTrainPP, bhTrain[, <span class="dv">-14</span>])</span>
-<span id="cb1473-3"><a href="til20220603.html#cb1473-3"></a>newbhTrain &lt;-<span class="st"> </span><span class="kw">cbind</span>(newbhTrain, <span class="dt">medv =</span> bhTrain[, <span class="dv">14</span>])</span></code></pre></div>
-<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="til20220603.html#cb1474-1"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>)</span>
-<span id="cb1474-2"><a href="til20220603.html#cb1474-2"></a>rfFit &lt;-<span class="st"> </span><span class="kw">train</span>(medv <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> newbhTrain, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>,</span>
-<span id="cb1474-3"><a href="til20220603.html#cb1474-3"></a>               <span class="dt">trControl =</span> fitControl, <span class="dt">verbose =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb1459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1459-1"><a href="til20220603.html#cb1459-1"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(bh<span class="op">$</span>medv, <span class="dt">p=</span>.<span class="dv">75</span>, <span class="dt">list=</span>F)</span>
+<span id="cb1459-2"><a href="til20220603.html#cb1459-2"></a>bhTrain &lt;-<span class="st"> </span>bh[ trainIndex, ]</span>
+<span id="cb1459-3"><a href="til20220603.html#cb1459-3"></a>bhTest  &lt;-<span class="st"> </span>bh[<span class="op">-</span>trainIndex, ]</span></code></pre></div>
+<div class="sourceCode" id="cb1460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1460-1"><a href="til20220603.html#cb1460-1"></a>bhTrainPP &lt;-<span class="st"> </span><span class="kw">preProcess</span>(bhTrain[, <span class="dv">-14</span>], <span class="dt">method =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>))</span>
+<span id="cb1460-2"><a href="til20220603.html#cb1460-2"></a>newbhTrain &lt;-<span class="st"> </span><span class="kw">predict</span>(bhTrainPP, bhTrain[, <span class="dv">-14</span>])</span>
+<span id="cb1460-3"><a href="til20220603.html#cb1460-3"></a>newbhTrain &lt;-<span class="st"> </span><span class="kw">cbind</span>(newbhTrain, <span class="dt">medv =</span> bhTrain[, <span class="dv">14</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb1461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1461-1"><a href="til20220603.html#cb1461-1"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>)</span>
+<span id="cb1461-2"><a href="til20220603.html#cb1461-2"></a>rfFit &lt;-<span class="st"> </span><span class="kw">train</span>(medv <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> newbhTrain, <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>,</span>
+<span id="cb1461-3"><a href="til20220603.html#cb1461-3"></a>               <span class="dt">trControl =</span> fitControl, <span class="dt">verbose =</span> F)</span></code></pre></div>
 <pre><code>## Error: Required packages are missing: randomForest</code></pre>
-<div class="sourceCode" id="cb1476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1476-1"><a href="til20220603.html#cb1476-1"></a>bhTestPP &lt;-<span class="st"> </span><span class="kw">preProcess</span>(bhTest[, <span class="dv">-14</span>], <span class="dt">method =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>))</span>
-<span id="cb1476-2"><a href="til20220603.html#cb1476-2"></a>newbhTest &lt;-<span class="st"> </span><span class="kw">predict</span>(bhTestPP, bhTest[, <span class="dv">-14</span>])</span>
-<span id="cb1476-3"><a href="til20220603.html#cb1476-3"></a>newbhTest &lt;-<span class="st"> </span><span class="kw">cbind</span>(newbhTest, <span class="dt">medv =</span> bhTest[, <span class="dv">14</span>])</span></code></pre></div>
-<div class="sourceCode" id="cb1477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1477-1"><a href="til20220603.html#cb1477-1"></a>bhPred &lt;-<span class="st"> </span><span class="kw">predict</span>(rfFit, newbhTest)</span></code></pre></div>
+<div class="sourceCode" id="cb1463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1463-1"><a href="til20220603.html#cb1463-1"></a>bhTestPP &lt;-<span class="st"> </span><span class="kw">preProcess</span>(bhTest[, <span class="dv">-14</span>], <span class="dt">method =</span> <span class="kw">c</span>(<span class="st">&quot;center&quot;</span>, <span class="st">&quot;scale&quot;</span>, <span class="st">&quot;pca&quot;</span>))</span>
+<span id="cb1463-2"><a href="til20220603.html#cb1463-2"></a>newbhTest &lt;-<span class="st"> </span><span class="kw">predict</span>(bhTestPP, bhTest[, <span class="dv">-14</span>])</span>
+<span id="cb1463-3"><a href="til20220603.html#cb1463-3"></a>newbhTest &lt;-<span class="st"> </span><span class="kw">cbind</span>(newbhTest, <span class="dt">medv =</span> bhTest[, <span class="dv">14</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb1464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1464-1"><a href="til20220603.html#cb1464-1"></a>bhPred &lt;-<span class="st"> </span><span class="kw">predict</span>(rfFit, newbhTest)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;rfFit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1479-1"><a href="til20220603.html#cb1479-1"></a>caret<span class="op">::</span><span class="kw">RMSE</span>(bhPred, newbhTest<span class="op">$</span>medv)</span></code></pre></div>
+<div class="sourceCode" id="cb1466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1466-1"><a href="til20220603.html#cb1466-1"></a>caret<span class="op">::</span><span class="kw">RMSE</span>(bhPred, newbhTest<span class="op">$</span>medv)</span></code></pre></div>
 <pre><code>## Error in mean((pred - obs)^2, na.rm = na.rm): object &#39;bhPred&#39; not found</code></pre>
 
 </div>

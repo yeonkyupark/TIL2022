@@ -424,3 +424,5 @@ til20220723
 t-통계량
 til20220725
 section-31
+til20220726
+section-32

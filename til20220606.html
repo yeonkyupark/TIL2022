@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-25" />
+<meta name="date" content="2022-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -652,6 +652,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
 <li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="7.24" data-path="til20220726.html"><a href="til20220726.html"><i class="fa fa-check"></i><b>7.24</b> TIL20220726</a><ul>
+<li class="chapter" data-level="7.24.1" data-path="til20220726.html"><a href="til20220726.html#section-32"><i class="fa fa-check"></i><b>7.24.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -677,26 +680,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.6</span> TIL20220606<a href="til20220606.html#til20220606" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="이원분산분석" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.6.1</span> 이원분산분석<a href="til20220606.html#이원분산분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1501-1"><a href="til20220606.html#cb1501-1"></a><span class="kw">str</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb1488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1488-1"><a href="til20220606.html#cb1488-1"></a><span class="kw">str</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
 ##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
 ##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
-<div class="sourceCode" id="cb1503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1503-1"><a href="til20220606.html#cb1503-1"></a>data &lt;-<span class="st"> </span>ToothGrowth</span>
-<span id="cb1503-2"><a href="til20220606.html#cb1503-2"></a><span class="co"># 연속형 종속변수 ~ 범주형 독립변수 * 범주형 독립변수</span></span>
-<span id="cb1503-3"><a href="til20220606.html#cb1503-3"></a>data<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(data<span class="op">$</span>dose,</span>
-<span id="cb1503-4"><a href="til20220606.html#cb1503-4"></a>                    <span class="dt">levels =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>),</span>
-<span id="cb1503-5"><a href="til20220606.html#cb1503-5"></a>                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Mid&quot;</span>, <span class="st">&quot;High&quot;</span>))</span>
-<span id="cb1503-6"><a href="til20220606.html#cb1503-6"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1490-1"><a href="til20220606.html#cb1490-1"></a>data &lt;-<span class="st"> </span>ToothGrowth</span>
+<span id="cb1490-2"><a href="til20220606.html#cb1490-2"></a><span class="co"># 연속형 종속변수 ~ 범주형 독립변수 * 범주형 독립변수</span></span>
+<span id="cb1490-3"><a href="til20220606.html#cb1490-3"></a>data<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(data<span class="op">$</span>dose,</span>
+<span id="cb1490-4"><a href="til20220606.html#cb1490-4"></a>                    <span class="dt">levels =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>),</span>
+<span id="cb1490-5"><a href="til20220606.html#cb1490-5"></a>                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Mid&quot;</span>, <span class="st">&quot;High&quot;</span>))</span>
+<span id="cb1490-6"><a href="til20220606.html#cb1490-6"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
 ##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
 ##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ dose: Factor w/ 3 levels &quot;Low&quot;,&quot;Mid&quot;,&quot;High&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb1505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1505-1"><a href="til20220606.html#cb1505-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb1505-2"><a href="til20220606.html#cb1505-2"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(supp, dose) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1505-3"><a href="til20220606.html#cb1505-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Length =</span> <span class="kw">n</span>(),</span>
-<span id="cb1505-4"><a href="til20220606.html#cb1505-4"></a>    <span class="dt">Mean =</span> <span class="kw">mean</span>(len),</span>
-<span id="cb1505-5"><a href="til20220606.html#cb1505-5"></a>    <span class="dt">SD =</span> <span class="kw">round</span>(<span class="kw">sd</span>(len),<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1492-1"><a href="til20220606.html#cb1492-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb1492-2"><a href="til20220606.html#cb1492-2"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(supp, dose) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1492-3"><a href="til20220606.html#cb1492-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Length =</span> <span class="kw">n</span>(),</span>
+<span id="cb1492-4"><a href="til20220606.html#cb1492-4"></a>    <span class="dt">Mean =</span> <span class="kw">mean</span>(len),</span>
+<span id="cb1492-5"><a href="til20220606.html#cb1492-5"></a>    <span class="dt">SD =</span> <span class="kw">round</span>(<span class="kw">sd</span>(len),<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ## # Groups:   supp [2]
 ##   supp  dose  Length  Mean    SD
@@ -707,12 +710,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 VC    Low       10  7.98  2.75
 ## 5 VC    Mid       10 16.8   2.52
 ## 6 VC    High      10 26.1   4.8</code></pre>
-<div class="sourceCode" id="cb1507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1507-1"><a href="til20220606.html#cb1507-1"></a><span class="kw">boxplot</span>(data<span class="op">$</span>len <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>supp)</span></code></pre></div>
+<div class="sourceCode" id="cb1494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1494-1"><a href="til20220606.html#cb1494-1"></a><span class="kw">boxplot</span>(data<span class="op">$</span>len <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>supp)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-630-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="til20220606.html#cb1508-1"></a><span class="kw">boxplot</span>(data<span class="op">$</span>len <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>dose)</span></code></pre></div>
+<div class="sourceCode" id="cb1495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1495-1"><a href="til20220606.html#cb1495-1"></a><span class="kw">boxplot</span>(data<span class="op">$</span>len <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>dose)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-631-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1509-1"><a href="til20220606.html#cb1509-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data)</span>
-<span id="cb1509-2"><a href="til20220606.html#cb1509-2"></a><span class="kw">summary</span>(data.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb1496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1496-1"><a href="til20220606.html#cb1496-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data)</span>
+<span id="cb1496-2"><a href="til20220606.html#cb1496-2"></a><span class="kw">summary</span>(data.aov)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)    
 ## supp         1    205     205   15.57 0.00023 ***
 ## dose         2   2426    1213   92.00 &lt; 2e-16 ***
@@ -720,7 +723,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residuals   54    712      13                    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb1511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1511-1"><a href="til20220606.html#cb1511-1"></a><span class="kw">model.tables</span>(data.aov, <span class="dt">type =</span> <span class="st">&quot;means&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1498-1"><a href="til20220606.html#cb1498-1"></a><span class="kw">model.tables</span>(data.aov, <span class="dt">type =</span> <span class="st">&quot;means&quot;</span>)</span></code></pre></div>
 <pre><code>## Tables of means
 ## Grand mean
 ##      
@@ -741,19 +744,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## supp Low   Mid   High 
 ##   OJ 13.23 22.70 26.06
 ##   VC  7.98 16.77 26.14</code></pre>
-<div class="sourceCode" id="cb1513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1513-1"><a href="til20220606.html#cb1513-1"></a><span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data,</span>
-<span id="cb1513-2"><a href="til20220606.html#cb1513-2"></a>        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;deeppink&quot;</span>, <span class="st">&quot;yellowgreen&quot;</span>),</span>
-<span id="cb1513-3"><a href="til20220606.html#cb1513-3"></a>        <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">xlab =</span> <span class="st">&quot;Vitamin C type&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tooth Growth&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1500-1"><a href="til20220606.html#cb1500-1"></a><span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data,</span>
+<span id="cb1500-2"><a href="til20220606.html#cb1500-2"></a>        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;deeppink&quot;</span>, <span class="st">&quot;yellowgreen&quot;</span>),</span>
+<span id="cb1500-3"><a href="til20220606.html#cb1500-3"></a>        <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">xlab =</span> <span class="st">&quot;Vitamin C type&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tooth Growth&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-634-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1514-1"><a href="til20220606.html#cb1514-1"></a><span class="kw">interaction.plot</span>(<span class="dt">x.factor =</span> data<span class="op">$</span>dose,</span>
-<span id="cb1514-2"><a href="til20220606.html#cb1514-2"></a>                 <span class="dt">trace.factor =</span> data<span class="op">$</span>supp,</span>
-<span id="cb1514-3"><a href="til20220606.html#cb1514-3"></a>                 <span class="dt">response =</span> data<span class="op">$</span>len,</span>
-<span id="cb1514-4"><a href="til20220606.html#cb1514-4"></a>                 <span class="dt">trace.label =</span> <span class="st">&quot;Supplement&quot;</span>,</span>
-<span id="cb1514-5"><a href="til20220606.html#cb1514-5"></a>                 <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">19</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb1514-6"><a href="til20220606.html#cb1514-6"></a>                 <span class="dt">xlab =</span> <span class="st">&quot;Vitamin C type&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tooth Growth&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1501-1"><a href="til20220606.html#cb1501-1"></a><span class="kw">interaction.plot</span>(<span class="dt">x.factor =</span> data<span class="op">$</span>dose,</span>
+<span id="cb1501-2"><a href="til20220606.html#cb1501-2"></a>                 <span class="dt">trace.factor =</span> data<span class="op">$</span>supp,</span>
+<span id="cb1501-3"><a href="til20220606.html#cb1501-3"></a>                 <span class="dt">response =</span> data<span class="op">$</span>len,</span>
+<span id="cb1501-4"><a href="til20220606.html#cb1501-4"></a>                 <span class="dt">trace.label =</span> <span class="st">&quot;Supplement&quot;</span>,</span>
+<span id="cb1501-5"><a href="til20220606.html#cb1501-5"></a>                 <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">19</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb1501-6"><a href="til20220606.html#cb1501-6"></a>                 <span class="dt">xlab =</span> <span class="st">&quot;Vitamin C type&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tooth Growth&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-635-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1515-1"><a href="til20220606.html#cb1515-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(gplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>); <span class="kw">library</span>(gplots); }</span>
-<span id="cb1515-2"><a href="til20220606.html#cb1515-2"></a><span class="kw">interaction</span>(data<span class="op">$</span>supp, data<span class="op">$</span>dose, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1502-1"><a href="til20220606.html#cb1502-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(gplots)) { <span class="kw">install.packages</span>(<span class="st">&quot;gplots&quot;</span>); <span class="kw">library</span>(gplots); }</span>
+<span id="cb1502-2"><a href="til20220606.html#cb1502-2"></a><span class="kw">interaction</span>(data<span class="op">$</span>supp, data<span class="op">$</span>dose, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] VC Low  VC Low  VC Low  VC Low  VC Low  VC Low  VC Low  VC Low  VC Low 
 ## [10] VC Low  VC Mid  VC Mid  VC Mid  VC Mid  VC Mid  VC Mid  VC Mid  VC Mid 
 ## [19] VC Mid  VC Mid  VC High VC High VC High VC High VC High VC High VC High
@@ -762,16 +765,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [46] OJ Mid  OJ Mid  OJ Mid  OJ Mid  OJ Mid  OJ High OJ High OJ High OJ High
 ## [55] OJ High OJ High OJ High OJ High OJ High OJ High
 ## Levels: OJ Low VC Low OJ Mid VC Mid OJ High VC High</code></pre>
-<div class="sourceCode" id="cb1517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1517-1"><a href="til20220606.html#cb1517-1"></a><span class="kw">plotmeans</span>(len <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(supp, dose, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), data,</span>
-<span id="cb1517-2"><a href="til20220606.html#cb1517-2"></a>          <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green3&quot;</span>),</span>
-<span id="cb1517-3"><a href="til20220606.html#cb1517-3"></a>          <span class="dt">connect =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>), <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="til20220606.html#cb1504-1"></a><span class="kw">plotmeans</span>(len <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(supp, dose, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), data,</span>
+<span id="cb1504-2"><a href="til20220606.html#cb1504-2"></a>          <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green3&quot;</span>),</span>
+<span id="cb1504-3"><a href="til20220606.html#cb1504-3"></a>          <span class="dt">connect =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>), <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-637-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1518-1"><a href="til20220606.html#cb1518-1"></a><span class="kw">coplot</span>(len <span class="op">~</span><span class="st"> </span>dose <span class="op">|</span><span class="st"> </span>supp, data, <span class="dt">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb1518-2"><a href="til20220606.html#cb1518-2"></a>       <span class="dt">panel =</span> panel.smooth, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col.smooth =</span> <span class="st">&quot;darkorange&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1505-1"><a href="til20220606.html#cb1505-1"></a><span class="kw">coplot</span>(len <span class="op">~</span><span class="st"> </span>dose <span class="op">|</span><span class="st"> </span>supp, data, <span class="dt">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb1505-2"><a href="til20220606.html#cb1505-2"></a>       <span class="dt">panel =</span> panel.smooth, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col.smooth =</span> <span class="st">&quot;darkorange&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-638-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="til20220606.html#cb1519-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(HH)) { <span class="kw">install.packages</span>(<span class="st">&quot;HH&quot;</span>); <span class="kw">library</span>(HH); }</span>
-<span id="cb1519-2"><a href="til20220606.html#cb1519-2"></a><span class="kw">interaction2wt</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data)</span></code></pre></div>
-<div class="sourceCode" id="cb1520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1520-1"><a href="til20220606.html#cb1520-1"></a><span class="kw">TukeyHSD</span>(data.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="til20220606.html#cb1506-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(HH)) { <span class="kw">install.packages</span>(<span class="st">&quot;HH&quot;</span>); <span class="kw">library</span>(HH); }</span>
+<span id="cb1506-2"><a href="til20220606.html#cb1506-2"></a><span class="kw">interaction2wt</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose, <span class="dt">data =</span> data)</span></code></pre></div>
+<div class="sourceCode" id="cb1507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1507-1"><a href="til20220606.html#cb1507-1"></a><span class="kw">TukeyHSD</span>(data.aov)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 

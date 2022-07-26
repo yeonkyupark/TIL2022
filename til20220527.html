@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-07-25" />
+<meta name="date" content="2022-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -652,6 +652,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.23" data-path="til20220725.html"><a href="til20220725.html"><i class="fa fa-check"></i><b>7.23</b> TIL20220725</a><ul>
 <li class="chapter" data-level="7.23.1" data-path="til20220725.html"><a href="til20220725.html#section-31"><i class="fa fa-check"></i><b>7.23.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="7.24" data-path="til20220726.html"><a href="til20220726.html"><i class="fa fa-check"></i><b>7.24</b> TIL20220726</a><ul>
+<li class="chapter" data-level="7.24.1" data-path="til20220726.html"><a href="til20220726.html#section-32"><i class="fa fa-check"></i><b>7.24.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -677,17 +680,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.27</span> TIL20220527<a href="til20220527.html#til20220527" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="factor형-label변경" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.27.1</span> factor형 label변경<a href="til20220527.html#factor형-label변경" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1383-1"><a href="til20220527.html#cb1383-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb1383-2"><a href="til20220527.html#cb1383-2"></a>  <span class="dt">x =</span> <span class="kw">factor</span>(<span class="st">&quot;A&quot;</span>),</span>
-<span id="cb1383-3"><a href="til20220527.html#cb1383-3"></a>  <span class="dt">y =</span> <span class="dv">1</span></span>
-<span id="cb1383-4"><a href="til20220527.html#cb1383-4"></a>)</span>
-<span id="cb1383-5"><a href="til20220527.html#cb1383-5"></a>data</span></code></pre></div>
+<div class="sourceCode" id="cb1370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1370-1"><a href="til20220527.html#cb1370-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb1370-2"><a href="til20220527.html#cb1370-2"></a>  <span class="dt">x =</span> <span class="kw">factor</span>(<span class="st">&quot;A&quot;</span>),</span>
+<span id="cb1370-3"><a href="til20220527.html#cb1370-3"></a>  <span class="dt">y =</span> <span class="dv">1</span></span>
+<span id="cb1370-4"><a href="til20220527.html#cb1370-4"></a>)</span>
+<span id="cb1370-5"><a href="til20220527.html#cb1370-5"></a>data</span></code></pre></div>
 <pre><code>##   x y
 ## 1 A 1</code></pre>
-<div class="sourceCode" id="cb1385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1385-1"><a href="til20220527.html#cb1385-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1385-2"><a href="til20220527.html#cb1385-2"></a>new_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1385-3"><a href="til20220527.html#cb1385-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="kw">fct_recode</span>(x, <span class="st">&quot;B&quot;</span> =<span class="st"> &quot;A&quot;</span>))</span>
-<span id="cb1385-4"><a href="til20220527.html#cb1385-4"></a>new_data  </span></code></pre></div>
+<div class="sourceCode" id="cb1372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1372-1"><a href="til20220527.html#cb1372-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1372-2"><a href="til20220527.html#cb1372-2"></a>new_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1372-3"><a href="til20220527.html#cb1372-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="kw">fct_recode</span>(x, <span class="st">&quot;B&quot;</span> =<span class="st"> &quot;A&quot;</span>))</span>
+<span id="cb1372-4"><a href="til20220527.html#cb1372-4"></a>new_data  </span></code></pre></div>
 <pre><code>##   x y
 ## 1 B 1</code></pre>
 
