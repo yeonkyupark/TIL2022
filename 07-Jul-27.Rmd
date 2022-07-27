@@ -1,0 +1,17 @@
+## TIL20220726
+
+### Shiny app 공유 방법
+
+#### 스크립트로 공유
+
+* runApp("app-name")
+* runUrl("url-address")
+* runGitHub("repository-name", "user-name")
+* runGist("gist-number")
+
+#### web page로 공유
+
+* shinyapps.io
+* Shiny Server
+* RStudio Connect
+
