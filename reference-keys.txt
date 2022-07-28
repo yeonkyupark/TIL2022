@@ -430,3 +430,5 @@ til20220726-1
 shiny-app-공유-방법
 스크립트로-공유
 web-page로-공유
+til20220728
+section-33
