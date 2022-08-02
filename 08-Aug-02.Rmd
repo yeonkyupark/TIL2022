@@ -1,1 +1,13 @@
+## TIL20220802
 
+### shinyjs, 10초마다 페이지 자동 갱신
+
+```
+shinyjs::runjs(
+"function reload_page() {
+  window.location.reload();
+  setTimeout(reload_page, 10000);
+}
+setTimeout(reload_page, 10000);
+")
+```
