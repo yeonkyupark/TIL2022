@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,6 +683,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="til20220802.html"><a href="til20220802.html"><i class="fa fa-check"></i><b>8.2</b> TIL20220802</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="til20220802.html"><a href="til20220802.html#shinyjs-10초마다-페이지-자동-갱신"><i class="fa fa-check"></i><b>8.2.1</b> shinyjs, 10초마다 페이지 자동 갱신</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -708,86 +711,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.22</span> TIL20220522<a href="til20220522.html#til20220522" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="최적-모델" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.22.1</span> 최적 모델<a href="til20220522.html#최적-모델" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1223-1"><a href="til20220522.html#cb1223-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
-<span id="cb1223-2"><a href="til20220522.html#cb1223-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidymodels)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>); <span class="kw">library</span>(tidymodels); }</span>
-<span id="cb1223-3"><a href="til20220522.html#cb1223-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidytext)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); <span class="kw">library</span>(tidytext); }</span>
-<span id="cb1223-4"><a href="til20220522.html#cb1223-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) { <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>); <span class="kw">library</span>(skimr); }</span>
-<span id="cb1223-5"><a href="til20220522.html#cb1223-5"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vip)) { <span class="kw">install.packages</span>(<span class="st">&quot;vip&quot;</span>); <span class="kw">library</span>(vip); }</span></code></pre></div>
-<div class="sourceCode" id="cb1224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1224-1"><a href="til20220522.html#cb1224-1"></a>bank_tb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;UniversalBank.csv&quot;</span>, <span class="dt">col_names =</span> T,</span>
-<span id="cb1224-2"><a href="til20220522.html#cb1224-2"></a>                    <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>),</span>
-<span id="cb1224-3"><a href="til20220522.html#cb1224-3"></a>                    <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1224-4"><a href="til20220522.html#cb1224-4"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.character, as.factor) </span></code></pre></div>
-<pre><code>## Error: &#39;UniversalBank.csv&#39; does not exist in current working directory (&#39;/Users/runner/work/TIL2022/TIL2022&#39;).</code></pre>
-<div class="sourceCode" id="cb1226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1226-1"><a href="til20220522.html#cb1226-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1230-1"><a href="til20220522.html#cb1230-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
+<pre><code>## Error: package or namespace load failed for &#39;tidyverse&#39; in loadNamespace(j &lt;- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+##  there is no package called &#39;gargle&#39;</code></pre>
+<div class="sourceCode" id="cb1233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1233-1"><a href="til20220522.html#cb1233-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidymodels)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidymodels&quot;</span>); <span class="kw">library</span>(tidymodels); }</span>
+<span id="cb1233-2"><a href="til20220522.html#cb1233-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidytext)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>); <span class="kw">library</span>(tidytext); }</span>
+<span id="cb1233-3"><a href="til20220522.html#cb1233-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(skimr)) { <span class="kw">install.packages</span>(<span class="st">&quot;skimr&quot;</span>); <span class="kw">library</span>(skimr); }</span>
+<span id="cb1233-4"><a href="til20220522.html#cb1233-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(vip)) { <span class="kw">install.packages</span>(<span class="st">&quot;vip&quot;</span>); <span class="kw">library</span>(vip); }</span></code></pre></div>
+<div class="sourceCode" id="cb1234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1234-1"><a href="til20220522.html#cb1234-1"></a>bank_tb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;UniversalBank.csv&quot;</span>, <span class="dt">col_names =</span> T,</span>
+<span id="cb1234-2"><a href="til20220522.html#cb1234-2"></a>                    <span class="dt">locale =</span> <span class="kw">locale</span>(<span class="st">&quot;ko&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;euc-kr&quot;</span>),</span>
+<span id="cb1234-3"><a href="til20220522.html#cb1234-3"></a>                    <span class="dt">na =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1234-4"><a href="til20220522.html#cb1234-4"></a><span class="st">  </span><span class="kw">mutate_if</span>(is.character, as.factor) </span></code></pre></div>
+<pre><code>## Error in read_csv(&quot;UniversalBank.csv&quot;, col_names = T, locale = locale(&quot;ko&quot;, : could not find function &quot;read_csv&quot;</code></pre>
+<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="til20220522.html#cb1236-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
 <pre><code>## Error in str(bank_tb): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1228-1"><a href="til20220522.html#cb1228-1"></a><span class="kw">head</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="til20220522.html#cb1238-1"></a><span class="kw">head</span>(bank_tb)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1230-1"><a href="til20220522.html#cb1230-1"></a><span class="co"># 변수명 점검</span></span>
-<span id="cb1230-2"><a href="til20220522.html#cb1230-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1230-3"><a href="til20220522.html#cb1230-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="kw">c</span>(<span class="st">&quot;Personal_Loan&quot;</span> =<span class="st"> &quot;Personal Loan&quot;</span>,</span>
-<span id="cb1230-4"><a href="til20220522.html#cb1230-4"></a>           <span class="st">&quot;CD_Account&quot;</span> =<span class="st"> &quot;CD Account&quot;</span>,</span>
-<span id="cb1230-5"><a href="til20220522.html#cb1230-5"></a>           <span class="st">&quot;Securities_Account&quot;</span> =<span class="st"> &quot;Securities Account&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="til20220522.html#cb1240-1"></a><span class="co"># 변수명 점검</span></span>
+<span id="cb1240-2"><a href="til20220522.html#cb1240-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1240-3"><a href="til20220522.html#cb1240-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="kw">c</span>(<span class="st">&quot;Personal_Loan&quot;</span> =<span class="st"> &quot;Personal Loan&quot;</span>,</span>
+<span id="cb1240-4"><a href="til20220522.html#cb1240-4"></a>           <span class="st">&quot;CD_Account&quot;</span> =<span class="st"> &quot;CD Account&quot;</span>,</span>
+<span id="cb1240-5"><a href="til20220522.html#cb1240-5"></a>           <span class="st">&quot;Securities_Account&quot;</span> =<span class="st"> &quot;Securities Account&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in rename(., c(Personal_Loan = &quot;Personal Loan&quot;, CD_Account = &quot;CD Account&quot;, : object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1232-1"><a href="til20220522.html#cb1232-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="til20220522.html#cb1242-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
 <pre><code>## Error in str(bank_tb): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1234-1"><a href="til20220522.html#cb1234-1"></a><span class="co"># 자료형 점검</span></span>
-<span id="cb1234-2"><a href="til20220522.html#cb1234-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1234-3"><a href="til20220522.html#cb1234-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Personal_Loan =</span> <span class="kw">factor</span>(Personal_Loan,</span>
-<span id="cb1234-4"><a href="til20220522.html#cb1234-4"></a>                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb1234-5"><a href="til20220522.html#cb1234-5"></a>                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1234-6"><a href="til20220522.html#cb1234-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Securities_Account =</span> <span class="kw">factor</span>(Securities_Account,</span>
-<span id="cb1234-7"><a href="til20220522.html#cb1234-7"></a>                                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1234-8"><a href="til20220522.html#cb1234-8"></a>                                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1234-9"><a href="til20220522.html#cb1234-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CD_Account =</span> <span class="kw">factor</span>(CD_Account, </span>
-<span id="cb1234-10"><a href="til20220522.html#cb1234-10"></a>                             <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1234-11"><a href="til20220522.html#cb1234-11"></a>                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1234-12"><a href="til20220522.html#cb1234-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Online =</span> <span class="kw">factor</span>(Online, </span>
-<span id="cb1234-13"><a href="til20220522.html#cb1234-13"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1234-14"><a href="til20220522.html#cb1234-14"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1234-15"><a href="til20220522.html#cb1234-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CreditCard =</span> <span class="kw">factor</span>(CreditCard, </span>
-<span id="cb1234-16"><a href="til20220522.html#cb1234-16"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
-<span id="cb1234-17"><a href="til20220522.html#cb1234-17"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span></span>
-<span id="cb1234-18"><a href="til20220522.html#cb1234-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Education =</span> <span class="kw">factor</span>(Education, </span>
-<span id="cb1234-19"><a href="til20220522.html#cb1234-19"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>),</span>
-<span id="cb1234-20"><a href="til20220522.html#cb1234-20"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Graduate&quot;</span>, <span class="st">&quot;Professonal&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="til20220522.html#cb1244-1"></a><span class="co"># 자료형 점검</span></span>
+<span id="cb1244-2"><a href="til20220522.html#cb1244-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1244-3"><a href="til20220522.html#cb1244-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Personal_Loan =</span> <span class="kw">factor</span>(Personal_Loan,</span>
+<span id="cb1244-4"><a href="til20220522.html#cb1244-4"></a>                                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb1244-5"><a href="til20220522.html#cb1244-5"></a>                                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1244-6"><a href="til20220522.html#cb1244-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Securities_Account =</span> <span class="kw">factor</span>(Securities_Account,</span>
+<span id="cb1244-7"><a href="til20220522.html#cb1244-7"></a>                                     <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1244-8"><a href="til20220522.html#cb1244-8"></a>                                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1244-9"><a href="til20220522.html#cb1244-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CD_Account =</span> <span class="kw">factor</span>(CD_Account, </span>
+<span id="cb1244-10"><a href="til20220522.html#cb1244-10"></a>                             <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1244-11"><a href="til20220522.html#cb1244-11"></a>                             <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1244-12"><a href="til20220522.html#cb1244-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Online =</span> <span class="kw">factor</span>(Online, </span>
+<span id="cb1244-13"><a href="til20220522.html#cb1244-13"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1244-14"><a href="til20220522.html#cb1244-14"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1244-15"><a href="til20220522.html#cb1244-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CreditCard =</span> <span class="kw">factor</span>(CreditCard, </span>
+<span id="cb1244-16"><a href="til20220522.html#cb1244-16"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb1244-17"><a href="til20220522.html#cb1244-17"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))) <span class="op">%&gt;%</span></span>
+<span id="cb1244-18"><a href="til20220522.html#cb1244-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Education =</span> <span class="kw">factor</span>(Education, </span>
+<span id="cb1244-19"><a href="til20220522.html#cb1244-19"></a>                         <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>),</span>
+<span id="cb1244-20"><a href="til20220522.html#cb1244-20"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Undergrad&quot;</span>, <span class="st">&quot;Graduate&quot;</span>, <span class="st">&quot;Professonal&quot;</span>)))</span></code></pre></div>
 <pre><code>## Error in mutate(., Personal_Loan = factor(Personal_Loan, levels = c(1, : object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="til20220522.html#cb1236-1"></a><span class="kw">str</span>(bank_tb)  </span></code></pre></div>
+<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="til20220522.html#cb1246-1"></a><span class="kw">str</span>(bank_tb)  </span></code></pre></div>
 <pre><code>## Error in str(bank_tb): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="til20220522.html#cb1238-1"></a><span class="co"># 변수 점검 (삭제, 변환 등)</span></span>
-<span id="cb1238-2"><a href="til20220522.html#cb1238-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1238-3"><a href="til20220522.html#cb1238-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ID, <span class="st">&#39;ZIP Code&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="til20220522.html#cb1248-1"></a><span class="co"># 변수 점검 (삭제, 변환 등)</span></span>
+<span id="cb1248-2"><a href="til20220522.html#cb1248-2"></a>bank_tb &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1248-3"><a href="til20220522.html#cb1248-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(ID, <span class="st">&#39;ZIP Code&#39;</span>))</span></code></pre></div>
 <pre><code>## Error in select(., -c(ID, &quot;ZIP Code&quot;)): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="til20220522.html#cb1240-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="til20220522.html#cb1250-1"></a><span class="kw">str</span>(bank_tb)</span></code></pre></div>
 <pre><code>## Error in str(bank_tb): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="til20220522.html#cb1242-1"></a><span class="co"># EDA</span></span>
-<span id="cb1242-2"><a href="til20220522.html#cb1242-2"></a><span class="kw">skim</span>(bank_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="til20220522.html#cb1252-1"></a><span class="co"># EDA</span></span>
+<span id="cb1252-2"><a href="til20220522.html#cb1252-2"></a><span class="kw">skim</span>(bank_tb)</span></code></pre></div>
 <pre><code>## Error in skim(bank_tb): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="til20220522.html#cb1244-1"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1244-2"><a href="til20220522.html#cb1244-2"></a><span class="st">  </span><span class="kw">group_by</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1244-3"><a href="til20220522.html#cb1244-3"></a><span class="st">  </span><span class="kw">skim</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="til20220522.html#cb1254-1"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1254-2"><a href="til20220522.html#cb1254-2"></a><span class="st">  </span><span class="kw">group_by</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1254-3"><a href="til20220522.html#cb1254-3"></a><span class="st">  </span><span class="kw">skim</span>()</span></code></pre></div>
 <pre><code>## Error in group_by(., Personal_Loan): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="til20220522.html#cb1246-1"></a><span class="co"># base accuracy</span></span>
-<span id="cb1246-2"><a href="til20220522.html#cb1246-2"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1246-3"><a href="til20220522.html#cb1246-3"></a><span class="st">  </span><span class="kw">count</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1246-4"><a href="til20220522.html#cb1246-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb1256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1256-1"><a href="til20220522.html#cb1256-1"></a><span class="co"># base accuracy</span></span>
+<span id="cb1256-2"><a href="til20220522.html#cb1256-2"></a>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1256-3"><a href="til20220522.html#cb1256-3"></a><span class="st">  </span><span class="kw">count</span>(Personal_Loan) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1256-4"><a href="til20220522.html#cb1256-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n))</span></code></pre></div>
 <pre><code>## Error in count(., Personal_Loan): object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="til20220522.html#cb1248-1"></a><span class="co"># 데이터셋 분할</span></span>
-<span id="cb1248-2"><a href="til20220522.html#cb1248-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1248-3"><a href="til20220522.html#cb1248-3"></a>bank_split &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1248-4"><a href="til20220522.html#cb1248-4"></a><span class="st">  </span><span class="kw">initial_split</span>(<span class="dt">strata =</span> Personal_Loan)</span></code></pre></div>
+<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="til20220522.html#cb1258-1"></a><span class="co"># 데이터셋 분할</span></span>
+<span id="cb1258-2"><a href="til20220522.html#cb1258-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1258-3"><a href="til20220522.html#cb1258-3"></a>bank_split &lt;-<span class="st"> </span>bank_tb <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1258-4"><a href="til20220522.html#cb1258-4"></a><span class="st">  </span><span class="kw">initial_split</span>(<span class="dt">strata =</span> Personal_Loan)</span></code></pre></div>
 <pre><code>## Error in eval_select_impl(NULL, .vars, expr(c(!!!dots)), include = .include, : object &#39;bank_tb&#39; not found</code></pre>
-<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="til20220522.html#cb1250-1"></a>bank_split</span></code></pre></div>
+<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1260-1"><a href="til20220522.html#cb1260-1"></a>bank_split</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;bank_split&#39; not found</code></pre>
-<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="til20220522.html#cb1252-1"></a>train_data &lt;-<span class="st"> </span><span class="kw">training</span>(bank_split)</span></code></pre></div>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1262-1"><a href="til20220522.html#cb1262-1"></a>train_data &lt;-<span class="st"> </span><span class="kw">training</span>(bank_split)</span></code></pre></div>
 <pre><code>## Error in analysis(x): object &#39;bank_split&#39; not found</code></pre>
-<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="til20220522.html#cb1254-1"></a>test_data &lt;-<span class="st"> </span><span class="kw">testing</span>(bank_split)</span></code></pre></div>
+<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1264-1"><a href="til20220522.html#cb1264-1"></a>test_data &lt;-<span class="st"> </span><span class="kw">testing</span>(bank_split)</span></code></pre></div>
 <pre><code>## Error in assessment(x): object &#39;bank_split&#39; not found</code></pre>
-<div class="sourceCode" id="cb1256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1256-1"><a href="til20220522.html#cb1256-1"></a>tree_model &lt;-<span class="st"> </span><span class="kw">decision_tree</span>(</span>
-<span id="cb1256-2"><a href="til20220522.html#cb1256-2"></a>  <span class="dt">cost_complexity =</span> <span class="kw">tune</span>(),</span>
-<span id="cb1256-3"><a href="til20220522.html#cb1256-3"></a>  <span class="dt">tree_depth =</span> <span class="kw">tune</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1256-4"><a href="til20220522.html#cb1256-4"></a><span class="st">  </span><span class="kw">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1256-5"><a href="til20220522.html#cb1256-5"></a><span class="st">  </span><span class="kw">set_mode</span>(<span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="til20220522.html#cb1257-1"></a>tree_model</span></code></pre></div>
+<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1266-1"><a href="til20220522.html#cb1266-1"></a>tree_model &lt;-<span class="st"> </span><span class="kw">decision_tree</span>(</span>
+<span id="cb1266-2"><a href="til20220522.html#cb1266-2"></a>  <span class="dt">cost_complexity =</span> <span class="kw">tune</span>(),</span>
+<span id="cb1266-3"><a href="til20220522.html#cb1266-3"></a>  <span class="dt">tree_depth =</span> <span class="kw">tune</span>()) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1266-4"><a href="til20220522.html#cb1266-4"></a><span class="st">  </span><span class="kw">set_engine</span>(<span class="st">&quot;rpart&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1266-5"><a href="til20220522.html#cb1266-5"></a><span class="st">  </span><span class="kw">set_mode</span>(<span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1267-1"><a href="til20220522.html#cb1267-1"></a>tree_model</span></code></pre></div>
 <pre><code>## Decision Tree Model Specification (classification)
 ## 
 ## Main Arguments:
@@ -795,12 +803,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   tree_depth = tune()
 ## 
 ## Computational engine: rpart</code></pre>
-<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1259-1"><a href="til20220522.html#cb1259-1"></a>tree_grid &lt;-<span class="st"> </span><span class="kw">grid_regular</span>(</span>
-<span id="cb1259-2"><a href="til20220522.html#cb1259-2"></a>  <span class="kw">cost_complexity</span>(),</span>
-<span id="cb1259-3"><a href="til20220522.html#cb1259-3"></a>  <span class="kw">tree_depth</span>(),</span>
-<span id="cb1259-4"><a href="til20220522.html#cb1259-4"></a>  <span class="dt">levels =</span> <span class="dv">5</span></span>
-<span id="cb1259-5"><a href="til20220522.html#cb1259-5"></a>)</span>
-<span id="cb1259-6"><a href="til20220522.html#cb1259-6"></a>tree_grid</span></code></pre></div>
+<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1269-1"><a href="til20220522.html#cb1269-1"></a>tree_grid &lt;-<span class="st"> </span><span class="kw">grid_regular</span>(</span>
+<span id="cb1269-2"><a href="til20220522.html#cb1269-2"></a>  <span class="kw">cost_complexity</span>(),</span>
+<span id="cb1269-3"><a href="til20220522.html#cb1269-3"></a>  <span class="kw">tree_depth</span>(),</span>
+<span id="cb1269-4"><a href="til20220522.html#cb1269-4"></a>  <span class="dt">levels =</span> <span class="dv">5</span></span>
+<span id="cb1269-5"><a href="til20220522.html#cb1269-5"></a>)</span>
+<span id="cb1269-6"><a href="til20220522.html#cb1269-6"></a>tree_grid</span></code></pre></div>
 <pre><code>## # A tibble: 25 × 2
 ##    cost_complexity tree_depth
 ##              &lt;dbl&gt;      &lt;int&gt;
@@ -816,172 +824,172 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    0.1                   4
 ## # … with 15 more rows
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb1261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1261-1"><a href="til20220522.html#cb1261-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1261-2"><a href="til20220522.html#cb1261-2"></a>bank_folds &lt;-<span class="st"> </span><span class="kw">vfold_cv</span>(train_data, <span class="dt">v=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1271-1"><a href="til20220522.html#cb1271-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1271-2"><a href="til20220522.html#cb1271-2"></a>bank_folds &lt;-<span class="st"> </span><span class="kw">vfold_cv</span>(train_data, <span class="dt">v=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## Error in nrow(data): object &#39;train_data&#39; not found</code></pre>
-<div class="sourceCode" id="cb1263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1263-1"><a href="til20220522.html#cb1263-1"></a>bank_folds</span></code></pre></div>
+<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1273-1"><a href="til20220522.html#cb1273-1"></a>bank_folds</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;bank_folds&#39; not found</code></pre>
-<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1265-1"><a href="til20220522.html#cb1265-1"></a><span class="co"># recipe</span></span>
-<span id="cb1265-2"><a href="til20220522.html#cb1265-2"></a>tree_recipe &lt;-<span class="st"> </span>train_data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1265-3"><a href="til20220522.html#cb1265-3"></a><span class="st">  </span><span class="kw">recipe</span>(Personal_Loan <span class="op">~</span><span class="st"> </span>.) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1265-4"><a href="til20220522.html#cb1265-4"></a><span class="st">  </span><span class="kw">step_dummy</span>(<span class="kw">all_nominal</span>(), <span class="op">-</span><span class="kw">all_outcomes</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb1275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1275-1"><a href="til20220522.html#cb1275-1"></a><span class="co"># recipe</span></span>
+<span id="cb1275-2"><a href="til20220522.html#cb1275-2"></a>tree_recipe &lt;-<span class="st"> </span>train_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1275-3"><a href="til20220522.html#cb1275-3"></a><span class="st">  </span><span class="kw">recipe</span>(Personal_Loan <span class="op">~</span><span class="st"> </span>.) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1275-4"><a href="til20220522.html#cb1275-4"></a><span class="st">  </span><span class="kw">step_dummy</span>(<span class="kw">all_nominal</span>(), <span class="op">-</span><span class="kw">all_outcomes</span>())</span></code></pre></div>
 <pre><code>## Error in recipe(., Personal_Loan ~ .): object &#39;train_data&#39; not found</code></pre>
-<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1267-1"><a href="til20220522.html#cb1267-1"></a><span class="kw">summary</span>(tree_recipe)</span></code></pre></div>
+<div class="sourceCode" id="cb1277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1277-1"><a href="til20220522.html#cb1277-1"></a><span class="kw">summary</span>(tree_recipe)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;tree_recipe&#39; not found</code></pre>
-<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1269-1"><a href="til20220522.html#cb1269-1"></a><span class="co"># workflow</span></span>
-<span id="cb1269-2"><a href="til20220522.html#cb1269-2"></a>tree_workflow &lt;-<span class="st"> </span><span class="kw">workflow</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1269-3"><a href="til20220522.html#cb1269-3"></a><span class="st">  </span><span class="kw">add_model</span>(tree_model) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1269-4"><a href="til20220522.html#cb1269-4"></a><span class="st">  </span><span class="kw">add_recipe</span>(tree_recipe)</span></code></pre></div>
+<div class="sourceCode" id="cb1279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1279-1"><a href="til20220522.html#cb1279-1"></a><span class="co"># workflow</span></span>
+<span id="cb1279-2"><a href="til20220522.html#cb1279-2"></a>tree_workflow &lt;-<span class="st"> </span><span class="kw">workflow</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1279-3"><a href="til20220522.html#cb1279-3"></a><span class="st">  </span><span class="kw">add_model</span>(tree_model) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1279-4"><a href="til20220522.html#cb1279-4"></a><span class="st">  </span><span class="kw">add_recipe</span>(tree_recipe)</span></code></pre></div>
 <pre><code>## Error in is_recipe(recipe): object &#39;tree_recipe&#39; not found</code></pre>
-<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1271-1"><a href="til20220522.html#cb1271-1"></a>tree_workflow</span></code></pre></div>
+<div class="sourceCode" id="cb1281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1281-1"><a href="til20220522.html#cb1281-1"></a>tree_workflow</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;tree_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1273-1"><a href="til20220522.html#cb1273-1"></a>tree_results &lt;-<span class="st"> </span>tree_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1273-2"><a href="til20220522.html#cb1273-2"></a><span class="st">  </span><span class="kw">tune_grid</span>(<span class="dt">resamples =</span> bank_folds,</span>
-<span id="cb1273-3"><a href="til20220522.html#cb1273-3"></a>            <span class="dt">grid =</span> tree_grid,</span>
-<span id="cb1273-4"><a href="til20220522.html#cb1273-4"></a>            <span class="dt">control =</span> <span class="kw">control_grid</span>(<span class="dt">save_pred =</span> T),</span>
-<span id="cb1273-5"><a href="til20220522.html#cb1273-5"></a>            <span class="dt">metrics =</span> <span class="kw">metric_set</span>(roc_auc, accuracy))</span></code></pre></div>
+<div class="sourceCode" id="cb1283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1283-1"><a href="til20220522.html#cb1283-1"></a>tree_results &lt;-<span class="st"> </span>tree_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1283-2"><a href="til20220522.html#cb1283-2"></a><span class="st">  </span><span class="kw">tune_grid</span>(<span class="dt">resamples =</span> bank_folds,</span>
+<span id="cb1283-3"><a href="til20220522.html#cb1283-3"></a>            <span class="dt">grid =</span> tree_grid,</span>
+<span id="cb1283-4"><a href="til20220522.html#cb1283-4"></a>            <span class="dt">control =</span> <span class="kw">control_grid</span>(<span class="dt">save_pred =</span> T),</span>
+<span id="cb1283-5"><a href="til20220522.html#cb1283-5"></a>            <span class="dt">metrics =</span> <span class="kw">metric_set</span>(roc_auc, accuracy))</span></code></pre></div>
 <pre><code>## Error in tune_grid(., resamples = bank_folds, grid = tree_grid, control = control_grid(save_pred = T), : object &#39;tree_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1275-1"><a href="til20220522.html#cb1275-1"></a>tree_results</span></code></pre></div>
+<div class="sourceCode" id="cb1285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1285-1"><a href="til20220522.html#cb1285-1"></a>tree_results</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;tree_results&#39; not found</code></pre>
-<div class="sourceCode" id="cb1277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1277-1"><a href="til20220522.html#cb1277-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect_metrics</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1287-1"><a href="til20220522.html#cb1287-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">collect_metrics</span>()</span></code></pre></div>
 <pre><code>## Error in collect_metrics(.): object &#39;tree_results&#39; not found</code></pre>
-<div class="sourceCode" id="cb1279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1279-1"><a href="til20220522.html#cb1279-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1279-2"><a href="til20220522.html#cb1279-2"></a><span class="st">  </span><span class="kw">collect_metrics</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1279-3"><a href="til20220522.html#cb1279-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tree_depth =</span> <span class="kw">factor</span>(tree_depth)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1279-4"><a href="til20220522.html#cb1279-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>cost_complexity, <span class="dt">y =</span> mean, <span class="dt">col =</span> tree_depth)) <span class="op">+</span></span>
-<span id="cb1279-5"><a href="til20220522.html#cb1279-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>) <span class="op">+</span></span>
-<span id="cb1279-6"><a href="til20220522.html#cb1279-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb1279-7"><a href="til20220522.html#cb1279-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>.metric, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb1279-8"><a href="til20220522.html#cb1279-8"></a><span class="st">  </span><span class="kw">scale_x_log10</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_number</span>()) <span class="op">+</span></span>
-<span id="cb1279-9"><a href="til20220522.html#cb1279-9"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.9</span>, <span class="dt">end =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1289-1"><a href="til20220522.html#cb1289-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1289-2"><a href="til20220522.html#cb1289-2"></a><span class="st">  </span><span class="kw">collect_metrics</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1289-3"><a href="til20220522.html#cb1289-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tree_depth =</span> <span class="kw">factor</span>(tree_depth)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1289-4"><a href="til20220522.html#cb1289-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>cost_complexity, <span class="dt">y =</span> mean, <span class="dt">col =</span> tree_depth)) <span class="op">+</span></span>
+<span id="cb1289-5"><a href="til20220522.html#cb1289-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>) <span class="op">+</span></span>
+<span id="cb1289-6"><a href="til20220522.html#cb1289-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb1289-7"><a href="til20220522.html#cb1289-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>.metric, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb1289-8"><a href="til20220522.html#cb1289-8"></a><span class="st">  </span><span class="kw">scale_x_log10</span>(<span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_number</span>()) <span class="op">+</span></span>
+<span id="cb1289-9"><a href="til20220522.html#cb1289-9"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">begin =</span> <span class="fl">0.9</span>, <span class="dt">end =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## Error in collect_metrics(.): object &#39;tree_results&#39; not found</code></pre>
-<div class="sourceCode" id="cb1281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1281-1"><a href="til20220522.html#cb1281-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1281-2"><a href="til20220522.html#cb1281-2"></a><span class="st">  </span><span class="kw">show_best</span>(<span class="st">&quot;roc_auc&quot;</span>, <span class="dt">n=</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1281-3"><a href="til20220522.html#cb1281-3"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean))</span></code></pre></div>
+<div class="sourceCode" id="cb1291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1291-1"><a href="til20220522.html#cb1291-1"></a>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1291-2"><a href="til20220522.html#cb1291-2"></a><span class="st">  </span><span class="kw">show_best</span>(<span class="st">&quot;roc_auc&quot;</span>, <span class="dt">n=</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1291-3"><a href="til20220522.html#cb1291-3"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean))</span></code></pre></div>
 <pre><code>## Error in show_best(., &quot;roc_auc&quot;, n = 10): object &#39;tree_results&#39; not found</code></pre>
-<div class="sourceCode" id="cb1283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1283-1"><a href="til20220522.html#cb1283-1"></a>best_tree &lt;-<span class="st"> </span>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1283-2"><a href="til20220522.html#cb1283-2"></a><span class="st">  </span><span class="kw">select_best</span>(<span class="st">&quot;roc_auc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1293-1"><a href="til20220522.html#cb1293-1"></a>best_tree &lt;-<span class="st"> </span>tree_results <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1293-2"><a href="til20220522.html#cb1293-2"></a><span class="st">  </span><span class="kw">select_best</span>(<span class="st">&quot;roc_auc&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in select_best(., &quot;roc_auc&quot;): object &#39;tree_results&#39; not found</code></pre>
-<div class="sourceCode" id="cb1285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1285-1"><a href="til20220522.html#cb1285-1"></a>best_tree</span></code></pre></div>
+<div class="sourceCode" id="cb1295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1295-1"><a href="til20220522.html#cb1295-1"></a>best_tree</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;best_tree&#39; not found</code></pre>
-<div class="sourceCode" id="cb1287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1287-1"><a href="til20220522.html#cb1287-1"></a>final_workflow &lt;-<span class="st"> </span>tree_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1287-2"><a href="til20220522.html#cb1287-2"></a><span class="st">  </span><span class="kw">finalize_workflow</span>(best_tree)</span></code></pre></div>
+<div class="sourceCode" id="cb1297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1297-1"><a href="til20220522.html#cb1297-1"></a>final_workflow &lt;-<span class="st"> </span>tree_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1297-2"><a href="til20220522.html#cb1297-2"></a><span class="st">  </span><span class="kw">finalize_workflow</span>(best_tree)</span></code></pre></div>
 <pre><code>## Error in finalize_workflow(., best_tree): object &#39;tree_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1289-1"><a href="til20220522.html#cb1289-1"></a>final_workflow</span></code></pre></div>
+<div class="sourceCode" id="cb1299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1299-1"><a href="til20220522.html#cb1299-1"></a>final_workflow</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1291-1"><a href="til20220522.html#cb1291-1"></a>final_train_fit &lt;-<span class="st"> </span>final_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1291-2"><a href="til20220522.html#cb1291-2"></a><span class="st">  </span><span class="kw">fit</span>(<span class="dt">data =</span> train_data)</span></code></pre></div>
+<div class="sourceCode" id="cb1301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1301-1"><a href="til20220522.html#cb1301-1"></a>final_train_fit &lt;-<span class="st"> </span>final_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1301-2"><a href="til20220522.html#cb1301-2"></a><span class="st">  </span><span class="kw">fit</span>(<span class="dt">data =</span> train_data)</span></code></pre></div>
 <pre><code>## Error in fit(., data = train_data): object &#39;final_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1293-1"><a href="til20220522.html#cb1293-1"></a>final_train_fit</span></code></pre></div>
+<div class="sourceCode" id="cb1303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1303-1"><a href="til20220522.html#cb1303-1"></a>final_train_fit</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_train_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1295-1"><a href="til20220522.html#cb1295-1"></a>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1295-2"><a href="til20220522.html#cb1295-2"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1305-1"><a href="til20220522.html#cb1305-1"></a>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1305-2"><a href="til20220522.html#cb1305-2"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>()</span></code></pre></div>
 <pre><code>## Error in is_workflow(x): object &#39;final_train_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1297-1"><a href="til20220522.html#cb1297-1"></a>final_train_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(final_train_fit, train_data, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1297-2"><a href="til20220522.html#cb1297-2"></a><span class="st">  </span><span class="kw">bind_cols</span>(<span class="kw">predict</span>(final_train_fit, train_data)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1297-3"><a href="til20220522.html#cb1297-3"></a><span class="st">  </span><span class="kw">bind_cols</span>(train_data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1297-4"><a href="til20220522.html#cb1297-4"></a><span class="st">              </span><span class="kw">select</span>(Personal_Loan))</span></code></pre></div>
+<div class="sourceCode" id="cb1307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1307-1"><a href="til20220522.html#cb1307-1"></a>final_train_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(final_train_fit, train_data, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1307-2"><a href="til20220522.html#cb1307-2"></a><span class="st">  </span><span class="kw">bind_cols</span>(<span class="kw">predict</span>(final_train_fit, train_data)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1307-3"><a href="til20220522.html#cb1307-3"></a><span class="st">  </span><span class="kw">bind_cols</span>(train_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1307-4"><a href="til20220522.html#cb1307-4"></a><span class="st">              </span><span class="kw">select</span>(Personal_Loan))</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;final_train_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1299-1"><a href="til20220522.html#cb1299-1"></a>final_train_pred</span></code></pre></div>
+<div class="sourceCode" id="cb1309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1309-1"><a href="til20220522.html#cb1309-1"></a>final_train_pred</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_train_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1301-1"><a href="til20220522.html#cb1301-1"></a>final_train_conf &lt;-<span class="st"> </span></span>
-<span id="cb1301-2"><a href="til20220522.html#cb1301-2"></a><span class="st">  </span>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1301-3"><a href="til20220522.html#cb1301-3"></a><span class="st">  </span><span class="kw">conf_mat</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_class)</span></code></pre></div>
+<div class="sourceCode" id="cb1311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1311-1"><a href="til20220522.html#cb1311-1"></a>final_train_conf &lt;-<span class="st"> </span></span>
+<span id="cb1311-2"><a href="til20220522.html#cb1311-2"></a><span class="st">  </span>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1311-3"><a href="til20220522.html#cb1311-3"></a><span class="st">  </span><span class="kw">conf_mat</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_class)</span></code></pre></div>
 <pre><code>## Error in conf_mat(., truth = Personal_Loan, estimate = .pred_class): object &#39;final_train_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1303-1"><a href="til20220522.html#cb1303-1"></a>final_train_conf</span></code></pre></div>
+<div class="sourceCode" id="cb1313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1313-1"><a href="til20220522.html#cb1313-1"></a>final_train_conf</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_train_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1305-1"><a href="til20220522.html#cb1305-1"></a><span class="kw">autoplot</span>(final_train_conf, <span class="dt">type =</span> <span class="st">&quot;heatmap&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1315-1"><a href="til20220522.html#cb1315-1"></a><span class="kw">autoplot</span>(final_train_conf, <span class="dt">type =</span> <span class="st">&quot;heatmap&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in autoplot(final_train_conf, type = &quot;heatmap&quot;): object &#39;final_train_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1307-1"><a href="til20220522.html#cb1307-1"></a><span class="kw">summary</span>(final_train_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb1317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1317-1"><a href="til20220522.html#cb1317-1"></a><span class="kw">summary</span>(final_train_conf)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;final_train_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1309-1"><a href="til20220522.html#cb1309-1"></a>train_auc &lt;-<span class="st"> </span>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1309-2"><a href="til20220522.html#cb1309-2"></a><span class="st">  </span><span class="kw">roc_curve</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1309-3"><a href="til20220522.html#cb1309-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="st">&quot;train_auc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1319-1"><a href="til20220522.html#cb1319-1"></a>train_auc &lt;-<span class="st"> </span>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1319-2"><a href="til20220522.html#cb1319-2"></a><span class="st">  </span><span class="kw">roc_curve</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1319-3"><a href="til20220522.html#cb1319-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="st">&quot;train_auc&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in roc_curve(., truth = Personal_Loan, estimate = .pred_Yes): object &#39;final_train_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1311-1"><a href="til20220522.html#cb1311-1"></a><span class="kw">autoplot</span>(train_auc)</span></code></pre></div>
+<div class="sourceCode" id="cb1321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1321-1"><a href="til20220522.html#cb1321-1"></a><span class="kw">autoplot</span>(train_auc)</span></code></pre></div>
 <pre><code>## Error in autoplot(train_auc): object &#39;train_auc&#39; not found</code></pre>
-<div class="sourceCode" id="cb1313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1313-1"><a href="til20220522.html#cb1313-1"></a>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1313-2"><a href="til20220522.html#cb1313-2"></a><span class="st">  </span><span class="kw">gain_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1313-3"><a href="til20220522.html#cb1313-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
+<div class="sourceCode" id="cb1323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1323-1"><a href="til20220522.html#cb1323-1"></a>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1323-2"><a href="til20220522.html#cb1323-2"></a><span class="st">  </span><span class="kw">gain_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1323-3"><a href="til20220522.html#cb1323-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
 <pre><code>## Error in gain_curve(., Personal_Loan, .pred_Yes): object &#39;final_train_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1315-1"><a href="til20220522.html#cb1315-1"></a>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1315-2"><a href="til20220522.html#cb1315-2"></a><span class="st">  </span><span class="kw">lift_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1315-3"><a href="til20220522.html#cb1315-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
+<div class="sourceCode" id="cb1325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1325-1"><a href="til20220522.html#cb1325-1"></a>final_train_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1325-2"><a href="til20220522.html#cb1325-2"></a><span class="st">  </span><span class="kw">lift_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1325-3"><a href="til20220522.html#cb1325-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
 <pre><code>## Error in lift_curve(., Personal_Loan, .pred_Yes): object &#39;final_train_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1317-1"><a href="til20220522.html#cb1317-1"></a>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1317-2"><a href="til20220522.html#cb1317-2"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1317-3"><a href="til20220522.html#cb1317-3"></a><span class="st">  </span><span class="kw">vip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1327-1"><a href="til20220522.html#cb1327-1"></a>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1327-2"><a href="til20220522.html#cb1327-2"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1327-3"><a href="til20220522.html#cb1327-3"></a><span class="st">  </span><span class="kw">vip</span>()</span></code></pre></div>
 <pre><code>## Error in is_workflow(x): object &#39;final_train_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1319-1"><a href="til20220522.html#cb1319-1"></a>final_test_fit &lt;-<span class="st"> </span>final_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1319-2"><a href="til20220522.html#cb1319-2"></a><span class="st">  </span><span class="kw">last_fit</span>(bank_split)</span></code></pre></div>
+<div class="sourceCode" id="cb1329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1329-1"><a href="til20220522.html#cb1329-1"></a>final_test_fit &lt;-<span class="st"> </span>final_workflow <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1329-2"><a href="til20220522.html#cb1329-2"></a><span class="st">  </span><span class="kw">last_fit</span>(bank_split)</span></code></pre></div>
 <pre><code>## Error in last_fit(., bank_split): object &#39;final_workflow&#39; not found</code></pre>
-<div class="sourceCode" id="cb1321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1321-1"><a href="til20220522.html#cb1321-1"></a>final_test_fit</span></code></pre></div>
+<div class="sourceCode" id="cb1331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1331-1"><a href="til20220522.html#cb1331-1"></a>final_test_fit</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_test_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1323-1"><a href="til20220522.html#cb1323-1"></a>final_test_pred &lt;-<span class="st"> </span>final_test_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1323-2"><a href="til20220522.html#cb1323-2"></a><span class="st">  </span><span class="kw">collect_predictions</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1333-1"><a href="til20220522.html#cb1333-1"></a>final_test_pred &lt;-<span class="st"> </span>final_test_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1333-2"><a href="til20220522.html#cb1333-2"></a><span class="st">  </span><span class="kw">collect_predictions</span>()</span></code></pre></div>
 <pre><code>## Error in collect_predictions(.): object &#39;final_test_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1325-1"><a href="til20220522.html#cb1325-1"></a>final_test_pred</span></code></pre></div>
+<div class="sourceCode" id="cb1335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1335-1"><a href="til20220522.html#cb1335-1"></a>final_test_pred</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_test_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1327-1"><a href="til20220522.html#cb1327-1"></a>final_test_conf &lt;-<span class="st"> </span></span>
-<span id="cb1327-2"><a href="til20220522.html#cb1327-2"></a><span class="st">  </span>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1327-3"><a href="til20220522.html#cb1327-3"></a><span class="st">  </span><span class="kw">conf_mat</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_class)</span></code></pre></div>
+<div class="sourceCode" id="cb1337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1337-1"><a href="til20220522.html#cb1337-1"></a>final_test_conf &lt;-<span class="st"> </span></span>
+<span id="cb1337-2"><a href="til20220522.html#cb1337-2"></a><span class="st">  </span>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1337-3"><a href="til20220522.html#cb1337-3"></a><span class="st">  </span><span class="kw">conf_mat</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_class)</span></code></pre></div>
 <pre><code>## Error in conf_mat(., truth = Personal_Loan, estimate = .pred_class): object &#39;final_test_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1329-1"><a href="til20220522.html#cb1329-1"></a>final_test_conf</span></code></pre></div>
+<div class="sourceCode" id="cb1339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1339-1"><a href="til20220522.html#cb1339-1"></a>final_test_conf</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_test_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1331-1"><a href="til20220522.html#cb1331-1"></a><span class="kw">autoplot</span>(final_test_conf, <span class="dt">type =</span> <span class="st">&quot;heatmap&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1341-1"><a href="til20220522.html#cb1341-1"></a><span class="kw">autoplot</span>(final_test_conf, <span class="dt">type =</span> <span class="st">&quot;heatmap&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in autoplot(final_test_conf, type = &quot;heatmap&quot;): object &#39;final_test_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1333-1"><a href="til20220522.html#cb1333-1"></a><span class="kw">summary</span>(final_test_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb1343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1343-1"><a href="til20220522.html#cb1343-1"></a><span class="kw">summary</span>(final_test_conf)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;final_test_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1335-1"><a href="til20220522.html#cb1335-1"></a>test_auc &lt;-<span class="st"> </span>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1335-2"><a href="til20220522.html#cb1335-2"></a><span class="st">  </span><span class="kw">roc_curve</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1335-3"><a href="til20220522.html#cb1335-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="st">&quot;test_auc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1345-1"><a href="til20220522.html#cb1345-1"></a>test_auc &lt;-<span class="st"> </span>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1345-2"><a href="til20220522.html#cb1345-2"></a><span class="st">  </span><span class="kw">roc_curve</span>(<span class="dt">truth =</span> Personal_Loan, <span class="dt">estimate =</span> .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1345-3"><a href="til20220522.html#cb1345-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="st">&quot;test_auc&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in roc_curve(., truth = Personal_Loan, estimate = .pred_Yes): object &#39;final_test_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1337-1"><a href="til20220522.html#cb1337-1"></a><span class="kw">autoplot</span>(test_auc)</span></code></pre></div>
+<div class="sourceCode" id="cb1347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1347-1"><a href="til20220522.html#cb1347-1"></a><span class="kw">autoplot</span>(test_auc)</span></code></pre></div>
 <pre><code>## Error in autoplot(test_auc): object &#39;test_auc&#39; not found</code></pre>
-<div class="sourceCode" id="cb1339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1339-1"><a href="til20220522.html#cb1339-1"></a>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1339-2"><a href="til20220522.html#cb1339-2"></a><span class="st">  </span><span class="kw">gain_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1339-3"><a href="til20220522.html#cb1339-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
+<div class="sourceCode" id="cb1349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1349-1"><a href="til20220522.html#cb1349-1"></a>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1349-2"><a href="til20220522.html#cb1349-2"></a><span class="st">  </span><span class="kw">gain_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1349-3"><a href="til20220522.html#cb1349-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
 <pre><code>## Error in gain_curve(., Personal_Loan, .pred_Yes): object &#39;final_test_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1341-1"><a href="til20220522.html#cb1341-1"></a>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1341-2"><a href="til20220522.html#cb1341-2"></a><span class="st">  </span><span class="kw">lift_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1341-3"><a href="til20220522.html#cb1341-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
+<div class="sourceCode" id="cb1351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1351-1"><a href="til20220522.html#cb1351-1"></a>final_test_pred <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1351-2"><a href="til20220522.html#cb1351-2"></a><span class="st">  </span><span class="kw">lift_curve</span>(Personal_Loan, .pred_Yes) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1351-3"><a href="til20220522.html#cb1351-3"></a><span class="st">  </span>autoplot</span></code></pre></div>
 <pre><code>## Error in lift_curve(., Personal_Loan, .pred_Yes): object &#39;final_test_pred&#39; not found</code></pre>
-<div class="sourceCode" id="cb1343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1343-1"><a href="til20220522.html#cb1343-1"></a>final_test_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1343-2"><a href="til20220522.html#cb1343-2"></a><span class="st">  </span><span class="kw">pluck</span>(<span class="st">&quot;.workflow&quot;</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1343-3"><a href="til20220522.html#cb1343-3"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1343-4"><a href="til20220522.html#cb1343-4"></a><span class="st">  </span><span class="kw">vip</span>(<span class="dt">num_features =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1353-1"><a href="til20220522.html#cb1353-1"></a>final_test_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1353-2"><a href="til20220522.html#cb1353-2"></a><span class="st">  </span><span class="kw">pluck</span>(<span class="st">&quot;.workflow&quot;</span>, <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1353-3"><a href="til20220522.html#cb1353-3"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1353-4"><a href="til20220522.html#cb1353-4"></a><span class="st">  </span><span class="kw">vip</span>(<span class="dt">num_features =</span> <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## Error in pluck(., &quot;.workflow&quot;, 1): object &#39;final_test_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1345-1"><a href="til20220522.html#cb1345-1"></a>final_train_conf</span></code></pre></div>
+<div class="sourceCode" id="cb1355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1355-1"><a href="til20220522.html#cb1355-1"></a>final_train_conf</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_train_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1347-1"><a href="til20220522.html#cb1347-1"></a>final_test_conf</span></code></pre></div>
+<div class="sourceCode" id="cb1357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1357-1"><a href="til20220522.html#cb1357-1"></a>final_test_conf</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;final_test_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1349-1"><a href="til20220522.html#cb1349-1"></a><span class="kw">summary</span>(final_train_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb1359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1359-1"><a href="til20220522.html#cb1359-1"></a><span class="kw">summary</span>(final_train_conf)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;final_train_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1351-1"><a href="til20220522.html#cb1351-1"></a><span class="kw">summary</span>(final_test_conf)</span></code></pre></div>
+<div class="sourceCode" id="cb1361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1361-1"><a href="til20220522.html#cb1361-1"></a><span class="kw">summary</span>(final_test_conf)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;summary&#39;: object &#39;final_test_conf&#39; not found</code></pre>
-<div class="sourceCode" id="cb1353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1353-1"><a href="til20220522.html#cb1353-1"></a><span class="kw">bind_rows</span>(train_auc, test_auc) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1353-2"><a href="til20220522.html#cb1353-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>specificity,</span>
-<span id="cb1353-3"><a href="til20220522.html#cb1353-3"></a>                       <span class="dt">y =</span> sensitivity,</span>
-<span id="cb1353-4"><a href="til20220522.html#cb1353-4"></a>                       <span class="dt">color =</span> model)) <span class="op">+</span></span>
-<span id="cb1353-5"><a href="til20220522.html#cb1353-5"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">lwd =</span> <span class="fl">1.5</span>) <span class="op">+</span></span>
-<span id="cb1353-6"><a href="til20220522.html#cb1353-6"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">lty =</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb1353-7"><a href="til20220522.html#cb1353-7"></a><span class="st">  </span><span class="kw">coord_equal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1363-1"><a href="til20220522.html#cb1363-1"></a><span class="kw">bind_rows</span>(train_auc, test_auc) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1363-2"><a href="til20220522.html#cb1363-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>specificity,</span>
+<span id="cb1363-3"><a href="til20220522.html#cb1363-3"></a>                       <span class="dt">y =</span> sensitivity,</span>
+<span id="cb1363-4"><a href="til20220522.html#cb1363-4"></a>                       <span class="dt">color =</span> model)) <span class="op">+</span></span>
+<span id="cb1363-5"><a href="til20220522.html#cb1363-5"></a><span class="st">  </span><span class="kw">geom_path</span>(<span class="dt">lwd =</span> <span class="fl">1.5</span>) <span class="op">+</span></span>
+<span id="cb1363-6"><a href="til20220522.html#cb1363-6"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">lty =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb1363-7"><a href="til20220522.html#cb1363-7"></a><span class="st">  </span><span class="kw">coord_equal</span>()</span></code></pre></div>
 <pre><code>## Error in list2(...): object &#39;train_auc&#39; not found</code></pre>
-<div class="sourceCode" id="cb1355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1355-1"><a href="til20220522.html#cb1355-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rpart.plot)) { <span class="kw">install.packages</span>(<span class="st">&quot;rpart.plot&quot;</span>); <span class="kw">library</span>(rpart.plot); }</span>
-<span id="cb1355-2"><a href="til20220522.html#cb1355-2"></a>rpart_fit &lt;-<span class="st"> </span>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb1355-3"><a href="til20220522.html#cb1355-3"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1365-1"><a href="til20220522.html#cb1365-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rpart.plot)) { <span class="kw">install.packages</span>(<span class="st">&quot;rpart.plot&quot;</span>); <span class="kw">library</span>(rpart.plot); }</span>
+<span id="cb1365-2"><a href="til20220522.html#cb1365-2"></a>rpart_fit &lt;-<span class="st"> </span>final_train_fit <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1365-3"><a href="til20220522.html#cb1365-3"></a><span class="st">  </span><span class="kw">pull_workflow_fit</span>()</span></code></pre></div>
 <pre><code>## Error in is_workflow(x): object &#39;final_train_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1357-1"><a href="til20220522.html#cb1357-1"></a><span class="kw">rpart.plot</span>(<span class="dt">x =</span> rpart_fit<span class="op">$</span>fit,</span>
-<span id="cb1357-2"><a href="til20220522.html#cb1357-2"></a>           <span class="dt">yesno =</span> <span class="dv">2</span>, <span class="dt">type =</span> <span class="dv">2</span>, <span class="dt">extra =</span> <span class="dv">1</span>, <span class="dt">split.font =</span> <span class="dv">1</span>, <span class="dt">varlen =</span> <span class="dv">-10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1367-1"><a href="til20220522.html#cb1367-1"></a><span class="kw">rpart.plot</span>(<span class="dt">x =</span> rpart_fit<span class="op">$</span>fit,</span>
+<span id="cb1367-2"><a href="til20220522.html#cb1367-2"></a>           <span class="dt">yesno =</span> <span class="dv">2</span>, <span class="dt">type =</span> <span class="dv">2</span>, <span class="dt">extra =</span> <span class="dv">1</span>, <span class="dt">split.font =</span> <span class="dv">1</span>, <span class="dt">varlen =</span> <span class="dv">-10</span>)</span></code></pre></div>
 <pre><code>## Error in rpart.plot(x = rpart_fit$fit, yesno = 2, type = 2, extra = 1, : object &#39;rpart_fit&#39; not found</code></pre>
-<div class="sourceCode" id="cb1359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1359-1"><a href="til20220522.html#cb1359-1"></a><span class="kw">prp</span>(<span class="dt">x =</span> rpart_fit<span class="op">$</span>fit, </span>
-<span id="cb1359-2"><a href="til20220522.html#cb1359-2"></a>    <span class="dt">type =</span> <span class="dv">1</span>, </span>
-<span id="cb1359-3"><a href="til20220522.html#cb1359-3"></a>    <span class="dt">extra =</span> <span class="dv">1</span>, </span>
-<span id="cb1359-4"><a href="til20220522.html#cb1359-4"></a>    <span class="dt">under =</span> T, </span>
-<span id="cb1359-5"><a href="til20220522.html#cb1359-5"></a>    <span class="dt">split.font =</span> <span class="dv">1</span>, </span>
-<span id="cb1359-6"><a href="til20220522.html#cb1359-6"></a>    <span class="dt">varlen =</span> <span class="dv">-10</span>,</span>
-<span id="cb1359-7"><a href="til20220522.html#cb1359-7"></a>    <span class="dt">box.col =</span> <span class="kw">ifelse</span>(rpart_fit<span class="op">$</span>fit<span class="op">$</span>frame<span class="op">$</span>var <span class="op">==</span><span class="st"> &quot;&lt;leaf&gt;&quot;</span>, <span class="st">&quot;gray&quot;</span>, <span class="st">&quot;white&quot;</span>)</span>
-<span id="cb1359-8"><a href="til20220522.html#cb1359-8"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1369-1"><a href="til20220522.html#cb1369-1"></a><span class="kw">prp</span>(<span class="dt">x =</span> rpart_fit<span class="op">$</span>fit, </span>
+<span id="cb1369-2"><a href="til20220522.html#cb1369-2"></a>    <span class="dt">type =</span> <span class="dv">1</span>, </span>
+<span id="cb1369-3"><a href="til20220522.html#cb1369-3"></a>    <span class="dt">extra =</span> <span class="dv">1</span>, </span>
+<span id="cb1369-4"><a href="til20220522.html#cb1369-4"></a>    <span class="dt">under =</span> T, </span>
+<span id="cb1369-5"><a href="til20220522.html#cb1369-5"></a>    <span class="dt">split.font =</span> <span class="dv">1</span>, </span>
+<span id="cb1369-6"><a href="til20220522.html#cb1369-6"></a>    <span class="dt">varlen =</span> <span class="dv">-10</span>,</span>
+<span id="cb1369-7"><a href="til20220522.html#cb1369-7"></a>    <span class="dt">box.col =</span> <span class="kw">ifelse</span>(rpart_fit<span class="op">$</span>fit<span class="op">$</span>frame<span class="op">$</span>var <span class="op">==</span><span class="st"> &quot;&lt;leaf&gt;&quot;</span>, <span class="st">&quot;gray&quot;</span>, <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb1369-8"><a href="til20220522.html#cb1369-8"></a>)</span></code></pre></div>
 <pre><code>## Error in prp(x = rpart_fit$fit, type = 1, extra = 1, under = T, split.font = 1, : object &#39;rpart_fit&#39; not found</code></pre>
 
 </div>

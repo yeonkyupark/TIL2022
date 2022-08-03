@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,6 +683,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="til20220802.html"><a href="til20220802.html"><i class="fa fa-check"></i><b>8.2</b> TIL20220802</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="til20220802.html"><a href="til20220802.html#shinyjs-10초마다-페이지-자동-갱신"><i class="fa fa-check"></i><b>8.2.1</b> shinyjs, 10초마다 페이지 자동 갱신</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -724,14 +727,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>wine dataset - <a href="http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data" class="uri">http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data</a></li>
 </ul>
-<div class="sourceCode" id="cb1413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1413-1"><a href="til20220601.html#cb1413-1"></a>wine.fl &lt;-<span class="st"> &quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data&quot;</span></span>
-<span id="cb1413-2"><a href="til20220601.html#cb1413-2"></a>wine &lt;-<span class="st"> </span><span class="kw">read.csv</span>(wine.fl,<span class="dt">header =</span> F)</span>
-<span id="cb1413-3"><a href="til20220601.html#cb1413-3"></a>wine.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alcohol&quot;</span>, <span class="st">&quot;Malic acid&quot;</span>, <span class="st">&quot;Ash&quot;</span>, <span class="st">&quot;Alcalinity of ash&quot;</span>, <span class="st">&quot;Magnesium&quot;</span>,</span>
-<span id="cb1413-4"><a href="til20220601.html#cb1413-4"></a><span class="st">&quot;Total phenols&quot;</span>, <span class="st">&quot;Flavanoids&quot;</span>, <span class="st">&quot;Nonflavanoid phenols&quot;</span>, <span class="st">&quot;Proanthocyanins&quot;</span>,</span>
-<span id="cb1413-5"><a href="til20220601.html#cb1413-5"></a><span class="st">&quot;Color intensity&quot;</span>, <span class="st">&quot;Hue&quot;</span>, <span class="st">&quot;OD280/OD315 of diluted wines&quot;</span>, <span class="st">&quot;Proline&quot;</span>)</span>
-<span id="cb1413-6"><a href="til20220601.html#cb1413-6"></a><span class="kw">colnames</span>(wine)[<span class="dv">2</span><span class="op">:</span><span class="dv">14</span>] &lt;-<span class="st"> </span>wine.names</span>
-<span id="cb1413-7"><a href="til20220601.html#cb1413-7"></a><span class="kw">colnames</span>(wine)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Class&quot;</span></span>
-<span id="cb1413-8"><a href="til20220601.html#cb1413-8"></a><span class="kw">str</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb1429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1429-1"><a href="til20220601.html#cb1429-1"></a>wine.fl &lt;-<span class="st"> &quot;http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data&quot;</span></span>
+<span id="cb1429-2"><a href="til20220601.html#cb1429-2"></a>wine &lt;-<span class="st"> </span><span class="kw">read.csv</span>(wine.fl,<span class="dt">header =</span> F)</span>
+<span id="cb1429-3"><a href="til20220601.html#cb1429-3"></a>wine.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alcohol&quot;</span>, <span class="st">&quot;Malic acid&quot;</span>, <span class="st">&quot;Ash&quot;</span>, <span class="st">&quot;Alcalinity of ash&quot;</span>, <span class="st">&quot;Magnesium&quot;</span>,</span>
+<span id="cb1429-4"><a href="til20220601.html#cb1429-4"></a><span class="st">&quot;Total phenols&quot;</span>, <span class="st">&quot;Flavanoids&quot;</span>, <span class="st">&quot;Nonflavanoid phenols&quot;</span>, <span class="st">&quot;Proanthocyanins&quot;</span>,</span>
+<span id="cb1429-5"><a href="til20220601.html#cb1429-5"></a><span class="st">&quot;Color intensity&quot;</span>, <span class="st">&quot;Hue&quot;</span>, <span class="st">&quot;OD280/OD315 of diluted wines&quot;</span>, <span class="st">&quot;Proline&quot;</span>)</span>
+<span id="cb1429-6"><a href="til20220601.html#cb1429-6"></a><span class="kw">colnames</span>(wine)[<span class="dv">2</span><span class="op">:</span><span class="dv">14</span>] &lt;-<span class="st"> </span>wine.names</span>
+<span id="cb1429-7"><a href="til20220601.html#cb1429-7"></a><span class="kw">colnames</span>(wine)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Class&quot;</span></span>
+<span id="cb1429-8"><a href="til20220601.html#cb1429-8"></a><span class="kw">str</span>(wine)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    178 obs. of  14 variables:
 ##  $ Class                       : int  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ Alcohol                     : num  14.2 13.2 13.2 14.4 13.2 ...
@@ -752,9 +755,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">6.1.1.2</span> 데이터 정제<a href="til20220601.html#데이터-정제" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="결측치-처리-1" class="section level5 hasAnchor">
 <h5><span class="header-section-number">6.1.1.2.1</span> 결측치 처리<a href="til20220601.html#결측치-처리-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<div class="sourceCode" id="cb1415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1415-1"><a href="til20220601.html#cb1415-1"></a><span class="co"># 결측치 확인</span></span>
-<span id="cb1415-2"><a href="til20220601.html#cb1415-2"></a>wine_na &lt;-<span class="st"> </span><span class="kw">colSums</span>(<span class="kw">is.na</span>(wine))</span>
-<span id="cb1415-3"><a href="til20220601.html#cb1415-3"></a><span class="kw">as.matrix</span>(wine_na)</span></code></pre></div>
+<div class="sourceCode" id="cb1431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1431-1"><a href="til20220601.html#cb1431-1"></a><span class="co"># 결측치 확인</span></span>
+<span id="cb1431-2"><a href="til20220601.html#cb1431-2"></a>wine_na &lt;-<span class="st"> </span><span class="kw">colSums</span>(<span class="kw">is.na</span>(wine))</span>
+<span id="cb1431-3"><a href="til20220601.html#cb1431-3"></a><span class="kw">as.matrix</span>(wine_na)</span></code></pre></div>
 <pre><code>##                              [,1]
 ## Class                           0
 ## Alcohol                         0
@@ -770,13 +773,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hue                             0
 ## OD280/OD315 of diluted wines    0
 ## Proline                         0</code></pre>
-<div class="sourceCode" id="cb1417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1417-1"><a href="til20220601.html#cb1417-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(naniar)) { <span class="kw">install.packages</span>(<span class="st">&quot;naniar&quot;</span>); <span class="kw">library</span>(naniar); }</span></code></pre></div>
+<div class="sourceCode" id="cb1433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1433-1"><a href="til20220601.html#cb1433-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(naniar)) { <span class="kw">install.packages</span>(<span class="st">&quot;naniar&quot;</span>); <span class="kw">library</span>(naniar); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpK2iowB/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1419-1"><a href="til20220601.html#cb1419-1"></a><span class="kw">n_miss</span>(wine)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="til20220601.html#cb1435-1"></a><span class="kw">n_miss</span>(wine)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb1421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1421-1"><a href="til20220601.html#cb1421-1"></a><span class="kw">miss_case_summary</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb1437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1437-1"><a href="til20220601.html#cb1437-1"></a><span class="kw">miss_case_summary</span>(wine)</span></code></pre></div>
 <pre><code>## # A tibble: 178 × 3
 ##     case n_miss pct_miss
 ##    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
@@ -792,9 +795,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    10      0        0
 ## # … with 168 more rows
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb1423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1423-1"><a href="til20220601.html#cb1423-1"></a><span class="kw">vis_miss</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb1439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1439-1"><a href="til20220601.html#cb1439-1"></a><span class="kw">vis_miss</span>(wine)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-596-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1424-1"><a href="til20220601.html#cb1424-1"></a><span class="kw">table</span>(wine<span class="op">$</span>Class, <span class="dt">useNA=</span><span class="st">&quot;ifany&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1440-1"><a href="til20220601.html#cb1440-1"></a><span class="kw">table</span>(wine<span class="op">$</span>Class, <span class="dt">useNA=</span><span class="st">&quot;ifany&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  1  2  3 
 ## 59 71 48</code></pre>
@@ -807,29 +810,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </dd>
 </dl>
-<div class="sourceCode" id="cb1426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1426-1"><a href="til20220601.html#cb1426-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="ot">NA</span>,<span class="dv">10</span>)</span>
-<span id="cb1426-2"><a href="til20220601.html#cb1426-2"></a><span class="kw">summary</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1442-1"><a href="til20220601.html#cb1442-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="ot">NA</span>,<span class="dv">10</span>)</span>
+<span id="cb1442-2"><a href="til20220601.html#cb1442-2"></a><span class="kw">summary</span>(x)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##    1.00    2.75    5.00    5.12    7.25   10.00       2</code></pre>
-<div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="til20220601.html#cb1428-1"></a><span class="co"># 1. 결측치 제거</span></span>
-<span id="cb1428-2"><a href="til20220601.html#cb1428-2"></a>x_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">na.omit</span>(x)</span>
-<span id="cb1428-3"><a href="til20220601.html#cb1428-3"></a><span class="kw">summary</span>(x_<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1444-1"><a href="til20220601.html#cb1444-1"></a><span class="co"># 1. 결측치 제거</span></span>
+<span id="cb1444-2"><a href="til20220601.html#cb1444-2"></a>x_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">na.omit</span>(x)</span>
+<span id="cb1444-3"><a href="til20220601.html#cb1444-3"></a><span class="kw">summary</span>(x_<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.00    2.75    5.00    5.12    7.25   10.00</code></pre>
-<div class="sourceCode" id="cb1430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1430-1"><a href="til20220601.html#cb1430-1"></a><span class="co"># 2. 단순대체</span></span>
-<span id="cb1430-2"><a href="til20220601.html#cb1430-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T); x_mean</span></code></pre></div>
+<div class="sourceCode" id="cb1446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1446-1"><a href="til20220601.html#cb1446-1"></a><span class="co"># 2. 단순대체</span></span>
+<span id="cb1446-2"><a href="til20220601.html#cb1446-2"></a>x_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> T); x_mean</span></code></pre></div>
 <pre><code>## [1] 5.12</code></pre>
-<div class="sourceCode" id="cb1432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1432-1"><a href="til20220601.html#cb1432-1"></a>x_<span class="dv">2</span> &lt;-<span class="st"> </span>x</span>
-<span id="cb1432-2"><a href="til20220601.html#cb1432-2"></a>x_<span class="dv">2</span>[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> </span>x_mean</span>
-<span id="cb1432-3"><a href="til20220601.html#cb1432-3"></a><span class="kw">round</span>(x_<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1448-1"><a href="til20220601.html#cb1448-1"></a>x_<span class="dv">2</span> &lt;-<span class="st"> </span>x</span>
+<span id="cb1448-2"><a href="til20220601.html#cb1448-2"></a>x_<span class="dv">2</span>[<span class="kw">is.na</span>(x)] &lt;-<span class="st"> </span>x_mean</span>
+<span id="cb1448-3"><a href="til20220601.html#cb1448-3"></a><span class="kw">round</span>(x_<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  [1]  1.00  2.00  3.00  4.00  5.12  6.00  7.00  8.00  5.12 10.00</code></pre>
 </div>
 <div id="이상치-처리" class="section level5 hasAnchor">
 <h5><span class="header-section-number">6.1.1.2.2</span> 이상치 처리<a href="til20220601.html#이상치-처리" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<div class="sourceCode" id="cb1434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1434-1"><a href="til20220601.html#cb1434-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
-<span id="cb1434-2"><a href="til20220601.html#cb1434-2"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.factor</span>(Class), <span class="dt">y=</span>Alcohol)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1450-1"><a href="til20220601.html#cb1450-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)) { <span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>); <span class="kw">library</span>(ggplot2); }</span>
+<span id="cb1450-2"><a href="til20220601.html#cb1450-2"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.factor</span>(Class), <span class="dt">y=</span>Alcohol)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-601-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="til20220601.html#cb1435-1"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.factor</span>(Class), <span class="dt">y=</span>wine<span class="op">$</span>Proline)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1451-1"><a href="til20220601.html#cb1451-1"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.factor</span>(Class), <span class="dt">y=</span>wine<span class="op">$</span>Proline)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-602-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>

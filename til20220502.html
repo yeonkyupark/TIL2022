@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,6 +683,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="til20220802.html"><a href="til20220802.html"><i class="fa fa-check"></i><b>8.2</b> TIL20220802</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="til20220802.html"><a href="til20220802.html#shinyjs-10초마다-페이지-자동-갱신"><i class="fa fa-check"></i><b>8.2.1</b> shinyjs, 10초마다 페이지 자동 갱신</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -719,22 +722,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 * Kolmogorov-Smirnov test(KS test)
 * Lilliefors test(LF test)
 * Shapiro-Wilk test(SW test)</p>
-<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1039-1"><a href="til20220502.html#cb1039-1"></a>x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
-<span id="cb1039-2"><a href="til20220502.html#cb1039-2"></a></span>
-<span id="cb1039-3"><a href="til20220502.html#cb1039-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nortest)) { <span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>); <span class="kw">library</span>(nortest); }</span>
-<span id="cb1039-4"><a href="til20220502.html#cb1039-4"></a><span class="kw">lillie.test</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="til20220502.html#cb1043-1"></a>x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb1043-2"><a href="til20220502.html#cb1043-2"></a></span>
+<span id="cb1043-3"><a href="til20220502.html#cb1043-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nortest)) { <span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>); <span class="kw">library</span>(nortest); }</span>
+<span id="cb1043-4"><a href="til20220502.html#cb1043-4"></a><span class="kw">lillie.test</span>(x)</span></code></pre></div>
 <pre><code>## 
 ##  Lilliefors (Kolmogorov-Smirnov) normality test
 ## 
 ## data:  x
 ## D = 0.1, p-value = 0.5</code></pre>
-<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="til20220502.html#cb1041-1"></a><span class="kw">shapiro.test</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="til20220502.html#cb1045-1"></a><span class="kw">shapiro.test</span>(x)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  x
 ## W = 1, p-value = 0.7</code></pre>
-<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="til20220502.html#cb1043-1"></a><span class="kw">qqnorm</span>(x); <span class="kw">qqline</span>(x, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="til20220502.html#cb1047-1"></a><span class="kw">qqnorm</span>(x); <span class="kw">qqline</span>(x, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-447-1.png" width="672" style="display: block; margin: auto;" /><img src="Figures/unnamed-chunk-447-2.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>

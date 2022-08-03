@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,6 +683,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="til20220802.html"><a href="til20220802.html"><i class="fa fa-check"></i><b>8.2</b> TIL20220802</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="til20220802.html"><a href="til20220802.html#shinyjs-10초마다-페이지-자동-갱신"><i class="fa fa-check"></i><b>8.2.1</b> shinyjs, 10초마다 페이지 자동 갱신</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -716,33 +719,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \lim_{n \to \infty}P(|\hat\theta-\theta|&gt;\epsilon) = 0
 \]</span></p>
-<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="til20220404.html#cb834-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(prob)) { <span class="kw">install.packages</span>(<span class="st">&quot;prob&quot;</span>); <span class="kw">library</span>(prob); }</span></code></pre></div>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="til20220404.html#cb835-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(prob)) { <span class="kw">install.packages</span>(<span class="st">&quot;prob&quot;</span>); <span class="kw">library</span>(prob); }</span></code></pre></div>
 <pre><code>## Error in library(prob): there is no package called &#39;prob&#39;</code></pre>
-<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="til20220404.html#cb836-1"></a>n &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb836-2"><a href="til20220404.html#cb836-2"></a>smps.all &lt;-<span class="st"> </span><span class="kw">rolldie</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="til20220404.html#cb837-1"></a>n &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb837-2"><a href="til20220404.html#cb837-2"></a>smps.all &lt;-<span class="st"> </span><span class="kw">rolldie</span>(n)</span></code></pre></div>
 <pre><code>## Error in rolldie(n): could not find function &quot;rolldie&quot;</code></pre>
-<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="til20220404.html#cb838-1"></a><span class="kw">str</span>(smps.all)</span></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="til20220404.html#cb839-1"></a><span class="kw">str</span>(smps.all)</span></code></pre></div>
 <pre><code>## Error in str(smps.all): object &#39;smps.all&#39; not found</code></pre>
-<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="til20220404.html#cb840-1"></a><span class="kw">head</span>(smps.all)</span></code></pre></div>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="til20220404.html#cb841-1"></a><span class="kw">head</span>(smps.all)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;head&#39;: object &#39;smps.all&#39; not found</code></pre>
-<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="til20220404.html#cb842-1"></a>is.even &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">return</span>(<span class="op">!</span>x<span class="op">%%</span><span class="dv">2</span>)</span>
-<span id="cb842-2"><a href="til20220404.html#cb842-2"></a>var.p &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb842-3"><a href="til20220404.html#cb842-3"></a>  <span class="kw">return</span>(<span class="kw">sum</span>((x<span class="op">-</span><span class="kw">mean</span>(x))<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">length</span>(x)))</span>
-<span id="cb842-4"><a href="til20220404.html#cb842-4"></a>}</span>
-<span id="cb842-5"><a href="til20220404.html#cb842-5"></a>p.even &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">s.size =</span> <span class="dv">3</span>) {</span>
-<span id="cb842-6"><a href="til20220404.html#cb842-6"></a>  <span class="kw">return</span>(<span class="kw">sum</span>(<span class="kw">is.even</span>(x))<span class="op">/</span>s.size)</span>
-<span id="cb842-7"><a href="til20220404.html#cb842-7"></a>}</span>
-<span id="cb842-8"><a href="til20220404.html#cb842-8"></a>phat &lt;-<span class="st"> </span><span class="kw">apply</span>(smps.all, <span class="dv">1</span>, p.even)</span></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="til20220404.html#cb843-1"></a>is.even &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">return</span>(<span class="op">!</span>x<span class="op">%%</span><span class="dv">2</span>)</span>
+<span id="cb843-2"><a href="til20220404.html#cb843-2"></a>var.p &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb843-3"><a href="til20220404.html#cb843-3"></a>  <span class="kw">return</span>(<span class="kw">sum</span>((x<span class="op">-</span><span class="kw">mean</span>(x))<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="kw">length</span>(x)))</span>
+<span id="cb843-4"><a href="til20220404.html#cb843-4"></a>}</span>
+<span id="cb843-5"><a href="til20220404.html#cb843-5"></a>p.even &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">s.size =</span> <span class="dv">3</span>) {</span>
+<span id="cb843-6"><a href="til20220404.html#cb843-6"></a>  <span class="kw">return</span>(<span class="kw">sum</span>(<span class="kw">is.even</span>(x))<span class="op">/</span>s.size)</span>
+<span id="cb843-7"><a href="til20220404.html#cb843-7"></a>}</span>
+<span id="cb843-8"><a href="til20220404.html#cb843-8"></a>phat &lt;-<span class="st"> </span><span class="kw">apply</span>(smps.all, <span class="dv">1</span>, p.even)</span></code></pre></div>
 <pre><code>## Error in apply(smps.all, 1, p.even): object &#39;smps.all&#39; not found</code></pre>
-<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="til20220404.html#cb844-1"></a><span class="kw">mean</span>(phat)</span></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="til20220404.html#cb845-1"></a><span class="kw">mean</span>(phat)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;mean&#39;: object &#39;phat&#39; not found</code></pre>
-<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="til20220404.html#cb846-1"></a>(p.p &lt;-<span class="st"> </span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="til20220404.html#cb847-1"></a>(p.p &lt;-<span class="st"> </span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
-<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="til20220404.html#cb848-1"></a><span class="kw">var.p</span>(phat)</span></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="til20220404.html#cb849-1"></a><span class="kw">var.p</span>(phat)</span></code></pre></div>
 <pre><code>## Error in var.p(phat): object &#39;phat&#39; not found</code></pre>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="til20220404.html#cb850-1"></a>(p.p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p.p)<span class="op">/</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="til20220404.html#cb851-1"></a>(p.p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p.p)<span class="op">/</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.0833</code></pre>
-<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="til20220404.html#cb852-1"></a><span class="kw">sqrt</span>(<span class="kw">var.p</span>(phat))</span></code></pre></div>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="til20220404.html#cb853-1"></a><span class="kw">sqrt</span>(<span class="kw">var.p</span>(phat))</span></code></pre></div>
 <pre><code>## Error in var.p(phat): object &#39;phat&#39; not found</code></pre>
 
 </div>

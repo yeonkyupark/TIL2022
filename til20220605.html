@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -683,6 +683,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="til20220802.html"><a href="til20220802.html"><i class="fa fa-check"></i><b>8.2</b> TIL20220802</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="til20220802.html"><a href="til20220802.html#shinyjs-10초마다-페이지-자동-갱신"><i class="fa fa-check"></i><b>8.2.1</b> shinyjs, 10초마다 페이지 자동 갱신</a></li>
 </ul></li>
+<li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -708,15 +711,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.5</span> TIL20220605<a href="til20220605.html#til20220605" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="여러-패키지-한번에-읽어-오기" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.5.1</span> 여러 패키지 한번에 읽어 오기<a href="til20220605.html#여러-패키지-한번에-읽어-오기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1475-1"><a href="til20220605.html#cb1475-1"></a>packages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb1475-2"><a href="til20220605.html#cb1475-2"></a><span class="kw">invisible</span>(</span>
-<span id="cb1475-3"><a href="til20220605.html#cb1475-3"></a>  <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
-<span id="cb1475-4"><a href="til20220605.html#cb1475-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1494-1"><a href="til20220605.html#cb1494-1"></a>packages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb1494-2"><a href="til20220605.html#cb1494-2"></a><span class="kw">invisible</span>(</span>
+<span id="cb1494-3"><a href="til20220605.html#cb1494-3"></a>  <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
+<span id="cb1494-4"><a href="til20220605.html#cb1494-4"></a>)</span></code></pre></div>
 </div>
 <div id="반복측정-분산분석" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.5.2</span> 반복측정 분산분석<a href="til20220605.html#반복측정-분산분석" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1476-1"><a href="til20220605.html#cb1476-1"></a>data &lt;-<span class="st"> </span>CO2</span>
-<span id="cb1476-2"><a href="til20220605.html#cb1476-2"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1495-1"><a href="til20220605.html#cb1495-1"></a>data &lt;-<span class="st"> </span>CO2</span>
+<span id="cb1495-2"><a href="til20220605.html#cb1495-2"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## Classes &#39;nfnGroupedData&#39;, &#39;nfGroupedData&#39;, &#39;groupedData&#39; and &#39;data.frame&#39;:   84 obs. of  5 variables:
 ##  $ Plant    : Ord.factor w/ 12 levels &quot;Qn1&quot;&lt;&quot;Qn2&quot;&lt;&quot;Qn3&quot;&lt;..: 1 1 1 1 1 1 1 2 2 2 ...
 ##  $ Type     : Factor w/ 2 levels &quot;Quebec&quot;,&quot;Mississippi&quot;: 1 1 1 1 1 1 1 1 1 1 ...
@@ -733,9 +736,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  - attr(*, &quot;units&quot;)=List of 2
 ##   ..$ x: chr &quot;(uL/L)&quot;
 ##   ..$ y: chr &quot;(umol/m^2 s)&quot;</code></pre>
-<div class="sourceCode" id="cb1478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1478-1"><a href="til20220605.html#cb1478-1"></a>data &lt;-<span class="st"> </span><span class="kw">subset</span>(data, Treatment <span class="op">==</span><span class="st"> &quot;chilled&quot;</span>)</span>
-<span id="cb1478-2"><a href="til20220605.html#cb1478-2"></a>data<span class="op">$</span>conc &lt;-<span class="st"> </span><span class="kw">factor</span>(data<span class="op">$</span>conc)</span>
-<span id="cb1478-3"><a href="til20220605.html#cb1478-3"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1497-1"><a href="til20220605.html#cb1497-1"></a>data &lt;-<span class="st"> </span><span class="kw">subset</span>(data, Treatment <span class="op">==</span><span class="st"> &quot;chilled&quot;</span>)</span>
+<span id="cb1497-2"><a href="til20220605.html#cb1497-2"></a>data<span class="op">$</span>conc &lt;-<span class="st"> </span><span class="kw">factor</span>(data<span class="op">$</span>conc)</span>
+<span id="cb1497-3"><a href="til20220605.html#cb1497-3"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## Classes &#39;nfnGroupedData&#39;, &#39;nfGroupedData&#39;, &#39;groupedData&#39; and &#39;data.frame&#39;:   42 obs. of  5 variables:
 ##  $ Plant    : Ord.factor w/ 6 levels &quot;Qc1&quot;&lt;&quot;Qc3&quot;&lt;&quot;Qc2&quot;&lt;..: 1 1 1 1 1 1 1 3 3 3 ...
 ##  $ Type     : Factor w/ 2 levels &quot;Quebec&quot;,&quot;Mississippi&quot;: 1 1 1 1 1 1 1 1 1 1 ...
@@ -754,7 +757,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_EmptyEnv&gt; 
 ##  - attr(*, &quot;FUN&quot;)=function (x)  
 ##  - attr(*, &quot;order.groups&quot;)= logi TRUE</code></pre>
-<div class="sourceCode" id="cb1480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1480-1"><a href="til20220605.html#cb1480-1"></a><span class="kw">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1499-1"><a href="til20220605.html#cb1499-1"></a><span class="kw">head</span>(data)</span></code></pre></div>
 <pre><code>## Grouped Data: uptake ~ conc | Plant
 ##    Plant   Type Treatment conc uptake
 ## 22   Qc1 Quebec   chilled   95   14.2
@@ -763,8 +766,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 25   Qc1 Quebec   chilled  350   34.6
 ## 26   Qc1 Quebec   chilled  500   32.5
 ## 27   Qc1 Quebec   chilled  675   35.4</code></pre>
-<div class="sourceCode" id="cb1482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1482-1"><a href="til20220605.html#cb1482-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(Plant<span class="op">/</span>conc), data)</span>
-<span id="cb1482-2"><a href="til20220605.html#cb1482-2"></a><span class="kw">summary</span>(data.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb1501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1501-1"><a href="til20220605.html#cb1501-1"></a>data.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(Plant<span class="op">/</span>conc), data)</span>
+<span id="cb1501-2"><a href="til20220605.html#cb1501-2"></a><span class="kw">summary</span>(data.aov)</span></code></pre></div>
 <pre><code>## 
 ## Error: Plant
 ##           Df Sum Sq Mean Sq F value Pr(&gt;F)   
@@ -780,15 +783,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residuals 24    112     4.7                    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb1484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1484-1"><a href="til20220605.html#cb1484-1"></a><span class="kw">boxplot</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc, data,</span>
-<span id="cb1484-2"><a href="til20220605.html#cb1484-2"></a>        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;deepskyblue&quot;</span>, <span class="st">&quot;violet&quot;</span>), <span class="dt">las =</span> <span class="dv">2</span>, <span class="dt">cex.axis=</span><span class="fl">0.7</span>, </span>
-<span id="cb1484-3"><a href="til20220605.html#cb1484-3"></a>        <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Carbon dioxide uptake rate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1503-1"><a href="til20220605.html#cb1503-1"></a><span class="kw">boxplot</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc, data,</span>
+<span id="cb1503-2"><a href="til20220605.html#cb1503-2"></a>        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;deepskyblue&quot;</span>, <span class="st">&quot;violet&quot;</span>), <span class="dt">las =</span> <span class="dv">2</span>, <span class="dt">cex.axis=</span><span class="fl">0.7</span>, </span>
+<span id="cb1503-3"><a href="til20220605.html#cb1503-3"></a>        <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Carbon dioxide uptake rate&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-625-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1485-1"><a href="til20220605.html#cb1485-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(HH)) { <span class="kw">install.packages</span>(<span class="st">&quot;HH&quot;</span>); <span class="kw">library</span>(HH); }</span></code></pre></div>
+<div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="til20220605.html#cb1504-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(HH)) { <span class="kw">install.packages</span>(<span class="st">&quot;HH&quot;</span>); <span class="kw">library</span>(HH); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpK2iowB/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="til20220605.html#cb1487-1"></a><span class="kw">interaction2wt</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc, data)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="til20220605.html#cb1506-1"></a><span class="kw">interaction2wt</span>(uptake <span class="op">~</span><span class="st"> </span>Type <span class="op">*</span><span class="st"> </span>conc, data)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-626-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
