@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -709,42 +712,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="til20220402" class="section level2 hasAnchor">
 <h2><span class="header-section-number">4.2</span> TIL20220402<a href="til20220402.html#til20220402" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="til20220402.html#cb781-1"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb781-2"><a href="til20220402.html#cb781-2"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb781-3"><a href="til20220402.html#cb781-3"></a>mean.seq &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb781-4"><a href="til20220402.html#cb781-4"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
-<span id="cb781-5"><a href="til20220402.html#cb781-5"></a>  sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb781-6"><a href="til20220402.html#cb781-6"></a>  n2 &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb781-7"><a href="til20220402.html#cb781-7"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
-<span id="cb781-8"><a href="til20220402.html#cb781-8"></a>    newx &lt;-<span class="st"> </span>i <span class="op">*</span><span class="st"> </span>x[i]</span>
-<span id="cb781-9"><a href="til20220402.html#cb781-9"></a>    sum &lt;-<span class="st"> </span>sum <span class="op">+</span><span class="st"> </span>newx</span>
-<span id="cb781-10"><a href="til20220402.html#cb781-10"></a>    n2 &lt;-<span class="st"> </span>n2 <span class="op">+</span><span class="st"> </span>i</span>
-<span id="cb781-11"><a href="til20220402.html#cb781-11"></a>  }</span>
-<span id="cb781-12"><a href="til20220402.html#cb781-12"></a>  <span class="kw">return</span> (sum<span class="op">/</span>n2)</span>
-<span id="cb781-13"><a href="til20220402.html#cb781-13"></a>}</span>
-<span id="cb781-14"><a href="til20220402.html#cb781-14"></a></span>
-<span id="cb781-15"><a href="til20220402.html#cb781-15"></a>y1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)</span>
-<span id="cb781-16"><a href="til20220402.html#cb781-16"></a>y2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)</span>
-<span id="cb781-17"><a href="til20220402.html#cb781-17"></a></span>
-<span id="cb781-18"><a href="til20220402.html#cb781-18"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){</span>
-<span id="cb781-19"><a href="til20220402.html#cb781-19"></a>  smp &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">3</span>)</span>
-<span id="cb781-20"><a href="til20220402.html#cb781-20"></a>  y1[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(smp)</span>
-<span id="cb781-21"><a href="til20220402.html#cb781-21"></a>  y2[i] &lt;-<span class="st"> </span><span class="kw">mean.seq</span>(smp)</span>
-<span id="cb781-22"><a href="til20220402.html#cb781-22"></a>}</span>
-<span id="cb781-23"><a href="til20220402.html#cb781-23"></a></span>
-<span id="cb781-24"><a href="til20220402.html#cb781-24"></a>n1 &lt;-<span class="st"> </span><span class="kw">length</span>(y1[(y1<span class="op">&gt;-</span><span class="fl">0.1</span>) <span class="op">&amp;</span><span class="st"> </span>(y1<span class="op">&lt;</span><span class="fl">0.1</span>)])</span>
-<span id="cb781-25"><a href="til20220402.html#cb781-25"></a>n2 &lt;-<span class="st"> </span><span class="kw">length</span>(y2[(y2<span class="op">&gt;-</span><span class="fl">0.1</span>) <span class="op">&amp;</span><span class="st"> </span>(y2<span class="op">&lt;</span><span class="fl">0.1</span>)])</span>
-<span id="cb781-26"><a href="til20220402.html#cb781-26"></a><span class="kw">data.frame</span>(<span class="dt">mean=</span><span class="kw">mean</span>(y1), <span class="dt">var=</span><span class="kw">var</span>(y1), <span class="dt">n=</span>n1)</span></code></pre></div>
+<div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="til20220402.html#cb780-1"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb780-2"><a href="til20220402.html#cb780-2"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb780-3"><a href="til20220402.html#cb780-3"></a>mean.seq &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb780-4"><a href="til20220402.html#cb780-4"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb780-5"><a href="til20220402.html#cb780-5"></a>  sum &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb780-6"><a href="til20220402.html#cb780-6"></a>  n2 &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb780-7"><a href="til20220402.html#cb780-7"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</span>
+<span id="cb780-8"><a href="til20220402.html#cb780-8"></a>    newx &lt;-<span class="st"> </span>i <span class="op">*</span><span class="st"> </span>x[i]</span>
+<span id="cb780-9"><a href="til20220402.html#cb780-9"></a>    sum &lt;-<span class="st"> </span>sum <span class="op">+</span><span class="st"> </span>newx</span>
+<span id="cb780-10"><a href="til20220402.html#cb780-10"></a>    n2 &lt;-<span class="st"> </span>n2 <span class="op">+</span><span class="st"> </span>i</span>
+<span id="cb780-11"><a href="til20220402.html#cb780-11"></a>  }</span>
+<span id="cb780-12"><a href="til20220402.html#cb780-12"></a>  <span class="kw">return</span> (sum<span class="op">/</span>n2)</span>
+<span id="cb780-13"><a href="til20220402.html#cb780-13"></a>}</span>
+<span id="cb780-14"><a href="til20220402.html#cb780-14"></a></span>
+<span id="cb780-15"><a href="til20220402.html#cb780-15"></a>y1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)</span>
+<span id="cb780-16"><a href="til20220402.html#cb780-16"></a>y2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)</span>
+<span id="cb780-17"><a href="til20220402.html#cb780-17"></a></span>
+<span id="cb780-18"><a href="til20220402.html#cb780-18"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){</span>
+<span id="cb780-19"><a href="til20220402.html#cb780-19"></a>  smp &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">3</span>)</span>
+<span id="cb780-20"><a href="til20220402.html#cb780-20"></a>  y1[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(smp)</span>
+<span id="cb780-21"><a href="til20220402.html#cb780-21"></a>  y2[i] &lt;-<span class="st"> </span><span class="kw">mean.seq</span>(smp)</span>
+<span id="cb780-22"><a href="til20220402.html#cb780-22"></a>}</span>
+<span id="cb780-23"><a href="til20220402.html#cb780-23"></a></span>
+<span id="cb780-24"><a href="til20220402.html#cb780-24"></a>n1 &lt;-<span class="st"> </span><span class="kw">length</span>(y1[(y1<span class="op">&gt;-</span><span class="fl">0.1</span>) <span class="op">&amp;</span><span class="st"> </span>(y1<span class="op">&lt;</span><span class="fl">0.1</span>)])</span>
+<span id="cb780-25"><a href="til20220402.html#cb780-25"></a>n2 &lt;-<span class="st"> </span><span class="kw">length</span>(y2[(y2<span class="op">&gt;-</span><span class="fl">0.1</span>) <span class="op">&amp;</span><span class="st"> </span>(y2<span class="op">&lt;</span><span class="fl">0.1</span>)])</span>
+<span id="cb780-26"><a href="til20220402.html#cb780-26"></a><span class="kw">data.frame</span>(<span class="dt">mean=</span><span class="kw">mean</span>(y1), <span class="dt">var=</span><span class="kw">var</span>(y1), <span class="dt">n=</span>n1)</span></code></pre></div>
 <pre><code>##      mean  var   n
 ## 1 -0.0042 0.36 134</code></pre>
-<div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb783-1"><a href="til20220402.html#cb783-1"></a><span class="kw">data.frame</span>(<span class="dt">mean=</span><span class="kw">mean</span>(y2), <span class="dt">var=</span><span class="kw">var</span>(y2), <span class="dt">n=</span>n2)</span></code></pre></div>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="til20220402.html#cb782-1"></a><span class="kw">data.frame</span>(<span class="dt">mean=</span><span class="kw">mean</span>(y2), <span class="dt">var=</span><span class="kw">var</span>(y2), <span class="dt">n=</span>n2)</span></code></pre></div>
 <pre><code>##      mean   var   n
 ## 1 -0.0113 0.427 120</code></pre>
-<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="til20220402.html#cb785-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb785-2"><a href="til20220402.html#cb785-2"></a><span class="kw">hist</span>(y1, <span class="dt">probability =</span> T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.65</span>),</span>
-<span id="cb785-3"><a href="til20220402.html#cb785-3"></a>     <span class="dt">main =</span> <span class="st">&quot;(x1 + x2 + x3)/3&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb785-4"><a href="til20220402.html#cb785-4"></a><span class="kw">hist</span>(y2, <span class="dt">probability =</span> T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.65</span>),</span>
-<span id="cb785-5"><a href="til20220402.html#cb785-5"></a>     <span class="dt">main =</span> <span class="st">&quot;(1*x1+ 2*x2 + 6*x3)/6&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="til20220402.html#cb784-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb784-2"><a href="til20220402.html#cb784-2"></a><span class="kw">hist</span>(y1, <span class="dt">probability =</span> T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.65</span>),</span>
+<span id="cb784-3"><a href="til20220402.html#cb784-3"></a>     <span class="dt">main =</span> <span class="st">&quot;(x1 + x2 + x3)/3&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb784-4"><a href="til20220402.html#cb784-4"></a><span class="kw">hist</span>(y2, <span class="dt">probability =</span> T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.65</span>),</span>
+<span id="cb784-5"><a href="til20220402.html#cb784-5"></a>     <span class="dt">main =</span> <span class="st">&quot;(1*x1+ 2*x2 + 6*x3)/6&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-337-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.29 TIL20220429 | Today I Learned in 2022</title>
+  <title>8.4 TIL20220804 | Today I Learned in 2022</title>
   <meta name="description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.29 TIL20220429 | Today I Learned in 2022" />
+  <meta property="og:title" content="8.4 TIL20220804 | Today I Learned in 2022" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   <meta name="github-repo" content="yeonkyupark/TIL2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.29 TIL20220429 | Today I Learned in 2022" />
+  <meta name="twitter:title" content="8.4 TIL20220804 | Today I Learned in 2022" />
   
   <meta name="twitter:description" content="TIL, 그날 그날 익힌 내용을 담고 있습니다." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="til20220428.html"/>
-<link rel="next" href="til20220430.html"/>
+<link rel="prev" href="til20220803.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -710,172 +710,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="til20220429" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.29</span> TIL20220429<a href="til20220429.html#til20220429" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="오늘까지-휴가" class="section level3 hasAnchor">
-<h3><span class="header-section-number">4.29.1</span> 오늘까지 휴가<a href="til20220429.html#오늘까지-휴가" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="til20220429.html#cb965-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb965-2"><a href="til20220429.html#cb965-2"></a>df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dt">y=</span>month.name[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>])</span>
-<span id="cb965-3"><a href="til20220429.html#cb965-3"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="dv">7</span><span class="op">:</span><span class="dv">12</span>,<span class="dt">y=</span>month.name[<span class="dv">7</span><span class="op">:</span><span class="dv">12</span>])</span>
-<span id="cb965-4"><a href="til20220429.html#cb965-4"></a>df1; df2;</span></code></pre></div>
-<pre><code>##   x        y
-## 1 1  January
-## 2 2 February
-## 3 3    March
-## 4 4    April
-## 5 5      May
-## 6 6     June</code></pre>
-<pre><code>##    x         y
-## 1  7      July
-## 2  8    August
-## 3  9 September
-## 4 10   October
-## 5 11  November
-## 6 12  December</code></pre>
-<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="til20220429.html#cb968-1"></a>df3 &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(df1, df2)</span>
-<span id="cb968-2"><a href="til20220429.html#cb968-2"></a>df3</span></code></pre></div>
-<pre><code>##     x         y
-## 1   1   January
-## 2   2  February
-## 3   3     March
-## 4   4     April
-## 5   5       May
-## 6   6      June
-## 7   7      July
-## 8   8    August
-## 9   9 September
-## 10 10   October
-## 11 11  November
-## 12 12  December</code></pre>
-<div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb970-1"><a href="til20220429.html#cb970-1"></a>df4 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">z=</span>month.abb)</span>
-<span id="cb970-2"><a href="til20220429.html#cb970-2"></a>df4</span></code></pre></div>
-<pre><code>##      z
-## 1  Jan
-## 2  Feb
-## 3  Mar
-## 4  Apr
-## 5  May
-## 6  Jun
-## 7  Jul
-## 8  Aug
-## 9  Sep
-## 10 Oct
-## 11 Nov
-## 12 Dec</code></pre>
-<div class="sourceCode" id="cb972"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb972-1"><a href="til20220429.html#cb972-1"></a>df5 &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(df3, df4); df5</span></code></pre></div>
-<pre><code>##     x         y   z
-## 1   1   January Jan
-## 2   2  February Feb
-## 3   3     March Mar
-## 4   4     April Apr
-## 5   5       May May
-## 6   6      June Jun
-## 7   7      July Jul
-## 8   8    August Aug
-## 9   9 September Sep
-## 10 10   October Oct
-## 11 11  November Nov
-## 12 12  December Dec</code></pre>
-<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="til20220429.html#cb974-1"></a>df5 &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(df3, df4) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">print</span>()</span></code></pre></div>
-<pre><code>##     x         y   z
-## 1   1   January Jan
-## 2   2  February Feb
-## 3   3     March Mar
-## 4   4     April Apr
-## 5   5       May May
-## 6   6      June Jun
-## 7   7      July Jul
-## 8   8    August Aug
-## 9   9 September Sep
-## 10 10   October Oct
-## 11 11  November Nov
-## 12 12  December Dec</code></pre>
-<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="til20220429.html#cb976-1"></a>band_members</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 2
-##   name  band   
-##   &lt;chr&gt; &lt;chr&gt;  
-## 1 Mick  Stones 
-## 2 John  Beatles
-## 3 Paul  Beatles</code></pre>
-<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="til20220429.html#cb978-1"></a>band_instruments</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 2
-##   name  plays 
-##   &lt;chr&gt; &lt;chr&gt; 
-## 1 John  guitar
-## 2 Paul  bass  
-## 3 Keith guitar</code></pre>
-<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="til20220429.html#cb980-1"></a><span class="kw">inner_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 3
-##   name  band    plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
-## 1 John  Beatles guitar
-## 2 Paul  Beatles bass</code></pre>
-<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="til20220429.html#cb982-1"></a><span class="kw">left_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 3
-##   name  band    plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
-## 1 Mick  Stones  &lt;NA&gt;  
-## 2 John  Beatles guitar
-## 3 Paul  Beatles bass</code></pre>
-<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="til20220429.html#cb984-1"></a><span class="kw">right_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 3
-##   name  band    plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
-## 1 John  Beatles guitar
-## 2 Paul  Beatles bass  
-## 3 Keith &lt;NA&gt;    guitar</code></pre>
-<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="til20220429.html#cb986-1"></a><span class="kw">full_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 3
-##   name  band    plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
-## 1 Mick  Stones  &lt;NA&gt;  
-## 2 John  Beatles guitar
-## 3 Paul  Beatles bass  
-## 4 Keith &lt;NA&gt;    guitar</code></pre>
-<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb988-1"><a href="til20220429.html#cb988-1"></a>band_instruments2</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 2
-##   artist plays 
-##   &lt;chr&gt;  &lt;chr&gt; 
-## 1 John   guitar
-## 2 Paul   bass  
-## 3 Keith  guitar</code></pre>
-<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="til20220429.html#cb990-1"></a><span class="kw">full_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments2, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>=<span class="st">&quot;artist&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 3
-##   name  band    plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
-## 1 Mick  Stones  &lt;NA&gt;  
-## 2 John  Beatles guitar
-## 3 Paul  Beatles bass  
-## 4 Keith &lt;NA&gt;    guitar</code></pre>
-<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="til20220429.html#cb992-1"></a><span class="kw">full_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments2, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>=<span class="st">&quot;artist&quot;</span>), <span class="dt">keep=</span>T)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 4
-##   name  band    artist plays 
-##   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; 
-## 1 Mick  Stones  &lt;NA&gt;   &lt;NA&gt;  
-## 2 John  Beatles John   guitar
-## 3 Paul  Beatles Paul   bass  
-## 4 &lt;NA&gt;  &lt;NA&gt;    Keith  guitar</code></pre>
-<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="til20220429.html#cb994-1"></a><span class="kw">semi_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##   name  band   
-##   &lt;chr&gt; &lt;chr&gt;  
-## 1 John  Beatles
-## 2 Paul  Beatles</code></pre>
-<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="til20220429.html#cb996-1"></a><span class="kw">anti_join</span>(<span class="dt">x=</span>band_members, <span class="dt">y=</span>band_instruments, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 2
-##   name  band  
-##   &lt;chr&gt; &lt;chr&gt; 
-## 1 Mick  Stones</code></pre>
+<div id="til20220804" class="section level2 hasAnchor">
+<h2><span class="header-section-number">8.4</span> TIL20220804<a href="til20220804.html#til20220804" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-39" class="section level3 hasAnchor">
+<h3><span class="header-section-number">8.4.1</span> …<a href="til20220804.html#section-39" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="til20220428.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="til20220430.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="til20220803.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -906,7 +774,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com//yeonkyupark/TIL2022/edit/main/04-Apr-29.Rmd",
+"link": "https://github.com//yeonkyupark/TIL2022/edit/main/08-Aug-04.Rmd",
 "text": "Edit"
 },
 "history": {

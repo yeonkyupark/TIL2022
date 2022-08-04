@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -711,36 +714,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> TIL20220504<a href="til20220504.html#til20220504" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="독립-t검정" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.4.1</span> 독립 t검정<a href="til20220504.html#독립-t검정" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="til20220504.html#cb1050-1"></a>male_h &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dv">170</span>, <span class="dv">5</span>)</span>
-<span id="cb1050-2"><a href="til20220504.html#cb1050-2"></a>female_h &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dv">165</span>, <span class="dv">5</span>)</span>
-<span id="cb1050-3"><a href="til20220504.html#cb1050-3"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb1050-4"><a href="til20220504.html#cb1050-4"></a>  <span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;M&quot;</span>, <span class="kw">length</span>(male_h)), <span class="kw">rep</span>(<span class="st">&quot;F&quot;</span>, <span class="kw">length</span>(female_h))),</span>
-<span id="cb1050-5"><a href="til20220504.html#cb1050-5"></a>  <span class="dt">y =</span> <span class="kw">c</span>(male_h, female_h)</span>
-<span id="cb1050-6"><a href="til20220504.html#cb1050-6"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1051-1"><a href="til20220504.html#cb1051-1"></a><span class="kw">boxplot</span>(male_h, female_h, <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="til20220504.html#cb1046-1"></a>male_h &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dv">170</span>, <span class="dv">5</span>)</span>
+<span id="cb1046-2"><a href="til20220504.html#cb1046-2"></a>female_h &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dv">165</span>, <span class="dv">5</span>)</span>
+<span id="cb1046-3"><a href="til20220504.html#cb1046-3"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb1046-4"><a href="til20220504.html#cb1046-4"></a>  <span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;M&quot;</span>, <span class="kw">length</span>(male_h)), <span class="kw">rep</span>(<span class="st">&quot;F&quot;</span>, <span class="kw">length</span>(female_h))),</span>
+<span id="cb1046-5"><a href="til20220504.html#cb1046-5"></a>  <span class="dt">y =</span> <span class="kw">c</span>(male_h, female_h)</span>
+<span id="cb1046-6"><a href="til20220504.html#cb1046-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="til20220504.html#cb1047-1"></a><span class="kw">boxplot</span>(male_h, female_h, <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-449-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="til20220504.html#cb1052-1"></a><span class="co"># fomula를 이용한 박스플랫 생성</span></span>
-<span id="cb1052-2"><a href="til20220504.html#cb1052-2"></a><span class="co"># factor level은 알파벳순으로 정렬되어 순서 변경이 필요한 경우 재배치 필요</span></span>
-<span id="cb1052-3"><a href="til20220504.html#cb1052-3"></a>df<span class="op">$</span>x &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>x, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</span>
-<span id="cb1052-4"><a href="til20220504.html#cb1052-4"></a><span class="kw">boxplot</span>(y<span class="op">~</span>x, df, <span class="dt">ann =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb1048"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1048-1"><a href="til20220504.html#cb1048-1"></a><span class="co"># fomula를 이용한 박스플랫 생성</span></span>
+<span id="cb1048-2"><a href="til20220504.html#cb1048-2"></a><span class="co"># factor level은 알파벳순으로 정렬되어 순서 변경이 필요한 경우 재배치 필요</span></span>
+<span id="cb1048-3"><a href="til20220504.html#cb1048-3"></a>df<span class="op">$</span>x &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>x, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</span>
+<span id="cb1048-4"><a href="til20220504.html#cb1048-4"></a><span class="kw">boxplot</span>(y<span class="op">~</span>x, df, <span class="dt">ann =</span> F)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-450-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1053-1"><a href="til20220504.html#cb1053-1"></a><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;상자 그래프 (남녀간 키 분포)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;성별&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;키&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1049-1"><a href="til20220504.html#cb1049-1"></a><span class="kw">title</span>(<span class="dt">main =</span> <span class="st">&quot;상자 그래프 (남녀간 키 분포)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;성별&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;키&quot;</span>)</span></code></pre></div>
 <p><img src="Figures/unnamed-chunk-450-2.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="til20220504.html#cb1054-1"></a><span class="co"># 등분산 검정 (레빈 검정)</span></span>
-<span id="cb1054-2"><a href="til20220504.html#cb1054-2"></a><span class="co"># 귀무가설: 두 집단의 분산은 같다</span></span>
-<span id="cb1054-3"><a href="til20220504.html#cb1054-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(lawstat)) { <span class="kw">install.packages</span>(<span class="st">&quot;lawstat&quot;</span>); <span class="kw">library</span>(lawstat); }</span></code></pre></div>
+<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="til20220504.html#cb1050-1"></a><span class="co"># 등분산 검정 (레빈 검정)</span></span>
+<span id="cb1050-2"><a href="til20220504.html#cb1050-2"></a><span class="co"># 귀무가설: 두 집단의 분산은 같다</span></span>
+<span id="cb1050-3"><a href="til20220504.html#cb1050-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(lawstat)) { <span class="kw">install.packages</span>(<span class="st">&quot;lawstat&quot;</span>); <span class="kw">library</span>(lawstat); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1056"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1056-1"><a href="til20220504.html#cb1056-1"></a><span class="kw">levene.test</span>(df<span class="op">$</span>y, df<span class="op">$</span>x, <span class="dt">location =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpEUoYYc/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="til20220504.html#cb1052-1"></a><span class="kw">levene.test</span>(df<span class="op">$</span>y, df<span class="op">$</span>x, <span class="dt">location =</span> <span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Classical Levene&#39;s test based on the absolute deviations from the mean
 ##  ( none not applied because the location is not set to median )
 ## 
 ## data:  df$y
 ## Test Statistic = 3, p-value = 0.1</code></pre>
-<div class="sourceCode" id="cb1058"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1058-1"><a href="til20220504.html#cb1058-1"></a><span class="co"># t 검정</span></span>
-<span id="cb1058-2"><a href="til20220504.html#cb1058-2"></a><span class="kw">t.test</span>(male_h, female_h, <span class="dt">var.equal =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="til20220504.html#cb1054-1"></a><span class="co"># t 검정</span></span>
+<span id="cb1054-2"><a href="til20220504.html#cb1054-2"></a><span class="kw">t.test</span>(male_h, female_h, <span class="dt">var.equal =</span> T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -752,7 +755,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x mean of y 
 ##       171       167</code></pre>
-<div class="sourceCode" id="cb1060"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1060-1"><a href="til20220504.html#cb1060-1"></a><span class="kw">t.test</span>(y<span class="op">~</span>x, df, <span class="dt">var.equal=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb1056"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1056-1"><a href="til20220504.html#cb1056-1"></a><span class="kw">t.test</span>(y<span class="op">~</span>x, df, <span class="dt">var.equal=</span>T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 

@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -711,56 +714,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.13</span> TIL20220613<a href="til20220613.html#til20220613" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="roc-curve" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.13.1</span> ROC curve<a href="til20220613.html#roc-curve" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1623-1"><a href="til20220613.html#cb1623-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb1624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1624-1"><a href="til20220613.html#cb1624-1"></a>packages &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>, <span class="st">&quot;imputeMissings&quot;</span>)</span>
-<span id="cb1624-2"><a href="til20220613.html#cb1624-2"></a><span class="kw">invisible</span>(</span>
-<span id="cb1624-3"><a href="til20220613.html#cb1624-3"></a>    <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
-<span id="cb1624-4"><a href="til20220613.html#cb1624-4"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb1625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1625-1"><a href="til20220613.html#cb1625-1"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
-<div class="sourceCode" id="cb1626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1626-1"><a href="til20220613.html#cb1626-1"></a>train_index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>species, <span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">list =</span> F)</span>
-<span id="cb1626-2"><a href="til20220613.html#cb1626-2"></a>train_set &lt;-<span class="st"> </span>data[train_index, ]</span>
-<span id="cb1626-3"><a href="til20220613.html#cb1626-3"></a>test_set &lt;-<span class="st"> </span>data[<span class="op">-</span>train_index, ]</span></code></pre></div>
-<div class="sourceCode" id="cb1627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1627-1"><a href="til20220613.html#cb1627-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1601-1"><a href="til20220613.html#cb1601-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb1602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1602-1"><a href="til20220613.html#cb1602-1"></a>packages &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>, <span class="st">&quot;imputeMissings&quot;</span>)</span>
+<span id="cb1602-2"><a href="til20220613.html#cb1602-2"></a><span class="kw">invisible</span>(</span>
+<span id="cb1602-3"><a href="til20220613.html#cb1602-3"></a>    <span class="kw">lapply</span>(packages, require, <span class="dt">character.only =</span> T)</span>
+<span id="cb1602-4"><a href="til20220613.html#cb1602-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1603-1"><a href="til20220613.html#cb1603-1"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
+<div class="sourceCode" id="cb1604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1604-1"><a href="til20220613.html#cb1604-1"></a>train_index &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>species, <span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">list =</span> F)</span>
+<span id="cb1604-2"><a href="til20220613.html#cb1604-2"></a>train_set &lt;-<span class="st"> </span>data[train_index, ]</span>
+<span id="cb1604-3"><a href="til20220613.html#cb1604-3"></a>test_set &lt;-<span class="st"> </span>data[<span class="op">-</span>train_index, ]</span></code></pre></div>
+<div class="sourceCode" id="cb1605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1605-1"><a href="til20220613.html#cb1605-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 2                 2 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 2                 2                 9</code></pre>
-<div class="sourceCode" id="cb1629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1629-1"><a href="til20220613.html#cb1629-1"></a>train_set &lt;-<span class="st"> </span><span class="kw">impute</span>(train_set)</span>
-<span id="cb1629-2"><a href="til20220613.html#cb1629-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1607-1"><a href="til20220613.html#cb1607-1"></a>train_set &lt;-<span class="st"> </span><span class="kw">impute</span>(train_set)</span>
+<span id="cb1607-2"><a href="til20220613.html#cb1607-2"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(train_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 0</code></pre>
-<div class="sourceCode" id="cb1631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1631-1"><a href="til20220613.html#cb1631-1"></a>model_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rf&quot;</span>)</span>
-<span id="cb1631-2"><a href="til20220613.html#cb1631-2"></a>model_fit &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1631-3"><a href="til20220613.html#cb1631-3"></a>model_pred &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb1631-4"><a href="til20220613.html#cb1631-4"></a></span>
-<span id="cb1631-5"><a href="til20220613.html#cb1631-5"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1609-1"><a href="til20220613.html#cb1609-1"></a>model_list &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rf&quot;</span>)</span>
+<span id="cb1609-2"><a href="til20220613.html#cb1609-2"></a>model_fit &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1609-3"><a href="til20220613.html#cb1609-3"></a>model_pred &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb1609-4"><a href="til20220613.html#cb1609-4"></a></span>
+<span id="cb1609-5"><a href="til20220613.html#cb1609-5"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 2</code></pre>
-<div class="sourceCode" id="cb1633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1633-1"><a href="til20220613.html#cb1633-1"></a>test_set &lt;-<span class="st"> </span><span class="kw">impute</span>(test_set)</span></code></pre></div>
+<div class="sourceCode" id="cb1611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1611-1"><a href="til20220613.html#cb1611-1"></a>test_set &lt;-<span class="st"> </span><span class="kw">impute</span>(test_set)</span></code></pre></div>
 <pre><code>## Error:
 ## ! Assigned data `object[[i]]` must be compatible with existing data.
 ## ℹ Error occurred for column `flipper_length_mm`.
 ## ✖ Can&#39;t convert from &lt;double&gt; to &lt;integer&gt; due to loss of precision.
 ## • Locations: 1.</code></pre>
-<div class="sourceCode" id="cb1635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1635-1"><a href="til20220613.html#cb1635-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
+<div class="sourceCode" id="cb1613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1613-1"><a href="til20220613.html#cb1613-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(test_set))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex 
 ##                 0                 0                 2</code></pre>
-<div class="sourceCode" id="cb1637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1637-1"><a href="til20220613.html#cb1637-1"></a>model_fit &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb1637-2"><a href="til20220613.html#cb1637-2"></a>  species <span class="op">~</span><span class="st"> </span>., train_set,</span>
-<span id="cb1637-3"><a href="til20220613.html#cb1637-3"></a>  <span class="dt">method =</span> model_list,</span>
-<span id="cb1637-4"><a href="til20220613.html#cb1637-4"></a>  <span class="dt">verbose =</span> F,</span>
-<span id="cb1637-5"><a href="til20220613.html#cb1637-5"></a>  )</span>
-<span id="cb1637-6"><a href="til20220613.html#cb1637-6"></a>model_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model_fit, test_set)</span></code></pre></div>
-<div class="sourceCode" id="cb1638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1638-1"><a href="til20220613.html#cb1638-1"></a><span class="kw">confusionMatrix</span>(model_pred, test_set<span class="op">$</span>species)</span></code></pre></div>
+<div class="sourceCode" id="cb1615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1615-1"><a href="til20220613.html#cb1615-1"></a>model_fit &lt;-<span class="st"> </span><span class="kw">train</span>(</span>
+<span id="cb1615-2"><a href="til20220613.html#cb1615-2"></a>  species <span class="op">~</span><span class="st"> </span>., train_set,</span>
+<span id="cb1615-3"><a href="til20220613.html#cb1615-3"></a>  <span class="dt">method =</span> model_list,</span>
+<span id="cb1615-4"><a href="til20220613.html#cb1615-4"></a>  <span class="dt">verbose =</span> F,</span>
+<span id="cb1615-5"><a href="til20220613.html#cb1615-5"></a>  )</span>
+<span id="cb1615-6"><a href="til20220613.html#cb1615-6"></a>model_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model_fit, test_set)</span></code></pre></div>
+<div class="sourceCode" id="cb1616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1616-1"><a href="til20220613.html#cb1616-1"></a><span class="kw">confusionMatrix</span>(model_pred, test_set<span class="op">$</span>species)</span></code></pre></div>
 <pre><code>## Error in table(data, reference, dnn = dnn, ...): all arguments must have the same length</code></pre>
-<div class="sourceCode" id="cb1640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1640-1"><a href="til20220613.html#cb1640-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ROCR)) { <span class="kw">install.packages</span>(<span class="st">&quot;ROCR&quot;</span>); <span class="kw">library</span>(ROCR); }</span>
-<span id="cb1640-2"><a href="til20220613.html#cb1640-2"></a>roc_pred_rf &lt;-<span class="st"> </span><span class="kw">prediction</span>(<span class="kw">as.numeric</span>(model_pred), <span class="kw">as.numeric</span>(test_set<span class="op">$</span>species))</span></code></pre></div>
+<div class="sourceCode" id="cb1618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1618-1"><a href="til20220613.html#cb1618-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ROCR)) { <span class="kw">install.packages</span>(<span class="st">&quot;ROCR&quot;</span>); <span class="kw">library</span>(ROCR); }</span>
+<span id="cb1618-2"><a href="til20220613.html#cb1618-2"></a>roc_pred_rf &lt;-<span class="st"> </span><span class="kw">prediction</span>(<span class="kw">as.numeric</span>(model_pred), <span class="kw">as.numeric</span>(test_set<span class="op">$</span>species))</span></code></pre></div>
 
 </div>
 </div>

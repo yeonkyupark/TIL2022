@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -711,20 +714,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.10</span> TIL20220610<a href="til20220610.html#til20220610" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="caret-기본" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.10.1</span> caret 기본<a href="til20220610.html#caret-기본" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1569-1"><a href="til20220610.html#cb1569-1"></a><span class="co"># 0. load data and packages needed ----</span></span>
-<span id="cb1569-2"><a href="til20220610.html#cb1569-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
-<span id="cb1569-3"><a href="til20220610.html#cb1569-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
-<span id="cb1569-4"><a href="til20220610.html#cb1569-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span></code></pre></div>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
-<pre><code>## Error: package or namespace load failed for &#39;tidyverse&#39; in loadNamespace(j &lt;- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
-##  there is no package called &#39;gargle&#39;</code></pre>
-<div class="sourceCode" id="cb1572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1572-1"><a href="til20220610.html#cb1572-1"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
-<div class="sourceCode" id="cb1573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1573-1"><a href="til20220610.html#cb1573-1"></a><span class="co"># 1. do eda ----</span></span>
-<span id="cb1573-2"><a href="til20220610.html#cb1573-2"></a><span class="kw">dim</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="til20220610.html#cb1550-1"></a><span class="co"># 0. load data and packages needed ----</span></span>
+<span id="cb1550-2"><a href="til20220610.html#cb1550-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(palmerpenguins)) { <span class="kw">install.packages</span>(<span class="st">&quot;palmerpenguins&quot;</span>); <span class="kw">library</span>(palmerpenguins); }</span>
+<span id="cb1550-3"><a href="til20220610.html#cb1550-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb1550-4"><a href="til20220610.html#cb1550-4"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(tidyverse)) { <span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>); <span class="kw">library</span>(tidyverse); }</span>
+<span id="cb1550-5"><a href="til20220610.html#cb1550-5"></a></span>
+<span id="cb1550-6"><a href="til20220610.html#cb1550-6"></a>data &lt;-<span class="st"> </span>penguins</span></code></pre></div>
+<div class="sourceCode" id="cb1551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1551-1"><a href="til20220610.html#cb1551-1"></a><span class="co"># 1. do eda ----</span></span>
+<span id="cb1551-2"><a href="til20220610.html#cb1551-2"></a><span class="kw">dim</span>(data)</span></code></pre></div>
 <pre><code>## [1] 344   8</code></pre>
-<div class="sourceCode" id="cb1575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1575-1"><a href="til20220610.html#cb1575-1"></a><span class="kw">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1553-1"><a href="til20220610.html#cb1553-1"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 ##  $ species          : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ island           : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -734,7 +733,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
 ##  $ sex              : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
 ##  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
-<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="til20220610.html#cb1577-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb1555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1555-1"><a href="til20220610.html#cb1555-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
 <pre><code>##       species          island    bill_length_mm bill_depth_mm 
 ##  Adelie   :152   Biscoe   :168   Min.   :32.1   Min.   :13.1  
 ##  Chinstrap: 68   Dream    :124   1st Qu.:39.2   1st Qu.:15.6  
@@ -751,50 +750,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:213       3rd Qu.:4750                3rd Qu.:2009  
 ##  Max.   :231       Max.   :6300                Max.   :2009  
 ##  NA&#39;s   :2         NA&#39;s   :2</code></pre>
-<div class="sourceCode" id="cb1579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1579-1"><a href="til20220610.html#cb1579-1"></a><span class="co"># 2. split data set ----</span></span>
-<span id="cb1579-2"><a href="til20220610.html#cb1579-2"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>species, <span class="dt">p =</span>.<span class="dv">7</span>, <span class="dt">list =</span> F)</span>
-<span id="cb1579-3"><a href="til20220610.html#cb1579-3"></a>trainSet &lt;-<span class="st"> </span>data[trainIndex,]</span>
-<span id="cb1579-4"><a href="til20220610.html#cb1579-4"></a>testSet &lt;-<span class="st"> </span>data[<span class="op">-</span>trainIndex,]</span></code></pre></div>
-<div class="sourceCode" id="cb1580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1580-1"><a href="til20220610.html#cb1580-1"></a><span class="co"># 3. preprocess data set</span></span>
-<span id="cb1580-2"><a href="til20220610.html#cb1580-2"></a><span class="co"># 3-1 handle NAs</span></span>
-<span id="cb1580-3"><a href="til20220610.html#cb1580-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(imputeMissings)) { <span class="kw">install.packages</span>(<span class="st">&quot;imputeMissings&quot;</span>); <span class="kw">library</span>(imputeMissings); }</span>
-<span id="cb1580-4"><a href="til20220610.html#cb1580-4"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(trainSet))</span></code></pre></div>
+<div class="sourceCode" id="cb1557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1557-1"><a href="til20220610.html#cb1557-1"></a><span class="co"># 2. split data set ----</span></span>
+<span id="cb1557-2"><a href="til20220610.html#cb1557-2"></a>trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(data<span class="op">$</span>species, <span class="dt">p =</span>.<span class="dv">7</span>, <span class="dt">list =</span> F)</span>
+<span id="cb1557-3"><a href="til20220610.html#cb1557-3"></a>trainSet &lt;-<span class="st"> </span>data[trainIndex,]</span>
+<span id="cb1557-4"><a href="til20220610.html#cb1557-4"></a>testSet &lt;-<span class="st"> </span>data[<span class="op">-</span>trainIndex,]</span></code></pre></div>
+<div class="sourceCode" id="cb1558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1558-1"><a href="til20220610.html#cb1558-1"></a><span class="co"># 3. preprocess data set</span></span>
+<span id="cb1558-2"><a href="til20220610.html#cb1558-2"></a><span class="co"># 3-1 handle NAs</span></span>
+<span id="cb1558-3"><a href="til20220610.html#cb1558-3"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(imputeMissings)) { <span class="kw">install.packages</span>(<span class="st">&quot;imputeMissings&quot;</span>); <span class="kw">library</span>(imputeMissings); }</span>
+<span id="cb1558-4"><a href="til20220610.html#cb1558-4"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(trainSet))</span></code></pre></div>
 <pre><code>##           species            island    bill_length_mm     bill_depth_mm 
 ##                 0                 0                 0                 0 
 ## flipper_length_mm       body_mass_g               sex              year 
 ##                 0                 0                 9                 0</code></pre>
-<div class="sourceCode" id="cb1582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1582-1"><a href="til20220610.html#cb1582-1"></a>trainSetPp &lt;-<span class="st"> </span><span class="kw">impute</span>(trainSet)</span></code></pre></div>
+<div class="sourceCode" id="cb1560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1560-1"><a href="til20220610.html#cb1560-1"></a>trainSetPp &lt;-<span class="st"> </span><span class="kw">impute</span>(trainSet)</span></code></pre></div>
 <pre><code>## Error:
 ## ! Assigned data `object[[i]]` must be compatible with existing data.
 ## ℹ Error occurred for column `flipper_length_mm`.
 ## ✖ Can&#39;t convert from &lt;double&gt; to &lt;integer&gt; due to loss of precision.
 ## • Locations: 1.</code></pre>
-<div class="sourceCode" id="cb1584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1584-1"><a href="til20220610.html#cb1584-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(trainSetPp))</span></code></pre></div>
+<div class="sourceCode" id="cb1562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1562-1"><a href="til20220610.html#cb1562-1"></a><span class="kw">colSums</span>(<span class="kw">is.na</span>(trainSetPp))</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;colSums&#39;: object &#39;trainSetPp&#39; not found</code></pre>
-<div class="sourceCode" id="cb1586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1586-1"><a href="til20220610.html#cb1586-1"></a>trainSet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise_if</span>(is.numeric, mean, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span>print</span></code></pre></div>
+<div class="sourceCode" id="cb1564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1564-1"><a href="til20220610.html#cb1564-1"></a>trainSet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise_if</span>(is.numeric, mean, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span>print</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 5
 ##   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
 ##            &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
 ## 1           43.9          17.2              200.       4196. 2008.</code></pre>
-<div class="sourceCode" id="cb1588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1588-1"><a href="til20220610.html#cb1588-1"></a>trainSetPp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise_if</span>(is.numeric, mean, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span>print</span></code></pre></div>
+<div class="sourceCode" id="cb1566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1566-1"><a href="til20220610.html#cb1566-1"></a>trainSetPp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise_if</span>(is.numeric, mean, <span class="dt">na.rm =</span> T) <span class="op">%&gt;%</span><span class="st"> </span>print</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;print&#39;: object &#39;trainSetPp&#39; not found</code></pre>
-<div class="sourceCode" id="cb1590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1590-1"><a href="til20220610.html#cb1590-1"></a><span class="co"># 4. fit model ----</span></span>
-<span id="cb1590-2"><a href="til20220610.html#cb1590-2"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">number =</span> <span class="dv">5</span>, <span class="dt">repeats =</span> <span class="dv">1</span>)</span>
-<span id="cb1590-3"><a href="til20220610.html#cb1590-3"></a>modelRF &lt;-<span class="st"> </span><span class="kw">train</span>(species <span class="op">~</span><span class="st"> </span>., trainSetPp,</span>
-<span id="cb1590-4"><a href="til20220610.html#cb1590-4"></a>                 <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>,</span>
-<span id="cb1590-5"><a href="til20220610.html#cb1590-5"></a>                 <span class="dt">trControl =</span> fitControl,</span>
-<span id="cb1590-6"><a href="til20220610.html#cb1590-6"></a>                 <span class="dt">verbose =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb1568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1568-1"><a href="til20220610.html#cb1568-1"></a><span class="co"># 4. fit model ----</span></span>
+<span id="cb1568-2"><a href="til20220610.html#cb1568-2"></a>fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">number =</span> <span class="dv">5</span>, <span class="dt">repeats =</span> <span class="dv">1</span>)</span>
+<span id="cb1568-3"><a href="til20220610.html#cb1568-3"></a>modelRF &lt;-<span class="st"> </span><span class="kw">train</span>(species <span class="op">~</span><span class="st"> </span>., trainSetPp,</span>
+<span id="cb1568-4"><a href="til20220610.html#cb1568-4"></a>                 <span class="dt">method =</span> <span class="st">&quot;rf&quot;</span>,</span>
+<span id="cb1568-5"><a href="til20220610.html#cb1568-5"></a>                 <span class="dt">trControl =</span> fitControl,</span>
+<span id="cb1568-6"><a href="til20220610.html#cb1568-6"></a>                 <span class="dt">verbose =</span> F)</span></code></pre></div>
 <pre><code>## Error in eval(expr, p): object &#39;trainSetPp&#39; not found</code></pre>
-<div class="sourceCode" id="cb1592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1592-1"><a href="til20220610.html#cb1592-1"></a><span class="co"># 5. evaluate model</span></span>
-<span id="cb1592-2"><a href="til20220610.html#cb1592-2"></a>testSetPp &lt;-<span class="st"> </span><span class="kw">impute</span>(testSet)</span></code></pre></div>
+<div class="sourceCode" id="cb1570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1570-1"><a href="til20220610.html#cb1570-1"></a><span class="co"># 5. evaluate model</span></span>
+<span id="cb1570-2"><a href="til20220610.html#cb1570-2"></a>testSetPp &lt;-<span class="st"> </span><span class="kw">impute</span>(testSet)</span></code></pre></div>
 <pre><code>## Error:
 ## ! Assigned data `object[[i]]` must be compatible with existing data.
 ## ℹ Error occurred for column `flipper_length_mm`.
 ## ✖ Can&#39;t convert from &lt;double&gt; to &lt;integer&gt; due to loss of precision.
 ## • Locations: 1.</code></pre>
-<div class="sourceCode" id="cb1594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1594-1"><a href="til20220610.html#cb1594-1"></a>modelPred &lt;-<span class="st"> </span><span class="kw">predict</span>(modelRF, testSetPp)</span></code></pre></div>
+<div class="sourceCode" id="cb1572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1572-1"><a href="til20220610.html#cb1572-1"></a>modelPred &lt;-<span class="st"> </span><span class="kw">predict</span>(modelRF, testSetPp)</span></code></pre></div>
 <pre><code>## Error in h(simpleError(msg, call)): error in evaluating the argument &#39;object&#39; in selecting a method for function &#39;predict&#39;: object &#39;modelRF&#39; not found</code></pre>
-<div class="sourceCode" id="cb1596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1596-1"><a href="til20220610.html#cb1596-1"></a><span class="kw">confusionMatrix</span>(modelPred, testSetPp<span class="op">$</span>species)</span></code></pre></div>
+<div class="sourceCode" id="cb1574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1574-1"><a href="til20220610.html#cb1574-1"></a><span class="kw">confusionMatrix</span>(modelPred, testSetPp<span class="op">$</span>species)</span></code></pre></div>
 <pre><code>## Error in confusionMatrix(modelPred, testSetPp$species): object &#39;modelPred&#39; not found</code></pre>
 
 </div>

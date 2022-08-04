@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -712,32 +715,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="결측치-대체" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.9.1</span> 결측치 대체<a href="til20220609.html#결측치-대체" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>from <a href="http://rismyhammer.com/ml/ImputeMissingData1.html">Impute Missing Data - The Basics</a></p>
-<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="til20220609.html#cb1550-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(imputeMissings)) { <span class="kw">install.packages</span>(<span class="st">&quot;imputeMissings&quot;</span>); <span class="kw">library</span>(imputeMissings); }</span></code></pre></div>
+<div class="sourceCode" id="cb1531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1531-1"><a href="til20220609.html#cb1531-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(imputeMissings)) { <span class="kw">install.packages</span>(<span class="st">&quot;imputeMissings&quot;</span>); <span class="kw">library</span>(imputeMissings); }</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpjo94t0/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb1552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1552-1"><a href="til20220609.html#cb1552-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb1552-2"><a href="til20220609.html#cb1552-2"></a></span>
-<span id="cb1552-3"><a href="til20220609.html#cb1552-3"></a><span class="co">#Make up some data</span></span>
-<span id="cb1552-4"><a href="til20220609.html#cb1552-4"></a>income &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">35000</span>, <span class="dt">max =</span> <span class="dv">350000</span>), <span class="dv">0</span>)</span>
-<span id="cb1552-5"><a href="til20220609.html#cb1552-5"></a>age &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min=</span><span class="dv">18</span>, <span class="dt">max=</span><span class="dv">72</span>), <span class="dv">0</span>)</span>
-<span id="cb1552-6"><a href="til20220609.html#cb1552-6"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(age, income)</span>
-<span id="cb1552-7"><a href="til20220609.html#cb1552-7"></a>noise &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">1500</span>, <span class="dt">max =</span> <span class="dv">15000</span>), <span class="dv">0</span>)</span>
-<span id="cb1552-8"><a href="til20220609.html#cb1552-8"></a>myData<span class="op">$</span>income &lt;-<span class="st"> </span>myData<span class="op">$</span>income <span class="op">+</span><span class="st"> </span>noise</span>
-<span id="cb1552-9"><a href="til20220609.html#cb1552-9"></a>myData &lt;-<span class="st"> </span><span class="kw">arrange</span>(myData, <span class="kw">desc</span>(income))</span>
-<span id="cb1552-10"><a href="til20220609.html#cb1552-10"></a>myData<span class="op">$</span>education &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;High School&quot;</span>, <span class="st">&quot;Bachelors&quot;</span>, <span class="st">&quot;Masters&quot;</span>, <span class="st">&quot;Doctorate&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span><span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.15</span>, <span class="fl">0.12</span>, <span class="fl">0.03</span>) ))</span>
-<span id="cb1552-11"><a href="til20220609.html#cb1552-11"></a><span class="kw">head</span>(myData, <span class="dv">5</span>)</span></code></pre></div>
+##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpEUoYYc/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb1533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1533-1"><a href="til20220609.html#cb1533-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb1533-2"><a href="til20220609.html#cb1533-2"></a></span>
+<span id="cb1533-3"><a href="til20220609.html#cb1533-3"></a><span class="co">#Make up some data</span></span>
+<span id="cb1533-4"><a href="til20220609.html#cb1533-4"></a>income &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">35000</span>, <span class="dt">max =</span> <span class="dv">350000</span>), <span class="dv">0</span>)</span>
+<span id="cb1533-5"><a href="til20220609.html#cb1533-5"></a>age &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min=</span><span class="dv">18</span>, <span class="dt">max=</span><span class="dv">72</span>), <span class="dv">0</span>)</span>
+<span id="cb1533-6"><a href="til20220609.html#cb1533-6"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(age, income)</span>
+<span id="cb1533-7"><a href="til20220609.html#cb1533-7"></a>noise &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">1500</span>, <span class="dt">max =</span> <span class="dv">15000</span>), <span class="dv">0</span>)</span>
+<span id="cb1533-8"><a href="til20220609.html#cb1533-8"></a>myData<span class="op">$</span>income &lt;-<span class="st"> </span>myData<span class="op">$</span>income <span class="op">+</span><span class="st"> </span>noise</span>
+<span id="cb1533-9"><a href="til20220609.html#cb1533-9"></a>myData &lt;-<span class="st"> </span><span class="kw">arrange</span>(myData, <span class="kw">desc</span>(income))</span>
+<span id="cb1533-10"><a href="til20220609.html#cb1533-10"></a>myData<span class="op">$</span>education &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;High School&quot;</span>, <span class="st">&quot;Bachelors&quot;</span>, <span class="st">&quot;Masters&quot;</span>, <span class="st">&quot;Doctorate&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span><span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.15</span>, <span class="fl">0.12</span>, <span class="fl">0.03</span>) ))</span>
+<span id="cb1533-11"><a href="til20220609.html#cb1533-11"></a><span class="kw">head</span>(myData, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##   age income   education
 ## 1  45 360560 High School
 ## 2  48 353179     Masters
 ## 3  51 351269 High School
 ## 4  58 349628 High School
 ## 5  42 346662 High School</code></pre>
-<div class="sourceCode" id="cb1554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1554-1"><a href="til20220609.html#cb1554-1"></a><span class="co">#add some missing data this time</span></span>
-<span id="cb1554-2"><a href="til20220609.html#cb1554-2"></a>myData<span class="op">$</span>age[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">15</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb1554-3"><a href="til20220609.html#cb1554-3"></a>myData<span class="op">$</span>income[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">10</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb1554-4"><a href="til20220609.html#cb1554-4"></a>myData<span class="op">$</span>education[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">10</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb1554-5"><a href="til20220609.html#cb1554-5"></a><span class="kw">summary</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb1535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1535-1"><a href="til20220609.html#cb1535-1"></a><span class="co">#add some missing data this time</span></span>
+<span id="cb1535-2"><a href="til20220609.html#cb1535-2"></a>myData<span class="op">$</span>age[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">15</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb1535-3"><a href="til20220609.html#cb1535-3"></a>myData<span class="op">$</span>income[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">10</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb1535-4"><a href="til20220609.html#cb1535-4"></a>myData<span class="op">$</span>education[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myData),<span class="dv">10</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb1535-5"><a href="til20220609.html#cb1535-5"></a><span class="kw">summary</span>(myData)</span></code></pre></div>
 <pre><code>##       age           income             education 
 ##  Min.   :18.0   Min.   : 48512   Bachelors  :10  
 ##  1st Qu.:30.0   1st Qu.:127780   Doctorate  : 3  
@@ -746,8 +749,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:53.0   3rd Qu.:244028   NA&#39;s       :10  
 ##  Max.   :72.0   Max.   :360560                   
 ##  NA&#39;s   :15     NA&#39;s   :10</code></pre>
-<div class="sourceCode" id="cb1556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1556-1"><a href="til20220609.html#cb1556-1"></a>myDataImputed1 &lt;-<span class="st"> </span><span class="kw">impute</span>(myData, <span class="dt">method =</span> <span class="st">&quot;median/mode&quot;</span>)</span>
-<span id="cb1556-2"><a href="til20220609.html#cb1556-2"></a><span class="kw">summary</span>(myDataImputed1)</span></code></pre></div>
+<div class="sourceCode" id="cb1537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1537-1"><a href="til20220609.html#cb1537-1"></a>myDataImputed1 &lt;-<span class="st"> </span><span class="kw">impute</span>(myData, <span class="dt">method =</span> <span class="st">&quot;median/mode&quot;</span>)</span>
+<span id="cb1537-2"><a href="til20220609.html#cb1537-2"></a><span class="kw">summary</span>(myDataImputed1)</span></code></pre></div>
 <pre><code>##       age           income             education 
 ##  Min.   :18.0   Min.   : 48512   Bachelors  :10  
 ##  1st Qu.:33.0   1st Qu.:133674   Doctorate  : 3  
@@ -755,10 +758,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :42.4   Mean   :186627   Masters    :10  
 ##  3rd Qu.:51.0   3rd Qu.:237576                   
 ##  Max.   :72.0   Max.   :360560</code></pre>
-<div class="sourceCode" id="cb1558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1558-1"><a href="til20220609.html#cb1558-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
-<span id="cb1558-2"><a href="til20220609.html#cb1558-2"></a>myDataImputed2 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)], <span class="dt">method =</span> <span class="st">&quot;medianImpute&quot;</span>)</span>
-<span id="cb1558-3"><a href="til20220609.html#cb1558-3"></a>myDataImputed2 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed2, myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span>
-<span id="cb1558-4"><a href="til20220609.html#cb1558-4"></a><span class="kw">summary</span>(myDataImputed2)</span></code></pre></div>
+<div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="til20220609.html#cb1539-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb1539-2"><a href="til20220609.html#cb1539-2"></a>myDataImputed2 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)], <span class="dt">method =</span> <span class="st">&quot;medianImpute&quot;</span>)</span>
+<span id="cb1539-3"><a href="til20220609.html#cb1539-3"></a>myDataImputed2 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed2, myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span>
+<span id="cb1539-4"><a href="til20220609.html#cb1539-4"></a><span class="kw">summary</span>(myDataImputed2)</span></code></pre></div>
 <pre><code>##      income            age      
 ##  Min.   : 48512   Min.   :18.0  
 ##  1st Qu.:133674   1st Qu.:33.0  
@@ -766,16 +769,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :186627   Mean   :42.4  
 ##  3rd Qu.:237576   3rd Qu.:51.0  
 ##  Max.   :360560   Max.   :72.0</code></pre>
-<div class="sourceCode" id="cb1560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1560-1"><a href="til20220609.html#cb1560-1"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)], <span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">2</span>)</span>
-<span id="cb1560-2"><a href="til20220609.html#cb1560-2"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed3, myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="til20220609.html#cb1541-1"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)], <span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">2</span>)</span>
+<span id="cb1541-2"><a href="til20220609.html#cb1541-2"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed3, myData[, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span></code></pre></div>
 <p>Error in FUN(newX[, i], …) : cannot impute when all predictors are missing in the new data point</p>
 <p>두 컬럼 모두 NA인 행이 있는 경우 위와 같은 에러가 발생한다.</p>
-<div class="sourceCode" id="cb1561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1561-1"><a href="til20220609.html#cb1561-1"></a>myBadDataRows &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(myData<span class="op">$</span>income) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(myData<span class="op">$</span>age))</span>
-<span id="cb1561-2"><a href="til20220609.html#cb1561-2"></a></span>
-<span id="cb1561-3"><a href="til20220609.html#cb1561-3"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[<span class="op">-</span>myBadDataRows, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)],<span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">2</span>)</span>
-<span id="cb1561-4"><a href="til20220609.html#cb1561-4"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed3,myData[<span class="op">-</span>myBadDataRows, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="til20220609.html#cb1542-1"></a>myBadDataRows &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(myData<span class="op">$</span>income) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(myData<span class="op">$</span>age))</span>
+<span id="cb1542-2"><a href="til20220609.html#cb1542-2"></a></span>
+<span id="cb1542-3"><a href="til20220609.html#cb1542-3"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">preProcess</span>(myData[<span class="op">-</span>myBadDataRows, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)],<span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">2</span>)</span>
+<span id="cb1542-4"><a href="til20220609.html#cb1542-4"></a>myDataImputed3 &lt;-<span class="st"> </span><span class="kw">predict</span>(myDataImputed3,myData[<span class="op">-</span>myBadDataRows, <span class="kw">c</span>(<span class="st">&quot;income&quot;</span>, <span class="st">&quot;age&quot;</span>)])</span></code></pre></div>
 <pre><code>## Error: package RANN is required</code></pre>
-<div class="sourceCode" id="cb1563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1563-1"><a href="til20220609.html#cb1563-1"></a><span class="kw">summary</span>(myDataImputed3)</span></code></pre></div>
+<div class="sourceCode" id="cb1544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1544-1"><a href="til20220609.html#cb1544-1"></a><span class="kw">summary</span>(myDataImputed3)</span></code></pre></div>
 <pre><code>##                   Length Class      Mode    
 ## dim               2      -none-     numeric 
 ## bc                0      -none-     NULL    
@@ -799,9 +802,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## data              2      data.frame list    
 ## rangeBounds       2      -none-     numeric</code></pre>
 <p>MICE (Multivariate Imputation via Chained Equations)를 이용해 결측치를 제거할 수 있다.</p>
-<div class="sourceCode" id="cb1565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1565-1"><a href="til20220609.html#cb1565-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span>
-<span id="cb1565-2"><a href="til20220609.html#cb1565-2"></a>myDataImputed4 &lt;-<span class="st"> </span>myData</span>
-<span id="cb1565-3"><a href="til20220609.html#cb1565-3"></a>DataMICE &lt;-<span class="st"> </span><span class="kw">mice</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb1546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1546-1"><a href="til20220609.html#cb1546-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(mice)) { <span class="kw">install.packages</span>(<span class="st">&quot;mice&quot;</span>); <span class="kw">library</span>(mice); }</span>
+<span id="cb1546-2"><a href="til20220609.html#cb1546-2"></a>myDataImputed4 &lt;-<span class="st"> </span>myData</span>
+<span id="cb1546-3"><a href="til20220609.html#cb1546-3"></a>DataMICE &lt;-<span class="st"> </span><span class="kw">mice</span>(myData)</span></code></pre></div>
 <pre><code>## 
 ##  iter imp variable
 ##   1   1  age  income  education
@@ -829,8 +832,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   5   3  age  income  education
 ##   5   4  age  income  education
 ##   5   5  age  income  education</code></pre>
-<div class="sourceCode" id="cb1567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1567-1"><a href="til20220609.html#cb1567-1"></a>myDataImputed4 &lt;-<span class="st"> </span><span class="kw">complete</span>(DataMICE)</span>
-<span id="cb1567-2"><a href="til20220609.html#cb1567-2"></a><span class="kw">summary</span>(myDataImputed4)</span></code></pre></div>
+<div class="sourceCode" id="cb1548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1548-1"><a href="til20220609.html#cb1548-1"></a>myDataImputed4 &lt;-<span class="st"> </span><span class="kw">complete</span>(DataMICE)</span>
+<span id="cb1548-2"><a href="til20220609.html#cb1548-2"></a><span class="kw">summary</span>(myDataImputed4)</span></code></pre></div>
 <pre><code>##       age           income             education 
 ##  Min.   :18.0   Min.   : 48512   Bachelors  :14  
 ##  1st Qu.:31.5   1st Qu.:126502   Doctorate  : 3  

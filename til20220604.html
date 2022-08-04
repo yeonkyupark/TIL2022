@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-03" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,6 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="til20220803.html"><a href="til20220803.html"><i class="fa fa-check"></i><b>8.3</b> TIL20220803</a><ul>
 <li class="chapter" data-level="8.3.1" data-path="til20220803.html"><a href="til20220803.html#section-38"><i class="fa fa-check"></i><b>8.3.1</b> …</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="til20220804.html"><a href="til20220804.html"><i class="fa fa-check"></i><b>8.4</b> TIL20220804</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="til20220804.html"><a href="til20220804.html#section-39"><i class="fa fa-check"></i><b>8.4.1</b> …</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -711,32 +714,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.4</span> TIL20220604<a href="til20220604.html#til20220604" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="변수명으로-특정-컬럼-제거하기" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.4.1</span> 변수명으로 특정 컬럼 제거하기<a href="til20220604.html#변수명으로-특정-컬럼-제거하기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="til20220604.html#cb1487-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb1487-2"><a href="til20220604.html#cb1487-2"></a>  <span class="dt">sex =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
-<span id="cb1487-3"><a href="til20220604.html#cb1487-3"></a>  <span class="dt">score =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb1487-4"><a href="til20220604.html#cb1487-4"></a>); df<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df<span class="op">$</span>sex)</span>
-<span id="cb1487-5"><a href="til20220604.html#cb1487-5"></a>df</span></code></pre></div>
-<div class="sourceCode" id="cb1488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1488-1"><a href="til20220604.html#cb1488-1"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">-</span><span class="st">&quot;score&quot;</span>]</span></code></pre></div>
-<div class="sourceCode" id="cb1489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1489-1"><a href="til20220604.html#cb1489-1"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;score&quot;</span>)]</span></code></pre></div>
-<div class="sourceCode" id="cb1490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1490-1"><a href="til20220604.html#cb1490-1"></a><span class="co"># 01</span></span>
-<span id="cb1490-2"><a href="til20220604.html#cb1490-2"></a><span class="kw">colnames</span>(df)</span>
-<span id="cb1490-3"><a href="til20220604.html#cb1490-3"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">!</span>(<span class="kw">colnames</span>(df) <span class="op">%in%</span><span class="st"> &quot;score&quot;</span>)]</span></code></pre></div>
-<div class="sourceCode" id="cb1491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1491-1"><a href="til20220604.html#cb1491-1"></a><span class="co"># 02</span></span>
-<span id="cb1491-2"><a href="til20220604.html#cb1491-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
-<span id="cb1491-3"><a href="til20220604.html#cb1491-3"></a>colIndex &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">colnames</span>(df) <span class="op">%in%</span><span class="st"> &quot;score&quot;</span>)</span>
-<span id="cb1491-4"><a href="til20220604.html#cb1491-4"></a>df2 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">all_of</span>(colIndex))</span>
-<span id="cb1491-5"><a href="til20220604.html#cb1491-5"></a>df2</span></code></pre></div>
+<div class="sourceCode" id="cb1468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1468-1"><a href="til20220604.html#cb1468-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb1468-2"><a href="til20220604.html#cb1468-2"></a>  <span class="dt">sex =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb1468-3"><a href="til20220604.html#cb1468-3"></a>  <span class="dt">score =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="ot">NA</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb1468-4"><a href="til20220604.html#cb1468-4"></a>); df<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df<span class="op">$</span>sex)</span>
+<span id="cb1468-5"><a href="til20220604.html#cb1468-5"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb1469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1469-1"><a href="til20220604.html#cb1469-1"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">-</span><span class="st">&quot;score&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb1470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1470-1"><a href="til20220604.html#cb1470-1"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;score&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb1471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1471-1"><a href="til20220604.html#cb1471-1"></a><span class="co"># 01</span></span>
+<span id="cb1471-2"><a href="til20220604.html#cb1471-2"></a><span class="kw">colnames</span>(df)</span>
+<span id="cb1471-3"><a href="til20220604.html#cb1471-3"></a>df2 &lt;-<span class="st"> </span>df[, <span class="op">!</span>(<span class="kw">colnames</span>(df) <span class="op">%in%</span><span class="st"> &quot;score&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="til20220604.html#cb1472-1"></a><span class="co"># 02</span></span>
+<span id="cb1472-2"><a href="til20220604.html#cb1472-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(dplyr)) { <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>); <span class="kw">library</span>(dplyr); }</span>
+<span id="cb1472-3"><a href="til20220604.html#cb1472-3"></a>colIndex &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">colnames</span>(df) <span class="op">%in%</span><span class="st"> &quot;score&quot;</span>)</span>
+<span id="cb1472-4"><a href="til20220604.html#cb1472-4"></a>df2 &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">all_of</span>(colIndex))</span>
+<span id="cb1472-5"><a href="til20220604.html#cb1472-5"></a>df2</span></code></pre></div>
 </div>
 <div id="결측치-처리-2" class="section level3 hasAnchor">
 <h3><span class="header-section-number">6.4.2</span> 결측치 처리<a href="til20220604.html#결측치-처리-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1492-1"><a href="til20220604.html#cb1492-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
-<span id="cb1492-2"><a href="til20220604.html#cb1492-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(RANN)) { <span class="kw">install.packages</span>(<span class="st">&quot;RANN&quot;</span>); <span class="kw">library</span>(RANN); }</span>
-<span id="cb1492-3"><a href="til20220604.html#cb1492-3"></a>df_nomiss &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(score))</span>
-<span id="cb1492-4"><a href="til20220604.html#cb1492-4"></a>df_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(df_nomiss<span class="op">$</span>score)</span>
-<span id="cb1492-5"><a href="til20220604.html#cb1492-5"></a>df_nomiss2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(df)</span></code></pre></div>
-<div class="sourceCode" id="cb1493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1493-1"><a href="til20220604.html#cb1493-1"></a>df<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">as.integer</span>(df<span class="op">$</span>sex)</span>
-<span id="cb1493-2"><a href="til20220604.html#cb1493-2"></a>df_naknn &lt;-<span class="st"> </span><span class="kw">preProcess</span>(df, <span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">3</span>)</span>
-<span id="cb1493-3"><a href="til20220604.html#cb1493-3"></a>df_new &lt;-<span class="st"> </span><span class="kw">predict</span>(df_naknn, df); df_new</span></code></pre></div>
+<div class="sourceCode" id="cb1473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1473-1"><a href="til20220604.html#cb1473-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(caret)) { <span class="kw">install.packages</span>(<span class="st">&quot;caret&quot;</span>); <span class="kw">library</span>(caret); }</span>
+<span id="cb1473-2"><a href="til20220604.html#cb1473-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(RANN)) { <span class="kw">install.packages</span>(<span class="st">&quot;RANN&quot;</span>); <span class="kw">library</span>(RANN); }</span>
+<span id="cb1473-3"><a href="til20220604.html#cb1473-3"></a>df_nomiss &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(score))</span>
+<span id="cb1473-4"><a href="til20220604.html#cb1473-4"></a>df_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(df_nomiss<span class="op">$</span>score)</span>
+<span id="cb1473-5"><a href="til20220604.html#cb1473-5"></a>df_nomiss2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1474-1"><a href="til20220604.html#cb1474-1"></a>df<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">as.integer</span>(df<span class="op">$</span>sex)</span>
+<span id="cb1474-2"><a href="til20220604.html#cb1474-2"></a>df_naknn &lt;-<span class="st"> </span><span class="kw">preProcess</span>(df, <span class="dt">method =</span> <span class="st">&quot;knnImpute&quot;</span>, <span class="dt">k=</span><span class="dv">3</span>)</span>
+<span id="cb1474-3"><a href="til20220604.html#cb1474-3"></a>df_new &lt;-<span class="st"> </span><span class="kw">predict</span>(df_naknn, df); df_new</span></code></pre></div>
 
 </div>
 </div>
