@@ -1,2 +1,15 @@
-## TIL20220809
-### ...
+## TIL20220809  
+
+### TIL 파일 일년치 만들기
+
+```{python}
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+last_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+for month in months:
+    for i in range(1, last_day[months.index(month)]+1):
+        filename = "%02d-%s-%02d.Rmd" % (months.index(month)+1, month, i)
+        with open(filename, "w", encoding="utf8") as Rmd_file:
+            Rmd_file.write("## TIL2022%02d%02d\n" % (months.index(month)+1, i))
+            Rmd_file.write("\n### ...\n")
+```
