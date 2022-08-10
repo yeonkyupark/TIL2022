@@ -2,7 +2,7 @@
 
 ### TIL 파일 일년치 만들기
 
-```{python}
+```python
 months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 last_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
