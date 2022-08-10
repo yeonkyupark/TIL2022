@@ -1,2 +1,5 @@
 ## TIL20220810
-### ...
+### Polynomila data fit
+
+https://arachnoid.com/polysolve/ 
+
