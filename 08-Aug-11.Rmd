@@ -1,2 +1,16 @@
 ## TIL20220811
-### ...
+
+### train test split in python
+
+```python
+from sklearn.model_selection import train_test_split
+
+# load sample
+dataset = load_data()
+
+data = dataset['data']
+target = dataset['target']
+
+# train_test_split
+x_train, x_test, y_train, y_test = train_test_split(data, target, test_size=0.2, shuffle=True, stratify=target, random_state=34)
+```
