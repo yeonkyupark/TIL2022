@@ -13,7 +13,22 @@ if(!require(quantmod)) { install.packages("quantmod"); library(quantmod); }
 
 ```{r}
 Samsung <- getSymbols(Symbols = "005930.KS", src = "yahoo",
-                 from = Sys.Date() - 180, to = Sys.Date(),
+                 from = Sys.Date() - 730, to = Sys.Date(),
                  auto.assign = FALSE)
+colnames(Samsung) <- c('open', 'high', 'low', 'close', 'volume', 'adjusted')
+```
+
+```{r}
+# class(Samsung)
+ss_df <- as.data.frame(Samsung)
+ss_ts <- ss_df %>% rownames_to_column() %>% as.tibble() %>% 
+  mutate(date = as.Date(rowname)) %>% select("date", "close")
+```
+
+```{r}
+ss_ts %>% 
+  time_decompose(close, method = "stl", frequency = "auto", trend = "auto") %>% 
+  anomalize(remainder, method = "gesd", alpha = 0.05, max_anoms = 0.2) %>% 
+  plot_anomaly_decomposition()
 ```
 
