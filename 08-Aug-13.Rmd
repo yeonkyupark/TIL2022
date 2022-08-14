@@ -1,2 +1,28 @@
 ## TIL20220813
-### ...
+
+### Tidy Anomaly Detection using R
+
+source : https://towardsdatascience.com/tidy-anomaly-detection-using-r-82a0c776d523  
+
+
+```{r}
+if(!require(anomalize)) { install.packages("anomalize"); library(anomalize); }
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+if(!require(quantmod)) { install.packages("quantmod"); library(quantmod); }
+```
+
+```{r}
+Samsung <- getSymbols(Symbols = "005930.KS", src = "yahoo",
+                 from = Sys.Date() - 180, to = Sys.Date(),
+                 auto.assign = FALSE)
+```
+
+```{r}
+colnames(Samsung) <- c('open', 'high', 'low', 'close', 'volume', 'adjusted')
+chartSeries(Samsung, up.col = "red", dn.col = "blue", theme = "white")
+addMACD()
+addBBands()
+addSMA(); addSMA(30, col = "blue")
+```
+
+
