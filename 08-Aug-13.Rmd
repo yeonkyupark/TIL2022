@@ -1,6 +1,6 @@
 ## TIL20220813
 
-### Tidy Anomaly Detection using R
+### Tidy Anomaly Detection using R (1/2)
 
 source : https://towardsdatascience.com/tidy-anomaly-detection-using-r-82a0c776d523  
 

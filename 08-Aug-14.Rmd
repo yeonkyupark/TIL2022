@@ -1,6 +1,6 @@
 ## TIL20220814
 
-### Tidy Anomaly Detection using R
+### Tidy Anomaly Detection using R (2/2)
 
 source : https://towardsdatascience.com/tidy-anomaly-detection-using-r-82a0c776d523  
 
@@ -16,3 +16,4 @@ Samsung <- getSymbols(Symbols = "005930.KS", src = "yahoo",
                  from = Sys.Date() - 180, to = Sys.Date(),
                  auto.assign = FALSE)
 ```
+
