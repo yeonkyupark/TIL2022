@@ -1,2 +1,24 @@
 ## TIL20220812
-### ...
+
+### R : How to detect and fix abnormal values on plot?
+
+https://stackoverflow.com/questions/44713124/r-how-to-detect-and-fix-abnormal-values-on-plot 
+
+```{r}
+# df <- read.csv(url("https://raw.githubusercontent.com/ieatbaozi/R-Practicing/master/example.csv"),header = TRUE,stringsAsFactors = FALSE)
+```
+
+
+```{r}
+# df$DateTime <- as.POSIXct(df$DateTime)
+```
+
+
+```{r}
+# if(!require(AnomalyDetection)) { install.packages("AnomalyDetection"); 
+# library(AnomalyDetection); }
+# 
+# ADtest <- AnomalyDetectionTs(df, max_anoms=0.1, direction='both', plot=TRUE)
+# ADtest$plot
+```
+
