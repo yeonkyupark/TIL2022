@@ -1,2 +1,14 @@
 ## TIL20220815
-### ...
+
+### 파이썬으로 폴더 생성
+
+```python
+import os
+
+try: 
+    os.mkdir('python')
+except FileExistsError as e:
+    print(e)
+
+print("프로그램을 종료합니다.")
+```
