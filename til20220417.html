@@ -23,7 +23,7 @@
 <meta name="author" content="PARK Yeonkyu" />
 
 
-<meta name="date" content="2022-08-18" />
+<meta name="date" content="2022-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1215,8 +1215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 Torgersen Adelie            34.1          18.1        193    3475 &lt;NA&gt;   2007
 ## 10 Torgersen Adelie            42            20.2        190    4250 &lt;NA&gt;   2007
 ## # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
-## #   ²​body_mass_g
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## #   ²​body_mass_g</code></pre>
 <div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="til20220417.html#cb945-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb945-2"><a href="til20220417.html#cb945-2"></a><span class="st">  </span><span class="kw">select</span>(bill_length_mm<span class="op">:</span><span class="kw">last_col</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 344 × 6
@@ -1232,8 +1231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8           39.2          19.6               195        4675 male    2007
 ##  9           34.1          18.1               193        3475 &lt;NA&gt;    2007
 ## 10           42            20.2               190        4250 &lt;NA&gt;    2007
-## # … with 334 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 334 more rows</code></pre>
 <div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="til20220417.html#cb947-1"></a>data <span class="op">%&gt;%</span></span>
 <span id="cb947-2"><a href="til20220417.html#cb947-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">body_mass_kg =</span> <span class="kw">as.numeric</span>(<span class="kw">substr</span>(body_mass_g,<span class="dv">1</span>,<span class="dv">2</span>))<span class="op">/</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb947-3"><a href="til20220417.html#cb947-3"></a><span class="st">  </span><span class="kw">select</span>(body_mass_g, body_mass_kg)</span></code></pre></div>
@@ -1250,8 +1248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8        4675          4.6
 ##  9        3475          3.4
 ## 10        4250          4.2
-## # … with 334 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 334 more rows</code></pre>
 
 </div>
 </div>
