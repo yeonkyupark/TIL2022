@@ -1,2 +1,12 @@
-## TIL20220825
-### ...
+## TIL20220825  
+
+### Spark in R
+
+package update 필요  
+
+```{r}
+if(!require(sparklyr)) { install.packages("sparklyr"); library(sparklyr); }
+```
+
+
+
