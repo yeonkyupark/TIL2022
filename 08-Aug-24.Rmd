@@ -19,3 +19,7 @@ Why is union() a narrow transformation and intersection() is a wide transformati
 
 https://stackoverflow.com/questions/70643086/why-is-union-a-narrow-transformation-and-intersection-is-a-wide-transformati
 
+### colab, python, 경로 
+
+공백 및 특수문자 배제할 것.  
+
