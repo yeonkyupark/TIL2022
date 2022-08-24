@@ -491,6 +491,7 @@ section-48
 til20220824
 how-to-check-dataframe-rdd-in-spark-python
 union-is-a-narrow-transformation
+colab-python-경로
 til20220825
 section-49
 til20220826
