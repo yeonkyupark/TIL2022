@@ -1,2 +1,14 @@
-## TIL20220824
-### ...
+## TIL20220824  
+
+### how to check dataframe, rdd in spark, python
+
+```python
+x = sc.parallelize([1,2,3]) # create(initialize) RDD
+y = x.flatMap(lambda x: (x, x*2))
+
+from pyspark.sql import DataFrame
+from pyspark.rdd import RDD
+
+print(isinstance(x, DataFrame))
+print(isinstance(x, RDD))
+```
