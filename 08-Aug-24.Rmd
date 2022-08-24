@@ -12,3 +12,10 @@ from pyspark.rdd import RDD
 print(isinstance(x, DataFrame))
 print(isinstance(x, RDD))
 ```
+
+### union is a narrow transformation
+
+Why is union() a narrow transformation and intersection() is a wide transformation in spark?  
+
+https://stackoverflow.com/questions/70643086/why-is-union-a-narrow-transformation-and-intersection-is-a-wide-transformati
+
