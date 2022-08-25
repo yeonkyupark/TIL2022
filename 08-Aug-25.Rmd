@@ -8,5 +8,15 @@ package update 필요
 if(!require(sparklyr)) { install.packages("sparklyr"); library(sparklyr); }
 ```
 
+### pyspark를 Windows에 설치하기
 
+구글검색 요.  
+
+1. Java 설치
+2. Hadoop, Spark 설치
+3. winutils 설치
+4. 환경설정
+5. pyspark 설치  
+
+.
 
