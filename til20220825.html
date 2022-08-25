@@ -1208,7 +1208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1735"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1735-1"><a href="til20220825.html#cb1735-1"></a>b <span class="op">=</span> a.withColumn(<span class="st">&quot;Price&quot;</span>, col(<span class="st">&quot;Price&quot;</span>)<span class="op">*</span><span class="fl">1.05</span>).show()</span>
 <span id="cb1735-2"><a href="til20220825.html#cb1735-2"></a>b_drop <span class="op">=</span> b.drop(<span class="st">&quot;Price&quot;</span>)</span></code></pre></div>
 <p>오류출력<br />
-&gt; AttributeError: ‘NoneType’ object has no attribute ‘drop’</p>
+&gt;AttributeError: ‘NoneType’ object has no attribute ‘drop’</p>
 
 </div>
 </div>
