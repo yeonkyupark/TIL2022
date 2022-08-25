@@ -18,5 +18,14 @@ if(!require(sparklyr)) { install.packages("sparklyr"); library(sparklyr); }
 4. 환경설정
 5. pyspark 설치  
 
-.
+### java 미설치 시 에러
+
+Java gateway process exited before sending its port number  
+
+### current working directory in python
+
+```python
+import os
+os.getcwd()
+```
 
