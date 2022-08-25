@@ -4,7 +4,7 @@
 
 package update 필요  
 
-```{r}
+```r
 if(!require(sparklyr)) { install.packages("sparklyr"); library(sparklyr); }
 ```
 
