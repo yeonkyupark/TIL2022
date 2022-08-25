@@ -44,5 +44,7 @@ b = a.withColumn("Price", col("Price")*1.05).show()
 b_drop = b.drop("Price")
 ```
 오류출력  
->AttributeError: 'NoneType' object has no attribute 'drop'
 
+    AttributeError: 'NoneType' object has no attribute 'drop'
+    
+EOF
