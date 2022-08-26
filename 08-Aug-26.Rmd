@@ -1,2 +1,5 @@
-## TIL20220826
-### ...
+## TIL20220826  
+
+### install pytorch in windows10
+
+![image](https://user-images.githubusercontent.com/72383349/186847430-0aad06e1-ec8e-4a5b-afab-8ebb13fec19e.png)
