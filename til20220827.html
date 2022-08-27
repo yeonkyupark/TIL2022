@@ -1211,7 +1211,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">8.27.1.4</span> Read Data<a href="til20220827.html#read-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Using <code>copy_to()</code> from R to Spark</p>
 <div class="sourceCode" id="cb1740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1740-1"><a href="til20220827.html#cb1740-1"></a>tbl_mtcars &lt;-<span class="st"> </span><span class="kw">copy_to</span>(sc, mtcars, <span class="st">&quot;spark_mtcars&quot;</span>)</span></code></pre></div>
-<p>▶ output_image</p>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/72383349/187010680-33796a4c-ccb5-4396-ba3e-db532ac6f268.png" alt="" />
+<p class="caption">Connections in Environment panel</p>
+</div>
+</div>
+<div id="prepare-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.27.1.5</span> Prepare Data<a href="til20220827.html#prepare-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>With</p>
+<ul>
+<li>dplyr</li>
+<li>SQL</li>
+<li>Spark’s feature transformers</li>
+</ul>
+<p><strong>Using dplyr</strong></p>
+<div class="sourceCode" id="cb1741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1741-1"><a href="til20220827.html#cb1741-1"></a>delay &lt;-<span class="st"> </span>flight_tbl <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1741-2"><a href="til20220827.html#cb1741-2"></a><span class="st">  </span><span class="kw">group_by</span>(tailnum) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1741-3"><a href="til20220827.html#cb1741-3"></a><span class="st">  </span><span class="kw">summarise</span>(</span>
+<span id="cb1741-4"><a href="til20220827.html#cb1741-4"></a>    <span class="dt">count =</span> <span class="kw">n</span>(),</span>
+<span id="cb1741-5"><a href="til20220827.html#cb1741-5"></a>    <span class="dt">dist =</span> <span class="kw">mean</span>(distance, <span class="dt">na.rm =</span> T),</span>
+<span id="cb1741-6"><a href="til20220827.html#cb1741-6"></a>    <span class="dt">delay =</span> <span class="kw">mean</span>(arr_delay, <span class="dt">na.rm =</span> T)</span>
+<span id="cb1741-7"><a href="til20220827.html#cb1741-7"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1741-8"><a href="til20220827.html#cb1741-8"></a><span class="st">  </span><span class="kw">filter</span>(count <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>, dist <span class="op">&lt;</span><span class="dv">2000</span>, <span class="op">!</span><span class="kw">is.na</span>(delay))</span>
+<span id="cb1741-9"><a href="til20220827.html#cb1741-9"></a>delay</span>
+<span id="cb1741-10"><a href="til20220827.html#cb1741-10"></a></span>
+<span id="cb1741-11"><a href="til20220827.html#cb1741-11"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">show_query</span>(delay)</span>
+<span id="cb1741-12"><a href="til20220827.html#cb1741-12"></a><span class="op">&lt;</span>SQL<span class="op">&gt;</span></span>
+<span id="cb1741-13"><a href="til20220827.html#cb1741-13"></a>SELECT <span class="op">*</span></span>
+<span id="cb1741-14"><a href="til20220827.html#cb1741-14"></a><span class="kw">FROM</span> (</span>
+<span id="cb1741-15"><a href="til20220827.html#cb1741-15"></a>  SELECT</span>
+<span id="cb1741-16"><a href="til20220827.html#cb1741-16"></a>    <span class="st">`</span><span class="dt">tailnum</span><span class="st">`</span>,</span>
+<span id="cb1741-17"><a href="til20220827.html#cb1741-17"></a>    <span class="kw">COUNT</span>(<span class="op">*</span>) AS <span class="st">`</span><span class="dt">count</span><span class="st">`</span>,</span>
+<span id="cb1741-18"><a href="til20220827.html#cb1741-18"></a>    <span class="kw">AVG</span>(<span class="st">`</span><span class="dt">distance</span><span class="st">`</span>) AS <span class="st">`</span><span class="dt">dist</span><span class="st">`</span>,</span>
+<span id="cb1741-19"><a href="til20220827.html#cb1741-19"></a>    <span class="kw">AVG</span>(<span class="st">`</span><span class="dt">arr_delay</span><span class="st">`</span>) AS <span class="st">`</span><span class="dt">delay</span><span class="st">`</span></span>
+<span id="cb1741-20"><a href="til20220827.html#cb1741-20"></a>  FROM <span class="st">`</span><span class="dt">spark_flights</span><span class="st">`</span></span>
+<span id="cb1741-21"><a href="til20220827.html#cb1741-21"></a>  GROUP BY <span class="st">`</span><span class="dt">tailnum</span><span class="st">`</span></span>
+<span id="cb1741-22"><a href="til20220827.html#cb1741-22"></a>) <span class="st">`</span><span class="dt">q01</span><span class="st">`</span></span>
+<span id="cb1741-23"><a href="til20220827.html#cb1741-23"></a><span class="kw">WHERE</span> (<span class="st">`</span><span class="dt">count</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="fl">20.0</span>) <span class="kw">AND</span> (<span class="st">`</span><span class="dt">dist</span><span class="st">`</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">2000.0</span>) <span class="kw">AND</span> (<span class="kw">NOT</span>((<span class="st">`</span><span class="dt">delay</span><span class="st">`</span> IS <span class="ot">NULL</span>)))</span>
+<span id="cb1741-24"><a href="til20220827.html#cb1741-24"></a><span class="op">&gt;</span><span class="st"> </span></span></code></pre></div>
+<p><strong>Using SQL</strong></p>
+<div class="sourceCode" id="cb1742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1742-1"><a href="til20220827.html#cb1742-1"></a><span class="kw">library</span>(DBI)</span>
+<span id="cb1742-2"><a href="til20220827.html#cb1742-2"></a><span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;</span></span>
+<span id="cb1742-3"><a href="til20220827.html#cb1742-3"></a><span class="st">           select carrier, sched_dep_time, dep_time, dep_delay</span></span>
+<span id="cb1742-4"><a href="til20220827.html#cb1742-4"></a><span class="st">           from spark_flights</span></span>
+<span id="cb1742-5"><a href="til20220827.html#cb1742-5"></a><span class="st">           limit 5&quot;</span>)</span>
+<span id="cb1742-6"><a href="til20220827.html#cb1742-6"></a>           </span>
+<span id="cb1742-7"><a href="til20220827.html#cb1742-7"></a>  carrier sched_dep_time dep_time dep_delay</span>
+<span id="cb1742-8"><a href="til20220827.html#cb1742-8"></a><span class="dv">1</span>      UA            <span class="dv">515</span>      <span class="dv">517</span>         <span class="dv">2</span></span>
+<span id="cb1742-9"><a href="til20220827.html#cb1742-9"></a><span class="dv">2</span>      UA            <span class="dv">529</span>      <span class="dv">533</span>         <span class="dv">4</span></span>
+<span id="cb1742-10"><a href="til20220827.html#cb1742-10"></a><span class="dv">3</span>      AA            <span class="dv">540</span>      <span class="dv">542</span>         <span class="dv">2</span></span>
+<span id="cb1742-11"><a href="til20220827.html#cb1742-11"></a><span class="dv">4</span>      B6            <span class="dv">545</span>      <span class="dv">544</span>        <span class="dv">-1</span></span>
+<span id="cb1742-12"><a href="til20220827.html#cb1742-12"></a><span class="dv">5</span>      DL            <span class="dv">600</span>      <span class="dv">554</span>        <span class="dv">-6</span></span></code></pre></div>
+<p><strong>Using Feature Transformer</strong></p>
+<div class="sourceCode" id="cb1743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1743-1"><a href="til20220827.html#cb1743-1"></a>flight_tbl <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1743-2"><a href="til20220827.html#cb1743-2"></a><span class="st">  </span><span class="kw">ft_binarizer</span>(<span class="st">&quot;dep_delay&quot;</span>, <span class="st">&quot;over_one&quot;</span>, <span class="dt">threshold =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1743-3"><a href="til20220827.html#cb1743-3"></a><span class="st">  </span><span class="kw">select</span>(dep_delay, over_one) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1743-4"><a href="til20220827.html#cb1743-4"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">5</span>)</span>
+<span id="cb1743-5"><a href="til20220827.html#cb1743-5"></a>  </span>
+<span id="cb1743-6"><a href="til20220827.html#cb1743-6"></a>  dep_delay over_one</span>
+<span id="cb1743-7"><a href="til20220827.html#cb1743-7"></a>      <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></span>
+<span id="cb1743-8"><a href="til20220827.html#cb1743-8"></a><span class="dv">1</span>         <span class="dv">2</span>        <span class="dv">1</span></span>
+<span id="cb1743-9"><a href="til20220827.html#cb1743-9"></a><span class="dv">2</span>         <span class="dv">4</span>        <span class="dv">1</span></span>
+<span id="cb1743-10"><a href="til20220827.html#cb1743-10"></a><span class="dv">3</span>         <span class="dv">2</span>        <span class="dv">1</span></span>
+<span id="cb1743-11"><a href="til20220827.html#cb1743-11"></a><span class="dv">4</span>        <span class="dv">-1</span>        <span class="dv">0</span></span>
+<span id="cb1743-12"><a href="til20220827.html#cb1743-12"></a><span class="dv">5</span>        <span class="dv">-6</span>        <span class="dv">0</span></span></code></pre></div>
 
 </div>
 </div>

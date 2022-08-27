@@ -506,6 +506,7 @@ install-the-package
 install-spark-locally
 connect-and-disconnect-to-spark
 read-data
+prepare-data
 til20220828
 section-49
 til20220829
