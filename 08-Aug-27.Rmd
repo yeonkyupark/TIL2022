@@ -49,6 +49,76 @@ Using `copy_to()` from R to Spark
 tbl_mtcars <- copy_to(sc, mtcars, "spark_mtcars")
 ```
 
-▶ output_image
+![Connections in Environment panel](https://user-images.githubusercontent.com/72383349/187010680-33796a4c-ccb5-4396-ba3e-db532ac6f268.png)
 
+#### Prepare Data
+
+With  
+
+* dplyr
+* SQL
+* Spark's feature transformers
+
+**Using dplyr**  
+
+```R
+delay <- flight_tbl %>% 
+  group_by(tailnum) %>% 
+  summarise(
+    count = n(),
+    dist = mean(distance, na.rm = T),
+    delay = mean(arr_delay, na.rm = T)
+  ) %>% 
+  filter(count > 20, dist <2000, !is.na(delay))
+delay
+
+> show_query(delay)
+<SQL>
+SELECT *
+FROM (
+  SELECT
+    `tailnum`,
+    COUNT(*) AS `count`,
+    AVG(`distance`) AS `dist`,
+    AVG(`arr_delay`) AS `delay`
+  FROM `spark_flights`
+  GROUP BY `tailnum`
+) `q01`
+WHERE (`count` > 20.0) AND (`dist` < 2000.0) AND (NOT((`delay` IS NULL)))
+> 
+```
+
+**Using SQL**  
+
+```R
+library(DBI)
+dbGetQuery(sc, "
+           select carrier, sched_dep_time, dep_time, dep_delay
+           from spark_flights
+           limit 5")
+           
+  carrier sched_dep_time dep_time dep_delay
+1      UA            515      517         2
+2      UA            529      533         4
+3      AA            540      542         2
+4      B6            545      544        -1
+5      DL            600      554        -6
+```
+
+**Using Feature Transformer**  
+
+```R
+flight_tbl %>% 
+  ft_binarizer("dep_delay", "over_one", threshold = 1) %>% 
+  select(dep_delay, over_one) %>% 
+  head(5)
+  
+  dep_delay over_one
+      <dbl>    <dbl>
+1         2        1
+2         4        1
+3         2        1
+4        -1        0
+5        -6        0
+```
 
