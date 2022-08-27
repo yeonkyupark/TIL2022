@@ -2,5 +2,53 @@
 
 ### Spark in R
 
-https://spark.rstudio.com/ 
+Refer to `https://spark.rstudio.com/`  
+
+#### Install the package
+
+```R
+install.packages("sparklyr")
+```
+
+#### Install Spark locally
+
+```R
+> library(sparkly)
+> spark_install()
+Installing Spark 2.4.3 for Hadoop 2.7 or later.
+Downloading from:
+- 'https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz'
+Installing to:
+- 'C:\Users\User\AppData\Local/spark/spark-2.4.3-bin-hadoop2.7'
+trying URL 'https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz'
+Content type 'application/x-gzip' length 229988313 bytes (219.3 MB)
+downloaded 219.3 MB
+
+Installation complete.
+> 
+```
+
+#### Connect and disconnect to Spark
+
+```R
+library(sparklyr)
+
+# connect
+sc <- spark_connect(master = "local")
+
+
+# disconnect
+spark_disconnect(sc)
+```
+
+#### Read Data
+
+Using `copy_to()` from R to Spark
+
+```R
+tbl_mtcars <- copy_to(sc, mtcars, "spark_mtcars")
+```
+
+▶ output_image
+
 
