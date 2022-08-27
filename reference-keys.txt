@@ -502,6 +502,10 @@ til20220826
 install-pytorch-in-windows10
 til20220827
 spark-in-r-1
+install-the-package
+install-spark-locally
+connect-and-disconnect-to-spark
+read-data
 til20220828
 section-49
 til20220829

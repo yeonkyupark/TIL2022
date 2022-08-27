@@ -1175,8 +1175,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.27</span> TIL20220827<a href="til20220827.html#til20220827" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="spark-in-r-1" class="section level3 hasAnchor">
 <h3><span class="header-section-number">8.27.1</span> Spark in R<a href="til20220827.html#spark-in-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://spark.rstudio.com/" class="uri">https://spark.rstudio.com/</a></p>
+<p>Refer to <code>https://spark.rstudio.com/</code></p>
+<div id="install-the-package" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.27.1.1</span> Install the package<a href="til20220827.html#install-the-package" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1737-1"><a href="til20220827.html#cb1737-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;sparklyr&quot;</span>)</span></code></pre></div>
+</div>
+<div id="install-spark-locally" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.27.1.2</span> Install Spark locally<a href="til20220827.html#install-spark-locally" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="til20220827.html#cb1738-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(sparkly)</span>
+<span id="cb1738-2"><a href="til20220827.html#cb1738-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">spark_install</span>()</span>
+<span id="cb1738-3"><a href="til20220827.html#cb1738-3"></a>Installing Spark <span class="dv">2</span>.<span class="fl">4.3</span> <span class="cf">for</span> Hadoop <span class="fl">2.7</span> or later.</span>
+<span id="cb1738-4"><a href="til20220827.html#cb1738-4"></a>Downloading from<span class="op">:</span></span>
+<span id="cb1738-5"><a href="til20220827.html#cb1738-5"></a><span class="op">-</span><span class="st"> &#39;https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz&#39;</span></span>
+<span id="cb1738-6"><a href="til20220827.html#cb1738-6"></a>Installing to<span class="op">:</span></span>
+<span id="cb1738-7"><a href="til20220827.html#cb1738-7"></a><span class="op">-</span><span class="st"> &#39;C:\Users\User\AppData\Local/spark/spark-2.4.3-bin-hadoop2.7&#39;</span></span>
+<span id="cb1738-8"><a href="til20220827.html#cb1738-8"></a>trying URL <span class="st">&#39;https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz&#39;</span></span>
+<span id="cb1738-9"><a href="til20220827.html#cb1738-9"></a>Content type <span class="st">&#39;application/x-gzip&#39;</span> length <span class="dv">229988313</span> <span class="kw">bytes</span> (<span class="fl">219.3</span> MB)</span>
+<span id="cb1738-10"><a href="til20220827.html#cb1738-10"></a>downloaded <span class="fl">219.3</span> MB</span>
+<span id="cb1738-11"><a href="til20220827.html#cb1738-11"></a></span>
+<span id="cb1738-12"><a href="til20220827.html#cb1738-12"></a>Installation complete.</span>
+<span id="cb1738-13"><a href="til20220827.html#cb1738-13"></a><span class="op">&gt;</span><span class="st"> </span></span></code></pre></div>
+</div>
+<div id="connect-and-disconnect-to-spark" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.27.1.3</span> Connect and disconnect to Spark<a href="til20220827.html#connect-and-disconnect-to-spark" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1739-1"><a href="til20220827.html#cb1739-1"></a><span class="kw">library</span>(sparklyr)</span>
+<span id="cb1739-2"><a href="til20220827.html#cb1739-2"></a></span>
+<span id="cb1739-3"><a href="til20220827.html#cb1739-3"></a><span class="co"># connect</span></span>
+<span id="cb1739-4"><a href="til20220827.html#cb1739-4"></a>sc &lt;-<span class="st"> </span><span class="kw">spark_connect</span>(<span class="dt">master =</span> <span class="st">&quot;local&quot;</span>)</span>
+<span id="cb1739-5"><a href="til20220827.html#cb1739-5"></a></span>
+<span id="cb1739-6"><a href="til20220827.html#cb1739-6"></a></span>
+<span id="cb1739-7"><a href="til20220827.html#cb1739-7"></a><span class="co"># disconnect</span></span>
+<span id="cb1739-8"><a href="til20220827.html#cb1739-8"></a><span class="kw">spark_disconnect</span>(sc)</span></code></pre></div>
+</div>
+<div id="read-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">8.27.1.4</span> Read Data<a href="til20220827.html#read-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Using <code>copy_to()</code> from R to Spark</p>
+<div class="sourceCode" id="cb1740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1740-1"><a href="til20220827.html#cb1740-1"></a>tbl_mtcars &lt;-<span class="st"> </span><span class="kw">copy_to</span>(sc, mtcars, <span class="st">&quot;spark_mtcars&quot;</span>)</span></code></pre></div>
+<p>▶ output_image</p>
 
+</div>
 </div>
 </div>
             </section>
