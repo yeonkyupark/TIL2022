@@ -1,2 +1,29 @@
-## TIL20220828
-### ...
+## TIL20220828  
+
+### Model wiht Sparklyr
+
+```R
+# setup Spark ----
+library(sparklyr)
+sc <- spark_connect(master = 'local')
+
+# copy data from R to Spark  ----
+mtcars_tbl <- copy_to(sc, mtcars, overwrite = TRUE)
+
+# split train and test dataset  ----
+partitions <- mtcars_tbl %>% 
+  select(mpg, wt, cyl) %>% 
+  sdf_random_split(training = .5, test = .5, seed = 1099)
+
+# fit model  ----
+fit <- partitions $training %>% 
+  ml_linear_regression(mpg ~ .)
+fit
+
+## check model ----
+summary(fit)
+
+# use the model ---- 
+pred <- ml_predict(fit, partitions$test)
+head(pred)
+```
