@@ -2,7 +2,7 @@
 
 ### Model wiht Sparklyr
 
-```R
+```R 
 # setup Spark ----
 library(sparklyr)
 sc <- spark_connect(master = 'local')
