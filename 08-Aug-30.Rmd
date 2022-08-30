@@ -1,2 +1,10 @@
-## TIL20220830
-### ...
+## TIL20220830  
+
+### 엑셀에서 R로 복사하여 붙여넣기
+
+```R
+install.packages("datapasta")
+```
+
+![in "Addins"](https://user-images.githubusercontent.com/72383349/187424818-a262923a-368d-4889-a65d-8734bd5bbf5c.png)  
+
