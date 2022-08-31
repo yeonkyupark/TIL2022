@@ -24,3 +24,31 @@ This argument allows you to control which columns from .data are retained in the
 * **used** keeps any variables used to make new variables; it's useful for checking your work as it displays inputs and outputs side-by-side.
 * **unused** keeps only existing variables not used to make new variables.
 * **none**, only keeps grouping keys (like transmute()).
+
+
+```{r}
+df <- data.frame(
+  cate = c("A", "B", "C", "D"),
+  price = c(1,2,3,4)
+)
+df
+
+df_all <- df %>% 
+  mutate(new_cate = paste0("New_", cate), .keep = "all")
+df_all
+
+df_used <- df %>% 
+  mutate(new_cate = paste0("New_", cate), .keep = "used")
+df_used
+
+df_unused <- df %>% 
+  mutate(new_cate = paste0("New_", cate), .keep = "unused")
+df_unused
+
+df_none <- df %>% 
+  mutate(new_cate = paste0("New_", cate), .keep = "none")
+df_none
+```
+
+
+
