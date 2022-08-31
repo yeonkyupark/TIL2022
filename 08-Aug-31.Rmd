@@ -1,2 +1,26 @@
-## TIL20220831
-### ...
+## TIL20220831  
+
+### mutate in dplyr
+
+```R
+mutate(.data, ...)
+# S3 method for data.frame
+mutate(
+  .data,
+  ...,
+  .keep = c("all", "used", "unused", "none"),
+  .before = NULL,
+  .after = NULL
+)
+
+transmute(.data, ...)
+```
+
+`.keep`  
+
+This argument allows you to control which columns from .data are retained in the output:  
+
+* **all**, the default, retains all variables.
+* **used** keeps any variables used to make new variables; it's useful for checking your work as it displays inputs and outputs side-by-side.
+* **unused** keeps only existing variables not used to make new variables.
+* **none**, only keeps grouping keys (like transmute()).
