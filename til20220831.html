@@ -1194,6 +1194,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>unused</strong> keeps only existing variables not used to make new variables.</li>
 <li><strong>none</strong>, only keeps grouping keys (like transmute()).</li>
 </ul>
+<div class="sourceCode" id="cb1747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1747-1"><a href="til20220831.html#cb1747-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb1747-2"><a href="til20220831.html#cb1747-2"></a>  <span class="dt">cate =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
+<span id="cb1747-3"><a href="til20220831.html#cb1747-3"></a>  <span class="dt">price =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb1747-4"><a href="til20220831.html#cb1747-4"></a>)</span>
+<span id="cb1747-5"><a href="til20220831.html#cb1747-5"></a>df</span></code></pre></div>
+<pre><code>##   cate price
+## 1    A     1
+## 2    B     2
+## 3    C     3
+## 4    D     4</code></pre>
+<div class="sourceCode" id="cb1749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1749-1"><a href="til20220831.html#cb1749-1"></a>df_all &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1749-2"><a href="til20220831.html#cb1749-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">new_cate =</span> <span class="kw">paste0</span>(<span class="st">&quot;New_&quot;</span>, cate), <span class="dt">.keep =</span> <span class="st">&quot;all&quot;</span>)</span>
+<span id="cb1749-3"><a href="til20220831.html#cb1749-3"></a>df_all</span></code></pre></div>
+<pre><code>##   cate price new_cate
+## 1    A     1    New_A
+## 2    B     2    New_B
+## 3    C     3    New_C
+## 4    D     4    New_D</code></pre>
+<div class="sourceCode" id="cb1751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1751-1"><a href="til20220831.html#cb1751-1"></a>df_used &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1751-2"><a href="til20220831.html#cb1751-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">new_cate =</span> <span class="kw">paste0</span>(<span class="st">&quot;New_&quot;</span>, cate), <span class="dt">.keep =</span> <span class="st">&quot;used&quot;</span>)</span>
+<span id="cb1751-3"><a href="til20220831.html#cb1751-3"></a>df_used</span></code></pre></div>
+<pre><code>##   cate new_cate
+## 1    A    New_A
+## 2    B    New_B
+## 3    C    New_C
+## 4    D    New_D</code></pre>
+<div class="sourceCode" id="cb1753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1753-1"><a href="til20220831.html#cb1753-1"></a>df_unused &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1753-2"><a href="til20220831.html#cb1753-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">new_cate =</span> <span class="kw">paste0</span>(<span class="st">&quot;New_&quot;</span>, cate), <span class="dt">.keep =</span> <span class="st">&quot;unused&quot;</span>)</span>
+<span id="cb1753-3"><a href="til20220831.html#cb1753-3"></a>df_unused</span></code></pre></div>
+<pre><code>##   price new_cate
+## 1     1    New_A
+## 2     2    New_B
+## 3     3    New_C
+## 4     4    New_D</code></pre>
+<div class="sourceCode" id="cb1755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1755-1"><a href="til20220831.html#cb1755-1"></a>df_none &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1755-2"><a href="til20220831.html#cb1755-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">new_cate =</span> <span class="kw">paste0</span>(<span class="st">&quot;New_&quot;</span>, cate), <span class="dt">.keep =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb1755-3"><a href="til20220831.html#cb1755-3"></a>df_none</span></code></pre></div>
+<pre><code>##   new_cate
+## 1    New_A
+## 2    New_B
+## 3    New_C
+## 4    New_D</code></pre>
 
 </div>
 </div>
