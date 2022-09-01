@@ -4,17 +4,17 @@
 
 ### 시계열 그래프
 
-```{r}
+```r
 if(!require(fpp3)) { install.packages("fpp3"); library(fpp3); }
 if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
 ```
 
-```{r}
+```r
 mn <- read.csv("metaverse_nft.csv", header = T)
 list(head(mn), tail(mn))
 ```
 
-```{r}
+```r
 mn$date <- as_date(mn$date)
 mn_ts <- mn %>% 
   mutate(Month = yearweek(date)) %>%
@@ -24,7 +24,7 @@ mn_ts %>%
   labs(y = "hits", title = "Google Trends")
 ```
 
-```{r}
+```r
 mn_ts %>% 
   mutate(Month = yearweek(date)) %>% 
   gg_season(nft, labels = "both") +
