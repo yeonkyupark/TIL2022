@@ -1,2 +1,10 @@
-## TIL20220902
-### ...
+## TIL20220902  
+
+### resize plot hight/width in shiny app
+
+```R
+output$barChart <- rederPlot({
+  ...
+}, width = 400, height = 300)
+```
+
