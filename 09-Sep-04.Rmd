@@ -1,4 +1,68 @@
 ## TIL20220904  
 
-### ...  
+### tibble in r
+
+```{r}
+if(!require(tibble)) { install.packages("tibble"); library(tibble); }
+
+v1 <- c("A001", "A002", "A003")
+v2 <- c("Mouse", "Keyboard", "USB")
+v3 <- c(30000, 90000, 50000)
+( product <- tibble(id = v1, name = v2, price = v3) )
+
+```
+
+```{r}
+tribble (
+  ~id, ~name, ~price,
+  "A001", "Mouse", 30000,
+  "A002", "Keyboard", 90000,
+  "A003", "USB", 50000
+)
+```
+
+```{r}
+tb <- tibble(
+  id = c(1,2,3),
+  data = list(tibble(x=1, y=2),
+              tibble(x=4:5, y=6:7),
+              tibble(x=10))
+)
+tb
+```
+
+```{r}
+tb$data
+```
+ 
+```{r}
+str(iris)
+```
+
+```{r}
+as_tibble(iris)
+```
+
+```{r}
+if(!require(Lahman)) { install.packages("Lahman"); library(Lahman); }
+str(Batting)
+```
+
+```{r}
+Batting.tbl  <- as_tibble(Batting)
+Batting.tbl
+```
+
+```{r}
+print(Batting.tbl, n = 20)
+```
+
+```{r}
+print(Batting.tbl, n = 3, width = Inf)
+```
+
+```{r}
+head(Batting.tbl)
+```
+
 
