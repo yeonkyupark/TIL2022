@@ -1,2 +1,8 @@
-## TIL20220913
-### ...
+## TIL20220913  
+
+### Working directiory 설정
+
+1. File Panel -> More -> Set As Working Directory
+1. Menu -> Session -> Set Working Directory -> Choose Directory
+1. setwd("working-directory") in source pane
+
