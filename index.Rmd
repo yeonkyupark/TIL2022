@@ -1,20 +1,21 @@
 ---
-title: "Today I Learned in 2022"
-author: "PARK Yeonkyu"
-date: "`r Sys.Date()`"
+title: Today I Learned in 2022
+author: PARK Yeonkyu
+date: '`r Sys.Date()`'
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  TIL, 그날 그날 익힌 내용을 담고 있습니다.
-link-citations: yes
+bibliography:
+  - book.bib
+  - packages.bib
+link-citations: 'yes'
 github-repo: yeonkyupark/TIL2022
-favicon: "favicon.ico"
+favicon: favicon.ico
+description: TIL, 그날 그날 익힌 내용을 담고 있습니다.
 ---
 
-```{r setup, include=FALSE}
+# Today I Learned in 2022
+
+```
 knitr::opts_chunk$set(# root.dir = '../..', # 프로젝트 폴더 지정
                       eval = TRUE,
                       echo = TRUE,
@@ -36,7 +37,7 @@ if(!require(showtext)) { install.packages("showtext");library(showtext); }
 showtext_auto()
 ```
 
-```{r install_packages, message=FALSE, warning=FALSE, include=FALSE}
+```
 # install.packages("dplyr")
 # install.packages("ggplot2")
 # install.packages("tidyr")
@@ -68,11 +69,13 @@ showtext_auto()
 # install.packages("forecast")
 ```
 
-# 시작하며 {.unnumbered}
+## 시작하며 {.unnumbered}
 
-    1/01 github에 매일매일 잔디 심고 있었다.  
-    2/18 github를 청소해 보겠다고 repo를 전체 삭제했다.  
-         잔디도 깔끔하게 같이 사라졌다.
-         다시 시작하는걸로...  
+```
+1/01 github에 매일매일 잔디 심고 있었다.  
+2/18 github를 청소해 보겠다고 repo를 전체 삭제했다.  
+     잔디도 깔끔하게 같이 사라졌다.
+     다시 시작하는걸로...  
+```
 
 ![](https://user-images.githubusercontent.com/72383349/155848684-460dbb41-426d-4d5a-9f85-99528427c89d.png)
