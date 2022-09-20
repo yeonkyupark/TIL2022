@@ -1,0 +1,11 @@
+# TIL20220514
+
+## MLOps
+
+MLOps
+
+: ML(Machine Learning) + Ops(Operation)
+
+```
+CI/CD + Data
+```

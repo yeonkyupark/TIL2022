@@ -1,0 +1,334 @@
+# TIL20220522
+
+## 최적 모델
+
+```
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+if(!require(tidymodels)) { install.packages("tidymodels"); library(tidymodels); }
+if(!require(tidytext)) { install.packages("tidytext"); library(tidytext); }
+if(!require(skimr)) { install.packages("skimr"); library(skimr); }
+if(!require(vip)) { install.packages("vip"); library(vip); }
+```
+
+```
+bank_tb <- read_csv("UniversalBank.csv", col_names = T,
+                    locale = locale("ko", encoding = "euc-kr"),
+                    na = ".") %>% 
+  mutate_if(is.character, as.factor) 
+str(bank_tb)
+```
+
+```
+head(bank_tb)
+```
+
+```
+# 변수명 점검
+bank_tb <- bank_tb %>% 
+  rename(c("Personal_Loan" = "Personal Loan",
+           "CD_Account" = "CD Account",
+           "Securities_Account" = "Securities Account"))
+str(bank_tb)
+```
+
+```
+# 자료형 점검
+bank_tb <- bank_tb %>% 
+  mutate(Personal_Loan = factor(Personal_Loan,
+                                levels = c(1, 0),
+                                labels = c("Yes", "No"))) %>% 
+  mutate(Securities_Account = factor(Securities_Account,
+                                     levels = c(0,1),
+                                     labels = c("No", "Yes"))) %>% 
+  mutate(CD_Account = factor(CD_Account, 
+                             levels = c(0,1),
+                             labels = c("No", "Yes"))) %>% 
+  mutate(Online = factor(Online, 
+                         levels = c(0,1),
+                         labels = c("No", "Yes"))) %>% 
+  mutate(CreditCard = factor(CreditCard, 
+                         levels = c(0,1),
+                         labels = c("No", "Yes"))) %>%
+  mutate(Education = factor(Education, 
+                         levels = c(1:3),
+                         labels = c("Undergrad", "Graduate", "Professonal")))
+str(bank_tb)  
+```
+
+```
+# 변수 점검 (삭제, 변환 등)
+bank_tb <- bank_tb %>% 
+  select(-c(ID, 'ZIP Code'))
+str(bank_tb)
+```
+
+```
+# EDA
+skim(bank_tb)
+```
+
+```
+bank_tb %>% 
+  group_by(Personal_Loan) %>% 
+  skim()
+```
+
+```
+# base accuracy
+bank_tb %>% 
+  count(Personal_Loan) %>% 
+  mutate(prop = n / sum(n))
+```
+
+```
+# 데이터셋 분할
+set.seed(123)
+bank_split <- bank_tb %>% 
+  initial_split(strata = Personal_Loan)
+bank_split
+```
+
+```
+train_data <- training(bank_split)
+test_data <- testing(bank_split)
+```
+
+```
+tree_model <- decision_tree(
+  cost_complexity = tune(),
+  tree_depth = tune()) %>% 
+  set_engine("rpart") %>% 
+  set_mode("classification")
+```
+
+```
+tree_model
+```
+
+```
+tree_grid <- grid_regular(
+  cost_complexity(),
+  tree_depth(),
+  levels = 5
+)
+tree_grid
+```
+
+```
+set.seed(123)
+bank_folds <- vfold_cv(train_data, v=3)
+bank_folds
+```
+
+```
+# recipe
+tree_recipe <- train_data %>% 
+  recipe(Personal_Loan ~ .) %>% 
+  step_dummy(all_nominal(), -all_outcomes())
+summary(tree_recipe)
+```
+
+```
+# workflow
+tree_workflow <- workflow() %>% 
+  add_model(tree_model) %>% 
+  add_recipe(tree_recipe)
+tree_workflow
+```
+
+```
+tree_results <- tree_workflow %>% 
+  tune_grid(resamples = bank_folds,
+            grid = tree_grid,
+            control = control_grid(save_pred = T),
+            metrics = metric_set(roc_auc, accuracy))
+tree_results
+```
+
+```
+tree_results %>% collect_metrics()
+```
+
+```
+tree_results %>% 
+  collect_metrics() %>% 
+  mutate(tree_depth = factor(tree_depth)) %>% 
+  ggplot(mapping = aes(x=cost_complexity, y = mean, col = tree_depth)) +
+  geom_line(size = 1.5, alpha = 0.6) +
+  geom_point(size = 2) +
+  facet_wrap(~.metric, scales = "free", nrow = 2) +
+  scale_x_log10(labels = scales::label_number()) +
+  scale_color_viridis_d(option = "plasma", begin = 0.9, end = 0)
+```
+
+```
+tree_results %>% 
+  show_best("roc_auc", n=10) %>% 
+  arrange(desc(mean))
+```
+
+```
+best_tree <- tree_results %>% 
+  select_best("roc_auc")
+best_tree
+```
+
+```
+final_workflow <- tree_workflow %>% 
+  finalize_workflow(best_tree)
+final_workflow
+```
+
+```
+final_train_fit <- final_workflow %>% 
+  fit(data = train_data)
+final_train_fit
+```
+
+```
+final_train_fit %>% 
+  pull_workflow_fit()
+```
+
+```
+final_train_pred <- predict(final_train_fit, train_data, type = "prob") %>% 
+  bind_cols(predict(final_train_fit, train_data)) %>% 
+  bind_cols(train_data %>% 
+              select(Personal_Loan))
+final_train_pred
+```
+
+```
+final_train_conf <- 
+  final_train_pred %>% 
+  conf_mat(truth = Personal_Loan, estimate = .pred_class)
+final_train_conf
+```
+
+```
+autoplot(final_train_conf, type = "heatmap")
+```
+
+```
+summary(final_train_conf)
+```
+
+```
+train_auc <- final_train_pred %>% 
+  roc_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  mutate(model = "train_auc")
+autoplot(train_auc)
+```
+
+```
+final_train_pred %>% 
+  gain_curve(Personal_Loan, .pred_Yes) %>% 
+  autoplot
+```
+
+```
+final_train_pred %>% 
+  lift_curve(Personal_Loan, .pred_Yes) %>% 
+  autoplot
+```
+
+```
+final_train_fit %>% 
+  pull_workflow_fit() %>% 
+  vip()
+```
+
+```
+final_test_fit <- final_workflow %>% 
+  last_fit(bank_split)
+final_test_fit
+```
+
+```
+final_test_pred <- final_test_fit %>% 
+  collect_predictions()
+final_test_pred
+```
+
+```
+final_test_conf <- 
+  final_test_pred %>% 
+  conf_mat(truth = Personal_Loan, estimate = .pred_class)
+final_test_conf
+```
+
+```
+autoplot(final_test_conf, type = "heatmap")
+```
+
+```
+summary(final_test_conf)
+```
+
+```
+test_auc <- final_test_pred %>% 
+  roc_curve(truth = Personal_Loan, estimate = .pred_Yes) %>% 
+  mutate(model = "test_auc")
+autoplot(test_auc)
+```
+
+```
+final_test_pred %>% 
+  gain_curve(Personal_Loan, .pred_Yes) %>% 
+  autoplot
+```
+
+```
+final_test_pred %>% 
+  lift_curve(Personal_Loan, .pred_Yes) %>% 
+  autoplot
+```
+
+```
+final_test_fit %>% 
+  pluck(".workflow", 1) %>% 
+  pull_workflow_fit() %>% 
+  vip(num_features = 20)
+```
+
+```
+final_train_conf
+final_test_conf
+```
+
+```
+summary(final_train_conf)
+summary(final_test_conf)
+```
+
+```
+bind_rows(train_auc, test_auc) %>% 
+  ggplot(mapping = aes(x = 1 - specificity,
+                       y = sensitivity,
+                       color = model)) +
+  geom_path(lwd = 1.5) +
+  geom_abline(lty = 3) +
+  coord_equal()
+```
+
+```
+if(!require(rpart.plot)) { install.packages("rpart.plot"); library(rpart.plot); }
+rpart_fit <- final_train_fit %>% 
+  pull_workflow_fit()
+```
+
+```
+rpart.plot(x = rpart_fit$fit,
+           yesno = 2, type = 2, extra = 1, split.font = 1, varlen = -10)
+```
+
+```
+prp(x = rpart_fit$fit, 
+    type = 1, 
+    extra = 1, 
+    under = T, 
+    split.font = 1, 
+    varlen = -10,
+    box.col = ifelse(rpart_fit$fit$frame$var == "<leaf>", "gray", "white")
+)
+```

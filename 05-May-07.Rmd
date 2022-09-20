@@ -1,0 +1,29 @@
+# TIL20220507
+
+## lapply를 이용한 box 반복생성
+
+```
+library(shiny)
+library(shinydashboard)
+
+ui <- fluidPage(      
+  titlePanel("Dynamic Boxes"),      
+  fluidRow(
+    uiOutput("boxes")
+  )
+)
+
+proList <- c("A", "B", "C")
+
+server <- function(input, output) {      
+  output$boxes <- renderUI({
+    lapply(1:length(proList), function(a) {
+      x = 1:100
+      box(title = paste0("box_", a), 
+          renderPlot(plot(x = x, y = x^a, xlab="x", ylab="y")))
+    })
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```

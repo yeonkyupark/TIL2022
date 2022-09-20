@@ -1,0 +1,32 @@
+# TIL20220502
+
+## 정규성 검정
+
+표본크기가 30개 이상일 경우, 정규성 검정 없이 표본 평균이 정규분포를 따른다고 가정(중심극한정리)한다.
+
+* 표본크기 10\~30: 정규성 검정 후 결정
+* 표본크기 10 이하: 정규분포 가정 불가
+
+정규성 검정방법
+
+> * Anderson-Darling test(AD test)
+
+* Cramer-von Mises test(CVM test)
+* Kolmogorov-Smirnov test(KS test)
+* Lilliefors test(LF test)
+* Shapiro-Wilk test(SW test)
+
+```
+x = rnorm(20, 10, 2)
+
+if(!require(nortest)) { install.packages("nortest"); library(nortest); }
+lillie.test(x)
+```
+
+```
+shapiro.test(x)
+```
+
+```
+qqnorm(x); qqline(x, col="blue", lty=2)
+```

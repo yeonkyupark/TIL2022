@@ -1,0 +1,94 @@
+# TIL20220517
+
+## tidy model
+
+```
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+if(!require(tidymodels)) { install.packages("tidymodels"); library(tidymodels); }
+if(!require(tidytext)) { install.packages("tidytext"); library(tidytext); }
+if(!require(skimr)) { install.packages("skimr"); library(skimr); }
+if(!require(vip)) { install.packages("vip"); library(vip); }
+```
+
+```
+bank_tb <- read_csv("UniversalBank.csv", col_names = T,
+                    locale = locale("ko", encoding = "euc-kr"),
+                    na = ".") %>% 
+  mutate_if(is.character, as.factor) 
+str(bank_tb)
+```
+
+```
+head(bank_tb)
+```
+
+```
+# 변수명 점검
+bank_tb <- bank_tb %>% 
+  rename(c("Personal_Loan" = "Personal Loan",
+           "CD_Account" = "CD Account",
+           "Securities_Account" = "Securities Account"))
+str(bank_tb)
+```
+
+```
+# 자료형 점검
+bank_tb <- bank_tb %>% 
+  mutate(Personal_Loan = factor(Personal_Loan,
+                                levels = c(1, 0),
+                                labels = c("Yes", "No"))) %>% 
+  mutate(Securities_Account = factor(Securities_Account,
+                                     levels = c(0,1),
+                                     labels = c("No", "Yes"))) %>% 
+  mutate(CD_Account = factor(CD_Account, 
+                             levels = c(0,1),
+                             labels = c("No", "Yes"))) %>% 
+  mutate(Online = factor(Online, 
+                         levels = c(0,1),
+                         labels = c("No", "Yes"))) %>% 
+  mutate(CreditCard = factor(CreditCard, 
+                         levels = c(0,1),
+                         labels = c("No", "Yes"))) %>%
+  mutate(Education = factor(Education, 
+                         levels = c(1:3),
+                         labels = c("Undergrad", "Graduate", "Professonal")))
+str(bank_tb)  
+```
+
+```
+# 변수 점검 (삭제, 변환 등)
+bank_tb <- bank_tb %>% 
+  select(-c(ID, 'ZIP Code'))
+str(bank_tb)
+```
+
+```
+# EDA
+skim(bank_tb)
+```
+
+```
+bank_tb %>% 
+  group_by(Personal_Loan) %>% 
+  skim()
+```
+
+```
+# base accuracy
+bank_tb %>% 
+  count(Personal_Loan) %>% 
+  mutate(prop = n / sum(n))
+```
+
+```
+# 데이터셋 분할
+set.seed(123)
+bank_split <- bank_tb %>% 
+  initial_split(strata = Personal_Loan)
+bank_split
+```
+
+```
+train_data <- training(bank_split)
+test_data <- testing(bank_split)
+```

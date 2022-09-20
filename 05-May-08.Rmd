@@ -1,0 +1,27 @@
+# TIL20220508
+
+## 상자그림
+
+```
+a <- 1:3
+b <- 1:5
+c <- 1:8
+{ 
+  bp1 <- boxplot(a,b,c, ylim=c(0,10), names=c("a", "b", "c"))
+  # 원소 수  
+  text(1:3, bp1$stats[5,]+.5, paste("n=", bp1$n)) 
+  # 표준편차
+  abc_sd <- round(c(sd(a), sd(b), sd(c)), 2)
+  text(1:3, bp1$stats[5,]+1.2, paste("sd=", abc_sd)) 
+}
+```
+
+## 클라우드, MSP
+
+Tools Rules Schools,
+
+도구가 바뀌며,
+
+툴을 잘 사용하기위한 프로세스가 바뀌고,
+
+전사적 교육을 통해 적용

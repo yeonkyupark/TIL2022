@@ -1,0 +1,35 @@
+# TIL20220518
+
+## PostgreSQL + R
+
+PostgreSQL 설치
+
+: [https://www.postgresql.org/](https://www.postgresql.org/)
+
+DBeaver 설치
+
+: [https://dbeaver.io/download/](https://dbeaver.io/download/)
+
+```
+if(!require(DBI)) { install.packages("DBI"); library(DBI); }
+if(!require(RPostgres)) { install.packages("RPostgres"); library(RPostgres); }
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+```
+
+```
+db_postgre_con <- {dbConnect(
+  RPostgres::Postgres(),
+  host = "localhost",
+  port = 5432,
+  user = "postgres",
+  password = "1234",
+  dbname = "postgres"
+)}
+```
+
+```
+my_table <- db_postgre_con %>% 
+  dbGetQuery("select * from public.penguins") %>% 
+  as_tibble() %>% 
+  glimpse()
+```

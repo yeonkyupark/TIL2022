@@ -1,0 +1,19 @@
+# TIL20220526
+
+##
+
+```
+if(!require(palmerpenguins)) { install.packages("palmerpenguins"); library(palmerpenguins); }
+data <- penguins
+str(data)
+```
+
+```
+data.lm <- lm(body_mass_g ~ bill_length_mm + bill_depth_mm + flipper_length_mm, data = data)
+summary(data.lm)
+```
+
+```
+# t_value = Estimate / Std.Error
+50.269/2.477
+```

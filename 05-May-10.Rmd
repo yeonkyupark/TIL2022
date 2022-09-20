@@ -1,0 +1,49 @@
+# TIL20220510
+
+## svar 모형
+
+```
+if(!require(vars)) { install.packages("vars"); library(vars); }
+if(!require(ggplot2)) { install.packages("ggplot2"); library(ggplot2); }
+if(!require(tseries)) { install.packages("tseries"); library(tseries); }
+```
+
+```
+data("Canada")
+summary(Canada)
+```
+
+```
+head(Canada)
+```
+
+```
+Canada2 <- sapply(Canada, diff)
+summary(Canada2)
+```
+
+```
+head(Canada2)
+```
+
+```
+colnames(Canada2) <- c("de", "dprod", "drw", "dU")
+```
+
+```
+aa <- list()
+par(mfrow = c(2,2))
+for(i in 1:4) {
+  aa[i] <- plot(Canada[, i], ylab = colnames(Canada)[i])
+}
+par(mfrow = c(1,1))
+```
+
+```
+bb <- list()
+par(mfrow = c(2,2))
+for(i in 1:4) {
+  bb[i] <- plot(Canada2[, i], ylab = colnames(Canada2)[i], type = "l")
+}
+par(mfrow = c(1,1))
+```

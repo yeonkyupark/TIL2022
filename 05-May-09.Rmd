@@ -1,0 +1,24 @@
+# TIL20220509
+
+## lapply
+
+```
+# https://www.youtube.com/watch?v=zuBuRYIk0C4
+exams <- list(s20 = c(78,89,91,85,96,98),
+              s21 = c(85,86,97,99,90),
+              s22 = c(98,96,89,90,93,85,92),
+              s23 = c(98,96,91,88,93,99))
+exams
+```
+
+```
+lapply(exams, length)
+```
+
+```
+sapply(exams, length)
+```
+
+```
+sapply(iris, function(x) ifelse(is.numeric(x), mean(x), NA))
+```

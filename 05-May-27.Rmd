@@ -1,0 +1,18 @@
+# TIL20220527
+
+## factor형 label변경
+
+```
+data <- data.frame(
+  x = factor("A"),
+  y = 1
+)
+data
+```
+
+```
+if(!require(tidyverse)) { install.packages("tidyverse"); library(tidyverse); }
+new_data <- data %>% 
+  mutate(x = fct_recode(x, "B" = "A"))
+new_data  
+```

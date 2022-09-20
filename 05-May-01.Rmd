@@ -1,0 +1,145 @@
+# 2022년 05월
+
+## TIL20220501
+
+### 데이터 결합 방법
+
+1. 열 결합
+
+* cbind()
+
+1. 행 결합
+
+* rbind()
+
+1. 공통 열에 의한 결합
+
+* merge(), match(), %in%
+
+Tip. 아래 error 발생 시, 패키지 재설치
+
+> Error in new.session() : Could not establish session after 5 attempts.
+
+https://stackoverflow.com/questions/72057342/error-in-new-session-could-not-establish-session-after-5-attempts
+
+```
+# finance.yahoo.com: Samsung Electronics, KRW
+if(!require(quantmod)) { install.packages("quantmod"); library(quantmod); }
+
+sec <- getSymbols(Symbols="005930.KS",
+                  from = "2022-01-01",
+                  to = "2022-03-31",
+                  auto.assign = FALSE)
+
+sec <- as.data.frame(sec)
+```
+
+```
+head(sec[c("005930.KS.Close", "005930.KS.Volume")])
+```
+
+```
+sec <- cbind(date = rownames(sec),
+             symbol = "005930.KS",
+             sec[c("005930.KS.Close", "005930.KS.Volume")])
+head(sec)
+rownames(sec) <- NULL
+colnames(sec)[c(3,4)] <- c("close", "volume")
+head(sec)
+```
+
+```
+hmc <- getSymbols(Symbols="005387.KS",
+                  from = "2022-01-01",
+                  to = "2022-03-31",
+                  auto.assign = FALSE)
+
+hmc <- as.data.frame(hmc)
+
+hmc <- cbind(date = rownames(hmc),
+             symbol = "005387.KS",
+             hmc[c("005387.KS.Close", "005387.KS.Volume")])
+head(hmc)
+rownames(hmc) <- NULL
+colnames(hmc)[c(3,4)] <- c("close", "volume")
+head(hmc)
+```
+
+```
+# 환률 데이터
+fx <- getSymbols(Symbols="KRW=x",
+                  from = "2022-01-01",
+                  to = "2022-03-31",
+                  auto.assign = FALSE)
+
+fx <- as.data.frame(fx)
+str(fx)
+
+fx <- cbind(date = rownames(fx), fx[c("KRW=X.Close")])
+head(fx)
+
+rownames(fx) <- NULL
+colnames(fx)[c(2)] <- c("close")
+head(fx)
+```
+
+```
+intersect(names(sec), names(fx))
+```
+
+```
+report <- merge(sec, fx, by="date")
+head(report)
+```
+
+```
+v <- c(10:1)
+match(7, v) # match(x y), x는 찾을 값, y는 대상, 반환값은 y에서의 인덱스
+match(c(11, 10, 5), v)
+```
+
+```
+head(mtcars)
+```
+
+```
+car <- mtcars
+car$name <- rownames(car)
+rownames(car) <- NULL
+head(car)
+```
+
+```
+# 2개의 데이터 서브셋
+# 1. 힘 좋은 차량
+# 2. 가벼운 차량
+# 힘 좋고 가벼운 차량 검색
+
+highhp.car <- car[car$hp > 145, ]
+lightwt.car <- car[car$wt < 3.2, ]
+
+index <- match(highhp.car$name, lightwt.car$name)
+lightwt.car[na.omit(index), ]
+```
+
+```
+v <- c(10:1)
+7 %in% v # 논리값 반환
+```
+
+```
+c(11, 10, 5) %in% v
+```
+
+```
+index <- highhp.car$name %in% lightwt.car$name
+index
+```
+
+```
+lightwt.car[index, ]
+```
+
+```
+highhp.car[index, ]
+```
