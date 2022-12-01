@@ -9,3 +9,11 @@ df %>%
     summarise(mean = mean(body_mass_g)) %>%
     as.data.frame() # 소수점 이하 정상출력을 위해
 ```
+
+### dplyr를 이용한 층화추출 (stratified random sampling)
+
+```r
+iris %>%
+    group_by(Species) %>%
+    sample_frac(0.05)
+```
