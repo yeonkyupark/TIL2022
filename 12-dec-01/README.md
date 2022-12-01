@@ -17,3 +17,13 @@ iris %>%
     group_by(Species) %>%
     sample_frac(0.05)
 ```
+
+### long -> wide format 변환
+
+```r
+data %>% 
+  group_by(species, sex) %>%  
+  summarize(mean = mean(body_mass_g)) %>% 
+  spread(sex, mean)
+```
+
