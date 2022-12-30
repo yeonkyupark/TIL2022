@@ -1,4 +1,4 @@
-# exe. python 
+# Untitled1
 
 ```python
 import numpy as np
@@ -162,4 +162,4 @@ plt.hist(train['SaleCondition'])
  <BarContainer object of 10 artists>)
 ```
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
